@@ -5,6 +5,6 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Foo: FC<Props> = ({ children }) => {
-  return <div>{children || `Foo`}</div>;
+  return <div>{children || `Foo is updated`}</div>;
 };
 
