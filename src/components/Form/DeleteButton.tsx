@@ -1,8 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { StyledSoftButton } from '../../styles/Button';
-import { ConfirmAlert } from '../Done/ConfirmAlert';
+import { StyledSoftButton } from '../../../styles/Button';
+import { ConfirmAlert } from '../../ConfirmAlert';
 
 interface IDeleteButton {
   onDelete: () => void;

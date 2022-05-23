@@ -1,19 +1,18 @@
 import React, { useState, ReactNode } from 'react';
 import * as StyledGrid from 'styled-bootstrap-grid';
 import styled from 'styled-components';
-import { DeleteButton } from '../../../Form/DeleteButton';
-import { ISelectData } from '../../../../types';
-import { SimpleSelect } from '../../../Form';
-import { SoftButton } from '../../../Form/SoftButton';
+import { DeleteButton } from '../../Form/DeleteButton';
+import { ISelectData } from '../../../types';
+import { SimpleSelect } from '../../Form';
+import { SoftButton } from '../../Form/SoftButton';
 import {
   StyledCard,
   StyledCardBody,
   StyledCardHeader,
   StyledCardTitle,
-} from '../../../../styles/Card';
-import { StyledMutedText } from '../../../../styles/Text';
-import { StyledI } from '../../../../styles/Element';
-import { SoftButtonIconTypes } from '../../../Form/SoftButton.types';
+} from '../../../styles/Card';
+import { StyledMutedText } from '../../../styles/Text';
+import { StyledI } from '../../../styles/Element';
 import { HelpCircle } from 'react-feather';
 import { Tooltip } from '../../Tooltip';
 import { TimeFilters } from '@gothicgeeks/shared';
@@ -91,7 +90,7 @@ export const SectionBox: React.FC<IProps> = ({
                 {selection ? (
                   <SimpleSelect
                     options={selection.options}
-                    onChange={newSelectionValue => {
+                    onChange={(newSelectionValue: string) => {
                       setSelectionValue(newSelectionValue);
                       selection.onChange(newSelectionValue);
                     }}

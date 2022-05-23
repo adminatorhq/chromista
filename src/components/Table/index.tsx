@@ -2,13 +2,12 @@ import React, { useState, Fragment, useEffect } from 'react';
 import { useTable, usePagination, useSortBy, useFilters } from 'react-table';
 import ReactPaginate from 'react-paginate';
 import classnames from 'classnames';
-import { ComponentIsLoading } from '../Done/ComponentIsLoading';
-import { ErrorAlert } from '../Done/Alert';
+import { ComponentIsLoading } from '../ComponentIsLoading';
+import { ErrorAlert } from '../Alert';
 import { SimpleSelect } from '../Form';
-import { EmptyWrapper } from '../Done/EmptyWrapper';
+import { EmptyWrapper } from '../EmptyWrapper';
 import { useFetchTableData } from './Table.hooks';
 import { IFetchTableDataParams, ITable, ITableFilter } from './Table.types';
-import { NavigationService } from '../../services';
 import { SoftButton } from '../Form/SoftButton';
 import * as StyledGrid from 'styled-bootstrap-grid';
 import styled from 'styled-components';
@@ -23,7 +22,7 @@ const DEFAULT_TABLE_PARAMS = {
   filters: [],
 };
 
-export const Table: React.FC<ITable> = ({ columns, queryCachekey, url, entityPath }) => {
+export const Table: React.FC<ITable> = ({ columns, url, entityPath }) => {
   const [fetchTableDataParams, setFetchTableDataParams] =
     useState<IFetchTableDataParams>(DEFAULT_TABLE_PARAMS);
 
@@ -32,7 +31,7 @@ export const Table: React.FC<ITable> = ({ columns, queryCachekey, url, entityPat
     isLoading,
     error,
     isPreviousData,
-  } = useFetchTableData(url, queryCachekey, fetchTableDataParams);
+  } = useFetchTableData(url, fetchTableDataParams);
 
   const totalPageCount =
     data.count === 0 ? 0 : Math.ceil(data.count / fetchTableDataParams.pageSize);
@@ -98,7 +97,7 @@ export const Table: React.FC<ITable> = ({ columns, queryCachekey, url, entityPat
         <StyledTableTitle>
           {entityPath.title}
           <StyledSoftButton
-            to={NavigationService.getPathTo([entityPath.prefix, entityPath.paths.Create])}
+            to={entityPath.paths.Create}
             label={`New ${entityPath.singular}`}
             icon="add"
           />

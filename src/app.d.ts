@@ -2,3 +2,4 @@
 declare module 'react-table';
 declare module 'country-currency-map';
 declare module 'prismjs/components/prism-core';
+declare module 'react-final-form-listeners';

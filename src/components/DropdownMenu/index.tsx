@@ -1,10 +1,10 @@
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import styled from 'styled-components';
-import { StyledSoftButton } from '../../../styles/Button';
+import { StyledSoftButton } from '../../styles/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
-import { StyledMutedText } from '../../../styles/Text';
+import { StyledMutedText } from '../../styles/Text';
 import { Icon } from 'react-feather';
 
 const togglePreviousState = (prev: boolean) => !prev;

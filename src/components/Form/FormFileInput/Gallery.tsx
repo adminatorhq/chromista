@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormFileInput } from '.';
 import noop from 'lodash/noop';
 import { DeleteButton } from '../DeleteButton';
-import { BlockSkeleton } from '../../Done/Skeleton/BlockSkeleton';
+import { BlockSkeleton } from '../../Skeleton/BlockSkeleton';
 import { actionButtonIsMakingRequest } from '../FormButton';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';

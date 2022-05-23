@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { ColorTypes } from '../../../styles/types';
-import { getColor } from '../../../styles/utils';
-import { ISystemStatusForDisplay } from '../../../types';
+import { ColorTypes } from '../../styles/types';
+import { getColor } from '../../styles/utils';
+import { ISystemStatusForDisplay } from '../../types';
 
 const StyledBadge = styled.span<{ color: ColorTypes }>`
   display: inline-block;

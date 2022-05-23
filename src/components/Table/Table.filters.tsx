@@ -1,12 +1,12 @@
 import React, { useState, ReactNode } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { Filter, Search } from 'react-feather';
-import { SoftButton } from '../Form/SoftButton';
-import { SimpleSelect } from '../Form/SimpleSelect';
-import { mapIdAndNameToSelectData } from '../Form/mappers';
-import { FormMultiSelect } from '../Form/FormSelect';
+import { SoftButton } from '../Form/Done/SoftButton';
+import { SimpleSelect } from '../Form/Done/SimpleSelect';
+import { mapIdAndNameToSelectData } from '../Form/Done/mappers';
+import { FormMultiSelect } from '../Form/Done/FormSelect';
 import * as StyledGrid from 'styled-bootstrap-grid';
-import { StyledInput } from '../Form/Styles';
+import { StyledInput } from '../Form/Done/Styles';
 import styled from 'styled-components';
 import { themeContext } from '../../styles/Global';
 import { ISystemStatusForDisplay } from '../../types';

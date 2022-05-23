@@ -1,7 +1,7 @@
+import { StringUtils } from '@gothicgeeks/shared';
 import React from 'react';
 import { Field, FormSpy } from 'react-final-form';
 import { OnChange } from 'react-final-form-listeners';
-import { StringHelpers } from '../../utils/strings.utils';
 
 // decorators={[calculator]}
 // const calculator = createDecorator({
@@ -41,7 +41,7 @@ export const WhenFieldChanges: React.FC<IWhenFieldChanges> = ({ field, becomes, 
           <OnChange name={field}>
             {(value: unknown) => {
               const valueToChangeTo =
-                to === SLUG_VALUE ? StringHelpers.sluggify(value as string) : to;
+                to === SLUG_VALUE ? StringUtils.sluggify(value as string) : to;
               if (becomes === undefined) {
                 onChange(valueToChangeTo);
                 return;

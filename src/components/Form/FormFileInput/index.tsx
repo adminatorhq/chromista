@@ -2,11 +2,10 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import classnames from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
-// import { useQueryCache } from 'react-query';
 import { ISharedFormInput } from '../_types';
 import { generateClassNames, wrapLabelAndError } from '../_wrapForm';
-import { RequestService } from '../../../services';
-import { ProgressBar } from '../../Done/ProgressBar';
+import { ProgressBar } from '../../ProgressBar';
+import { RequestService } from '@gothicgeeks/shared';
 // import './styles.scss';
 // TODO uncommnet
 // import { STORE_PLAN_AGGREGATES_QUERY_CACHE_KEY } from '../../screens/Settings/Subscription/_hooks/constants';
@@ -38,7 +37,7 @@ const FileInput: React.FC<IFormFileInput> = ({ input, meta, disabled, domain }) 
   // const queryCache = useQueryCache();
   const { value, onChange } = input;
   const onDrop = useCallback(
-    acceptedFiles => {
+    (    acceptedFiles: any[]) => {
       input.onChange(null);
       acceptedFiles.forEach(async (file: any) => {
         setIsLoading(true);
@@ -67,7 +66,7 @@ const FileInput: React.FC<IFormFileInput> = ({ input, meta, disabled, domain }) 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: false,
-    accept: 'image/jpeg, image/png',
+    accept: {image: ['jpeg', 'png'] },
     disabled,
     // maxSize,
   });

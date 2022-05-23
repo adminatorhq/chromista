@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { ISharedFormInput } from './_types';
 import { FieldMetaState } from 'react-final-form';
 import { HelpCircle } from 'react-feather';
-import { Tooltip } from '../Done/Tooltip';
+import { Tooltip } from '../../Tooltip';
 import {
   StyledFormGroup,
   StyledFormLabel,

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { StyledMutedText } from '../../../styles/Text';
+import { StyledMutedText } from '../../styles/Text';
 
 interface IEmptyWrapper {
   text: string;

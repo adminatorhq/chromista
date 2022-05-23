@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StyledCard } from '../../../styles/Card';
-import { StyledMutedText } from '../../../styles/Text';
+import { StyledCard } from '../../styles/Card';
+import { StyledMutedText } from '../../styles/Text';
 
 export const SelectAnItem: React.FC = () => {
   return (

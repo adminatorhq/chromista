@@ -1,29 +1,27 @@
 import React from 'react';
-import debounce from 'lodash-es/debounce';
+import debounce from 'lodash/debounce';
 import AsyncSelect from 'react-select/async';
 import { useQuery } from 'react-query';
-import { RequestService } from '../../services';
-import { USE_QUERY_CONFIG } from '../../hooks/data/config';
 import { ISelectData } from '../../types';
 import { FormNoValueSelect } from './FormSelect';
+import { RequestService } from '@gothicgeeks/shared';
 
 interface IFormEntitySelectionList {
   disabledOptions: string[];
   onChange: (value: string, label?: string) => void;
-  cacheKey: string;
-  entity: 'products';
+  url: string;
 }
 
 const debouncedSearch = debounce(
   async (
     inputValue: string,
-    entity: string,
+    url: string,
     disabledOptions: string[],
     resolve: (value: any) => void,
   ) =>
     resolve(
       (
-        await RequestService.get(`selection-list?entity=${entity}&search=${inputValue}`)
+        await RequestService.get(`${url}&search=${inputValue}`)
       ).data.filter(({ value }: ISelectData) => !disabledOptions.includes(value)),
     ),
   700,
@@ -32,13 +30,11 @@ const debouncedSearch = debounce(
 export const FormEntitySelectionList: React.FC<IFormEntitySelectionList> = ({
   disabledOptions,
   onChange,
-  cacheKey,
-  entity,
+  url,
 }): JSX.Element => {
   const { data = [] } = useQuery<ISelectData[]>(
-    cacheKey,
-    async () => (await RequestService.get(`selection-list?entity=${entity}`)).data,
-    USE_QUERY_CONFIG,
+    [url],
+    async () => (await RequestService.get(url)).data,
   );
 
   if (data.length && data[0].value === 'SELECTION_LIST_LIMIT') {
@@ -57,12 +53,12 @@ export const FormEntitySelectionList: React.FC<IFormEntitySelectionList> = ({
             if (inputValue.length < 3) {
               return resolve([
                 {
-                  value: '',
-                  label: 'Please input three characters or more',
+                  value: 'Please input three characters or more',
+                  // label: 'Please input three characters or more',
                 },
               ]);
             }
-            debouncedSearch(inputValue, entity, disabledOptions, resolve);
+            debouncedSearch(inputValue, url, disabledOptions, resolve);
           });
         }}
       />

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ISharedFormInput } from './_types';
 import { generateClassNames, wrapLabelAndError } from './_wrapForm';
-import Select, { OptionTypeBase, ValueType } from 'react-select';
-import { ISelectData } from '../../types';
+import Select, {} from 'react-select';
+import { ISelectData } from '../../../types';
 
 interface ISelectOptions extends ISharedFormInput {
   disabledOption?: string;
@@ -38,7 +38,7 @@ export const FormMultiSelect: React.FC<IFormMultiSelect> = ({
       value={
         values.map(value =>
           selectData.find(selectDatum => selectDatum.value === value),
-        ) as ValueType<OptionTypeBase, true>
+        )
       }
       onChange={(newValues: any) => {
         onChange(newValues.map(({ value }: ISelectData) => value));
@@ -65,7 +65,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
       label: defaultLabel ? defaultLabel : `--- Select ${formLabel} ---`,
     },
     ...selectData,
-  ];
+  ] as ISelectData[];
   return wrapLabelAndError(
     <Select
       {...input}
@@ -80,7 +80,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
         input.onChange(value);
       }}
       className={generateClassNames(meta, '')}
-      disabled={disabled}
+      isDisabled={disabled}
       options={selectDataWithDefault}
       isOptionDisabled={(option: ISelectData) => option.value === disabledOption}
     />,

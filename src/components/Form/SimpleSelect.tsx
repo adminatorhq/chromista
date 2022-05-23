@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import { StyledInput } from './Styles';
-import { StyledSelect } from '../../styles/Element';
+import { StyledSelect } from '../../../styles/Element';
 import React from 'react';
-import { ISelectData } from '../../types';
+import { ISelectData } from '../../../types';
 
 interface ISimpleSelect {
   options: ISelectData[];

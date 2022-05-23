@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
-import { IValueLabel } from '../../../types';
+import { IValueLabel } from '../../types';
 
 interface IBreadcrumbs {
   items: IValueLabel[];
