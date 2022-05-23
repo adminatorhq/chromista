@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledTextarea } from '../../../styles/Element';
+import { StyledTextarea } from '../../styles/Element';
 import { StyledInput } from './Styles';
 import { ISharedFormInput } from './_types';
 import { wrapLabelAndError, generateClassNames } from './_wrapForm';

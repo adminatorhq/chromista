@@ -5,7 +5,7 @@ import { EmptyWrapper } from '../EmptyWrapper';
 import SkeletonLoader from 'tiny-skeleton-loader-react';
 import { sharedSkeletonProps } from '../Skeleton/constants';
 import { randomNumber } from '@gothicgeeks/shared';
-import { StyledOutlineButton } from '../../../styles/Button';
+import { StyledOutlineButton } from '../../styles/Button';
 import styled from 'styled-components';
 
 export interface ITagItem {

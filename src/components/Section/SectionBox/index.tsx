@@ -16,6 +16,7 @@ import { StyledI } from '../../../styles/Element';
 import { HelpCircle } from 'react-feather';
 import { Tooltip } from '../../Tooltip';
 import { TimeFilters } from '@gothicgeeks/shared';
+import { SoftButtonIconTypes } from '../../Form/SoftButton.types';
 
 interface IProps {
   title: string;

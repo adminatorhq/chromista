@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { StyledInput } from '../Styles';
-import { StyledBaseButton } from '../../../../styles/Button';
+import { StyledBaseButton } from '../../../styles/Button';
 
 interface IFormSearch {
   onChange: (value: string) => void;

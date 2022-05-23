@@ -2,7 +2,7 @@ import React from 'react';
 import { ISharedFormInput } from './_types';
 import { generateClassNames, wrapLabelAndError } from './_wrapForm';
 import Select, {} from 'react-select';
-import { ISelectData } from '../../../types';
+import { ISelectData } from '../../types';
 
 interface ISelectOptions extends ISharedFormInput {
   disabledOption?: string;

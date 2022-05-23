@@ -3,7 +3,7 @@ import { ColorTypes } from './types';
 
 const hexToRgba = (hex: string, opacity: number): string => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, (m, r, g, b) => {
+  hex = hex.replace(shorthandRegex, (_, r, g, b) => {
     return r + r + g + g + b + b;
   });
 

@@ -4,14 +4,14 @@ import { ChevronDown, ChevronUp, Icon } from 'react-feather';
 
 const ARROW_SIZE = 12;
 
-interface IAccordionItem {
+export interface IProps {
   icon: Icon;
   name: string;
   body: JSX.Element;
   highlight?: boolean;
 }
 
-export const AccordionItem: React.FC<IAccordionItem> = ({ icon, name, body, highlight }) => {
+export const AccordionItem: React.FC<IProps> = ({ icon, name, body, highlight }) => {
   const [isBoxOpen, setIsBoxOpen] = useState(false);
   return (
       <StyledWrapper highlight={highlight}>
