@@ -1,19 +1,20 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Story } from '@storybook/react';
 import { AccordionItem, IProps } from '.';
-import { ChevronUp } from 'react-feather';
+import { AlertOctagon } from 'react-feather';
+import { AppWrapper} from '../../AppWrapper';
 
 export default {
   title: 'AccordionItem',
   component: AccordionItem,
   args: {
-    icon: ChevronUp,
+    icon: AlertOctagon,
     name: 'Foo Title',
     body: <>Some body content</>,
   },
 };
 
-const Template: Story<IProps> = args => <AccordionItem {...args} />;
+const Template: Story<IProps> = args => <AppWrapper><AccordionItem {...args} /></AppWrapper>;
 
 // By passing using the Args format for exported stories, you can control the props for a component for reuse in a test
 // https://storybook.js.org/docs/react/workflows/unit-testing

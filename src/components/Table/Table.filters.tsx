@@ -1,14 +1,14 @@
 import React, { useState, ReactNode } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { Filter, Search } from 'react-feather';
-import { SoftButton } from '../Form/Done/SoftButton';
-import { SimpleSelect } from '../Form/Done/SimpleSelect';
-import { mapIdAndNameToSelectData } from '../Form/Done/mappers';
-import { FormMultiSelect } from '../Form/Done/FormSelect';
+import { SoftButton } from '../Form/SoftButton';
+import { SimpleSelect } from '../Form/SimpleSelect';
+import { mapIdAndNameToSelectData } from '../Form/mappers';
+import { FormMultiSelect } from '../Form/FormSelect';
 import * as StyledGrid from 'styled-bootstrap-grid';
-import { StyledInput } from '../Form/Done/Styles';
+import { StyledInput } from '../Form/Styles';
 import styled from 'styled-components';
-import { themeContext } from '../../styles/Global';
+import { themeContext } from '../../AppWrapper/Global';
 import { ISystemStatusForDisplay } from '../../types';
 
 const togglePreviousState = (prev: boolean) => !prev;
@@ -73,7 +73,7 @@ export const StatusFilter =
       <FilterWrapper filterValue={filterValue} setFilter={setFilter} iconType="filter">
         <SimpleSelect
           options={[{ label: '-- Select Status --', value: '' }, ...statuses]}
-          onChange={value => {
+          onChange={(value: string) => {
             setFilter(value || undefined);
           }}
           fullWidth={true}
@@ -146,7 +146,7 @@ export const TextSearchFilter = ({ column: { filterValue, setFilter } }: any) =>
     <FilterWrapper filterValue={filterValue} setFilter={setFilter} iconType="search">
       <StyledInput
         value={filterValue || ''}
-        onChange={e => {
+        onChange={(e: React.BaseSyntheticEvent) => {
           setFilter(e.target.value || undefined);
         }}
         placeholder={`Search`}

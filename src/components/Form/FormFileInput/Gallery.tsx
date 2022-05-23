@@ -9,7 +9,7 @@ import { actionButtonIsMakingRequest } from '../FormButton';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import styled from 'styled-components';
-import { themeContext } from '../../../styles/Global';
+import { themeContext } from '../../../AppWrapper/Global';
 
 interface ILoadedImage {
   image: string;

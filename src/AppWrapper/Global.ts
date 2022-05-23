@@ -1,5 +1,5 @@
 import { createGlobalStyle, DefaultTheme } from 'styled-components';
-import { ColorTypes } from './types';
+import { ColorTypes } from '../styles/types';
 
 declare module 'styled-components' {
   export interface DefaultTheme {

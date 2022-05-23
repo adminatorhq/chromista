@@ -1,8 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { StyledSoftButton } from '../../../styles/Button';
-import { ConfirmAlert } from '../../ConfirmAlert';
+import { StyledSoftButton } from '../../styles/Button';
+import { ConfirmAlert } from '../ConfirmAlert';
 
 interface IDeleteButton {
   onDelete: () => void;
@@ -23,7 +23,7 @@ export const DeleteButton: React.FC<IDeleteButton> = ({
     size={size}
     color="danger"
     type="button"
-    onClick={e => {
+    onClick={(e: React.BaseSyntheticEvent) => {
       e.stopPropagation();
       if (shouldConfirmAlert) {
         // TODO move to a pop confirm

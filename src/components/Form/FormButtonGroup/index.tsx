@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { StyledOutlineButton } from '../../../../styles/Button';
-import { ISelectData } from '../../../../types';
+import { StyledOutlineButton } from '../../../styles/Button';
+import { ISelectData } from '../../../types';
 
 interface IFormButtonGroup {
   options: ISelectData[];
