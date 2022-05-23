@@ -1,0 +1,88 @@
+
+.table tbody+tbody {
+    border-top: 2px solid #eaf0f7
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+    border-bottom-width: 2px
+}
+
+.table-hover tbody tr:hover {
+    color: #303e67;
+    background-color: #f8f8fc
+}
+
+.table-responsive>.table-bordered {
+    border: 0
+}
+
+thead {
+    display: table-header-group
+}
+
+.table.table-bordered thead {
+    background-color: #f1f5fa;
+}
+
+tr{
+    page-break-inside: avoid
+}
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #eaf0f9;
+}
+
+.table-responsive[data-pattern="priority-columns"] {
+    border: 1px solid #e3ebf6
+}
+
+.page-link{
+    padding: .25rem .5rem;
+    font-size: .71rem;
+    line-height: 1.8;
+    color: #1761fd;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    background-color: #1761fd;
+    border-color: #1761fd;
+}
+
+.page-item.disabled .page-link {
+    color: #b6c2e4;
+    border-color: #eaf0f9;
+}
+
+thead .sorting {
+    cursor: pointer;
+    position: relative;
+    top: 1em;
+}
+
+thead .sorting:before{
+    left: 0.8em;
+    content: "\2191";
+}
+
+thead .sorting:after{
+    left: 0.3em;
+    content: "\2193";
+}
+
+thead .sorting:after,
+thead .sorting:before
+{
+    position: absolute;
+    bottom: 0.9em;
+    display: block;
+    color:rgb(48, 62, 103);
+    opacity: .3;
+}
+
+thead .sorting_desc:after,
+thead .sorting_asc:before{
+   color: #1761fd;
+   opacity: 1;
+}
