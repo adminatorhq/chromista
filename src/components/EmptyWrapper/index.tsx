@@ -1,18 +1,19 @@
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { StyledMutedText } from '../../styles/Text';
+import Empty  from "../../icons/empty.svg";
 
-interface IEmptyWrapper {
+export interface IProps {
   text: string;
   hideIcon?: true;
   border?: boolean;
   children?: ReactNode;
 }
 
-export const EmptyWrapper: React.FC<IEmptyWrapper> = ({ text, hideIcon, border, children }) => {
+export const EmptyWrapper: React.FC<IProps> = ({ text, hideIcon, border, children }) => {
   return (
     <StyledWrapper border={!!border}>
-      {hideIcon ? null : <img src="/assets/svgs/empty.svg" alt="0" width="100px" />}
+      {hideIcon ? null : <img src={Empty} alt="0" width="100px" />}
       <br />
       <br />
       <StyledText> {text} </StyledText>

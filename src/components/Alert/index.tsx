@@ -4,23 +4,24 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import styled, { css } from 'styled-components';
 import { getBestErrorMessage } from '@gothicgeeks/shared';
 
-enum AlertType {
+export enum AlertType {
   Success = 'success',
   Error = 'danger',
   Warning = 'warning',
   Info = 'info',
 }
 
-interface IStyledAlert {
+export type IProps = {
   type: AlertType;
+} & IAlert;
+
+interface IAlert {
+  message: Record<string, unknown> | string | unknown;
+  renderJsx?: boolean;
 }
 
 // TODO Add the retry mechanism
-const Alert: React.FC<{
-  type: AlertType;
-  renderJsx?: boolean;
-  message: Record<string, unknown> | string | unknown;
-}> = ({ type, message, renderJsx }) => {
+export const Alert: React.FC<IProps> = ({ type, message, renderJsx }) => {
   const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
@@ -46,12 +47,9 @@ const Alert: React.FC<{
   );
 };
 
-interface IAlert {
-  message: Record<string, unknown> | string | unknown;
-  renderJsx?: boolean;
-}
-
-export const ErrorAlert: React.FC<IAlert> = props => <Alert {...props} type={AlertType.Error} />;
+export const ErrorAlert: React.FC<IAlert> = props => (
+  <Alert {...props} type={AlertType.Error} />
+);
 export const SuccessAlert: React.FC<IAlert> = props => (
   <Alert {...props} type={AlertType.Success} />
 );
@@ -59,7 +57,9 @@ export const WarningAlert: React.FC<IAlert> = props => (
   <Alert {...props} type={AlertType.Warning} />
 );
 
-const StyledAlert = styled.div<IStyledAlert>`
+const StyledAlert = styled.div<{
+  type: AlertType;
+}>`
   border: 0;
   position: relative;
   padding: 0.5rem;
@@ -85,20 +85,20 @@ const StyledAlert = styled.div<IStyledAlert>`
     `}
 
       ${props =>
-    props.type === AlertType.Warning &&
-    css`
-      color: #ffb822;
-      background-color: #fff6e4;
-      border-color: #ffebc1;
-    `}
+        props.type === AlertType.Warning &&
+        css`
+          color: #ffb822;
+          background-color: #fff6e4;
+          border-color: #ffebc1;
+        `}
 
         ${props =>
-    props.type === AlertType.Info &&
-    css`
-      color: #12a4ed;
-      background-color: #e3f4fd;
-      border-color: #bde6fa;
-    `}
+          props.type === AlertType.Info &&
+          css`
+            color: #12a4ed;
+            background-color: #e3f4fd;
+            border-color: #bde6fa;
+          `}
 `;
 
 const StyledAlertButton = styled.button`
