@@ -1,0 +1,71 @@
+import React from 'react';
+import { Story } from '@storybook/react';
+import { RenderList, IProps } from '.';
+import { AppWrapper } from '../../AppWrapper';
+import { SectionListItem } from '../Section/SectionList';
+
+interface IDemoType {
+  name: string;
+}
+
+export default {
+  title: 'RenderList',
+  component: RenderList,
+  args: {
+    items: [
+      { name: 'Planck', age: 27 },
+      { name: 'Faraday', age: 27 },
+      { name: 'Newton', age: 27 },
+      { name: 'Einstein', age: 27 },
+      { name: 'Bohr', age: 27 },
+      { name: 'Curie', age: 27 },
+    ],
+    render: ({ name }: IDemoType) => (
+      <SectionListItem
+        label={name}
+        key={name}
+      />
+    ),
+  },
+};
+
+const Template: Story<IProps<IDemoType>> = args => (
+  <AppWrapper>
+    <RenderList {...args} />
+  </AppWrapper>
+);
+
+export const Default = Template.bind({});
+Default.args = {};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  isLoading: true,
+};
+
+export const NewItemLink = Template.bind({});
+NewItemLink.args = {
+  items: [],
+  newItemLink: '/path/to/new/item',
+};
+
+export const Empty = Template.bind({});
+Empty.args = {
+  items: [],
+};
+
+export const NotSearchAble = Template.bind({});
+NotSearchAble.args = {
+  notSearchable: true
+};
+
+
+export const Error = Template.bind({});
+Error.args = {
+  error: 'An Error Occurred',
+};
+
+export const Sorted = Template.bind({});
+Sorted.args = {
+  sort: true,
+};

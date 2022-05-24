@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 import { Edit } from 'react-feather';
 import React from 'react';
 
-interface ITableDataAsList {
+export interface IProps {
   onSelect: () => void;
   data: { label: string; value: string }[];
 }
 
-export const TableDataAsList: React.FC<ITableDataAsList> = ({ data, onSelect }) => {
+export const TableDataAsList: React.FC<IProps> = ({ data, onSelect }) => {
   return (
     <StyledBlockWrapper>
       <EditButton as={Edit} size="13" onClick={onSelect} />

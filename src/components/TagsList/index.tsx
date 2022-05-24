@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { EmptyWrapper } from '../EmptyWrapper';
@@ -13,11 +13,11 @@ export interface ITagItem {
   label?: string;
 }
 
-interface ITagsList {
+export interface IProps {
   items: ITagItem[];
   onDelete: (id: string) => void;
   isLoading: boolean;
-  isMakingDeleteRequest: boolean;
+  isMakingDeleteRequestForId?: string;
   entityName: string;
 }
 
@@ -32,14 +32,13 @@ const StyledButtonGroup = styled.div`
   padding-left: 0px;
 `;
 
-export const TagsList: React.FC<ITagsList> = ({
+export const TagsList: React.FC<IProps> = ({
   items,
   onDelete,
   isLoading,
   entityName,
-  isMakingDeleteRequest,
+  isMakingDeleteRequestForId,
 }) => {
-  const [currentDeleteItem, setCurrentDeleteItem] = useState('');
   if (isLoading) {
     return (
       <StyledWrapper>
@@ -77,13 +76,12 @@ export const TagsList: React.FC<ITagsList> = ({
             <StyledOutlineButton
               size="sm"
               color="danger"
-              disabled={isMakingDeleteRequest}
+              disabled={!!isMakingDeleteRequestForId}
               onClick={() => {
                 onDelete(id);
-                setCurrentDeleteItem(id);
               }}
             >
-              {renderIcon({ isMakingDeleteRequest, currentDeleteItem, id })}
+              {renderIcon({ isMakingDeleteRequestForId, id })}
             </StyledOutlineButton>
           </StyledButtonGroup>
         ))}
@@ -92,18 +90,16 @@ export const TagsList: React.FC<ITagsList> = ({
 };
 
 const renderIcon = ({
-  isMakingDeleteRequest,
-  currentDeleteItem,
+  isMakingDeleteRequestForId,
   id,
 }: {
-  isMakingDeleteRequest: boolean;
-  currentDeleteItem: string;
+  isMakingDeleteRequestForId?: string;
   id: string;
 }) => {
   if (!id) {
     return <FontAwesomeIcon icon={faSpinner} spin={true} />;
   }
-  if (isMakingDeleteRequest && currentDeleteItem === id) {
+  if (isMakingDeleteRequestForId === id) {
     return <FontAwesomeIcon icon={faSpinner} color="red" spin={true} />;
   }
   return <FontAwesomeIcon icon={faTimes} />;

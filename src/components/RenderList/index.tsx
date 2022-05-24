@@ -6,7 +6,7 @@ import { SectionList } from '../Section/SectionList';
 import { FormSearch } from '../Form/FormSearch';
 import { SoftButton } from '../Form/SoftButton';
 
-interface IRenderList<T> {
+export interface IProps<T> {
   isLoading?: boolean;
   items: T[];
   newItemLink?: string;
@@ -35,7 +35,7 @@ export function RenderList<T extends { name: string }>({
   singular = 'Item',
   render,
   searchFunction = defaultSearchFunction,
-}: IRenderList<T>) {
+}: IProps<T>) {
   const itemsLength = items.length;
   const [searchString, setSearchString] = useState('');
   if (error) {

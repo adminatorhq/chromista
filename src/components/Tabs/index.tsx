@@ -2,14 +2,14 @@ import React, { useMemo, useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import styled, { css } from 'styled-components';
 
-interface ITabs {
+export interface IProps {
   contents: {
     label: string;
     content: JSX.Element;
   }[];
 }
 
-export const Tabs: React.FC<ITabs> = ({ contents }) => {
+export const Tabs: React.FC<IProps> = ({ contents }) => {
   const [activeTab, setActiveTab] = useState(contents[0].label);
 
   const toggle = (tabIndex: string) => {

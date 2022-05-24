@@ -3,12 +3,12 @@ import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { IValueLabel } from '../../types';
 
-interface IBreadcrumbs {
+export interface IProps {
   items: IValueLabel[];
   onItemClick?: (value: string) => void;
 }
 
-export const Breadcrumbs: React.FC<IBreadcrumbs> = ({ items, onItemClick }) => {
+export const Breadcrumbs: React.FC<IProps> = ({ items, onItemClick }) => {
   const itemsLength = items.length;
   return (
     <StyledBreadcrumb>

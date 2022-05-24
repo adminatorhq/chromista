@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { StyledMutedText } from '../../styles/Text';
-import Empty  from "../../icons/empty.svg";
+// import Empty  from "../../icons/empty.svg";
 
 export interface IProps {
   text: string;
@@ -13,7 +13,7 @@ export interface IProps {
 export const EmptyWrapper: React.FC<IProps> = ({ text, hideIcon, border, children }) => {
   return (
     <StyledWrapper border={!!border}>
-      {hideIcon ? null : <img src={Empty} alt="0" width="100px" />}
+      {/* {hideIcon ? null : <img src={Empty} alt="0" width="100px" />} */}
       <br />
       <br />
       <StyledText> {text} </StyledText>
