@@ -1,5 +1,5 @@
 {
-  "version": "0.2.4",
+  "version": "0.2.5",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -23,11 +23,6 @@
   },
   "peerDependencies": {
     "react": ">=16"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
   },
   "prettier": {
     "printWidth": 80,
@@ -87,6 +82,7 @@
     "lodash-es": "^4.17.21",
     "next": "^12.1.6",
     "prismjs": "^1.28.0",
+    "qs": "^6.10.3",
     "react-confirm-alert": "^3.0.2",
     "react-datepicker": "^4.8.0",
     "react-dropzone": "^14.2.1",

@@ -1,5 +1,5 @@
 import { RequestService } from '@gothicgeeks/shared';
-import * as querystring from 'qs';
+import querystring from 'qs';
 import { useQuery } from 'react-query';
 import { IFetchTableDataParams, ITablePayload } from './Table.types';
 
