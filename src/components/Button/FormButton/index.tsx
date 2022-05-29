@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { StyledButton, StyledOutlineButton, IStyledBaseButton } from '../../../styles/Button';
+import { StyledButton, StyledOutlineButton, IStyledBaseButton } from '../Button';
 
 interface IFormButton extends IStyledBaseButton {
   text: string;

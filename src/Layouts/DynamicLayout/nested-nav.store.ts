@@ -1,6 +1,6 @@
 
 import { createStore } from '@gothicgeeks/shared';
-import { SoftButtonIconTypes } from '../../Button/SoftButton.types';
+import { SoftButtonIconTypes } from '../../components/Button/SoftButton.types';
 
 interface IDeepLink {
   description?: string;

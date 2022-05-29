@@ -22,7 +22,7 @@ const DEFAULT_TABLE_PARAMS = {
   filters: [],
 };
 
-export const Table: React.FC<ITable> = ({ columns, url, entityPath }) => {
+export const Table: React.FC<ITable> = ({ columns, url, createPath, singular, title }) => {
   const [fetchTableDataParams, setFetchTableDataParams] =
     useState<IFetchTableDataParams>(DEFAULT_TABLE_PARAMS);
 
@@ -95,10 +95,10 @@ export const Table: React.FC<ITable> = ({ columns, url, entityPath }) => {
       ) : null}
       <StyledTableResponsive>
         <StyledTableTitle>
-          {entityPath.title}
+          {title}
           <StyledSoftButton
-            to={entityPath.paths.Create}
-            label={`New ${entityPath.singular}`}
+            to={createPath}
+            label={`New ${singular}`}
             icon="add"
           />
         </StyledTableTitle>

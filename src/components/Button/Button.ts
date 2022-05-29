@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { ColorTypes } from './types';
-import { getColor } from './utils';
+import { ColorTypes } from '../../styles/types';
+import { getColor } from '../../styles/utils';
 
 export interface IStyledBaseButton {
   block?: boolean;

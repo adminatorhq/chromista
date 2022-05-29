@@ -9,7 +9,6 @@ export * from './DropdownMenu';
 export { EmptyWrapper } from './EmptyWrapper';
 export * from './Form';
 export * from './KeyValueDetails';
-export { DynamicLayout } from './Layout';
 export * from './Lists';
 export * from './ProgressBar';
 export { RenderList } from './RenderList';

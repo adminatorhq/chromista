@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { ISideBarNavigation } from './FixedLayout/types';
 import { ChevronRight, ChevronDown } from 'react-feather';
-import { Tooltip } from '../Tooltip';
+import { Tooltip } from '../components/Tooltip';
 import Link from 'next/link';
 
 interface IRenderNavigation {

@@ -3,10 +3,10 @@ import { ChevronRight, Icon } from 'react-feather';
 import Link  from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { FormButton } from '../../Form';
 import styled, { css } from 'styled-components';
-import { StyledBaseButton } from '../../../styles/Button';
+import { StyledBaseButton } from '../../Button/Button';
 import { StyledListGroupFlush } from '../../Lists';
+import { FormButton } from '../../Button/FormButton';
 
 export enum OrderingDirection {
   Up = 'up',

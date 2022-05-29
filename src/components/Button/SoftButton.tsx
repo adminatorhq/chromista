@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Link  from 'next/link';
-import { StyledSoftButton } from '../../styles/Button';
+import { StyledSoftButton } from './Button';
 import { SoftButtonIconTypes, ICON_MAP } from './SoftButton.types';
 
 interface ISoftButton {

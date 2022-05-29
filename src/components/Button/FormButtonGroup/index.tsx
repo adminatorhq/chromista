@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { StyledOutlineButton } from '../../../styles/Button';
+import { StyledOutlineButton } from '../Button';
 import { ISelectData } from '../../../types';
 
 interface IFormButtonGroup {

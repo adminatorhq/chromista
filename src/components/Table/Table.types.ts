@@ -36,15 +36,9 @@ export interface ITableColumn {
 }
 
 export interface ITable {
-  queryCachekey: string;
   url: string;
   columns: ITableColumn[];
-  entityPath: {
-    title: string;
-    singular: string;
-    prefix: string;
-    paths: {
-      Create: string;
-    };
-  };
+  title: string;
+  singular: string;
+  createPath:string;
 }

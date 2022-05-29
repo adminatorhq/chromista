@@ -2,7 +2,7 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { DynamicLayout, IProps } from '.';
-import { AppWrapper } from '../../../AppWrapper';
+import { AppWrapper } from '../../AppWrapper';
 import { HardDrive } from 'react-feather';
 
 export default {

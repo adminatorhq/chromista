@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import * as StyledGrid from 'styled-bootstrap-grid';
 import useClickAway from 'react-use/lib/useClickAway';
 import useKey from 'react-use/lib/useKey';
-import { SectionBox } from '../../Section';
+import { SectionBox } from '../../components/Section';
 import { useSideBarStore } from '../sidebar.store';
 import { ISelectionView } from '../types';
 import { useNestedNavStore } from './nested-nav.store';

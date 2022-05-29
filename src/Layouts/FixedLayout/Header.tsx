@@ -1,8 +1,8 @@
-import { useCurrentRouteConfig, useLocationParams } from '../../../../routes/hooks';
+// import { useCurrentRouteConfig, useLocationParams } from '../../../../routes/hooks';
 import * as StyledGrid from 'styled-bootstrap-grid';
 import styled from 'styled-components';
 import React from 'react';
-import { Breadcrumbs } from '../../Breadcrumbs';
+// import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 const StyledPageTitleBox = styled.div`
   padding: 16px 0;
@@ -11,29 +11,29 @@ const StyledPageTitleBox = styled.div`
   }
 `;
 
-const StyledTitle = styled.h4`
-  margin-bottom: 0px;
-`;
+// const StyledTitle = styled.h4`
+//   margin-bottom: 0px;
+// `;
 
 export const PageHeader = () => {
-  const { breadcrumbs = [], title = '' } = useCurrentRouteConfig() || { breadcrumbs: [] };
+  // const { breadcrumbs = [], title = '' } = useCurrentRouteConfig() || { breadcrumbs: [] };
 
-  const param = useLocationParams();
+  // const param = useLocationParams();
 
-  const mappedBreadcrumbs = breadcrumbs.map(breadcrumb => {
-    // You might be able to map along
-    // It will be done here when products is done
-    // improvement on storing the product details in localstorage
-    // so if you have it then we can transfer you back there
-    const splitCrumbs = breadcrumb.value.split('/');
-    // loops this when you want support mulitple
-    const paramPresentIndex = splitCrumbs.findIndex(crumb => crumb.startsWith(':'));
-    if (paramPresentIndex > -1) {
-      splitCrumbs[paramPresentIndex] = param; // pop on multiple
-      return { ...breadcrumb, link: splitCrumbs.join('/') };
-    }
-    return breadcrumb;
-  });
+  // const mappedBreadcrumbs = breadcrumbs.map(breadcrumb => {
+  //   // You might be able to map along
+  //   // It will be done here when products is done
+  //   // improvement on storing the product details in localstorage
+  //   // so if you have it then we can transfer you back there
+  //   const splitCrumbs = breadcrumb.value.split('/');
+  //   // loops this when you want support mulitple
+  //   const paramPresentIndex = splitCrumbs.findIndex(crumb => crumb.startsWith(':'));
+  //   if (paramPresentIndex > -1) {
+  //     splitCrumbs[paramPresentIndex] = param; // pop on multiple
+  //     return { ...breadcrumb, link: splitCrumbs.join('/') };
+  //   }
+  //   return breadcrumb;
+  // });
   return (
     <>
       {/* <Helmet>
@@ -44,7 +44,7 @@ export const PageHeader = () => {
           <StyledGrid.Col sm={12}>
             <StyledPageTitleBox>
               <StyledGrid.Row>
-                <StyledGrid.Col>
+                {/* <StyledGrid.Col>
                   <StyledTitle>{title}</StyledTitle>
                   <Breadcrumbs
                     items={[
@@ -59,7 +59,7 @@ export const PageHeader = () => {
                       },
                     ]}
                   />
-                </StyledGrid.Col>
+                </StyledGrid.Col> */}
               </StyledGrid.Row>
             </StyledPageTitleBox>
           </StyledGrid.Col>

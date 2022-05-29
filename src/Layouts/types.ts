@@ -1,5 +1,5 @@
 import { Icon } from 'react-feather';
-import { SoftButtonIconTypes } from '../Button/SoftButton.types';
+import { SoftButtonIconTypes } from '../components/Button/SoftButton.types';
 
 export interface ISideBarNavigation {
   title: string;
