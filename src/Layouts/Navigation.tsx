@@ -87,13 +87,21 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
                 {content}
               </StyledLeftSideNavMenuListAnchor>
             ) : (
-              <StyledLeftSideNavMenuListAnchor $isSubMenu={isSubMenu} as={Link as any} href={link || ''}>
+              <StyledLeftSideNavMenuListAnchor
+                $isSubMenu={isSubMenu}
+                as={Link as any}
+                href={link || ''}
+              >
                 {content}
               </StyledLeftSideNavMenuListAnchor>
             )}
             {subMenu && showSubMenu && isSidebarOpen ? (
               <StyledSecondLevelList>
-                <RenderNavigation navigation={subMenu} isSidebarOpen={true} isSubMenu={true} />
+                <RenderNavigation
+                  navigation={subMenu}
+                  isSidebarOpen={true}
+                  isSubMenu={true}
+                />
               </StyledSecondLevelList>
             ) : null}
           </StyledLeftSideNavMenuList>
@@ -167,7 +175,10 @@ const StyledDash = styled.hr`
   border-color: #20446f;
 `;
 
-const StyleMenuIcon = styled.span<{ $isSidebarOpen: boolean; $isActive?: boolean }>`
+const StyleMenuIcon = styled.span<{
+  $isSidebarOpen: boolean;
+  $isActive?: boolean;
+}>`
   color: ${props => (props.$isActive ? props.theme.colors.primary : '#a9baca')};
   fill: rgba(112, 129, 185, 0.12);
   ${props =>

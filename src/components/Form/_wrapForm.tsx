@@ -19,25 +19,34 @@ export const wrapLabelAndError = (
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >,
-  { meta, label, input, required, description, sm }: ISharedFormInput,
+  { meta, label, input, required, description, sm }: ISharedFormInput
 ) => {
   return (
     <StyledFormGroup>
       <>
-      {label && (
-        <StyledFormLabel sm={sm} htmlFor={input.name}>
-          {label} {required ? <StyledRequiredAsterick>*</StyledRequiredAsterick> : null}
-        </StyledFormLabel>
-      )}
-      {description ? (
-        <>
-          {' '}
-          <HelpCircle data-for="form-wrapper" size="15" data-tip={description} />
-        </>
-      ) : null}
-      {description ? <Tooltip id="form-wrapper" /> : null}
-      {formComponent}
-      <StyledFormFeedback sm={sm}>{isFormMetaWithError(meta)}&nbsp;</StyledFormFeedback>
+        {label && (
+          <StyledFormLabel sm={sm} htmlFor={input.name}>
+            {label}{' '}
+            {required ? (
+              <StyledRequiredAsterick>*</StyledRequiredAsterick>
+            ) : null}
+          </StyledFormLabel>
+        )}
+        {description ? (
+          <>
+            {' '}
+            <HelpCircle
+              data-for="form-wrapper"
+              size="15"
+              data-tip={description}
+            />
+          </>
+        ) : null}
+        {description ? <Tooltip id="form-wrapper" /> : null}
+        {formComponent}
+        <StyledFormFeedback sm={sm}>
+          {isFormMetaWithError(meta)}&nbsp;
+        </StyledFormFeedback>
       </>
     </StyledFormGroup>
   );
@@ -47,7 +56,7 @@ export const wrapLabelAndError = (
 
 export const generateClassNames = (
   meta: FieldMetaState<any>,
-  constantClassNames = 'form-control',
+  constantClassNames = 'form-control'
 ): string => {
   return classnames({
     [constantClassNames]: true,

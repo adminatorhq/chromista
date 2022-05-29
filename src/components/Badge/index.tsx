@@ -65,8 +65,13 @@ interface IBadgeBuilder {
   statusSelections: ISystemStatusForDisplay[];
 }
 
-export const BadgeBuilder: React.FC<IBadgeBuilder> = ({ value, statusSelections }) => {
-  const builderBagValue = statusSelections.find(statusSelection => statusSelection.value === value);
+export const BadgeBuilder: React.FC<IBadgeBuilder> = ({
+  value,
+  statusSelections,
+}) => {
+  const builderBagValue = statusSelections.find(
+    statusSelection => statusSelection.value === value
+  );
   if (!builderBagValue) {
     return null;
   }
@@ -84,7 +89,11 @@ interface IBadgePill {
   isIconBadge?: true;
 }
 
-export const BadgePill: React.FC<IBadgePill> = ({ value, color, isIconBadge }) => {
+export const BadgePill: React.FC<IBadgePill> = ({
+  value,
+  color,
+  isIconBadge,
+}) => {
   if (value === 0) {
     return null;
   }

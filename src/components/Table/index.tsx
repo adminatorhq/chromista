@@ -22,9 +22,16 @@ const DEFAULT_TABLE_PARAMS = {
   filters: [],
 };
 
-export const Table: React.FC<ITable> = ({ columns, url, createPath, singular, title }) => {
-  const [fetchTableDataParams, setFetchTableDataParams] =
-    useState<IFetchTableDataParams>(DEFAULT_TABLE_PARAMS);
+export const Table: React.FC<ITable> = ({
+  columns,
+  url,
+  createPath,
+  singular,
+  title,
+}) => {
+  const [fetchTableDataParams, setFetchTableDataParams] = useState<
+    IFetchTableDataParams
+  >(DEFAULT_TABLE_PARAMS);
 
   const {
     data = { count: 0, data: [] },
@@ -34,7 +41,9 @@ export const Table: React.FC<ITable> = ({ columns, url, createPath, singular, ti
   } = useFetchTableData(url, fetchTableDataParams);
 
   const totalPageCount =
-    data.count === 0 ? 0 : Math.ceil(data.count / fetchTableDataParams.pageSize);
+    data.count === 0
+      ? 0
+      : Math.ceil(data.count / fetchTableDataParams.pageSize);
 
   const {
     getTableProps,
@@ -64,7 +73,7 @@ export const Table: React.FC<ITable> = ({ columns, url, createPath, singular, ti
     },
     useFilters,
     useSortBy,
-    usePagination,
+    usePagination
   );
 
   useEffect(() => {
@@ -110,22 +119,29 @@ export const Table: React.FC<ITable> = ({ columns, url, createPath, singular, ti
               </StyledOverlayText>
             </StyledOverlay>
           ) : null}
-          <StyledTable {...getTableProps()} className="table-bordered table-hover nowrap">
+          <StyledTable
+            {...getTableProps()}
+            className="table-bordered table-hover nowrap"
+          >
             <thead>
               {headerGroups.map((headerGroup: any, key2: number) => (
                 <tr {...headerGroup.getHeaderGroupProps()} key={key2}>
                   {headerGroup.headers.map((column: any, key1: number) => {
                     return (
                       <StyledTh
-                        {...column.getHeaderProps(column.getSortByToggleProps())}
+                        {...column.getHeaderProps(
+                          column.getSortByToggleProps()
+                        )}
                         key={key1}
                       >
                         <b className="mt-1">{column.render('Header')}</b>
                         <span
                           className={classnames({
                             sorting: column.canSort,
-                            sorting_desc: column.isSorted && column.isSortedDesc,
-                            sorting_asc: column.isSorted && !column.isSortedDesc,
+                            sorting_desc:
+                              column.isSorted && column.isSortedDesc,
+                            sorting_asc:
+                              column.isSorted && !column.isSortedDesc,
                           })}
                         />
                         {column.canFilter ? column.render('Filter') : null}
@@ -169,7 +185,10 @@ export const Table: React.FC<ITable> = ({ columns, url, createPath, singular, ti
             <label>
               Showing{' '}
               <SimpleSelect
-                options={[10, 25, 50].map(option => ({ value: `${option}`, label: `${option}` }))}
+                options={[10, 25, 50].map(option => ({
+                  value: `${option}`,
+                  label: `${option}`,
+                }))}
                 onChange={value => setPageSize(Number(value))}
                 value={tableState.pageSize}
               />{' '}

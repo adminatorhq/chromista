@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ChevronRight, Icon } from 'react-feather';
-import Link  from 'next/link';
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import styled, { css } from 'styled-components';
@@ -52,8 +52,11 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
   const content = (
     <>
       <span>
-        {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null} {label}
-        {subLabel ? <StyledSublabel $active={active}>{subLabel}</StyledSublabel> : null}
+        {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}{' '}
+        {label}
+        {subLabel ? (
+          <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
+        ) : null}
       </span>
       <span>
         {ordering ? (
@@ -87,26 +90,30 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
         <span>
           {actionButtons ? (
             <>
-              {actionButtons.map(({ text, isInverse, onClick: onClick$1, isMakingRequest }) => {
-                return (
-                  <FormButton
-                    text={text}
-                    key={text}
-                    size="xs"
-                    float=""
-                    isMakingRequest={isMakingRequest}
-                    isInverse={isInverse}
-                    onClick={event => {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      onClick$1();
-                    }}
-                  />
-                );
-              })}
+              {actionButtons.map(
+                ({ text, isInverse, onClick: onClick$1, isMakingRequest }) => {
+                  return (
+                    <FormButton
+                      text={text}
+                      key={text}
+                      size="xs"
+                      float=""
+                      isMakingRequest={isMakingRequest}
+                      isInverse={isInverse}
+                      onClick={event => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        onClick$1();
+                      }}
+                    />
+                  );
+                }
+              )}
             </>
           ) : null}
-          {!(toNoWhere || disabled) ? <StyledChevronRight $active={active} /> : null}
+          {!(toNoWhere || disabled) ? (
+            <StyledChevronRight $active={active} />
+          ) : null}
         </span>
       </span>
     </>
@@ -143,21 +150,23 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
 
 const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   width: 14px;
-  color: ${props => (props.$active ? props.theme.colors.white : props.theme.colors.primary)};
+  color: ${props =>
+    props.$active ? props.theme.colors.white : props.theme.colors.primary};
   margin-left: 0.25rem;
 `;
 
 const StyledSublabel = styled.p<{ $active?: boolean }>`
-  color: ${props => (props.$active ? props.theme.colors.white : props.theme.text.muted)};
+  color: ${props =>
+    props.$active ? props.theme.colors.white : props.theme.text.muted};
   padding: 0;
   margin: 0;
   font-size: 10px;
   line-height: 0.6;
 `;
 
-export const SectionList: React.FC<{children: ReactNode}> = ({ children }) => (
-  <StyledListGroupFlush>{children}</StyledListGroupFlush>
-);
+export const SectionList: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => <StyledListGroupFlush>{children}</StyledListGroupFlush>;
 
 const StyledIcon = styled.span`
   position: relative;
@@ -174,7 +183,11 @@ const StyledOrderButton = styled(StyledBaseButton)`
   }
 `;
 
-const StyledListItem = styled.button<{ active: boolean; disabled: boolean; size?: 'xs' }>`
+const StyledListItem = styled.button<{
+  active: boolean;
+  disabled: boolean;
+  size?: 'xs';
+}>`
   justify-content: space-between;
   align-items: center;
   display: flex;

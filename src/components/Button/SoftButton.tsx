@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import Link  from 'next/link';
+import Link from 'next/link';
 import { StyledSoftButton } from './Button';
 import { SoftButtonIconTypes, ICON_MAP } from './SoftButton.types';
 
@@ -40,7 +40,9 @@ export const SoftButton: React.FC<ISoftButton> = ({
       ) : (
         <>
           {icon ? <FontAwesomeIcon icon={ICON_MAP[icon]} /> : null}
-          {label ? <StyledLabel $hasLabel={!!label}>{label}</StyledLabel> : null}
+          {label ? (
+            <StyledLabel $hasLabel={!!label}>{label}</StyledLabel>
+          ) : null}
         </>
       )}
     </>
@@ -56,7 +58,7 @@ export const SoftButton: React.FC<ISoftButton> = ({
 
   if (to) {
     return (
-      <StyledSoftButton {...props} as={Link as any}  href={to}>
+      <StyledSoftButton {...props} as={Link as any} href={to}>
         {content}
       </StyledSoftButton>
     );

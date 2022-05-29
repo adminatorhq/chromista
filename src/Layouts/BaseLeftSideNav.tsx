@@ -2,30 +2,30 @@ import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-export const BaseLeftSideNav: React.FC<{ isSidebarOpen: boolean, children: ReactNode }> = ({
-  isSidebarOpen,
-  children,
-}) => {
+export const BaseLeftSideNav: React.FC<{
+  isSidebarOpen: boolean;
+  children: ReactNode;
+}> = ({ isSidebarOpen, children }) => {
   return (
     <StyledLeftSideNav isSidebarOpen={isSidebarOpen}>
       <StyledBrand>
         <StyledLogo href="/">
           <>
-          <span>
-            <StyledLogoSm
-              src="/assets/images/logo-sm-dark.png"
-              alt="logo-small"
-              data-test-id="nav-menu__small-logo"
-            />
-          </span>
-          <span>
-            <StyledLogoLarge
-              isSidebarOpen={isSidebarOpen}
-              src="/assets/images/logo.png"
-              alt="logo-large"
-              data-test-id="nav-menu__large-logo"
-            />
-          </span>
+            <span>
+              <StyledLogoSm
+                src="/assets/images/logo-sm-dark.png"
+                alt="logo-small"
+                data-test-id="nav-menu__small-logo"
+              />
+            </span>
+            <span>
+              <StyledLogoLarge
+                isSidebarOpen={isSidebarOpen}
+                src="/assets/images/logo.png"
+                alt="logo-large"
+                data-test-id="nav-menu__large-logo"
+              />
+            </span>
           </>
         </StyledLogo>
       </StyledBrand>

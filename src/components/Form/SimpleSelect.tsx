@@ -12,7 +12,13 @@ interface ISimpleSelect {
   sm?: true;
 }
 
-export function SimpleSelect({ options, onChange, value, fullWidth, sm }: ISimpleSelect) {
+export function SimpleSelect({
+  options,
+  onChange,
+  value,
+  fullWidth,
+  sm,
+}: ISimpleSelect) {
   return (
     <StyledSimpleSelect
       as={StyledSelect}

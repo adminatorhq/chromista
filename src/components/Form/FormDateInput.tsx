@@ -9,7 +9,9 @@ interface IFormDateInput extends ISharedFormInput {
   maxDate?: Date;
 }
 
-export const FormDateInput: React.FC<IFormDateInput> = (formInput): JSX.Element => {
+export const FormDateInput: React.FC<IFormDateInput> = (
+  formInput
+): JSX.Element => {
   const { input, disabled, meta, required, minDate, maxDate } = formInput;
   let selected = input.value;
   if (selected && typeof selected === 'string') {
@@ -30,6 +32,6 @@ export const FormDateInput: React.FC<IFormDateInput> = (formInput): JSX.Element 
       className={generateClassNames(meta)}
       disabled={disabled}
     />,
-    formInput,
+    formInput
   );
 };

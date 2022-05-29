@@ -20,9 +20,11 @@ export interface IProps<T> {
 
 function defaultSearchFunction<T extends { name: string }>(
   itemsToSearch: T[],
-  searchString: string,
+  searchString: string
 ) {
-  return itemsToSearch.filter(({ name }) => name.toLowerCase().includes(searchString));
+  return itemsToSearch.filter(({ name }) =>
+    name.toLowerCase().includes(searchString)
+  );
 }
 
 export function RenderList<T extends { name: string }>({
@@ -48,20 +50,30 @@ export function RenderList<T extends { name: string }>({
     return (
       <EmptyWrapper text={`No ${singular} To Look At`}>
         {newItemLink ? (
-          <SoftButton to={newItemLink} label={`Add New ${singular}`} icon="add" />
+          <SoftButton
+            to={newItemLink}
+            label={`Add New ${singular}`}
+            icon="add"
+          />
         ) : null}
       </EmptyWrapper>
     );
   }
 
-  const itemsToRender = sort ? [...items].sort((a, b) => a.name.localeCompare(b.name)) : items;
+  const itemsToRender = sort
+    ? [...items].sort((a, b) => a.name.localeCompare(b.name))
+    : items;
 
   const searchResults =
-    searchString.length > 0 ? searchFunction(itemsToRender, searchString) : itemsToRender;
+    searchString.length > 0
+      ? searchFunction(itemsToRender, searchString)
+      : itemsToRender;
 
   return (
     <SectionList>
-      {itemsLength > 5 && !notSearchable ? <FormSearch onChange={setSearchString} /> : null}
+      {itemsLength > 5 && !notSearchable ? (
+        <FormSearch onChange={setSearchString} />
+      ) : null}
       {searchResults.map((item, index) => (
         <div key={item.name}>{render(item, index)}</div>
       ))}

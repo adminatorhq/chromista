@@ -1,7 +1,7 @@
 import React from 'react';
 import { ISharedFormInput } from './_types';
 import { generateClassNames, wrapLabelAndError } from './_wrapForm';
-import Select, {} from 'react-select';
+import Select from 'react-select';
 import { ISelectData } from '../../types';
 
 interface ISelectOptions extends ISharedFormInput {
@@ -35,11 +35,9 @@ export const FormMultiSelect: React.FC<IFormMultiSelect> = ({
       closeMenuOnSelect={false}
       defaultValue={[]}
       isMulti={true}
-      value={
-        values.map(value =>
-          selectData.find(selectDatum => selectDatum.value === value),
-        )
-      }
+      value={values.map(value =>
+        selectData.find(selectDatum => selectDatum.value === value)
+      )}
       onChange={(newValues: any) => {
         onChange(newValues.map(({ value }: ISelectData) => value));
       }}
@@ -71,7 +69,10 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
       {...input}
       {...sharedSelectProps}
       value={
-        selectDataWithDefault.find(({ value }) => value === input.value) || { value: '', label: '' }
+        selectDataWithDefault.find(({ value }) => value === input.value) || {
+          value: '',
+          label: '',
+        }
       }
       onChange={({ value }: any) => {
         if (nullable && !value) {
@@ -82,9 +83,11 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
       className={generateClassNames(meta, '')}
       isDisabled={disabled}
       options={selectDataWithDefault}
-      isOptionDisabled={(option: ISelectData) => option.value === disabledOption}
+      isOptionDisabled={(option: ISelectData) =>
+        option.value === disabledOption
+      }
     />,
-    formInput,
+    formInput
   );
 };
 
@@ -106,7 +109,9 @@ export const FormNoValueSelect: React.FC<IFormNoValueSelect> = ({
       onChange={({ value, label }: any) => {
         onChange(value, label);
       }}
-      options={selectData.filter(({ value }) => !disabledOptions.includes(value))}
+      options={selectData.filter(
+        ({ value }) => !disabledOptions.includes(value)
+      )}
     />
   );
 };

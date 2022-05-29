@@ -3,7 +3,9 @@ import * as querystring from 'qs';
 import { useQuery } from 'react-query';
 import { IFetchTableDataParams, ITablePayload } from './Table.types';
 
-const tableDataParamsToQueryString = (fetchTableDataParams: IFetchTableDataParams): string => {
+const tableDataParamsToQueryString = (
+  fetchTableDataParams: IFetchTableDataParams
+): string => {
   const sortBy = fetchTableDataParams.sortBy[0]?.id || 'createdAt';
   const orderBy = fetchTableDataParams.sortBy[0]
     ? fetchTableDataParams.sortBy[0].desc
@@ -21,12 +23,15 @@ const tableDataParamsToQueryString = (fetchTableDataParams: IFetchTableDataParam
 
 export const useFetchTableData = (
   url: string,
-  fetchTableDataParams: IFetchTableDataParams,
+  fetchTableDataParams: IFetchTableDataParams
 ) =>
   useQuery<ITablePayload<Record<string, unknown>>>(
     [fetchTableDataParams],
     async () =>
-      (await RequestService.get(`${url}?${tableDataParamsToQueryString(fetchTableDataParams)}`))
-        .data,
-    { keepPreviousData: true },
+      (
+        await RequestService.get(
+          `${url}?${tableDataParamsToQueryString(fetchTableDataParams)}`
+        )
+      ).data,
+    { keepPreviousData: true }
   );

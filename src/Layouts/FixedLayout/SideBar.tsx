@@ -10,7 +10,11 @@ interface IAppLeftSideNav {
   navigation: ISideBarNavigation[];
 }
 
-export const AppLeftSideNav: React.FC<IAppLeftSideNav> = ({ isSidebarOpen, toogleSidebar, navigation }) => {
+export const AppLeftSideNav: React.FC<IAppLeftSideNav> = ({
+  isSidebarOpen,
+  toogleSidebar,
+  navigation,
+}) => {
   const sideBarMenu = React.useMemo(
     () => [
       {
@@ -20,16 +24,23 @@ export const AppLeftSideNav: React.FC<IAppLeftSideNav> = ({ isSidebarOpen, toogl
         dataTestId: 'toogle-sidebar',
       },
     ],
-    [isSidebarOpen, toogleSidebar],
+    [isSidebarOpen, toogleSidebar]
   );
 
   return (
     <BaseLeftSideNav isSidebarOpen={isSidebarOpen}>
       <StyledLeftSideNavMenu data-test-id="app-menu">
-        <RenderNavigation navigation={navigation} label="Navigation" isSidebarOpen={isSidebarOpen} />
-        <RenderNavigation navigation={sideBarMenu} isSidebarOpen={isSidebarOpen} showDash={true} />
+        <RenderNavigation
+          navigation={navigation}
+          label="Navigation"
+          isSidebarOpen={isSidebarOpen}
+        />
+        <RenderNavigation
+          navigation={sideBarMenu}
+          isSidebarOpen={isSidebarOpen}
+          showDash={true}
+        />
       </StyledLeftSideNavMenu>
     </BaseLeftSideNav>
   );
 };
-

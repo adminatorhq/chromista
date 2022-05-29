@@ -28,8 +28,8 @@ const StyledCheckBoxLabel = styled.label`
     content: '';
     background-color: ${props => props.theme.colors.white};
     border: #8997bd solid 1px;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-      box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
 
   &::after {
@@ -53,7 +53,9 @@ const StyledCheckBoxInput = styled.input`
   opacity: 0;
 `;
 
-export const FormCheckBox: React.FC<ISharedFormInput> = (formInput): JSX.Element => {
+export const FormCheckBox: React.FC<ISharedFormInput> = (
+  formInput
+): JSX.Element => {
   const { input } = formInput;
   return (
     <StyledCheckBox className="custom-control custom-checkbox">
@@ -63,7 +65,10 @@ export const FormCheckBox: React.FC<ISharedFormInput> = (formInput): JSX.Element
         className="custom-control-input"
         id={input.name}
       />
-      <StyledCheckBoxLabel className="custom-control-label" htmlFor={input.name}>
+      <StyledCheckBoxLabel
+        className="custom-control-label"
+        htmlFor={input.name}
+      >
         Remember me
       </StyledCheckBoxLabel>
     </StyledCheckBox>

@@ -11,7 +11,12 @@ export interface IProps {
   children?: ReactNode;
 }
 
-export const EmptyWrapper: React.FC<IProps> = ({ text, hideIcon, border, children }) => {
+export const EmptyWrapper: React.FC<IProps> = ({
+  text,
+  hideIcon,
+  border,
+  children,
+}) => {
   noop(hideIcon);
   return (
     <StyledWrapper border={!!border}>

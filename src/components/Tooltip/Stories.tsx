@@ -7,15 +7,13 @@ export default {
   title: 'Components/Tooltip',
   component: Tooltip,
   args: {
-    id: "foo",
+    id: 'foo',
   },
 };
 
 const Template: Story<IProps> = args => (
   <AppWrapper>
-      <p id="foo">
-          Hover over me
-      </p>
+    <p id="foo">Hover over me</p>
     <Tooltip {...args} />
   </AppWrapper>
 );
@@ -23,16 +21,15 @@ const Template: Story<IProps> = args => (
 export const Default = Template.bind({});
 Default.args = {};
 
-
 export const ToTheRight = Template.bind({});
 ToTheRight.args = {
-    place: "right"
+  place: 'right',
 };
 
 export const OffsetRight = Template.bind({});
 OffsetRight.args = {
-    place: "right",
-    offset: {
-        right: 40,
-    }
+  place: 'right',
+  offset: {
+    right: 40,
+  },
 };

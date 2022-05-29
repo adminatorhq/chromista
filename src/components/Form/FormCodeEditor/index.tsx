@@ -12,7 +12,9 @@ interface IFormCodeEditor extends ISharedFormInput {
   language: 'javascript' | 'json';
 }
 
-export const FormCodeEditor: React.FC<IFormCodeEditor> = (formInput): JSX.Element => {
+export const FormCodeEditor: React.FC<IFormCodeEditor> = (
+  formInput
+): JSX.Element => {
   const {
     input: { onFocus, onBlur, ...inputProps },
   } = formInput;
@@ -29,7 +31,7 @@ export const FormCodeEditor: React.FC<IFormCodeEditor> = (formInput): JSX.Elemen
         }}
       />
     </StyledWrapper>,
-    formInput,
+    formInput
   );
 };
 

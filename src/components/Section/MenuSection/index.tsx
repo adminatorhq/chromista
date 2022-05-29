@@ -14,7 +14,10 @@ interface IMenuSection {
   currentMenuItem?: string;
 }
 
-export const MenuSection: React.FC<IMenuSection> = ({ menuItems, currentMenuItem }) => (
+export const MenuSection: React.FC<IMenuSection> = ({
+  menuItems,
+  currentMenuItem,
+}) => (
   <SectionBox title={''} headLess={true}>
     <RenderList
       items={menuItems}

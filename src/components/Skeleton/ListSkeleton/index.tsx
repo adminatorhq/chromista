@@ -7,7 +7,10 @@ interface IListSkeleton {
   height?: number;
 }
 
-export const ListSkeleton: React.FC<IListSkeleton> = ({ count = 5, height = 44 }) => {
+export const ListSkeleton: React.FC<IListSkeleton> = ({
+  count = 5,
+  height = 44,
+}) => {
   return (
     <div>
       {Array.from({ length: count }, (_, k) => k + 1).map(key => (
@@ -23,7 +26,9 @@ export const ListSkeleton: React.FC<IListSkeleton> = ({ count = 5, height = 44 }
   );
 };
 
-export const SelectionListSkeleton: React.FC<IListSkeleton> = ({ count = 5 }) => {
+export const SelectionListSkeleton: React.FC<IListSkeleton> = ({
+  count = 5,
+}) => {
   return (
     <>
       <SkeletonLoader

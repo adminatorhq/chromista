@@ -19,6 +19,6 @@ export const FormInput: React.FC<IFormInput> = (formInput): JSX.Element => {
       className={generateClassNames(meta)}
       disabled={disabled}
     />,
-    formInput,
+    formInput
   );
 };

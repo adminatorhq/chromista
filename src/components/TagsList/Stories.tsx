@@ -48,7 +48,6 @@ DeletingItem.args = {
 
 export const Empty = Template.bind({});
 Empty.args = {
-    items: [],
-    entityName: "Item",
+  items: [],
+  entityName: 'Item',
 };
-

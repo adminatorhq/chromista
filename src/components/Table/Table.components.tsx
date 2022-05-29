@@ -10,7 +10,9 @@ export const RenderNameAndIdListValue: React.FC<IRenderNameAndIdListValue> = ({
   selections,
   values,
 }) => {
-  const selectionsAsObject = useMemo(() => keyBy(selections, 'id'), [selections]);
+  const selectionsAsObject = useMemo(() => keyBy(selections, 'id'), [
+    selections,
+  ]);
   return (
     <>
       {values

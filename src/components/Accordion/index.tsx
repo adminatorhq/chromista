@@ -11,27 +11,36 @@ export interface IProps {
   highlight?: boolean;
 }
 
-export const AccordionItem: React.FC<IProps> = ({ icon, name, body, highlight }) => {
+export const AccordionItem: React.FC<IProps> = ({
+  icon,
+  name,
+  body,
+  highlight,
+}) => {
   const [isBoxOpen, setIsBoxOpen] = useState(false);
   return (
-      <StyledWrapper highlight={highlight}>
-        <StyledAnchor
-          onClick={() => {
-            setIsBoxOpen(!isBoxOpen);
-          }}
-        >
-          <StyledLabel highlight={highlight}>
-            <StyledLabelIcon as={icon} size={ARROW_SIZE} />
-            {name}
-          </StyledLabel>
-          {isBoxOpen ? (
-            <StyledIcon highlight={highlight} as={ChevronUp} size={ARROW_SIZE} />
-          ) : (
-            <StyledIcon highlight={highlight} as={ChevronDown} size={ARROW_SIZE} />
-          )}
-        </StyledAnchor>
-        {isBoxOpen ? <StyledBodyWrapper> {body} </StyledBodyWrapper> : null}
-      </StyledWrapper>
+    <StyledWrapper highlight={highlight}>
+      <StyledAnchor
+        onClick={() => {
+          setIsBoxOpen(!isBoxOpen);
+        }}
+      >
+        <StyledLabel highlight={highlight}>
+          <StyledLabelIcon as={icon} size={ARROW_SIZE} />
+          {name}
+        </StyledLabel>
+        {isBoxOpen ? (
+          <StyledIcon highlight={highlight} as={ChevronUp} size={ARROW_SIZE} />
+        ) : (
+          <StyledIcon
+            highlight={highlight}
+            as={ChevronDown}
+            size={ARROW_SIZE}
+          />
+        )}
+      </StyledAnchor>
+      {isBoxOpen ? <StyledBodyWrapper> {body} </StyledBodyWrapper> : null}
+    </StyledWrapper>
   );
 };
 
@@ -59,7 +68,8 @@ const StyledLabelIcon = styled.i`
 
 const StyledIcon = styled.i<{ highlight?: boolean }>`
   margin-top: 0.2rem;
-  color: ${props => (props.highlight ? props.theme.text.white : props.theme.text.main)};
+  color: ${props =>
+    props.highlight ? props.theme.text.white : props.theme.text.main};
 `;
 
 const StyledWrapper = styled.div<{ highlight?: boolean }>`
@@ -76,5 +86,6 @@ const StyledWrapper = styled.div<{ highlight?: boolean }>`
 const StyledLabel = styled.p<{ highlight?: boolean }>`
   margin-bottom: 0;
   font-size: 12px;
-  color: ${props => (props.highlight ? props.theme.text.white : props.theme.text.main)};
+  color: ${props =>
+    props.highlight ? props.theme.text.white : props.theme.text.main};
 `;

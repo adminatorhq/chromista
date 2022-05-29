@@ -48,12 +48,18 @@ export const FormFileInputGallery: React.FC<IFormFileInputGallery> = ({
         <Lightbox
           mainSrc={images[lightBoxIndex].image}
           nextSrc={images[(lightBoxIndex + 1) % images.length].image}
-          prevSrc={images[(lightBoxIndex + images.length - 1) % images.length].image}
+          prevSrc={
+            images[(lightBoxIndex + images.length - 1) % images.length].image
+          }
           onCloseRequest={() => setIsLightBoxOpen(false)}
           onMovePrevRequest={() =>
-            setLightBoxIndex((lightBoxIndex + images.length - 1) % images.length)
+            setLightBoxIndex(
+              (lightBoxIndex + images.length - 1) % images.length
+            )
           }
-          onMoveNextRequest={() => setLightBoxIndex((lightBoxIndex + 1) % images.length)}
+          onMoveNextRequest={() =>
+            setLightBoxIndex((lightBoxIndex + 1) % images.length)
+          }
         />
       )}
       <div className="col-sm-12 col-lg-3">
@@ -111,7 +117,10 @@ export const FormFileInputGallery: React.FC<IFormFileInputGallery> = ({
                     e.stopPropagation();
                   }}
                 >
-                  {actionButtonIsMakingRequest(isMakingDefaultRequest, 'Set As Default')}
+                  {actionButtonIsMakingRequest(
+                    isMakingDefaultRequest,
+                    'Set As Default'
+                  )}
                 </button>
               ) : null}
               <StyledDeleteButton
@@ -121,7 +130,9 @@ export const FormFileInputGallery: React.FC<IFormFileInputGallery> = ({
                   setCurrentImageId(id);
                   deleteImage(id);
                 }}
-                isMakingDeleteRequest={isMakingDeleteRequest && currentImageId === id}
+                isMakingDeleteRequest={
+                  isMakingDeleteRequest && currentImageId === id
+                }
               />
               <div className="dropify-preview" style={{ display: 'block' }}>
                 <span className="dropify-render">

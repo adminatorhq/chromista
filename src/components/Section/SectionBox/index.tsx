@@ -80,13 +80,21 @@ export const SectionBox: React.FC<IProps> = ({
                 {description ? (
                   <>
                     {' '}
-                    <HelpCircle data-for="section-box" size="15" data-tip={description} />
+                    <HelpCircle
+                      data-for="section-box"
+                      size="15"
+                      data-tip={description}
+                    />
                   </>
                 ) : null}
               </StyledCardTitle>
               {description ? <Tooltip id="section-box" /> : null}
             </StyledGrid.Col>
-            {newItemLink || deleteAction || iconButtons || selection || lastUpdated ? (
+            {newItemLink ||
+            deleteAction ||
+            iconButtons ||
+            selection ||
+            lastUpdated ? (
               <StyledGrid.Col auto={true}>
                 {selection ? (
                   <SimpleSelect
@@ -115,7 +123,9 @@ export const SectionBox: React.FC<IProps> = ({
                       />
                     ))
                   : null}
-                {newItemLink ? <SoftButton to={newItemLink} icon="add" /> : null}
+                {newItemLink ? (
+                  <SoftButton to={newItemLink} icon="add" />
+                ) : null}
                 {deleteAction && !isLoading ? (
                   <StyledDeleteButton
                     onDelete={deleteAction}

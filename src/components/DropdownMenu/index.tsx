@@ -35,7 +35,9 @@ export const DropDownMenu: React.FC<IDropDownMenu> = ({
     }
   };
 
-  const [currentMenuItem, setCurrentMenuItem] = useState<IMenuItem>(menuItems[0]);
+  const [currentMenuItem, setCurrentMenuItem] = useState<IMenuItem>(
+    menuItems[0]
+  );
 
   const onMenuItemClick = (menuIndex: number) => {
     const menuItem = menuItems[menuIndex];
@@ -47,7 +49,12 @@ export const DropDownMenu: React.FC<IDropDownMenu> = ({
   const { IconComponent, onClick, label } = currentMenuItem;
 
   return (
-    <StyledDropDown as={Dropdown} isOpen={isDropDownOpen} tag="span" toggle={toggleDropDown}>
+    <StyledDropDown
+      as={Dropdown}
+      isOpen={isDropDownOpen}
+      tag="span"
+      toggle={toggleDropDown}
+    >
       <StyledCurrentButton
         size="sm"
         disabled={isMakingActionRequest || disabled}
@@ -68,11 +75,16 @@ export const DropDownMenu: React.FC<IDropDownMenu> = ({
       </StyledDropDownToggle>
       <StyledDropDownMenu right={true}>
         {menuItems.map(({ label: label$1, description }, index) => (
-          <StyledDropDownItem key={label$1} onClick={() => onMenuItemClick(index)}>
+          <StyledDropDownItem
+            key={label$1}
+            onClick={() => onMenuItemClick(index)}
+          >
             {label$1}
             <br />
             {description ? (
-              <StyledDescriptionText as="span">{description}</StyledDescriptionText>
+              <StyledDescriptionText as="span">
+                {description}
+              </StyledDescriptionText>
             ) : null}
           </StyledDropDownItem>
         ))}

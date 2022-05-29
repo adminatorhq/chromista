@@ -45,10 +45,10 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
     `}
 
     ${({ pushLeft }) =>
-    pushLeft &&
-    css`
-      margin-left: 0.5rem;
-    `}
+      pushLeft &&
+      css`
+        margin-left: 0.5rem;
+      `}
 
   ${props =>
     props.size === 'sm' &&
@@ -60,8 +60,8 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
     `}
 
     ${props =>
-    props.size === 'xs' &&
-    css`
+      props.size === 'xs' &&
+      css`
       padding: .25rem .5rem;
       font-size: .71rem;
       line-height: 1.2;

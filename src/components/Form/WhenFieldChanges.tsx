@@ -33,7 +33,12 @@ export const SLUG_VALUE = '___SLUG_VALUE';
 //   </Field>
 // )
 
-export const WhenFieldChanges: React.FC<IWhenFieldChanges> = ({ field, becomes, set, to }) => (
+export const WhenFieldChanges: React.FC<IWhenFieldChanges> = ({
+  field,
+  becomes,
+  set,
+  to,
+}) => (
   <Field name={set} subscription={{}}>
     {({ input: { onChange } }) => (
       <FormSpy subscription={{}}>

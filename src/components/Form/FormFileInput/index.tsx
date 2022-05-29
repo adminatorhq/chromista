@@ -31,13 +31,18 @@ const fileFormDatafy = (file: any) => {
   };
 };
 
-const FileInput: React.FC<IFormFileInput> = ({ input, meta, disabled, domain }) => {
+const FileInput: React.FC<IFormFileInput> = ({
+  input,
+  meta,
+  disabled,
+  domain,
+}) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
   // const queryCache = useQueryCache();
   const { value, onChange } = input;
   const onDrop = useCallback(
-    (    acceptedFiles: any[]) => {
+    (acceptedFiles: any[]) => {
       input.onChange(null);
       acceptedFiles.forEach(async (file: any) => {
         setIsLoading(true);
@@ -46,9 +51,12 @@ const FileInput: React.FC<IFormFileInput> = ({ input, meta, disabled, domain }) 
         const { imageUrl } = (
           await RequestService.post('image-upload', formData, {
             ...config,
-            onUploadProgress: (progressEvent: { loaded: number; total: number }) => {
+            onUploadProgress: (progressEvent: {
+              loaded: number;
+              total: number;
+            }) => {
               const percentCompleted = Math.round(
-                (progressEvent.loaded * 100) / progressEvent.total,
+                (progressEvent.loaded * 100) / progressEvent.total
               );
               setProgress(percentCompleted);
               // After 100% label to processing file by timeout here .5seconds
@@ -61,12 +69,12 @@ const FileInput: React.FC<IFormFileInput> = ({ input, meta, disabled, domain }) 
         input.onChange(imageUrl);
       });
     },
-    [domain, input],
+    [domain, input]
   );
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: false,
-    accept: {image: ['jpeg', 'png'] },
+    accept: { image: ['jpeg', 'png'] },
     disabled,
     // maxSize,
   });
@@ -93,7 +101,12 @@ const FileInput: React.FC<IFormFileInput> = ({ input, meta, disabled, domain }) 
       <div className="dropify-errors-container">
         <ul />
       </div>
-      <input type="file" id="input-file-now" className="dropify" {...getInputProps()} />
+      <input
+        type="file"
+        id="input-file-now"
+        className="dropify"
+        {...getInputProps()}
+      />
       {!disabled ? (
         <button
           type="button"
@@ -107,13 +120,18 @@ const FileInput: React.FC<IFormFileInput> = ({ input, meta, disabled, domain }) 
         </button>
       ) : null}
 
-      <div className="dropify-preview" style={{ display: !value ? 'none' : 'block' }}>
+      <div
+        className="dropify-preview"
+        style={{ display: !value ? 'none' : 'block' }}
+      >
         <span className="dropify-render">
           <img src={value} alt="" />
         </span>
         <div className="dropify-infos">
           <div className="dropify-infos-inner">
-            <p className="dropify-infos-message">Drag and drop or click to replace</p>
+            <p className="dropify-infos-message">
+              Drag and drop or click to replace
+            </p>
           </div>
         </div>
       </div>
@@ -121,6 +139,8 @@ const FileInput: React.FC<IFormFileInput> = ({ input, meta, disabled, domain }) 
   );
 };
 
-export const FormFileInput: React.FC<IFormFileInput> = (formInput): JSX.Element => {
+export const FormFileInput: React.FC<IFormFileInput> = (
+  formInput
+): JSX.Element => {
   return wrapLabelAndError(<FileInput {...formInput} />, formInput);
 };

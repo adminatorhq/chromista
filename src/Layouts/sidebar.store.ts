@@ -18,6 +18,7 @@ export const useSideBarStore = createStore<IStore>(set => ({
   selectMiniSideBar: (selection: string) =>
     set(({ currentMiniSideBar, isFullSideBarOpen }) => ({
       currentMiniSideBar: selection,
-      isFullSideBarOpen: currentMiniSideBar === selection ? !isFullSideBarOpen : true,
+      isFullSideBarOpen:
+        currentMiniSideBar === selection ? !isFullSideBarOpen : true,
     })),
 }));

@@ -1,4 +1,3 @@
-
 import { createStore } from '@gothicgeeks/shared';
 import { SoftButtonIconTypes } from '../../components/Button/SoftButton.types';
 

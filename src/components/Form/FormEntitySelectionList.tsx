@@ -17,14 +17,14 @@ const debouncedSearch = debounce(
     inputValue: string,
     url: string,
     disabledOptions: string[],
-    resolve: (value: any) => void,
+    resolve: (value: any) => void
   ) =>
     resolve(
-      (
-        await RequestService.get(`${url}&search=${inputValue}`)
-      ).data.filter(({ value }: ISelectData) => !disabledOptions.includes(value)),
+      (await RequestService.get(`${url}&search=${inputValue}`)).data.filter(
+        ({ value }: ISelectData) => !disabledOptions.includes(value)
+      )
     ),
-  700,
+  700
 );
 
 export const FormEntitySelectionList: React.FC<IFormEntitySelectionList> = ({
@@ -34,7 +34,7 @@ export const FormEntitySelectionList: React.FC<IFormEntitySelectionList> = ({
 }): JSX.Element => {
   const { data = [] } = useQuery<ISelectData[]>(
     [url],
-    async () => (await RequestService.get(url)).data,
+    async () => (await RequestService.get(url)).data
   );
 
   if (data.length && data[0].value === 'SELECTION_LIST_LIMIT') {
@@ -66,6 +66,10 @@ export const FormEntitySelectionList: React.FC<IFormEntitySelectionList> = ({
   }
 
   return (
-    <FormNoValueSelect onChange={onChange} disabledOptions={disabledOptions} selectData={data} />
+    <FormNoValueSelect
+      onChange={onChange}
+      disabledOptions={disabledOptions}
+      selectData={data}
+    />
   );
 };

@@ -1,8 +1,6 @@
-export function getHeirarchyDependencies<T extends { parentId: string; id: string }>(
-  needle: string,
-  haystack: T[],
-  dependency: T[] = [],
-): T[] {
+export function getHeirarchyDependencies<
+  T extends { parentId: string; id: string }
+>(needle: string, haystack: T[], dependency: T[] = []): T[] {
   if (!needle) {
     return dependency;
   }

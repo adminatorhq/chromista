@@ -47,8 +47,18 @@ const getNumberValue = (value: string | number | null, required: boolean) => {
   return value;
 };
 
-export const FormNumberInput: React.FC<IFormNumberInput> = (formInput): JSX.Element => {
-  const { input, label, disabled, meta, allowNegative, required, sm } = formInput;
+export const FormNumberInput: React.FC<IFormNumberInput> = (
+  formInput
+): JSX.Element => {
+  const {
+    input,
+    label,
+    disabled,
+    meta,
+    allowNegative,
+    required,
+    sm,
+  } = formInput;
   if (typeof input.value === 'string') {
     input.onChange(getNumberValue(input.value, !!required));
   }
@@ -67,6 +77,6 @@ export const FormNumberInput: React.FC<IFormNumberInput> = (formInput): JSX.Elem
       className={generateClassNames(meta)}
       disabled={disabled}
     />,
-    formInput,
+    formInput
   );
 };

@@ -26,12 +26,10 @@ interface IGetColor {
   theme: DefaultTheme;
 }
 
-export const getColor =
-  (opacity = 1) =>
-  (props: IGetColor) => {
-    const color = props.theme.colors[props.color || 'primary'];
-    if (opacity === 1) {
-      return color;
-    }
-    return hexToRgba(color, opacity);
-  };
+export const getColor = (opacity = 1) => (props: IGetColor) => {
+  const color = props.theme.colors[props.color || 'primary'];
+  if (opacity === 1) {
+    return color;
+  }
+  return hexToRgba(color, opacity);
+};

@@ -19,7 +19,6 @@ export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
 
   const clearDeepLinks = useNestedNavStore(state => state.clear);
 
-
   const navigationToUse = useMemo(() => {
     return navigation.map(({ link, ...rest }) => {
       return {
@@ -31,8 +30,7 @@ export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
         },
       };
     });
-  }, [navigation, selectMiniSideBar]);
-
+  }, [navigation, selectMiniSideBar, clearDeepLinks]);
 
   return (
     <BaseLeftSideNav isSidebarOpen={isSidebarOpen}>

@@ -21,10 +21,7 @@ export default {
       { name: 'Curie', age: 27 },
     ],
     render: ({ name }: IDemoType) => (
-      <SectionListItem
-        label={name}
-        key={name}
-      />
+      <SectionListItem label={name} key={name} />
     ),
   },
 };
@@ -56,9 +53,8 @@ Empty.args = {
 
 export const NotSearchAble = Template.bind({});
 NotSearchAble.args = {
-  notSearchable: true
+  notSearchable: true,
 };
-
 
 export const Error = Template.bind({});
 Error.args = {

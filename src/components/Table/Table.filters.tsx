@@ -47,10 +47,20 @@ const FilterWrapper: React.FC<IProps> = ({
         className="float-right"
         style={{ marginBottom: '-5px' }}
       >
-        <DropdownToggle tag="a" className="dropdown-toggle waves-effect waves-light">
-          {iconType === 'search' ? <Search {...iconProps} /> : <Filter {...iconProps} />}
+        <DropdownToggle
+          tag="a"
+          className="dropdown-toggle waves-effect waves-light"
+        >
+          {iconType === 'search' ? (
+            <Search {...iconProps} />
+          ) : (
+            <Filter {...iconProps} />
+          )}
         </DropdownToggle>
-        <DropdownMenu right={true} className="dropdown-menu dropdown-menu-right p-1">
+        <DropdownMenu
+          right={true}
+          className="dropdown-menu dropdown-menu-right p-1"
+        >
           {children}
           <StyledSoftButton
             onClick={() => {
@@ -66,38 +76,46 @@ const FilterWrapper: React.FC<IProps> = ({
   );
 };
 
-export const StatusFilter =
-  (statuses: ISystemStatusForDisplay[]) =>
-  ({ column: { filterValue, setFilter } }: any) => {
-    return (
-      <FilterWrapper filterValue={filterValue} setFilter={setFilter} iconType="filter">
-        <SimpleSelect
-          options={[{ label: '-- Select Status --', value: '' }, ...statuses]}
-          onChange={(value: string) => {
-            setFilter(value || undefined);
-          }}
-          fullWidth={true}
-          value={filterValue || ''}
-        />
-      </FilterWrapper>
-    );
-  };
+export const StatusFilter = (statuses: ISystemStatusForDisplay[]) => ({
+  column: { filterValue, setFilter },
+}: any) => {
+  return (
+    <FilterWrapper
+      filterValue={filterValue}
+      setFilter={setFilter}
+      iconType="filter"
+    >
+      <SimpleSelect
+        options={[{ label: '-- Select Status --', value: '' }, ...statuses]}
+        onChange={(value: string) => {
+          setFilter(value || undefined);
+        }}
+        fullWidth={true}
+        value={filterValue || ''}
+      />
+    </FilterWrapper>
+  );
+};
 
-export const ListSelectionFilter =
-  (selections: { id: string; name: string }[]) =>
-  ({ column: { filterValue = [], setFilter } }: any) => {
-    return (
-      <FilterWrapper filterValue={filterValue.length} setFilter={setFilter} iconType="list">
-        <div style={{ minWidth: '250px' }}>
-          <FormMultiSelect
-            selectData={mapIdAndNameToSelectData(selections)}
-            values={filterValue}
-            onChange={setFilter}
-          />
-        </div>
-      </FilterWrapper>
-    );
-  };
+export const ListSelectionFilter = (
+  selections: { id: string; name: string }[]
+) => ({ column: { filterValue = [], setFilter } }: any) => {
+  return (
+    <FilterWrapper
+      filterValue={filterValue.length}
+      setFilter={setFilter}
+      iconType="list"
+    >
+      <div style={{ minWidth: '250px' }}>
+        <FormMultiSelect
+          selectData={mapIdAndNameToSelectData(selections)}
+          values={filterValue}
+          onChange={setFilter}
+        />
+      </div>
+    </FilterWrapper>
+  );
+};
 
 const StyledSecondGrid = styled(StyledGrid.Col)`
   padding-left: 0.25rem;
@@ -107,7 +125,11 @@ export const NumberSelectionFilter = ({
   column: { filterValue = { comparision: '', value: '' }, setFilter },
 }: any) => {
   return (
-    <FilterWrapper filterValue={filterValue.value} setFilter={setFilter} iconType="numeric">
+    <FilterWrapper
+      filterValue={filterValue.value}
+      setFilter={setFilter}
+      iconType="numeric"
+    >
       <StyledGrid.Row>
         <StyledGrid.Col sm={4}>
           <SimpleSelect
@@ -118,7 +140,10 @@ export const NumberSelectionFilter = ({
               { label: '=', value: 'e' },
             ]}
             onChange={value => {
-              setFilter({ value: filterValue.value, comparision: value || undefined });
+              setFilter({
+                value: filterValue.value,
+                comparision: value || undefined,
+              });
             }}
             value={filterValue.comparision || ''}
           />
@@ -141,9 +166,15 @@ export const NumberSelectionFilter = ({
   );
 };
 
-export const TextSearchFilter = ({ column: { filterValue, setFilter } }: any) => {
+export const TextSearchFilter = ({
+  column: { filterValue, setFilter },
+}: any) => {
   return (
-    <FilterWrapper filterValue={filterValue} setFilter={setFilter} iconType="search">
+    <FilterWrapper
+      filterValue={filterValue}
+      setFilter={setFilter}
+      iconType="search"
+    >
       <StyledInput
         value={filterValue || ''}
         onChange={(e: React.BaseSyntheticEvent) => {

@@ -8,7 +8,7 @@ export default {
   title: 'Components/TableDataAsList',
   component: TableDataAsList,
   args: {
-    onSelect: action("onSelect"),
+    onSelect: action('onSelect'),
     data: [
       {
         label: 'Foo Label',

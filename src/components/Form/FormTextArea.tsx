@@ -7,7 +7,9 @@ interface IFormTextArea extends ISharedFormInput {
   rows?: number;
 }
 
-export const FormTextArea: React.FC<IFormTextArea> = (formInput): JSX.Element => {
+export const FormTextArea: React.FC<IFormTextArea> = (
+  formInput
+): JSX.Element => {
   const { input, rows = 3, label, disabled, meta } = formInput;
 
   return wrapLabelAndError(
@@ -21,6 +23,6 @@ export const FormTextArea: React.FC<IFormTextArea> = (formInput): JSX.Element =>
     >
       {input.value}
     </StyledInput>,
-    formInput,
+    formInput
   );
 };

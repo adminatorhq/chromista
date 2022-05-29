@@ -1,7 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { StyledButton, StyledOutlineButton, IStyledBaseButton } from '../Button';
+import {
+  StyledButton,
+  StyledOutlineButton,
+  IStyledBaseButton,
+} from '../Button';
 
 interface IFormButton extends IStyledBaseButton {
   text: string;
@@ -50,5 +54,8 @@ export const FormButton: React.FC<IFormButton> = ({
   );
 };
 
-export const actionButtonIsMakingRequest = (isMakingRequest: boolean, text: string) =>
+export const actionButtonIsMakingRequest = (
+  isMakingRequest: boolean,
+  text: string
+) =>
   isMakingRequest ? <FontAwesomeIcon icon={faSpinner} spin={true} /> : text;

@@ -31,7 +31,10 @@ interface IKeyValueDetails {
 }
 
 // :eyes throw error if statuses is not provided when it is KeyValueDetailsFormat
-export const KeyValueDetails: React.FC<IKeyValueDetails> = ({ isLoading, keyValues }) => {
+export const KeyValueDetails: React.FC<IKeyValueDetails> = ({
+  isLoading,
+  keyValues,
+}) => {
   if (isLoading) {
     return <ListSkeleton count={Object.entries(keyValues).length} />;
   }
@@ -42,7 +45,12 @@ export const KeyValueDetails: React.FC<IKeyValueDetails> = ({ isLoading, keyValu
         switch (format) {
           case KeyValueDetailsFormat.Status:
             if (statuses) {
-              valueToRender = <BadgeBuilder value={value as string} statusSelections={statuses} />;
+              valueToRender = (
+                <BadgeBuilder
+                  value={value as string}
+                  statusSelections={statuses}
+                />
+              );
             }
             break;
           case KeyValueDetailsFormat.Money:

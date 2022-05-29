@@ -16,9 +16,17 @@ interface IProps {
 }
 
 export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
-  const [isFullSideBarOpen, currentMiniSideBar, closeFullSideBar] = useSideBarStore(
-    state => [state.isFullSideBarOpen, state.currentMiniSideBar, state.closeFullSideBar],
-    shallow,
+  const [
+    isFullSideBarOpen,
+    currentMiniSideBar,
+    closeFullSideBar,
+  ] = useSideBarStore(
+    state => [
+      state.isFullSideBarOpen,
+      state.currentMiniSideBar,
+      state.closeFullSideBar,
+    ],
+    shallow
   );
 
   const rootRef = useRef(null);
@@ -31,28 +39,33 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
     closeFullSideBar();
   });
 
-  const [deepLinks, pop] = useNestedNavStore(state => [state.deepLinks, state.pop]);
+  const [deepLinks, pop] = useNestedNavStore(state => [
+    state.deepLinks,
+    state.pop,
+  ]);
 
   let currentSelection: ISelectionView | null | undefined = null;
 
   if (currentMiniSideBar) {
-    currentSelection = selectionView.find(({ link }) => link === currentMiniSideBar);
+    currentSelection = selectionView.find(
+      ({ link }) => link === currentMiniSideBar
+    );
   }
 
   const hasDeepLinks = deepLinks.length > 0;
 
-  const deepLinkAsBreadCrumb = deepLinks.map(({ key, title: deepLinkTitle }) => ({
-    label: deepLinkTitle,
-    value: key,
-  }));
+  const deepLinkAsBreadCrumb = deepLinks.map(
+    ({ key, title: deepLinkTitle }) => ({
+      label: deepLinkTitle,
+      value: key,
+    })
+  );
 
-  const currentViewBag = hasDeepLinks ? deepLinks[deepLinks.length - 1] : currentSelection;
+  const currentViewBag = hasDeepLinks
+    ? deepLinks[deepLinks.length - 1]
+    : currentSelection;
 
-  const {
-    title,
-    description,
-    iconButtons = [],
-  } = currentViewBag || {
+  const { title, description, iconButtons = [] } = currentViewBag || {
     title: '',
     description: '',
     iconButtons: [],
@@ -67,7 +80,10 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
   ];
 
   return (
-    <StyledWrapper show={!!currentMiniSideBar && isFullSideBarOpen} ref={rootRef}>
+    <StyledWrapper
+      show={!!currentMiniSideBar && isFullSideBarOpen}
+      ref={rootRef}
+    >
       <StyledHeightWrapper>
         <StyledHideScrollbar>
           <StyledContainer fluid={true}>
@@ -77,7 +93,11 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
                   <SectionBox
                     backLink={
                       hasDeepLinks
-                        ? { onClick: pop, label: fullBreadCrumb[fullBreadCrumb.length - 2].label }
+                        ? {
+                            onClick: pop,
+                            label:
+                              fullBreadCrumb[fullBreadCrumb.length - 2].label,
+                          }
                         : undefined
                     }
                     title={title}

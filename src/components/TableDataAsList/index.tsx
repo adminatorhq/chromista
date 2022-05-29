@@ -13,7 +13,10 @@ export const TableDataAsList: React.FC<IProps> = ({ data, onSelect }) => {
       <EditButton as={Edit} size="13" onClick={onSelect} />
       {data.map(({ label, value }, schemaIndex) => {
         return (
-          <StyledDataWrapper key={label} isLastChild={schemaIndex === data.length - 1}>
+          <StyledDataWrapper
+            key={label}
+            isLastChild={schemaIndex === data.length - 1}
+          >
             <StyledLabel>{label}</StyledLabel>
             <StyledValue>{value}</StyledValue>
           </StyledDataWrapper>

@@ -32,7 +32,10 @@ export interface ITableColumn {
   accessor?: string;
   disableSortBy?: boolean;
   disableFilters?: boolean;
-  Cell?: (cellProps: { value: unknown; row: { original: Record<string, unknown> } }) => JSX.Element;
+  Cell?: (cellProps: {
+    value: unknown;
+    row: { original: Record<string, unknown> };
+  }) => JSX.Element;
 }
 
 export interface ITable {
@@ -40,5 +43,5 @@ export interface ITable {
   columns: ITableColumn[];
   title: string;
   singular: string;
-  createPath:string;
+  createPath: string;
 }
