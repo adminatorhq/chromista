@@ -4,7 +4,7 @@ import { Alert, IProps, AlertType } from '.';
 import { AppWrapper} from '../../AppWrapper';
 
 export default {
-  title: 'Alert',
+  title: 'Components/Alert',
   component: Alert,
   args: {
     message: "Hello There, This is an alert",

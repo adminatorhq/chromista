@@ -4,7 +4,7 @@ import { Tabs, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
 export default {
-  title: 'Tabs',
+  title: 'Components/Tabs',
   component: Tabs,
   args: {
     contents: [

@@ -5,7 +5,7 @@ import { AppWrapper } from '../../AppWrapper';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Breadcrumbs',
+  title: 'Components/Breadcrumbs',
   component: Breadcrumbs,
   args: {
     items: [

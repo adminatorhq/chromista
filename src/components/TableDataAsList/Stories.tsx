@@ -5,7 +5,7 @@ import { TableDataAsList, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
 export default {
-  title: 'TableDataAsList',
+  title: 'Components/TableDataAsList',
   component: TableDataAsList,
   args: {
     onSelect: action("onSelect"),

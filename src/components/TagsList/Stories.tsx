@@ -4,7 +4,7 @@ import { TagsList, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
 export default {
-  title: 'TagsList',
+  title: 'Components/TagsList',
   component: TagsList,
   args: {
     items: [

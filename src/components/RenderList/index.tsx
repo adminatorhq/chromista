@@ -4,7 +4,7 @@ import { EmptyWrapper } from '../EmptyWrapper';
 import { ListSkeleton } from '../Skeleton/ListSkeleton';
 import { SectionList } from '../Section/SectionList';
 import { FormSearch } from '../Form/FormSearch';
-import { SoftButton } from '../Form/SoftButton';
+import { SoftButton } from '../Button/SoftButton';
 
 export interface IProps<T> {
   isLoading?: boolean;

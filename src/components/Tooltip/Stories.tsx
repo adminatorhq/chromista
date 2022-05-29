@@ -4,7 +4,7 @@ import { Tooltip, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
 export default {
-  title: 'Tooltip',
+  title: 'Components/Tooltip',
   component: Tooltip,
   args: {
     id: "foo",

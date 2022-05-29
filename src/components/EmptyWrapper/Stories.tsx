@@ -4,7 +4,7 @@ import { EmptyWrapper, IProps } from '.';
 import { AppWrapper} from '../../AppWrapper';
 
 export default {
-  title: 'EmptyWrapper',
+  title: 'Components/EmptyWrapper',
   component: EmptyWrapper,
   args: {
     text: "Some empty message for you",

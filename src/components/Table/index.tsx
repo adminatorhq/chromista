@@ -8,7 +8,7 @@ import { SimpleSelect } from '../Form';
 import { EmptyWrapper } from '../EmptyWrapper';
 import { useFetchTableData } from './Table.hooks';
 import { IFetchTableDataParams, ITable, ITableFilter } from './Table.types';
-import { SoftButton } from '../Form/SoftButton';
+import { SoftButton } from '../Button/SoftButton';
 import * as StyledGrid from 'styled-bootstrap-grid';
 import styled from 'styled-components';
 

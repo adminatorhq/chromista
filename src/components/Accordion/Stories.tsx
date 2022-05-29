@@ -5,7 +5,7 @@ import { AlertOctagon } from 'react-feather';
 import { AppWrapper} from '../../AppWrapper';
 
 export default {
-  title: 'AccordionItem',
+  title: 'Components/AccordionItem',
   component: AccordionItem,
   args: {
     icon: AlertOctagon,

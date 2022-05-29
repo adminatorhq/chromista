@@ -1,10 +1,10 @@
 import React, { useState, ReactNode } from 'react';
 import * as StyledGrid from 'styled-bootstrap-grid';
 import styled from 'styled-components';
-import { DeleteButton } from '../../Form/DeleteButton';
+import { DeleteButton } from '../../Button/DeleteButton';
 import { ISelectData } from '../../../types';
 import { SimpleSelect } from '../../Form';
-import { SoftButton } from '../../Form/SoftButton';
+import { SoftButton } from '../../Button/SoftButton';
 import {
   StyledCard,
   StyledCardBody,
@@ -16,7 +16,7 @@ import { StyledI } from '../../../styles/Element';
 import { HelpCircle } from 'react-feather';
 import { Tooltip } from '../../Tooltip';
 import { TimeFilters } from '@gothicgeeks/shared';
-import { SoftButtonIconTypes } from '../../Form/SoftButton.types';
+import { SoftButtonIconTypes } from '../../Button/SoftButton.types';
 
 interface IProps {
   title: string;

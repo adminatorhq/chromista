@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import noop from 'lodash/noop';
 import styled, { css } from 'styled-components';
 import { StyledMutedText } from '../../styles/Text';
 // import Empty  from "../../icons/empty.svg";
@@ -11,6 +12,7 @@ export interface IProps {
 }
 
 export const EmptyWrapper: React.FC<IProps> = ({ text, hideIcon, border, children }) => {
+  noop(hideIcon);
   return (
     <StyledWrapper border={!!border}>
       {/* {hideIcon ? null : <img src={Empty} alt="0" width="100px" />} */}

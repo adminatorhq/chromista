@@ -9,7 +9,7 @@ interface IDemoType {
 }
 
 export default {
-  title: 'RenderList',
+  title: 'Components/RenderList',
   component: RenderList,
   args: {
     items: [

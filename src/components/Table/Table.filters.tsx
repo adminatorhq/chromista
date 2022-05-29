@@ -1,7 +1,7 @@
 import React, { useState, ReactNode } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { Filter, Search } from 'react-feather';
-import { SoftButton } from '../Form/SoftButton';
+import { SoftButton } from '../Button/SoftButton';
 import { SimpleSelect } from '../Form/SimpleSelect';
 import { mapIdAndNameToSelectData } from '../Form/mappers';
 import { FormMultiSelect } from '../Form/FormSelect';
