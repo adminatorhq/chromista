@@ -108,7 +108,8 @@ export const SectionBox: React.FC<IProps> = ({
                 ) : null}
                 {lastUpdated ? (
                   <StyledMutedText as={StyledI}>
-                    Last modified {TimeFilters.formatTime(lastUpdated, 'L')}
+                    Last modified{' '}
+                    {TimeFilters.formatTime(new Date(lastUpdated), 'L')}
                   </StyledMutedText>
                 ) : null}
                 {iconButtons
