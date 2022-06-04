@@ -8,6 +8,7 @@ import { SectionBox } from '../../components/Section';
 import { useSideBarStore } from '../sidebar.store';
 import { ISelectionView } from '../types';
 import { useNestedNavStore } from './nested-nav.store';
+import { ViewMenuItems } from './ViewMenuItems';
 
 const HOME_SELECTION = '__HOME__';
 
@@ -87,7 +88,10 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
       <StyledHeightWrapper>
         <StyledHideScrollbar>
           <StyledContainer fluid={true}>
-            {selectionView.map(({ view, link }) => {
+            {selectionView.map(({ view, link, viewMenuItems }) => {
+              if(!view || !viewMenuItems){
+                  throw new Error("Please pass what to render in the view, `view` or `viewMenuItems` is required to do this");
+              }
               return (
                 <StyledRenderView key={link} show={link === currentMiniSideBar}>
                   <SectionBox
@@ -110,7 +114,7 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
                       },
                     ]}
                   >
-                    {view}
+                    {view ? view : <ViewMenuItems viewMenuItems={viewMenuItems} /> }
                   </SectionBox>
                 </StyledRenderView>
               );

@@ -1,5 +1,5 @@
 {
-  "version": "0.2.7",
+  "version": "0.2.8",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -72,7 +72,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@gothicgeeks/shared": "git+ssh://git@github.com:thrownullexception/shared.git#74ffecf5c15097a82131a436ae885ebb2bb1cad4",
+    "@gothicgeeks/shared": "git+ssh://git@github.com:thrownullexception/shared.git#4f39306998e870ecf640cb8c7a0b3e4595fa4afa",
     "@svgr/webpack": "^6.2.1",
     "@types/prismjs": "^1.26.0",
     "@types/react-datepicker": "^4.4.1",
@@ -101,6 +101,7 @@
     "reactstrap": "^9.0.2",
     "styled-bootstrap-grid": "^3.1.2",
     "styled-components": "^5.3.5",
-    "tiny-skeleton-loader-react": "^1.1.8"
+    "tiny-skeleton-loader-react": "^1.1.8",
+    "zustand": "^3.7.2"
   }
 }
