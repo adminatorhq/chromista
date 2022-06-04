@@ -89,8 +89,10 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
         <StyledHideScrollbar>
           <StyledContainer fluid={true}>
             {selectionView.map(({ view, link, viewMenuItems }) => {
-              if(!view || !viewMenuItems){
-                  throw new Error("Please pass what to render in the view, `view` or `viewMenuItems` is required to do this");
+              if (!view && !viewMenuItems) {
+                throw new Error(
+                  'Please pass what to render in the view, `view` or `viewMenuItems` is required to do this'
+                );
               }
               return (
                 <StyledRenderView key={link} show={link === currentMiniSideBar}>
@@ -114,7 +116,11 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
                       },
                     ]}
                   >
-                    {view ? view : <ViewMenuItems viewMenuItems={viewMenuItems} /> }
+                    {view ? (
+                      view
+                    ) : (
+                      <ViewMenuItems viewMenuItems={viewMenuItems} />
+                    )}
                   </SectionBox>
                 </StyledRenderView>
               );
