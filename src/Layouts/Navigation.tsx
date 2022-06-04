@@ -4,6 +4,7 @@ import { ISideBarNavigation } from './FixedLayout/types';
 import { ChevronRight, ChevronDown } from 'react-feather';
 import { Tooltip } from '../components/Tooltip';
 import Link from 'next/link';
+import { StringUtils } from '@gothicgeeks/shared';
 
 interface IRenderNavigation {
   navigation: ISideBarNavigation[];
@@ -32,7 +33,7 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
       {label && isSidebarOpen && navigation.length ? (
         <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
       ) : null}
-      {navigation.map(({ title, link, dataTestId, icon, action, subMenu }) => {
+      {navigation.map(({ title, link, icon, action, subMenu }) => {
         const showSubMenu = currentDropDown === title;
         const isActive = currentLink === link;
         const content = (
@@ -44,11 +45,11 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
                 data-for="left-side-nav"
                 data-tip={isSidebarOpen ? '' : title}
                 $isSidebarOpen={isSidebarOpen}
-                data-test-id={`nav-icon__${dataTestId}`}
+                data-test-id={`nav-icon__${StringUtils.sluggify(title)}`}
               />
             </div>
             <StyledLeftSideNavMenuText
-              data-test-id={`nav-menu-item__${dataTestId}`}
+              data-test-id={`nav-menu-item__${StringUtils.sluggify(title)}`}
               $isSidebarOpen={isSidebarOpen}
             >
               {title}

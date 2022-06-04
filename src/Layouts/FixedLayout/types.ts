@@ -5,6 +5,5 @@ export interface ISideBarNavigation {
   icon: Icon;
   link?: string;
   action?: () => void;
-  dataTestId: string;
   subMenu?: ISideBarNavigation[];
 }
