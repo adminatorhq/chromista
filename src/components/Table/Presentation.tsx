@@ -44,7 +44,8 @@ export const Presentation: React.FC<IProps> = ({
     data.totalRecords === 0
       ? 0
       : Math.ceil(
-          data.totalRecords / (paginatedDataState?.pageSize ?? DEFAULT_TABLE_PARAMS.pageSize)
+          data.totalRecords /
+            (paginatedDataState?.pageSize ?? DEFAULT_TABLE_PARAMS.pageSize)
         );
 
   const {
