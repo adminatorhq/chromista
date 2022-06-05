@@ -12,14 +12,6 @@ export interface INumberComparision {
   value: string;
 }
 
-export interface IFetchTableDataParams {
-  pageSize: number;
-  pageIndex: number;
-  sortBy: { id: string; desc: boolean }[];
-  hiddenColumns: unknown[];
-  filters?: ITableFilter[];
-}
-
 export interface ITableColumn {
   Header: string;
   accessor?: string;

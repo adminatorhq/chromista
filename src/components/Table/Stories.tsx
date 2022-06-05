@@ -17,13 +17,13 @@ export default {
     singular: 'Item',
     createPath: '/foo',
     title: 'Some Table Title',
-    fetchTableDataParams: {
+    paginatedDataState: {
       pageSize: 10,
       pageIndex: 1,
       sortBy: [{ id: 'name', desc: true }],
       hiddenColumns: [],
     },
-    setFetchTableDataParams: action('setFetchTableDataParams'),
+    setPaginatedDataState: action('setPaginatedDataState'),
     columns: [
       {
         Header: 'Name',

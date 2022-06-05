@@ -6,16 +6,12 @@ import { ComponentIsLoading } from '../ComponentIsLoading';
 import { ErrorAlert } from '../Alert';
 import { SimpleSelect } from '../Form';
 import { EmptyWrapper } from '../EmptyWrapper';
-import {
-  IFetchTableDataParams,
-  ITableFilter,
-  ITableProps,
-} from './Table.types';
+import { ITableFilter, ITableProps } from './Table.types';
 import { SoftButton } from '../Button/SoftButton';
 import * as StyledGrid from 'styled-bootstrap-grid';
 import styled from 'styled-components';
 import { DEFAULT_TABLE_PARAMS } from './constants';
-import { PaginatedData } from '@gothicgeeks/shared';
+import { IBEPaginatedDataState, PaginatedData } from '@gothicgeeks/shared';
 import { UseQueryResult } from 'react-query';
 import { Spacer, Stack, Text } from '../../ui-blocks';
 import { APP_COLORS } from '../../constants/colors';
@@ -25,14 +21,14 @@ export type IProps = Omit<ITableProps, 'url'> & {
     UseQueryResult<PaginatedData<Record<string, unknown>>, unknown>,
     'data' | 'isLoading' | 'error' | 'isPreviousData'
   >;
-  fetchTableDataParams: IFetchTableDataParams;
-  setFetchTableDataParams: (params: IFetchTableDataParams) => void;
+  paginatedDataState: IBEPaginatedDataState;
+  setPaginatedDataState: (params: IBEPaginatedDataState) => void;
 };
 
 export const Presentation: React.FC<IProps> = ({
-  fetchTableDataParams,
+  paginatedDataState,
   tableData,
-  setFetchTableDataParams,
+  setPaginatedDataState,
   title,
   columns,
   createPath,
@@ -47,7 +43,9 @@ export const Presentation: React.FC<IProps> = ({
   const totalPageCount =
     data.totalRecords === 0
       ? 0
-      : Math.ceil(data.totalRecords / fetchTableDataParams.pageSize);
+      : Math.ceil(
+          data.totalRecords / (paginatedDataState?.pageSize ?? DEFAULT_TABLE_PARAMS.pageSize)
+        );
 
   const {
     getTableProps,
@@ -95,7 +93,7 @@ export const Presentation: React.FC<IProps> = ({
         return true;
       })
     ) {
-      setFetchTableDataParams(tableState);
+      setPaginatedDataState(tableState);
     }
   }, [tableState]);
 
