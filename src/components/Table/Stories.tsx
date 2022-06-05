@@ -3,6 +3,12 @@ import { Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { AppWrapper } from '../../AppWrapper';
 import { Presentation, IProps } from './Presentation';
+import {
+  ListSelectionFilter,
+  NumberSelectionFilter,
+  StatusFilter,
+  TextSearchFilter,
+} from './Table.filters';
 
 export default {
   title: 'Components/Table',
@@ -22,14 +28,28 @@ export default {
       {
         Header: 'Name',
         accessor: 'name',
+        Filter: TextSearchFilter,
       },
       {
         Header: 'Age',
         accessor: 'age',
+        Filter: NumberSelectionFilter,
       },
       {
         Header: 'Verified',
         accessor: 'verified',
+        Filter: StatusFilter([
+          { color: '#00ff00', label: 'Yes', value: 'true' },
+          { color: '#ff0000', label: 'No', value: 'false' },
+        ]),
+      },
+      {
+        Header: 'Author',
+        accessor: 'author',
+        Filter: ListSelectionFilter([
+          { id: 'fb', name: 'Facebook' },
+          { id: 'ggl', name: 'Google' },
+        ]),
       },
     ],
     tableData: {
@@ -39,16 +59,22 @@ export default {
             name: 'React',
             age: 27,
             verified: true,
+            approved: 'pending',
+            author: 'Facbook',
           },
           {
             name: 'Angular',
             age: 28,
             verified: true,
+            approved: 'progress',
+            author: 'Goggle',
           },
           {
-            name: 'View',
+            name: 'Vue',
             age: 29,
             verified: true,
+            approved: 'done',
+            author: 'Evan Yue',
           },
         ],
         pageIndex: 1,

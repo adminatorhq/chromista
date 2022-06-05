@@ -1,12 +1,16 @@
-export const APP_COLORS = {
-  primaryShade: '#233058',
-  primary: '#435589',
-  accent: '#E12355',
-  print: '#7A8298',
-  muted: '#b6c0e0',
-  white: '#fff',
-  border: '#e3e7f3',
+export const TEXT_COLORS = {
+  muted: '#a4abc5',
+  primary: '#656d9a',
+  white: '#ffffff',
+};
 
-  faintBackground: '#eff3ff',
-  fainterBackground: '#FAFBFD',
+export const APP_COLORS = {
+  white: '#fff',
+  theme: '#0c213a',
+  primary: '#1761fd',
+  border: '#e3ebf6',
+  softBackground: '#f1f5fa',
+  danger: '#f5325c',
+  warning: '#ffb822',
+  success: '#03d87f',
 };

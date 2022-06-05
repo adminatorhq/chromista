@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { APP_COLORS } from '../constants/colors';
+import { TEXT_COLORS } from '../constants/colors';
 
 export type TextProps = {
   size: '1' | '2' | '3' | '4' | '5' | '6';
-  color: keyof typeof APP_COLORS;
+  color: keyof typeof TEXT_COLORS;
   weight: 'light' | 'regular' | 'bold' | 'thick';
   as: 'p' | 'span';
 };
@@ -27,8 +27,8 @@ const weights: Record<TextProps['weight'], number> = {
 export const Text = styled.p.attrs((props: TextProps) => ({
   role: props.as || 'p',
 }))<Partial<TextProps>>(
-  ({ size = '4', color = 'print', weight = 'regular' }) => ({
-    color: APP_COLORS[color],
+  ({ size = '4', color = 'primary', weight = 'regular' }) => ({
+    color: TEXT_COLORS[color],
     fontWeight: weights[weight],
     fontSize: `${sizes[size]}px`,
     lineHeight: `${sizes[size] * 1.25}px`,

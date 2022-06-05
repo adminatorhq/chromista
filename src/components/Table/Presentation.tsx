@@ -18,6 +18,7 @@ import { DEFAULT_TABLE_PARAMS } from './constants';
 import { PaginatedData } from '@gothicgeeks/shared';
 import { UseQueryResult } from 'react-query';
 import { Spacer, Stack, Text } from '../../ui-blocks';
+import { APP_COLORS } from '../../constants/colors';
 
 export type IProps = Omit<ITableProps, 'url'> & {
   tableData: Pick<
@@ -140,15 +141,17 @@ export const Presentation: React.FC<IProps> = ({
                           <Text weight="bold" as="span">
                             {column.render('Header')}
                           </Text>
-                          {column.canSort && (
-                            <StyledSorting
-                              className={classnames({
-                                desc: column.isSorted && column.isSortedDesc,
-                                asc: column.isSorted && !column.isSortedDesc,
-                              })}
-                            />
-                          )}
-                          {column.canFilter ? column.render('Filter') : null}
+                          <Stack justify="end">
+                            {column.canSort && (
+                              <StyledSorting
+                                className={classnames({
+                                  desc: column.isSorted && column.isSortedDesc,
+                                  asc: column.isSorted && !column.isSortedDesc,
+                                })}
+                              />
+                            )}
+                            {column.canFilter ? column.render('Filter') : null}
+                          </Stack>
                         </Stack>
                       </StyledTh>
                     );
@@ -186,7 +189,7 @@ export const Presentation: React.FC<IProps> = ({
           </StyledTable>
         </div>
         <Stack justify="space-between" align="center">
-          <label>
+          <Text>
             Showing{' '}
             <SimpleSelect
               options={[10, 25, 50].map(option => ({
@@ -197,7 +200,7 @@ export const Presentation: React.FC<IProps> = ({
               value={tableState.pageSize}
             />{' '}
             entries of <b>{data.totalRecords}</b> results
-          </label>
+          </Text>
           <StyledPagination>
             <ReactPaginate
               previousLabel={'prev'}
@@ -229,7 +232,7 @@ export const Presentation: React.FC<IProps> = ({
 
 const StyledBodyTR = styled.tr`
   padding: 4px;
-  border-top: 2px solid #eaf0f7;
+  border-top: 2px solid ${APP_COLORS.border};
   page-break-inside: avoid;
   &:hover {
     color: #303e67;
@@ -310,7 +313,7 @@ const StyledTableResponsive = styled.div`
 const StyledTh = styled.th`
   padding: 0.45rem;
   vertical-align: middle;
-  border: 1px solid #eaf0f7;
+  border: 1px solid ${APP_COLORS.border};
   border-bottom-width: 2px;
   color: ${props => props.theme.text.main};
   font-weight: 500;
@@ -320,10 +323,10 @@ const StyledTh = styled.th`
 const StyledTd = styled.td`
   padding: 0.45rem;
   border: 1px solid #eaf0f9;
-  border: 1px solid #eaf0f7;
+  border: 1px solid ${APP_COLORS.border};
   vertical-align: middle;
   font-weight: 400;
-  border-top: 1px solid #eaf0f7;
+  border-top: 1px solid ${APP_COLORS.border};
 `;
 
 const StyledTableTitle = styled.h4`
@@ -336,7 +339,7 @@ const StyledTable = styled.table`
   margin-bottom: 1rem;
   color: ${props => props.theme.text.main};
   border-collapse: collapse;
-  border: 1px solid #eaf0f7;
+  border: 1px solid ${APP_COLORS.border};
   .dropdown-toggle::after {
     display: none;
   }

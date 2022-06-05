@@ -1,5 +1,4 @@
 import React, { useState, ReactNode } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { Filter, Search } from 'react-feather';
 import { SoftButton } from '../Button/SoftButton';
 import { SimpleSelect } from '../Form/SimpleSelect';
@@ -10,13 +9,14 @@ import { StyledInput } from '../Form/Styles';
 import styled from 'styled-components';
 import { themeContext } from '../../AppWrapper/Global';
 import { ISystemStatusForDisplay } from '../../types';
-
-const togglePreviousState = (prev: boolean) => !prev;
+import { Dropdown } from '../Dropdown';
+import { APP_COLORS } from '../../constants/colors';
+import { Stack } from '../../ui-blocks';
 
 interface IProps {
   children: ReactNode;
   filterValue: unknown;
-  setFilter: (filter: undefined) => void;
+  setFilter: (filter: unknown) => void;
   iconType: 'search' | 'filter' | 'numeric' | 'list';
 }
 
@@ -26,8 +26,6 @@ const FilterWrapper: React.FC<IProps> = ({
   setFilter,
   iconType,
 }) => {
-  const [isFilterDropDownOpen, setFilterDropDownOpen] = useState(false);
-  const toggleFilterDropDown = () => setFilterDropDownOpen(togglePreviousState);
   const iconProps = {
     size: 15,
     color: filterValue ? themeContext.colors.primary : 'rgb(48, 62, 103)',
@@ -41,27 +39,19 @@ const FilterWrapper: React.FC<IProps> = ({
       }}
     >
       <Dropdown
-        isOpen={isFilterDropDownOpen}
-        toggle={toggleFilterDropDown}
-        tag="span"
-        className="float-right"
-        style={{ marginBottom: '-5px' }}
+        preserveVisibiltyOnClick={true}
+        target={
+          <>
+            {iconType === 'search' ? (
+              <Search {...iconProps} />
+            ) : (
+              <Filter {...iconProps} />
+            )}
+          </>
+        }
       >
-        <DropdownToggle
-          tag="a"
-          className="dropdown-toggle waves-effect waves-light"
-        >
-          {iconType === 'search' ? (
-            <Search {...iconProps} />
-          ) : (
-            <Filter {...iconProps} />
-          )}
-        </DropdownToggle>
-        <DropdownMenu
-          right={true}
-          className="dropdown-menu dropdown-menu-right p-1"
-        >
-          {children}
+        <DownRoot direction="column">
+          <div>{children}</div>
           <StyledSoftButton
             onClick={() => {
               setFilter(undefined);
@@ -70,11 +60,16 @@ const FilterWrapper: React.FC<IProps> = ({
             icon="close"
             label="Reset"
           />
-        </DropdownMenu>
+        </DownRoot>
       </Dropdown>
     </span>
   );
 };
+
+const DownRoot = styled(Stack)`
+  background: ${APP_COLORS.white};
+  min-width: 250px;
+`;
 
 export const StatusFilter = (statuses: ISystemStatusForDisplay[]) => ({
   column: { filterValue, setFilter },

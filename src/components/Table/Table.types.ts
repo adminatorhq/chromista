@@ -25,6 +25,9 @@ export interface ITableColumn {
   accessor?: string;
   disableSortBy?: boolean;
   disableFilters?: boolean;
+  Filter?: (input: {
+    columns: { filterValue: unknown; setFilter: (filter: unknown) => void };
+  }) => JSX.Element;
   Cell?: (cellProps: {
     value: unknown;
     row: { original: Record<string, unknown> };
