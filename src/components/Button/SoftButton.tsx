@@ -58,9 +58,11 @@ export const SoftButton: React.FC<ISoftButton> = ({
 
   if (to) {
     return (
-      <StyledSoftButton {...props} as={Link as any} href={to}>
-        {content}
-      </StyledSoftButton>
+      <Link href={to} passHref={true}>
+        <StyledSoftButton {...props} as={'a'}>
+          {content}
+        </StyledSoftButton>
+      </Link>
     );
   }
 

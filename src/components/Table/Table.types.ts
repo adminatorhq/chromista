@@ -20,13 +20,6 @@ export interface IFetchTableDataParams {
   filters?: ITableFilter[];
 }
 
-export interface ITablePayload<T> {
-  count: number;
-  take: number;
-  page: number;
-  data: T[];
-}
-
 export interface ITableColumn {
   Header: string;
   accessor?: string;
@@ -38,7 +31,7 @@ export interface ITableColumn {
   }) => JSX.Element;
 }
 
-export interface ITable {
+export interface ITableProps {
   url: string;
   columns: ITableColumn[];
   title: string;

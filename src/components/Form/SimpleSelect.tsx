@@ -40,7 +40,7 @@ export function SimpleSelect({
 
 const StyledSimpleSelect = styled(StyledInput)<{ fullWidth?: boolean }>`
   display: inline-block;
-  width: auto;
+  width: 50px;
   vertical-align: middle;
   background: ${props => props.theme.colors.white}
     url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%232c3652' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")

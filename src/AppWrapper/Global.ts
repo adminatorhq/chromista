@@ -54,7 +54,7 @@ nav {
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  font-size: .8125rem;
+  font-size: 1rem;
   font-weight: 400;
   color: ${props => props.theme.text.main};
   text-align: left;
@@ -85,7 +85,7 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
   line-height: 1.6;
-  font-size: .8125rem;
+  font-size: 1rem;
   font-weight: 400
 }
 

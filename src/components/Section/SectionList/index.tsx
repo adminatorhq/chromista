@@ -127,9 +127,11 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
 
   if (to) {
     return (
-      <StyledListItem as={Link as any} href={to} {...props}>
-        {content}
-      </StyledListItem>
+      <Link href={to} passHref={true}>
+        <StyledListItem as="a" {...props}>
+          {content}
+        </StyledListItem>
+      </Link>
     );
   }
 

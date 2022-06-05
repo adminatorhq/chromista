@@ -16,6 +16,9 @@ export default {
 
 const Template: Story<IProps> = args => (
   <AppWrapper>
+    <AccordionItem {...args} highlight={true} name="Highlighted" />
+    <AccordionItem {...args} />
+    <AccordionItem {...args} />
     <AccordionItem {...args} />
   </AppWrapper>
 );
@@ -24,8 +27,3 @@ const Template: Story<IProps> = args => (
 // https://storybook.js.org/docs/react/workflows/unit-testing
 export const Default = Template.bind({});
 Default.args = {};
-
-export const Highlighted = Template.bind({});
-Highlighted.args = {
-  highlight: true,
-};

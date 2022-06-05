@@ -88,13 +88,11 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
                 {content}
               </StyledLeftSideNavMenuListAnchor>
             ) : (
-              <StyledLeftSideNavMenuListAnchor
-                $isSubMenu={isSubMenu}
-                as={Link as any}
-                href={link || ''}
-              >
-                {content}
-              </StyledLeftSideNavMenuListAnchor>
+              <Link href={link || ''} passHref={true}>
+                <StyledLeftSideNavMenuListAnchor $isSubMenu={isSubMenu}>
+                  {content}
+                </StyledLeftSideNavMenuListAnchor>
+              </Link>
             )}
             {subMenu && showSubMenu && isSidebarOpen ? (
               <StyledSecondLevelList>

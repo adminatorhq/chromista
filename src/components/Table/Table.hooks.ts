@@ -1,7 +1,7 @@
-import { RequestService } from '@gothicgeeks/shared';
+import { PaginatedData, RequestService } from '@gothicgeeks/shared';
 import querystring from 'qs';
 import { useQuery } from 'react-query';
-import { IFetchTableDataParams, ITablePayload } from './Table.types';
+import { IFetchTableDataParams } from './Table.types';
 
 const tableDataParamsToQueryString = (
   fetchTableDataParams: IFetchTableDataParams
@@ -25,7 +25,7 @@ export const useFetchTableData = (
   url: string,
   fetchTableDataParams: IFetchTableDataParams
 ) =>
-  useQuery<ITablePayload<Record<string, unknown>>>(
+  useQuery<PaginatedData<Record<string, unknown>>>(
     [fetchTableDataParams],
     async () =>
       (

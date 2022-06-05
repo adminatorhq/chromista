@@ -26,13 +26,11 @@ export const Breadcrumbs: React.FC<IProps> = ({ items, onItemClick }) => {
                 {label}
               </StyledBreadcrumbItemLink>
             ) : (
-              <StyledBreadcrumbItemLink
-                as={Link as any}
-                active={isLastElement}
-                to={value}
-              >
-                {label}
-              </StyledBreadcrumbItemLink>
+              <Link href={value} passHref={true}>
+                <StyledBreadcrumbItemLink active={isLastElement}>
+                  {label}
+                </StyledBreadcrumbItemLink>
+              </Link>
             )}
           </StyledBreadcrumbItem>
         );

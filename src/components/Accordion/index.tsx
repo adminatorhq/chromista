@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { ChevronDown, ChevronUp, Icon } from 'react-feather';
 
-const ARROW_SIZE = 12;
+const ARROW_SIZE = 16;
 
 export interface IProps {
   icon: Icon;
@@ -19,7 +19,7 @@ export const AccordionItem: React.FC<IProps> = ({
 }) => {
   const [isBoxOpen, setIsBoxOpen] = useState(false);
   return (
-    <StyledWrapper highlight={highlight}>
+    <Root highlight={highlight}>
       <StyledAnchor
         onClick={() => {
           setIsBoxOpen(!isBoxOpen);
@@ -29,18 +29,14 @@ export const AccordionItem: React.FC<IProps> = ({
           <StyledLabelIcon as={icon} size={ARROW_SIZE} />
           {name}
         </StyledLabel>
-        {isBoxOpen ? (
-          <StyledIcon highlight={highlight} as={ChevronUp} size={ARROW_SIZE} />
-        ) : (
-          <StyledIcon
-            highlight={highlight}
-            as={ChevronDown}
-            size={ARROW_SIZE}
-          />
-        )}
+        <StyledIcon
+          highlight={highlight}
+          as={isBoxOpen ? ChevronUp : ChevronDown}
+          size={ARROW_SIZE}
+        />
       </StyledAnchor>
       {isBoxOpen ? <StyledBodyWrapper> {body} </StyledBodyWrapper> : null}
-    </StyledWrapper>
+    </Root>
   );
 };
 
@@ -57,22 +53,22 @@ const StyledAnchor = styled.button`
 `;
 
 const StyledBodyWrapper = styled.div`
-  padding: 0 0.5rem;
-  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
   border-top: 1px solid ${props => props.theme.colors.border};
 `;
 
 const StyledLabelIcon = styled.i`
-  margin-right: 0.4rem;
+  margin-right: 0.5rem;
 `;
 
 const StyledIcon = styled.i<{ highlight?: boolean }>`
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
   color: ${props =>
     props.highlight ? props.theme.text.white : props.theme.text.main};
 `;
 
-const StyledWrapper = styled.div<{ highlight?: boolean }>`
+const Root = styled.div<{ highlight?: boolean }>`
   padding: 0;
   ${props =>
     props.highlight &&
@@ -85,7 +81,7 @@ const StyledWrapper = styled.div<{ highlight?: boolean }>`
 
 const StyledLabel = styled.p<{ highlight?: boolean }>`
   margin-bottom: 0;
-  font-size: 12px;
+  font-size: 16px;
   color: ${props =>
     props.highlight ? props.theme.text.white : props.theme.text.main};
 `;
