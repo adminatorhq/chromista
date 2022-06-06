@@ -57,13 +57,10 @@ body {
   font-size: 1rem;
   font-weight: 400;
   color: ${props => props.theme.text.main};
-  text-align: left;
   background-color: ${props => props.theme.colors.white};
-  overflow-x: hidden !important;
   min-height: 100vh;
   letter-spacing: 0.1px;
   line-height: 1.5;
-  display: flex;
   position: relative
 }
 

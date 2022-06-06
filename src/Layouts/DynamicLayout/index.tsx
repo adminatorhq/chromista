@@ -35,9 +35,9 @@ const Root = styled.div`
 const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
   padding: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: block;
-  padding: 8px;
+  padding: 16px;
   margin-left: ${props => (props.isSidebarOpen ? 350 : 50)}px;
   background: #edf0f1;
 `;

@@ -2,6 +2,7 @@ export { AccordionItem } from './Accordion';
 export { ErrorAlert, SuccessAlert, WarningAlert } from './Alert';
 export * from './Badge';
 export { Breadcrumbs } from './Breadcrumbs';
+export * from './Button';
 export * from './ComponentIsLoading';
 export * from './ConfirmAlert';
 export * from './Currency';
