@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { ISideBarNavigation } from './FixedLayout/types';
 import { ChevronRight, ChevronDown } from 'react-feather';
-import { Tooltip } from '../components/Tooltip';
 import Link from 'next/link';
 import { StringUtils } from '@gothicgeeks/shared';
 
@@ -28,7 +27,6 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
   const [currentDropDown, setCurrentDropDown] = React.useState('');
   return (
     <>
-      <Tooltip id="left-side-nav" place="right" offset={{ right: 12 }} />
       {showDash && navigation.length ? <StyledDash /> : null}
       {label && isSidebarOpen && navigation.length ? (
         <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
@@ -42,8 +40,6 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
               <StyleMenuIcon
                 as={icon}
                 $isActive={isActive}
-                data-for="left-side-nav"
-                data-tip={isSidebarOpen ? '' : title}
                 $isSidebarOpen={isSidebarOpen}
                 data-test-id={`nav-icon__${StringUtils.sluggify(title)}`}
               />

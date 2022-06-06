@@ -8,7 +8,6 @@ import { SimpleSelect } from '../Form';
 import { EmptyWrapper } from '../EmptyWrapper';
 import { ITableFilter, ITableProps } from './Table.types';
 import { SoftButton } from '../Button/SoftButton';
-import * as StyledGrid from 'styled-bootstrap-grid';
 import styled from 'styled-components';
 import { DEFAULT_TABLE_PARAMS } from './constants';
 import { IBEPaginatedDataState, PaginatedData } from '@gothicgeeks/shared';
@@ -99,7 +98,7 @@ export const Presentation: React.FC<IProps> = ({
   }, [tableState]);
 
   return (
-    <StyledGrid.Container fluid={true}>
+    <>
       {error ? (
         <>
           <Spacer />
@@ -225,7 +224,7 @@ export const Presentation: React.FC<IProps> = ({
           </StyledPagination>
         </Stack>
       </StyledTableResponsive>
-    </StyledGrid.Container>
+    </>
   );
 };
 
