@@ -1385,9 +1385,9 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@gothicgeeks/shared@git+ssh://git@github.com:thrownullexception/shared.git#c328b2f74278ab096afbb6ee07dc77df462a0b78":
-  version "0.2.13"
-  resolved "git+ssh://git@github.com:thrownullexception/shared.git#c328b2f74278ab096afbb6ee07dc77df462a0b78"
+"@gothicgeeks/shared@git+ssh://git@github.com:thrownullexception/shared.git#619302b0fe765431ca8faf137c05f9604fa9bfe5":
+  version "0.2.15"
+  resolved "git+ssh://git@github.com:thrownullexception/shared.git#619302b0fe765431ca8faf137c05f9604fa9bfe5"
   dependencies:
     "@types/lodash" "^4.14.182"
     "@types/nprogress" "^0.2.0"

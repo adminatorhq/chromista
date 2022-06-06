@@ -7,30 +7,22 @@ export const BaseLeftSideNav: React.FC<{
   children: ReactNode;
 }> = ({ isSidebarOpen, children }) => {
   return (
-    <StyledLeftSideNav isSidebarOpen={isSidebarOpen}>
+    <Root isSidebarOpen={isSidebarOpen}>
       <StyledBrand>
         <StyledLogo href="/">
-          <>
-            <span>
-              <StyledLogoSm
-                src="/assets/images/logo-sm-dark.png"
-                alt="logo-small"
-                data-test-id="nav-menu__small-logo"
-              />
-            </span>
-            <span>
-              <StyledLogoLarge
-                isSidebarOpen={isSidebarOpen}
-                src="/assets/images/logo.png"
-                alt="logo-large"
-                data-test-id="nav-menu__large-logo"
-              />
-            </span>
-          </>
+          <span>
+            <StyledLogoSm
+              src="/assets/images/logo-sm-dark.png"
+              alt="logo-small"
+              data-test-id="nav-menu__small-logo"
+            />
+          </span>
         </StyledLogo>
       </StyledBrand>
-      <StyledMenuContent>{children}</StyledMenuContent>
-    </StyledLeftSideNav>
+      <StyledMenuContent>
+        <StyledLeftSideNavMenu>{children}</StyledLeftSideNavMenu>
+      </StyledMenuContent>
+    </Root>
   );
 };
 
@@ -51,20 +43,9 @@ const StyledMenuContent = styled.div`
 const StyledBrand = styled.div`
   text-align: center;
   height: 52px;
-
-  @media (max-width: 1024px) {
-    display: none;
-    width: 70px;
-  }
 `;
 
-const StyledLogoLarge = styled.img<{ isSidebarOpen: boolean }>`
-  height: 14px;
-  margin-left: 4px;
-  display: ${props => (props.isSidebarOpen ? 'inline-block' : 'none')};
-`;
-
-export const StyledLeftSideNavMenu = styled.ul`
+const StyledLeftSideNavMenu = styled.ul`
   padding-left: 0;
   margin-bottom: 0;
   padding: 13px;
@@ -74,9 +55,8 @@ export const StyledLeftSideNavMenu = styled.ul`
   }
 `;
 
-const StyledLeftSideNav = styled.div<{ isSidebarOpen: boolean }>`
-  max-width: ${props => (props.isSidebarOpen ? 220 : 50)}px;
-  min-width: ${props => (props.isSidebarOpen ? 220 : 50)}px;
+const Root = styled.div<{ isSidebarOpen: boolean }>`
+  width: ${props => (props.isSidebarOpen ? 220 : 50)}px;
   background-color: ${props => props.theme.colors.theme};
   min-height: 100vh;
   transition: 0.3s;
@@ -84,12 +64,4 @@ const StyledLeftSideNav = styled.div<{ isSidebarOpen: boolean }>`
   bottom: 0;
   top: 0;
   border-right: 1px solid ${props => props.theme.colors.border};
-  @media (max-width: 1024px) {
-    position: absolute;
-    overflow-y: auto;
-    z-index: 10;
-    bottom: 0;
-    top: 52px;
-    margin-top: 0;
-  }
 `;

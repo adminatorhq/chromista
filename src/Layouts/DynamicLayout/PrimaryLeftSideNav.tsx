@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { BaseLeftSideNav, StyledLeftSideNavMenu } from '../BaseLeftSideNav';
+import { BaseLeftSideNav } from '../BaseLeftSideNav';
 import { RenderNavigation } from '../Navigation';
 import { useSideBarStore } from '../sidebar.store';
 import { ISideBarNavigation } from '../types';
@@ -34,14 +34,12 @@ export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
 
   return (
     <BaseLeftSideNav isSidebarOpen={isSidebarOpen}>
-      <StyledLeftSideNavMenu>
-        <RenderNavigation
-          navigation={navigationToUse}
-          isSidebarOpen={isSidebarOpen}
-          currentLink={currentMiniSideBar}
-          showDash={true}
-        />
-      </StyledLeftSideNavMenu>
+      <RenderNavigation
+        navigation={navigationToUse}
+        isSidebarOpen={isSidebarOpen}
+        currentLink={currentMiniSideBar}
+        showDash={true}
+      />
     </BaseLeftSideNav>
   );
 };

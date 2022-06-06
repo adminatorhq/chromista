@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 
 export const StyledCard = styled.div`
-  margin-bottom: 16px;
   background-color: ${props => props.theme.colors.white};
   border: 1px solid ${props => props.theme.colors.border};
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
   word-wrap: break-word;
-  background-clip: border-box;
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
   border-radius: 0.25rem;
 `;
