@@ -9,7 +9,7 @@ type IStore = {
 
 export const useSideBarStore = createStore<IStore>(set => ({
   currentMiniSideBar: undefined,
-  isFullSideBarOpen: true,
+  isFullSideBarOpen: false,
   closeFullSideBar: () =>
     set(() => ({
       currentMiniSideBar: undefined,

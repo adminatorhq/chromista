@@ -66,7 +66,7 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
     },
     ...deepLinkAsBreadCrumb,
   ];
-
+  console.log(isFullSideBarOpen);
   return (
     <Root show={!!currentMiniSideBar && isFullSideBarOpen}>
       <StyledHideScrollbar>

@@ -18,7 +18,7 @@ export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
   ]);
 
   const clearDeepLinks = useNestedNavStore(state => state.clear);
-
+  
   const navigationToUse = useMemo(() => {
     return navigation.map(({ link, ...rest }) => {
       return {

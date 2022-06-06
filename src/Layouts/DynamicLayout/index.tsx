@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import shallow from 'zustand/shallow';
 import { useSideBarStore } from '../sidebar.store';
@@ -20,28 +20,24 @@ export const DynamicLayout: React.FC<IProps> = ({
     shallow
   );
   return (
-    <Fragment>
+    <Root>
       <PrimaryLeftSideNav navigation={selectionView} />
       <SecondaryLeftSideNav selectionView={selectionView} />
-      <StyledPageWrapper isSidebarOpen={isFullSideBarOpen}>
-        <StyledPageContent>{children}</StyledPageContent>
-      </StyledPageWrapper>
-    </Fragment>
+      <StyledPage isSidebarOpen={isFullSideBarOpen}>{children}</StyledPage>
+    </Root>
   );
 };
 
-const StyledPageWrapper = styled.div<{ isSidebarOpen: boolean }>`
-  flex: 1;
-  padding: 0;
-  display: block;
-  margin-left: ${props => (props.isSidebarOpen ? 350 : 50)}px;
-  background: #edf0f1;
+const Root = styled.div`
+  width: 100%;
 `;
 
-const StyledPageContent = styled.div`
+const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
+  padding: 0;
   width: 100%;
-  position: relative;
-  display: flex;
-  height: 100%;
-  margin: 0;
+  height: 100vh;
+  display: block;
+  padding: 8px;
+  margin-left: ${props => (props.isSidebarOpen ? 350 : 50)}px;
+  background: #edf0f1;
 `;
