@@ -3,6 +3,8 @@ import { Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { AppWrapper } from '../../AppWrapper';
 import { Presentation, IProps } from './Presentation';
+import { Download, Plus } from 'react-feather';
+
 import {
   ListSelectionFilter,
   NumberSelectionFilter,
@@ -14,9 +16,19 @@ export default {
   title: 'Components/Table',
   component: Presentation,
   args: {
-    singular: 'Item',
-    createPath: '/foo',
-    title: 'Some Table Title',
+    title: 'Some Table title',
+    menuItems: [
+      {
+        label: 'Create Item',
+        onClick: action('Create Item'),
+        IconComponent: Plus,
+      },
+      {
+        label: 'Download Data',
+        onClick: action('Download Item'),
+        IconComponent: Download,
+      },
+    ],
     paginatedDataState: {
       pageSize: 10,
       pageIndex: 1,

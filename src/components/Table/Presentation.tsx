@@ -14,6 +14,7 @@ import { IBEPaginatedDataState, PaginatedData } from '@gothicgeeks/shared';
 import { UseQueryResult } from 'react-query';
 import { Spacer, Stack, Text } from '../../ui-blocks';
 import { APP_COLORS } from '../../constants/colors';
+import { DropDownMenu } from '../DropdownMenu';
 
 export type IProps = Omit<ITableProps, 'url'> & {
   tableData: Pick<
@@ -30,8 +31,7 @@ export const Presentation: React.FC<IProps> = ({
   setPaginatedDataState,
   title,
   columns,
-  createPath,
-  singular,
+  menuItems,
 }) => {
   const {
     data = { data: [], pageIndex: 0, pageSize: 10, totalRecords: 0 },
@@ -109,11 +109,7 @@ export const Presentation: React.FC<IProps> = ({
       <StyledTableResponsive>
         <Stack justify="space-between">
           <StyledTableTitle>{title}</StyledTableTitle>
-          <StyledSoftButton
-            to={createPath}
-            label={`New ${singular}`}
-            icon="add"
-          />
+          <DropDownMenu menuItems={menuItems} />
         </Stack>
         <div style={{ position: 'relative' }}>
           {(isLoading || isPreviousData) && !error ? (

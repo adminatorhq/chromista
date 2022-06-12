@@ -1,3 +1,5 @@
+import { IDropDownMenuItem } from '../DropdownMenu';
+
 enum NumberComparisions {
   GREATER_THAN = 'g',
   LESS_THAN = 'l',
@@ -30,6 +32,5 @@ export interface ITableProps {
   url: string;
   columns: ITableColumn[];
   title: string;
-  singular: string;
-  createPath: string;
+  menuItems: IDropDownMenuItem[];
 }

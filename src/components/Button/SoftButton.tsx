@@ -5,6 +5,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { StyledSoftButton } from './Button';
 import { SoftButtonIconTypes, ICON_MAP } from './SoftButton.types';
+import { ColorTypes } from '../../styles/types';
 
 interface ISoftButton {
   label?: string;
@@ -13,8 +14,9 @@ interface ISoftButton {
   block?: true;
   pushLeft?: true;
   disabled?: boolean;
-
+  color?: ColorTypes;
   to?: string;
+  justIcon?: true;
   className?: string;
 
   onClick?: () => void;
@@ -25,9 +27,11 @@ export const SoftButton: React.FC<ISoftButton> = ({
   pushLeft,
   label,
   block,
+  color,
   to,
   size = 'sm',
   icon,
+  justIcon,
   disabled,
   isMakingActionRequest,
   onClick,
@@ -40,7 +44,7 @@ export const SoftButton: React.FC<ISoftButton> = ({
       ) : (
         <>
           {icon ? <FontAwesomeIcon icon={ICON_MAP[icon]} /> : null}
-          {label ? (
+          {label && !justIcon ? (
             <StyledLabel $hasLabel={!!label}>{label}</StyledLabel>
           ) : null}
         </>
@@ -54,6 +58,8 @@ export const SoftButton: React.FC<ISoftButton> = ({
     size,
     block,
     disabled,
+    color,
+    'aria-label': justIcon ? label : undefined,
   };
 
   if (to) {

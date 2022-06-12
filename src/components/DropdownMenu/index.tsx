@@ -9,20 +9,20 @@ import { Icon } from 'react-feather';
 
 const togglePreviousState = (prev: boolean) => !prev;
 
-interface IMenuItem {
+export interface IDropDownMenuItem {
   label: string;
   description?: string;
   IconComponent?: Icon;
   onClick: () => void;
 }
 
-interface IDropDownMenu {
-  menuItems: IMenuItem[];
+interface IProps {
+  menuItems: IDropDownMenuItem[];
   isMakingActionRequest?: boolean;
   disabled?: boolean;
 }
 
-export const DropDownMenu: React.FC<IDropDownMenu> = ({
+export const DropDownMenu: React.FC<IProps> = ({
   menuItems,
   isMakingActionRequest,
   disabled,
@@ -35,7 +35,7 @@ export const DropDownMenu: React.FC<IDropDownMenu> = ({
     }
   };
 
-  const [currentMenuItem, setCurrentMenuItem] = useState<IMenuItem>(
+  const [currentMenuItem, setCurrentMenuItem] = useState<IDropDownMenuItem>(
     menuItems[0]
   );
 
@@ -48,7 +48,7 @@ export const DropDownMenu: React.FC<IDropDownMenu> = ({
 
   const { IconComponent, onClick, label } = currentMenuItem;
 
-  if(menuItems.length === 0){
+  if (menuItems.length === 0) {
     return null;
   }
 

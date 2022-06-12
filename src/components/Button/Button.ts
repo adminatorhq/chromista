@@ -65,7 +65,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
       padding: .25rem .5rem;
       font-size: .71rem;
       line-height: 1.2;
-      border-radius: .2rem
+      border-radius: .2rem;
   }
       `}
 
