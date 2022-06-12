@@ -12,7 +12,6 @@ import {
   StyledCardTitle,
 } from '../../../styles/Card';
 import { StyledMutedText } from '../../../styles/Text';
-import { StyledI } from '../../../styles/Element';
 import { HelpCircle } from 'react-feather';
 import { Tooltip } from '../../Tooltip';
 import { TimeFilters } from '@gothicgeeks/shared';
@@ -108,7 +107,7 @@ export const SectionBox: React.FC<IProps> = ({
                     />
                   ) : null}
                   {lastUpdated ? (
-                    <StyledMutedText as={StyledI}>
+                    <StyledMutedText as="i">
                       Last modified{' '}
                       {TimeFilters.formatTime(new Date(lastUpdated), 'L')}
                     </StyledMutedText>

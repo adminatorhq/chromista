@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { StyledInput } from './Styles';
-import { StyledSelect } from '../../styles/Element';
 import React from 'react';
 import { ISelectData } from '../../types';
 
@@ -21,7 +20,7 @@ export function SimpleSelect({
 }: ISimpleSelect) {
   return (
     <StyledSimpleSelect
-      as={StyledSelect}
+      as="select"
       value={value}
       sm={sm}
       fullWidth={fullWidth}

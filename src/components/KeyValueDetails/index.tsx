@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyledSpan } from '../../styles/Element';
 import { StyledMutedText } from '../../styles/Text';
 import { ISystemStatusForDisplay } from '../../types';
 import { BadgeBuilder } from '../Badge';
@@ -65,7 +64,7 @@ export const KeyValueDetails: React.FC<IKeyValueDetails> = ({
             className="list-group-item d-flex justify-content-between align-items-center"
           >
             <div>
-              {icon} <StyledMutedText as={StyledSpan}>{key}</StyledMutedText>
+              {icon} <StyledMutedText as="span">{key}</StyledMutedText>
             </div>
             {valueToRender}
           </li>

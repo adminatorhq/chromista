@@ -5,5 +5,5 @@ export const DEFAULT_TABLE_PARAMS: Required<IBEPaginatedDataState> = {
   pageSize: 10,
   hiddenColumns: [],
   filters: [],
-  order: [],
+  sortBy: [],
 };
