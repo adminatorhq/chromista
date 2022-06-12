@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Filter, Search } from 'react-feather';
 import { SoftButton } from '../Button/SoftButton';
 import { SimpleSelect } from '../Form/SimpleSelect';
@@ -12,6 +12,7 @@ import { ISystemStatusForDisplay } from '../../types';
 import { Dropdown } from '../Dropdown';
 import { APP_COLORS } from '../../constants/colors';
 import { Stack } from '../../ui-blocks';
+import { TableFilterType } from './Table.types';
 
 interface IProps {
   children: ReactNode;
@@ -19,6 +20,23 @@ interface IProps {
   setFilter: (filter: unknown) => void;
   iconType: 'search' | 'filter' | 'numeric' | 'list';
 }
+
+export const mapFilterTypeToComponent = (
+  type: TableFilterType
+): ((input: {
+  columns: { filterValue: unknown; setFilter: (filter: unknown) => void };
+}) => JSX.Element) => {
+  switch (type._type) {
+    case 'number':
+      return NumberSelectionFilter;
+    case 'string':
+      return TextSearchFilter;
+    case 'status':
+      return StatusFilter(type.bag);
+    case 'list':
+      return ListSelectionFilter(type.bag);
+  }
+};
 
 const FilterWrapper: React.FC<IProps> = ({
   children,
@@ -41,13 +59,13 @@ const FilterWrapper: React.FC<IProps> = ({
       <Dropdown
         preserveVisibiltyOnClick={true}
         target={
-          <>
+          <Root>
             {iconType === 'search' ? (
               <Search {...iconProps} />
             ) : (
               <Filter {...iconProps} />
             )}
-          </>
+          </Root>
         }
       >
         <DownRoot direction="column">
@@ -68,6 +86,9 @@ const FilterWrapper: React.FC<IProps> = ({
 
 const DownRoot = styled(Stack)`
   background: ${APP_COLORS.white};
+  padding: 8px;
+  border-radius: 2px;
+  border: 1px solid ${props => props.theme.colors.border};
   min-width: 250px;
 `;
 
@@ -183,6 +204,10 @@ export const TextSearchFilter = ({
 
 const StyledSoftButton = styled(SoftButton)`
   margin-bottom: 0.25rem;
+`;
+
+const Root = styled.div`
+  cursor: pointer;
 `;
 
 // TODO date range

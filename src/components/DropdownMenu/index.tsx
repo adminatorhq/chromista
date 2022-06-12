@@ -54,7 +54,6 @@ export const DropDownMenu: React.FC<IProps> = ({
 
   const currentItem = (
     <>
-      {' '}
       {isMakingActionRequest ? (
         <FontAwesomeIcon icon={faSpinner} spin={true} />
       ) : IconComponent ? (

@@ -1,3 +1,4 @@
+import { ISystemStatusForDisplay } from '../../types';
 import { IDropDownMenuItem } from '../DropdownMenu';
 
 enum NumberComparisions {
@@ -14,14 +15,17 @@ export interface INumberComparision {
   value: string;
 }
 
+export type TableFilterType =
+  | { _type: 'number' }
+  | { _type: 'string' }
+  | { _type: 'status'; bag: ISystemStatusForDisplay[] }
+  | { _type: 'list'; bag: { id: string; name: string }[] };
+
 export interface ITableColumn {
   Header: string;
   accessor?: string;
   disableSortBy?: boolean;
-  disableFilters?: boolean;
-  Filter?: (input: {
-    columns: { filterValue: unknown; setFilter: (filter: unknown) => void };
-  }) => JSX.Element;
+  filter?: TableFilterType;
   Cell?: (cellProps: {
     value: unknown;
     row: { original: Record<string, unknown> };

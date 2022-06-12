@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useMemo } from 'react';
 import { useTable, usePagination, useSortBy, useFilters } from 'react-table';
 import ReactPaginate from 'react-paginate';
 import classnames from 'classnames';
@@ -14,6 +14,7 @@ import { UseQueryResult } from 'react-query';
 import { Spacer, Stack, Text } from '../../ui-blocks';
 import { APP_COLORS } from '../../constants/colors';
 import { DropDownMenu } from '../DropdownMenu';
+import { mapFilterTypeToComponent } from './Table.filters';
 
 export type IProps = Omit<ITableProps, 'url'> & {
   tableData: Pick<
@@ -46,6 +47,14 @@ export const Presentation: React.FC<IProps> = ({
             (paginatedDataState?.pageSize ?? DEFAULT_TABLE_PARAMS.pageSize)
         );
 
+  const tableColumns = useMemo(() => {
+    return columns.map(({ filter, ...column }) => ({
+      ...column,
+      Filter: filter ? mapFilterTypeToComponent(filter) : undefined,
+      disableFilters: !filter,
+    }));
+  }, [columns]);
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -57,7 +66,7 @@ export const Presentation: React.FC<IProps> = ({
     state: tableState,
   } = useTable(
     {
-      columns,
+      columns: tableColumns,
       data: data.data,
       pageCount: totalPageCount,
       manualPagination: true,
@@ -110,6 +119,7 @@ export const Presentation: React.FC<IProps> = ({
           <StyledTableTitle>{title}</StyledTableTitle>
           <DropDownMenu menuItems={menuItems} />
         </Stack>
+        <Spacer />
         <div style={{ position: 'relative' }}>
           {(isLoading || isPreviousData) && !error ? (
             <StyledOverlay>
@@ -134,7 +144,7 @@ export const Presentation: React.FC<IProps> = ({
                           <Text weight="bold" as="span">
                             {column.render('Header')}
                           </Text>
-                          <Stack justify="end">
+                          <Stack justify="end" width="auto">
                             {column.canSort && (
                               <StyledSorting
                                 className={classnames({

@@ -5,13 +5,6 @@ import { AppWrapper } from '../../AppWrapper';
 import { Presentation, IProps } from './Presentation';
 import { Download, Plus } from 'react-feather';
 
-import {
-  ListSelectionFilter,
-  NumberSelectionFilter,
-  StatusFilter,
-  TextSearchFilter,
-} from './Table.filters';
-
 export default {
   title: 'Components/Table',
   component: Presentation,
@@ -38,30 +31,45 @@ export default {
     setPaginatedDataState: action('setPaginatedDataState'),
     columns: [
       {
-        Header: 'Name',
+        Header: 'Name Foo',
         accessor: 'name',
-        Filter: TextSearchFilter,
+        filter: { _type: 'string' },
       },
       {
         Header: 'Age',
         accessor: 'age',
-        Filter: NumberSelectionFilter,
+        filter: { _type: 'number' },
       },
       {
         Header: 'Verified',
         accessor: 'verified',
-        Filter: StatusFilter([
-          { color: '#00ff00', label: 'Yes', value: 'true' },
-          { color: '#ff0000', label: 'No', value: 'false' },
-        ]),
+        disableSortBy: true,
+        filter: {
+          _type: 'status',
+          bag: [
+            { color: '#00ff00', label: 'Yes', value: 'true' },
+            { color: '#ff0000', label: 'No', value: 'false' },
+          ],
+        },
       },
       {
         Header: 'Author',
         accessor: 'author',
-        Filter: ListSelectionFilter([
-          { id: 'fb', name: 'Facebook' },
-          { id: 'ggl', name: 'Google' },
-        ]),
+        filter: {
+          _type: 'list',
+          bag: [
+            { id: 'fb', name: 'Facebook' },
+            { id: 'ggl', name: 'Google' },
+          ],
+        },
+      },
+      {
+        Header: 'Actions',
+        accessor: '__action__',
+        disableSortBy: true,
+        Cell: () => {
+          return <p>Some Action</p>;
+        },
       },
     ],
     tableData: {
