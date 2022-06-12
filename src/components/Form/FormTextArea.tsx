@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledTextarea } from '../../styles/Element';
+import styled from 'styled-components';
 import { StyledInput } from './Styles';
 import { ISharedFormInput } from './_types';
 import { wrapLabelAndError, generateClassNames } from './_wrapForm';
@@ -13,8 +13,8 @@ export const FormTextArea: React.FC<IFormTextArea> = (
   const { input, rows = 3, label, disabled, meta } = formInput;
 
   return wrapLabelAndError(
-    <StyledInput
-      as={StyledTextarea}
+    <StyledTextArea
+      as="textarea"
       {...input}
       rows={rows}
       placeholder={label}
@@ -22,7 +22,11 @@ export const FormTextArea: React.FC<IFormTextArea> = (
       disabled={disabled}
     >
       {input.value}
-    </StyledInput>,
+    </StyledTextArea>,
     formInput
   );
 };
+
+const StyledTextArea = styled(StyledInput)`
+  height: initial;
+`;

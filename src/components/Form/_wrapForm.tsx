@@ -11,7 +11,7 @@ import {
   StyledRequiredAsterick,
 } from './Styles';
 
-const isFormMetaWithError = (meta: FieldMetaState<any>) =>
+export const isFormMetaWithError = (meta: FieldMetaState<any>) =>
   meta.touched && meta.invalid && meta.error;
 
 export const wrapLabelAndError = (

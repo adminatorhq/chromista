@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import styled from 'styled-components';
 import { ISharedFormInput } from '../_types';
 import { wrapLabelAndError } from '../_wrapForm';
-// import './styles.scss';
 
 interface IFormRichText extends ISharedFormInput {
   nothingForNow?: string;
@@ -35,13 +35,44 @@ export const FormRichTextArea: React.FC<IFormRichText> = (
     disabled,
   } = formInput;
   return wrapLabelAndError(
-    <ReactQuill
-      {...inputProps}
-      readOnly={disabled}
-      modules={modules}
-      placeholder={'Write something...'}
-      theme="snow"
-    />,
+    <Root>
+      <ReactQuill
+        {...inputProps}
+        readOnly={disabled}
+        modules={modules}
+        placeholder={'Write something...'}
+        theme="snow"
+      />
+    </Root>,
     formInput
   );
 };
+
+const Root = styled.div`
+  .ql-editor {
+    min-height: 18em;
+    border: none;
+    border-radius: 0;
+  }
+
+  .ql-toolbar.ql-snow {
+    display: block;
+    background: #f1f5fa;
+    color: #595959;
+    border: 1px solid #e5ebf6;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  .ql-container {
+    background: #fff;
+    border: 1px solid #e3ebf6;
+  }
+
+  .ql-container.ql-snow {
+    border: 1px solid #e5ebf6;
+    border-radius: 0 0 0.25rem 0.25rem;
+  }
+  .ql-snow .ql-picker {
+    color: #595959;
+  }
+`;

@@ -26,7 +26,7 @@ interface IFormMultiSelect {
 
 export const FormMultiSelect: React.FC<IFormMultiSelect> = ({
   selectData,
-  values,
+  values = [],
   onChange,
 }): JSX.Element => {
   return (

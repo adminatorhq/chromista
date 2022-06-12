@@ -48,6 +48,10 @@ export const DropDownMenu: React.FC<IDropDownMenu> = ({
 
   const { IconComponent, onClick, label } = currentMenuItem;
 
+  if(menuItems.length === 0){
+    return null;
+  }
+
   return (
     <StyledDropDown
       as={Dropdown}
