@@ -52,6 +52,30 @@ export const DropDownMenu: React.FC<IProps> = ({
     return null;
   }
 
+  const currentItem = (
+    <>
+      {' '}
+      {isMakingActionRequest ? (
+        <FontAwesomeIcon icon={faSpinner} spin={true} />
+      ) : IconComponent ? (
+        <IconComponent size="14" />
+      ) : null}{' '}
+      {label}
+    </>
+  );
+
+  if (menuItems.length === 1) {
+    return (
+      <StyledSoftButton
+        size="sm"
+        disabled={isMakingActionRequest || disabled}
+        onClick={() => onClick()}
+      >
+        {currentItem}
+      </StyledSoftButton>
+    );
+  }
+
   return (
     <StyledDropDown
       as={Dropdown}
@@ -64,13 +88,7 @@ export const DropDownMenu: React.FC<IProps> = ({
         disabled={isMakingActionRequest || disabled}
         onClick={() => onClick()}
       >
-        {' '}
-        {isMakingActionRequest ? (
-          <FontAwesomeIcon icon={faSpinner} spin={true} />
-        ) : IconComponent ? (
-          <IconComponent size="14" />
-        ) : null}{' '}
-        {label}
+        {currentItem}
       </StyledCurrentButton>
       <StyledDropDownToggle as={DropdownToggle} tag="div">
         <StyledDropDownIcon size="sm">

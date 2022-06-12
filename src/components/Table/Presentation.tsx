@@ -7,7 +7,6 @@ import { ErrorAlert } from '../Alert';
 import { SimpleSelect } from '../Form';
 import { EmptyWrapper } from '../EmptyWrapper';
 import { ITableFilter, ITableProps } from './Table.types';
-import { SoftButton } from '../Button/SoftButton';
 import styled from 'styled-components';
 import { DEFAULT_TABLE_PARAMS } from './constants';
 import { IBEPaginatedDataState, PaginatedData } from '@gothicgeeks/shared';
@@ -360,9 +359,4 @@ const StyledOverlayText = styled.div`
   font-size: 50px;
   color: white;
   transform: translate(-50%, -50%);
-`;
-
-const StyledSoftButton = styled(SoftButton)`
-  margin-bottom: 0.5rem;
-  float: right;
 `;
