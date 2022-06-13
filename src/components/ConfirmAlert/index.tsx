@@ -1,51 +1,65 @@
 import React from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import styled, { keyframes } from 'styled-components';
+import { Z_INDEXES } from '../../constants/zIndex';
+import { Stack } from '../../ui-blocks';
 
-interface IConfirmAlert {
+interface IProps {
   action: () => void;
   title: string;
   message: string;
 }
 
-export const ConfirmAlert = ({ action, title, message }: IConfirmAlert) =>
+export const ConfirmAlert = (props: IProps) =>
   confirmAlert({
     customUI: ({ onClose }) => {
-      return (
-        <StyledOverlay>
-          <StyledBody>
-            <StyledTitle>{title}</StyledTitle>
-            {message}
-            <StyledButtonGroup>
-              <StyledButton
-                onClick={() => {
-                  action();
-                  onClose();
-                }}
-              >
-                Yes
-              </StyledButton>
-              <StyledButton onClick={onClose}>No</StyledButton>
-            </StyledButtonGroup>
-          </StyledBody>
-        </StyledOverlay>
-      );
+      return <Presentation {...props} onClose={onClose} />;
     },
   });
 
-const StyledButton = styled.button`
+export interface IPresentationProps extends IProps {
+  onClose: () => void;
+}
+
+export const Presentation: React.FC<IPresentationProps> = ({
+  action,
+  message,
+  onClose,
+  title,
+}) => (
+  <StyledOverlay>
+    <StyledBody>
+      <StyledTitle>{title}</StyledTitle>
+      {message}
+      <StyledButtonGroup>
+        <StyledButton
+          danger={true}
+          onClick={() => {
+            action();
+            onClose();
+          }}
+        >
+          Yes
+        </StyledButton>
+        <StyledButton onClick={onClose}>No</StyledButton>
+      </StyledButtonGroup>
+    </StyledBody>
+  </StyledOverlay>
+);
+
+const StyledButton = styled.button<{ danger?: boolean }>`
   outline: none;
   background: #fff;
-  border: 1px solid #1761fd;
+  border: 1px solid ${props => (props.danger ? '#f5325c' : '#1761fd')};
   display: inline-block;
   padding: 6px 18px;
-  color: #1761fd;
+  color: ${props => (props.danger ? '#f5325c' : '#1761fd')};
   margin-right: 10px;
   border-radius: 5px;
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    background: #1761fd;
+    background: ${props => (props.danger ? '#f5325c' : '#1761fd')};
     color: #fff;
   }
 `;
@@ -86,18 +100,18 @@ from {
 }
 `;
 
-const StyledOverlay = styled.div`
+const StyledOverlay = styled(Stack).attrs({
+  direction: 'column',
+  align: 'center',
+  justify: 'center',
+})`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 99;
+  z-index: ${Z_INDEXES.confirmDelete};
   background: rgba(255, 255, 255, 0.7);
-  display: flex;
-  justify-content: center;
-  -ms-align-items: center;
-  align-items: center;
   opacity: 0;
   animation: ${fadeIn} 0.1s 0.1s forwards;
 `;

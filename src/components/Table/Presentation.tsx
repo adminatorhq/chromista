@@ -264,7 +264,7 @@ const StyledSorting = styled.span`
 
   &.desc:after,
   &.asc:before {
-    color: #1761fd;
+    color: ${props => props.theme.colors.primary};
     opacity: 1;
   }
 `;
@@ -284,14 +284,14 @@ const StyledPagination = styled.div`
     padding: 0.25rem 0.5rem;
     font-size: 0.71rem;
     line-height: 1.8;
-    color: #1761fd;
+    color: ${props => props.theme.colors.primary};
   }
 
   .page-item.active {
     .page-link {
       z-index: 3;
-      background-color: #1761fd;
-      border-color: #1761fd;
+      background-color: ${props => props.theme.colors.primary};
+      border-color: ${props => props.theme.colors.primary};
     }
   }
 

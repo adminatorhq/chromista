@@ -179,7 +179,7 @@ const StyledIcon = styled.span`
 const StyledOrderButton = styled(StyledBaseButton)`
   padding: 0 0.1rem;
   line-height: 0.8;
-  color: #1761fd;
+  color: ${props => props.theme.colors.primary};
   .active & {
     color: #fff;
   }
