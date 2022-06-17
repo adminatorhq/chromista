@@ -6,6 +6,7 @@ import {
   StyledOutlineButton,
   IStyledBaseButton,
 } from '../Button';
+import { Stack } from '../../../ui-blocks';
 
 interface IFormButton extends IStyledBaseButton {
   text: string;
@@ -22,7 +23,6 @@ export const FormButton: React.FC<IFormButton> = ({
   onClick,
   isInverse,
   size = 'sm',
-  float = 'right',
   color = 'primary',
   ...rest
 }) => {
@@ -33,24 +33,21 @@ export const FormButton: React.FC<IFormButton> = ({
     onClick,
     type: 'submit' as 'submit' | 'button' | 'reset' | undefined,
     size,
-    float,
   };
 
   const toRender = actionButtonIsMakingRequest(isMakingRequest, text);
 
   if (isInverse) {
     return (
-      <>
+      <Stack justify="end">
         <StyledOutlineButton {...options}>{toRender}</StyledOutlineButton>
-        {float && <div style={{ clear: 'both' }} />}
-      </>
+      </Stack>
     );
   }
   return (
-    <>
+    <Stack justify="end">
       <StyledButton {...options}>{toRender}</StyledButton>
-      {float && <div style={{ clear: 'both' }} />}
-    </>
+    </Stack>
   );
 };
 

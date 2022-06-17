@@ -2,9 +2,7 @@ import React, { ReactNode } from 'react';
 import * as StyledGrid from 'styled-bootstrap-grid';
 
 export const SectionRow: React.FC<{ children: ReactNode }> = ({ children }) => (
-  <StyledGrid.Container fluid={true}>
-    <StyledGrid.Row>{children}</StyledGrid.Row>
-  </StyledGrid.Container>
+  <StyledGrid.Row>{children}</StyledGrid.Row>
 );
 
 export const SectionLeft: React.FC<{ children: ReactNode }> = ({

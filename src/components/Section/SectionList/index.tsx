@@ -97,7 +97,6 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
                       text={text}
                       key={text}
                       size="xs"
-                      float=""
                       isMakingRequest={isMakingRequest}
                       isInverse={isInverse}
                       onClick={event => {

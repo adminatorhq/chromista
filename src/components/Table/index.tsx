@@ -32,3 +32,6 @@ export const Table: React.FC<ITableProps> = ({ url, ...props }) => {
 // https://react-table.tanstack.com/docs/examples/column-resizing
 // https://react-table.tanstack.com/docs/examples/full-width-table
 // https://react-table.tanstack.com/docs/examples/full-width-resizable-table
+
+// https://cardinal.io/license
+// https://cardinal.io/settings

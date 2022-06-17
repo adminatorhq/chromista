@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { StyledSoftButton } from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyledMutedText } from '../../styles/Text';
 import { Icon } from 'react-feather';
 
@@ -38,6 +38,10 @@ export const DropDownMenu: React.FC<IProps> = ({
   const [currentMenuItem, setCurrentMenuItem] = useState<IDropDownMenuItem>(
     menuItems[0]
   );
+
+  useEffect(() => {
+    setCurrentMenuItem(menuItems[0]);
+  }, [menuItems]);
 
   const onMenuItemClick = (menuIndex: number) => {
     const menuItem = menuItems[menuIndex];

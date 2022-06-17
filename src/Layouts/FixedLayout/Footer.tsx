@@ -19,7 +19,6 @@ const StyledFooter = styled.footer`
 `;
 
 const StyledText = styled.p`
-  float: right;
   display: none;
   @media (min-width: 576px) {
     display: inline-block;
