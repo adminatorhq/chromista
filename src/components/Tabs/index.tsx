@@ -7,10 +7,11 @@ export interface IProps {
     label: string;
     content: JSX.Element;
   }[];
+  defaultLabel?: string;
 }
 
-export const Tabs: React.FC<IProps> = ({ contents }) => {
-  const [activeTab, setActiveTab] = useState(contents[0].label);
+export const Tabs: React.FC<IProps> = ({ contents, defaultLabel }) => {
+  const [activeTab, setActiveTab] = useState(defaultLabel || contents[0].label);
 
   const toggle = (tabIndex: string) => {
     if (activeTab !== tabIndex) {
