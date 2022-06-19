@@ -13,6 +13,7 @@ export type StackProps = {
     | 'self-start'
     | 'self-end'
     | 'flex-start'
+    | 'baseline'
     | 'flex-end'
     | 'space-between'
     | 'space-around'

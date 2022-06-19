@@ -20,19 +20,49 @@ const DemoForm = () => {
       render={({ handleSubmit }) => {
         return (
           <form onSubmit={handleSubmit}>
-            <Field name="foo1" validateFields={[]}>
+            <Field name="checkbox" validateFields={[]}>
               {renderProps => (
                 <FormCheckBox label="Example Checkbox Input" {...renderProps} />
               )}
             </Field>
 
-            <Field name="foo2" validateFields={[]}>
+            <Field name="exampleText" validateFields={[]}>
               {renderProps => (
                 <FormInput label="Example Text Input" {...renderProps} />
               )}
             </Field>
 
-            <Field name="foo3" validateFields={[]}>
+            <Field name="requiredText" validateFields={[]}>
+              {renderProps => (
+                <FormInput
+                  label="Required Text Input"
+                  required={true}
+                  {...renderProps}
+                />
+              )}
+            </Field>
+
+            <Field name="descriptionText" validateFields={[]}>
+              {renderProps => (
+                <FormInput
+                  description="Some Description here"
+                  label="With description"
+                  {...renderProps}
+                />
+              )}
+            </Field>
+
+            <Field name="rightLinkInput" validateFields={[]}>
+              {renderProps => (
+                <FormInput
+                  rightLink={{ label: 'Please click me', link: '/some-where' }}
+                  label="With right link"
+                  {...renderProps}
+                />
+              )}
+            </Field>
+
+            <Field name="baseSelect" validateFields={[]}>
               {renderProps => (
                 <FormSelect
                   selectData={[
@@ -58,13 +88,13 @@ const DemoForm = () => {
               )}
             </Field> */}
 
-            <Field name="foo4" validateFields={[]}>
+            <Field name="dateInput" validateFields={[]}>
               {renderProps => (
                 <FormDateInput label="Example Date Input" {...renderProps} />
               )}
             </Field>
 
-            <Field name="foo3" validateFields={[]}>
+            <Field name="numberInput" validateFields={[]}>
               {renderProps => (
                 <FormNumberInput
                   label="Example Number Input"
@@ -73,7 +103,7 @@ const DemoForm = () => {
               )}
             </Field>
 
-            <Field name="foo6" validateFields={[]}>
+            <Field name="textArea" validateFields={[]}>
               {renderProps => (
                 <FormTextArea
                   label="Example Text Area Input"
@@ -82,7 +112,7 @@ const DemoForm = () => {
               )}
             </Field>
 
-            <Field name="foo5" validateFields={[]}>
+            <Field name="richText" validateFields={[]}>
               {renderProps => (
                 <FormRichTextArea label="Example Rich Text" {...renderProps} />
               )}

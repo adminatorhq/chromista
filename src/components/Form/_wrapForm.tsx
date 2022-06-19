@@ -10,6 +10,8 @@ import {
   StyledFormFeedback,
   StyledRequiredAsterick,
 } from './Styles';
+import { Stack } from '../../ui-blocks';
+import { SoftButton } from '../Button';
 
 export const isFormMetaWithError = (meta: FieldMetaState<any>) =>
   meta.touched && meta.invalid && meta.error;
@@ -19,30 +21,42 @@ export const wrapLabelAndError = (
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >,
-  { meta, label, input, required, description, sm }: ISharedFormInput
+  { meta, label, input, required, description, sm, rightLink }: ISharedFormInput
 ) => {
   return (
     <StyledFormGroup>
       <>
-        {label && (
-          <StyledFormLabel sm={sm} htmlFor={input.name}>
-            {label}{' '}
-            {required ? (
-              <StyledRequiredAsterick>*</StyledRequiredAsterick>
+        <Stack justify="space-between" align="baseline">
+          <div>
+            {label && (
+              <StyledFormLabel sm={sm} htmlFor={input.name}>
+                {label}{' '}
+                {required ? (
+                  <StyledRequiredAsterick>*</StyledRequiredAsterick>
+                ) : null}
+              </StyledFormLabel>
+            )}
+            {description ? (
+              <>
+                {' '}
+                <HelpCircle
+                  data-for="form-wrapper"
+                  size="15"
+                  data-tip={description}
+                />
+                <Tooltip id="form-wrapper" />
+              </>
             ) : null}
-          </StyledFormLabel>
-        )}
-        {description ? (
-          <>
-            {' '}
-            <HelpCircle
-              data-for="form-wrapper"
-              size="15"
-              data-tip={description}
+          </div>
+          {rightLink && (
+            <SoftButton
+              to={rightLink.link}
+              size="xs"
+              icon="settings"
+              label={rightLink.label}
             />
-          </>
-        ) : null}
-        {description ? <Tooltip id="form-wrapper" /> : null}
+          )}
+        </Stack>
         {formComponent}
         <StyledFormFeedback sm={sm}>
           {isFormMetaWithError(meta)}&nbsp;
