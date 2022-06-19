@@ -54,12 +54,8 @@ export const wrapLabelAndError = (
 
 // TODO use meta.validating to show a loading indicator that this form is perform an async validation
 
-export const generateClassNames = (
-  meta: FieldMetaState<any>,
-  constantClassNames = 'form-control'
-): string => {
+export const generateClassNames = (meta: FieldMetaState<any>): string => {
   return classnames({
-    [constantClassNames]: true,
     invalid: !!isFormMetaWithError(meta),
   });
 };

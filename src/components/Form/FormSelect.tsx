@@ -80,7 +80,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
         }
         input.onChange(value);
       }}
-      className={generateClassNames(meta, '')}
+      className={generateClassNames(meta)}
       isDisabled={disabled}
       options={selectDataWithDefault}
       isOptionDisabled={(option: ISelectData) =>

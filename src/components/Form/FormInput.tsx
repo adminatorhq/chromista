@@ -4,7 +4,7 @@ import { ISharedFormInput } from './_types';
 import { wrapLabelAndError, generateClassNames } from './_wrapForm';
 
 interface IFormInput extends ISharedFormInput {
-  type?: 'email' | 'password';
+  type?: 'email' | 'password' | 'url' | 'color';
 }
 
 export const FormInput: React.FC<IFormInput> = (formInput): JSX.Element => {
