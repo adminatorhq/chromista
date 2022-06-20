@@ -12,9 +12,14 @@ interface IProps {
 export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
   const isSidebarOpen = false;
 
-  const [selectMiniSideBar, currentMiniSideBar] = useSideBarStore(state => [
+  const [
+    selectMiniSideBar,
+    currentMiniSideBar,
+    closeFullSideBar,
+  ] = useSideBarStore(state => [
     state.selectMiniSideBar,
     state.currentMiniSideBar,
+    state.closeFullSideBar,
   ]);
 
   const clearDeepLinks = useNestedNavStore(state => state.clear);
@@ -26,7 +31,12 @@ export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
         link,
         title,
         action: () => {
-          selectMiniSideBar(title as string);
+          if (link) {
+            closeFullSideBar();
+            clearDeepLinks();
+            return;
+          }
+          selectMiniSideBar(title);
           clearDeepLinks();
         },
       };

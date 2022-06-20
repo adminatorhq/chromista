@@ -82,16 +82,6 @@ export default {
         title: 'No action just links',
         icon: HardDrive,
         link: '/foo',
-        viewMenuItems: {
-          error: '',
-          isLoading: false,
-          data: [
-            { title: 'Foo', link: 'link1' },
-            { title: 'Foo2', link: 'link2' },
-            { title: 'Foo3', action: action('Foo 3') },
-          ],
-          isRefetching: false,
-        } as DataStateKeys<INavigationMenuItems[]>,
         description: 'Some Description here',
       },
     ],

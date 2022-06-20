@@ -59,7 +59,13 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
           <StyledLeftSideNavMenuList key={title}>
             {link ? (
               <Link href={link || ''} passHref={true}>
-                <StyledLeftSideNavMenuListAnchor $isSubMenu={isSubMenu}>
+                <StyledLeftSideNavMenuListAnchor
+                  $isSubMenu={isSubMenu}
+                  onClick={() => {
+                    // Basically to clear the current content
+                    action?.();
+                  }}
+                >
                   {content}
                 </StyledLeftSideNavMenuListAnchor>
               </Link>
