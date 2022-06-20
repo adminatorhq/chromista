@@ -20,12 +20,13 @@ export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
   const clearDeepLinks = useNestedNavStore(state => state.clear);
 
   const navigationToUse = useMemo(() => {
-    return navigation.map(({ link, ...rest }) => {
+    return navigation.map(({ link, title, ...rest }) => {
       return {
         ...rest,
         link,
+        title,
         action: () => {
-          selectMiniSideBar(link as string);
+          selectMiniSideBar(title as string);
           clearDeepLinks();
         },
       };

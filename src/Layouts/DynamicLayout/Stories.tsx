@@ -51,18 +51,6 @@ export default {
         description: 'Some Description here',
       },
       {
-        title: 'Loading Menu Items',
-        icon: HardDrive,
-        action: action('menu Action'),
-        viewMenuItems: {
-          error: '',
-          isLoading: true,
-          data: [],
-          isRefetching: false,
-        } as DataStateKeys<INavigationMenuItems[]>,
-        description: 'Some Description here',
-      },
-      {
         title: 'Empty Menu Items',
         icon: HardDrive,
         action: action('menu Action'),

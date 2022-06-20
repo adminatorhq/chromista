@@ -145,7 +145,7 @@ export const SectionBox: React.FC<IProps> = ({
 };
 
 const StyledFullHeight = styled.div`
-  // height: 100vh;
+  min-height: 100vh;
 `;
 
 const StyledDeleteButton = styled(DeleteButton)`
