@@ -5,5 +5,4 @@ export interface ISideBarNavigation {
   icon: Icon;
   link?: string;
   action?: () => void;
-  subMenu?: ISideBarNavigation[];
 }

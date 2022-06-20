@@ -71,9 +71,9 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
     <Root show={!!currentMiniSideBar && isFullSideBarOpen}>
       <StyledHideScrollbar>
         {selectionView.map(({ view, link, viewMenuItems }) => {
-          if (!view && !viewMenuItems) {
+          if (!view && !viewMenuItems && !link) {
             throw new Error(
-              'Please pass what to render in the view, `view` or `viewMenuItems` is required to do this'
+              'Please pass what to render in the view, The view` or `viewMenuItems` is required to do this or pass the `link` prop to just go to a page'
             );
           }
           return (

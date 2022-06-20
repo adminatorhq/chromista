@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { ISideBarNavigation } from './FixedLayout/types';
-import { ChevronRight, ChevronDown } from 'react-feather';
+import { ChevronRight } from 'react-feather';
 import Link from 'next/link';
 import { StringUtils } from '@gothicgeeks/shared';
 
@@ -24,15 +24,13 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
   showDash,
   currentLink = 'hopefully this will never be true',
 }) => {
-  const [currentDropDown, setCurrentDropDown] = React.useState('');
   return (
     <>
       {showDash && navigation.length ? <StyledDash /> : null}
       {label && isSidebarOpen && navigation.length ? (
         <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
       ) : null}
-      {navigation.map(({ title, link, icon, action, subMenu }) => {
-        const showSubMenu = currentDropDown === title;
+      {navigation.map(({ title, link, icon, action }) => {
         const isActive = currentLink === link;
         const content = (
           <>
@@ -50,65 +48,39 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
             >
               {title}
             </StyledLeftSideNavMenuText>
-            {subMenu && isSidebarOpen ? (
+            {isSidebarOpen ? (
               <StyledMenuArrow>
-                {showSubMenu ? (
-                  <ChevronDown size={ARROW_SIZE} />
-                ) : (
-                  <ChevronRight size={ARROW_SIZE} />
-                )}
+                <ChevronRight size={ARROW_SIZE} />
               </StyledMenuArrow>
             ) : null}
           </>
         );
         return (
           <StyledLeftSideNavMenuList key={title}>
-            {action || subMenu ? (
-              <StyledLeftSideNavMenuListAnchor
-                $isSubMenu={isSubMenu}
-                $isActive={isActive}
-                as={StyledLinkLikeButton}
-                onClick={() => {
-                  if (action) {
-                    action();
-                  }
-                  if (subMenu) {
-                    if (showSubMenu) {
-                      setCurrentDropDown('');
-                    } else {
-                      setCurrentDropDown(title);
-                    }
-                  }
-                }}
-              >
-                {content}
-              </StyledLeftSideNavMenuListAnchor>
-            ) : (
+            {link ? (
               <Link href={link || ''} passHref={true}>
                 <StyledLeftSideNavMenuListAnchor $isSubMenu={isSubMenu}>
                   {content}
                 </StyledLeftSideNavMenuListAnchor>
               </Link>
+            ) : (
+              <StyledLeftSideNavMenuListAnchor
+                $isSubMenu={isSubMenu}
+                $isActive={isActive}
+                as={StyledLinkLikeButton}
+                onClick={() => {
+                  action?.();
+                }}
+              >
+                {content}
+              </StyledLeftSideNavMenuListAnchor>
             )}
-            {subMenu && showSubMenu && isSidebarOpen ? (
-              <StyledSecondLevelList>
-                <RenderNavigation
-                  navigation={subMenu}
-                  isSidebarOpen={true}
-                  isSubMenu={true}
-                />
-              </StyledSecondLevelList>
-            ) : null}
           </StyledLeftSideNavMenuList>
         );
       })}
     </>
   );
 };
-
-const StyledSecondLevelList = styled.ul`
-  padding: 0 0 0 15px;
-`;
 
 const StyledLinkLikeButton = styled.button`
   &:focus {

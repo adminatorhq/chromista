@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from 'react-feather';
 import { RenderList } from '../../RenderList';
 import { SectionBox } from '../SectionBox';
 import { SectionListItem } from '../SectionList';
@@ -6,7 +7,8 @@ import { SectionListItem } from '../SectionList';
 interface IMenuItem {
   name: string;
   link: string;
-  disabled: boolean;
+  IconComponent?: Icon;
+  disabled?: boolean;
 }
 
 interface IMenuSection {
@@ -28,8 +30,9 @@ export const MenuSection: React.FC<IMenuSection> = ({
         <SectionListItem
           label={menuItem.name}
           active={menuItem.link.includes(`${currentMenuItem}`)}
-          disabled={menuItem.disabled}
+          disabled={!!menuItem.disabled}
           key={menuItem.name}
+          IconComponent={menuItem.IconComponent}
           to={menuItem.link}
         />
       )}
