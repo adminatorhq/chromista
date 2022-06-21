@@ -9,7 +9,6 @@ import {
   StyledCard,
   StyledCardBody,
   StyledCardHeader,
-  StyledCardTitle,
 } from '../../../styles/Card';
 import { StyledMutedText } from '../../../styles/Text';
 import { HelpCircle } from 'react-feather';
@@ -143,6 +142,19 @@ export const SectionBox: React.FC<IProps> = ({
     </StyledCard>
   );
 };
+
+const StyledCardTitle = styled.h4`
+  margin-bottom: 0.75rem;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 30px;
+  margin: 0;
+  color: ${props => props.theme.text.main};
+  text-shadow: 0 0 1px rgba(241, 245, 250, 0.1);
+  font-family: 'Poppins', sans-serif;
+`;
 
 const StyledFullHeight = styled.div`
   min-height: 100vh;

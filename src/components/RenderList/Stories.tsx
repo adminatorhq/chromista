@@ -63,5 +63,5 @@ Error.args = {
 
 export const Sorted = Template.bind({});
 Sorted.args = {
-  sort: true,
+  sortByName: true,
 };

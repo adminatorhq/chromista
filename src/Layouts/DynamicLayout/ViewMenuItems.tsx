@@ -16,7 +16,6 @@ export const ViewMenuItems: React.FC<Props> = ({ viewMenuItems }) => {
         ...rest,
       }))}
       error={viewMenuItems?.error}
-      sort={true}
       render={({ name, link, action }) => (
         <SectionListItem label={name} to={link} onClick={action} key={name} />
       )}

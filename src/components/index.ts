@@ -13,6 +13,7 @@ export * from './KeyValueDetails';
 export * from './Lists';
 export * from './ProgressBar';
 export { RenderList } from './RenderList';
+export { SortList } from './SortList';
 export * from './Section';
 export * from './SelectAnItem';
 export * from './Skeleton';

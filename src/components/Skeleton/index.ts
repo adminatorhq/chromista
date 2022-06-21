@@ -1,3 +1,3 @@
 export { ListSkeleton } from './ListSkeleton';
-export { FormSkeleton } from './FormSkeleton';
+export { FormSkeleton, FormSkeletonSchema } from './FormSkeleton';
 export { BlockSkeleton } from './BlockSkeleton';

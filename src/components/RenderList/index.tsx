@@ -13,7 +13,7 @@ export interface IProps<T> {
   singular?: string;
   error?: unknown;
   notSearchable?: boolean;
-  sort?: boolean;
+  sortByName?: boolean;
   render: (item: T, index: number) => JSX.Element;
   searchFunction?: (items: T[], searchString: string) => T[];
 }
@@ -32,7 +32,7 @@ export function RenderList<T extends { name: string }>({
   items,
   newItemLink,
   error,
-  sort,
+  sortByName,
   notSearchable,
   singular = 'Item',
   render,
@@ -60,7 +60,7 @@ export function RenderList<T extends { name: string }>({
     );
   }
 
-  const itemsToRender = sort
+  const itemsToRender = sortByName
     ? [...items].sort((a, b) => a.name.localeCompare(b.name))
     : items;
 
