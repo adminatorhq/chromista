@@ -8,6 +8,7 @@ import { EmptyWrapper } from '../EmptyWrapper';
 import { Spacer, Stack } from '../../ui-blocks';
 import { FormButton } from '../Button';
 import { Move } from 'react-feather';
+import { HSpacer } from '../../ui-blocks/Spacer';
 
 function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
   const startIndex = fromIndex < 0 ? array.length + fromIndex : fromIndex;
@@ -31,7 +32,7 @@ export interface IProps<T> {
   onSave: (data: string[]) => Promise<void>;
 }
 
-export function SortList<T extends { name: string }>({
+export function SortList<T extends { value: string; label?: string }>({
   data,
   onSave,
 }: IProps<T>) {
@@ -63,31 +64,14 @@ export function SortList<T extends { name: string }>({
     return <EmptyWrapper text={`Cant sort ${itemsLength} items`} />;
   }
 
-  return (
-    <SectionList>
-      <SortableList
-        onSortEnd={onSortEnd}
-        className="list"
-        draggedItemClassName="dragged"
-      >
-        {sortedData.map(item => (
-          <SortableItem key={item.name}>
-            <div className="item">
-              <SectionListItem
-                IconComponent={Move}
-                label={item.name}
-                toNoWhere={true}
-              />
-            </div>
-          </SortableItem>
-        ))}
-      </SortableList>
-      <Spacer />
+  const saveChanges = (
+    <>
+      <Spacer size="sm" />
       <Stack>
         <FormButton
           onClick={async () => {
             setIsMakingRequest(true);
-            await onSave(sortedData.map(({ name }) => name));
+            await onSave(sortedData.map(({ value }) => value));
             setIsMakingRequest(false);
             setTouched(false);
           }}
@@ -95,7 +79,36 @@ export function SortList<T extends { name: string }>({
           disabled={!touched}
           isMakingRequest={isMakingRequest}
         />
+        <HSpacer size="sm" />
       </Stack>
+      <Spacer size="sm" />
+    </>
+  );
+
+  return (
+    <SectionList>
+      {sortedData.length >
+        THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP && (
+        <>{saveChanges}</>
+      )}
+      <SortableList
+        onSortEnd={onSortEnd}
+        className="list"
+        draggedItemClassName="dragged"
+      >
+        {sortedData.map(item => (
+          <SortableItem key={item.value}>
+            <SectionListItem
+              IconComponent={Move}
+              label={item.label || item.value}
+              toNoWhere={true}
+            />
+          </SortableItem>
+        ))}
+      </SortableList>
+      {saveChanges}
     </SectionList>
   );
 }
+
+const THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP = 10;
