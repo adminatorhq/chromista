@@ -279,6 +279,28 @@ body.react-confirm-alert-body-element {
   top: 0;
   left: 0;
 }
+
+.fade {
+  transition: opacity .15s linear;
+}
+
+.offcanvas-backdrop{
+position: fixed;
+top: 0;
+left: 0;
+z-index: 1040;
+width: 100vw;
+height: 100vh;
+background-color: #000;
+
+  &.fade{
+      opacity: 0;
+  }
+
+  &.show{
+    opacity: 0.5;
+  }
+}
 `;
 
 // :root {
