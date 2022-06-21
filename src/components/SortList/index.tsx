@@ -98,11 +98,13 @@ export function SortList<T extends { value: string; label?: string }>({
       >
         {sortedData.map(item => (
           <SortableItem key={item.value}>
-            <SectionListItem
-              IconComponent={Move}
-              label={item.label || item.value}
-              toNoWhere={true}
-            />
+            <div className="item">
+              <SectionListItem
+                IconComponent={Move}
+                label={item.label || item.value}
+                toNoWhere={true}
+              />
+            </div>
           </SortableItem>
         ))}
       </SortableList>

@@ -4,10 +4,6 @@ import { action } from '@storybook/addon-actions';
 import { SortList, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
-interface IDemoType {
-  name: string;
-}
-
 export default {
   title: 'Components/SortList',
   component: SortList,
@@ -17,18 +13,18 @@ export default {
       isLoading: false,
       error: '',
       data: [
-        { name: 'Planck' },
-        { name: 'Faraday' },
-        { name: 'Newton' },
-        { name: 'Einstein' },
-        { name: 'Bohr' },
-        { name: 'Curie' },
+        { value: 'Planck', label: 'Max Planck' },
+        { value: 'Faraday' },
+        { value: 'Newton' },
+        { value: 'Einstein' },
+        { value: 'Bohr' },
+        { value: 'Curie' },
       ],
     },
   },
 };
 
-const Template: Story<IProps<IDemoType>> = args => (
+const Template: Story<IProps<{value: string, label?: string}>> = args => (
   <AppWrapper>
     <SortList {...args} />
   </AppWrapper>
@@ -71,7 +67,7 @@ export const SingleItem = Template.bind({});
 SingleItem.args = {
   data: {
     isLoading: false,
-    data: [{ name: 'Foo' }],
+    data: [{ value: 'Foo' }],
     error: '',
     isRefetching: false,
   },
