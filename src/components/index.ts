@@ -12,6 +12,7 @@ export * from './Form';
 export * from './KeyValueDetails';
 export * from './Lists';
 export * from './ProgressBar';
+export { OffCanvas } from './OffCanvas';
 export { RenderList } from './RenderList';
 export { SortList } from './SortList';
 export * from './Section';
