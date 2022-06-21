@@ -1,5 +1,5 @@
 {
-  "version": "0.2.37",
+  "version": "0.2.38",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -78,7 +78,6 @@
     "@types/react-datepicker": "^4.4.1",
     "@types/react-final-form-listeners": "^1.0.0",
     "@types/styled-components": "^5.1.25",
-    "array-move": "^4.0.0",
     "country-currency-map": "^2.1.7",
     "lodash-es": "^4.17.21",
     "next": "^12.1.6",

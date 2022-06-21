@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import SortableList, { SortableItem } from 'react-easy-sort';
-import { arrayMoveImmutable } from 'array-move';
 import { SectionList, SectionListItem } from '../Section/SectionList';
 import { DataStateKeys } from '@gothicgeeks/shared';
 import { ErrorAlert } from '../Alert';
@@ -9,6 +8,23 @@ import { EmptyWrapper } from '../EmptyWrapper';
 import { Spacer, Stack } from '../../ui-blocks';
 import { FormButton } from '../Button';
 import { Move } from 'react-feather';
+
+function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
+  const startIndex = fromIndex < 0 ? array.length + fromIndex : fromIndex;
+
+  if (startIndex >= 0 && startIndex < array.length) {
+    const endIndex = toIndex < 0 ? array.length + toIndex : toIndex;
+
+    const [item] = array.splice(fromIndex, 1);
+    array.splice(endIndex, 0, item);
+  }
+}
+
+function arrayMoveImmutable<T>(array: T[], fromIndex: number, toIndex: number) {
+  array = [...array];
+  arrayMoveMutable(array, fromIndex, toIndex);
+  return array;
+}
 
 export interface IProps<T> {
   data: DataStateKeys<T[]>;
