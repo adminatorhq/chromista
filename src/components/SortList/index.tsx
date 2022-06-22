@@ -73,9 +73,11 @@ export function SortList<T extends { value: string; label?: string }>({
         <FormButton
           onClick={async () => {
             setIsMakingRequest(true);
-            await onSave(sortedData.map(({ value }) => value));
-            setIsMakingRequest(false);
-            setTouched(false);
+            setTimeout(async () => {
+              await onSave(sortedData.map(({ value }) => value));
+              setIsMakingRequest(false);
+              setTouched(false);
+            }, 0);
           }}
           text={'Save Order'}
           disabled={!touched}
