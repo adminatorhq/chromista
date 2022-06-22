@@ -42,8 +42,10 @@ export function SortList<T extends { value: string; label?: string }>({
   const [sortedData, setSortedData] = useState<Array<T>>([]);
 
   useEffect(() => {
-    setSortedData(data.data || []);
-  }, [data.data]);
+    if (!isMakingRequest) {
+      setSortedData(data.data || []);
+    }
+  }, [data.data, isMakingRequest]);
 
   const onSortEnd = (oldOrder: number, newOrder: number) => {
     setTouched(true);
