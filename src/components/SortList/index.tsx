@@ -38,17 +38,11 @@ export function SortList<T extends { value: string; label?: string }>({
 }: IProps<T>) {
   const [isMakingRequest, setIsMakingRequest] = useState(false);
   const [touched, setTouched] = useState(false);
-  const [hasBeenSet, setHasBeenSet] = useState(false);
   const [sortedData, setSortedData] = useState<Array<T>>([]);
 
   useEffect(() => {
-    if (!data.isLoading) {
-      if (!hasBeenSet) {
-        setSortedData(data.data || []);
-        setHasBeenSet(true);
-      }
-    }
-  }, [data, isMakingRequest]);
+    setSortedData(data.data || []);
+  }, [data.data]);
 
   const onSortEnd = (oldOrder: number, newOrder: number) => {
     setTouched(true);

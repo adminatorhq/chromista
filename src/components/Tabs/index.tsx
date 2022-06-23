@@ -16,6 +16,8 @@ export const Tabs: React.FC<IProps> = ({ contents, currentTab }) => {
   useEffect(() => {
     if (currentTab) {
       setActiveTab(currentTab);
+    } else {
+      setActiveTab(contents[0].label);
     }
   }, [currentTab]);
 
