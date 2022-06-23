@@ -1,5 +1,4 @@
-import { useEffect } from '@storybook/addons';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import styled, { css } from 'styled-components';
 
