@@ -42,7 +42,7 @@ export function SortList<T extends { value: string; label?: string }>({
 
   useEffect(() => {
     setSortedData(data.data || []);
-  }, [data.data]);
+  }, [JSON.stringify(data.data)]);
 
   const onSortEnd = (oldOrder: number, newOrder: number) => {
     setTouched(true);
