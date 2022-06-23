@@ -1,3 +1,4 @@
+import { useEffect } from '@storybook/addons';
 import React, { useMemo, useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import styled, { css } from 'styled-components';
@@ -7,11 +8,17 @@ export interface IProps {
     label: string;
     content: JSX.Element;
   }[];
-  defaultLabel?: string;
+  currentTab?: string;
 }
 
-export const Tabs: React.FC<IProps> = ({ contents, defaultLabel }) => {
-  const [activeTab, setActiveTab] = useState(defaultLabel || contents[0].label);
+export const Tabs: React.FC<IProps> = ({ contents, currentTab }) => {
+  const [activeTab, setActiveTab] = useState(currentTab || contents[0].label);
+
+  useEffect(() => {
+    if (currentTab) {
+      setActiveTab(currentTab);
+    }
+  }, [currentTab]);
 
   const toggle = (tabIndex: string) => {
     if (activeTab !== tabIndex) {
