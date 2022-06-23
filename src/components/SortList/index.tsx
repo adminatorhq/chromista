@@ -38,14 +38,17 @@ export function SortList<T extends { value: string; label?: string }>({
 }: IProps<T>) {
   const [isMakingRequest, setIsMakingRequest] = useState(false);
   const [touched, setTouched] = useState(false);
-
+  const [hasBeenSet, setHasBeenSet] = useState(false);
   const [sortedData, setSortedData] = useState<Array<T>>([]);
 
   useEffect(() => {
-    if (!isMakingRequest) {
-      setSortedData(data.data || []);
+    if (!data.isLoading) {
+      if (!hasBeenSet) {
+        setSortedData(data.data || []);
+        setHasBeenSet(true);
+      }
     }
-  }, [data.data, isMakingRequest]);
+  }, [data, isMakingRequest]);
 
   const onSortEnd = (oldOrder: number, newOrder: number) => {
     setTouched(true);
@@ -73,11 +76,9 @@ export function SortList<T extends { value: string; label?: string }>({
         <FormButton
           onClick={async () => {
             setIsMakingRequest(true);
-            setTimeout(async () => {
-              await onSave(sortedData.map(({ value }) => value));
-              setIsMakingRequest(false);
-              setTouched(false);
-            }, 0);
+            await onSave(sortedData.map(({ value }) => value));
+            setIsMakingRequest(false);
+            setTouched(false);
           }}
           text={'Save Order'}
           disabled={!touched}

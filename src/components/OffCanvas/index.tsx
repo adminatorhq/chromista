@@ -15,9 +15,21 @@ export interface IProps {
 
 const DEFAULT_CANVAS_WIDTH = 400;
 
-export const OffCanvas = ({ show, onClose, title, children, width = DEFAULT_CANVAS_WIDTH }: IProps) => {
+export const OffCanvas = ({
+  show,
+  onClose,
+  title,
+  children,
+  width = DEFAULT_CANVAS_WIDTH,
+}: IProps) => {
   return (
-    <StyledRoot as={Offcanvas} show={show} onHide={onClose} placement="end" width={width}>
+    <StyledRoot
+      as={Offcanvas}
+      show={show}
+      onHide={onClose}
+      placement="end"
+      width={width}
+    >
       <StyledHeader>
         <Stack justify="space-between">
           <Text size="3">{title}</Text>
@@ -44,7 +56,7 @@ const StyledBody = styled.div`
   overflow-y: auto;
 `;
 
-const StyledRoot = styled.div<{width: number}>`
+const StyledRoot = styled.div<{ width: number }>`
   position: fixed;
   bottom: 0;
   z-index: 1045;
