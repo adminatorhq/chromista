@@ -45,7 +45,7 @@ const StyledBrand = styled.div`
   height: 52px;
 `;
 
-const StyledLeftSideNavMenu = styled.ul`
+export const StyledLeftSideNavMenu = styled.ul`
   padding-left: 0;
   margin-bottom: 0;
   padding: 13px;

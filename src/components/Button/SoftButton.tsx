@@ -18,7 +18,7 @@ interface ISoftButton {
   to?: string;
   justIcon?: true;
   className?: string;
-
+  type?: 'button';
   onClick?: () => void;
   isMakingActionRequest?: boolean;
 }
@@ -32,6 +32,7 @@ export const SoftButton: React.FC<ISoftButton> = ({
   size = 'sm',
   icon,
   justIcon,
+  type,
   disabled,
   isMakingActionRequest,
   onClick,
@@ -75,6 +76,7 @@ export const SoftButton: React.FC<ISoftButton> = ({
   return (
     <StyledSoftButton
       {...props}
+      type={type}
       onClick={(e: { stopPropagation: () => void }) => {
         if (onClick) {
           e.stopPropagation();

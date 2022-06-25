@@ -84,13 +84,12 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
       className={generateClassNames(meta)}
       isDisabled={disabled}
       options={selectDataWithDefault}
-      isOptionDisabled={(option: unknown) =>{
-        if(!disabledOptions){
+      isOptionDisabled={(option: unknown) => {
+        if (!disabledOptions) {
           return false;
         }
-        return disabledOptions.includes((option as ISelectData).value)
-      }
-      }
+        return disabledOptions.includes((option as ISelectData).value);
+      }}
     />,
     formInput
   );

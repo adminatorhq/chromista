@@ -60,6 +60,7 @@ export const wrapLabelAndError = (
             <SoftButton
               onClick={rightAction.action}
               size="xs"
+              type="button"
               icon="settings"
               label={rightAction.label}
             />
