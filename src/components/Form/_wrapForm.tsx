@@ -21,7 +21,15 @@ export const wrapLabelAndError = (
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >,
-  { meta, label, input, required, description, sm, rightLink }: ISharedFormInput
+  {
+    meta,
+    label,
+    input,
+    required,
+    description,
+    sm,
+    rightAction,
+  }: ISharedFormInput
 ) => {
   return (
     <StyledFormGroup>
@@ -48,12 +56,12 @@ export const wrapLabelAndError = (
               </>
             ) : null}
           </div>
-          {rightLink && (
+          {rightAction && (
             <SoftButton
-              to={rightLink.link}
+              onClick={rightAction.action}
               size="xs"
               icon="settings"
-              label={rightLink.label}
+              label={rightAction.label}
             />
           )}
         </Stack>

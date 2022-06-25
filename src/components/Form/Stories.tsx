@@ -52,11 +52,14 @@ const DemoForm = () => {
               )}
             </Field>
 
-            <Field name="rightLinkInput" validateFields={[]}>
+            <Field name="rightActionInput" validateFields={[]}>
               {renderProps => (
                 <FormInput
-                  rightLink={{ label: 'Please click me', link: '/some-where' }}
-                  label="With right link"
+                  rightAction={{
+                    label: 'Please click me',
+                    action: action('right click actions'),
+                  }}
+                  label="With right action"
                   {...renderProps}
                 />
               )}

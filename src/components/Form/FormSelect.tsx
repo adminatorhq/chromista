@@ -6,7 +6,7 @@ import { ISelectData } from '../../types';
 import styled from 'styled-components';
 
 interface ISelectOptions extends ISharedFormInput {
-  disabledOption?: string;
+  disabledOptions?: string[];
   nullable?: boolean;
   defaultLabel?: string;
 }
@@ -54,7 +54,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
     meta,
     disabled,
     label: formLabel,
-    disabledOption,
+    disabledOptions,
     nullable,
     defaultLabel,
   } = formInput;
@@ -84,8 +84,12 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
       className={generateClassNames(meta)}
       isDisabled={disabled}
       options={selectDataWithDefault}
-      isOptionDisabled={(option: unknown) =>
-        (option as ISelectData).value === disabledOption
+      isOptionDisabled={(option: unknown) =>{
+        if(!disabledOptions){
+          return false;
+        }
+        return disabledOptions.includes((option as ISelectData).value)
+      }
       }
     />,
     formInput
