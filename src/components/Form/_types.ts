@@ -8,8 +8,8 @@ export interface ISharedFormInput {
   required?: boolean;
   disabled?: boolean;
   sm?: true;
-  rightAction?: {
+  rightActions?: {
     label: string;
     action: () => void;
-  };
+  }[];
 }

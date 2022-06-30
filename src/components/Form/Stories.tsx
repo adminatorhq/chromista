@@ -55,10 +55,31 @@ const DemoForm = () => {
             <Field name="rightActionInput" validateFields={[]}>
               {renderProps => (
                 <FormInput
-                  rightAction={{
-                    label: 'Please click me',
-                    action: action('right click actions'),
-                  }}
+                  rightActions={[
+                    {
+                      label: 'Please click me',
+                      action: action('right click actions'),
+                    },
+                  ]}
+                  label="With right action"
+                  {...renderProps}
+                />
+              )}
+            </Field>
+
+            <Field name="rightMultipleActionInput" validateFields={[]}>
+              {renderProps => (
+                <FormInput
+                  rightActions={[
+                    {
+                      label: 'Please click me',
+                      action: action('right click actions'),
+                    },
+                    {
+                      label: 'Please click me 2',
+                      action: action('right click actions'),
+                    },
+                  ]}
                   label="With right action"
                   {...renderProps}
                 />

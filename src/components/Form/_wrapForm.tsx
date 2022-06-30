@@ -28,7 +28,7 @@ export const wrapLabelAndError = (
     required,
     description,
     sm,
-    rightAction,
+    rightActions = [],
   }: ISharedFormInput
 ) => {
   return (
@@ -56,15 +56,19 @@ export const wrapLabelAndError = (
               </>
             ) : null}
           </div>
-          {rightAction && (
-            <SoftButton
-              onClick={rightAction.action}
-              size="xs"
-              type="button"
-              icon="settings"
-              label={rightAction.label}
-            />
-          )}
+          <div>
+            {rightActions.map(rightAction => (
+              <SoftButton
+                key={rightAction.label}
+                onClick={rightAction.action}
+                size="xs"
+                pushLeft={true}
+                type="button"
+                icon="settings"
+                label={rightAction.label}
+              />
+            ))}
+          </div>
         </Stack>
         {formComponent}
         <StyledFormFeedback sm={sm}>
