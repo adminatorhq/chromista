@@ -5,7 +5,15 @@ import { FormSwitch, IProps } from '.';
 
 const Demo = (args: IProps) => {
   const [value, setValue] = useState(true);
-  return <FormSwitch {...args} name="foo" onChange={setValue} value={value} label="Fooo" />;
+  return (
+    <FormSwitch
+      {...args}
+      name="foo"
+      onChange={setValue}
+      value={value}
+      label="Fooo"
+    />
+  );
 };
 
 export default {
