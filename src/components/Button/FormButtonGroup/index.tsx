@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 import { StyledOutlineButton } from '../Button';
 import { ISelectData } from '../../../types';
 
-interface IFormButtonGroup {
+export interface IProps {
   options: ISelectData[];
-  value: string;
-  onChange: (value: string) => void;
+  value: string | boolean;
+  onChange: (value: string | boolean) => void;
 }
 
-export const FormButtonGroup: React.FC<IFormButtonGroup> = ({
+export const FormButtonGroup: React.FC<IProps> = ({
   options,
   value: selectedValue,
   onChange,
@@ -19,9 +19,12 @@ export const FormButtonGroup: React.FC<IFormButtonGroup> = ({
       {options.map(({ value, label }, index) => (
         <StyledButton
           as="label"
-          size="xs"
-          key={value}
-          isActive={selectedValue === value || (index === 0 && !selectedValue)}
+          size="sm"
+          key={`${value}`}
+          isActive={
+            selectedValue === value ||
+            (index === 0 && selectedValue === undefined)
+          }
           onClick={() => onChange(value)}
         >
           <StyledInput type="checkbox" />
