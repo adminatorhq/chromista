@@ -16,6 +16,8 @@ export interface INumberComparision {
 }
 
 export type TableFilterType =
+  // TODO date
+  // Boolean
   | { _type: 'number' }
   | { _type: 'string' }
   | { _type: 'status'; bag: ISystemStatusForDisplay[] }

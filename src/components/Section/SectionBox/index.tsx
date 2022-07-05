@@ -157,7 +157,7 @@ const StyledCardTitle = styled.h4`
 `;
 
 const StyledFullHeight = styled.div`
-  min-height: 100vh;
+  // min-height: 100vh;
 `;
 
 const StyledDeleteButton = styled(DeleteButton)`

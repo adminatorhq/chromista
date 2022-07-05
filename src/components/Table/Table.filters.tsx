@@ -154,6 +154,7 @@ export const NumberSelectionFilter = ({
               { label: '<', value: 'l' },
               { label: '>', value: 'g' },
               { label: '=', value: 'e' },
+              { label: '<>', value: 'between' }, // TODO
             ]}
             onChange={value => {
               setFilter({

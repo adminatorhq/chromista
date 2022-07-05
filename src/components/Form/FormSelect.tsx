@@ -88,7 +88,9 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
         if (!disabledOptions) {
           return false;
         }
-        return disabledOptions.includes((option as ISelectData).value);
+        return disabledOptions.includes(
+          (option as ISelectData).value as string
+        );
       }}
     />,
     formInput
@@ -113,9 +115,11 @@ export const FormNoValueSelect: React.FC<IFormNoValueSelect> = ({
       onChange={({ value, label }: any) => {
         onChange(value, label);
       }}
-      options={selectData.filter(
-        ({ value }) => !disabledOptions.includes(value)
-      )}
+      options={
+        selectData.filter(
+          ({ value }) => !disabledOptions.includes(value as string)
+        ) as { value: string; label: string }[]
+      }
     />
   );
 };

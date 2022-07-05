@@ -10,7 +10,7 @@ export interface IValueLabel {
 }
 
 export interface ISelectData {
-  value: string;
+  value: string | boolean;
   label: string;
 }
 

@@ -28,23 +28,25 @@ export const FormSwitch: React.FC<IProps> = props => {
     Object.entries(rest).filter(([key]) => key.startsWith('aria-'))
   );
   return (
-    <Root htmlFor={name} size={size}>
-      <Stack spacing={SIZES_CONFIG[size].labelSpacing} align="center">
-        <Input
-          id={name}
-          type="checkbox"
-          checked={value}
-          disabled={disabled}
-          $inputSize={size}
-          onChange={() => {
-            onChange(!value);
-          }}
-          {...ariaProps}
-        />
-        <Slider size={size} />
-        <Text size={SIZES_CONFIG[size].fontSize}>{label}</Text>
-      </Stack>
-    </Root>
+    <DivBlock>
+      <Root htmlFor={name} size={size}>
+        <Stack spacing={SIZES_CONFIG[size].labelSpacing} align="center">
+          <Input
+            id={name}
+            type="checkbox"
+            checked={value}
+            disabled={disabled}
+            $inputSize={size}
+            onChange={() => {
+              onChange(!value);
+            }}
+            {...ariaProps}
+          />
+          <Slider size={size} />
+          <Text size={SIZES_CONFIG[size].fontSize}>{label}</Text>
+        </Stack>
+      </Root>
+    </DivBlock>
   );
 };
 
@@ -79,11 +81,12 @@ const SIZES_CONFIG: Record<Sizes, ISizeConfig> = {
   },
 };
 
+const DivBlock = styled.div``;
+
 const Root = styled.label<{ size: Sizes }>`
   position: relative;
   display: inline-block;
-  width: ${props => SIZES_CONFIG[props.size].width}px;
-  height: ${props => SIZES_CONFIG[props.size].height}px;
+  margin-bottom: 24px;
 `;
 
 const Slider = styled.span<{ size: Sizes }>`
@@ -93,6 +96,8 @@ const Slider = styled.span<{ size: Sizes }>`
   left: 0;
   right: 0;
   bottom: 0;
+  width: ${props => SIZES_CONFIG[props.size].width}px;
+  height: ${props => SIZES_CONFIG[props.size].height}px;
   background-color: ${APP_COLORS.softBackground};
   border-radius: ${props => SIZES_CONFIG[props.size].height}px;
   transition: 0.4s;

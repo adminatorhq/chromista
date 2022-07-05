@@ -8,9 +8,10 @@ export interface IProps {
     content: JSX.Element;
   }[];
   currentTab?: string;
+  onChange?: (tab: string) => void;
 }
 
-export const Tabs: React.FC<IProps> = ({ contents, currentTab }) => {
+export const Tabs: React.FC<IProps> = ({ contents, currentTab, onChange }) => {
   const [activeTab, setActiveTab] = useState(currentTab || contents[0].label);
 
   useEffect(() => {
@@ -21,9 +22,10 @@ export const Tabs: React.FC<IProps> = ({ contents, currentTab }) => {
     }
   }, [currentTab]);
 
-  const toggle = (tabIndex: string) => {
-    if (activeTab !== tabIndex) {
-      setActiveTab(tabIndex);
+  const changeTab = (tabLabel: string) => {
+    if (activeTab !== tabLabel) {
+      setActiveTab(tabLabel);
+      onChange?.(tabLabel);
     }
   };
 
@@ -40,7 +42,7 @@ export const Tabs: React.FC<IProps> = ({ contents, currentTab }) => {
               tag="button"
               active={activeTab === label}
               onClick={() => {
-                toggle(label);
+                changeTab(label);
               }}
             >
               {label}
