@@ -38,10 +38,12 @@ export const DeleteButton: React.FC<IDeleteButton> = ({
     disabled={isMakingDeleteRequest}
   >
     {isMakingDeleteRequest ? (
-      <FontAwesomeIcon icon={faSpinner} spin={true} />
+      <FontAwesomeIcon icon={faSpinner} spin />
     ) : (
       <>
-        <FontAwesomeIcon icon={faTrash} /> {text ? `Delete ${text}` : null}
+        <FontAwesomeIcon icon={faTrash} />
+        {' '}
+        {text ? `Delete ${text}` : null}
       </>
     )}
   </StyledSoftButton>

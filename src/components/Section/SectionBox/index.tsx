@@ -1,6 +1,8 @@
 import React, { useState, ReactNode } from 'react';
 import * as StyledGrid from 'styled-bootstrap-grid';
 import styled from 'styled-components';
+import { HelpCircle } from 'react-feather';
+import { TimeFilters } from '@gothicgeeks/shared';
 import { DeleteButton } from '../../Button/DeleteButton';
 import { ISelectData } from '../../../types';
 import { SimpleSelect } from '../../Form';
@@ -11,9 +13,7 @@ import {
   StyledCardHeader,
 } from '../../../styles/Card';
 import { StyledMutedText } from '../../../styles/Text';
-import { HelpCircle } from 'react-feather';
 import { Tooltip } from '../../Tooltip';
-import { TimeFilters } from '@gothicgeeks/shared';
 import { SoftButtonIconTypes } from '../../Button/SoftButton.types';
 
 interface IProps {
@@ -64,7 +64,7 @@ export const SectionBox: React.FC<IProps> = ({
         {!headLess ? (
           <StyledCardHeader>
             <StyledCenterRow>
-              <StyledGrid.Col auto={true}>
+              <StyledGrid.Col auto>
                 {backLink ? (
                   <SoftButton
                     to={backLink.link}
@@ -89,12 +89,12 @@ export const SectionBox: React.FC<IProps> = ({
                 </StyledCardTitle>
                 {description ? <Tooltip id="section-box" /> : null}
               </StyledGrid.Col>
-              {newItemLink ||
-              deleteAction ||
-              iconButtons ||
-              selection ||
-              lastUpdated ? (
-                <StyledGrid.Col auto={true}>
+              {newItemLink
+              || deleteAction
+              || iconButtons
+              || selection
+              || lastUpdated ? (
+                <StyledGrid.Col auto>
                   {selection ? (
                     <SimpleSelect
                       options={selection.options}
@@ -107,21 +107,24 @@ export const SectionBox: React.FC<IProps> = ({
                   ) : null}
                   {lastUpdated ? (
                     <StyledMutedText as="i">
-                      Last modified{' '}
+                      Last modified
+                      {' '}
                       {TimeFilters.formatTime(new Date(lastUpdated), 'L')}
                     </StyledMutedText>
                   ) : null}
                   {iconButtons
-                    ? iconButtons.map(({ link, label, icon, onClick }) => (
-                        <SoftButton
-                          key={icon || label}
-                          to={link}
-                          label={label}
-                          icon={icon}
-                          onClick={onClick}
-                          pushLeft={true}
-                        />
-                      ))
+                    ? iconButtons.map(({
+                      link, label, icon, onClick,
+                    }) => (
+                      <SoftButton
+                        key={icon || label}
+                        to={link}
+                        label={label}
+                        icon={icon}
+                        onClick={onClick}
+                        pushLeft
+                      />
+                    ))
                     : null}
                   {newItemLink ? (
                     <SoftButton to={newItemLink} icon="add" />
@@ -133,7 +136,7 @@ export const SectionBox: React.FC<IProps> = ({
                     />
                   ) : null}
                 </StyledGrid.Col>
-              ) : null}
+                ) : null}
             </StyledCenterRow>
           </StyledCardHeader>
         ) : null}
@@ -151,7 +154,7 @@ const StyledCardTitle = styled.h4`
   font-weight: 500;
   line-height: 30px;
   margin: 0;
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
   text-shadow: 0 0 1px rgba(241, 245, 250, 0.1);
   font-family: 'Poppins', sans-serif;
 `;

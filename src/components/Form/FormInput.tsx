@@ -8,7 +8,9 @@ interface IFormInput extends ISharedFormInput {
 }
 
 export const FormInput: React.FC<IFormInput> = (formInput): JSX.Element => {
-  const { input, type, label, disabled, meta, ...rest } = formInput;
+  const {
+    input, type, label, disabled, meta, ...rest
+  } = formInput;
 
   return wrapLabelAndError(
     <StyledInput
@@ -19,6 +21,6 @@ export const FormInput: React.FC<IFormInput> = (formInput): JSX.Element => {
       className={generateClassNames(meta)}
       disabled={disabled}
     />,
-    formInput
+    formInput,
   );
 };

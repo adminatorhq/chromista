@@ -16,8 +16,8 @@ export const DynamicLayout: React.FC<IProps> = ({
   selectionView,
 }): JSX.Element => {
   const [isFullSideBarOpen] = useSideBarStore(
-    state => [state.isFullSideBarOpen],
-    shallow
+    (state) => [state.isFullSideBarOpen],
+    shallow,
   );
   return (
     <Root>
@@ -36,7 +36,7 @@ const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
   padding: 16px;
   min-height: 100vh;
   display: block;
-  margin-left: ${props => (props.isSidebarOpen ? 350 : 50)}px;
-  width: calc(100% - ${props => (props.isSidebarOpen ? 350 : 50)}px);
+  margin-left: ${(props) => (props.isSidebarOpen ? 350 : 50)}px;
+  width: calc(100% - ${(props) => (props.isSidebarOpen ? 350 : 50)}px);
   background: #edf0f1;
 `;

@@ -1,7 +1,7 @@
 export interface ISystemStatusForDisplay {
   label: string;
-  value: string;
-  color: string;
+  value: string | boolean;
+  color?: string;
 }
 
 export interface IValueLabel {

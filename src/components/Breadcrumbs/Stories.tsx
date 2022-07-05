@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { Breadcrumbs, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
-import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/Breadcrumbs',
@@ -26,7 +26,7 @@ export default {
   },
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <Breadcrumbs {...args} />
   </AppWrapper>

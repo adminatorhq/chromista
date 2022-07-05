@@ -14,20 +14,16 @@ interface IProps {
 }
 
 export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
-  const [
-    isFullSideBarOpen,
-    currentMiniSideBar,
-    closeFullSideBar,
-  ] = useSideBarStore(
-    state => [
+  const [isFullSideBarOpen, currentMiniSideBar, closeFullSideBar] = useSideBarStore(
+    (state) => [
       state.isFullSideBarOpen,
       state.currentMiniSideBar,
       state.closeFullSideBar,
     ],
-    shallow
+    shallow,
   );
 
-  const [deepLinks, pop] = useNestedNavStore(state => [
+  const [deepLinks, pop] = useNestedNavStore((state) => [
     state.deepLinks,
     state.pop,
   ]);
@@ -36,7 +32,7 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
 
   if (currentMiniSideBar) {
     currentSelection = selectionView.find(
-      ({ link }) => link === currentMiniSideBar
+      ({ link }) => link === currentMiniSideBar,
     );
   }
 
@@ -46,7 +42,7 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
     ({ key, title: deepLinkTitle }) => ({
       label: deepLinkTitle,
       value: key,
-    })
+    }),
   );
 
   const currentViewBag = hasDeepLinks
@@ -60,7 +56,7 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
 
   const fullBreadCrumb = [
     {
-      label: currentSelection?.title + '',
+      label: `${currentSelection?.title}`,
       value: HOME_SELECTION,
     },
     ...deepLinkAsBreadCrumb,
@@ -69,10 +65,12 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
   return (
     <Root show={!!currentMiniSideBar && isFullSideBarOpen}>
       <StyledHideScrollbar>
-        {selectionView.map(({ view, link, title, viewMenuItems }) => {
+        {selectionView.map(({
+          view, link, title, viewMenuItems,
+        }) => {
           if (!view && !viewMenuItems && !link) {
             throw new Error(
-              'Please pass what to render in the view, The view` or `viewMenuItems` is required to do this or pass the `link` prop to just go to a page'
+              'Please pass what to render in the view, The view` or `viewMenuItems` is required to do this or pass the `link` prop to just go to a page',
             );
           }
           return (
@@ -81,9 +79,9 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
                 backLink={
                   hasDeepLinks
                     ? {
-                        onClick: pop,
-                        label: fullBreadCrumb[fullBreadCrumb.length - 2].label,
-                      }
+                      onClick: pop,
+                      label: fullBreadCrumb[fullBreadCrumb.length - 2].label,
+                    }
                     : undefined
                 }
                 title={title}
@@ -96,7 +94,7 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
                   },
                 ]}
               >
-                {view ? view : <ViewMenuItems viewMenuItems={viewMenuItems} />}
+                {view || <ViewMenuItems viewMenuItems={viewMenuItems} />}
               </SectionBox>
             </StyledRenderView>
           );

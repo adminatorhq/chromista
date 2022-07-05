@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { EmptyWrapper } from '../EmptyWrapper';
 import SkeletonLoader from 'tiny-skeleton-loader-react';
-import { sharedSkeletonProps } from '../Skeleton/constants';
 import { randomNumber } from '@gothicgeeks/shared';
-import { StyledOutlineButton } from '../Button/Button';
 import styled from 'styled-components';
+import { EmptyWrapper } from '../EmptyWrapper';
+import { sharedSkeletonProps } from '../Skeleton/constants';
+import { StyledOutlineButton } from '../Button/Button';
 
 export interface ITagItem {
   id: string;
@@ -42,7 +42,7 @@ export const TagsList: React.FC<IProps> = ({
   if (isLoading) {
     return (
       <StyledWrapper>
-        {Array.from({ length: 10 }, (_, k) => k).map(key => (
+        {Array.from({ length: 10 }, (_, k) => k).map((key) => (
           <Fragment key={key}>
             <SkeletonLoader
               {...sharedSkeletonProps}
@@ -97,10 +97,10 @@ const renderIcon = ({
   id: string;
 }) => {
   if (!id) {
-    return <FontAwesomeIcon icon={faSpinner} spin={true} />;
+    return <FontAwesomeIcon icon={faSpinner} spin />;
   }
   if (isMakingDeleteRequestForId === id) {
-    return <FontAwesomeIcon icon={faSpinner} color="red" spin={true} />;
+    return <FontAwesomeIcon icon={faSpinner} color="red" spin />;
   }
   return <FontAwesomeIcon icon={faTimes} />;
 };

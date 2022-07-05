@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FormFileInput } from '.';
 import noop from 'lodash/noop';
+import Lightbox from 'react-image-lightbox';
+import styled from 'styled-components';
+import { FormFileInput } from '.';
 import { DeleteButton } from '../../Button/DeleteButton';
 import { BlockSkeleton } from '../../Skeleton/BlockSkeleton';
 import { actionButtonIsMakingRequest } from '../../Button/FormButton';
-import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import styled from 'styled-components';
 import { themeContext } from '../../../AppWrapper/Global';
 
 interface ILoadedImage {
@@ -52,14 +52,10 @@ export const FormFileInputGallery: React.FC<IFormFileInputGallery> = ({
             images[(lightBoxIndex + images.length - 1) % images.length].image
           }
           onCloseRequest={() => setIsLightBoxOpen(false)}
-          onMovePrevRequest={() =>
-            setLightBoxIndex(
-              (lightBoxIndex + images.length - 1) % images.length
-            )
-          }
-          onMoveNextRequest={() =>
-            setLightBoxIndex((lightBoxIndex + 1) % images.length)
-          }
+          onMovePrevRequest={() => setLightBoxIndex(
+            (lightBoxIndex + images.length - 1) % images.length,
+          )}
+          onMoveNextRequest={() => setLightBoxIndex((lightBoxIndex + 1) % images.length)}
         />
       )}
       <div className="col-sm-12 col-lg-3">
@@ -81,73 +77,71 @@ export const FormFileInputGallery: React.FC<IFormFileInputGallery> = ({
         </div>
       ) : null}
       {isLoading
-        ? [1, 2, 3, 4, 5].map(keyIndex => (
-            <div className="col-sm-12 col-lg-3" key={keyIndex}>
-              <BlockSkeleton height="200px" />
-            </div>
-          ))
+        ? [1, 2, 3, 4, 5].map((keyIndex) => (
+          <div className="col-sm-12 col-lg-3" key={keyIndex}>
+            <BlockSkeleton height="200px" />
+          </div>
+        ))
         : null}
-      {images.map(({ image, id, isDefault }, index) => {
-        return (
-          <div className="col-sm-12 col-lg-3 position-relative" key={id}>
-            {isDefault ? (
-              <div className="is-default-image-check">
-                <FontAwesomeIcon
-                  icon={faCheckCircle}
-                  size="lg"
-                  color={themeContext.colors.primary}
-                />
-              </div>
-            ) : null}
-            <div
-              className="dropify-wrapper has-preview"
-              style={{ height: '200px' }}
-              onClick={() => {
-                setLightBoxIndex(index);
-                setIsLightBoxOpen(true);
-              }}
-            >
-              {!isDefault ? (
-                <button
-                  type="button"
-                  className="dropify-clear dropify-action"
-                  onClick={e => {
-                    setCurrentImageId(id);
-                    setAsDefaultImage(id);
-                    e.stopPropagation();
-                  }}
-                >
-                  {actionButtonIsMakingRequest(
-                    isMakingDefaultRequest,
-                    'Set As Default'
-                  )}
-                </button>
-              ) : null}
-              <StyledDeleteButton
-                // className="dropify-clear"
-                shouldConfirmAlert={false}
-                onDelete={() => {
-                  setCurrentImageId(id);
-                  deleteImage(id);
-                }}
-                isMakingDeleteRequest={
-                  isMakingDeleteRequest && currentImageId === id
-                }
+      {images.map(({ image, id, isDefault }, index) => (
+        <div className="col-sm-12 col-lg-3 position-relative" key={id}>
+          {isDefault ? (
+            <div className="is-default-image-check">
+              <FontAwesomeIcon
+                icon={faCheckCircle}
+                size="lg"
+                color={themeContext.colors.primary}
               />
-              <div className="dropify-preview" style={{ display: 'block' }}>
-                <span className="dropify-render">
-                  <img
-                    src={image}
-                    alt={`Product Gallery ${index}`}
-                    style={{ maxHeight: '200px' }}
-                  />
-                </span>
-                <div className="dropify-infos" />
-              </div>
+            </div>
+          ) : null}
+          <div
+            className="dropify-wrapper has-preview"
+            style={{ height: '200px' }}
+            onClick={() => {
+              setLightBoxIndex(index);
+              setIsLightBoxOpen(true);
+            }}
+          >
+            {!isDefault ? (
+              <button
+                type="button"
+                className="dropify-clear dropify-action"
+                onClick={(e) => {
+                  setCurrentImageId(id);
+                  setAsDefaultImage(id);
+                  e.stopPropagation();
+                }}
+              >
+                {actionButtonIsMakingRequest(
+                  isMakingDefaultRequest,
+                  'Set As Default',
+                )}
+              </button>
+            ) : null}
+            <StyledDeleteButton
+              // className="dropify-clear"
+              shouldConfirmAlert={false}
+              onDelete={() => {
+                setCurrentImageId(id);
+                deleteImage(id);
+              }}
+              isMakingDeleteRequest={
+                isMakingDeleteRequest && currentImageId === id
+              }
+            />
+            <div className="dropify-preview" style={{ display: 'block' }}>
+              <span className="dropify-render">
+                <img
+                  src={image}
+                  alt={`Product Gallery ${index}`}
+                  style={{ maxHeight: '200px' }}
+                />
+              </span>
+              <div className="dropify-infos" />
             </div>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 };

@@ -35,7 +35,13 @@ export const AccordionItem: React.FC<IProps> = ({
           size={ARROW_SIZE}
         />
       </StyledAnchor>
-      {isBoxOpen ? <StyledBodyWrapper> {body} </StyledBodyWrapper> : null}
+      {isBoxOpen ? (
+        <StyledBodyWrapper>
+          {' '}
+          {body}
+          {' '}
+        </StyledBodyWrapper>
+      ) : null}
     </Root>
   );
 };
@@ -55,7 +61,7 @@ const StyledAnchor = styled.button`
 const StyledBodyWrapper = styled.div`
   padding: 0 1rem;
   margin-bottom: 1rem;
-  border-top: 1px solid ${props => props.theme.colors.border};
+  border-top: 1px solid ${(props) => props.theme.colors.border};
 `;
 
 const StyledLabelIcon = styled.i`
@@ -64,24 +70,21 @@ const StyledLabelIcon = styled.i`
 
 const StyledIcon = styled.i<{ highlight?: boolean }>`
   margin-top: 0.3rem;
-  color: ${props =>
-    props.highlight ? props.theme.text.white : props.theme.text.main};
+  color: ${(props) => (props.highlight ? props.theme.text.white : props.theme.text.main)};
 `;
 
 const Root = styled.div<{ highlight?: boolean }>`
   padding: 0;
-  ${props =>
-    props.highlight &&
-    css`
+  ${(props) => props.highlight
+    && css`
       background: ${props.theme.colors.primary};
     `};
-  border-bottom: 1px solid ${props => props.theme.colors.border};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
   margin-bottom: 1px;
 `;
 
 const StyledLabel = styled.p<{ highlight?: boolean }>`
   margin-bottom: 0;
   font-size: 16px;
-  color: ${props =>
-    props.highlight ? props.theme.text.white : props.theme.text.main};
+  color: ${(props) => (props.highlight ? props.theme.text.white : props.theme.text.main)};
 `;

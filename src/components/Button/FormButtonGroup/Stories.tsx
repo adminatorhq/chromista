@@ -3,12 +3,12 @@ import { Story } from '@storybook/react';
 import { AppWrapper } from '../../../AppWrapper';
 import { FormButtonGroup, IProps } from '.';
 
-const Demo = ({ options }: IProps) => {
+function Demo({ options }: IProps) {
   const [state, setState] = useState<string | boolean>('');
   return (
     <FormButtonGroup onChange={setState} value={state} options={options} />
   );
-};
+}
 
 export default {
   title: 'Components/FormButtonGroup',
@@ -16,7 +16,7 @@ export default {
   args: {},
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <Demo {...args} />
   </AppWrapper>

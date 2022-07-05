@@ -26,7 +26,7 @@ export const Breadcrumbs: React.FC<IProps> = ({ items, onItemClick }) => {
                 {label}
               </StyledBreadcrumbItemLink>
             ) : (
-              <Link href={value} passHref={true}>
+              <Link href={value} passHref>
                 <StyledBreadcrumbItemLink active={isLastElement}>
                   {label}
                 </StyledBreadcrumbItemLink>
@@ -55,7 +55,7 @@ const StyledBreadcrumb = styled.ol`
 
 const StyledBreadcrumbItem = styled.li`
   display: flex;
-  color: ${props => props.theme.text.muted};
+  color: ${(props) => props.theme.text.muted};
 
   & + & {
     padding-left: 0.3rem;
@@ -80,11 +80,10 @@ const StyledBreadcrumbItemLink = styled.button<{ active: boolean }>`
   border: none;
   padding: 0;
   background-color: transparent;
-  color: ${props => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.primary};
 
-  ${props =>
-    props.active &&
-    css`
+  ${(props) => props.active
+    && css`
       color: props.theme.text.muted;
     `}
 `;

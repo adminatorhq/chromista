@@ -1,5 +1,8 @@
+import { SLUG_LOADING_VALUE } from '@gothicgeeks/shared';
 import React, { useMemo, useState, useEffect } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import {
+  TabContent, TabPane, Nav, NavItem, NavLink,
+} from 'reactstrap';
 import styled, { css } from 'styled-components';
 
 export interface IProps {
@@ -15,7 +18,7 @@ export const Tabs: React.FC<IProps> = ({ contents, currentTab, onChange }) => {
   const [activeTab, setActiveTab] = useState(currentTab || contents[0].label);
 
   useEffect(() => {
-    if (currentTab) {
+    if (currentTab && currentTab !== SLUG_LOADING_VALUE) {
       setActiveTab(currentTab);
     } else {
       setActiveTab(contents[0].label);
@@ -29,14 +32,12 @@ export const Tabs: React.FC<IProps> = ({ contents, currentTab, onChange }) => {
     }
   };
 
-  const labels = useMemo(() => {
-    return contents.map(({ label }) => label);
-  }, [contents]);
+  const labels = useMemo(() => contents.map(({ label }) => label), [contents]);
 
   return (
     <>
       <StyledNav tabs>
-        {labels.map(label => (
+        {labels.map((label) => (
           <StyledNavItem key={label}>
             <StyledNavLink
               tag="button"
@@ -78,7 +79,7 @@ const StyledNav = styled(Nav)`
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
 `;
 
 const StyledNavItem = styled(NavItem)`
@@ -88,20 +89,19 @@ const StyledNavItem = styled(NavItem)`
 const StyledNavLink = styled(NavLink)<{ active: boolean }>`
   display: block;
   padding: 0.5rem 1rem;
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.white};
   border: 1px solid transparent;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 
-  ${props =>
-    props.active
-      ? css`
+  ${(props) => (props.active
+    ? css`
           color: ${props.theme.colors.primary};
           background-color: ${props.theme.colors.white};
           border-color: transparent transparent ${props.theme.colors.primary};
         `
-      : css`
+    : css`
           color: ${props.theme.text.main};
-        `}
+        `)}
 `;

@@ -34,5 +34,5 @@ export const Text = styled.p.attrs((props: TextProps) => ({
     lineHeight: `${sizes[size] * 1.25}px`,
     margin: 0,
     padding: 0,
-  })
+  }),
 );

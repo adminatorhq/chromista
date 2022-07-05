@@ -7,18 +7,16 @@ type IStore = {
   selectMiniSideBar: (selection: string) => void;
 };
 
-export const useSideBarStore = createStore<IStore>(set => ({
+export const useSideBarStore = createStore<IStore>((set) => ({
   currentMiniSideBar: undefined,
   isFullSideBarOpen: false,
-  closeFullSideBar: () =>
-    set(() => ({
-      currentMiniSideBar: undefined,
-      isFullSideBarOpen: false,
-    })),
-  selectMiniSideBar: (selection: string) =>
-    set(({ currentMiniSideBar, isFullSideBarOpen }) => ({
-      currentMiniSideBar: selection,
-      isFullSideBarOpen:
+  closeFullSideBar: () => set(() => ({
+    currentMiniSideBar: undefined,
+    isFullSideBarOpen: false,
+  })),
+  selectMiniSideBar: (selection: string) => set(({ currentMiniSideBar, isFullSideBarOpen }) => ({
+    currentMiniSideBar: selection,
+    isFullSideBarOpen:
         currentMiniSideBar === selection ? !isFullSideBarOpen : true,
-    })),
+  })),
 }));

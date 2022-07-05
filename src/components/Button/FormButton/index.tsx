@@ -53,6 +53,5 @@ export const FormButton: React.FC<IFormButton> = ({
 
 export const actionButtonIsMakingRequest = (
   isMakingRequest: boolean,
-  text: string
-) =>
-  isMakingRequest ? <FontAwesomeIcon icon={faSpinner} spin={true} /> : text;
+  text: string,
+) => (isMakingRequest ? <FontAwesomeIcon icon={faSpinner} spin /> : text);

@@ -20,13 +20,13 @@ export const MenuSection: React.FC<IMenuSection> = ({
   menuItems,
   currentMenuItem,
 }) => (
-  <SectionBox title={''} headLess={true}>
+  <SectionBox title="" headLess>
     <RenderList
       items={menuItems}
-      notSearchable={true}
-      newItemLink={''}
-      singular={''}
-      render={menuItem => (
+      notSearchable
+      newItemLink=""
+      singular=""
+      render={(menuItem) => (
         <SectionListItem
           label={menuItem.name}
           active={menuItem.link.includes(`${currentMenuItem}`)}

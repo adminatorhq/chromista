@@ -12,16 +12,15 @@ export const StyledInput = styled.input<IInput>`
   font-size: 0.8125rem;
   font-weight: 400;
   line-height: 1.8;
-  color: ${props => props.theme.text.main};
-  background-color: ${props => props.theme.colors.white};
+  color: ${(props) => props.theme.text.main};
+  background-color: ${(props) => props.theme.colors.white};
   background-clip: padding-box;
-  border: 1px solid ${props => props.theme.colors.border};
+  border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out;
 
-  ${props =>
-    props.sm &&
-    css`
+  ${(props) => props.sm
+    && css`
       height: calc(1.8em + 0.5rem + 2px);
       padding: 0.25rem 0.5rem;
       font-size: 0.71rem;
@@ -30,14 +29,14 @@ export const StyledInput = styled.input<IInput>`
     `}
 
   &:focus {
-    color: ${props => props.theme.text.main};
-    background-color: ${props => props.theme.colors.white};
+    color: ${(props) => props.theme.text.main};
+    background-color: ${(props) => props.theme.colors.white};
     border-color: rgba(23, 97, 253, 0.5);
     outline: 0;
   }
 
   &.invalid {
-    border-color: ${props => props.theme.colors.danger} !important;
+    border-color: ${(props) => props.theme.colors.danger} !important;
   }
 
   &::-ms-expand {
@@ -47,11 +46,11 @@ export const StyledInput = styled.input<IInput>`
 
   &:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 ${props => props.theme.text.main};
+    text-shadow: 0 0 0 ${(props) => props.theme.text.main};
   }
 
   &:disabled {
-    background-color: ${props => props.theme.colors.softBackground};
+    background-color: ${(props) => props.theme.colors.softBackground};
     opacity: 1;
   }
 `;
@@ -69,27 +68,25 @@ export const StyledFormLabel = styled.label<{ sm?: true }>`
   text-align: right;
   display: inline-block;
   font-weight: 400;
-  ${props =>
-    props.sm &&
-    css`
+  ${(props) => props.sm
+    && css`
       font-size: 11px;
     `}
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
 `;
 
 export const StyledFormFeedback = styled.p<{ sm?: true }>`
-  color: ${props => props.theme.colors.danger};
+  color: ${(props) => props.theme.colors.danger};
   font-size: 12px;
   padding-bottom: 0px;
   margin-bottom: 0px;
-  ${props =>
-    props.sm &&
-    css`
+  ${(props) => props.sm
+    && css`
       font-size: 10px;
     `}
 `;
 
 export const StyledRequiredAsterick = styled.span`
-  color: ${props => props.theme.colors.danger};
+  color: ${(props) => props.theme.colors.danger};
   font-weight: bolder;
 `;

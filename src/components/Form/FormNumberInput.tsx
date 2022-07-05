@@ -41,23 +41,18 @@ interface IFormNumberInput extends ISharedFormInput {
 const getNumberValue = (value: string | number | null, required: boolean) => {
   if (!required && !value) {
     return null;
-  } else if (value) {
+  }
+  if (value) {
     return +value;
   }
   return value;
 };
 
 export const FormNumberInput: React.FC<IFormNumberInput> = (
-  formInput
+  formInput,
 ): JSX.Element => {
   const {
-    input,
-    label,
-    disabled,
-    meta,
-    allowNegative,
-    required,
-    sm,
+    input, label, disabled, meta, allowNegative, required, sm,
   } = formInput;
   if (typeof input.value === 'string') {
     input.onChange(getNumberValue(input.value, !!required));
@@ -69,7 +64,7 @@ export const FormNumberInput: React.FC<IFormNumberInput> = (
       {...input}
       {...moreProps}
       sm={sm}
-      onChange={e => {
+      onChange={(e) => {
         input.onChange(getNumberValue(e.target.value, !!required));
       }}
       placeholder={label}
@@ -77,6 +72,6 @@ export const FormNumberInput: React.FC<IFormNumberInput> = (
       className={generateClassNames(meta)}
       disabled={disabled}
     />,
-    formInput
+    formInput,
   );
 };

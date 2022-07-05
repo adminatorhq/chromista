@@ -10,9 +10,11 @@ interface IFormDateInput extends ISharedFormInput {
 }
 
 export const FormDateInput: React.FC<IFormDateInput> = (
-  formInput
+  formInput,
 ): JSX.Element => {
-  const { input, disabled, meta, required, minDate, maxDate } = formInput;
+  const {
+    input, disabled, meta, required, minDate, maxDate,
+  } = formInput;
   let selected = input.value;
   if (selected && typeof selected === 'string') {
     selected = new Date(selected);
@@ -21,10 +23,10 @@ export const FormDateInput: React.FC<IFormDateInput> = (
   return wrapLabelAndError(
     <DatePicker
       {...input}
-      onChange={value => {
+      onChange={(value) => {
         input.onChange(value);
       }}
-      showTwoColumnMonthYearPicker={true}
+      showTwoColumnMonthYearPicker
       isClearable={!required}
       selected={selected}
       minDate={minDate}
@@ -32,6 +34,6 @@ export const FormDateInput: React.FC<IFormDateInput> = (
       className={generateClassNames(meta)}
       disabled={disabled}
     />,
-    formInput
+    formInput,
   );
 };

@@ -4,7 +4,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
-  border-top: 1px solid ${props => props.theme.colors.border};
+  border-top: 1px solid ${(props) => props.theme.colors.border};
   bottom: 0;
   padding: 16px;
   position: absolute;
@@ -26,16 +26,20 @@ const StyledText = styled.p`
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  color: ${props => props.theme.colors.danger};
+  color: ${(props) => props.theme.colors.danger};
 `;
 
-export const Footer = () => {
+export function Footer() {
   return (
     <StyledFooter>
       &copy; 2021 MDStores
       <StyledText>
-        Crafted with <StyledIcon icon={faHeart} /> by GothicGeeks
+        Crafted with
+        {' '}
+        <StyledIcon icon={faHeart} />
+        {' '}
+        by GothicGeeks
       </StyledText>
     </StyledFooter>
   );
-};
+}

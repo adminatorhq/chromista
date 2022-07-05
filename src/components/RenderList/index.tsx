@@ -20,11 +20,9 @@ export interface IProps<T> {
 
 function defaultSearchFunction<T extends { name: string }>(
   itemsToSearch: T[],
-  searchString: string
+  searchString: string,
 ) {
-  return itemsToSearch.filter(({ name }) =>
-    name.toLowerCase().includes(searchString)
-  );
+  return itemsToSearch.filter(({ name }) => name.toLowerCase().includes(searchString));
 }
 
 export function RenderList<T extends { name: string }>({
@@ -64,10 +62,9 @@ export function RenderList<T extends { name: string }>({
     ? [...items].sort((a, b) => a.name.localeCompare(b.name))
     : items;
 
-  const searchResults =
-    searchString.length > 0
-      ? searchFunction(itemsToRender, searchString)
-      : itemsToRender;
+  const searchResults = searchString.length > 0
+    ? searchFunction(itemsToRender, searchString)
+    : itemsToRender;
 
   return (
     <SectionList>

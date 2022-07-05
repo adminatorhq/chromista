@@ -14,7 +14,7 @@ export interface IProps {
   disabled?: boolean;
 }
 
-export const FormSwitch: React.FC<IProps> = props => {
+export const FormSwitch: React.FC<IProps> = (props) => {
   const {
     value,
     onChange,
@@ -25,7 +25,7 @@ export const FormSwitch: React.FC<IProps> = props => {
     ...rest
   } = props;
   const ariaProps = Object.fromEntries(
-    Object.entries(rest).filter(([key]) => key.startsWith('aria-'))
+    Object.entries(rest).filter(([key]) => key.startsWith('aria-')),
   );
   return (
     <DivBlock>
@@ -96,10 +96,10 @@ const Slider = styled.span<{ size: Sizes }>`
   left: 0;
   right: 0;
   bottom: 0;
-  width: ${props => SIZES_CONFIG[props.size].width}px;
-  height: ${props => SIZES_CONFIG[props.size].height}px;
+  width: ${(props) => SIZES_CONFIG[props.size].width}px;
+  height: ${(props) => SIZES_CONFIG[props.size].height}px;
   background-color: ${APP_COLORS.softBackground};
-  border-radius: ${props => SIZES_CONFIG[props.size].height}px;
+  border-radius: ${(props) => SIZES_CONFIG[props.size].height}px;
   transition: 0.4s;
 
   &:before {
@@ -107,10 +107,10 @@ const Slider = styled.span<{ size: Sizes }>`
     content: '';
     border-radius: 50%;
     background-color: white;
-    height: ${props => SIZES_CONFIG[props.size].circleSize}px;
-    width: ${props => SIZES_CONFIG[props.size].circleSize}px;
-    left: ${props => SIZES_CONFIG[props.size].shift}px;
-    bottom: ${props => SIZES_CONFIG[props.size].shift}px;
+    height: ${(props) => SIZES_CONFIG[props.size].circleSize}px;
+    width: ${(props) => SIZES_CONFIG[props.size].circleSize}px;
+    left: ${(props) => SIZES_CONFIG[props.size].shift}px;
+    bottom: ${(props) => SIZES_CONFIG[props.size].shift}px;
     transition: 0.4s;
   }
 `;
@@ -122,7 +122,9 @@ const Input = styled.input<{ $inputSize: Sizes }>`
     background-color: ${APP_COLORS.success};
 
     &:before {
-      transform: translateX(${p => SIZES_CONFIG[p.$inputSize].checkedShift}px);
+      transform: translateX(
+        ${(p) => SIZES_CONFIG[p.$inputSize].checkedShift}px
+      );
     }
   }
 

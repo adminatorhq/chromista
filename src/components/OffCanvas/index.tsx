@@ -1,8 +1,7 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import React, { ReactNode } from 'react';
-import { Divider, Text } from '../../ui-blocks';
 import styled from 'styled-components';
-import { Stack } from '../../ui-blocks';
+import { Divider, Text, Stack } from '../../ui-blocks';
 import { SoftButton } from '../Button';
 
 export interface IProps {
@@ -15,13 +14,13 @@ export interface IProps {
 
 const DEFAULT_CANVAS_WIDTH = 400;
 
-export const OffCanvas = ({
+export function OffCanvas({
   show,
   onClose,
   title,
   children,
   width = DEFAULT_CANVAS_WIDTH,
-}: IProps) => {
+}: IProps) {
   return (
     <StyledRoot
       as={Offcanvas}
@@ -33,14 +32,14 @@ export const OffCanvas = ({
       <StyledHeader>
         <Stack justify="space-between">
           <Text size="3">{title}</Text>
-          <SoftButton justIcon={true} icon="close" onClick={onClose} />
+          <SoftButton justIcon icon="close" onClick={onClose} />
         </Stack>
       </StyledHeader>
       <Divider />
       <StyledBody>{children}</StyledBody>
     </StyledRoot>
   );
-};
+}
 
 const StyledHeader = styled.div`
   display: flex;
@@ -71,7 +70,7 @@ const StyledRoot = styled.div<{ width: number }>`
 
   top: 0;
   right: 0;
-  width: ${props => props.width}px;
+  width: ${(props) => props.width}px;
   border-left: 1px solid rgba(0, 0, 0, 0.2);
   transform: translateX(100%);
 

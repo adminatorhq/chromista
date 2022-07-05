@@ -4,7 +4,7 @@ export function getHeirarchyDependencies<
   if (!needle) {
     return dependency;
   }
-  const currentItem = haystack.find(entry => entry.id === needle);
+  const currentItem = haystack.find((entry) => entry.id === needle);
   if (!currentItem) {
     return dependency;
   }

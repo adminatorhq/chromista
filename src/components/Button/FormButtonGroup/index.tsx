@@ -13,27 +13,25 @@ export const FormButtonGroup: React.FC<IProps> = ({
   options,
   value: selectedValue,
   onChange,
-}) => {
-  return (
-    <StyledGroup>
-      {options.map(({ value, label }, index) => (
-        <StyledButton
-          as="label"
-          size="sm"
-          key={`${value}`}
-          isActive={
-            selectedValue === value ||
-            (index === 0 && selectedValue === undefined)
-          }
-          onClick={() => onChange(value)}
-        >
-          <StyledInput type="checkbox" />
-          {label}
-        </StyledButton>
-      ))}
-    </StyledGroup>
-  );
-};
+}) => (
+  <StyledGroup>
+    {options.map(({ value, label }, index) => (
+      <StyledButton
+        as="label"
+        size="sm"
+        key={`${value}`}
+        isActive={
+          selectedValue === value
+          || (index === 0 && selectedValue === undefined)
+        }
+        onClick={() => onChange(value)}
+      >
+        <StyledInput type="checkbox" />
+        {label}
+      </StyledButton>
+    ))}
+  </StyledGroup>
+);
 
 const StyledInput = styled.input`
   position: absolute;
@@ -42,9 +40,8 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled(StyledOutlineButton)<{ isActive: boolean }>`
-  ${props =>
-    props.isActive &&
-    css`
+  ${(props) => props.isActive
+    && css`
       color: ${props.theme.text.white};
       background-color: ${props.theme.colors.primary};
       border-color: ${props.theme.colors.primary};

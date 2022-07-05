@@ -1,11 +1,11 @@
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import styled from 'styled-components';
-import { StyledSoftButton } from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import React, { useState, useEffect } from 'react';
-import { StyledMutedText } from '../../styles/Text';
 import { Icon } from 'react-feather';
+import { StyledMutedText } from '../../styles/Text';
+import { StyledSoftButton } from '../Button/Button';
 
 const togglePreviousState = (prev: boolean) => !prev;
 
@@ -36,7 +36,7 @@ export const DropDownMenu: React.FC<IProps> = ({
   };
 
   const [currentMenuItem, setCurrentMenuItem] = useState<IDropDownMenuItem>(
-    menuItems[0]
+    menuItems[0],
   );
 
   useEffect(() => {
@@ -59,10 +59,11 @@ export const DropDownMenu: React.FC<IProps> = ({
   const currentItem = (
     <>
       {isMakingActionRequest ? (
-        <FontAwesomeIcon icon={faSpinner} spin={true} />
+        <FontAwesomeIcon icon={faSpinner} spin />
       ) : IconComponent ? (
         <IconComponent size="14" />
-      ) : null}{' '}
+      ) : null}
+      {' '}
       {label}
     </>
   );
@@ -98,7 +99,7 @@ export const DropDownMenu: React.FC<IProps> = ({
           <StyledSROnly>Toggle Dropdown</StyledSROnly>
         </StyledDropDownIcon>
       </StyledDropDownToggle>
-      <StyledDropDownMenu right={true}>
+      <StyledDropDownMenu right>
         {menuItems.map(({ label: label$1, description }, index) => (
           <StyledDropDownItem
             key={label$1}
@@ -133,13 +134,13 @@ const StyledDropDownItem = styled.button`
   clear: both;
   font-weight: 400;
   line-height: 20px;
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
   text-align: inherit;
   background-color: transparent;
   border: 0;
   &:hover {
     background-color: rgba(248, 248, 252, 0.5);
-    color: ${props => props.theme.text.main};
+    color: ${(props) => props.theme.text.main};
   }
 `;
 
@@ -157,10 +158,10 @@ const StyledDropDownMenu = styled(DropdownMenu)`
   padding: 4px 0;
   margin: 0.125rem 0 0;
   font-size: 0.8125rem;
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
   text-align: left;
   list-style: none;
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.white};
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 0.25rem;

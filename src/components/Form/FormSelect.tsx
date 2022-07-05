@@ -1,9 +1,9 @@
 import React from 'react';
+import Select from 'react-select';
+import styled from 'styled-components';
 import { ISharedFormInput } from './_types';
 import { generateClassNames, wrapLabelAndError } from './_wrapForm';
-import Select from 'react-select';
 import { ISelectData } from '../../types';
-import styled from 'styled-components';
 
 interface ISelectOptions extends ISharedFormInput {
   disabledOptions?: string[];
@@ -29,23 +29,19 @@ export const FormMultiSelect: React.FC<IFormMultiSelect> = ({
   selectData,
   values = [],
   onChange,
-}): JSX.Element => {
-  return (
-    <Select
-      {...sharedSelectProps}
-      closeMenuOnSelect={false}
-      defaultValue={[]}
-      isMulti={true}
-      value={values.map(value =>
-        selectData.find(selectDatum => selectDatum.value === value)
-      )}
-      onChange={(newValues: any) => {
-        onChange(newValues.map(({ value }: ISelectData) => value));
-      }}
-      options={selectData}
-    />
-  );
-};
+}): JSX.Element => (
+  <Select
+    {...sharedSelectProps}
+    closeMenuOnSelect={false}
+    defaultValue={[]}
+    isMulti
+    value={values.map((value) => selectData.find((selectDatum) => selectDatum.value === value))}
+    onChange={(newValues: any) => {
+      onChange(newValues.map(({ value }: ISelectData) => value));
+    }}
+    options={selectData}
+  />
+);
 
 export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
   const {
@@ -61,7 +57,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
   const selectDataWithDefault = [
     {
       value: nullable ? null : '',
-      label: defaultLabel ? defaultLabel : `--- Select ${formLabel} ---`,
+      label: defaultLabel || `--- Select ${formLabel} ---`,
     },
     ...selectData,
   ] as ISelectData[];
@@ -89,11 +85,11 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
           return false;
         }
         return disabledOptions.includes(
-          (option as ISelectData).value as string
+          (option as ISelectData).value as string,
         );
       }}
     />,
-    formInput
+    formInput,
   );
 };
 
@@ -107,42 +103,40 @@ export const FormNoValueSelect: React.FC<IFormNoValueSelect> = ({
   selectData,
   disabledOptions,
   onChange,
-}): JSX.Element => {
-  return (
-    <Select
-      {...sharedSelectProps}
-      value={{ value: '', label: '' }}
-      onChange={({ value, label }: any) => {
-        onChange(value, label);
-      }}
-      options={
-        selectData.filter(
-          ({ value }) => !disabledOptions.includes(value as string)
-        ) as { value: string; label: string }[]
-      }
-    />
-  );
-};
+}): JSX.Element => (
+  <Select
+    {...sharedSelectProps}
+    value={{ value: '', label: '' }}
+    onChange={({ value, label }: any) => {
+      onChange(value, label);
+    }}
+    options={
+      selectData.filter(
+        ({ value }) => !disabledOptions.includes(value as string),
+      ) as { value: string; label: string }[]
+    }
+  />
+);
 
 const StyledSelect = styled(Select)`
   .react-select__control {
     &:hover {
-      border: 1px solid ${props => props.theme.colors.border};
+      border: 1px solid ${(props) => props.theme.colors.border};
     }
     &:focus {
-      color: ${props => props.theme.text.main};
-      background-color: ${props => props.theme.colors.white};
+      color: ${(props) => props.theme.text.main};
+      background-color: ${(props) => props.theme.colors.white};
       border-color: rgba(23, 97, 253, 0.5);
       outline: 0;
     }
     .react-select__single-value {
-      color: ${props => props.theme.text.main};
+      color: ${(props) => props.theme.text.main};
       font-size: 0.8125rem;
     }
-    border: 1px solid ${props => props.theme.colors.border};
+    border: 1px solid ${(props) => props.theme.colors.border};
   }
 
   &.invalid {
-    border-color: ${props => props.theme.colors.danger} !important;
+    border-color: ${(props) => props.theme.colors.danger} !important;
   }
 `;

@@ -52,7 +52,8 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
   const content = (
     <>
       <span>
-        {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}{' '}
+        {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}
+        {' '}
         {label}
         {subLabel ? (
           <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
@@ -63,7 +64,7 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
           <span>
             {ordering.currentIndex > 0 ? (
               <StyledOrderButton
-                onClick={event => {
+                onClick={(event) => {
                   event.stopPropagation();
                   event.preventDefault();
                   ordering.onChange(OrderingDirection.Up);
@@ -74,7 +75,7 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
             ) : null}
             {ordering.currentIndex < ordering.totalLength - 1 ? (
               <StyledOrderButton
-                onClick={event => {
+                onClick={(event) => {
                   event.stopPropagation();
                   event.preventDefault();
                   ordering.onChange(OrderingDirection.Down);
@@ -91,22 +92,22 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
           {actionButtons ? (
             <>
               {actionButtons.map(
-                ({ text, isInverse, onClick: onClick$1, isMakingRequest }) => {
-                  return (
-                    <FormButton
-                      text={text}
-                      key={text}
-                      size="xs"
-                      isMakingRequest={isMakingRequest}
-                      isInverse={isInverse}
-                      onClick={event => {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        onClick$1();
-                      }}
-                    />
-                  );
-                }
+                ({
+                  text, isInverse, onClick: onClick$1, isMakingRequest,
+                }) => (
+                  <FormButton
+                    text={text}
+                    key={text}
+                    size="xs"
+                    isMakingRequest={isMakingRequest}
+                    isInverse={isInverse}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      onClick$1();
+                    }}
+                  />
+                ),
               )}
             </>
           ) : null}
@@ -126,7 +127,7 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
 
   if (to) {
     return (
-      <Link href={to} passHref={true}>
+      <Link href={to} passHref>
         <StyledListItem as="a" {...props}>
           {content}
         </StyledListItem>
@@ -151,14 +152,12 @@ export const SectionListItem: React.FC<ISectionListItem> = ({
 
 const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   width: 14px;
-  color: ${props =>
-    props.$active ? props.theme.colors.white : props.theme.colors.primary};
+  color: ${(props) => (props.$active ? props.theme.colors.white : props.theme.colors.primary)};
   margin-left: 0.25rem;
 `;
 
 const StyledSublabel = styled.p<{ $active?: boolean }>`
-  color: ${props =>
-    props.$active ? props.theme.colors.white : props.theme.text.muted};
+  color: ${(props) => (props.$active ? props.theme.colors.white : props.theme.text.muted)};
   padding: 0;
   margin: 0;
   font-size: 10px;
@@ -178,7 +177,7 @@ const StyledIcon = styled.span`
 const StyledOrderButton = styled(StyledBaseButton)`
   padding: 0 0.1rem;
   line-height: 0.8;
-  color: ${props => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.primary};
   .active & {
     color: #fff;
   }
@@ -195,13 +194,13 @@ const StyledListItem = styled.button<{
 
   position: relative;
   padding: 12px 0.75rem;
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.white};
   border-left: 0;
   border-right: 0;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
 
   width: 100%;
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
   cursor: pointer;
   text-align: inherit;
 
@@ -226,17 +225,15 @@ const StyledListItem = styled.button<{
     // border-bottom: 0;
   }
 
-  ${({ disabled }) =>
-    disabled &&
-    css`
+  ${({ disabled }) => disabled
+    && css`
       color: #7081b9;
       pointer-events: none;
-      background-color: ${props => props.theme.colors.white};
+      background-color: ${(props) => props.theme.colors.white};
     `}
 
-  ${({ size }) =>
-    size === 'xs' &&
-    css`
+  ${({ size }) => size === 'xs'
+    && css`
       padding: 6px 0.75rem;
       font-size: 12px;
     `}
@@ -244,22 +241,21 @@ const StyledListItem = styled.button<{
   &:hover,
   &:focus {
     z-index: 1;
-    color: ${props => props.theme.text.main};
+    color: ${(props) => props.theme.text.main};
     text-decoration: none;
     background-color: #f8f8fc;
   }
 
-  ${({ active, theme }) =>
-    active &&
-    css`
+  ${({ active, theme }) => active
+    && css`
       z-index: 2;
-      color: ${props => props.theme.text.white} !important;
+      color: ${(props) => props.theme.text.white} !important;
       background-color: ${theme.colors.primary} !important;
       border-color: ${theme.colors.primary};
     `}
 
   &:active {
-    color: ${props => props.theme.text.main};
-    background-color: ${props => props.theme.colors.softBackground};
+    color: ${(props) => props.theme.text.main};
+    background-color: ${(props) => props.theme.colors.softBackground};
   }
 `;

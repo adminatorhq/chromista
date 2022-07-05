@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story } from '@storybook/react';
+import { useState } from '@storybook/addons';
 import { OffCanvas, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
-import { useState } from '@storybook/addons';
 
 export default {
   title: 'Components/OffCanvas',
@@ -18,7 +18,7 @@ export default {
   },
 };
 
-const Template: Story<IProps> = args => {
+const Template: Story<IProps> = (args) => {
   const [open, setOpen] = useState(false);
   return (
     <AppWrapper>

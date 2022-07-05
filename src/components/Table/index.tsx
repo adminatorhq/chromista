@@ -8,9 +8,7 @@ import { ITableProps } from './Table.types';
 // and keep all the settings in localstorage except the pageIndex
 
 export const Table: React.FC<ITableProps> = ({ url, ...props }) => {
-  const [paginatedDataState, setPaginatedDataState] = useState<
-    IBEPaginatedDataState
-  >(DEFAULT_TABLE_PARAMS);
+  const [paginatedDataState, setPaginatedDataState] = useState<IBEPaginatedDataState>(DEFAULT_TABLE_PARAMS);
 
   const tableData = usePaginatedData(url, paginatedDataState);
 

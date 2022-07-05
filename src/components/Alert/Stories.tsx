@@ -11,7 +11,7 @@ export default {
   },
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <Alert {...args} />
   </AppWrapper>
@@ -42,7 +42,9 @@ JSX.args = {
   type: AlertType.Info,
   message: (
     <span>
-      <b>This is bold</b> And This is not
+      <b>This is bold</b>
+      {' '}
+      And This is not
     </span>
   ),
   renderJsx: true,

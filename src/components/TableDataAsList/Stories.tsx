@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { TableDataAsList, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
-export default {
+const Story = {
   title: 'Components/TableDataAsList',
   component: TableDataAsList,
   args: {
@@ -26,7 +26,7 @@ export default {
   },
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <TableDataAsList {...args} />
   </AppWrapper>
@@ -34,3 +34,5 @@ const Template: Story<IProps> = args => (
 
 export const Default = Template.bind({});
 Default.args = {};
+
+export default Story;

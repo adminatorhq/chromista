@@ -1,6 +1,6 @@
 import React from 'react';
-import { BaseLeftSideNav, StyledLeftSideNavMenu } from '../BaseLeftSideNav';
 import { ArrowLeftCircle, ArrowRightCircle } from 'react-feather';
+import { BaseLeftSideNav, StyledLeftSideNavMenu } from '../BaseLeftSideNav';
 import { RenderNavigation } from '../Navigation';
 import { ISideBarNavigation } from './types';
 
@@ -24,7 +24,7 @@ export const AppLeftSideNav: React.FC<IAppLeftSideNav> = ({
         dataTestId: 'toogle-sidebar',
       },
     ],
-    [isSidebarOpen, toogleSidebar]
+    [isSidebarOpen, toogleSidebar],
   );
 
   return (
@@ -38,7 +38,7 @@ export const AppLeftSideNav: React.FC<IAppLeftSideNav> = ({
         <RenderNavigation
           navigation={sideBarMenu}
           isSidebarOpen={isSidebarOpen}
-          showDash={true}
+          showDash
         />
       </StyledLeftSideNavMenu>
     </BaseLeftSideNav>

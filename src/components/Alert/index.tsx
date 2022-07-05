@@ -47,13 +47,13 @@ export const Alert: React.FC<IProps> = ({ type, message, renderJsx }) => {
   );
 };
 
-export const ErrorAlert: React.FC<IAlert> = props => (
+export const ErrorAlert: React.FC<IAlert> = (props) => (
   <Alert {...props} type={AlertType.Error} />
 );
-export const SuccessAlert: React.FC<IAlert> = props => (
+export const SuccessAlert: React.FC<IAlert> = (props) => (
   <Alert {...props} type={AlertType.Success} />
 );
-export const WarningAlert: React.FC<IAlert> = props => (
+export const WarningAlert: React.FC<IAlert> = (props) => (
   <Alert {...props} type={AlertType.Warning} />
 );
 
@@ -68,37 +68,33 @@ const StyledAlert = styled.div<{
   border-radius: 0.25rem;
   text-align: center;
 
-  ${props =>
-    props.type === AlertType.Success &&
-    css`
+  ${(props) => props.type === AlertType.Success
+    && css`
       color: #03d87f;
       background-color: #e1faf0;
       border-color: #b8f4db;
     `}
 
-  ${props =>
-    props.type === AlertType.Error &&
-    css`
+  ${(props) => props.type === AlertType.Error
+    && css`
       color: ${props.theme.colors.danger};
       background-color: #fee6eb;
       border-color: #fcc6d1;
     `}
 
-      ${props =>
-        props.type === AlertType.Warning &&
-        css`
-          color: #ffb822;
-          background-color: #fff6e4;
-          border-color: #ffebc1;
-        `}
+      ${(props) => props.type === AlertType.Warning
+    && css`
+      color: #ffb822;
+      background-color: #fff6e4;
+      border-color: #ffebc1;
+    `}
 
-        ${props =>
-          props.type === AlertType.Info &&
-          css`
-            color: #12a4ed;
-            background-color: #e3f4fd;
-            border-color: #bde6fa;
-          `}
+        ${(props) => props.type === AlertType.Info
+    && css`
+      color: #12a4ed;
+      background-color: #e3f4fd;
+      border-color: #bde6fa;
+    `}
 `;
 
 const StyledAlertButton = styled.button`

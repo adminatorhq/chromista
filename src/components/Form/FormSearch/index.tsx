@@ -13,7 +13,7 @@ export const FormSearch: React.FC<IFormSearch> = ({ onChange }) => (
   <StyledInputGroup>
     <StyledFormSearch
       type="search"
-      onChange={e => onChange(e.target.value.toLowerCase())}
+      onChange={(e) => onChange(e.target.value.toLowerCase())}
       placeholder="Search"
     />
     <StyledInputGroupPrepend>
@@ -45,8 +45,8 @@ const StyledInputGroupPrepend = styled.span`
 `;
 
 const StyledButtonSearch = styled(StyledBaseButton)`
-  border-bottom: 1px solid ${props => props.theme.colors.border};
-  color: ${props => props.theme.colors.primary};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+  color: ${(props) => props.theme.colors.primary};
   &:focus {
     box-shadow: none;
   }
@@ -61,6 +61,6 @@ const StyledFormSearch = styled(StyledInput)`
   padding-left: 0.75rem;
 
   &:focus {
-    border-color: ${props => props.theme.colors.border};
+    border-color: ${(props) => props.theme.colors.border};
   }
 `;

@@ -10,12 +10,9 @@ interface IProps {
   message: string;
 }
 
-export const ConfirmAlert = (props: IProps) =>
-  confirmAlert({
-    customUI: ({ onClose }) => {
-      return <Presentation {...props} onClose={onClose} />;
-    },
-  });
+export const ConfirmAlert = (props: IProps) => confirmAlert({
+  customUI: ({ onClose }) => <Presentation {...props} onClose={onClose} />,
+});
 
 export interface IPresentationProps extends IProps {
   onClose: () => void;
@@ -33,7 +30,7 @@ export const Presentation: React.FC<IPresentationProps> = ({
       {message}
       <StyledButtonGroup>
         <StyledButton
-          danger={true}
+          danger
           onClick={() => {
             action();
             onClose();
@@ -50,16 +47,16 @@ export const Presentation: React.FC<IPresentationProps> = ({
 const StyledButton = styled.button<{ danger?: boolean }>`
   outline: none;
   background: #fff;
-  border: 1px solid ${props => (props.danger ? '#f5325c' : '#1761fd')};
+  border: 1px solid ${(props) => (props.danger ? '#f5325c' : '#1761fd')};
   display: inline-block;
   padding: 6px 18px;
-  color: ${props => (props.danger ? '#f5325c' : '#1761fd')};
+  color: ${(props) => (props.danger ? '#f5325c' : '#1761fd')};
   margin-right: 10px;
   border-radius: 5px;
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    background: ${props => (props.danger ? '#f5325c' : '#1761fd')};
+    background: ${(props) => (props.danger ? '#f5325c' : '#1761fd')};
     color: #fff;
   }
 `;

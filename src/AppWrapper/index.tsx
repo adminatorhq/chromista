@@ -1,11 +1,10 @@
-import React from 'react';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle, themeContext } from './Global';
 import { QueryProvider } from '@gothicgeeks/shared';
 import { Toaster } from 'react-hot-toast';
+import { GlobalStyle, themeContext } from './Global';
 
-export const AppWrapper = (props: { children: ReactNode }) => {
+export function AppWrapper(props: { children: ReactNode }) {
   return (
     <QueryProvider>
       <ThemeProvider theme={themeContext}>
@@ -15,4 +14,4 @@ export const AppWrapper = (props: { children: ReactNode }) => {
       </ThemeProvider>
     </QueryProvider>
   );
-};
+}

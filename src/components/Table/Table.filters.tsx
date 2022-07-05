@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import { Filter, Search } from 'react-feather';
+import * as StyledGrid from 'styled-bootstrap-grid';
+import styled from 'styled-components';
 import { SoftButton } from '../Button/SoftButton';
 import { SimpleSelect } from '../Form/SimpleSelect';
 import { mapIdAndNameToSelectData } from '../Form/mappers';
 import { FormMultiSelect } from '../Form/FormSelect';
-import * as StyledGrid from 'styled-bootstrap-grid';
 import { StyledInput } from '../Form/Styles';
-import styled from 'styled-components';
 import { themeContext } from '../../AppWrapper/Global';
 import { ISystemStatusForDisplay } from '../../types';
 import { Dropdown } from '../Dropdown';
@@ -22,7 +22,7 @@ interface IProps {
 }
 
 export const mapFilterTypeToComponent = (
-  type: TableFilterType
+  type: TableFilterType,
 ): ((input: {
   columns: { filterValue: unknown; setFilter: (filter: unknown) => void };
 }) => JSX.Element) => {
@@ -51,14 +51,14 @@ const FilterWrapper: React.FC<IProps> = ({
   };
   return (
     <span
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
       }}
     >
       <Dropdown
-        preserveVisibiltyOnClick={true}
-        target={
+        preserveVisibiltyOnClick
+        target={(
           <Root>
             {iconType === 'search' ? (
               <Search {...iconProps} />
@@ -66,7 +66,7 @@ const FilterWrapper: React.FC<IProps> = ({
               <Filter {...iconProps} />
             )}
           </Root>
-        }
+        )}
       >
         <DownRoot direction="column">
           <div>{children}</div>
@@ -88,13 +88,11 @@ const DownRoot = styled(Stack)`
   background: ${APP_COLORS.white};
   padding: 8px;
   border-radius: 2px;
-  border: 1px solid ${props => props.theme.colors.border};
+  border: 1px solid ${(props) => props.theme.colors.border};
   min-width: 250px;
 `;
 
-export const StatusFilter = (statuses: ISystemStatusForDisplay[]) => ({
-  column: { filterValue, setFilter },
-}: any) => {
+export const StatusFilter = (statuses: ISystemStatusForDisplay[]) => function ({ column: { filterValue, setFilter } }: any) {
   return (
     <FilterWrapper
       filterValue={filterValue}
@@ -106,7 +104,7 @@ export const StatusFilter = (statuses: ISystemStatusForDisplay[]) => ({
         onChange={(value: string) => {
           setFilter(value || undefined);
         }}
-        fullWidth={true}
+        fullWidth
         value={filterValue || ''}
       />
     </FilterWrapper>
@@ -114,8 +112,8 @@ export const StatusFilter = (statuses: ISystemStatusForDisplay[]) => ({
 };
 
 export const ListSelectionFilter = (
-  selections: { id: string; name: string }[]
-) => ({ column: { filterValue = [], setFilter } }: any) => {
+  selections: { id: string; name: string }[],
+) => function ({ column: { filterValue = [], setFilter } }: any) {
   return (
     <FilterWrapper
       filterValue={filterValue.length}
@@ -137,9 +135,9 @@ const StyledSecondGrid = styled(StyledGrid.Col)`
   padding-left: 0.25rem;
 `;
 
-export const NumberSelectionFilter = ({
+export function NumberSelectionFilter({
   column: { filterValue = { comparision: '', value: '' }, setFilter },
-}: any) => {
+}: any) {
   return (
     <FilterWrapper
       filterValue={filterValue.value}
@@ -156,7 +154,7 @@ export const NumberSelectionFilter = ({
               { label: '=', value: 'e' },
               { label: '<>', value: 'between' }, // TODO
             ]}
-            onChange={value => {
+            onChange={(value) => {
               setFilter({
                 value: filterValue.value,
                 comparision: value || undefined,
@@ -168,24 +166,20 @@ export const NumberSelectionFilter = ({
         <StyledSecondGrid sm={8}>
           <StyledInput
             type="number"
-            sm={true}
+            sm
             value={filterValue.value || ''}
-            onChange={e =>
-              setFilter({
-                comparision: filterValue.comparision,
-                value: e.target.value || undefined,
-              })
-            }
+            onChange={(e) => setFilter({
+              comparision: filterValue.comparision,
+              value: e.target.value || undefined,
+            })}
           />
         </StyledSecondGrid>
       </StyledGrid.Row>
     </FilterWrapper>
   );
-};
+}
 
-export const TextSearchFilter = ({
-  column: { filterValue, setFilter },
-}: any) => {
+export function TextSearchFilter({ column: { filterValue, setFilter } }: any) {
   return (
     <FilterWrapper
       filterValue={filterValue}
@@ -197,11 +191,11 @@ export const TextSearchFilter = ({
         onChange={(e: React.BaseSyntheticEvent) => {
           setFilter(e.target.value || undefined);
         }}
-        placeholder={`Search`}
+        placeholder="Search"
       />
     </FilterWrapper>
   );
-};
+}
 
 const StyledSoftButton = styled(SoftButton)`
   margin-bottom: 0.25rem;

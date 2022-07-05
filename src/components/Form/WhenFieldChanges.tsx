@@ -45,8 +45,7 @@ export const WhenFieldChanges: React.FC<IWhenFieldChanges> = ({
         {() => (
           <OnChange name={field}>
             {(value: unknown) => {
-              const valueToChangeTo =
-                to === SLUG_VALUE ? StringUtils.sluggify(value as string) : to;
+              const valueToChangeTo = to === SLUG_VALUE ? StringUtils.sluggify(value as string) : to;
               if (becomes === undefined) {
                 onChange(valueToChangeTo);
                 return;

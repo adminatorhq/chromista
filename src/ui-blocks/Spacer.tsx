@@ -26,14 +26,10 @@ const getMargin = (size: SpacerSize) => {
   return DESIGN_SYSTEM_SIZES.margin;
 };
 
-export const Spacer: React.FC<IProps> = ({ size = 'md' }) => {
-  return <div style={{ margin: getMargin(size) }} />;
-};
+export const Spacer: React.FC<IProps> = ({ size = 'md' }) => (
+  <div style={{ margin: getMargin(size) }} />
+);
 
-export const HSpacer: React.FC<IProps> = ({ size = 'md' }) => {
-  return (
-    <div
-      style={{ marginLeft: getMargin(size), marginRight: getMargin(size) }}
-    />
-  );
-};
+export const HSpacer: React.FC<IProps> = ({ size = 'md' }) => (
+  <div style={{ marginLeft: getMargin(size), marginRight: getMargin(size) }} />
+);

@@ -1,16 +1,18 @@
-import React, { Fragment, useEffect, useMemo } from 'react';
-import { useTable, usePagination, useSortBy, useFilters } from 'react-table';
+import React, { useEffect, useMemo } from 'react';
+import {
+  useTable, usePagination, useSortBy, useFilters,
+} from 'react-table';
 import ReactPaginate from 'react-paginate';
 import classnames from 'classnames';
+import styled from 'styled-components';
+import { IBEPaginatedDataState, PaginatedData } from '@gothicgeeks/shared';
+import { UseQueryResult } from 'react-query';
 import { ComponentIsLoading } from '../ComponentIsLoading';
 import { ErrorAlert } from '../Alert';
 import { SimpleSelect } from '../Form';
 import { EmptyWrapper } from '../EmptyWrapper';
 import { ITableFilter, ITableProps } from './Table.types';
-import styled from 'styled-components';
 import { DEFAULT_TABLE_PARAMS } from './constants';
-import { IBEPaginatedDataState, PaginatedData } from '@gothicgeeks/shared';
-import { UseQueryResult } from 'react-query';
 import { Spacer, Stack, Text } from '../../ui-blocks';
 import { APP_COLORS } from '../../constants/colors';
 import { DropDownMenu } from '../DropdownMenu';
@@ -34,26 +36,31 @@ export const Presentation: React.FC<IProps> = ({
   menuItems,
 }) => {
   const {
-    data = { data: [], pageIndex: 0, pageSize: 10, totalRecords: 0 },
+    data = {
+      data: [],
+      pageIndex: 0,
+      pageSize: 10,
+      totalRecords: 0,
+    },
     isLoading,
     error,
     isPreviousData,
   } = tableData;
-  const totalPageCount =
-    data.totalRecords === 0
-      ? 0
-      : Math.ceil(
-          data.totalRecords /
-            (paginatedDataState?.pageSize ?? DEFAULT_TABLE_PARAMS.pageSize)
-        );
+  const totalPageCount = data.totalRecords === 0
+    ? 0
+    : Math.ceil(
+      data.totalRecords
+            / (paginatedDataState?.pageSize ?? DEFAULT_TABLE_PARAMS.pageSize),
+    );
 
-  const tableColumns = useMemo(() => {
-    return columns.map(({ filter, ...column }) => ({
+  const tableColumns = useMemo(
+    () => columns.map(({ filter, ...column }) => ({
       ...column,
       Filter: filter ? mapFilterTypeToComponent(filter) : undefined,
       disableFilters: !filter,
-    }));
-  }, [columns]);
+    })),
+    [columns],
+  );
 
   const {
     getTableProps,
@@ -78,25 +85,25 @@ export const Presentation: React.FC<IProps> = ({
       autoResetFilters: false,
       initialState: DEFAULT_TABLE_PARAMS,
       defaultColumn: {
-        Filter: <Fragment />,
+        Filter: <></>,
       },
     },
     useFilters,
     useSortBy,
-    usePagination
+    usePagination,
   );
 
   useEffect(() => {
     if (
-      tableState.filters.length === 0 ||
-      tableState.filters.some(({ value }: ITableFilter) => {
+      tableState.filters.length === 0
+      || tableState.filters.some(({ value }: ITableFilter) => {
         if (typeof value === 'string' && value.length < 3) {
           // TODO clean the false posities when my select value is less than three characters
           // BY adding a new field to the parameter to check and filter out
           return false;
         }
         if (typeof value === 'object') {
-          return !Object.values(value).some(value$1 => !value$1);
+          return !Object.values(value).some((value$1) => !value$1);
         }
         return true;
       })
@@ -132,33 +139,29 @@ export const Presentation: React.FC<IProps> = ({
             <StyledTHead>
               {headerGroups.map((headerGroup: any, key2: number) => (
                 <tr {...headerGroup.getHeaderGroupProps()} key={key2}>
-                  {headerGroup.headers.map((column: any, key1: number) => {
-                    return (
-                      <StyledTh
-                        {...column.getHeaderProps(
-                          column.getSortByToggleProps()
-                        )}
-                        key={key1}
-                      >
-                        <Stack justify="space-between">
-                          <Text weight="bold" as="span">
-                            {column.render('Header')}
-                          </Text>
-                          <Stack justify="end" width="auto">
-                            {column.canSort && (
-                              <StyledSorting
-                                className={classnames({
-                                  desc: column.isSorted && column.isSortedDesc,
-                                  asc: column.isSorted && !column.isSortedDesc,
-                                })}
-                              />
-                            )}
-                            {column.canFilter ? column.render('Filter') : null}
-                          </Stack>
+                  {headerGroup.headers.map((column: any, key1: number) => (
+                    <StyledTh
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      key={key1}
+                    >
+                      <Stack justify="space-between">
+                        <Text weight="bold" as="span">
+                          {column.render('Header')}
+                        </Text>
+                        <Stack justify="end" width="auto">
+                          {column.canSort && (
+                            <StyledSorting
+                              className={classnames({
+                                desc: column.isSorted && column.isSortedDesc,
+                                asc: column.isSorted && !column.isSortedDesc,
+                              })}
+                            />
+                          )}
+                          {column.canFilter ? column.render('Filter') : null}
                         </Stack>
-                      </StyledTh>
-                    );
-                  })}
+                      </Stack>
+                    </StyledTh>
+                  ))}
                 </tr>
               ))}
             </StyledTHead>
@@ -167,13 +170,11 @@ export const Presentation: React.FC<IProps> = ({
                 prepareRow(row);
                 return (
                   <StyledBodyTR {...row.getRowProps()} key={key3}>
-                    {row.cells.map((cell: any, key: number) => {
-                      return (
-                        <StyledTd {...cell.getCellProps()} key={key}>
-                          {cell.render('Cell')}
-                        </StyledTd>
-                      );
-                    })}
+                    {row.cells.map((cell: any, key: number) => (
+                      <StyledTd {...cell.getCellProps()} key={key}>
+                        {cell.render('Cell')}
+                      </StyledTd>
+                    ))}
                   </StyledBodyTR>
                 );
               })}
@@ -193,35 +194,41 @@ export const Presentation: React.FC<IProps> = ({
         </div>
         <Stack justify="space-between" align="center">
           <Text>
-            Showing{' '}
+            Showing
+            {' '}
             <SimpleSelect
-              options={[10, 25, 50].map(option => ({
+              options={[10, 25, 50].map((option) => ({
                 value: `${option}`,
                 label: `${option}`,
               }))}
-              onChange={value => setPageSize(Number(value))}
+              onChange={(value) => setPageSize(Number(value))}
               value={tableState.pageSize}
-            />{' '}
-            entries of <b>{data.totalRecords}</b> results
+            />
+            {' '}
+            entries of
+            {' '}
+            <b>{data.totalRecords}</b>
+            {' '}
+            results
           </Text>
           <StyledPagination>
             <ReactPaginate
-              previousLabel={'prev'}
-              nextLabel={'next'}
-              breakLabel={'...'}
+              previousLabel="prev"
+              nextLabel="next"
+              breakLabel="..."
               pageCount={totalPageCount}
               marginPagesDisplayed={2}
               pageRangeDisplayed={3}
-              breakClassName={'page-item'}
-              nextClassName={'page-item'}
-              previousClassName={'page-item'}
-              pageClassName={'page-item'}
-              breakLinkClassName={'page-link'}
-              pageLinkClassName={'page-link'}
-              nextLinkClassName={'page-link'}
-              previousLinkClassName={'page-link'}
-              containerClassName={'pagination'}
-              activeClassName={'active'}
+              breakClassName="page-item"
+              nextClassName="page-item"
+              previousClassName="page-item"
+              pageClassName="page-item"
+              breakLinkClassName="page-link"
+              pageLinkClassName="page-link"
+              nextLinkClassName="page-link"
+              previousLinkClassName="page-link"
+              containerClassName="pagination"
+              activeClassName="active"
               onPageChange={({ selected }) => {
                 gotoPage(selected);
               }}
@@ -264,7 +271,7 @@ const StyledSorting = styled.span`
 
   &.desc:after,
   &.asc:before {
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
     opacity: 1;
   }
 `;
@@ -284,14 +291,14 @@ const StyledPagination = styled.div`
     padding: 0.25rem 0.5rem;
     font-size: 0.71rem;
     line-height: 1.8;
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
   }
 
   .page-item.active {
     .page-link {
       z-index: 3;
-      background-color: ${props => props.theme.colors.primary};
-      border-color: ${props => props.theme.colors.primary};
+      background-color: ${(props) => props.theme.colors.primary};
+      border-color: ${(props) => props.theme.colors.primary};
     }
   }
 
@@ -309,7 +316,7 @@ const StyledTableResponsive = styled.div`
   border: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background: ${props => props.theme.colors.white};
+  background: ${(props) => props.theme.colors.white};
   padding: 0.5rem;
 `;
 
@@ -318,7 +325,7 @@ const StyledTh = styled.th`
   vertical-align: middle;
   border: 1px solid ${APP_COLORS.border};
   border-bottom-width: 2px;
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
   font-weight: 500;
   border-top: none;
 `;
@@ -340,7 +347,7 @@ const StyledTableTitle = styled.h4`
 const StyledTable = styled.table`
   width: 100%;
   margin-bottom: 1rem;
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
   border-collapse: collapse;
   border: 1px solid ${APP_COLORS.border};
   .dropdown-toggle::after {

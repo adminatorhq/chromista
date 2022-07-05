@@ -24,7 +24,7 @@ export default {
   },
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <Tabs {...args} />
   </AppWrapper>

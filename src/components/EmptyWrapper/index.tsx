@@ -23,7 +23,11 @@ export const EmptyWrapper: React.FC<IProps> = ({
       {/* {hideIcon ? null : <img src={Empty} alt="0" width="100px" />} */}
       <br />
       <br />
-      <StyledText> {text} </StyledText>
+      <StyledText>
+        {' '}
+        {text}
+        {' '}
+      </StyledText>
       {children}
     </StyledWrapper>
   );
@@ -38,10 +42,9 @@ const StyledWrapper = styled.div<{ border: boolean }>`
   padding: 30px;
   padding-bottom: 20px;
   border-radius: 0.25rem;
-  background: ${props => props.theme.colors.white};
-  ${({ border }) =>
-    border &&
-    css`
-      border: 1px solid ${props => props.theme.colors.border};
+  background: ${(props) => props.theme.colors.white};
+  ${({ border }) => border
+    && css`
+      border: 1px solid ${(props) => props.theme.colors.border};
     `}
 `;

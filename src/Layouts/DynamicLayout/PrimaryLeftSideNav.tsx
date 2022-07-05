@@ -12,36 +12,31 @@ interface IProps {
 export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
   const isSidebarOpen = false;
 
-  const [
-    selectMiniSideBar,
-    currentMiniSideBar,
-    closeFullSideBar,
-  ] = useSideBarStore(state => [
+  const [selectMiniSideBar, currentMiniSideBar, closeFullSideBar] = useSideBarStore((state) => [
     state.selectMiniSideBar,
     state.currentMiniSideBar,
     state.closeFullSideBar,
   ]);
 
-  const clearDeepLinks = useNestedNavStore(state => state.clear);
+  const clearDeepLinks = useNestedNavStore((state) => state.clear);
 
-  const navigationToUse = useMemo(() => {
-    return navigation.map(({ link, title, ...rest }) => {
-      return {
-        ...rest,
-        link,
-        title,
-        action: () => {
-          if (link) {
-            closeFullSideBar();
-            clearDeepLinks();
-            return;
-          }
-          selectMiniSideBar(title);
+  const navigationToUse = useMemo(
+    () => navigation.map(({ link, title, ...rest }) => ({
+      ...rest,
+      link,
+      title,
+      action: () => {
+        if (link) {
+          closeFullSideBar();
           clearDeepLinks();
-        },
-      };
-    });
-  }, [navigation, selectMiniSideBar, clearDeepLinks]);
+          return;
+        }
+        selectMiniSideBar(title);
+        clearDeepLinks();
+      },
+    })),
+    [navigation, selectMiniSideBar, clearDeepLinks],
+  );
 
   return (
     <BaseLeftSideNav isSidebarOpen={isSidebarOpen}>
@@ -49,7 +44,7 @@ export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
         navigation={navigationToUse}
         isSidebarOpen={isSidebarOpen}
         currentLink={currentMiniSideBar}
-        showDash={true}
+        showDash
       />
     </BaseLeftSideNav>
   );

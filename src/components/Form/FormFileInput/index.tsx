@@ -2,10 +2,10 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import classnames from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
+import { RequestService } from '@gothicgeeks/shared';
 import { ISharedFormInput } from '../_types';
 import { generateClassNames, wrapLabelAndError } from '../_wrapForm';
 import { ProgressBar } from '../../ProgressBar';
-import { RequestService } from '@gothicgeeks/shared';
 // import './styles.scss';
 // TODO uncommnet
 // import { STORE_PLAN_AGGREGATES_QUERY_CACHE_KEY } from '../../screens/Settings/Subscription/_hooks/constants';
@@ -56,7 +56,7 @@ const FileInput: React.FC<IFormFileInput> = ({
               total: number;
             }) => {
               const percentCompleted = Math.round(
-                (progressEvent.loaded * 100) / progressEvent.total
+                (progressEvent.loaded * 100) / progressEvent.total,
               );
               setProgress(percentCompleted);
               // After 100% label to processing file by timeout here .5seconds
@@ -69,7 +69,7 @@ const FileInput: React.FC<IFormFileInput> = ({
         input.onChange(imageUrl);
       });
     },
-    [domain, input]
+    [domain, input],
   );
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -111,7 +111,7 @@ const FileInput: React.FC<IFormFileInput> = ({
         <button
           type="button"
           className="dropify-clear"
-          onClick={e => {
+          onClick={(e) => {
             onChange(null);
             e.stopPropagation();
           }}
@@ -140,7 +140,5 @@ const FileInput: React.FC<IFormFileInput> = ({
 };
 
 export const FormFileInput: React.FC<IFormFileInput> = (
-  formInput
-): JSX.Element => {
-  return wrapLabelAndError(<FileInput {...formInput} />, formInput);
-};
+  formInput,
+): JSX.Element => wrapLabelAndError(<FileInput {...formInput} />, formInput);

@@ -56,8 +56,8 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  color: ${props => props.theme.text.main};
-  background-color: ${props => props.theme.colors.white};
+  color: ${(props) => props.theme.text.main};
+  background-color: ${(props) => props.theme.colors.white};
   min-height: 100vh;
   letter-spacing: 0.1px;
   line-height: 1.5;
@@ -71,7 +71,7 @@ body {
 h4 {
   margin-top: 0;
   margin-bottom: .5rem;
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
   margin: 10px 0;
   font-size: 1.125rem;
   font-weight: 500;
@@ -93,7 +93,7 @@ ol, ul {
 
 a {
   font-family: "Roboto", sans-serif;
-  color: ${props => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.primary};
   text-decoration: none;
   background-color: transparent
 }
@@ -118,7 +118,7 @@ hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
-  border-top: 1px solid ${props => props.theme.colors.border};
+  border-top: 1px solid ${(props) => props.theme.colors.border};
   box-sizing: content-box;
   height: 0;
   overflow: visible
@@ -219,7 +219,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: .5rem;
   font-weight: 500;
   line-height: 1.2;
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
 
 }
 button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {

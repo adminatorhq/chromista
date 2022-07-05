@@ -1,8 +1,7 @@
-import React, { Fragment, ReactNode } from 'react';
-import { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
+import styled from 'styled-components';
 import { Footer } from './Footer';
 import { PageHeader } from './Header';
-import styled from 'styled-components';
 import { AppLeftSideNav } from './SideBar';
 import useWindowDimensions from './use-window-dimensions.hook';
 
@@ -10,11 +9,11 @@ interface IProps {
   children: ReactNode;
 }
 
-export const AppLayout = ({ children }: IProps) => {
+export function AppLayout({ children }: IProps) {
   const { width } = useWindowDimensions();
   const [isSidebarOpen, setIsSidebarOpen] = useState(() => width > 1024);
   return (
-    <Fragment>
+    <>
       <AppLeftSideNav
         navigation={[]}
         isSidebarOpen={isSidebarOpen}
@@ -27,15 +26,15 @@ export const AppLayout = ({ children }: IProps) => {
           <Footer />
         </StyledPageContent>
       </StyledPageWrapper>
-    </Fragment>
+    </>
   );
-};
+}
 
 const StyledPageWrapper = styled.div<{ isSidebarOpen: boolean }>`
   flex: 1;
   padding: 0;
   display: block;
-  margin-left: ${props => (props.isSidebarOpen ? 220 : 50)}px;
+  margin-left: ${(props) => (props.isSidebarOpen ? 220 : 50)}px;
   background: #edf0f1;
 `;
 

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import SortableList, { SortableItem } from 'react-easy-sort';
-import { SectionList, SectionListItem } from '../Section/SectionList';
 import { DataStateKeys } from '@gothicgeeks/shared';
+import { Move } from 'react-feather';
+import { SectionList, SectionListItem } from '../Section/SectionList';
 import { ErrorAlert } from '../Alert';
 import { ListSkeleton } from '../Skeleton';
 import { EmptyWrapper } from '../EmptyWrapper';
 import { Spacer, Stack } from '../../ui-blocks';
 import { FormButton } from '../Button';
-import { Move } from 'react-feather';
 import { HSpacer } from '../../ui-blocks/Spacer';
 
 function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
@@ -46,7 +46,7 @@ export function SortList<T extends { value: string; label?: string }>({
 
   const onSortEnd = (oldOrder: number, newOrder: number) => {
     setTouched(true);
-    setSortedData(array => arrayMoveImmutable(array, oldOrder, newOrder));
+    setSortedData((array) => arrayMoveImmutable(array, oldOrder, newOrder));
   };
 
   if (data.error) {
@@ -74,7 +74,7 @@ export function SortList<T extends { value: string; label?: string }>({
             setIsMakingRequest(false);
             setTouched(false);
           }}
-          text={'Save Order'}
+          text="Save Order"
           disabled={!touched}
           isMakingRequest={isMakingRequest}
         />
@@ -86,8 +86,8 @@ export function SortList<T extends { value: string; label?: string }>({
 
   return (
     <SectionList>
-      {sortedData.length >
-        THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP && (
+      {sortedData.length
+        > THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP && (
         <>{saveChanges}</>
       )}
       <SortableList
@@ -95,13 +95,13 @@ export function SortList<T extends { value: string; label?: string }>({
         className="list"
         draggedItemClassName="dragged"
       >
-        {sortedData.map(item => (
+        {sortedData.map((item) => (
           <SortableItem key={item.value}>
             <div className="item">
               <SectionListItem
                 IconComponent={Move}
                 label={item.label || item.value}
-                toNoWhere={true}
+                toNoWhere
               />
             </div>
           </SortableItem>

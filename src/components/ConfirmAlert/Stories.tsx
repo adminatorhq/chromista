@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { Presentation, IPresentationProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
-import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/ConfirmAlert',
@@ -15,7 +15,7 @@ export default {
   },
 };
 
-const Template: Story<IPresentationProps> = args => (
+const Template: Story<IPresentationProps> = (args) => (
   <AppWrapper>
     <Presentation {...args} />
   </AppWrapper>

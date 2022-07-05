@@ -11,7 +11,7 @@ export default {
   },
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <p id="foo">Hover over me</p>
     <Tooltip {...args} />

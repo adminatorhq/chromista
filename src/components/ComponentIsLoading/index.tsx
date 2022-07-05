@@ -39,7 +39,7 @@ const StyledLds = styled.div`
   }
 `;
 
-export const ComponentIsLoading = () => {
+export function ComponentIsLoading() {
   return (
     <div style={{ textAlign: 'center', margin: '30px', marginBottom: '20px' }}>
       <StyledLdsWrapper>
@@ -48,9 +48,9 @@ export const ComponentIsLoading = () => {
       </StyledLdsWrapper>
     </div>
   );
-};
+}
 
-export const DelayedComponentIsLoading = () => {
+export function DelayedComponentIsLoading() {
   const [show, setShow] = React.useState(false);
   React.useEffect(() => {
     const timeout = setTimeout(() => setShow(true), DELAY_MS);
@@ -62,4 +62,4 @@ export const DelayedComponentIsLoading = () => {
     return null;
   }
   return <ComponentIsLoading />;
-};
+}

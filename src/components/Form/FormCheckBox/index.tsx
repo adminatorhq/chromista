@@ -1,6 +1,6 @@
 import React from 'react';
-import { ISharedFormInput } from '../_types';
 import styled from 'styled-components';
+import { ISharedFormInput } from '../_types';
 import { Text } from '../../../ui-blocks/Text';
 import { Stack } from '../../../ui-blocks';
 import { StyledFormFeedback, StyledFormGroup } from '../Styles';
@@ -21,14 +21,14 @@ const StyledCheckBoxInput = styled.input`
   color-adjust: exact;
 
   &:checked {
-    background-color: ${props => props.theme.colors.primary};
-    border-color: ${props => props.theme.colors.primary};
+    background-color: ${(props) => props.theme.colors.primary};
+    border-color: ${(props) => props.theme.colors.primary};
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
   }
 `;
 
 export const FormCheckBox: React.FC<ISharedFormInput> = (
-  formInput
+  formInput,
 ): JSX.Element => {
   const { input, label, meta } = formInput;
   return (
@@ -39,7 +39,10 @@ export const FormCheckBox: React.FC<ISharedFormInput> = (
           <Text size="4">{label}</Text>
         </label>
       </Stack>
-      <StyledFormFeedback>{isFormMetaWithError(meta)}&nbsp;</StyledFormFeedback>
+      <StyledFormFeedback>
+        {isFormMetaWithError(meta)}
+        &nbsp;
+      </StyledFormFeedback>
     </StyledFormGroup>
   );
 };

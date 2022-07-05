@@ -3,7 +3,7 @@ import { Story } from '@storybook/react';
 import { EmptyWrapper, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
-export default {
+const Story = {
   title: 'Components/EmptyWrapper',
   component: EmptyWrapper,
   args: {
@@ -11,7 +11,7 @@ export default {
   },
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <EmptyWrapper {...args} />
   </AppWrapper>
@@ -35,7 +35,11 @@ export const WithChildren = Template.bind({});
 WithChildren.args = {
   children: (
     <>
-      <b>This is bold</b> <>This is not</>
+      <b>This is bold</b>
+      {' '}
+      This is not
     </>
   ),
 };
+
+export default Story;

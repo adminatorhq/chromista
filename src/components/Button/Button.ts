@@ -12,7 +12,7 @@ export interface IStyledBaseButton {
 export const StyledBaseButton = styled.button<IStyledBaseButton>`
   display: inline-block;
   font-weight: 400;
-  color: ${props => props.theme.text.main};
+  color: ${(props) => props.theme.text.main};
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -30,31 +30,27 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
     transition: none;
   }
 
-  ${({ block }) =>
-    block &&
-    css`
+  ${({ block }) => block
+    && css`
       display: block;
       width: 100%;
     `}
 
-    ${({ pushLeft }) =>
-      pushLeft &&
-      css`
-        margin-left: 0.5rem;
-      `}
+  ${({ pushLeft }) => pushLeft
+    && css`
+      margin-left: 0.5rem;
+    `}
 
-  ${props =>
-    props.size === 'sm' &&
-    css`
+  ${(props) => props.size === 'sm'
+    && css`
       padding: 0.25rem 0.5rem;
       font-size: 0.71rem;
       line-height: 1.8;
       border-radius: 0.2rem;
     `}
 
-    ${props =>
-      props.size === 'xs' &&
-      css`
+    ${(props) => props.size === 'xs'
+    && css`
       padding: .25rem .5rem;
       font-size: .71rem;
       line-height: 1.2;
@@ -84,7 +80,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
 `;
 
 export const StyledButton = styled(StyledBaseButton)`
-  color: ${props => props.theme.text.white};
+  color: ${(props) => props.theme.text.white};
   background-color: ${getColor()};
   border-color: ${getColor()};
 `;
@@ -94,13 +90,13 @@ export const StyledSoftButton = styled(StyledBaseButton)`
   color: ${getColor()};
   &:hover {
     background-color: ${getColor()};
-    color: ${props => props.theme.text.white};
+    color: ${(props) => props.theme.text.white};
   }
 
   &:focus {
     box-shadow: 0 0 0 0.1rem ${getColor(0.2)};
     background-color: ${getColor(0.8)};
-    color: ${props => props.theme.text.white};
+    color: ${(props) => props.theme.text.white};
   }
 `;
 
@@ -109,7 +105,7 @@ export const StyledOutlineButton = styled(StyledBaseButton)`
   border-color: ${getColor()};
 
   &:hover {
-    color: ${props => props.theme.text.white};
+    color: ${(props) => props.theme.text.white};
     background-color: ${getColor()};
     border-color: ${getColor()};
   }
@@ -125,7 +121,7 @@ export const StyledOutlineButton = styled(StyledBaseButton)`
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active {
-    color: ${props => props.theme.text.white};
+    color: ${(props) => props.theme.text.white};
     background-color: ${getColor()};
     border-color: ${getColor()};
   }

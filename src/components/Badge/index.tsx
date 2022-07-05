@@ -32,14 +32,13 @@ const StyledSoftBadge = styled(StyledBadge)`
 
 const StyledBadgePill = styled(StyledBadge)<{ isIconBadge?: true }>`
   background-color: ${getColor()};
-  color: ${props => props.theme.text.white};
+  color: ${(props) => props.theme.text.white};
   padding-right: 0.6em;
   padding-left: 0.6em;
   border-radius: 10rem;
 
-  ${({ isIconBadge }) =>
-    isIconBadge &&
-    css`
+  ${({ isIconBadge }) => isIconBadge
+    && css`
       display: inline-block;
       position: absolute;
       top: 9px;
@@ -56,9 +55,9 @@ interface IBadge {
   color: ColorTypes;
 }
 
-export const Badge: React.FC<IBadge> = ({ text, color }) => {
-  return <StyledSoftBadge color={color}>{text}</StyledSoftBadge>;
-};
+export const Badge: React.FC<IBadge> = ({ text, color }) => (
+  <StyledSoftBadge color={color}>{text}</StyledSoftBadge>
+);
 
 interface IBadgeBuilder {
   value: string;
@@ -70,7 +69,7 @@ export const BadgeBuilder: React.FC<IBadgeBuilder> = ({
   statusSelections,
 }) => {
   const builderBagValue = statusSelections.find(
-    statusSelection => statusSelection.value === value
+    (statusSelection) => statusSelection.value === value,
   );
   if (!builderBagValue) {
     return null;

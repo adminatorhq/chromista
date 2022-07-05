@@ -55,5 +55,5 @@ export const Stack = styled.div<Partial<StackProps>>(
     alignItems: align,
     justifyContent: justify,
     width,
-  })
+  }),
 );

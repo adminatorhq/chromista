@@ -26,7 +26,7 @@ export default {
   },
 };
 
-const Template: Story<IProps<IDemoType>> = args => (
+const Template: Story<IProps<IDemoType>> = (args) => (
   <AppWrapper>
     <RenderList {...args} />
   </AppWrapper>

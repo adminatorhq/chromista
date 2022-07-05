@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+
 interface IProgressBar {
   progress: number;
 }
@@ -24,7 +25,7 @@ const StyledProgressBar = styled.div`
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  color: ${props => props.theme.text.white};
+  color: ${(props) => props.theme.text.white};
   text-align: center;
   white-space: nowrap;
   background-color: ${({ theme }) => theme.colors.primary};
@@ -59,7 +60,8 @@ export const ProgressBar: React.FC<IProgressBar> = ({ progress }) => (
       aria-valuemin={0}
       aria-valuemax={100}
     >
-      {progress}%
+      {progress}
+      %
     </StyledProgressBar>
   </StyledProgress>
 );

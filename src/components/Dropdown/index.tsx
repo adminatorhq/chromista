@@ -1,4 +1,6 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, {
+  ReactNode, useEffect, useRef, useState,
+} from 'react';
 import useClickAway from 'react-use/lib/useClickAway';
 import useKey from 'react-use/lib/useKey';
 import styled from 'styled-components';
@@ -13,10 +15,10 @@ type Align = 'left' | 'right';
 
 const DropdownRoot = styled.div<{ zIndex: number; align: Align }>`
   position: absolute;
-  right: ${props => (props.align === 'right' ? '0' : 'auto')};
-  left: ${props => (props.align === 'left' ? '0' : 'auto')};
+  right: ${(props) => (props.align === 'right' ? '0' : 'auto')};
+  left: ${(props) => (props.align === 'left' ? '0' : 'auto')};
   top: calc(100% + 8px);
-  z-index: ${props => props.zIndex};
+  z-index: ${(props) => props.zIndex};
 `;
 
 interface IProps {

@@ -24,7 +24,7 @@ export default {
   },
 };
 
-const Template: Story<IProps<{ value: string; label?: string }>> = args => (
+const Template: Story<IProps<{ value: string; label?: string }>> = (args) => (
   <AppWrapper>
     <SortList {...args} />
   </AppWrapper>

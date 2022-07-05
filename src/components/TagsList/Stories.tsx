@@ -3,7 +3,7 @@ import { Story } from '@storybook/react';
 import { TagsList, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
-export default {
+const Story = {
   title: 'Components/TagsList',
   component: TagsList,
   args: {
@@ -27,7 +27,7 @@ export default {
   },
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <TagsList {...args} />
   </AppWrapper>
@@ -51,3 +51,5 @@ Empty.args = {
   items: [],
   entityName: 'Item',
 };
+
+export default Story;

@@ -10,14 +10,15 @@ export const RenderNameAndIdListValue: React.FC<IRenderNameAndIdListValue> = ({
   selections,
   values,
 }) => {
-  const selectionsAsObject = useMemo(() => keyBy(selections, 'id'), [
-    selections,
-  ]);
+  const selectionsAsObject = useMemo(
+    () => keyBy(selections, 'id'),
+    [selections],
+  );
   return (
     <>
       {values
-        .map(category => selectionsAsObject[category]?.name)
-        .filter(category => category)
+        .map((category) => selectionsAsObject[category]?.name)
+        .filter((category) => category)
         .join(', ')}
     </>
   );

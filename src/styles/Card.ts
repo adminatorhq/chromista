@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledCard = styled.div`
-  background-color: ${props => props.theme.colors.white};
-  border: 1px solid ${props => props.theme.colors.border};
+  background-color: ${(props) => props.theme.colors.white};
+  border: 1px solid ${(props) => props.theme.colors.border};
   position: relative;
   word-wrap: break-word;
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
@@ -18,6 +18,6 @@ export const StyledCardBody = styled.div`
 export const StyledCardHeader = styled.div`
   padding: 0.75rem;
   margin-bottom: 0;
-  background-color: ${props => props.theme.colors.white};
-  border-bottom: 1px solid ${props => props.theme.colors.border};
+  background-color: ${(props) => props.theme.colors.white};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
 `;

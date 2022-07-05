@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { ISideBarNavigation } from './FixedLayout/types';
 import { ChevronRight } from 'react-feather';
 import Link from 'next/link';
 import { StringUtils } from '@gothicgeeks/shared';
+import { ISideBarNavigation } from './FixedLayout/types';
 
 interface IRenderNavigation {
   navigation: ISideBarNavigation[];
@@ -23,70 +23,70 @@ export const RenderNavigation: React.FC<IRenderNavigation> = ({
   isSubMenu,
   showDash,
   currentLink = 'hopefully this will never be true',
-}) => {
-  return (
-    <>
-      {showDash && navigation.length ? <StyledDash /> : null}
-      {label && isSidebarOpen && navigation.length ? (
-        <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
-      ) : null}
-      {navigation.map(({ title, link, icon, action }) => {
-        const isActive = currentLink === link;
-        const content = (
-          <>
-            <div>
-              <StyleMenuIcon
-                as={icon}
-                $isActive={isActive}
-                $isSidebarOpen={isSidebarOpen}
-                data-test-id={`nav-icon__${StringUtils.sluggify(title)}`}
-              />
-            </div>
-            <StyledLeftSideNavMenuText
-              data-test-id={`nav-menu-item__${StringUtils.sluggify(title)}`}
+}) => (
+  <>
+    {showDash && navigation.length ? <StyledDash /> : null}
+    {label && isSidebarOpen && navigation.length ? (
+      <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
+    ) : null}
+    {navigation.map(({
+      title, link, icon, action,
+    }) => {
+      const isActive = currentLink === link;
+      const content = (
+        <>
+          <div>
+            <StyleMenuIcon
+              as={icon}
+              $isActive={isActive}
               $isSidebarOpen={isSidebarOpen}
-            >
-              {title}
-            </StyledLeftSideNavMenuText>
-            {isSidebarOpen ? (
-              <StyledMenuArrow>
-                <ChevronRight size={ARROW_SIZE} />
-              </StyledMenuArrow>
-            ) : null}
-          </>
-        );
-        return (
-          <StyledLeftSideNavMenuList key={title}>
-            {link ? (
-              <Link href={link || ''} passHref={true}>
-                <StyledLeftSideNavMenuListAnchor
-                  $isSubMenu={isSubMenu}
-                  onClick={() => {
-                    // Basically to clear the current content
-                    action?.();
-                  }}
-                >
-                  {content}
-                </StyledLeftSideNavMenuListAnchor>
-              </Link>
-            ) : (
+              data-test-id={`nav-icon__${StringUtils.sluggify(title)}`}
+            />
+          </div>
+          <StyledLeftSideNavMenuText
+            data-test-id={`nav-menu-item__${StringUtils.sluggify(title)}`}
+            $isSidebarOpen={isSidebarOpen}
+          >
+            {title}
+          </StyledLeftSideNavMenuText>
+          {isSidebarOpen ? (
+            <StyledMenuArrow>
+              <ChevronRight size={ARROW_SIZE} />
+            </StyledMenuArrow>
+          ) : null}
+        </>
+      );
+      return (
+        <StyledLeftSideNavMenuList key={title}>
+          {link ? (
+            <Link href={link || ''} passHref>
               <StyledLeftSideNavMenuListAnchor
                 $isSubMenu={isSubMenu}
-                $isActive={isActive}
-                as={StyledLinkLikeButton}
                 onClick={() => {
+                  // Basically to clear the current content
                   action?.();
                 }}
               >
                 {content}
               </StyledLeftSideNavMenuListAnchor>
-            )}
-          </StyledLeftSideNavMenuList>
-        );
-      })}
-    </>
-  );
-};
+            </Link>
+          ) : (
+            <StyledLeftSideNavMenuListAnchor
+              $isSubMenu={isSubMenu}
+              $isActive={isActive}
+              as={StyledLinkLikeButton}
+              onClick={() => {
+                action?.();
+              }}
+            >
+              {content}
+            </StyledLeftSideNavMenuListAnchor>
+          )}
+        </StyledLeftSideNavMenuList>
+      );
+    })}
+  </>
+);
 
 const StyledLinkLikeButton = styled.button`
   &:focus {
@@ -120,8 +120,8 @@ const StyledLeftSideNavMenuListAnchor = styled.a<{ $isSubMenu?: true }>`
   align-items: center;
   width: 100%;
   outline: none !important;
-  padding: ${props => (props.$isSubMenu ? 5 : 7)}px 0px;
-  font-size: ${props => (props.$isSubMenu ? 12 : 13)}px;
+  padding: ${(props) => (props.$isSubMenu ? 5 : 7)}px 0px;
+  font-size: ${(props) => (props.$isSubMenu ? 12 : 13)}px;
   color: #a9baca;
   transition: all 0.3s ease-out;
   font-weight: 400;
@@ -130,18 +130,18 @@ const StyledLeftSideNavMenuListAnchor = styled.a<{ $isSubMenu?: true }>`
   margin: 0;
 
   &:hover {
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
 const StyledLeftSideNavMenuText = styled.span<{ $isSidebarOpen: boolean }>`
-  display: ${props => (props.$isSidebarOpen ? 'inline' : 'none')};
+  display: ${(props) => (props.$isSidebarOpen ? 'inline' : 'none')};
 `;
 
 const StyledDash = styled.hr`
   margin: 0.5rem 0;
   border: 0;
-  border-top: 1px dashed ${props => props.theme.colors.border};
+  border-top: 1px dashed ${(props) => props.theme.colors.border};
   box-sizing: content-box;
   height: 0;
   overflow: visible;
@@ -152,20 +152,19 @@ const StyleMenuIcon = styled.span<{
   $isSidebarOpen: boolean;
   $isActive?: boolean;
 }>`
-  color: ${props => (props.$isActive ? props.theme.colors.primary : '#a9baca')};
+  color: ${(props) => (props.$isActive ? props.theme.colors.primary : '#a9baca')};
   fill: rgba(112, 129, 185, 0.12);
-  ${props =>
-    props.$isSidebarOpen
-      ? css`
+  ${(props) => (props.$isSidebarOpen
+    ? css`
           margin-right: 11px;
           width: 18px;
           height: 18px;
         `
-      : css`
+    : css`
           margin-right: 0;
           width: 24px;
           height: 24px;
-        `}
+        `)}
   stroke-width: 1px;
   align-self: center;
   display: inline-block;

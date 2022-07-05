@@ -16,23 +16,21 @@ type IStore = {
   clear: () => void;
 };
 
-export const useNestedNavStore = createStore<IStore>(set => ({
+export const useNestedNavStore = createStore<IStore>((set) => ({
   deepLinks: [],
   clear: () => set(() => ({ deepLinks: [] })),
-  goToIndex: (index: number) =>
-    set(({ deepLinks }) => {
-      while (index > 0) {
-        deepLinks.pop();
-        --index;
-      }
-    }),
+  goToIndex: (index: number) => set(({ deepLinks }) => {
+    while (index > 0) {
+      deepLinks.pop();
+      --index;
+    }
+  }),
   pop: () => {
     set(({ deepLinks }) => {
       deepLinks.pop();
     });
   },
-  push: (link: IDeepLink) =>
-    set(({ deepLinks }) => {
-      deepLinks.push(link);
-    }),
+  push: (link: IDeepLink) => set(({ deepLinks }) => {
+    deepLinks.push(link);
+  }),
 }));

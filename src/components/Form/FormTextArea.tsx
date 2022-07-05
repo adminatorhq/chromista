@@ -3,14 +3,17 @@ import styled from 'styled-components';
 import { StyledInput } from './Styles';
 import { ISharedFormInput } from './_types';
 import { wrapLabelAndError, generateClassNames } from './_wrapForm';
+
 interface IFormTextArea extends ISharedFormInput {
   rows?: number;
 }
 
 export const FormTextArea: React.FC<IFormTextArea> = (
-  formInput
+  formInput,
 ): JSX.Element => {
-  const { input, rows = 3, label, disabled, meta } = formInput;
+  const {
+    input, rows = 3, label, disabled, meta,
+  } = formInput;
 
   return wrapLabelAndError(
     <StyledTextArea
@@ -23,7 +26,7 @@ export const FormTextArea: React.FC<IFormTextArea> = (
     >
       {input.value}
     </StyledTextArea>,
-    formInput
+    formInput,
   );
 };
 

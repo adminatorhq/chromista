@@ -1,11 +1,11 @@
 import React from 'react';
+import { StringFilters } from '@gothicgeeks/shared';
 import { StyledMutedText } from '../../styles/Text';
 import { ISystemStatusForDisplay } from '../../types';
 import { BadgeBuilder } from '../Badge';
 import { Currency } from '../Currency';
 import { StyledListGroup } from '../Lists';
 import { ListSkeleton } from '../Skeleton/ListSkeleton';
-import { StringFilters } from '@gothicgeeks/shared';
 
 export enum KeyValueDetailsFormat {
   Money = 'money',
@@ -39,7 +39,9 @@ export const KeyValueDetails: React.FC<IKeyValueDetails> = ({
   }
   return (
     <StyledListGroup>
-      {keyValues.map(({ key, value, format, statuses, icon }) => {
+      {keyValues.map(({
+        key, value, format, statuses, icon,
+      }) => {
         let valueToRender = <>{value}</>;
         switch (format) {
           case KeyValueDetailsFormat.Status:
@@ -64,7 +66,9 @@ export const KeyValueDetails: React.FC<IKeyValueDetails> = ({
             className="list-group-item d-flex justify-content-between align-items-center"
           >
             <div>
-              {icon} <StyledMutedText as="span">{key}</StyledMutedText>
+              {icon}
+              {' '}
+              <StyledMutedText as="span">{key}</StyledMutedText>
             </div>
             {valueToRender}
           </li>

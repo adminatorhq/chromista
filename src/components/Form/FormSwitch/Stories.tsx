@@ -3,7 +3,7 @@ import { Story } from '@storybook/react';
 import { AppWrapper } from '../../../AppWrapper';
 import { FormSwitch, IProps } from '.';
 
-const Demo = (args: IProps) => {
+function Demo(args: IProps) {
   const [value, setValue] = useState(true);
   return (
     <FormSwitch
@@ -14,7 +14,7 @@ const Demo = (args: IProps) => {
       label="Fooo"
     />
   );
-};
+}
 
 export default {
   title: 'Components/FormSwitch',
@@ -22,7 +22,7 @@ export default {
   args: {},
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <Demo {...args} />
   </AppWrapper>

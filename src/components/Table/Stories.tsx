@@ -1,11 +1,11 @@
 import React from 'react';
 import { Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { Download, Plus } from 'react-feather';
 import { AppWrapper } from '../../AppWrapper';
 import { Presentation, IProps } from './Presentation';
-import { Download, Plus } from 'react-feather';
 
-export default {
+const Story = {
   title: 'Components/Table',
   component: Presentation,
   args: {
@@ -67,9 +67,7 @@ export default {
         Header: 'Actions',
         accessor: '__action__',
         disableSortBy: true,
-        Cell: () => {
-          return <p>Some Action</p>;
-        },
+        Cell: () => <p>Some Action</p>,
       },
     ],
     tableData: {
@@ -108,7 +106,7 @@ export default {
   } as IProps,
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <Presentation {...args} />
   </AppWrapper>
@@ -161,3 +159,5 @@ Loading.args = {
     isPreviousData: false,
   },
 };
+
+export default Story;

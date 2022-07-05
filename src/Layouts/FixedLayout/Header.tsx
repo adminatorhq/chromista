@@ -15,7 +15,7 @@ const StyledPageTitleBox = styled.div`
 //   margin-bottom: 0px;
 // `;
 
-export const PageHeader = () => {
+export function PageHeader() {
   // const { breadcrumbs = [], title = '' } = useCurrentRouteConfig() || { breadcrumbs: [] };
 
   // const param = useLocationParams();
@@ -39,7 +39,7 @@ export const PageHeader = () => {
       {/* <Helmet>
         <title>MDStores - {title}</title>
       </Helmet> */}
-      <StyledGrid.Container fluid={true}>
+      <StyledGrid.Container fluid>
         <StyledGrid.Row>
           <StyledGrid.Col sm={12}>
             <StyledPageTitleBox>
@@ -67,4 +67,4 @@ export const PageHeader = () => {
       </StyledGrid.Container>
     </>
   );
-};
+}

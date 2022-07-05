@@ -41,7 +41,7 @@ export const SoftButton: React.FC<ISoftButton> = ({
   const content = (
     <>
       {isMakingActionRequest ? (
-        <FontAwesomeIcon icon={faSpinner} spin={true} />
+        <FontAwesomeIcon icon={faSpinner} spin />
       ) : (
         <>
           {icon ? <FontAwesomeIcon icon={ICON_MAP[icon]} /> : null}
@@ -65,8 +65,8 @@ export const SoftButton: React.FC<ISoftButton> = ({
 
   if (to) {
     return (
-      <Link href={to} passHref={true}>
-        <StyledSoftButton {...props} as={'a'}>
+      <Link href={to} passHref>
+        <StyledSoftButton {...props} as="a">
           {content}
         </StyledSoftButton>
       </Link>
@@ -90,9 +90,8 @@ export const SoftButton: React.FC<ISoftButton> = ({
 };
 
 const StyledLabel = styled.span<{ $hasLabel: boolean }>`
-  ${props =>
-    props.$hasLabel &&
-    css`
+  ${(props) => props.$hasLabel
+    && css`
       margin-left: 0.4rem;
     `}
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import { AccordionItem, IProps } from '.';
 import { AlertOctagon } from 'react-feather';
+import { AccordionItem, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
 export default {
@@ -14,9 +14,9 @@ export default {
   },
 };
 
-const Template: Story<IProps> = args => (
+const Template: Story<IProps> = (args) => (
   <AppWrapper>
-    <AccordionItem {...args} highlight={true} name="Highlighted" />
+    <AccordionItem {...args} highlight name="Highlighted" />
     <AccordionItem {...args} />
     <AccordionItem {...args} />
     <AccordionItem {...args} />

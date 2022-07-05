@@ -28,7 +28,7 @@ const modules = {
 };
 
 export const FormRichTextArea: React.FC<IFormRichText> = (
-  formInput
+  formInput,
 ): JSX.Element => {
   const {
     input: { onFocus, onBlur, ...inputProps },
@@ -40,11 +40,11 @@ export const FormRichTextArea: React.FC<IFormRichText> = (
         {...inputProps}
         readOnly={disabled}
         modules={modules}
-        placeholder={'Write something...'}
+        placeholder="Write something..."
         theme="snow"
       />
     </Root>,
-    formInput
+    formInput,
   );
 };
 
