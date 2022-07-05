@@ -21,7 +21,7 @@ const debouncedSearch = debounce(
   ) =>
     resolve(
       (await RequestService.get(`${url}&search=${inputValue}`)).data.filter(
-        ({ value }: ISelectData) => !disabledOptions.includes(value)
+        ({ value }: ISelectData) => !disabledOptions.includes(value as string)
       )
     ),
   700

@@ -29,7 +29,7 @@ export function SimpleSelect({
       }}
     >
       {options.map(({ value: value$1, label }) => (
-        <option key={value$1} value={value$1}>
+        <option key={value$1 + ''} value={value$1 + ''}>
           {label}
         </option>
       ))}
