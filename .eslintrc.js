@@ -36,12 +36,11 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-empty-function': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
-
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 'error',
-
-    'import/no-extraneous-dependencies': 'off',
     'react/no-danger': 'off',
+    'import/no-extraneous-dependencies': 'off',
+
     'react/jsx-props-no-spreading': 'off',
   },
 };

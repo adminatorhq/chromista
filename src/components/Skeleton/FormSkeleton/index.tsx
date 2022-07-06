@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import SkeletonLoader from 'tiny-skeleton-loader-react';
 import { sharedSkeletonProps } from '../constants';
 
-// eslint-disable-next-line no-shadow
 export enum FormSkeletonSchema {
   Textarea = '83px',
   Input = '38px',
