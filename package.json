@@ -17,7 +17,7 @@
     "test": "jest --detectOpenHandles --runInBand",
     "typecheck": "tsc",
     "test:cov": "jest --coverage",
-    "lint": "eslint --ext ts,tsx src",
+    "lint": "eslint --ext ts,tsx",
     "lint:fix": "eslint --fix",
     "prepare": "tsdx build",
     "size": "size-limit",
