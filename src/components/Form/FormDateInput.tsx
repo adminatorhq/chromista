@@ -11,7 +11,7 @@ interface IFormDateInput extends ISharedFormInput {
 
 export const FormDateInput: React.FC<IFormDateInput> = (
   formInput,
-): JSX.Element => {
+) => {
   const {
     input, disabled, meta, required, minDate, maxDate,
   } = formInput;

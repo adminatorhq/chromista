@@ -10,11 +10,11 @@ interface IAppLeftSideNav {
   navigation: ISideBarNavigation[];
 }
 
-export const AppLeftSideNav: React.FC<IAppLeftSideNav> = ({
+export function AppLeftSideNav({
   isSidebarOpen,
   toogleSidebar,
   navigation,
-}) => {
+}: IAppLeftSideNav) {
   const sideBarMenu = React.useMemo(
     () => [
       {
@@ -43,4 +43,4 @@ export const AppLeftSideNav: React.FC<IAppLeftSideNav> = ({
       </StyledLeftSideNavMenu>
     </BaseLeftSideNav>
   );
-};
+}

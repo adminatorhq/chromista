@@ -19,31 +19,56 @@ const sharedSelectProps = {
   classNamePrefix: 'react-select',
 };
 
+const StyledSelect = styled(Select)`
+  .react-select__control {
+    &:hover {
+      border: 1px solid ${(props) => props.theme.colors.border};
+    }
+    &:focus {
+      color: ${(props) => props.theme.text.main};
+      background-color: ${(props) => props.theme.colors.white};
+      border-color: rgba(23, 97, 253, 0.5);
+      outline: 0;
+    }
+    .react-select__single-value {
+      color: ${(props) => props.theme.text.main};
+      font-size: 0.8125rem;
+    }
+    border: 1px solid ${(props) => props.theme.colors.border};
+  }
+
+  &.invalid {
+    border-color: ${(props) => props.theme.colors.danger} !important;
+  }
+`;
+
 interface IFormMultiSelect {
   selectData: ISelectData[];
   values: string[];
   onChange: (values: string[]) => void;
 }
 
-export const FormMultiSelect: React.FC<IFormMultiSelect> = ({
+export function FormMultiSelect({
   selectData,
   values = [],
   onChange,
-}): JSX.Element => (
-  <Select
-    {...sharedSelectProps}
-    closeMenuOnSelect={false}
-    defaultValue={[]}
-    isMulti
-    value={values.map((value) => selectData.find((selectDatum) => selectDatum.value === value))}
-    onChange={(newValues: any) => {
-      onChange(newValues.map(({ value }: ISelectData) => value));
-    }}
-    options={selectData}
-  />
-);
+}: IFormMultiSelect) {
+  return (
+    <Select
+      classNamePrefix={sharedSelectProps.classNamePrefix}
+      closeMenuOnSelect={false}
+      defaultValue={[]}
+      isMulti
+      value={values.map((value) => selectData.find((selectDatum) => selectDatum.value === value))}
+      onChange={(newValues: any) => {
+        onChange(newValues.map(({ value }: ISelectData) => value));
+      }}
+      options={selectData}
+    />
+  );
+}
 
-export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
+export const FormSelect: React.FC<IFormSelect> = (formInput) => {
   const {
     input,
     selectData,
@@ -64,7 +89,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
   return wrapLabelAndError(
     <StyledSelect
       {...input}
-      {...sharedSelectProps}
+      classNamePrefix={sharedSelectProps.classNamePrefix}
       value={
         selectDataWithDefault.find(({ value }) => value === input.value) || {
           value: '',
@@ -72,10 +97,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput): JSX.Element => {
         }
       }
       onChange={({ value }: any) => {
-        if (nullable && !value) {
-          value = null;
-        }
-        input.onChange(value);
+        input.onChange(nullable && !value ? null : value);
       }}
       className={generateClassNames(meta)}
       isDisabled={disabled}
@@ -99,44 +121,23 @@ interface IFormNoValueSelect {
   onChange: (value: string, label?: string) => void;
 }
 
-export const FormNoValueSelect: React.FC<IFormNoValueSelect> = ({
+export function FormNoValueSelect({
   selectData,
   disabledOptions,
   onChange,
-}): JSX.Element => (
-  <Select
-    {...sharedSelectProps}
-    value={{ value: '', label: '' }}
-    onChange={({ value, label }: any) => {
-      onChange(value, label);
-    }}
-    options={
+}: IFormNoValueSelect) {
+  return (
+    <Select
+      classNamePrefix={sharedSelectProps.classNamePrefix}
+      value={{ value: '', label: '' }}
+      onChange={({ value, label }: any) => {
+        onChange(value, label);
+      }}
+      options={
       selectData.filter(
         ({ value }) => !disabledOptions.includes(value as string),
       ) as { value: string; label: string }[]
     }
-  />
-);
-
-const StyledSelect = styled(Select)`
-  .react-select__control {
-    &:hover {
-      border: 1px solid ${(props) => props.theme.colors.border};
-    }
-    &:focus {
-      color: ${(props) => props.theme.text.main};
-      background-color: ${(props) => props.theme.colors.white};
-      border-color: rgba(23, 97, 253, 0.5);
-      outline: 0;
-    }
-    .react-select__single-value {
-      color: ${(props) => props.theme.text.main};
-      font-size: 0.8125rem;
-    }
-    border: 1px solid ${(props) => props.theme.colors.border};
-  }
-
-  &.invalid {
-    border-color: ${(props) => props.theme.colors.danger} !important;
-  }
-`;
+    />
+  );
+}

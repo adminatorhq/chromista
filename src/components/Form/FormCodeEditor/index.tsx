@@ -1,39 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import noop from 'lodash/noop';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import { ISharedFormInput } from '../_types';
 import { wrapLabelAndError } from '../_wrapForm';
-
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 
 interface IFormCodeEditor extends ISharedFormInput {
   language: 'javascript' | 'json';
 }
-
-export const FormCodeEditor: React.FC<IFormCodeEditor> = (
-  formInput,
-): JSX.Element => {
-  const {
-    input: { onFocus, onBlur, ...inputProps },
-  } = formInput;
-  return wrapLabelAndError(
-    <StyledWrapper>
-      <Editor
-        {...inputProps}
-        onValueChange={inputProps.onChange}
-        highlight={(code) => highlight(code, languages[formInput.language])}
-        padding={4}
-        style={{
-          fontFamily: '"Fira code", "Fira Mono", monospace',
-          fontSize: 11,
-        }}
-      />
-    </StyledWrapper>,
-    formInput,
-  );
-};
 
 const StyledWrapper = styled.div`
   border: 1px solid ${(props) => props.theme.colors.border};
@@ -119,3 +96,27 @@ const StyledWrapper = styled.div`
     cursor: help;
   }
 `;
+
+export const FormCodeEditor: React.FC<IFormCodeEditor> = (
+  formInput,
+) => {
+  const {
+    input: { onFocus, onBlur, ...inputProps },
+  } = formInput;
+  noop(onFocus, onBlur);
+  return wrapLabelAndError(
+    <StyledWrapper>
+      <Editor
+        {...inputProps}
+        onValueChange={inputProps.onChange}
+        highlight={(code) => highlight(code, languages[formInput.language])}
+        padding={4}
+        style={{
+          fontFamily: '"Fira code", "Fira Mono", monospace',
+          fontSize: 11,
+        }}
+      />
+    </StyledWrapper>,
+    formInput,
+  );
+};

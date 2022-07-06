@@ -16,78 +16,6 @@ interface IRenderNavigation {
 
 const ARROW_SIZE = 14;
 
-export const RenderNavigation: React.FC<IRenderNavigation> = ({
-  navigation,
-  isSidebarOpen,
-  label,
-  isSubMenu,
-  showDash,
-  currentLink = 'hopefully this will never be true',
-}) => (
-  <>
-    {showDash && navigation.length ? <StyledDash /> : null}
-    {label && isSidebarOpen && navigation.length ? (
-      <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
-    ) : null}
-    {navigation.map(({
-      title, link, icon, action,
-    }) => {
-      const isActive = currentLink === link;
-      const content = (
-        <>
-          <div>
-            <StyleMenuIcon
-              as={icon}
-              $isActive={isActive}
-              $isSidebarOpen={isSidebarOpen}
-              data-test-id={`nav-icon__${StringUtils.sluggify(title)}`}
-            />
-          </div>
-          <StyledLeftSideNavMenuText
-            data-test-id={`nav-menu-item__${StringUtils.sluggify(title)}`}
-            $isSidebarOpen={isSidebarOpen}
-          >
-            {title}
-          </StyledLeftSideNavMenuText>
-          {isSidebarOpen ? (
-            <StyledMenuArrow>
-              <ChevronRight size={ARROW_SIZE} />
-            </StyledMenuArrow>
-          ) : null}
-        </>
-      );
-      return (
-        <StyledLeftSideNavMenuList key={title}>
-          {link ? (
-            <Link href={link || ''} passHref>
-              <StyledLeftSideNavMenuListAnchor
-                $isSubMenu={isSubMenu}
-                onClick={() => {
-                  // Basically to clear the current content
-                  action?.();
-                }}
-              >
-                {content}
-              </StyledLeftSideNavMenuListAnchor>
-            </Link>
-          ) : (
-            <StyledLeftSideNavMenuListAnchor
-              $isSubMenu={isSubMenu}
-              $isActive={isActive}
-              as={StyledLinkLikeButton}
-              onClick={() => {
-                action?.();
-              }}
-            >
-              {content}
-            </StyledLeftSideNavMenuListAnchor>
-          )}
-        </StyledLeftSideNavMenuList>
-      );
-    })}
-  </>
-);
-
 const StyledLinkLikeButton = styled.button`
   &:focus {
     outline: 0;
@@ -170,3 +98,77 @@ const StyleMenuIcon = styled.span<{
   display: inline-block;
   opacity: 0.9;
 `;
+
+export function RenderNavigation({
+  navigation,
+  isSidebarOpen,
+  label,
+  isSubMenu,
+  showDash,
+  currentLink = 'hopefully this will never be true',
+}: IRenderNavigation) {
+  return (
+    <>
+      {showDash && navigation.length ? <StyledDash /> : null}
+      {label && isSidebarOpen && navigation.length ? (
+        <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
+      ) : null}
+      {navigation.map(({
+        title, link, icon, action,
+      }) => {
+        const isActive = currentLink === link;
+        const content = (
+          <>
+            <div>
+              <StyleMenuIcon
+                as={icon}
+                $isActive={isActive}
+                $isSidebarOpen={isSidebarOpen}
+                data-test-id={`nav-icon__${StringUtils.sluggify(title)}`}
+              />
+            </div>
+            <StyledLeftSideNavMenuText
+              data-test-id={`nav-menu-item__${StringUtils.sluggify(title)}`}
+              $isSidebarOpen={isSidebarOpen}
+            >
+              {title}
+            </StyledLeftSideNavMenuText>
+            {isSidebarOpen ? (
+              <StyledMenuArrow>
+                <ChevronRight size={ARROW_SIZE} />
+              </StyledMenuArrow>
+            ) : null}
+          </>
+        );
+        return (
+          <StyledLeftSideNavMenuList key={title}>
+            {link ? (
+              <Link href={link || ''} passHref>
+                <StyledLeftSideNavMenuListAnchor
+                  $isSubMenu={isSubMenu}
+                  onClick={() => {
+                    // Basically to clear the current content
+                    action?.();
+                  }}
+                >
+                  {content}
+                </StyledLeftSideNavMenuListAnchor>
+              </Link>
+            ) : (
+              <StyledLeftSideNavMenuListAnchor
+                $isSubMenu={isSubMenu}
+                $isActive={isActive}
+                as={StyledLinkLikeButton}
+                onClick={() => {
+                  action?.();
+                }}
+              >
+                {content}
+              </StyledLeftSideNavMenuListAnchor>
+            )}
+          </StyledLeftSideNavMenuList>
+        );
+      })}
+    </>
+  );
+}

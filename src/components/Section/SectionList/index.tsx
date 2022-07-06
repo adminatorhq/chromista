@@ -13,143 +13,6 @@ export enum OrderingDirection {
   Down = 'down',
 }
 
-interface ISectionListItem {
-  label: string;
-  to?: string;
-  size?: 'xs';
-  subLabel?: string;
-  IconComponent?: Icon;
-  disabled?: boolean;
-  active?: boolean;
-  toNoWhere?: true;
-  onClick?: () => void;
-  ordering?: {
-    currentIndex: number;
-    totalLength: number;
-    onChange: (direction: OrderingDirection) => void;
-  };
-  actionButtons?: {
-    isInverse: boolean;
-    text: string;
-    onClick: () => void;
-    isMakingRequest: boolean;
-  }[];
-}
-
-export const SectionListItem: React.FC<ISectionListItem> = ({
-  label,
-  IconComponent,
-  disabled,
-  subLabel,
-  active,
-  to,
-  toNoWhere,
-  ordering,
-  onClick,
-  size,
-  actionButtons,
-}) => {
-  const content = (
-    <>
-      <span>
-        {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}
-        {' '}
-        {label}
-        {subLabel ? (
-          <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
-        ) : null}
-      </span>
-      <span>
-        {ordering ? (
-          <span>
-            {ordering.currentIndex > 0 ? (
-              <StyledOrderButton
-                onClick={(event) => {
-                  event.stopPropagation();
-                  event.preventDefault();
-                  ordering.onChange(OrderingDirection.Up);
-                }}
-              >
-                <FontAwesomeIcon icon={faArrowUp} />
-              </StyledOrderButton>
-            ) : null}
-            {ordering.currentIndex < ordering.totalLength - 1 ? (
-              <StyledOrderButton
-                onClick={(event) => {
-                  event.stopPropagation();
-                  event.preventDefault();
-                  ordering.onChange(OrderingDirection.Down);
-                }}
-              >
-                <FontAwesomeIcon icon={faArrowDown} />
-              </StyledOrderButton>
-            ) : (
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            )}
-          </span>
-        ) : null}
-        <span>
-          {actionButtons ? (
-            <>
-              {actionButtons.map(
-                ({
-                  text, isInverse, onClick: onClick$1, isMakingRequest,
-                }) => (
-                  <FormButton
-                    text={text}
-                    key={text}
-                    size="xs"
-                    isMakingRequest={isMakingRequest}
-                    isInverse={isInverse}
-                    onClick={(event) => {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      onClick$1();
-                    }}
-                  />
-                ),
-              )}
-            </>
-          ) : null}
-          {!(toNoWhere || disabled) ? (
-            <StyledChevronRight $active={active} />
-          ) : null}
-        </span>
-      </span>
-    </>
-  );
-
-  const props = {
-    active: !!active,
-    disabled: !!disabled,
-    size,
-  };
-
-  if (to) {
-    return (
-      <Link href={to} passHref>
-        <StyledListItem as="a" {...props}>
-          {content}
-        </StyledListItem>
-      </Link>
-    );
-  }
-
-  return (
-    <StyledListItem
-      onClick={(e: { stopPropagation: () => void }) => {
-        if (onClick) {
-          e.stopPropagation();
-          return onClick();
-        }
-      }}
-      {...props}
-    >
-      {content}
-    </StyledListItem>
-  );
-};
-
 const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   width: 14px;
   color: ${(props) => (props.$active ? props.theme.colors.white : props.theme.colors.primary)};
@@ -164,9 +27,11 @@ const StyledSublabel = styled.p<{ $active?: boolean }>`
   line-height: 0.6;
 `;
 
-export const SectionList: React.FC<{ children: ReactNode }> = ({
+export function SectionList({
   children,
-}) => <StyledListGroupFlush>{children}</StyledListGroupFlush>;
+}: { children: ReactNode }) {
+  return <StyledListGroupFlush>{children}</StyledListGroupFlush>;
+}
 
 const StyledIcon = styled.span`
   position: relative;
@@ -259,3 +124,140 @@ const StyledListItem = styled.button<{
     background-color: ${(props) => props.theme.colors.softBackground};
   }
 `;
+
+interface ISectionListItem {
+  label: string;
+  to?: string;
+  size?: 'xs';
+  subLabel?: string;
+  IconComponent?: Icon;
+  disabled?: boolean;
+  active?: boolean;
+  toNoWhere?: true;
+  onClick?: () => void;
+  ordering?: {
+    currentIndex: number;
+    totalLength: number;
+    onChange: (direction: OrderingDirection) => void;
+  };
+  actionButtons?: {
+    isInverse: boolean;
+    text: string;
+    onClick: () => void;
+    isMakingRequest: boolean;
+  }[];
+}
+
+export function SectionListItem({
+  label,
+  IconComponent,
+  disabled,
+  subLabel,
+  active,
+  to,
+  toNoWhere,
+  ordering,
+  onClick,
+  size,
+  actionButtons,
+}: ISectionListItem) {
+  const content = (
+    <>
+      <span>
+        {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}
+        {' '}
+        {label}
+        {subLabel ? (
+          <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
+        ) : null}
+      </span>
+      <span>
+        {ordering ? (
+          <span>
+            {ordering.currentIndex > 0 ? (
+              <StyledOrderButton
+                onClick={(event) => {
+                  event.stopPropagation();
+                  event.preventDefault();
+                  ordering.onChange(OrderingDirection.Up);
+                }}
+              >
+                <FontAwesomeIcon icon={faArrowUp} />
+              </StyledOrderButton>
+            ) : null}
+            {ordering.currentIndex < ordering.totalLength - 1 ? (
+              <StyledOrderButton
+                onClick={(event) => {
+                  event.stopPropagation();
+                  event.preventDefault();
+                  ordering.onChange(OrderingDirection.Down);
+                }}
+              >
+                <FontAwesomeIcon icon={faArrowDown} />
+              </StyledOrderButton>
+            ) : (
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            )}
+          </span>
+        ) : null}
+        <span>
+          {actionButtons ? (
+            <>
+              {actionButtons.map(
+                ({
+                  text, isInverse, onClick: onClick$1, isMakingRequest,
+                }) => (
+                  <FormButton
+                    text={text}
+                    key={text}
+                    size="xs"
+                    isMakingRequest={isMakingRequest}
+                    isInverse={isInverse}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      onClick$1();
+                    }}
+                  />
+                ),
+              )}
+            </>
+          ) : null}
+          {!(toNoWhere || disabled) ? (
+            <StyledChevronRight $active={active} />
+          ) : null}
+        </span>
+      </span>
+    </>
+  );
+
+  const props = {
+    active: !!active,
+    disabled: !!disabled,
+    size,
+  };
+
+  if (to) {
+    return (
+      <Link href={to} passHref>
+        <StyledListItem as="a" {...props}>
+          {content}
+        </StyledListItem>
+      </Link>
+    );
+  }
+
+  return (
+    <StyledListItem
+      onClick={(e: { stopPropagation: () => void }) => {
+        if (onClick) {
+          e.stopPropagation();
+          onClick();
+        }
+      }}
+      {...props}
+    >
+      {content}
+    </StyledListItem>
+  );
+}

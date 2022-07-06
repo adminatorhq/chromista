@@ -1,9 +1,10 @@
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 import { Story } from '@storybook/react';
 import { TagsList, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
-const Story = {
+export default {
   title: 'Components/TagsList',
   component: TagsList,
   args: {
@@ -51,5 +52,3 @@ Empty.args = {
   items: [],
   entityName: 'Item',
 };
-
-export default Story;

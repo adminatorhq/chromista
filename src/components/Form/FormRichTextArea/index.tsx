@@ -1,52 +1,10 @@
 import React from 'react';
+import noop from 'lodash/noop';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import styled from 'styled-components';
 import { ISharedFormInput } from '../_types';
 import { wrapLabelAndError } from '../_wrapForm';
-
-interface IFormRichText extends ISharedFormInput {
-  nothingForNow?: string;
-}
-
-const modules = {
-  toolbar: [
-    [{ size: [] }, { font: [] }],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [
-      { list: 'ordered' },
-      { list: 'bullet' },
-      { indent: '-1' },
-      { indent: '+1' },
-    ],
-    ['link'], // 'image', 'video'
-    ['clean'],
-  ],
-  clipboard: {
-    matchVisual: false,
-  },
-};
-
-export const FormRichTextArea: React.FC<IFormRichText> = (
-  formInput,
-): JSX.Element => {
-  const {
-    input: { onFocus, onBlur, ...inputProps },
-    disabled,
-  } = formInput;
-  return wrapLabelAndError(
-    <Root>
-      <ReactQuill
-        {...inputProps}
-        readOnly={disabled}
-        modules={modules}
-        placeholder="Write something..."
-        theme="snow"
-      />
-    </Root>,
-    formInput,
-  );
-};
 
 const Root = styled.div`
   .ql-editor {
@@ -76,3 +34,47 @@ const Root = styled.div`
     color: #595959;
   }
 `;
+
+interface IFormRichText extends ISharedFormInput {
+  nothingForNow?: string;
+}
+
+const modules = {
+  toolbar: [
+    [{ size: [] }, { font: [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [
+      { list: 'ordered' },
+      { list: 'bullet' },
+      { indent: '-1' },
+      { indent: '+1' },
+    ],
+    ['link'], // 'image', 'video'
+    ['clean'],
+  ],
+  clipboard: {
+    matchVisual: false,
+  },
+};
+
+export const FormRichTextArea: React.FC<IFormRichText> = (
+  formInput,
+) => {
+  const {
+    input: { onFocus, onBlur, ...inputProps },
+    disabled,
+  } = formInput;
+  noop(onBlur, onFocus);
+  return wrapLabelAndError(
+    <Root>
+      <ReactQuill
+        {...inputProps}
+        readOnly={disabled}
+        modules={modules}
+        placeholder="Write something..."
+        theme="snow"
+      />
+    </Root>,
+    formInput,
+  );
+};

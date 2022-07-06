@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { StringFilters } from '@gothicgeeks/shared';
 import { StyledMutedText } from '../../styles/Text';
 import { ISystemStatusForDisplay } from '../../types';
@@ -21,7 +21,7 @@ export const KeyValueDetailsIconProps = {
 interface IKeyValueDetails {
   keyValues: {
     key: string;
-    icon?: JSX.Element;
+    icon?: ReactNode;
     value: string | number | undefined;
     format?: KeyValueDetailsFormat;
     statuses?: ISystemStatusForDisplay[];
@@ -30,10 +30,10 @@ interface IKeyValueDetails {
 }
 
 // :eyes throw error if statuses is not provided when it is KeyValueDetailsFormat
-export const KeyValueDetails: React.FC<IKeyValueDetails> = ({
+export function KeyValueDetails({
   isLoading,
   keyValues,
-}) => {
+}: IKeyValueDetails) {
   if (isLoading) {
     return <ListSkeleton count={Object.entries(keyValues).length} />;
   }
@@ -42,7 +42,7 @@ export const KeyValueDetails: React.FC<IKeyValueDetails> = ({
       {keyValues.map(({
         key, value, format, statuses, icon,
       }) => {
-        let valueToRender = <>{value}</>;
+        let valueToRender = <span>{value}</span>;
         switch (format) {
           case KeyValueDetailsFormat.Status:
             if (statuses) {
@@ -59,6 +59,9 @@ export const KeyValueDetails: React.FC<IKeyValueDetails> = ({
             break;
           case KeyValueDetailsFormat.Number:
             valueToRender = <>{StringFilters.formatCount(value)}</>;
+            break;
+          default:
+            valueToRender = <span>{value}</span>;
         }
         return (
           <li
@@ -76,4 +79,4 @@ export const KeyValueDetails: React.FC<IKeyValueDetails> = ({
       })}
     </StyledListGroup>
   );
-};
+}

@@ -14,42 +14,6 @@ export interface IProps {
   disabled?: boolean;
 }
 
-export const FormSwitch: React.FC<IProps> = (props) => {
-  const {
-    value,
-    onChange,
-    name,
-    disabled,
-    label,
-    size = 'md',
-    ...rest
-  } = props;
-  const ariaProps = Object.fromEntries(
-    Object.entries(rest).filter(([key]) => key.startsWith('aria-')),
-  );
-  return (
-    <DivBlock>
-      <Root htmlFor={name} size={size}>
-        <Stack spacing={SIZES_CONFIG[size].labelSpacing} align="center">
-          <Input
-            id={name}
-            type="checkbox"
-            checked={value}
-            disabled={disabled}
-            $inputSize={size}
-            onChange={() => {
-              onChange(!value);
-            }}
-            {...ariaProps}
-          />
-          <Slider size={size} />
-          <Text size={SIZES_CONFIG[size].fontSize}>{label}</Text>
-        </Stack>
-      </Root>
-    </DivBlock>
-  );
-};
-
 interface ISizeConfig {
   width: number;
   height: number;
@@ -132,3 +96,39 @@ const Input = styled.input<{ $inputSize: Sizes }>`
     box-shadow: 0 0 1px ${APP_COLORS.success};
   }
 `;
+
+export function FormSwitch(props: IProps) {
+  const {
+    value,
+    onChange,
+    name,
+    disabled,
+    label,
+    size = 'md',
+    ...rest
+  } = props;
+  const ariaProps = Object.fromEntries(
+    Object.entries(rest).filter(([key]) => key.startsWith('aria-')),
+  );
+  return (
+    <DivBlock>
+      <Root htmlFor={name} size={size}>
+        <Stack spacing={SIZES_CONFIG[size].labelSpacing} align="center">
+          <Input
+            id={name}
+            type="checkbox"
+            checked={value}
+            disabled={disabled}
+            $inputSize={size}
+            onChange={() => {
+              onChange(!value);
+            }}
+            {...ariaProps}
+          />
+          <Slider size={size} />
+          <Text size={SIZES_CONFIG[size].fontSize}>{label}</Text>
+        </Stack>
+      </Root>
+    </DivBlock>
+  );
+}

@@ -11,23 +11,6 @@ export interface IProps {
   selectionView: ISelectionView[];
 }
 
-export const DynamicLayout: React.FC<IProps> = ({
-  children,
-  selectionView,
-}): JSX.Element => {
-  const [isFullSideBarOpen] = useSideBarStore(
-    (state) => [state.isFullSideBarOpen],
-    shallow,
-  );
-  return (
-    <Root>
-      <PrimaryLeftSideNav navigation={selectionView} />
-      <SecondaryLeftSideNav selectionView={selectionView} />
-      <StyledPage isSidebarOpen={isFullSideBarOpen}>{children}</StyledPage>
-    </Root>
-  );
-};
-
 const Root = styled.div`
   width: 100%;
 `;
@@ -40,3 +23,20 @@ const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
   width: calc(100% - ${(props) => (props.isSidebarOpen ? 350 : 50)}px);
   background: #edf0f1;
 `;
+
+export function DynamicLayout({
+  children,
+  selectionView,
+}: IProps) {
+  const [isFullSideBarOpen] = useSideBarStore(
+    (state) => [state.isFullSideBarOpen],
+    shallow,
+  );
+  return (
+    <Root>
+      <PrimaryLeftSideNav navigation={selectionView} />
+      <SecondaryLeftSideNav selectionView={selectionView} />
+      <StyledPage isSidebarOpen={isFullSideBarOpen}>{children}</StyledPage>
+    </Root>
+  );
+}

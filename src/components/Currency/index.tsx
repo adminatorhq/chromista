@@ -5,13 +5,15 @@ interface ICurrency {
   price: number;
 }
 
-export const Currency: React.FC<ICurrency> = ({ price }) => (
-  <span
-    dangerouslySetInnerHTML={{
-      __html: formatLocaleCurrency(price, 'NGN').replace('NGN', '&#8358;'),
-    }}
-  />
-);
+export function Currency({ price }: ICurrency) {
+  return (
+    <span
+      dangerouslySetInnerHTML={{
+        __html: formatLocaleCurrency(price, 'NGN').replace('NGN', '&#8358;'),
+      }}
+    />
+  );
+}
 
 export const CurrencyPostions = {
   left: 'Left',

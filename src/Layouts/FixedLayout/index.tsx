@@ -9,27 +9,6 @@ interface IProps {
   children: ReactNode;
 }
 
-export function AppLayout({ children }: IProps) {
-  const { width } = useWindowDimensions();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(() => width > 1024);
-  return (
-    <>
-      <AppLeftSideNav
-        navigation={[]}
-        isSidebarOpen={isSidebarOpen}
-        toogleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-      />
-      <StyledPageWrapper isSidebarOpen={isSidebarOpen}>
-        <StyledPageContent>
-          <PageHeader />
-          {children}
-          <Footer />
-        </StyledPageContent>
-      </StyledPageWrapper>
-    </>
-  );
-}
-
 const StyledPageWrapper = styled.div<{ isSidebarOpen: boolean }>`
   flex: 1;
   padding: 0;
@@ -56,3 +35,24 @@ const StyledPageContent = styled.div`
     padding: 0 0 60px 0;
   }
 `;
+
+export function AppLayout({ children }: IProps) {
+  const { width } = useWindowDimensions();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(() => width > 1024);
+  return (
+    <>
+      <AppLeftSideNav
+        navigation={[]}
+        isSidebarOpen={isSidebarOpen}
+        toogleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+      />
+      <StyledPageWrapper isSidebarOpen={isSidebarOpen}>
+        <StyledPageContent>
+          <PageHeader />
+          {children}
+          <Footer />
+        </StyledPageContent>
+      </StyledPageWrapper>
+    </>
+  );
+}

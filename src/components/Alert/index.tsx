@@ -11,51 +11,14 @@ export enum AlertType {
   Info = 'info',
 }
 
-export type IProps = {
-  type: AlertType;
-} & IAlert;
-
 interface IAlert {
   message: Record<string, unknown> | string | unknown;
   renderJsx?: boolean;
 }
 
-// TODO Add the retry mechanism
-export const Alert: React.FC<IProps> = ({ type, message, renderJsx }) => {
-  const [shouldRender, setShouldRender] = useState(true);
-
-  useEffect(() => {
-    setShouldRender(true);
-  }, [message]);
-
-  if (!shouldRender || !message) {
-    return null;
-  }
-  return (
-    <StyledAlert type={type} role="alert" data-test-id="alert">
-      <StyledAlertButton
-        type="button"
-        onClick={() => {
-          setShouldRender(false);
-        }}
-        aria-label="Close"
-      >
-        <FontAwesomeIcon icon={faTimes} size="xs" />
-      </StyledAlertButton>
-      {(renderJsx ? message : getBestErrorMessage(message)) as string}
-    </StyledAlert>
-  );
-};
-
-export const ErrorAlert: React.FC<IAlert> = (props) => (
-  <Alert {...props} type={AlertType.Error} />
-);
-export const SuccessAlert: React.FC<IAlert> = (props) => (
-  <Alert {...props} type={AlertType.Success} />
-);
-export const WarningAlert: React.FC<IAlert> = (props) => (
-  <Alert {...props} type={AlertType.Warning} />
-);
+export type IProps = {
+  type: AlertType;
+} & IAlert;
 
 const StyledAlert = styled.div<{
   type: AlertType;
@@ -109,3 +72,40 @@ const StyledAlertButton = styled.button`
   background-color: transparent;
   border: 0;
 `;
+
+// TODO Add the retry mechanism
+export function Alert({ type, message, renderJsx }: IProps) {
+  const [shouldRender, setShouldRender] = useState(true);
+
+  useEffect(() => {
+    setShouldRender(true);
+  }, [message]);
+
+  if (!shouldRender || !message) {
+    return null;
+  }
+  return (
+    <StyledAlert type={type} role="alert" data-test-id="alert">
+      <StyledAlertButton
+        type="button"
+        onClick={() => {
+          setShouldRender(false);
+        }}
+        aria-label="Close"
+      >
+        <FontAwesomeIcon icon={faTimes} size="xs" />
+      </StyledAlertButton>
+      {(renderJsx ? message : getBestErrorMessage(message)) as string}
+    </StyledAlert>
+  );
+}
+
+export function ErrorAlert(props: IAlert) {
+  return <Alert {...props} type={AlertType.Error} />;
+}
+export function SuccessAlert(props: IAlert) {
+  return <Alert {...props} type={AlertType.Success} />;
+}
+export function WarningAlert(props: IAlert) {
+  return <Alert {...props} type={AlertType.Warning} />;
+}

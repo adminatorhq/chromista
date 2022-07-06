@@ -51,17 +51,19 @@ const StyledProgressBar = styled.div`
 `;
 // background-size: 6px 6px;
 
-export const ProgressBar: React.FC<IProgressBar> = ({ progress }) => (
-  <StyledProgress>
-    <StyledProgressBar
-      role="progressbar"
-      style={{ width: `${progress}%` }}
-      aria-valuenow={progress}
-      aria-valuemin={0}
-      aria-valuemax={100}
-    >
-      {progress}
-      %
-    </StyledProgressBar>
-  </StyledProgress>
-);
+export function ProgressBar({ progress }: IProgressBar) {
+  return (
+    <StyledProgress>
+      <StyledProgressBar
+        role="progressbar"
+        style={{ width: `${progress}%` }}
+        aria-valuenow={progress}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      >
+        {progress}
+        %
+      </StyledProgressBar>
+    </StyledProgress>
+  );
+}

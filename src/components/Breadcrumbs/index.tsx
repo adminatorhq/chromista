@@ -3,42 +3,6 @@ import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { IValueLabel } from '../../types';
 
-export interface IProps {
-  items: IValueLabel[];
-  onItemClick?: (value: string) => void;
-}
-
-export const Breadcrumbs: React.FC<IProps> = ({ items, onItemClick }) => {
-  const itemsLength = items.length;
-  return (
-    <StyledBreadcrumb>
-      {items.map(({ label, value }, index) => {
-        const isLastElement = index === itemsLength - 1;
-        return (
-          <StyledBreadcrumbItem key={value}>
-            {isLastElement ? (
-              label
-            ) : onItemClick ? (
-              <StyledBreadcrumbItemLink
-                active={isLastElement}
-                onClick={() => onItemClick(value)}
-              >
-                {label}
-              </StyledBreadcrumbItemLink>
-            ) : (
-              <Link href={value} passHref>
-                <StyledBreadcrumbItemLink active={isLastElement}>
-                  {label}
-                </StyledBreadcrumbItemLink>
-              </Link>
-            )}
-          </StyledBreadcrumbItem>
-        );
-      })}
-    </StyledBreadcrumb>
-  );
-};
-
 const StyledBreadcrumb = styled.ol`
   display: flex;
   flex-wrap: wrap;
@@ -87,3 +51,40 @@ const StyledBreadcrumbItemLink = styled.button<{ active: boolean }>`
       color: props.theme.text.muted;
     `}
 `;
+
+export interface IProps {
+  items: IValueLabel[];
+  onItemClick?: (value: string) => void;
+}
+
+export function Breadcrumbs({ items, onItemClick }: IProps) {
+  const itemsLength = items.length;
+  return (
+    <StyledBreadcrumb>
+      {items.map(({ label, value }, index) => {
+        const isLastElement = index === itemsLength - 1;
+        return (
+          <StyledBreadcrumbItem key={value}>
+            {/* eslint-disable-next-line no-nested-ternary */}
+            {isLastElement ? (
+              label
+            ) : onItemClick ? (
+              <StyledBreadcrumbItemLink
+                active={isLastElement}
+                onClick={() => onItemClick(value)}
+              >
+                {label}
+              </StyledBreadcrumbItemLink>
+            ) : (
+              <Link href={value} passHref>
+                <StyledBreadcrumbItemLink active={isLastElement}>
+                  {label}
+                </StyledBreadcrumbItemLink>
+              </Link>
+            )}
+          </StyledBreadcrumbItem>
+        );
+      })}
+    </StyledBreadcrumb>
+  );
+}

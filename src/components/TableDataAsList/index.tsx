@@ -7,21 +7,6 @@ export interface IProps {
   data: { label: string; value: string }[];
 }
 
-export const TableDataAsList: React.FC<IProps> = ({ data, onSelect }) => (
-  <StyledBlockWrapper>
-    <EditButton as={Edit} size="13" onClick={onSelect} />
-    {data.map(({ label, value }, schemaIndex) => (
-      <StyledDataWrapper
-        key={label}
-        isLastChild={schemaIndex === data.length - 1}
-      >
-        <StyledLabel>{label}</StyledLabel>
-        <StyledValue>{value}</StyledValue>
-      </StyledDataWrapper>
-    ))}
-  </StyledBlockWrapper>
-);
-
 const EditButton = styled.span`
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
@@ -54,3 +39,20 @@ const StyledDataWrapper = styled.div<{ isLastChild: boolean }>`
       border-bottom: 1px dashed ${(props) => props.theme.colors.border};
     `}
 `;
+
+export function TableDataAsList({ data, onSelect }: IProps) {
+  return (
+    <StyledBlockWrapper>
+      <EditButton as={Edit} size="13" onClick={onSelect} />
+      {data.map(({ label, value }, schemaIndex) => (
+        <StyledDataWrapper
+          key={label}
+          isLastChild={schemaIndex === data.length - 1}
+        >
+          <StyledLabel>{label}</StyledLabel>
+          <StyledValue>{value}</StyledValue>
+        </StyledDataWrapper>
+      ))}
+    </StyledBlockWrapper>
+  );
+}

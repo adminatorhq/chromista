@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 import { Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -5,7 +6,7 @@ import { Download, Plus } from 'react-feather';
 import { AppWrapper } from '../../AppWrapper';
 import { Presentation, IProps } from './Presentation';
 
-const Story = {
+export default {
   title: 'Components/Table',
   component: Presentation,
   args: {
@@ -159,5 +160,3 @@ Loading.args = {
     isPreviousData: false,
   },
 };
-
-export default Story;

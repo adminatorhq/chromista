@@ -11,28 +11,6 @@ export interface IProps {
   children?: ReactNode;
 }
 
-export const EmptyWrapper: React.FC<IProps> = ({
-  text,
-  hideIcon,
-  border,
-  children,
-}) => {
-  noop(hideIcon);
-  return (
-    <StyledWrapper border={!!border}>
-      {/* {hideIcon ? null : <img src={Empty} alt="0" width="100px" />} */}
-      <br />
-      <br />
-      <StyledText>
-        {' '}
-        {text}
-        {' '}
-      </StyledText>
-      {children}
-    </StyledWrapper>
-  );
-};
-
 const StyledText = styled(StyledMutedText)`
   margin-bottom: 0;
 `;
@@ -48,3 +26,25 @@ const StyledWrapper = styled.div<{ border: boolean }>`
       border: 1px solid ${(props) => props.theme.colors.border};
     `}
 `;
+
+export function EmptyWrapper({
+  text,
+  hideIcon,
+  border,
+  children,
+}: IProps) {
+  noop(hideIcon);
+  return (
+    <StyledWrapper border={!!border}>
+      {/* {hideIcon ? null : <img src={Empty} alt="0" width="100px" />} */}
+      <br />
+      <br />
+      <StyledText>
+        {' '}
+        {text}
+        {' '}
+      </StyledText>
+      {children}
+    </StyledWrapper>
+  );
+}

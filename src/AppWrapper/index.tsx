@@ -4,13 +4,13 @@ import { QueryProvider } from '@gothicgeeks/shared';
 import { Toaster } from 'react-hot-toast';
 import { GlobalStyle, themeContext } from './Global';
 
-export function AppWrapper(props: { children: ReactNode }) {
+export function AppWrapper({ children }: { children: ReactNode }) {
   return (
     <QueryProvider>
       <ThemeProvider theme={themeContext}>
         <Toaster />
         <GlobalStyle />
-        {props.children}
+        {children}
       </ThemeProvider>
     </QueryProvider>
   );

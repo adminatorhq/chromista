@@ -32,20 +32,36 @@ const StyledButtonGroup = styled.div`
   padding-left: 0px;
 `;
 
-export const TagsList: React.FC<IProps> = ({
+const renderIcon = ({
+  isMakingDeleteRequestForId,
+  id,
+}: {
+  isMakingDeleteRequestForId?: string;
+  id: string;
+}) => {
+  if (!id) {
+    return <FontAwesomeIcon icon={faSpinner} spin />;
+  }
+  if (isMakingDeleteRequestForId === id) {
+    return <FontAwesomeIcon icon={faSpinner} color="red" spin />;
+  }
+  return <FontAwesomeIcon icon={faTimes} />;
+};
+
+export function TagsList({
   items,
   onDelete,
   isLoading,
   entityName,
   isMakingDeleteRequestForId,
-}) => {
+}: IProps) {
   if (isLoading) {
     return (
       <StyledWrapper>
         {Array.from({ length: 10 }, (_, k) => k).map((key) => (
           <Fragment key={key}>
             <SkeletonLoader
-              {...sharedSkeletonProps}
+              background={sharedSkeletonProps.background}
               height="30px"
               width={`${randomNumber(50, 120)}px`}
               style={{
@@ -87,20 +103,4 @@ export const TagsList: React.FC<IProps> = ({
         ))}
     </StyledWrapper>
   );
-};
-
-const renderIcon = ({
-  isMakingDeleteRequestForId,
-  id,
-}: {
-  isMakingDeleteRequestForId?: string;
-  id: string;
-}) => {
-  if (!id) {
-    return <FontAwesomeIcon icon={faSpinner} spin />;
-  }
-  if (isMakingDeleteRequestForId === id) {
-    return <FontAwesomeIcon icon={faSpinner} color="red" spin />;
-  }
-  return <FontAwesomeIcon icon={faTimes} />;
-};
+}

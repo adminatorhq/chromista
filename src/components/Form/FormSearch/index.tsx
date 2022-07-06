@@ -5,25 +5,6 @@ import styled from 'styled-components';
 import { StyledInput } from '../Styles';
 import { StyledBaseButton } from '../../Button/Button';
 
-interface IFormSearch {
-  onChange: (value: string) => void;
-}
-
-export const FormSearch: React.FC<IFormSearch> = ({ onChange }) => (
-  <StyledInputGroup>
-    <StyledFormSearch
-      type="search"
-      onChange={(e) => onChange(e.target.value.toLowerCase())}
-      placeholder="Search"
-    />
-    <StyledInputGroupPrepend>
-      <StyledButtonSearch type="button">
-        <FontAwesomeIcon icon={faSearch} />
-      </StyledButtonSearch>
-    </StyledInputGroupPrepend>
-  </StyledInputGroup>
-);
-
 const StyledInputGroup = styled.div`
   position: relative;
   display: flex;
@@ -64,3 +45,24 @@ const StyledFormSearch = styled(StyledInput)`
     border-color: ${(props) => props.theme.colors.border};
   }
 `;
+
+interface IProps {
+  onChange: (value: string) => void;
+}
+
+export function FormSearch({ onChange }: IProps) {
+  return (
+    <StyledInputGroup>
+      <StyledFormSearch
+        type="search"
+        onChange={(e) => onChange(e.target.value.toLowerCase())}
+        placeholder="Search"
+      />
+      <StyledInputGroupPrepend>
+        <StyledButtonSearch type="button">
+          <FontAwesomeIcon icon={faSearch} />
+        </StyledButtonSearch>
+      </StyledInputGroupPrepend>
+    </StyledInputGroup>
+  );
+}

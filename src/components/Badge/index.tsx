@@ -55,19 +55,19 @@ interface IBadge {
   color: ColorTypes;
 }
 
-export const Badge: React.FC<IBadge> = ({ text, color }) => (
-  <StyledSoftBadge color={color}>{text}</StyledSoftBadge>
-);
+export function Badge({ text, color }: IBadge) {
+  return <StyledSoftBadge color={color}>{text}</StyledSoftBadge>;
+}
 
 interface IBadgeBuilder {
   value: string;
   statusSelections: ISystemStatusForDisplay[];
 }
 
-export const BadgeBuilder: React.FC<IBadgeBuilder> = ({
+export function BadgeBuilder({
   value,
   statusSelections,
-}) => {
+}: IBadgeBuilder) {
   const builderBagValue = statusSelections.find(
     (statusSelection) => statusSelection.value === value,
   );
@@ -80,7 +80,7 @@ export const BadgeBuilder: React.FC<IBadgeBuilder> = ({
       color={(builderBagValue.color as ColorTypes) || 'primary'}
     />
   );
-};
+}
 
 interface IBadgePill {
   value: number;
@@ -88,11 +88,11 @@ interface IBadgePill {
   isIconBadge?: true;
 }
 
-export const BadgePill: React.FC<IBadgePill> = ({
+export function BadgePill({
   value,
   color,
   isIconBadge,
-}) => {
+}: IBadgePill) {
   if (value === 0) {
     return null;
   }
@@ -101,4 +101,4 @@ export const BadgePill: React.FC<IBadgePill> = ({
       {value}
     </StyledBadgePill>
   );
-};
+}

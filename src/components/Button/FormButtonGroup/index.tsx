@@ -9,30 +9,6 @@ export interface IProps {
   onChange: (value: string | boolean) => void;
 }
 
-export const FormButtonGroup: React.FC<IProps> = ({
-  options,
-  value: selectedValue,
-  onChange,
-}) => (
-  <StyledGroup>
-    {options.map(({ value, label }, index) => (
-      <StyledButton
-        as="label"
-        size="sm"
-        key={`${value}`}
-        isActive={
-          selectedValue === value
-          || (index === 0 && selectedValue === undefined)
-        }
-        onClick={() => onChange(value)}
-      >
-        <StyledInput type="checkbox" />
-        {label}
-      </StyledButton>
-    ))}
-  </StyledGroup>
-);
-
 const StyledInput = styled.input`
   position: absolute;
   clip: rect(0, 0, 0, 0);
@@ -63,3 +39,29 @@ const StyledGroup = styled.div`
     margin-left: -1px;
   }
 `;
+
+export function FormButtonGroup({
+  options,
+  value: selectedValue,
+  onChange,
+}: IProps) {
+  return (
+    <StyledGroup>
+      {options.map(({ value, label }, index) => (
+        <StyledButton
+          as="label"
+          size="sm"
+          key={`${value}`}
+          isActive={
+          selectedValue === value
+          || (index === 0 && selectedValue === undefined)
+        }
+          onClick={() => onChange(value)}
+        >
+          <StyledInput type="checkbox" />
+          {label}
+        </StyledButton>
+      ))}
+    </StyledGroup>
+  );
+}

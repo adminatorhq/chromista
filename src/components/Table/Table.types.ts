@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ISystemStatusForDisplay } from '../../types';
 import { IDropDownMenuItem } from '../DropdownMenu';
 
@@ -6,13 +7,15 @@ enum NumberComparisions {
   LESS_THAN = 'l',
   EQUAL_TO = 'e',
 }
-export interface ITableFilter {
-  id: string;
-  value: string | INumberComparision;
-}
+
 export interface INumberComparision {
   comparision: NumberComparisions;
   value: string;
+}
+
+export interface ITableFilter {
+  id: string;
+  value: string | INumberComparision;
 }
 
 export type TableFilterType =
@@ -31,7 +34,7 @@ export interface ITableColumn {
   Cell?: (cellProps: {
     value: unknown;
     row: { original: Record<string, unknown> };
-  }) => JSX.Element;
+  }) => ReactNode;
 }
 
 export interface ITableProps {

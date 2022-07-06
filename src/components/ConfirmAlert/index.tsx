@@ -10,40 +10,6 @@ interface IProps {
   message: string;
 }
 
-export const ConfirmAlert = (props: IProps) => confirmAlert({
-  customUI: ({ onClose }) => <Presentation {...props} onClose={onClose} />,
-});
-
-export interface IPresentationProps extends IProps {
-  onClose: () => void;
-}
-
-export const Presentation: React.FC<IPresentationProps> = ({
-  action,
-  message,
-  onClose,
-  title,
-}) => (
-  <StyledOverlay>
-    <StyledBody>
-      <StyledTitle>{title}</StyledTitle>
-      {message}
-      <StyledButtonGroup>
-        <StyledButton
-          danger
-          onClick={() => {
-            action();
-            onClose();
-          }}
-        >
-          Yes
-        </StyledButton>
-        <StyledButton onClick={onClose}>No</StyledButton>
-      </StyledButtonGroup>
-    </StyledBody>
-  </StyledOverlay>
-);
-
 const StyledButton = styled.button<{ danger?: boolean }>`
   outline: none;
   background: #fff;
@@ -112,3 +78,40 @@ const StyledOverlay = styled(Stack).attrs({
   opacity: 0;
   animation: ${fadeIn} 0.1s 0.1s forwards;
 `;
+
+export interface IPresentationProps extends IProps {
+  onClose: () => void;
+}
+
+export function Presentation({
+  action,
+  message,
+  onClose,
+  title,
+}: IPresentationProps) {
+  return (
+    <StyledOverlay>
+      <StyledBody>
+        <StyledTitle>{title}</StyledTitle>
+        {message}
+        <StyledButtonGroup>
+          <StyledButton
+            danger
+            onClick={() => {
+              action();
+              onClose();
+            }}
+          >
+            Yes
+          </StyledButton>
+          <StyledButton onClick={onClose}>No</StyledButton>
+        </StyledButtonGroup>
+      </StyledBody>
+    </StyledOverlay>
+  );
+}
+
+export const ConfirmAlert = (props: IProps) => confirmAlert({
+
+  customUI: ({ onClose }) => <Presentation {...props} onClose={onClose} />,
+});

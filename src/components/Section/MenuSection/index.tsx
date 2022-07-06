@@ -16,26 +16,28 @@ interface IMenuSection {
   currentMenuItem?: string;
 }
 
-export const MenuSection: React.FC<IMenuSection> = ({
+export function MenuSection({
   menuItems,
   currentMenuItem,
-}) => (
-  <SectionBox title="" headLess>
-    <RenderList
-      items={menuItems}
-      notSearchable
-      newItemLink=""
-      singular=""
-      render={(menuItem) => (
-        <SectionListItem
-          label={menuItem.name}
-          active={menuItem.link.includes(`${currentMenuItem}`)}
-          disabled={!!menuItem.disabled}
-          key={menuItem.name}
-          IconComponent={menuItem.IconComponent}
-          to={menuItem.link}
-        />
-      )}
-    />
-  </SectionBox>
-);
+}: IMenuSection) {
+  return (
+    <SectionBox title="" headLess>
+      <RenderList
+        items={menuItems}
+        notSearchable
+        newItemLink=""
+        singular=""
+        render={(menuItem) => (
+          <SectionListItem
+            label={menuItem.name}
+            active={menuItem.link.includes(`${currentMenuItem}`)}
+            disabled={!!menuItem.disabled}
+            key={menuItem.name}
+            IconComponent={menuItem.IconComponent}
+            to={menuItem.link}
+          />
+        )}
+      />
+    </SectionBox>
+  );
+}

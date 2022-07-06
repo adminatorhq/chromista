@@ -2,10 +2,7 @@ import React, { Fragment } from 'react';
 import SkeletonLoader from 'tiny-skeleton-loader-react';
 import { sharedSkeletonProps } from '../constants';
 
-interface IFormSkeleton {
-  schema: FormSkeletonSchema[];
-}
-
+// eslint-disable-next-line no-shadow
 export enum FormSkeletonSchema {
   Textarea = '83px',
   Input = '38px',
@@ -13,28 +10,34 @@ export enum FormSkeletonSchema {
   RichTextArea = '277px',
 }
 
-export const FormSkeleton: React.FC<IFormSkeleton> = ({ schema }) => (
-  <div style={{ paddingTop: '8px' }}>
-    {Array.from({ length: schema.length }, (_, k) => k).map((key) => (
-      <Fragment key={key}>
-        <SkeletonLoader
-          {...sharedSkeletonProps}
-          height="1em"
-          width="50px"
-          style={{ marginBottom: '5px' }}
-        />
-        <SkeletonLoader
-          {...sharedSkeletonProps}
-          height={schema[key]}
-          style={{ marginBottom: '24px' }}
-        />
-      </Fragment>
-    ))}
-    <SkeletonLoader
-      {...sharedSkeletonProps}
-      height="3em"
-      width="70px"
-      style={{ marginBottom: '3px', float: 'right', marginTop: '-8px' }}
-    />
-  </div>
-);
+interface IFormSkeleton {
+  schema: FormSkeletonSchema[];
+}
+
+export function FormSkeleton({ schema }: IFormSkeleton) {
+  return (
+    <div style={{ paddingTop: '8px' }}>
+      {Array.from({ length: schema.length }, (_, k) => k).map((key) => (
+        <Fragment key={key}>
+          <SkeletonLoader
+            background={sharedSkeletonProps.background}
+            height="1em"
+            width="50px"
+            style={{ marginBottom: '5px' }}
+          />
+          <SkeletonLoader
+            background={sharedSkeletonProps.background}
+            height={schema[key]}
+            style={{ marginBottom: '24px' }}
+          />
+        </Fragment>
+      ))}
+      <SkeletonLoader
+        background={sharedSkeletonProps.background}
+        height="3em"
+        width="70px"
+        style={{ marginBottom: '3px', float: 'right', marginTop: '-8px' }}
+      />
+    </div>
+  );
+}

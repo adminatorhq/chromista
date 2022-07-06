@@ -22,103 +22,6 @@ interface IProps {
   disabled?: boolean;
 }
 
-export const DropDownMenu: React.FC<IProps> = ({
-  menuItems,
-  isMakingActionRequest,
-  disabled,
-}) => {
-  const [isDropDownOpen, setDropDownOpen] = useState(false);
-
-  const toggleDropDown = () => {
-    if (!isMakingActionRequest && !disabled) {
-      setDropDownOpen(togglePreviousState);
-    }
-  };
-
-  const [currentMenuItem, setCurrentMenuItem] = useState<IDropDownMenuItem>(
-    menuItems[0],
-  );
-
-  useEffect(() => {
-    setCurrentMenuItem(menuItems[0]);
-  }, [menuItems]);
-
-  const onMenuItemClick = (menuIndex: number) => {
-    const menuItem = menuItems[menuIndex];
-    toggleDropDown();
-    menuItem.onClick();
-    setCurrentMenuItem(menuItem);
-  };
-
-  const { IconComponent, onClick, label } = currentMenuItem;
-
-  if (menuItems.length === 0) {
-    return null;
-  }
-
-  const currentItem = (
-    <>
-      {isMakingActionRequest ? (
-        <FontAwesomeIcon icon={faSpinner} spin />
-      ) : IconComponent ? (
-        <IconComponent size="14" />
-      ) : null}
-      {' '}
-      {label}
-    </>
-  );
-
-  if (menuItems.length === 1) {
-    return (
-      <StyledSoftButton
-        size="sm"
-        disabled={isMakingActionRequest || disabled}
-        onClick={() => onClick()}
-      >
-        {currentItem}
-      </StyledSoftButton>
-    );
-  }
-
-  return (
-    <StyledDropDown
-      as={Dropdown}
-      isOpen={isDropDownOpen}
-      tag="span"
-      toggle={toggleDropDown}
-    >
-      <StyledCurrentButton
-        size="sm"
-        disabled={isMakingActionRequest || disabled}
-        onClick={() => onClick()}
-      >
-        {currentItem}
-      </StyledCurrentButton>
-      <StyledDropDownToggle as={DropdownToggle} tag="div">
-        <StyledDropDownIcon size="sm">
-          <StyledSROnly>Toggle Dropdown</StyledSROnly>
-        </StyledDropDownIcon>
-      </StyledDropDownToggle>
-      <StyledDropDownMenu right>
-        {menuItems.map(({ label: label$1, description }, index) => (
-          <StyledDropDownItem
-            key={label$1}
-            onClick={() => onMenuItemClick(index)}
-          >
-            {label$1}
-            <br />
-            {description ? (
-              <StyledDescriptionText as="span">
-                {description}
-              </StyledDescriptionText>
-            ) : null}
-          </StyledDropDownItem>
-        ))}
-      </StyledDropDownMenu>
-    </StyledDropDown>
-  );
-};
-
 const StyledDescriptionText = styled(StyledMutedText)`
   font-size: 12px;
 `;
@@ -214,3 +117,101 @@ const StyledDropDownIcon = styled(StyledSoftButton)`
     border-left: 0.3em solid transparent;
   }
 `;
+
+export function DropDownMenu({
+  menuItems,
+  isMakingActionRequest,
+  disabled,
+}: IProps) {
+  const [isDropDownOpen, setDropDownOpen] = useState(false);
+
+  const toggleDropDown = () => {
+    if (!isMakingActionRequest && !disabled) {
+      setDropDownOpen(togglePreviousState);
+    }
+  };
+
+  const [currentMenuItem, setCurrentMenuItem] = useState<IDropDownMenuItem>(
+    menuItems[0],
+  );
+
+  useEffect(() => {
+    setCurrentMenuItem(menuItems[0]);
+  }, [menuItems]);
+
+  const onMenuItemClick = (menuIndex: number) => {
+    const menuItem = menuItems[menuIndex];
+    toggleDropDown();
+    menuItem.onClick();
+    setCurrentMenuItem(menuItem);
+  };
+
+  const { IconComponent, onClick, label } = currentMenuItem;
+
+  if (menuItems.length === 0) {
+    return null;
+  }
+
+  const currentItem = (
+    <>
+      {/* eslint-disable-next-line no-nested-ternary */}
+      {isMakingActionRequest ? (
+        <FontAwesomeIcon icon={faSpinner} spin />
+      ) : IconComponent ? (
+        <IconComponent size="14" />
+      ) : null}
+      {' '}
+      {label}
+    </>
+  );
+
+  if (menuItems.length === 1) {
+    return (
+      <StyledSoftButton
+        size="sm"
+        disabled={isMakingActionRequest || disabled}
+        onClick={() => onClick()}
+      >
+        {currentItem}
+      </StyledSoftButton>
+    );
+  }
+
+  return (
+    <StyledDropDown
+      as={Dropdown}
+      isOpen={isDropDownOpen}
+      tag="span"
+      toggle={toggleDropDown}
+    >
+      <StyledCurrentButton
+        size="sm"
+        disabled={isMakingActionRequest || disabled}
+        onClick={() => onClick()}
+      >
+        {currentItem}
+      </StyledCurrentButton>
+      <StyledDropDownToggle as={DropdownToggle} tag="div">
+        <StyledDropDownIcon size="sm">
+          <StyledSROnly>Toggle Dropdown</StyledSROnly>
+        </StyledDropDownIcon>
+      </StyledDropDownToggle>
+      <StyledDropDownMenu right>
+        {menuItems.map(({ label: label$1, description }, index) => (
+          <StyledDropDownItem
+            key={label$1}
+            onClick={() => onMenuItemClick(index)}
+          >
+            {label$1}
+            <br />
+            {description ? (
+              <StyledDescriptionText as="span">
+                {description}
+              </StyledDescriptionText>
+            ) : null}
+          </StyledDropDownItem>
+        ))}
+      </StyledDropDownMenu>
+    </StyledDropDown>
+  );
+}

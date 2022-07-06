@@ -1,5 +1,7 @@
 import { SLUG_LOADING_VALUE } from '@gothicgeeks/shared';
-import React, { useMemo, useState, useEffect } from 'react';
+import React, {
+  useMemo, useState, useEffect, ReactNode,
+} from 'react';
 import {
   TabContent, TabPane, Nav, NavItem, NavLink,
 } from 'reactstrap';
@@ -8,13 +10,57 @@ import styled, { css } from 'styled-components';
 export interface IProps {
   contents: {
     label: string;
-    content: JSX.Element;
+    content: ReactNode;
   }[];
   currentTab?: string;
   onChange?: (tab: string) => void;
 }
 
-export const Tabs: React.FC<IProps> = ({ contents, currentTab, onChange }) => {
+const StyledTabPane = styled(TabPane)`
+  display: none;
+  &.active {
+    display: block;
+  }
+`;
+
+const StyledTabContent = styled(TabContent)`
+  padding-top: 1rem;
+`;
+
+const StyledNav = styled(Nav)`
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+`;
+
+const StyledNavItem = styled(NavItem)`
+  margin-bottom: -1px;
+`;
+
+const StyledNavLink = styled(NavLink)<{ active: boolean }>`
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: ${(props) => props.theme.colors.white};
+  border: 1px solid transparent;
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+
+  ${(props) => (props.active
+    ? css`
+          color: ${props.theme.colors.primary};
+          background-color: ${props.theme.colors.white};
+          border-color: transparent transparent ${props.theme.colors.primary};
+        `
+    : css`
+          color: ${props.theme.text.main};
+        `)}
+`;
+
+export function Tabs({ contents, currentTab, onChange }: IProps) {
   const [activeTab, setActiveTab] = useState(currentTab || contents[0].label);
 
   useEffect(() => {
@@ -60,48 +106,4 @@ export const Tabs: React.FC<IProps> = ({ contents, currentTab, onChange }) => {
       </StyledTabContent>
     </>
   );
-};
-
-const StyledTabPane = styled(TabPane)`
-  display: none;
-  &.active {
-    display: block;
-  }
-`;
-
-const StyledTabContent = styled(TabContent)`
-  padding-top: 1rem;
-`;
-
-const StyledNav = styled(Nav)`
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-  border-bottom: 1px solid ${(props) => props.theme.colors.border};
-`;
-
-const StyledNavItem = styled(NavItem)`
-  margin-bottom: -1px;
-`;
-
-const StyledNavLink = styled(NavLink)<{ active: boolean }>`
-  display: block;
-  padding: 0.5rem 1rem;
-  background-color: ${(props) => props.theme.colors.white};
-  border: 1px solid transparent;
-  border-bottom: 1px solid ${(props) => props.theme.colors.border};
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-
-  ${(props) => (props.active
-    ? css`
-          color: ${props.theme.colors.primary};
-          background-color: ${props.theme.colors.white};
-          border-color: transparent transparent ${props.theme.colors.primary};
-        `
-    : css`
-          color: ${props.theme.text.main};
-        `)}
-`;
+}

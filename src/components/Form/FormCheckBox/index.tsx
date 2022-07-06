@@ -27,10 +27,7 @@ const StyledCheckBoxInput = styled.input`
   }
 `;
 
-export const FormCheckBox: React.FC<ISharedFormInput> = (
-  formInput,
-): JSX.Element => {
-  const { input, label, meta } = formInput;
+export function FormCheckBox({ input, label, meta }: ISharedFormInput) {
   return (
     <StyledFormGroup>
       <Stack>
@@ -45,4 +42,4 @@ export const FormCheckBox: React.FC<ISharedFormInput> = (
       </StyledFormFeedback>
     </StyledFormGroup>
   );
-};
+}

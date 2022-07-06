@@ -1,32 +1,38 @@
 import React, { ReactNode } from 'react';
 import * as StyledGrid from 'styled-bootstrap-grid';
 
-export const SectionRow: React.FC<{ children: ReactNode }> = ({ children }) => (
-  <StyledGrid.Row>{children}</StyledGrid.Row>
-);
+export function SectionRow({ children }: { children: ReactNode }) {
+  return <StyledGrid.Row>{children}</StyledGrid.Row>;
+}
 
-export const SectionLeft: React.FC<{ children: ReactNode }> = ({
+export function SectionLeft({
   children,
-}) => (
-  <StyledGrid.Col sm={12} lg={3}>
-    {children}
-  </StyledGrid.Col>
-);
-
-export const SectionRight: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => (
-  <StyledGrid.Col sm={12} lg={9}>
-    {children}
-  </StyledGrid.Col>
-);
-
-export const SectionCenter: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => (
-  <SectionRow>
-    <StyledGrid.Col sm={12} lg={8} lgOffset={2}>
+}: { children: ReactNode }) {
+  return (
+    <StyledGrid.Col sm={12} lg={3}>
       {children}
     </StyledGrid.Col>
-  </SectionRow>
-);
+  );
+}
+
+export function SectionRight({
+  children,
+}: { children: ReactNode }) {
+  return (
+    <StyledGrid.Col sm={12} lg={9}>
+      {children}
+    </StyledGrid.Col>
+  );
+}
+
+export function SectionCenter({
+  children,
+}: { children: ReactNode }) {
+  return (
+    <SectionRow>
+      <StyledGrid.Col sm={12} lg={8} lgOffset={2}>
+        {children}
+      </StyledGrid.Col>
+    </SectionRow>
+  );
+}

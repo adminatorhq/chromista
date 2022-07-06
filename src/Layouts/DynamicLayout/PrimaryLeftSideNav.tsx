@@ -9,7 +9,7 @@ interface IProps {
   navigation: ISideBarNavigation[];
 }
 
-export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
+export function PrimaryLeftSideNav({ navigation }: IProps) {
   const isSidebarOpen = false;
 
   const [selectMiniSideBar, currentMiniSideBar, closeFullSideBar] = useSideBarStore((state) => [
@@ -48,4 +48,4 @@ export const PrimaryLeftSideNav: React.FC<IProps> = ({ navigation }) => {
       />
     </BaseLeftSideNav>
   );
-};
+}

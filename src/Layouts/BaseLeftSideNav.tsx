@@ -2,28 +2,6 @@ import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-export const BaseLeftSideNav: React.FC<{
-  isSidebarOpen: boolean;
-  children: ReactNode;
-}> = ({ isSidebarOpen, children }) => (
-  <Root isSidebarOpen={isSidebarOpen}>
-    <StyledBrand>
-      <StyledLogo href="/">
-        <span>
-          <StyledLogoSm
-            src="/assets/images/logo-sm-dark.png"
-            alt="logo-small"
-            data-test-id="nav-menu__small-logo"
-          />
-        </span>
-      </StyledLogo>
-    </StyledBrand>
-    <StyledMenuContent>
-      <StyledLeftSideNavMenu>{children}</StyledLeftSideNavMenu>
-    </StyledMenuContent>
-  </Root>
-);
-
 const StyledLogo = styled(Link)`
   line-height: 52px;
 `;
@@ -63,3 +41,29 @@ const Root = styled.div<{ isSidebarOpen: boolean }>`
   top: 0;
   border-right: 1px solid ${(props) => props.theme.colors.border};
 `;
+
+interface IProps {
+  isSidebarOpen: boolean;
+  children: ReactNode;
+}
+
+export function BaseLeftSideNav({ isSidebarOpen, children }: IProps) {
+  return (
+    <Root isSidebarOpen={isSidebarOpen}>
+      <StyledBrand>
+        <StyledLogo href="/">
+          <span>
+            <StyledLogoSm
+              src="/assets/images/logo-sm-dark.png"
+              alt="logo-small"
+              data-test-id="nav-menu__small-logo"
+            />
+          </span>
+        </StyledLogo>
+      </StyledBrand>
+      <StyledMenuContent>
+        <StyledLeftSideNavMenu>{children}</StyledLeftSideNavMenu>
+      </StyledMenuContent>
+    </Root>
+  );
+}

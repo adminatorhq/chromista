@@ -13,7 +13,27 @@ interface IProps {
   selectionView: ISelectionView[];
 }
 
-export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
+const StyledHideScrollbar = styled.div`
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 101vh;
+`;
+
+const Root = styled.div<{ show: boolean }>`
+  height: 100vh;
+  left: 50px;
+  position: fixed;
+  width: 300px;
+  order: 1;
+  z-index: 10;
+  display: ${({ show }) => (show ? 'block' : 'none')};
+`;
+
+const StyledRenderView = styled.div<{ show: boolean }>`
+  display: ${({ show }) => (show ? 'block' : 'none')};
+`;
+
+export function SecondaryLeftSideNav({ selectionView }: IProps) {
   const [isFullSideBarOpen, currentMiniSideBar, closeFullSideBar] = useSideBarStore(
     (state) => [
       state.isFullSideBarOpen,
@@ -102,24 +122,4 @@ export const SecondaryLeftSideNav: React.FC<IProps> = ({ selectionView }) => {
       </StyledHideScrollbar>
     </Root>
   );
-};
-
-const StyledHideScrollbar = styled.div`
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 101vh;
-`;
-
-const Root = styled.div<{ show: boolean }>`
-  height: 100vh;
-  left: 50px;
-  position: fixed;
-  width: 300px;
-  order: 1;
-  z-index: 10;
-  display: ${({ show }) => (show ? 'block' : 'none')};
-`;
-
-const StyledRenderView = styled.div<{ show: boolean }>`
-  display: ${({ show }) => (show ? 'block' : 'none')};
-`;
+}

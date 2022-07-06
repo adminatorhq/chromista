@@ -22,8 +22,14 @@ interface ISoftButton {
   onClick?: () => void;
   isMakingActionRequest?: boolean;
 }
+const StyledLabel = styled.span<{ $hasLabel: boolean }>`
+  ${(props) => props.$hasLabel
+    && css`
+      margin-left: 0.4rem;
+    `}
+`;
 
-export const SoftButton: React.FC<ISoftButton> = ({
+export function SoftButton({
   pushLeft,
   label,
   block,
@@ -37,19 +43,15 @@ export const SoftButton: React.FC<ISoftButton> = ({
   isMakingActionRequest,
   onClick,
   className,
-}) => {
-  const content = (
+}: ISoftButton) {
+  const content = isMakingActionRequest ? (
+    <FontAwesomeIcon icon={faSpinner} spin />
+  ) : (
     <>
-      {isMakingActionRequest ? (
-        <FontAwesomeIcon icon={faSpinner} spin />
-      ) : (
-        <>
-          {icon ? <FontAwesomeIcon icon={ICON_MAP[icon]} /> : null}
-          {label && !justIcon ? (
-            <StyledLabel $hasLabel={!!label}>{label}</StyledLabel>
-          ) : null}
-        </>
-      )}
+      {icon ? <FontAwesomeIcon icon={ICON_MAP[icon]} /> : null}
+      {label && !justIcon ? (
+        <StyledLabel $hasLabel={!!label}>{label}</StyledLabel>
+      ) : null}
     </>
   );
 
@@ -80,18 +82,11 @@ export const SoftButton: React.FC<ISoftButton> = ({
       onClick={(e: { stopPropagation: () => void }) => {
         if (onClick) {
           e.stopPropagation();
-          return onClick();
+          onClick();
         }
       }}
     >
       {content}
     </StyledSoftButton>
   );
-};
-
-const StyledLabel = styled.span<{ $hasLabel: boolean }>`
-  ${(props) => props.$hasLabel
-    && css`
-      margin-left: 0.4rem;
-    `}
-`;
+}

@@ -16,7 +16,12 @@ interface IFormButton extends IStyledBaseButton {
   isInverse?: boolean;
 }
 
-export const FormButton: React.FC<IFormButton> = ({
+export const actionButtonIsMakingRequest = (
+  isMakingRequest: boolean,
+  text: string,
+) => (isMakingRequest ? <FontAwesomeIcon icon={faSpinner} spin /> : text);
+
+export function FormButton({
   text,
   disabled,
   isMakingRequest,
@@ -25,7 +30,7 @@ export const FormButton: React.FC<IFormButton> = ({
   size = 'sm',
   color = 'primary',
   ...rest
-}) => {
+}: IFormButton) {
   const options = {
     ...rest,
     color,
@@ -49,9 +54,4 @@ export const FormButton: React.FC<IFormButton> = ({
       <StyledButton {...options}>{toRender}</StyledButton>
     </Stack>
   );
-};
-
-export const actionButtonIsMakingRequest = (
-  isMakingRequest: boolean,
-  text: string,
-) => (isMakingRequest ? <FontAwesomeIcon icon={faSpinner} spin /> : text);
+}

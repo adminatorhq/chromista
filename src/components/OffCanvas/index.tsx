@@ -4,43 +4,6 @@ import styled from 'styled-components';
 import { Divider, Text, Stack } from '../../ui-blocks';
 import { SoftButton } from '../Button';
 
-export interface IProps {
-  show: boolean;
-  title: string;
-  children: ReactNode;
-  onClose: () => void;
-  width?: number;
-}
-
-const DEFAULT_CANVAS_WIDTH = 400;
-
-export function OffCanvas({
-  show,
-  onClose,
-  title,
-  children,
-  width = DEFAULT_CANVAS_WIDTH,
-}: IProps) {
-  return (
-    <StyledRoot
-      as={Offcanvas}
-      show={show}
-      onHide={onClose}
-      placement="end"
-      width={width}
-    >
-      <StyledHeader>
-        <Stack justify="space-between">
-          <Text size="3">{title}</Text>
-          <SoftButton justIcon icon="close" onClick={onClose} />
-        </Stack>
-      </StyledHeader>
-      <Divider />
-      <StyledBody>{children}</StyledBody>
-    </StyledRoot>
-  );
-}
-
 const StyledHeader = styled.div`
   display: flex;
   align-items: center;
@@ -78,3 +41,40 @@ const StyledRoot = styled.div<{ width: number }>`
     transform: none;
   }
 `;
+
+export interface IProps {
+  show: boolean;
+  title: string;
+  children: ReactNode;
+  onClose: () => void;
+  width?: number;
+}
+
+const DEFAULT_CANVAS_WIDTH = 400;
+
+export function OffCanvas({
+  show,
+  onClose,
+  title,
+  children,
+  width = DEFAULT_CANVAS_WIDTH,
+}: IProps) {
+  return (
+    <StyledRoot
+      as={Offcanvas}
+      show={show}
+      onHide={onClose}
+      placement="end"
+      width={width}
+    >
+      <StyledHeader>
+        <Stack justify="space-between">
+          <Text size="3">{title}</Text>
+          <SoftButton justIcon icon="close" onClick={onClose} />
+        </Stack>
+      </StyledHeader>
+      <Divider />
+      <StyledBody>{children}</StyledBody>
+    </StyledRoot>
+  );
+}

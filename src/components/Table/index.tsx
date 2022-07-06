@@ -7,8 +7,10 @@ import { ITableProps } from './Table.types';
 // TODO when I click on products the state should be preserved when returning back for navigation
 // and keep all the settings in localstorage except the pageIndex
 
-export const Table: React.FC<ITableProps> = ({ url, ...props }) => {
-  const [paginatedDataState, setPaginatedDataState] = useState<IBEPaginatedDataState>(DEFAULT_TABLE_PARAMS);
+export function Table({ url, ...props }: ITableProps) {
+  const [
+    paginatedDataState,
+    setPaginatedDataState] = useState<IBEPaginatedDataState>(DEFAULT_TABLE_PARAMS);
 
   const tableData = usePaginatedData(url, paginatedDataState);
 
@@ -22,7 +24,7 @@ export const Table: React.FC<ITableProps> = ({ url, ...props }) => {
       }}
     />
   );
-};
+}
 // nice  to have, column ordering
 // https://react-table.tanstack.com/docs/examples/row-selection-and-pagination
 // https://react-table.tanstack.com/docs/examples/editable-data

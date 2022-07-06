@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 import { Story } from '@storybook/react';
 import { useState } from '@storybook/addons';
@@ -22,7 +23,7 @@ const Template: Story<IProps> = (args) => {
   const [open, setOpen] = useState(false);
   return (
     <AppWrapper>
-      <button onClick={() => setOpen(true)}>Open Canvas</button>
+      <button type="button" onClick={() => setOpen(true)}>Open Canvas</button>
       <OffCanvas {...args} show={open} onClose={() => setOpen(false)} />
     </AppWrapper>
   );

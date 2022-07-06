@@ -6,11 +6,13 @@ interface IBlockSkeleton {
   height: string;
 }
 
-export const BlockSkeleton: React.FC<IBlockSkeleton> = ({ height }) => (
-  <SkeletonLoader
-    {...sharedSkeletonProps}
-    height={height}
-    radius="0px"
-    style={{ marginBottom: '2px' }}
-  />
-);
+export function BlockSkeleton({ height }: IBlockSkeleton) {
+  return (
+    <SkeletonLoader
+      background={sharedSkeletonProps.background}
+      height={height}
+      radius="0px"
+      style={{ marginBottom: '2px' }}
+    />
+  );
+}

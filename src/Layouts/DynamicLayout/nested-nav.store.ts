@@ -20,9 +20,10 @@ export const useNestedNavStore = createStore<IStore>((set) => ({
   deepLinks: [],
   clear: () => set(() => ({ deepLinks: [] })),
   goToIndex: (index: number) => set(({ deepLinks }) => {
-    while (index > 0) {
+    let loopIndex = index;
+    while (loopIndex > 0) {
       deepLinks.pop();
-      --index;
+      loopIndex -= 1;
     }
   }),
   pop: () => {

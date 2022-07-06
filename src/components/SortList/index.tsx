@@ -22,15 +22,17 @@ function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
 }
 
 function arrayMoveImmutable<T>(array: T[], fromIndex: number, toIndex: number) {
-  array = [...array];
-  arrayMoveMutable(array, fromIndex, toIndex);
-  return array;
+  const newArray = [...array];
+  arrayMoveMutable(newArray, fromIndex, toIndex);
+  return newArray;
 }
 
 export interface IProps<T> {
   data: DataStateKeys<T[]>;
   onSave: (data: string[]) => Promise<void>;
 }
+
+const THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP = 10;
 
 export function SortList<T extends { value: string; label?: string }>({
   data,
@@ -88,7 +90,7 @@ export function SortList<T extends { value: string; label?: string }>({
     <SectionList>
       {sortedData.length
         > THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP && (
-        <>{saveChanges}</>
+        saveChanges
       )}
       <SortableList
         onSortEnd={onSortEnd}
@@ -111,5 +113,3 @@ export function SortList<T extends { value: string; label?: string }>({
     </SectionList>
   );
 }
-
-const THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP = 10;

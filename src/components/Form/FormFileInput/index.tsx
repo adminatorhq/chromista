@@ -7,8 +7,6 @@ import { ISharedFormInput } from '../_types';
 import { generateClassNames, wrapLabelAndError } from '../_wrapForm';
 import { ProgressBar } from '../../ProgressBar';
 // import './styles.scss';
-// TODO uncommnet
-// import { STORE_PLAN_AGGREGATES_QUERY_CACHE_KEY } from '../../screens/Settings/Subscription/_hooks/constants';
 
 interface IFormFileInput extends ISharedFormInput {
   type?: 'image' | 'videos';
@@ -31,12 +29,12 @@ const fileFormDatafy = (file: any) => {
   };
 };
 
-const FileInput: React.FC<IFormFileInput> = ({
+function FileInput({
   input,
   meta,
   disabled,
   domain,
-}) => {
+}: IFormFileInput) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
   // const queryCache = useQueryCache();
@@ -137,8 +135,8 @@ const FileInput: React.FC<IFormFileInput> = ({
       </div>
     </div>
   );
-};
+}
 
 export const FormFileInput: React.FC<IFormFileInput> = (
   formInput,
-): JSX.Element => wrapLabelAndError(<FileInput {...formInput} />, formInput);
+) => wrapLabelAndError(<FileInput {...formInput} />, formInput);

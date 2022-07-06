@@ -1,4 +1,5 @@
 import { DataStateKeys } from '@gothicgeeks/shared';
+import { ReactNode } from 'react';
 import { Icon } from 'react-feather';
 import { SoftButtonIconTypes } from '../components/Button/SoftButton.types';
 
@@ -16,7 +17,7 @@ export interface INavigationMenuItems {
 }
 
 export interface ISelectionView extends ISideBarNavigation {
-  view?: JSX.Element;
+  view?: ReactNode;
   viewMenuItems?: DataStateKeys<INavigationMenuItems[]>;
   description?: string;
   iconButtons?: { onClick: () => void; icon: SoftButtonIconTypes }[];

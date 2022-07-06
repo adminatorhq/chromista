@@ -1,10 +1,11 @@
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 import { Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { TableDataAsList, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
-const Story = {
+export default {
   title: 'Components/TableDataAsList',
   component: TableDataAsList,
   args: {
@@ -34,5 +35,3 @@ const Template: Story<IProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {};
-
-export default Story;

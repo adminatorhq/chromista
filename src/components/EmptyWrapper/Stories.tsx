@@ -1,9 +1,10 @@
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 import { Story } from '@storybook/react';
 import { EmptyWrapper, IProps } from '.';
 import { AppWrapper } from '../../AppWrapper';
 
-const Story = {
+export default {
   title: 'Components/EmptyWrapper',
   component: EmptyWrapper,
   args: {
@@ -41,5 +42,3 @@ WithChildren.args = {
     </>
   ),
 };
-
-export default Story;

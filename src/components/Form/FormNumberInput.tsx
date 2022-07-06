@@ -7,7 +7,8 @@ interface IFormNumberInput extends ISharedFormInput {
   allowNegative?: boolean;
 }
 
-// const format = (input: number, decimalCount: number, numberSpace = 3, comma = ',', point = '.') => {
+// const format = (input: number,
+// decimalCount: number, numberSpace = 3, comma = ',', point = '.') => {
 //   console.log('Please format', { input });
 //   const re = '\\d(?=(\\d{' + numberSpace + '})+' + (decimalCount > 0 ? '\\D' : '$') + ')';
 
@@ -50,7 +51,7 @@ const getNumberValue = (value: string | number | null, required: boolean) => {
 
 export const FormNumberInput: React.FC<IFormNumberInput> = (
   formInput,
-): JSX.Element => {
+) => {
   const {
     input, label, disabled, meta, allowNegative, required, sm,
   } = formInput;

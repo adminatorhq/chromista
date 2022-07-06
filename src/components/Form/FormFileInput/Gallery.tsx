@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +19,10 @@ interface ILoadedImage {
   isDefault?: boolean;
 }
 
+const StyledDeleteButton = styled(DeleteButton)`
+  margin-left: 0.25rem;
+`;
+
 interface IFormFileInputGallery {
   createImage: (image: string) => Promise<void>;
   deleteImage: (imageId: string) => Promise<void>;
@@ -28,7 +34,7 @@ interface IFormFileInputGallery {
   isMakingDefaultRequest: boolean;
 }
 
-export const FormFileInputGallery: React.FC<IFormFileInputGallery> = ({
+export function FormFileInputGallery({
   createImage,
   deleteImage,
   setAsDefaultImage,
@@ -37,7 +43,7 @@ export const FormFileInputGallery: React.FC<IFormFileInputGallery> = ({
   isMakingDeleteRequest,
   isMakingCreateRequest,
   isMakingDefaultRequest,
-}) => {
+}: IFormFileInputGallery) {
   const [currentImageId, setCurrentImageId] = useState('');
   const [lightBoxIndex, setLightBoxIndex] = useState(0);
   const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
@@ -144,10 +150,6 @@ export const FormFileInputGallery: React.FC<IFormFileInputGallery> = ({
       ))}
     </div>
   );
-};
-
-const StyledDeleteButton = styled(DeleteButton)`
-  margin-left: 0.25rem;
-`;
+}
 
 // TODO Upload multiple Product Images

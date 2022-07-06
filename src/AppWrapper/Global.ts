@@ -305,5 +305,6 @@ background-color: #000;
 
 // :root {
 //   --font-family-sans-serif: "Roboto", sans-serif;
-//   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+//   --font-family-monospace: SFMono-Regular, Menlo, Monaco,
+// Consolas, "Liberation Mono", "Courier New", monospace
 // }

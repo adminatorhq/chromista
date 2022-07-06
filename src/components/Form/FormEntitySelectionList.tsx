@@ -6,7 +6,7 @@ import { RequestService } from '@gothicgeeks/shared';
 import { ISelectData } from '../../types';
 import { FormNoValueSelect } from './FormSelect';
 
-interface IFormEntitySelectionList {
+interface IProps {
   disabledOptions: string[];
   onChange: (value: string, label?: string) => void;
   url: string;
@@ -26,11 +26,11 @@ const debouncedSearch = debounce(
   700,
 );
 
-export const FormEntitySelectionList: React.FC<IFormEntitySelectionList> = ({
+export function FormEntitySelectionList({
   disabledOptions,
   onChange,
   url,
-}): JSX.Element => {
+}: IProps) {
   const { data = [] } = useQuery<ISelectData[]>(
     [url],
     async () => (await RequestService.get(url)).data,
@@ -47,14 +47,15 @@ export const FormEntitySelectionList: React.FC<IFormEntitySelectionList> = ({
           }
         }}
         value={{ value: '' }}
-        loadOptions={(inputValue) => new Promise(async (resolve) => {
+        loadOptions={(inputValue) => new Promise((resolve) => {
           if (inputValue.length < 3) {
-            return resolve([
+            resolve([
               {
                 value: 'Please input three characters or more',
                 // label: 'Please input three characters or more',
               },
             ]);
+            return;
           }
           debouncedSearch(inputValue, url, disabledOptions, resolve);
         })}
@@ -69,4 +70,4 @@ export const FormEntitySelectionList: React.FC<IFormEntitySelectionList> = ({
       selectData={data}
     />
   );
-};
+}

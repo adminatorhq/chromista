@@ -33,33 +33,36 @@ export const SLUG_VALUE = '___SLUG_VALUE';
 //   </Field>
 // )
 
-export const WhenFieldChanges: React.FC<IWhenFieldChanges> = ({
+export function WhenFieldChanges({
   field,
   becomes,
   set,
   to,
-}) => (
-  <Field name={set} subscription={{}}>
-    {({ input: { onChange } }) => (
-      <FormSpy subscription={{}}>
-        {() => (
-          <OnChange name={field}>
-            {(value: unknown) => {
-              const valueToChangeTo = to === SLUG_VALUE ? StringUtils.sluggify(value as string) : to;
-              if (becomes === undefined) {
-                onChange(valueToChangeTo);
-                return;
-              }
-              if (value === becomes) {
-                onChange(valueToChangeTo);
-              }
-            }}
-          </OnChange>
-        )}
-      </FormSpy>
-    )}
-  </Field>
-);
+}: IWhenFieldChanges) {
+  return (
+    <Field name={set} subscription={{}}>
+      {({ input: { onChange } }) => (
+        <FormSpy subscription={{}}>
+          {() => (
+            <OnChange name={field}>
+              {(value: unknown) => {
+                const valueToChangeTo = to === SLUG_VALUE
+                  ? StringUtils.sluggify(value as string) : to;
+                if (becomes === undefined) {
+                  onChange(valueToChangeTo);
+                  return;
+                }
+                if (value === becomes) {
+                  onChange(valueToChangeTo);
+                }
+              }}
+            </OnChange>
+          )}
+        </FormSpy>
+      )}
+    </Field>
+  );
+}
 /*
 TODO
 If the slug is not touched then update it

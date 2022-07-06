@@ -4,7 +4,7 @@ import { faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { StyledSoftButton } from './Button';
 import { ConfirmAlert } from '../ConfirmAlert';
 
-interface IDeleteButton {
+interface IProps {
   onDelete: () => void;
   isMakingDeleteRequest?: boolean;
   text?: string;
@@ -12,39 +12,41 @@ interface IDeleteButton {
   shouldConfirmAlert?: boolean;
 }
 
-export const DeleteButton: React.FC<IDeleteButton> = ({
+export function DeleteButton({
   onDelete,
   isMakingDeleteRequest,
   text,
   size = 'sm',
   shouldConfirmAlert = true,
-}) => (
-  <StyledSoftButton
-    size={size}
-    color="danger"
-    type="button"
-    onClick={(e: React.BaseSyntheticEvent) => {
-      e.stopPropagation();
-      if (shouldConfirmAlert) {
-        // TODO move to a pop confirm
-        return ConfirmAlert({
-          title: 'Confirm Delete',
-          message: 'Are you sure you want to do this.',
-          action: onDelete,
-        });
-      }
-      return onDelete();
-    }}
-    disabled={isMakingDeleteRequest}
-  >
-    {isMakingDeleteRequest ? (
-      <FontAwesomeIcon icon={faSpinner} spin />
-    ) : (
-      <>
-        <FontAwesomeIcon icon={faTrash} />
-        {' '}
-        {text ? `Delete ${text}` : null}
-      </>
-    )}
-  </StyledSoftButton>
-);
+}: IProps) {
+  return (
+    <StyledSoftButton
+      size={size}
+      color="danger"
+      type="button"
+      onClick={(e: React.BaseSyntheticEvent) => {
+        e.stopPropagation();
+        if (shouldConfirmAlert) {
+          // TODO move to a pop confirm
+          return ConfirmAlert({
+            title: 'Confirm Delete',
+            message: 'Are you sure you want to do this.',
+            action: onDelete,
+          });
+        }
+        return onDelete();
+      }}
+      disabled={isMakingDeleteRequest}
+    >
+      {isMakingDeleteRequest ? (
+        <FontAwesomeIcon icon={faSpinner} spin />
+      ) : (
+        <>
+          <FontAwesomeIcon icon={faTrash} />
+          {' '}
+          {text ? `Delete ${text}` : null}
+        </>
+      )}
+    </StyledSoftButton>
+  );
+}

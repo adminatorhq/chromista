@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { ReactNode } from 'react';
 import { Filter, Search } from 'react-feather';
 import * as StyledGrid from 'styled-bootstrap-grid';
@@ -21,29 +23,28 @@ interface IProps {
   iconType: 'search' | 'filter' | 'numeric' | 'list';
 }
 
-export const mapFilterTypeToComponent = (
-  type: TableFilterType,
-): ((input: {
-  columns: { filterValue: unknown; setFilter: (filter: unknown) => void };
-}) => JSX.Element) => {
-  switch (type._type) {
-    case 'number':
-      return NumberSelectionFilter;
-    case 'string':
-      return TextSearchFilter;
-    case 'status':
-      return StatusFilter(type.bag);
-    case 'list':
-      return ListSelectionFilter(type.bag);
-  }
-};
+const StyledSoftButton = styled(SoftButton)`
+  margin-bottom: 0.25rem;
+`;
 
-const FilterWrapper: React.FC<IProps> = ({
+const Root = styled.div`
+  cursor: pointer;
+`;
+
+const DownRoot = styled(Stack)`
+  background: ${APP_COLORS.white};
+  padding: 8px;
+  border-radius: 2px;
+  border: 1px solid ${(props) => props.theme.colors.border};
+  min-width: 250px;
+`;
+
+function FilterWrapper({
   children,
   filterValue,
   setFilter,
   iconType,
-}) => {
+}: IProps) {
   const iconProps = {
     size: 15,
     color: filterValue ? themeContext.colors.primary : 'rgb(48, 62, 103)',
@@ -82,17 +83,11 @@ const FilterWrapper: React.FC<IProps> = ({
       </Dropdown>
     </span>
   );
-};
+}
 
-const DownRoot = styled(Stack)`
-  background: ${APP_COLORS.white};
-  padding: 8px;
-  border-radius: 2px;
-  border: 1px solid ${(props) => props.theme.colors.border};
-  min-width: 250px;
-`;
-
-export const StatusFilter = (statuses: ISystemStatusForDisplay[]) => function ({ column: { filterValue, setFilter } }: any) {
+export const StatusFilter = (
+  statuses: ISystemStatusForDisplay[],
+) => function StatusFilterImpl({ column: { filterValue, setFilter } }: any) {
   return (
     <FilterWrapper
       filterValue={filterValue}
@@ -113,7 +108,7 @@ export const StatusFilter = (statuses: ISystemStatusForDisplay[]) => function ({
 
 export const ListSelectionFilter = (
   selections: { id: string; name: string }[],
-) => function ({ column: { filterValue = [], setFilter } }: any) {
+) => function ListSelectionFilterImpl({ column: { filterValue = [], setFilter } }: any) {
   return (
     <FilterWrapper
       filterValue={filterValue.length}
@@ -197,13 +192,24 @@ export function TextSearchFilter({ column: { filterValue, setFilter } }: any) {
   );
 }
 
-const StyledSoftButton = styled(SoftButton)`
-  margin-bottom: 0.25rem;
-`;
-
-const Root = styled.div`
-  cursor: pointer;
-`;
+export const mapFilterTypeToComponent = (
+  type: TableFilterType,
+): ((input: {
+  columns: { filterValue: unknown; setFilter: (filter: unknown) => void };
+}) => ReactNode) => {
+  switch (type._type) {
+    case 'number':
+      return NumberSelectionFilter;
+    case 'string':
+      return TextSearchFilter;
+    case 'status':
+      return StatusFilter(type.bag);
+    case 'list':
+      return ListSelectionFilter(type.bag);
+    default:
+      throw new Error('Filter type not implemented');
+  }
+};
 
 // TODO date range
 // TODO debounce all the keyboard input

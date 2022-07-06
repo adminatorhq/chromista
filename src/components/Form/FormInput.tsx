@@ -7,7 +7,7 @@ interface IFormInput extends ISharedFormInput {
   type?: 'email' | 'password' | 'url' | 'color';
 }
 
-export const FormInput: React.FC<IFormInput> = (formInput): JSX.Element => {
+export const FormInput: React.FC<IFormInput> = (formInput) => {
   const {
     input, type, label, disabled, meta, ...rest
   } = formInput;

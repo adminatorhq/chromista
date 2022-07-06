@@ -204,5 +204,4 @@ const customJestConfig = {
   testTimeout: 10000,
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default async (...args: any[]) => createJestConfig(customJestConfig)(...args);

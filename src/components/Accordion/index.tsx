@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { ChevronDown, ChevronUp, Icon } from 'react-feather';
 
@@ -7,44 +7,9 @@ const ARROW_SIZE = 16;
 export interface IProps {
   icon: Icon;
   name: string;
-  body: JSX.Element;
+  body:ReactNode;
   highlight?: boolean;
 }
-
-export const AccordionItem: React.FC<IProps> = ({
-  icon,
-  name,
-  body,
-  highlight,
-}) => {
-  const [isBoxOpen, setIsBoxOpen] = useState(false);
-  return (
-    <Root highlight={highlight}>
-      <StyledAnchor
-        onClick={() => {
-          setIsBoxOpen(!isBoxOpen);
-        }}
-      >
-        <StyledLabel highlight={highlight}>
-          <StyledLabelIcon as={icon} size={ARROW_SIZE} />
-          {name}
-        </StyledLabel>
-        <StyledIcon
-          highlight={highlight}
-          as={isBoxOpen ? ChevronUp : ChevronDown}
-          size={ARROW_SIZE}
-        />
-      </StyledAnchor>
-      {isBoxOpen ? (
-        <StyledBodyWrapper>
-          {' '}
-          {body}
-          {' '}
-        </StyledBodyWrapper>
-      ) : null}
-    </Root>
-  );
-};
 
 const StyledAnchor = styled.button`
   display: flex;
@@ -88,3 +53,38 @@ const StyledLabel = styled.p<{ highlight?: boolean }>`
   font-size: 16px;
   color: ${(props) => (props.highlight ? props.theme.text.white : props.theme.text.main)};
 `;
+
+export function AccordionItem({
+  icon,
+  name,
+  body,
+  highlight,
+}: IProps) {
+  const [isBoxOpen, setIsBoxOpen] = useState(false);
+  return (
+    <Root highlight={highlight}>
+      <StyledAnchor
+        onClick={() => {
+          setIsBoxOpen(!isBoxOpen);
+        }}
+      >
+        <StyledLabel highlight={highlight}>
+          <StyledLabelIcon as={icon} size={ARROW_SIZE} />
+          {name}
+        </StyledLabel>
+        <StyledIcon
+          highlight={highlight}
+          as={isBoxOpen ? ChevronUp : ChevronDown}
+          size={ARROW_SIZE}
+        />
+      </StyledAnchor>
+      {isBoxOpen ? (
+        <StyledBodyWrapper>
+          {' '}
+          {body}
+          {' '}
+        </StyledBodyWrapper>
+      ) : null}
+    </Root>
+  );
+}

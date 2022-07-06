@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { ErrorAlert } from '../Alert';
 import { EmptyWrapper } from '../EmptyWrapper';
 import { ListSkeleton } from '../Skeleton/ListSkeleton';
@@ -14,7 +14,7 @@ export interface IProps<T> {
   error?: unknown;
   notSearchable?: boolean;
   sortByName?: boolean;
-  render: (item: T, index: number) => JSX.Element;
+  render: (item: T, index: number) => ReactNode;
   searchFunction?: (items: T[], searchString: string) => T[];
 }
 

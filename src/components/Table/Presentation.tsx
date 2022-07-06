@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useMemo } from 'react';
 import {
   useTable, usePagination, useSortBy, useFilters,
@@ -27,14 +29,152 @@ export type IProps = Omit<ITableProps, 'url'> & {
   setPaginatedDataState: (params: IBEPaginatedDataState) => void;
 };
 
-export const Presentation: React.FC<IProps> = ({
+const StyledBodyTR = styled.tr`
+  padding: 4px;
+  border-top: 2px solid ${APP_COLORS.border};
+  page-break-inside: avoid;
+  &:hover {
+    color: #303e67;
+    background-color: #f8f8fc;
+  }
+`;
+
+const StyledSorting = styled.span`
+  cursor: pointer;
+
+  &:before {
+    left: 0.8em;
+    content: '\\2191';
+  }
+
+  &:after {
+    left: 0.3em;
+    content: '\\2193';
+  }
+
+  &:after,
+  &:before {
+    color: rgb(48, 62, 103);
+    opacity: 0.3;
+  }
+
+  &.desc:after,
+  &.asc:before {
+    color: ${(props) => props.theme.colors.primary};
+    opacity: 1;
+  }
+`;
+
+const StyledTHead = styled.thead`
+  background-color: #f1f5fa;
+`;
+
+const StyledPagination = styled.div`
+  .pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .page-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.71rem;
+    line-height: 1.8;
+    color: ${(props) => props.theme.colors.primary};
+  }
+
+  .page-item.active {
+    .page-link {
+      z-index: 3;
+      background-color: ${(props) => props.theme.colors.primary};
+      border-color: ${(props) => props.theme.colors.primary};
+    }
+  }
+
+  .page-item.disabled {
+    .page-link {
+      color: #b6c2e4;
+      border-color: #eaf0f9;
+    }
+  }
+`;
+
+const StyledTableResponsive = styled.div`
+  display: block;
+  width: 100%;
+  border: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: ${(props) => props.theme.colors.white};
+  padding: 0.5rem;
+`;
+
+const StyledTh = styled.th`
+  padding: 0.45rem;
+  vertical-align: middle;
+  border: 1px solid ${APP_COLORS.border};
+  border-bottom-width: 2px;
+  color: ${(props) => props.theme.text.main};
+  font-weight: 500;
+  border-top: none;
+`;
+
+const StyledTd = styled.td`
+  padding: 0.45rem;
+  border: 1px solid #eaf0f9;
+  border: 1px solid ${APP_COLORS.border};
+  vertical-align: middle;
+  font-weight: 400;
+  border-top: 1px solid ${APP_COLORS.border};
+`;
+
+const StyledTableTitle = styled.h4`
+  line-height: 1.8em;
+  margin: 0;
+`;
+
+const StyledTable = styled.table`
+  width: 100%;
+  margin-bottom: 1rem;
+  color: ${(props) => props.theme.text.main};
+  border-collapse: collapse;
+  border: 1px solid ${APP_COLORS.border};
+  .dropdown-toggle::after {
+    display: none;
+  }
+`;
+
+const StyledOverlay = styled.div`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 4;
+  cursor: pointer;
+`;
+
+const StyledOverlayText = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%, -50%);
+`;
+
+export function Presentation({
   paginatedDataState,
   tableData,
   setPaginatedDataState,
   title,
   columns,
   menuItems,
-}) => {
+}: IProps) {
   const {
     data = {
       data: [],
@@ -85,7 +225,7 @@ export const Presentation: React.FC<IProps> = ({
       autoResetFilters: false,
       initialState: DEFAULT_TABLE_PARAMS,
       defaultColumn: {
-        Filter: <></>,
+        Filter: null,
       },
     },
     useFilters,
@@ -238,142 +378,4 @@ export const Presentation: React.FC<IProps> = ({
       </StyledTableResponsive>
     </>
   );
-};
-
-const StyledBodyTR = styled.tr`
-  padding: 4px;
-  border-top: 2px solid ${APP_COLORS.border};
-  page-break-inside: avoid;
-  &:hover {
-    color: #303e67;
-    background-color: #f8f8fc;
-  }
-`;
-
-const StyledSorting = styled.span`
-  cursor: pointer;
-
-  &:before {
-    left: 0.8em;
-    content: '\\2191';
-  }
-
-  &:after {
-    left: 0.3em;
-    content: '\\2193';
-  }
-
-  &:after,
-  &:before {
-    color: rgb(48, 62, 103);
-    opacity: 0.3;
-  }
-
-  &.desc:after,
-  &.asc:before {
-    color: ${(props) => props.theme.colors.primary};
-    opacity: 1;
-  }
-`;
-
-const StyledTHead = styled.thead`
-  background-color: #f1f5fa;
-`;
-
-const StyledPagination = styled.div`
-  .pagination {
-    display: flex;
-    padding-left: 0;
-    list-style: none;
-  }
-
-  .page-link {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.71rem;
-    line-height: 1.8;
-    color: ${(props) => props.theme.colors.primary};
-  }
-
-  .page-item.active {
-    .page-link {
-      z-index: 3;
-      background-color: ${(props) => props.theme.colors.primary};
-      border-color: ${(props) => props.theme.colors.primary};
-    }
-  }
-
-  .page-item.disabled {
-    .page-link {
-      color: #b6c2e4;
-      border-color: #eaf0f9;
-    }
-  }
-`;
-
-const StyledTableResponsive = styled.div`
-  display: block;
-  width: 100%;
-  border: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  background: ${(props) => props.theme.colors.white};
-  padding: 0.5rem;
-`;
-
-const StyledTh = styled.th`
-  padding: 0.45rem;
-  vertical-align: middle;
-  border: 1px solid ${APP_COLORS.border};
-  border-bottom-width: 2px;
-  color: ${(props) => props.theme.text.main};
-  font-weight: 500;
-  border-top: none;
-`;
-
-const StyledTd = styled.td`
-  padding: 0.45rem;
-  border: 1px solid #eaf0f9;
-  border: 1px solid ${APP_COLORS.border};
-  vertical-align: middle;
-  font-weight: 400;
-  border-top: 1px solid ${APP_COLORS.border};
-`;
-
-const StyledTableTitle = styled.h4`
-  line-height: 1.8em;
-  margin: 0;
-`;
-
-const StyledTable = styled.table`
-  width: 100%;
-  margin-bottom: 1rem;
-  color: ${(props) => props.theme.text.main};
-  border-collapse: collapse;
-  border: 1px solid ${APP_COLORS.border};
-  .dropdown-toggle::after {
-    display: none;
-  }
-`;
-
-const StyledOverlay = styled.div`
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.6);
-  z-index: 4;
-  cursor: pointer;
-`;
-
-const StyledOverlayText = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 50px;
-  color: white;
-  transform: translate(-50%, -50%);
-`;
+}

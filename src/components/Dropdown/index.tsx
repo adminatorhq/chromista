@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, {
   ReactNode, useEffect, useRef, useState,
 } from 'react';
@@ -30,14 +32,14 @@ interface IProps {
   align?: Align;
 }
 
-export const Dropdown: React.FC<IProps> = ({
+export function Dropdown({
   align = 'right',
   target,
   children,
   preserveVisibiltyOnClick,
   onDropDownActiveChange,
   rootZIndex = Z_INDEXES.dropDown,
-}) => {
+}: IProps) {
   const [menuVisible, setMenuVisible] = useState(false);
   const rootRef = useRef(null);
 
@@ -59,8 +61,8 @@ export const Dropdown: React.FC<IProps> = ({
     <Root ref={rootRef}>
       <span onClick={() => setMenuVisible(!menuVisible)}>{target}</span>
       {menuVisible && (
-        // The click handling on the element is not real interactivity, this is a workaround for the useClickAway on the container.
-        // eslint-disable-next-line styled-components-a11y/click-events-have-key-events, styled-components-a11y/no-static-element-interactions
+        // The click handling on the element is not real interactivity,
+        // this is a workaround for the useClickAway on the container.
         <DropdownRoot
           align={align}
           zIndex={rootZIndex}
@@ -75,4 +77,4 @@ export const Dropdown: React.FC<IProps> = ({
       )}
     </Root>
   );
-};
+}
