@@ -85,7 +85,7 @@ export function Alert({ type, message, renderJsx }: IProps) {
     return null;
   }
   return (
-    <StyledAlert type={type} role="alert" data-test-id="alert">
+    <StyledAlert type={type} role="alert">
       <StyledAlertButton
         type="button"
         onClick={() => {

@@ -24,12 +24,6 @@ Default.args = {};
 export const NoIcon = Template.bind({});
 NoIcon.args = {
   hideIcon: true,
-  border: true,
-};
-
-export const Border = Template.bind({});
-Border.args = {
-  border: true,
 };
 
 export const WithChildren = Template.bind({});

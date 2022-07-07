@@ -2,7 +2,7 @@ import { IBEPaginatedDataState, usePaginatedData } from '@gothicgeeks/shared';
 import React, { useState } from 'react';
 import { DEFAULT_TABLE_PARAMS } from './constants';
 import { Presentation } from './Presentation';
-import { ITableProps } from './Table.types';
+import { ITableProps } from './types';
 
 // TODO when I click on products the state should be preserved when returning back for navigation
 // and keep all the settings in localstorage except the pageIndex

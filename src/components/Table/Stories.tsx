@@ -46,10 +46,24 @@ export default {
         accessor: 'verified',
         disableSortBy: true,
         filter: {
+          _type: 'boolean',
+          bag: [
+            { color: '#00ff00', label: 'Yes', value: true },
+            { color: '#ff0000', label: 'No', value: false },
+          ],
+        },
+      },
+      {
+        Header: 'Role',
+        accessor: 'role',
+        disableSortBy: true,
+        filter: {
           _type: 'status',
           bag: [
-            { color: '#00ff00', label: 'Yes', value: 'true' },
-            { color: '#ff0000', label: 'No', value: 'false' },
+            { color: '#00ff00', label: 'Admin', value: 'admin' },
+            { color: '#fff000', label: 'Editor', value: 'editor' },
+            { color: '#fff000', label: 'User', value: 'user' },
+            { color: '#ff00f0', label: 'Developer', value: 'developer' },
           ],
         },
       },
@@ -58,10 +72,20 @@ export default {
         accessor: 'author',
         filter: {
           _type: 'list',
-          bag: [
-            { id: 'fb', name: 'Facebook' },
-            { id: 'ggl', name: 'Google' },
-          ],
+          bag: {
+            onChange: action('change Author'),
+            selections: [
+              { id: 'fb', name: 'Facebook' },
+              { id: 'ggl', name: 'Google' },
+            ],
+          },
+        },
+      },
+      {
+        Header: 'Registered',
+        accessor: 'createdAt',
+        filter: {
+          _type: 'date',
         },
       },
       {
@@ -80,6 +104,7 @@ export default {
             verified: true,
             approved: 'pending',
             author: 'Facbook',
+            createdAt: new Date(),
           },
           {
             name: 'Angular',
@@ -87,6 +112,7 @@ export default {
             verified: true,
             approved: 'progress',
             author: 'Goggle',
+            createdAt: new Date(),
           },
           {
             name: 'Vue',
@@ -94,6 +120,7 @@ export default {
             verified: true,
             approved: 'done',
             author: 'Evan Yue',
+            createdAt: new Date(),
           },
         ],
         pageIndex: 1,

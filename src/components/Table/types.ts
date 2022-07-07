@@ -19,12 +19,12 @@ export interface ITableFilter {
 }
 
 export type TableFilterType =
-  // TODO date
-  // Boolean
+  | { _type: 'boolean'; bag: ISystemStatusForDisplay[] }
+  | { _type: 'date' }
   | { _type: 'number' }
   | { _type: 'string' }
   | { _type: 'status'; bag: ISystemStatusForDisplay[] }
-  | { _type: 'list'; config: {
+  | { _type: 'list'; bag: {
     onChange: (word: string) => void;
     selections: {id: string, name: string}[];
   } };

@@ -13,12 +13,12 @@ import { ComponentIsLoading } from '../ComponentIsLoading';
 import { ErrorAlert } from '../Alert';
 import { SimpleSelect } from '../Form';
 import { EmptyWrapper } from '../EmptyWrapper';
-import { ITableFilter, ITableProps } from './Table.types';
+import { ITableFilter, ITableProps } from './types';
 import { DEFAULT_TABLE_PARAMS } from './constants';
 import { Spacer, Stack, Text } from '../../ui-blocks';
 import { APP_COLORS } from '../../constants/colors';
 import { DropDownMenu } from '../DropdownMenu';
-import { mapFilterTypeToComponent } from './Table.filters';
+import { mapFilterTypeToComponent } from './filters';
 
 export type IProps = Omit<ITableProps, 'url'> & {
   tableData: Pick<
