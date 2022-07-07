@@ -107,7 +107,10 @@ export const StatusFilter = (
 };
 
 export const ListSelectionFilter = (
-  selections: { id: string; name: string }[],
+  bag: {
+    onChange: (word: string) => void;
+    selections: {id: string, name: string}[];
+  },
 ) => function ListSelectionFilterImpl({ column: { filterValue = [], setFilter } }: any) {
   return (
     <FilterWrapper
@@ -117,7 +120,7 @@ export const ListSelectionFilter = (
     >
       <div style={{ minWidth: '250px' }}>
         <FormMultiSelect
-          selectData={mapIdAndNameToSelectData(selections)}
+          selectData={mapIdAndNameToSelectData(bag.selections)}
           values={filterValue}
           onChange={setFilter}
         />
@@ -205,7 +208,8 @@ export const mapFilterTypeToComponent = (
     case 'status':
       return StatusFilter(type.bag);
     case 'list':
-      return ListSelectionFilter(type.bag);
+      // return ListSelectionFilter(type.config);
+      return ListSelectionFilter(type.config);
     default:
       throw new Error('Filter type not implemented');
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { SLUG_LOADING_VALUE } from '@gothicgeeks/shared';
 import { ThemeProvider } from 'styled-components';
 import { Tabs } from '.';
@@ -9,7 +9,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 describe('Tabs', () => {
   it('should render first tab by default', () => {
-    const { getByText } = render(
+    render(
       <ThemeProvider theme={themeContext}>
         <Tabs
           contents={[
@@ -30,13 +30,13 @@ describe('Tabs', () => {
       </ThemeProvider>,
     );
 
-    expect(getByText('Foo Content')).toBeVisible();
-    expect(getByText('Bar Content')).not.toBeVisible();
-    expect(getByText('Baz Content')).not.toBeVisible();
+    expect(screen.getByText('Foo Content')).toBeVisible();
+    expect(screen.getByText('Bar Content')).not.toBeVisible();
+    expect(screen.getByText('Baz Content')).not.toBeVisible();
   });
 
   it('should render first tab when current tab is loading', () => {
-    const { getByText } = render(
+    render(
       <ThemeProvider theme={themeContext}>
         <Tabs
           currentTab={SLUG_LOADING_VALUE}
@@ -58,13 +58,13 @@ describe('Tabs', () => {
       </ThemeProvider>,
     );
 
-    expect(getByText('Foo Content')).toBeVisible();
-    expect(getByText('Bar Content')).not.toBeVisible();
-    expect(getByText('Baz Content')).not.toBeVisible();
+    expect(screen.getByText('Foo Content')).toBeVisible();
+    expect(screen.getByText('Bar Content')).not.toBeVisible();
+    expect(screen.getByText('Baz Content')).not.toBeVisible();
   });
 
   it('should render currentTab', () => {
-    const { getByText } = render(
+    render(
       <ThemeProvider theme={themeContext}>
         <Tabs
           currentTab="Baz Label"
@@ -86,15 +86,17 @@ describe('Tabs', () => {
       </ThemeProvider>,
     );
 
-    expect(getByText('Foo Content')).not.toBeVisible();
-    expect(getByText('Bar Content')).not.toBeVisible();
-    expect(getByText('Baz Content')).toBeVisible();
+    expect(screen.getByText('Foo Content')).not.toBeVisible();
+    expect(screen.getByText('Bar Content')).not.toBeVisible();
+    expect(screen.getByText('Baz Content')).toBeVisible();
   });
 
   it('should switch tab', async () => {
-    const { getByText } = render(
+    const onChange = jest.fn();
+    render(
       <ThemeProvider theme={themeContext}>
         <Tabs
+          onChange={onChange}
           currentTab="Baz Label"
           contents={[
             {
@@ -113,21 +115,53 @@ describe('Tabs', () => {
         />
       </ThemeProvider>,
     );
+    expect(screen.getByText('Foo Content')).not.toBeVisible();
+    expect(screen.getByText('Bar Content')).not.toBeVisible();
+    expect(screen.getByText('Baz Content')).toBeVisible();
 
-    expect(getByText('Foo Content')).not.toBeVisible();
-    expect(getByText('Bar Content')).not.toBeVisible();
-    expect(getByText('Baz Content')).toBeVisible();
+    fireEvent.click(screen.getByText('Bar Label'));
 
-    fireEvent.click(getByText('Bar Label'));
+    expect(screen.getByText('Foo Content')).not.toBeVisible();
+    expect(screen.getByText('Bar Content')).toBeVisible();
+    expect(screen.getByText('Baz Content')).not.toBeVisible();
 
-    expect(getByText('Foo Content')).not.toBeVisible();
-    expect(getByText('Bar Content')).toBeVisible();
-    expect(getByText('Baz Content')).not.toBeVisible();
+    expect(onChange).toHaveBeenCalled();
+  });
 
-    fireEvent.click(getByText('Bar Label'));
+  it('should not call onChange if current tab is pressed', async () => {
+    const onChange = jest.fn();
+    render(
+      <ThemeProvider theme={themeContext}>
+        <Tabs
+          onChange={onChange}
+          currentTab="Baz Label"
+          contents={[
+            {
+              label: 'Foo Label',
+              content: <>Foo Content</>,
+            },
+            {
+              label: 'Bar Label',
+              content: <>Bar Content</>,
+            },
+            {
+              label: 'Baz Label',
+              content: <>Baz Content</>,
+            },
+          ]}
+        />
+      </ThemeProvider>,
+    );
+    expect(screen.getByText('Foo Content')).not.toBeVisible();
+    expect(screen.getByText('Bar Content')).not.toBeVisible();
+    expect(screen.getByText('Baz Content')).toBeVisible();
 
-    expect(getByText('Foo Content')).not.toBeVisible();
-    expect(getByText('Bar Content')).toBeVisible();
-    expect(getByText('Baz Content')).not.toBeVisible();
+    fireEvent.click(screen.getByText('Baz Label'));
+
+    expect(screen.getByText('Foo Content')).not.toBeVisible();
+    expect(screen.getByText('Bar Content')).not.toBeVisible();
+    expect(screen.getByText('Baz Content')).toBeVisible();
+
+    expect(onChange).not.toHaveBeenCalled();
   });
 });

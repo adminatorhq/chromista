@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SortableList, { SortableItem } from 'react-easy-sort';
-import { DataStateKeys } from '@gothicgeeks/shared';
+import { DataStateKeys, StringUtils } from '@gothicgeeks/shared';
 import { Move } from 'react-feather';
 import { SectionList, SectionListItem } from '../Section/SectionList';
 import { ErrorAlert } from '../Alert';
@@ -9,6 +9,7 @@ import { EmptyWrapper } from '../EmptyWrapper';
 import { Spacer, Stack } from '../../ui-blocks';
 import { FormButton } from '../Button';
 import { HSpacer } from '../../ui-blocks/Spacer';
+import { defaultToEmptyArray } from '../../utils';
 
 function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
   const startIndex = fromIndex < 0 ? array.length + fromIndex : fromIndex;
@@ -43,7 +44,7 @@ export function SortList<T extends { value: string; label?: string }>({
   const [sortedData, setSortedData] = useState<Array<T>>([]);
 
   useEffect(() => {
-    setSortedData(data.data || []);
+    setSortedData(defaultToEmptyArray(data.data));
   }, [JSON.stringify(data.data)]);
 
   const onSortEnd = (oldOrder: number, newOrder: number) => {
@@ -59,10 +60,10 @@ export function SortList<T extends { value: string; label?: string }>({
     return <ListSkeleton />;
   }
 
-  const itemsLength = (data?.data || [])?.length;
+  const itemsLength = defaultToEmptyArray(data?.data)?.length;
 
   if (itemsLength <= 1) {
-    return <EmptyWrapper text={`Cant sort ${itemsLength} items`} />;
+    return <EmptyWrapper text={`Cant sort ${StringUtils.pluralize('item', itemsLength, true)}`} />;
   }
 
   const saveChanges = (

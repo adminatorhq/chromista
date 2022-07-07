@@ -7,6 +7,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:testing-library/react',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -19,6 +20,13 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'testing-library',
+  ],
+  overrides: [
+    {
+      files: ['**/?(*.)+spec.ts?(x)'],
+      extends: ['plugin:testing-library/react'],
+    },
   ],
   rules: {
     'import/no-anonymous-default-export': 'off',

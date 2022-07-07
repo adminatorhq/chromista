@@ -13,7 +13,7 @@ export function ListSkeleton({
   height = 44,
 }: IProps) {
   return (
-    <div>
+    <div data-testid="list-skeleton">
       {Array.from({ length: count }, (_, k) => k + 1).map((key) => (
         <SkeletonLoader
           key={key}

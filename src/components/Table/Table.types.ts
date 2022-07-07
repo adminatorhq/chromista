@@ -24,7 +24,10 @@ export type TableFilterType =
   | { _type: 'number' }
   | { _type: 'string' }
   | { _type: 'status'; bag: ISystemStatusForDisplay[] }
-  | { _type: 'list'; bag: { id: string; name: string }[] };
+  | { _type: 'list'; config: {
+    onChange: (word: string) => void;
+    selections: {id: string, name: string}[];
+  } };
 
 export interface ITableColumn {
   Header: string;
