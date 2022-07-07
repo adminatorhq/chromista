@@ -47,13 +47,13 @@ export function RenderList<T extends { name: string }>({
   if (itemsLength === 0) {
     return (
       <EmptyWrapper text={`No ${singular} To Look At`}>
-        {newItemLink ? (
+        {newItemLink && (
           <SoftButton
             to={newItemLink}
             label={`Add New ${singular}`}
             icon="add"
           />
-        ) : null}
+        )}
       </EmptyWrapper>
     );
   }
