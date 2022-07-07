@@ -53,14 +53,14 @@ export function FilterTableByNumbers({
                 comparision: value || undefined,
               });
             }}
-            value={filterValue.comparision || ''}
+            value={localValue.comparision || ''}
           />
         </StyledGrid.Col>
         <StyledSecondGrid sm={8}>
           <StyledInput
             type="number"
             sm
-            value={filterValue.value || ''}
+            value={localValue.value || ''}
             onChange={(e) => setLocalValue({
               comparision: filterValue.comparision,
               value: +e.target.value || undefined,

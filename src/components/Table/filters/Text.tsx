@@ -23,7 +23,7 @@ export function FilterTableByText({ column: { filterValue, setFilter } }: IFilte
       iconType="search"
     >
       <StyledInput
-        value={filterValue || ''}
+        value={localValue || ''}
         onChange={(e: React.BaseSyntheticEvent) => {
           setLocalValue(e.target.value || undefined);
         }}
