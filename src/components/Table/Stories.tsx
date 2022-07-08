@@ -4,11 +4,11 @@ import { Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Download, Plus } from 'react-feather';
 import { AppWrapper } from '../../AppWrapper';
-import { Presentation, IProps } from './Presentation';
+import { Table, IProps } from '.';
 
 export default {
   title: 'Components/Table',
-  component: Presentation,
+  component: Table,
   args: {
     title: 'Some Table title',
     menuItems: [
@@ -139,7 +139,7 @@ export default {
 
 const Template: Story<IProps> = (args) => (
   <AppWrapper>
-    <Presentation {...args} />
+    <Table {...args} />
   </AppWrapper>
 );
 

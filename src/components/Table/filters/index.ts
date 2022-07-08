@@ -1,5 +1,5 @@
 import { FilterTableByStatus } from './Status';
-import { TableFilterType } from '../types';
+import { TableFilterType } from './types';
 import { FilterTableByListSelection } from './List';
 import { FilterTableByText } from './Text';
 import { FilterTableByNumbers } from './Number';
