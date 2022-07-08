@@ -64,7 +64,7 @@ export function FilterWrapper({
             icon="close"
             label="Reset"
           />
-          <Spacer />
+          <Spacer size="xxs" />
         </DownRoot>
       </Dropdown>
     </span>

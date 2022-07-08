@@ -7,7 +7,7 @@ import { FilterWrapper } from './_FilterWrapper';
 
 export const FilterTableByBooleans = (
   statuses: ISystemStatusForDisplay[],
-) => function StatusFilterImpl({ column: { filterValue, setFilter } }: IFilterProps<string>) {
+) => function StatusFilterImpl({ column: { filterValue, setFilter } }: IFilterProps<boolean>) {
   return (
     <FilterWrapper
       filterHasValue={!!filterValue}
@@ -17,10 +17,10 @@ export const FilterTableByBooleans = (
       <SimpleSelect
         options={[{ label: '-- Select Status --', value: '' }, ...statuses]}
         onChange={(value: string) => {
-          setFilter(value || undefined);
+          setFilter(value === 'true');
         }}
         fullWidth
-        value={filterValue || ''}
+        value={filterValue ? 'true' : 'false' || undefined}
       />
     </FilterWrapper>
   );

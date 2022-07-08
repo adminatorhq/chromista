@@ -33,3 +33,10 @@ export function FilterTableByText({ column: { filterValue, setFilter } }: IFilte
     </FilterWrapper>
   );
 }
+
+// Equal
+// contain
+// starts with
+// ends with
+// not equal
+// not contain

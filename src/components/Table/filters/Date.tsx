@@ -72,3 +72,24 @@ export function FilterTableByDate({
     </FilterWrapper>
   );
 }
+
+// On
+
+// From
+// now
+
+// Past 1 hour
+// 6 hours
+// 12 hours
+// 1 Day
+// 3 days
+// 1 Week
+// 1 month
+// Past 3 month
+// 6 month
+// 1 year
+// Beginning of year
+// custom date
+
+// To
+// Beggining of time
