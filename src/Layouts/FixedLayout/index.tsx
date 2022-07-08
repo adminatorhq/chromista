@@ -1,9 +1,9 @@
-import React, { ReactNode, useState } from 'react';
-import styled from 'styled-components';
-import { Footer } from './Footer';
-import { PageHeader } from './Header';
-import { AppLeftSideNav } from './SideBar';
-import useWindowDimensions from './use-window-dimensions.hook';
+import React, { ReactNode, useState } from "react";
+import styled from "styled-components";
+import { Footer } from "./Footer";
+import { PageHeader } from "./Header";
+import { AppLeftSideNav } from "./SideBar";
+import useWindowDimensions from "./use-window-dimensions.hook";
 
 interface IProps {
   children: ReactNode;

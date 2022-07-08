@@ -1,35 +1,35 @@
-import React, { ReactNode } from 'react';
-import { ChevronRight, Icon } from 'react-feather';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import styled, { css } from 'styled-components';
-import { StyledBaseButton } from '../../Button/Button';
-import { StyledListGroupFlush } from '../../Lists';
-import { FormButton } from '../../Button/FormButton';
+import React, { ReactNode } from "react";
+import { ChevronRight, Icon } from "react-feather";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import styled, { css } from "styled-components";
+import { StyledBaseButton } from "../../Button/Button";
+import { StyledListGroupFlush } from "../../Lists";
+import { FormButton } from "../../Button/FormButton";
 
 export enum OrderingDirection {
-  Up = 'up',
-  Down = 'down',
+  Up = "up",
+  Down = "down",
 }
 
 const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   width: 14px;
-  color: ${(props) => (props.$active ? props.theme.colors.white : props.theme.colors.primary)};
+  color: ${(props) =>
+    props.$active ? props.theme.colors.white : props.theme.colors.primary};
   margin-left: 0.25rem;
 `;
 
 const StyledSublabel = styled.p<{ $active?: boolean }>`
-  color: ${(props) => (props.$active ? props.theme.colors.white : props.theme.text.muted)};
+  color: ${(props) =>
+    props.$active ? props.theme.colors.white : props.theme.text.muted};
   padding: 0;
   margin: 0;
   font-size: 10px;
   line-height: 0.6;
 `;
 
-export function SectionList({
-  children,
-}: { children: ReactNode }) {
+export function SectionList({ children }: { children: ReactNode }) {
   return <StyledListGroupFlush>{children}</StyledListGroupFlush>;
 }
 
@@ -51,7 +51,7 @@ const StyledOrderButton = styled(StyledBaseButton)`
 const StyledListItem = styled.button<{
   active: boolean;
   disabled: boolean;
-  size?: 'xs';
+  size?: "xs";
 }>`
   justify-content: space-between;
   align-items: center;
@@ -90,15 +90,17 @@ const StyledListItem = styled.button<{
     // border-bottom: 0;
   }
 
-  ${({ disabled }) => disabled
-    && css`
+  ${({ disabled }) =>
+    disabled &&
+    css`
       color: #7081b9;
       pointer-events: none;
       background-color: ${(props) => props.theme.colors.white};
     `}
 
-  ${({ size }) => size === 'xs'
-    && css`
+  ${({ size }) =>
+    size === "xs" &&
+    css`
       padding: 6px 0.75rem;
       font-size: 12px;
     `}
@@ -111,8 +113,9 @@ const StyledListItem = styled.button<{
     background-color: #f8f8fc;
   }
 
-  ${({ active, theme }) => active
-    && css`
+  ${({ active, theme }) =>
+    active &&
+    css`
       z-index: 2;
       color: ${(props) => props.theme.text.white} !important;
       background-color: ${theme.colors.primary} !important;
@@ -128,7 +131,7 @@ const StyledListItem = styled.button<{
 interface ISectionListItem {
   label: string;
   to?: string;
-  size?: 'xs';
+  size?: "xs";
   subLabel?: string;
   IconComponent?: Icon;
   disabled?: boolean;
@@ -164,8 +167,7 @@ export function SectionListItem({
   const content = (
     <>
       <span>
-        {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}
-        {' '}
+        {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}{" "}
         {label}
         {subLabel ? (
           <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
@@ -204,9 +206,7 @@ export function SectionListItem({
           {actionButtons ? (
             <>
               {actionButtons.map(
-                ({
-                  text, isInverse, onClick: onClick$1, isMakingRequest,
-                }) => (
+                ({ text, isInverse, onClick: onClick$1, isMakingRequest }) => (
                   <FormButton
                     text={text}
                     key={text}
@@ -219,7 +219,7 @@ export function SectionListItem({
                       onClick$1();
                     }}
                   />
-                ),
+                )
               )}
             </>
           ) : null}

@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import SkeletonLoader from 'tiny-skeleton-loader-react';
-import { randomNumber } from '@gothicgeeks/shared';
-import styled from 'styled-components';
-import { EmptyWrapper } from '../EmptyWrapper';
-import { sharedSkeletonProps } from '../Skeleton/constants';
-import { StyledOutlineButton } from '../Button/Button';
+import React, { Fragment } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import SkeletonLoader from "tiny-skeleton-loader-react";
+import { randomNumber } from "@gothicgeeks/shared";
+import styled from "styled-components";
+import { EmptyWrapper } from "../EmptyWrapper";
+import { sharedSkeletonProps } from "../Skeleton/constants";
+import { StyledOutlineButton } from "../Button/Button";
 
 export interface ITagItem {
   id: string;
@@ -65,10 +65,10 @@ export function TagsList({
               height="30px"
               width={`${randomNumber(50, 120)}px`}
               style={{
-                marginBottom: '.50rem',
-                marginTop: '0.25rem',
-                float: 'left',
-                marginRight: '.75rem',
+                marginBottom: ".50rem",
+                marginTop: "0.25rem",
+                float: "left",
+                marginRight: ".75rem",
               }}
             />
           </Fragment>

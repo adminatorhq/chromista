@@ -1,54 +1,51 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { ReactNode } from 'react';
-import {
-  fireEvent, render, screen, waitFor,
-} from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
-import { SortList } from '.';
-import { themeContext } from '../../AppWrapper/Global';
+import React, { ReactNode } from "react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { ThemeProvider } from "styled-components";
+import { SortList } from ".";
+import { themeContext } from "../../AppWrapper/Global";
 
-import '@testing-library/jest-dom/extend-expect';
+import "@testing-library/jest-dom/extend-expect";
 
-jest.mock(
-  'react-easy-sort',
-  () => ({
-    __esModule: true,
-    default: ({
-      onSortEnd,
-      children,
-    }: {
-      onSortEnd: (newValue : number, oldValue: number) => void;
-      children: ReactNode;
-    }) => (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-      <div
-        onClick={() => {
-          onSortEnd(1, 2);
-          onSortEnd(-1, 0);
-          onSortEnd(2, -1);
-        }}
-        data-testid="fake-sorting"
-      >
-        {children}
-      </div>
-    ),
-    SortableItem: ({ children }: {children: ReactNode}) => <div>{children}</div>,
-  }),
-);
+jest.mock("react-easy-sort", () => ({
+  __esModule: true,
+  default: ({
+    onSortEnd,
+    children,
+  }: {
+    onSortEnd: (newValue: number, oldValue: number) => void;
+    children: ReactNode;
+  }) => (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    <div
+      onClick={() => {
+        onSortEnd(1, 2);
+        onSortEnd(-1, 0);
+        onSortEnd(2, -1);
+      }}
+      data-testid="fake-sorting"
+    >
+      {children}
+    </div>
+  ),
+  SortableItem: ({ children }: { children: ReactNode }) => (
+    <div>{children}</div>
+  ),
+}));
 
-describe('SortList', () => {
-  it('should render labels if present else value', () => {
+describe("SortList", () => {
+  it("should render labels if present else value", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <SortList
           data={{
             data: [
               {
-                value: 'foo-value',
+                value: "foo-value",
               },
               {
-                value: 'bar-value',
-                label: 'Bar Label',
+                value: "bar-value",
+                label: "Bar Label",
               },
             ],
             error: null,
@@ -57,22 +54,22 @@ describe('SortList', () => {
           }}
           onSave={jest.fn()}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
-    expect(screen.getByText('foo-value')).toBeInTheDocument();
-    expect(screen.getByText('Bar Label')).toBeInTheDocument();
-    expect(screen.queryByText('bar-value')).not.toBeInTheDocument();
+    expect(screen.getByText("foo-value")).toBeInTheDocument();
+    expect(screen.getByText("Bar Label")).toBeInTheDocument();
+    expect(screen.queryByText("bar-value")).not.toBeInTheDocument();
   });
 
-  it('should warn when just one item', () => {
+  it("should warn when just one item", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <SortList
           data={{
             data: [
               {
-                value: 'bar-value',
-                label: 'Bar Label',
+                value: "bar-value",
+                label: "Bar Label",
               },
             ],
             error: null,
@@ -81,14 +78,14 @@ describe('SortList', () => {
           }}
           onSave={jest.fn()}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
-    expect(screen.queryByText('Bar Label')).not.toBeInTheDocument();
-    expect(screen.queryByText('bar-value')).not.toBeInTheDocument();
-    expect(screen.getByText('Cant sort 1 item')).toBeInTheDocument();
+    expect(screen.queryByText("Bar Label")).not.toBeInTheDocument();
+    expect(screen.queryByText("bar-value")).not.toBeInTheDocument();
+    expect(screen.getByText("Cant sort 1 item")).toBeInTheDocument();
   });
 
-  it('should warn when there are no items', () => {
+  it("should warn when there are no items", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <SortList
@@ -100,23 +97,23 @@ describe('SortList', () => {
           }}
           onSave={jest.fn()}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
-    expect(screen.getByText('Cant sort 0 items')).toBeInTheDocument();
+    expect(screen.getByText("Cant sort 0 items")).toBeInTheDocument();
   });
 
-  it('should render skeleton when loading', () => {
+  it("should render skeleton when loading", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <SortList
           data={{
             data: [
               {
-                value: 'bar-value',
-                label: 'Bar Label',
+                value: "bar-value",
+                label: "Bar Label",
               },
               {
-                value: 'foo-value',
+                value: "foo-value",
               },
             ],
             error: null,
@@ -125,39 +122,39 @@ describe('SortList', () => {
           }}
           onSave={jest.fn()}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
-    expect(screen.getByTestId('list-skeleton')).toBeInTheDocument();
-    expect(screen.queryByText('Bar Label')).not.toBeInTheDocument();
+    expect(screen.getByTestId("list-skeleton")).toBeInTheDocument();
+    expect(screen.queryByText("Bar Label")).not.toBeInTheDocument();
   });
 
-  it('should render Error when present', () => {
+  it("should render Error when present", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <SortList
           data={{
             data: [
               {
-                value: 'bar-value',
-                label: 'Bar Label',
+                value: "bar-value",
+                label: "Bar Label",
               },
               {
-                value: 'foo-value',
+                value: "foo-value",
               },
             ],
-            error: 'Some nasty error',
+            error: "Some nasty error",
             isLoading: false,
             isRefetching: false,
           }}
           onSave={jest.fn()}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
-    expect(screen.getByText('Some nasty error')).toBeInTheDocument();
-    expect(screen.queryByText('Bar Label')).not.toBeInTheDocument();
+    expect(screen.getByText("Some nasty error")).toBeInTheDocument();
+    expect(screen.queryByText("Bar Label")).not.toBeInTheDocument();
   });
 
-  it('should render save button twice for large list', () => {
+  it("should render save button twice for large list", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <SortList
@@ -169,14 +166,14 @@ describe('SortList', () => {
           }}
           onSave={jest.fn()}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
     expect(
-      screen.queryAllByRole('button', { name: 'Save Order' }),
+      screen.queryAllByRole("button", { name: "Save Order" })
     ).toHaveLength(2);
   });
 
-  it('should render save button once for small list', () => {
+  it("should render save button once for small list", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <SortList
@@ -188,14 +185,14 @@ describe('SortList', () => {
           }}
           onSave={jest.fn()}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
     expect(
-      screen.queryAllByRole('button', { name: 'Save Order' }),
+      screen.queryAllByRole("button", { name: "Save Order" })
     ).toHaveLength(1);
   });
 
-  it('should sort items', async () => {
+  it("should sort items", async () => {
     const onSave = jest.fn();
     render(
       <ThemeProvider theme={themeContext}>
@@ -203,13 +200,13 @@ describe('SortList', () => {
           data={{
             data: [
               {
-                value: 'foo-value',
+                value: "foo-value",
               },
               {
-                value: 'bar-value',
+                value: "bar-value",
               },
               {
-                value: 'baz-value',
+                value: "baz-value",
               },
             ],
             error: null,
@@ -218,19 +215,19 @@ describe('SortList', () => {
           }}
           onSave={onSave}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    fireEvent.click(
-      screen.getByTestId('fake-sorting'),
-    );
+    fireEvent.click(screen.getByTestId("fake-sorting"));
 
-    fireEvent.click(
-      screen.getByRole('button', { name: 'Save Order' }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: "Save Order" }));
 
     await waitFor(() => {
-      expect(onSave).toHaveBeenCalledWith(['bar-value', 'foo-value', 'baz-value']);
+      expect(onSave).toHaveBeenCalledWith([
+        "bar-value",
+        "foo-value",
+        "baz-value",
+      ]);
     });
   });
 });

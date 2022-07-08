@@ -1,14 +1,14 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { StyledSoftButton } from './Button';
-import { ConfirmAlert } from '../ConfirmAlert';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { StyledSoftButton } from "./Button";
+import { ConfirmAlert } from "../ConfirmAlert";
 
 interface IProps {
   onDelete: () => void;
   isMakingDeleteRequest?: boolean;
   text?: string;
-  size?: 'sm' | 'xs';
+  size?: "sm" | "xs";
   shouldConfirmAlert?: boolean;
 }
 
@@ -16,7 +16,7 @@ export function DeleteButton({
   onDelete,
   isMakingDeleteRequest,
   text,
-  size = 'sm',
+  size = "sm",
   shouldConfirmAlert = true,
 }: IProps) {
   return (
@@ -29,8 +29,8 @@ export function DeleteButton({
         if (shouldConfirmAlert) {
           // TODO move to a pop confirm
           return ConfirmAlert({
-            title: 'Confirm Delete',
-            message: 'Are you sure you want to do this.',
+            title: "Confirm Delete",
+            message: "Are you sure you want to do this.",
             action: onDelete,
           });
         }
@@ -42,9 +42,7 @@ export function DeleteButton({
         <FontAwesomeIcon icon={faSpinner} spin />
       ) : (
         <>
-          <FontAwesomeIcon icon={faTrash} />
-          {' '}
-          {text ? `Delete ${text}` : null}
+          <FontAwesomeIcon icon={faTrash} /> {text ? `Delete ${text}` : null}
         </>
       )}
     </StyledSoftButton>

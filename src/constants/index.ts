@@ -1,1 +1,1 @@
-export { DESIGN_SYSTEM_SIZES } from './sizes';
+export { DESIGN_SYSTEM_SIZES } from "./sizes";

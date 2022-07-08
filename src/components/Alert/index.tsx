@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import styled, { css } from 'styled-components';
-import { getBestErrorMessage } from '@gothicgeeks/shared';
+import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import styled, { css } from "styled-components";
+import { getBestErrorMessage } from "@gothicgeeks/shared";
 
 export enum AlertType {
-  Success = 'success',
-  Error = 'danger',
-  Warning = 'warning',
-  Info = 'info',
+  Success = "success",
+  Error = "danger",
+  Warning = "warning",
+  Info = "info",
 }
 
 interface IAlert {
@@ -31,29 +31,33 @@ const StyledAlert = styled.div<{
   border-radius: 0.25rem;
   text-align: center;
 
-  ${(props) => props.type === AlertType.Success
-    && css`
+  ${(props) =>
+    props.type === AlertType.Success &&
+    css`
       color: #03d87f;
       background-color: #e1faf0;
       border-color: #b8f4db;
     `}
 
-  ${(props) => props.type === AlertType.Error
-    && css`
+  ${(props) =>
+    props.type === AlertType.Error &&
+    css`
       color: ${props.theme.colors.danger};
       background-color: #fee6eb;
       border-color: #fcc6d1;
     `}
 
-      ${(props) => props.type === AlertType.Warning
-    && css`
+      ${(props) =>
+    props.type === AlertType.Warning &&
+    css`
       color: #ffb822;
       background-color: #fff6e4;
       border-color: #ffebc1;
     `}
 
-        ${(props) => props.type === AlertType.Info
-    && css`
+        ${(props) =>
+    props.type === AlertType.Info &&
+    css`
       color: #12a4ed;
       background-color: #e3f4fd;
       border-color: #bde6fa;

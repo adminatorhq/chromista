@@ -1,7 +1,7 @@
-import { createGlobalStyle, DefaultTheme } from 'styled-components';
-import { ColorTypes } from '../styles/types';
+import { createGlobalStyle, DefaultTheme } from "styled-components";
+import { ColorTypes } from "../styles/types";
 
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
     colors: Record<ColorTypes, string>;
     text: {
@@ -14,19 +14,19 @@ declare module 'styled-components' {
 
 export const themeContext: DefaultTheme = {
   text: {
-    muted: '#a4abc5',
-    main: '#656d9a',
-    white: '#fff',
+    muted: "#a4abc5",
+    main: "#656d9a",
+    white: "#fff",
   },
   colors: {
-    white: '#fff',
-    theme: '#0c213a',
-    primary: '#1761fd',
-    border: '#e3ebf6',
-    softBackground: '#f1f5fa',
-    danger: '#f5325c',
-    warning: '#ffb822',
-    success: '#03d87f',
+    white: "#fff",
+    theme: "#0c213a",
+    primary: "#1761fd",
+    border: "#e3ebf6",
+    softBackground: "#f1f5fa",
+    danger: "#f5325c",
+    warning: "#ffb822",
+    success: "#03d87f",
   },
 };
 

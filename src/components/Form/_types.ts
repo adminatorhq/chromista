@@ -1,4 +1,4 @@
-import { FieldInputProps, FieldMetaState } from 'react-final-form';
+import { FieldInputProps, FieldMetaState } from "react-final-form";
 
 export interface ISharedFormInput {
   input: FieldInputProps<any, HTMLElement>;

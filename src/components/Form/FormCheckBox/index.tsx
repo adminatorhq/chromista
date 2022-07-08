@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ISharedFormInput } from '../_types';
-import { Text } from '../../../ui-blocks/Text';
-import { Stack } from '../../../ui-blocks';
-import { StyledFormFeedback, StyledFormGroup } from '../Styles';
-import { isFormMetaWithError } from '../_wrapForm';
+import React from "react";
+import styled from "styled-components";
+import { ISharedFormInput } from "../_types";
+import { Text } from "../../../ui-blocks/Text";
+import { Stack } from "../../../ui-blocks";
+import { StyledFormFeedback, StyledFormGroup } from "../Styles";
+import { isFormMetaWithError } from "../_wrapForm";
 
 const StyledCheckBoxInput = styled.input`
   border-radius: 0.25em;

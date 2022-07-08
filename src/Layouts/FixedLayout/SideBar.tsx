@@ -1,8 +1,8 @@
-import React from 'react';
-import { ArrowLeftCircle, ArrowRightCircle } from 'react-feather';
-import { BaseLeftSideNav, StyledLeftSideNavMenu } from '../BaseLeftSideNav';
-import { RenderNavigation } from '../Navigation';
-import { ISideBarNavigation } from './types';
+import React from "react";
+import { ArrowLeftCircle, ArrowRightCircle } from "react-feather";
+import { BaseLeftSideNav, StyledLeftSideNavMenu } from "../BaseLeftSideNav";
+import { RenderNavigation } from "../Navigation";
+import { ISideBarNavigation } from "./types";
 
 interface IAppLeftSideNav {
   isSidebarOpen: boolean;
@@ -18,13 +18,13 @@ export function AppLeftSideNav({
   const sideBarMenu = React.useMemo(
     () => [
       {
-        title: 'Collapse Menu',
+        title: "Collapse Menu",
         icon: isSidebarOpen ? ArrowLeftCircle : ArrowRightCircle,
         action: toogleSidebar,
-        dataTestId: 'toogle-sidebar',
+        dataTestId: "toogle-sidebar",
       },
     ],
-    [isSidebarOpen, toogleSidebar],
+    [isSidebarOpen, toogleSidebar]
   );
 
   return (

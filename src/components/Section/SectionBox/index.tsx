@@ -1,20 +1,20 @@
-import React, { useState, ReactNode } from 'react';
-import * as StyledGrid from 'styled-bootstrap-grid';
-import styled from 'styled-components';
-import { HelpCircle } from 'react-feather';
-import { TimeFilters } from '@gothicgeeks/shared';
-import { DeleteButton } from '../../Button/DeleteButton';
-import { ISelectData } from '../../../types';
-import { SimpleSelect } from '../../Form';
-import { SoftButton } from '../../Button/SoftButton';
+import React, { useState, ReactNode } from "react";
+import * as StyledGrid from "styled-bootstrap-grid";
+import styled from "styled-components";
+import { HelpCircle } from "react-feather";
+import { TimeFilters } from "@gothicgeeks/shared";
+import { DeleteButton } from "../../Button/DeleteButton";
+import { ISelectData } from "../../../types";
+import { SimpleSelect } from "../../Form";
+import { SoftButton } from "../../Button/SoftButton";
 import {
   StyledCard,
   StyledCardBody,
   StyledCardHeader,
-} from '../../../styles/Card';
-import { StyledMutedText } from '../../../styles/Text';
-import { Tooltip } from '../../Tooltip';
-import { SoftButtonIconTypes } from '../../Button/SoftButton.types';
+} from "../../../styles/Card";
+import { StyledMutedText } from "../../../styles/Text";
+import { Tooltip } from "../../Tooltip";
+import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
 
 interface IProps {
   title: string;
@@ -51,7 +51,7 @@ const StyledCardTitle = styled.h4`
   margin: 0;
   color: ${(props) => props.theme.text.main};
   text-shadow: 0 0 1px rgba(241, 245, 250, 0.1);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 `;
 
 const StyledFullHeight = styled.div`
@@ -77,7 +77,7 @@ export function SectionBox({
   headLess,
   lastUpdated,
 }: IProps) {
-  const [selectionValue, setSelectionValue] = useState('');
+  const [selectionValue, setSelectionValue] = useState("");
 
   return (
     <StyledCard>
@@ -92,14 +92,14 @@ export function SectionBox({
                     onClick={backLink.onClick}
                     size="xs"
                     icon="back"
-                    label={backLink.label ? `Back To ${backLink.label}` : ''}
+                    label={backLink.label ? `Back To ${backLink.label}` : ""}
                   />
                 ) : null}
                 <StyledCardTitle data-test-id="section-box__title">
-                  {isLoading ? 'Loading...' : title}
+                  {isLoading ? "Loading..." : title}
                   {description ? (
                     <>
-                      {' '}
+                      {" "}
                       <HelpCircle
                         data-for="section-box"
                         size="15"
@@ -110,11 +110,11 @@ export function SectionBox({
                 </StyledCardTitle>
                 {description ? <Tooltip id="section-box" /> : null}
               </StyledGrid.Col>
-              {newItemLink
-              || deleteAction
-              || iconButtons
-              || selection
-              || lastUpdated ? (
+              {newItemLink ||
+              deleteAction ||
+              iconButtons ||
+              selection ||
+              lastUpdated ? (
                 <StyledGrid.Col auto>
                   {selection ? (
                     <SimpleSelect
@@ -128,24 +128,21 @@ export function SectionBox({
                   ) : null}
                   {lastUpdated ? (
                     <StyledMutedText as="i">
-                      Last modified
-                      {' '}
-                      {TimeFilters.formatTime(new Date(lastUpdated), 'L')}
+                      Last modified{" "}
+                      {TimeFilters.formatTime(new Date(lastUpdated), "L")}
                     </StyledMutedText>
                   ) : null}
                   {iconButtons
-                    ? iconButtons.map(({
-                      link, label, icon, onClick,
-                    }) => (
-                      <SoftButton
-                        key={icon || label}
-                        to={link}
-                        label={label}
-                        icon={icon}
-                        onClick={onClick}
-                        pushLeft
-                      />
-                    ))
+                    ? iconButtons.map(({ link, label, icon, onClick }) => (
+                        <SoftButton
+                          key={icon || label}
+                          to={link}
+                          label={label}
+                          icon={icon}
+                          onClick={onClick}
+                          pushLeft
+                        />
+                      ))
                     : null}
                   {newItemLink ? (
                     <SoftButton to={newItemLink} icon="add" />
@@ -157,7 +154,7 @@ export function SectionBox({
                     />
                   ) : null}
                 </StyledGrid.Col>
-                ) : null}
+              ) : null}
             </StyledCenterRow>
           </StyledCardHeader>
         ) : null}

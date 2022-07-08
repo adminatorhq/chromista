@@ -1,7 +1,7 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { StyledOutlineButton } from '../Button';
-import { ISelectData } from '../../../types';
+import React from "react";
+import styled, { css } from "styled-components";
+import { StyledOutlineButton } from "../Button";
+import { ISelectData } from "../../../types";
 
 export interface IProps {
   options: ISelectData[];
@@ -16,8 +16,9 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled(StyledOutlineButton)<{ isActive: boolean }>`
-  ${(props) => props.isActive
-    && css`
+  ${(props) =>
+    props.isActive &&
+    css`
       color: ${props.theme.text.white};
       background-color: ${props.theme.colors.primary};
       border-color: ${props.theme.colors.primary};
@@ -53,9 +54,9 @@ export function FormButtonGroup({
           size="sm"
           key={`${value}`}
           isActive={
-          selectedValue === value
-          || (index === 0 && selectedValue === undefined)
-        }
+            selectedValue === value ||
+            (index === 0 && selectedValue === undefined)
+          }
           onClick={() => onChange(value)}
         >
           <StyledInput type="checkbox" />

@@ -1,13 +1,13 @@
-import React, { ReactNode, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { ChevronDown, ChevronUp, Icon } from 'react-feather';
+import React, { ReactNode, useState } from "react";
+import styled, { css } from "styled-components";
+import { ChevronDown, ChevronUp, Icon } from "react-feather";
 
 const ARROW_SIZE = 16;
 
 export interface IProps {
   icon: Icon;
   name: string;
-  body:ReactNode;
+  body: ReactNode;
   highlight?: boolean;
 }
 
@@ -35,13 +35,15 @@ const StyledLabelIcon = styled.i`
 
 const StyledIcon = styled.i<{ highlight?: boolean }>`
   margin-top: 0.3rem;
-  color: ${(props) => (props.highlight ? props.theme.text.white : props.theme.text.main)};
+  color: ${(props) =>
+    props.highlight ? props.theme.text.white : props.theme.text.main};
 `;
 
 const Root = styled.div<{ highlight?: boolean }>`
   padding: 0;
-  ${(props) => props.highlight
-    && css`
+  ${(props) =>
+    props.highlight &&
+    css`
       background: ${props.theme.colors.primary};
     `};
   border-bottom: 1px solid ${(props) => props.theme.colors.border};
@@ -51,15 +53,11 @@ const Root = styled.div<{ highlight?: boolean }>`
 const StyledLabel = styled.p<{ highlight?: boolean }>`
   margin-bottom: 0;
   font-size: 16px;
-  color: ${(props) => (props.highlight ? props.theme.text.white : props.theme.text.main)};
+  color: ${(props) =>
+    props.highlight ? props.theme.text.white : props.theme.text.main};
 `;
 
-export function AccordionItem({
-  icon,
-  name,
-  body,
-  highlight,
-}: IProps) {
+export function AccordionItem({ icon, name, body, highlight }: IProps) {
   const [isBoxOpen, setIsBoxOpen] = useState(false);
   return (
     <Root highlight={highlight}>
@@ -78,13 +76,7 @@ export function AccordionItem({
           size={ARROW_SIZE}
         />
       </StyledAnchor>
-      {isBoxOpen ? (
-        <StyledBodyWrapper>
-          {' '}
-          {body}
-          {' '}
-        </StyledBodyWrapper>
-      ) : null}
+      {isBoxOpen ? <StyledBodyWrapper> {body} </StyledBodyWrapper> : null}
     </Root>
   );
 }

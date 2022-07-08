@@ -1,97 +1,97 @@
-import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-import { SLUG_LOADING_VALUE } from '@gothicgeeks/shared';
-import { ThemeProvider } from 'styled-components';
-import { Tabs } from '.';
-import { themeContext } from '../../AppWrapper/Global';
+import React from "react";
+import { render, fireEvent, screen } from "@testing-library/react";
+import { SLUG_LOADING_VALUE } from "@gothicgeeks/shared";
+import { ThemeProvider } from "styled-components";
+import { Tabs } from ".";
+import { themeContext } from "../../AppWrapper/Global";
 
-import '@testing-library/jest-dom/extend-expect';
+import "@testing-library/jest-dom/extend-expect";
 
-describe('Tabs', () => {
-  it('should render first tab by default', () => {
+describe("Tabs", () => {
+  it("should render first tab by default", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <Tabs
           contents={[
             {
-              label: 'Foo Label',
+              label: "Foo Label",
               content: <>Foo Content</>,
             },
             {
-              label: 'Bar Label',
+              label: "Bar Label",
               content: <>Bar Content</>,
             },
             {
-              label: 'Baz Label',
+              label: "Baz Label",
               content: <>Baz Content</>,
             },
           ]}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('Foo Content')).toBeVisible();
-    expect(screen.getByText('Bar Content')).not.toBeVisible();
-    expect(screen.getByText('Baz Content')).not.toBeVisible();
+    expect(screen.getByText("Foo Content")).toBeVisible();
+    expect(screen.getByText("Bar Content")).not.toBeVisible();
+    expect(screen.getByText("Baz Content")).not.toBeVisible();
   });
 
-  it('should render first tab when current tab is loading', () => {
+  it("should render first tab when current tab is loading", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <Tabs
           currentTab={SLUG_LOADING_VALUE}
           contents={[
             {
-              label: 'Foo Label',
+              label: "Foo Label",
               content: <>Foo Content</>,
             },
             {
-              label: 'Bar Label',
+              label: "Bar Label",
               content: <>Bar Content</>,
             },
             {
-              label: 'Baz Label',
+              label: "Baz Label",
               content: <>Baz Content</>,
             },
           ]}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('Foo Content')).toBeVisible();
-    expect(screen.getByText('Bar Content')).not.toBeVisible();
-    expect(screen.getByText('Baz Content')).not.toBeVisible();
+    expect(screen.getByText("Foo Content")).toBeVisible();
+    expect(screen.getByText("Bar Content")).not.toBeVisible();
+    expect(screen.getByText("Baz Content")).not.toBeVisible();
   });
 
-  it('should render currentTab', () => {
+  it("should render currentTab", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <Tabs
           currentTab="Baz Label"
           contents={[
             {
-              label: 'Foo Label',
+              label: "Foo Label",
               content: <>Foo Content</>,
             },
             {
-              label: 'Bar Label',
+              label: "Bar Label",
               content: <>Bar Content</>,
             },
             {
-              label: 'Baz Label',
+              label: "Baz Label",
               content: <>Baz Content</>,
             },
           ]}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('Foo Content')).not.toBeVisible();
-    expect(screen.getByText('Bar Content')).not.toBeVisible();
-    expect(screen.getByText('Baz Content')).toBeVisible();
+    expect(screen.getByText("Foo Content")).not.toBeVisible();
+    expect(screen.getByText("Bar Content")).not.toBeVisible();
+    expect(screen.getByText("Baz Content")).toBeVisible();
   });
 
-  it('should switch tab', async () => {
+  it("should switch tab", async () => {
     const onChange = jest.fn();
     render(
       <ThemeProvider theme={themeContext}>
@@ -100,35 +100,35 @@ describe('Tabs', () => {
           currentTab="Baz Label"
           contents={[
             {
-              label: 'Foo Label',
+              label: "Foo Label",
               content: <>Foo Content</>,
             },
             {
-              label: 'Bar Label',
+              label: "Bar Label",
               content: <>Bar Content</>,
             },
             {
-              label: 'Baz Label',
+              label: "Baz Label",
               content: <>Baz Content</>,
             },
           ]}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
-    expect(screen.getByText('Foo Content')).not.toBeVisible();
-    expect(screen.getByText('Bar Content')).not.toBeVisible();
-    expect(screen.getByText('Baz Content')).toBeVisible();
+    expect(screen.getByText("Foo Content")).not.toBeVisible();
+    expect(screen.getByText("Bar Content")).not.toBeVisible();
+    expect(screen.getByText("Baz Content")).toBeVisible();
 
-    fireEvent.click(screen.getByText('Bar Label'));
+    fireEvent.click(screen.getByText("Bar Label"));
 
-    expect(screen.getByText('Foo Content')).not.toBeVisible();
-    expect(screen.getByText('Bar Content')).toBeVisible();
-    expect(screen.getByText('Baz Content')).not.toBeVisible();
+    expect(screen.getByText("Foo Content")).not.toBeVisible();
+    expect(screen.getByText("Bar Content")).toBeVisible();
+    expect(screen.getByText("Baz Content")).not.toBeVisible();
 
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('should not call onChange if current tab is pressed', async () => {
+  it("should not call onChange if current tab is pressed", async () => {
     const onChange = jest.fn();
     render(
       <ThemeProvider theme={themeContext}>
@@ -137,30 +137,30 @@ describe('Tabs', () => {
           currentTab="Baz Label"
           contents={[
             {
-              label: 'Foo Label',
+              label: "Foo Label",
               content: <>Foo Content</>,
             },
             {
-              label: 'Bar Label',
+              label: "Bar Label",
               content: <>Bar Content</>,
             },
             {
-              label: 'Baz Label',
+              label: "Baz Label",
               content: <>Baz Content</>,
             },
           ]}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
-    expect(screen.getByText('Foo Content')).not.toBeVisible();
-    expect(screen.getByText('Bar Content')).not.toBeVisible();
-    expect(screen.getByText('Baz Content')).toBeVisible();
+    expect(screen.getByText("Foo Content")).not.toBeVisible();
+    expect(screen.getByText("Bar Content")).not.toBeVisible();
+    expect(screen.getByText("Baz Content")).toBeVisible();
 
-    fireEvent.click(screen.getByText('Baz Label'));
+    fireEvent.click(screen.getByText("Baz Label"));
 
-    expect(screen.getByText('Foo Content')).not.toBeVisible();
-    expect(screen.getByText('Bar Content')).not.toBeVisible();
-    expect(screen.getByText('Baz Content')).toBeVisible();
+    expect(screen.getByText("Foo Content")).not.toBeVisible();
+    expect(screen.getByText("Bar Content")).not.toBeVisible();
+    expect(screen.getByText("Baz Content")).toBeVisible();
 
     expect(onChange).not.toHaveBeenCalled();
   });

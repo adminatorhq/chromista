@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import SortableList, { SortableItem } from 'react-easy-sort';
-import { DataStateKeys, StringUtils } from '@gothicgeeks/shared';
-import { Move } from 'react-feather';
-import { SectionList, SectionListItem } from '../Section/SectionList';
-import { ErrorAlert } from '../Alert';
-import { ListSkeleton } from '../Skeleton';
-import { EmptyWrapper } from '../EmptyWrapper';
-import { Spacer, Stack } from '../../ui-blocks';
-import { FormButton } from '../Button';
-import { HSpacer } from '../../ui-blocks/Spacer';
-import { defaultToEmptyArray } from '../../utils';
+import React, { useState, useEffect } from "react";
+import SortableList, { SortableItem } from "react-easy-sort";
+import { DataStateKeys, StringUtils } from "@gothicgeeks/shared";
+import { Move } from "react-feather";
+import { SectionList, SectionListItem } from "../Section/SectionList";
+import { ErrorAlert } from "../Alert";
+import { ListSkeleton } from "../Skeleton";
+import { EmptyWrapper } from "../EmptyWrapper";
+import { Spacer, Stack } from "../../ui-blocks";
+import { FormButton } from "../Button";
+import { HSpacer } from "../../ui-blocks/Spacer";
+import { defaultToEmptyArray } from "../../utils";
 
 function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
   const startIndex = fromIndex < 0 ? array.length + fromIndex : fromIndex;
@@ -63,7 +63,11 @@ export function SortList<T extends { value: string; label?: string }>({
   const itemsLength = defaultToEmptyArray(data?.data)?.length;
 
   if (itemsLength <= 1) {
-    return <EmptyWrapper text={`Cant sort ${StringUtils.pluralize('item', itemsLength, true)}`} />;
+    return (
+      <EmptyWrapper
+        text={`Cant sort ${StringUtils.pluralize("item", itemsLength, true)}`}
+      />
+    );
   }
 
   const saveChanges = (
@@ -89,10 +93,8 @@ export function SortList<T extends { value: string; label?: string }>({
 
   return (
     <SectionList>
-      {sortedData.length
-        > THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP && (
-        saveChanges
-      )}
+      {sortedData.length >
+        THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP && saveChanges}
       <SortableList
         onSortEnd={onSortEnd}
         className="list"

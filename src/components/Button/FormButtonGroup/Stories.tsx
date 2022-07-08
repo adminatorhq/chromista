@@ -1,18 +1,18 @@
 /* eslint-disable react/function-component-definition */
-import React, { useState } from 'react';
-import { Story } from '@storybook/react';
-import { AppWrapper } from '../../../AppWrapper';
-import { FormButtonGroup, IProps } from '.';
+import React, { useState } from "react";
+import { Story } from "@storybook/react";
+import { AppWrapper } from "../../../AppWrapper";
+import { FormButtonGroup, IProps } from ".";
 
 function Demo({ options }: IProps) {
-  const [state, setState] = useState<string | boolean>('');
+  const [state, setState] = useState<string | boolean>("");
   return (
     <FormButtonGroup onChange={setState} value={state} options={options} />
   );
 }
 
 export default {
-  title: 'Components/FormButtonGroup',
+  title: "Components/FormButtonGroup",
   component: Demo,
   args: {},
 };
@@ -27,12 +27,12 @@ export const StringValues = Template.bind({});
 StringValues.args = {
   options: [
     {
-      label: 'Foo',
-      value: 'foo',
+      label: "Foo",
+      value: "foo",
     },
     {
-      label: 'Bar',
-      value: 'bar',
+      label: "Bar",
+      value: "bar",
     },
   ],
 };
@@ -41,24 +41,24 @@ export const ManyValues = Template.bind({});
 ManyValues.args = {
   options: [
     {
-      label: 'Foo',
-      value: 'foo',
+      label: "Foo",
+      value: "foo",
     },
     {
-      label: 'Bar',
-      value: 'bar',
+      label: "Bar",
+      value: "bar",
     },
     {
-      label: 'Baz',
-      value: 'baz',
+      label: "Baz",
+      value: "baz",
     },
     {
-      label: 'Lee',
-      value: 'lee',
+      label: "Lee",
+      value: "lee",
     },
     {
-      label: 'Man',
-      value: 'man',
+      label: "Man",
+      value: "man",
     },
   ],
 };
@@ -67,11 +67,11 @@ export const BooleanValues = Template.bind({});
 BooleanValues.args = {
   options: [
     {
-      label: 'True',
+      label: "True",
       value: true,
     },
     {
-      label: 'False',
+      label: "False",
       value: false,
     },
   ],

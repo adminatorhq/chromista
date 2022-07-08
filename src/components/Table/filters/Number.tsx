@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Filter } from 'react-feather';
-import useDebounce from 'react-use/lib/useDebounce';
-import { FilterWrapper } from './_FilterWrapper';
-import { StyledInput } from '../../Form/Styles';
-import { FilterOperators, IColumnFilterBag, IFilterProps } from './types';
-import { SEARCH_DEBOUNCE_WAIT } from './constants';
-import { Spacer } from '../../../ui-blocks/Spacer';
-import { RenderFilterOperator } from './_FilterOperator';
+import React, { useEffect, useState } from "react";
+import { Filter } from "react-feather";
+import useDebounce from "react-use/lib/useDebounce";
+import { FilterWrapper } from "./_FilterWrapper";
+import { StyledInput } from "../../Form/Styles";
+import { FilterOperators, IColumnFilterBag, IFilterProps } from "./types";
+import { SEARCH_DEBOUNCE_WAIT } from "./constants";
+import { Spacer } from "../../../ui-blocks/Spacer";
+import { RenderFilterOperator } from "./_FilterOperator";
 
 export function FilterTableByNumbers({
   column: { filterValue, setFilter },
@@ -22,12 +22,14 @@ export function FilterTableByNumbers({
       setFilter(localValue);
     },
     SEARCH_DEBOUNCE_WAIT,
-    [localValue],
+    [localValue]
   );
 
   return (
     <FilterWrapper
-      filterHasValue={filterValue?.value !== undefined && filterValue?.value2 !== undefined}
+      filterHasValue={
+        filterValue?.value !== undefined && filterValue?.value2 !== undefined
+      }
       clearFilter={setFilter}
       IconComponent={Filter}
     >
@@ -46,11 +48,13 @@ export function FilterTableByNumbers({
       <StyledInput
         type="number"
         sm
-        value={localValue?.value || ''}
-        onChange={(e) => setLocalValue({
-          ...filterValue,
-          value: +e.target.value || undefined,
-        })}
+        value={localValue?.value || ""}
+        onChange={(e) =>
+          setLocalValue({
+            ...filterValue,
+            value: +e.target.value || undefined,
+          })
+        }
       />
       {localValue?.operator === FilterOperators.BETWEEN && (
         <>
@@ -58,11 +62,13 @@ export function FilterTableByNumbers({
           <StyledInput
             type="number"
             sm
-            value={localValue?.value2 || ''}
-            onChange={(e) => setLocalValue({
-              ...filterValue,
-              value2: +e.target.value || undefined,
-            })}
+            value={localValue?.value2 || ""}
+            onChange={(e) =>
+              setLocalValue({
+                ...filterValue,
+                value2: +e.target.value || undefined,
+              })
+            }
           />
         </>
       )}

@@ -1,14 +1,14 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { Alert, IProps, AlertType } from '.';
-import { AppWrapper } from '../../AppWrapper';
+import React from "react";
+import { Story } from "@storybook/react";
+import { Alert, IProps, AlertType } from ".";
+import { AppWrapper } from "../../AppWrapper";
 
 export default {
-  title: 'Components/Alert',
+  title: "Components/Alert",
   component: Alert,
   args: {
-    message: 'Hello There, This is an alert',
+    message: "Hello There, This is an alert",
   },
 };
 
@@ -43,9 +43,7 @@ JSX.args = {
   type: AlertType.Info,
   message: (
     <span>
-      <b>This is bold</b>
-      {' '}
-      And This is not
+      <b>This is bold</b> And This is not
     </span>
   ),
   renderJsx: true,

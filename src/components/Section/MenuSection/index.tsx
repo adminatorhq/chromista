@@ -1,8 +1,8 @@
-import React from 'react';
-import { Icon } from 'react-feather';
-import { RenderList } from '../../RenderList';
-import { SectionBox } from '../SectionBox';
-import { SectionListItem } from '../SectionList';
+import React from "react";
+import { Icon } from "react-feather";
+import { RenderList } from "../../RenderList";
+import { SectionBox } from "../SectionBox";
+import { SectionListItem } from "../SectionList";
 
 interface IMenuItem {
   name: string;
@@ -16,10 +16,7 @@ interface IMenuSection {
   currentMenuItem?: string;
 }
 
-export function MenuSection({
-  menuItems,
-  currentMenuItem,
-}: IMenuSection) {
+export function MenuSection({ menuItems, currentMenuItem }: IMenuSection) {
   return (
     <SectionBox title="" headLess>
       <RenderList

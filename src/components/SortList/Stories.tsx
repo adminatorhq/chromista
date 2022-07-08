@@ -1,25 +1,25 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { SortList, IProps } from '.';
-import { AppWrapper } from '../../AppWrapper';
+import React from "react";
+import { Story } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { SortList, IProps } from ".";
+import { AppWrapper } from "../../AppWrapper";
 
 export default {
-  title: 'Components/SortList',
+  title: "Components/SortList",
   component: SortList,
   args: {
-    onSave: action('save'),
+    onSave: action("save"),
     data: {
       isLoading: false,
-      error: '',
+      error: "",
       data: [
-        { value: 'Planck', label: 'Max Planck' },
-        { value: 'Faraday' },
-        { value: 'Newton' },
-        { value: 'Einstein' },
-        { value: 'Bohr' },
-        { value: 'Curie' },
+        { value: "Planck", label: "Max Planck" },
+        { value: "Faraday" },
+        { value: "Newton" },
+        { value: "Einstein" },
+        { value: "Bohr" },
+        { value: "Curie" },
       ],
     },
   },
@@ -39,7 +39,7 @@ Loading.args = {
   data: {
     isLoading: true,
     data: [],
-    error: '',
+    error: "",
     isRefetching: false,
   },
 };
@@ -49,7 +49,7 @@ Error.args = {
   data: {
     isLoading: false,
     data: [],
-    error: 'Some Error',
+    error: "Some Error",
     isRefetching: false,
   },
 };
@@ -59,7 +59,7 @@ Empty.args = {
   data: {
     isLoading: false,
     data: [],
-    error: '',
+    error: "",
     isRefetching: false,
   },
 };
@@ -68,8 +68,8 @@ export const SingleItem = Template.bind({});
 SingleItem.args = {
   data: {
     isLoading: false,
-    data: [{ value: 'Foo' }],
-    error: '',
+    data: [{ value: "Foo" }],
+    error: "",
     isRefetching: false,
   },
 };

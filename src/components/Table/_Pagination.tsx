@@ -1,8 +1,8 @@
-import ReactPaginate from 'react-paginate';
-import React from 'react';
-import styled from 'styled-components';
-import { SimpleSelect } from '../Form';
-import { Stack, Text } from '../../ui-blocks';
+import ReactPaginate from "react-paginate";
+import React from "react";
+import styled from "styled-components";
+import { SimpleSelect } from "../Form";
+import { Stack, Text } from "../../ui-blocks";
 
 const StyledPagination = styled.div`
   .pagination {
@@ -35,11 +35,11 @@ const StyledPagination = styled.div`
 `;
 
 interface IProps {
-    setPageSize: (pageSize: number) => void;
-    gotoPage: (page: number) => void;
-    totalRecords: number;
-    pageSize: number;
-    totalPageCount: number;
+  setPageSize: (pageSize: number) => void;
+  gotoPage: (page: number) => void;
+  totalRecords: number;
+  pageSize: number;
+  totalPageCount: number;
 }
 
 const PAGE_SIZES = [10, 25, 50, 100];
@@ -54,8 +54,7 @@ export function TablePagination({
   return (
     <Stack justify="space-between" align="center">
       <Text>
-        Showing
-        {' '}
+        Showing{" "}
         <SimpleSelect
           options={PAGE_SIZES.map((option) => ({
             value: `${option}`,
@@ -63,13 +62,8 @@ export function TablePagination({
           }))}
           onChange={(value) => setPageSize(Number(value))}
           value={pageSize}
-        />
-        {' '}
-        entries of
-        {' '}
-        <b>{totalRecords}</b>
-        {' '}
-        results
+        />{" "}
+        entries of <b>{totalRecords}</b> results
       </Text>
       <StyledPagination>
         <ReactPaginate

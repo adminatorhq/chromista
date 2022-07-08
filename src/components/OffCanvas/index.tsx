@@ -1,8 +1,8 @@
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import React, { ReactNode } from 'react';
-import styled from 'styled-components';
-import { Divider, Text, Stack } from '../../ui-blocks';
-import { SoftButton } from '../Button';
+import Offcanvas from "react-bootstrap/Offcanvas";
+import React, { ReactNode } from "react";
+import styled from "styled-components";
+import { Divider, Text, Stack } from "../../ui-blocks";
+import { SoftButton } from "../Button";
 
 const StyledHeader = styled.div`
   display: flex;

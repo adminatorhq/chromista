@@ -1,28 +1,28 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { TagsList, IProps } from '.';
-import { AppWrapper } from '../../AppWrapper';
+import React from "react";
+import { Story } from "@storybook/react";
+import { TagsList, IProps } from ".";
+import { AppWrapper } from "../../AppWrapper";
 
 export default {
-  title: 'Components/TagsList',
+  title: "Components/TagsList",
   component: TagsList,
   args: {
     items: [
       {
-        id: 'Foo',
-        label: 'Foo',
+        id: "Foo",
+        label: "Foo",
       },
       {
-        id: 'Bar',
-        label: 'Bar',
+        id: "Bar",
+        label: "Bar",
       },
       {
-        id: 'Baz',
-        label: 'Baz',
+        id: "Baz",
+        label: "Baz",
       },
       {
-        id: 'Labelless',
+        id: "Labelless",
       },
     ],
   },
@@ -44,11 +44,11 @@ Loading.args = {
 
 export const DeletingItem = Template.bind({});
 DeletingItem.args = {
-  isMakingDeleteRequestForId: 'Foo',
+  isMakingDeleteRequestForId: "Foo",
 };
 
 export const Empty = Template.bind({});
 Empty.args = {
   items: [],
-  entityName: 'Item',
+  entityName: "Item",
 };

@@ -1,10 +1,10 @@
-import React from 'react';
-import noop from 'lodash/noop';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import styled from 'styled-components';
-import { ISharedFormInput } from '../_types';
-import { wrapLabelAndError } from '../_wrapForm';
+import React from "react";
+import noop from "lodash/noop";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import styled from "styled-components";
+import { ISharedFormInput } from "../_types";
+import { wrapLabelAndError } from "../_wrapForm";
 
 const Root = styled.div`
   .ql-editor {
@@ -42,24 +42,22 @@ interface IFormRichText extends ISharedFormInput {
 const modules = {
   toolbar: [
     [{ size: [] }, { font: [] }],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    ["bold", "italic", "underline", "strike", "blockquote"],
     [
-      { list: 'ordered' },
-      { list: 'bullet' },
-      { indent: '-1' },
-      { indent: '+1' },
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
     ],
-    ['link'], // 'image', 'video'
-    ['clean'],
+    ["link"], // 'image', 'video'
+    ["clean"],
   ],
   clipboard: {
     matchVisual: false,
   },
 };
 
-export const FormRichTextArea: React.FC<IFormRichText> = (
-  formInput,
-) => {
+export const FormRichTextArea: React.FC<IFormRichText> = (formInput) => {
   const {
     input: { onFocus, onBlur, ...inputProps },
     disabled,
@@ -75,6 +73,6 @@ export const FormRichTextArea: React.FC<IFormRichText> = (
         theme="snow"
       />
     </Root>,
-    formInput,
+    formInput
   );
 };

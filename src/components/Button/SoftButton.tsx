@@ -1,16 +1,16 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
-import { StyledSoftButton } from './Button';
-import { SoftButtonIconTypes, ICON_MAP } from './SoftButton.types';
-import { ColorTypes } from '../../styles/types';
+import React from "react";
+import styled, { css } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+import { StyledSoftButton } from "./Button";
+import { SoftButtonIconTypes, ICON_MAP } from "./SoftButton.types";
+import { ColorTypes } from "../../styles/types";
 
 interface ISoftButton {
   label?: string;
   icon?: SoftButtonIconTypes;
-  size?: 'sm' | 'xs';
+  size?: "sm" | "xs";
   block?: true;
   pushLeft?: true;
   disabled?: boolean;
@@ -18,13 +18,14 @@ interface ISoftButton {
   to?: string;
   justIcon?: true;
   className?: string;
-  type?: 'button';
+  type?: "button";
   onClick?: () => void;
   isMakingActionRequest?: boolean;
 }
 const StyledLabel = styled.span<{ $hasLabel: boolean }>`
-  ${(props) => props.$hasLabel
-    && css`
+  ${(props) =>
+    props.$hasLabel &&
+    css`
       margin-left: 0.4rem;
     `}
 `;
@@ -35,7 +36,7 @@ export function SoftButton({
   block,
   color,
   to,
-  size = 'sm',
+  size = "sm",
   icon,
   justIcon,
   type,
@@ -62,7 +63,7 @@ export function SoftButton({
     block,
     disabled,
     color,
-    'aria-label': justIcon ? label : undefined,
+    "aria-label": justIcon ? label : undefined,
   };
 
   if (to) {

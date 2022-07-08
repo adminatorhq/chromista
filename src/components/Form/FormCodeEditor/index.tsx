@@ -1,15 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
-import noop from 'lodash/noop';
-import Editor from 'react-simple-code-editor';
-import { highlight, languages } from 'prismjs/components/prism-core';
-import { ISharedFormInput } from '../_types';
-import { wrapLabelAndError } from '../_wrapForm';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-javascript';
+import React from "react";
+import styled from "styled-components";
+import noop from "lodash/noop";
+import Editor from "react-simple-code-editor";
+import { highlight, languages } from "prismjs/components/prism-core";
+import { ISharedFormInput } from "../_types";
+import { wrapLabelAndError } from "../_wrapForm";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
 
 interface IFormCodeEditor extends ISharedFormInput {
-  language: 'javascript' | 'json';
+  language: "javascript" | "json";
 }
 
 const StyledWrapper = styled.div`
@@ -97,9 +97,7 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export const FormCodeEditor: React.FC<IFormCodeEditor> = (
-  formInput,
-) => {
+export const FormCodeEditor: React.FC<IFormCodeEditor> = (formInput) => {
   const {
     input: { onFocus, onBlur, ...inputProps },
   } = formInput;
@@ -117,6 +115,6 @@ export const FormCodeEditor: React.FC<IFormCodeEditor> = (
         }}
       />
     </StyledWrapper>,
-    formInput,
+    formInput
   );
 };

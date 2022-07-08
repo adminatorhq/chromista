@@ -1,40 +1,35 @@
-import React, { useCallback, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
-import classnames from 'classnames';
-import { v4 as uuidv4 } from 'uuid';
-import { RequestService } from '@gothicgeeks/shared';
-import { ISharedFormInput } from '../_types';
-import { generateClassNames, wrapLabelAndError } from '../_wrapForm';
-import { ProgressBar } from '../../ProgressBar';
+import React, { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import classnames from "classnames";
+import { v4 as uuidv4 } from "uuid";
+import { RequestService } from "@gothicgeeks/shared";
+import { ISharedFormInput } from "../_types";
+import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
+import { ProgressBar } from "../../ProgressBar";
 // import './styles.scss';
 
 interface IFormFileInput extends ISharedFormInput {
-  type?: 'image' | 'videos';
-  domain: 'categories' | 'products';
+  type?: "image" | "videos";
+  domain: "categories" | "products";
 }
 
 const fileFormDatafy = (file: any) => {
   const formData = new FormData();
-  const extension = file.name.split('.').pop();
+  const extension = file.name.split(".").pop();
   const name = `${uuidv4()}.${extension}`;
 
-  formData.append('image', file, name);
+  formData.append("image", file, name);
   return {
     formData,
     config: {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
     },
   };
 };
 
-function FileInput({
-  input,
-  meta,
-  disabled,
-  domain,
-}: IFormFileInput) {
+function FileInput({ input, meta, disabled, domain }: IFormFileInput) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
   // const queryCache = useQueryCache();
@@ -45,16 +40,16 @@ function FileInput({
       acceptedFiles.forEach(async (file: any) => {
         setIsLoading(true);
         const { formData, config } = fileFormDatafy(file);
-        formData.append('domain', domain);
+        formData.append("domain", domain);
         const { imageUrl } = (
-          await RequestService.post('image-upload', formData, {
+          await RequestService.post("image-upload", formData, {
             ...config,
             onUploadProgress: (progressEvent: {
               loaded: number;
               total: number;
             }) => {
               const percentCompleted = Math.round(
-                (progressEvent.loaded * 100) / progressEvent.total,
+                (progressEvent.loaded * 100) / progressEvent.total
               );
               setProgress(percentCompleted);
               // After 100% label to processing file by timeout here .5seconds
@@ -67,12 +62,12 @@ function FileInput({
         input.onChange(imageUrl);
       });
     },
-    [domain, input],
+    [domain, input]
   );
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: false,
-    accept: { image: ['jpeg', 'png'] },
+    accept: { image: ["jpeg", "png"] },
     disabled,
     // maxSize,
   });
@@ -80,14 +75,14 @@ function FileInput({
   return (
     <div
       className={classnames({
-        'dropify-wrapper': true,
-        'has-preview': value,
+        "dropify-wrapper": true,
+        "has-preview": value,
         disabled,
         [generateClassNames(meta)]: true,
       })}
       {...getRootProps()}
     >
-      <div style={{ display: isLoading ? 'block' : 'none' }}>
+      <div style={{ display: isLoading ? "block" : "none" }}>
         <ProgressBar progress={progress} />
       </div>
       <div className="dropify-message">
@@ -120,7 +115,7 @@ function FileInput({
 
       <div
         className="dropify-preview"
-        style={{ display: !value ? 'none' : 'block' }}
+        style={{ display: !value ? "none" : "block" }}
       >
         <span className="dropify-render">
           <img src={value} alt="" />
@@ -137,6 +132,5 @@ function FileInput({
   );
 }
 
-export const FormFileInput: React.FC<IFormFileInput> = (
-  formInput,
-) => wrapLabelAndError(<FileInput {...formInput} />, formInput);
+export const FormFileInput: React.FC<IFormFileInput> = (formInput) =>
+  wrapLabelAndError(<FileInput {...formInput} />, formInput);

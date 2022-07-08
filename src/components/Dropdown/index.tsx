@@ -1,24 +1,22 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, {
-  ReactNode, useEffect, useRef, useState,
-} from 'react';
-import useClickAway from 'react-use/lib/useClickAway';
-import useKey from 'react-use/lib/useKey';
-import styled from 'styled-components';
-import { Z_INDEXES } from '../../constants/zIndex';
+import React, { ReactNode, useEffect, useRef, useState } from "react";
+import useClickAway from "react-use/lib/useClickAway";
+import useKey from "react-use/lib/useKey";
+import styled from "styled-components";
+import { Z_INDEXES } from "../../constants/zIndex";
 
 const Root = styled.div`
   position: relative;
   display: inline-block;
 `;
 
-type Align = 'left' | 'right';
+type Align = "left" | "right";
 
 const DropdownRoot = styled.div<{ zIndex: number; align: Align }>`
   position: absolute;
-  right: ${(props) => (props.align === 'right' ? '0' : 'auto')};
-  left: ${(props) => (props.align === 'left' ? '0' : 'auto')};
+  right: ${(props) => (props.align === "right" ? "0" : "auto")};
+  left: ${(props) => (props.align === "left" ? "0" : "auto")};
   top: calc(100% + 8px);
   z-index: ${(props) => props.zIndex};
 `;
@@ -33,7 +31,7 @@ interface IProps {
 }
 
 export function Dropdown({
-  align = 'right',
+  align = "right",
   target,
   children,
   preserveVisibiltyOnClick,
@@ -55,7 +53,7 @@ export function Dropdown({
     setMenuVisible(false);
   };
 
-  useKey('Escape', close);
+  useKey("Escape", close);
 
   return (
     <Root ref={rootRef}>

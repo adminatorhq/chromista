@@ -1,14 +1,14 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { EmptyWrapper, IProps } from '.';
-import { AppWrapper } from '../../AppWrapper';
+import React from "react";
+import { Story } from "@storybook/react";
+import { EmptyWrapper, IProps } from ".";
+import { AppWrapper } from "../../AppWrapper";
 
 export default {
-  title: 'Components/EmptyWrapper',
+  title: "Components/EmptyWrapper",
   component: EmptyWrapper,
   args: {
-    text: 'Some empty message for you',
+    text: "Some empty message for you",
   },
 };
 
@@ -30,9 +30,7 @@ export const WithChildren = Template.bind({});
 WithChildren.args = {
   children: (
     <>
-      <b>This is bold</b>
-      {' '}
-      This is not
+      <b>This is bold</b> This is not
     </>
   ),
 };

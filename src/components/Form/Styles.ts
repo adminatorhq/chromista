@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 interface IInput {
   sm?: true;
@@ -19,8 +19,9 @@ export const StyledInput = styled.input<IInput>`
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out;
 
-  ${(props) => props.sm
-    && css`
+  ${(props) =>
+    props.sm &&
+    css`
       height: calc(1.8em + 0.5rem + 2px);
       padding: 0.25rem 0.5rem;
       font-size: 0.71rem;
@@ -68,8 +69,9 @@ export const StyledFormLabel = styled.label<{ sm?: true }>`
   text-align: right;
   display: inline-block;
   font-weight: 400;
-  ${(props) => props.sm
-    && css`
+  ${(props) =>
+    props.sm &&
+    css`
       font-size: 11px;
     `}
   color: ${(props) => props.theme.text.main};
@@ -80,8 +82,9 @@ export const StyledFormFeedback = styled.p<{ sm?: true }>`
   font-size: 12px;
   padding-bottom: 0px;
   margin-bottom: 0px;
-  ${(props) => props.sm
-    && css`
+  ${(props) =>
+    props.sm &&
+    css`
       font-size: 10px;
     `}
 `;

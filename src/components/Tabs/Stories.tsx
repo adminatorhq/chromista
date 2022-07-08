@@ -1,24 +1,24 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { Tabs, IProps } from '.';
-import { AppWrapper } from '../../AppWrapper';
+import React from "react";
+import { Story } from "@storybook/react";
+import { Tabs, IProps } from ".";
+import { AppWrapper } from "../../AppWrapper";
 
 export default {
-  title: 'Components/Tabs',
+  title: "Components/Tabs",
   component: Tabs,
   args: {
     contents: [
       {
-        label: 'Foo',
+        label: "Foo",
         content: <p>Foo Content</p>,
       },
       {
-        label: 'Bar',
+        label: "Bar",
         content: <p>Bar Content</p>,
       },
       {
-        label: 'Baz',
+        label: "Baz",
         content: <p>Baz Content</p>,
       },
     ],

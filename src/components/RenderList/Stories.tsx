@@ -1,25 +1,25 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { RenderList, IProps } from '.';
-import { AppWrapper } from '../../AppWrapper';
-import { SectionListItem } from '../Section/SectionList';
+import React from "react";
+import { Story } from "@storybook/react";
+import { RenderList, IProps } from ".";
+import { AppWrapper } from "../../AppWrapper";
+import { SectionListItem } from "../Section/SectionList";
 
 interface IDemoType {
   name: string;
 }
 
 export default {
-  title: 'Components/RenderList',
+  title: "Components/RenderList",
   component: RenderList,
   args: {
     items: [
-      { name: 'Planck', age: 27 },
-      { name: 'Faraday', age: 27 },
-      { name: 'Newton', age: 27 },
-      { name: 'Einstein', age: 27 },
-      { name: 'Bohr', age: 27 },
-      { name: 'Curie', age: 27 },
+      { name: "Planck", age: 27 },
+      { name: "Faraday", age: 27 },
+      { name: "Newton", age: 27 },
+      { name: "Einstein", age: 27 },
+      { name: "Bohr", age: 27 },
+      { name: "Curie", age: 27 },
     ],
     render: ({ name }: IDemoType) => (
       <SectionListItem label={name} key={name} />
@@ -44,7 +44,7 @@ Loading.args = {
 export const NewItemLink = Template.bind({});
 NewItemLink.args = {
   items: [],
-  newItemLink: '/path/to/new/item',
+  newItemLink: "/path/to/new/item",
 };
 
 export const Empty = Template.bind({});
@@ -59,7 +59,7 @@ NotSearchAble.args = {
 
 export const Error = Template.bind({});
 Error.args = {
-  error: 'An Error Occurred',
+  error: "An Error Occurred",
 };
 
 export const Sorted = Template.bind({});

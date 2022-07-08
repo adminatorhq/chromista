@@ -1,15 +1,15 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { useState } from '@storybook/addons';
-import { OffCanvas, IProps } from '.';
-import { AppWrapper } from '../../AppWrapper';
+import React from "react";
+import { Story } from "@storybook/react";
+import { useState } from "@storybook/addons";
+import { OffCanvas, IProps } from ".";
+import { AppWrapper } from "../../AppWrapper";
 
 export default {
-  title: 'Components/OffCanvas',
+  title: "Components/OffCanvas",
   component: OffCanvas,
   args: {
-    title: 'Some awesome off canvas',
+    title: "Some awesome off canvas",
     children: (
       <p>
         Some text as placeholder. In real life you can have the elements you
@@ -23,7 +23,9 @@ const Template: Story<IProps> = (args) => {
   const [open, setOpen] = useState(false);
   return (
     <AppWrapper>
-      <button type="button" onClick={() => setOpen(true)}>Open Canvas</button>
+      <button type="button" onClick={() => setOpen(true)}>
+        Open Canvas
+      </button>
       <OffCanvas {...args} show={open} onClose={() => setOpen(false)} />
     </AppWrapper>
   );

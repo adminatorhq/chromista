@@ -6,7 +6,7 @@ import {
   faTimes,
   faEye,
   faSave,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
 export const ICON_MAP = {
   edit: faEdit,

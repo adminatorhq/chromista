@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { StyledCard } from '../../styles/Card';
-import { StyledMutedText } from '../../styles/Text';
+import React from "react";
+import styled from "styled-components";
+import { StyledCard } from "../../styles/Card";
+import { StyledMutedText } from "../../styles/Text";
 
 const StyledWrapper = styled.div`
   text-align: center;

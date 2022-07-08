@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import { Edit } from 'react-feather';
-import React from 'react';
+import styled, { css } from "styled-components";
+import { Edit } from "react-feather";
+import React from "react";
 
 export interface IProps {
   onSelect: () => void;
@@ -34,8 +34,9 @@ const StyledBlockWrapper = styled.div`
 `;
 
 const StyledDataWrapper = styled.div<{ isLastChild: boolean }>`
-  ${({ isLastChild }) => !isLastChild
-    && css`
+  ${({ isLastChild }) =>
+    !isLastChild &&
+    css`
       border-bottom: 1px dashed ${(props) => props.theme.colors.border};
     `}
 `;

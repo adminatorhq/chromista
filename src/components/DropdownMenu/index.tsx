@@ -1,11 +1,11 @@
-import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import React, { useState, useEffect } from 'react';
-import { Icon } from 'react-feather';
-import { StyledMutedText } from '../../styles/Text';
-import { StyledSoftButton } from '../Button/Button';
+import { Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from "react";
+import { Icon } from "react-feather";
+import { StyledMutedText } from "../../styles/Text";
+import { StyledSoftButton } from "../Button/Button";
 
 const togglePreviousState = (prev: boolean) => !prev;
 
@@ -110,7 +110,7 @@ const StyledDropDownIcon = styled(StyledSoftButton)`
   &::after {
     display: inline-block;
     vertical-align: 0.255em;
-    content: '';
+    content: "";
     border-top: 0.3em solid;
     border-right: 0.3em solid transparent;
     border-bottom: 0;
@@ -132,7 +132,7 @@ export function DropDownMenu({
   };
 
   const [currentMenuItem, setCurrentMenuItem] = useState<IDropDownMenuItem>(
-    menuItems[0],
+    menuItems[0]
   );
 
   useEffect(() => {
@@ -159,8 +159,7 @@ export function DropDownMenu({
         <FontAwesomeIcon icon={faSpinner} spin />
       ) : IconComponent ? (
         <IconComponent size="14" />
-      ) : null}
-      {' '}
+      ) : null}{" "}
       {label}
     </>
   );

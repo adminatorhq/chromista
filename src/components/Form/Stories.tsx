@@ -1,17 +1,17 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { Field, Form } from 'react-final-form';
-import { action } from '@storybook/addon-actions';
-import { AppWrapper } from '../../AppWrapper';
-import { FormCheckBox } from './FormCheckBox';
-import { FormInput } from './FormInput';
-import { FormNumberInput } from './FormNumberInput';
-import { FormRichTextArea } from './FormRichTextArea';
-import { FormButton } from '../Button/FormButton';
-import { FormDateInput } from './FormDateInput';
-import { FormTextArea } from './FormTextArea';
-import { FormSelect } from './FormSelect';
+import React from "react";
+import { Story } from "@storybook/react";
+import { Field, Form } from "react-final-form";
+import { action } from "@storybook/addon-actions";
+import { AppWrapper } from "../../AppWrapper";
+import { FormCheckBox } from "./FormCheckBox";
+import { FormInput } from "./FormInput";
+import { FormNumberInput } from "./FormNumberInput";
+import { FormRichTextArea } from "./FormRichTextArea";
+import { FormButton } from "../Button/FormButton";
+import { FormDateInput } from "./FormDateInput";
+import { FormTextArea } from "./FormTextArea";
+import { FormSelect } from "./FormSelect";
 
 function DemoForm() {
   return (
@@ -57,8 +57,8 @@ function DemoForm() {
               <FormInput
                 rightActions={[
                   {
-                    label: 'Please click me',
-                    action: action('right click actions'),
+                    label: "Please click me",
+                    action: action("right click actions"),
                   },
                 ]}
                 label="With right action"
@@ -72,12 +72,12 @@ function DemoForm() {
               <FormInput
                 rightActions={[
                   {
-                    label: 'Please click me',
-                    action: action('right click actions'),
+                    label: "Please click me",
+                    action: action("right click actions"),
                   },
                   {
-                    label: 'Please click me 2',
-                    action: action('right click actions'),
+                    label: "Please click me 2",
+                    action: action("right click actions"),
                   },
                 ]}
                 label="With right action"
@@ -90,8 +90,8 @@ function DemoForm() {
             {(renderProps) => (
               <FormSelect
                 selectData={[
-                  { label: 'Foo', value: 'foo' },
-                  { label: 'Bar', value: 'bar' },
+                  { label: "Foo", value: "foo" },
+                  { label: "Bar", value: "bar" },
                 ]}
                 label="Example Select Input"
                 {...renderProps}
@@ -144,7 +144,7 @@ function DemoForm() {
 }
 
 export default {
-  title: 'Components/Form',
+  title: "Components/Form",
   component: DemoForm,
   args: {},
 };

@@ -1,7 +1,7 @@
-import React from 'react';
-import { DataStateKeys } from '@gothicgeeks/shared';
-import { RenderList, SectionListItem } from '../../components';
-import { INavigationMenuItems } from '../types';
+import React from "react";
+import { DataStateKeys } from "@gothicgeeks/shared";
+import { RenderList, SectionListItem } from "../../components";
+import { INavigationMenuItems } from "../types";
 
 interface Props {
   viewMenuItems?: DataStateKeys<INavigationMenuItems[]>;

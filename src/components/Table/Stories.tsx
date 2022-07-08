@@ -1,96 +1,96 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { Download, Plus } from 'react-feather';
-import { AppWrapper } from '../../AppWrapper';
-import { Table, IProps } from '.';
+import React from "react";
+import { Story } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { Download, Plus } from "react-feather";
+import { AppWrapper } from "../../AppWrapper";
+import { Table, IProps } from ".";
 
 export default {
-  title: 'Components/Table',
+  title: "Components/Table",
   component: Table,
   args: {
-    title: 'Some Table title',
+    title: "Some Table title",
     menuItems: [
       {
-        label: 'Create Item',
-        onClick: action('Create Item'),
+        label: "Create Item",
+        onClick: action("Create Item"),
         IconComponent: Plus,
       },
       {
-        label: 'Download Data',
-        onClick: action('Download Item'),
+        label: "Download Data",
+        onClick: action("Download Item"),
         IconComponent: Download,
       },
     ],
     paginatedDataState: {
       pageSize: 10,
       pageIndex: 1,
-      sortBy: [{ id: 'name', desc: true }],
+      sortBy: [{ id: "name", desc: true }],
       hiddenColumns: [],
     },
-    setPaginatedDataState: action('setPaginatedDataState'),
+    setPaginatedDataState: action("setPaginatedDataState"),
     columns: [
       {
-        Header: 'Name Foo',
-        accessor: 'name',
-        filter: { _type: 'string' },
+        Header: "Name Foo",
+        accessor: "name",
+        filter: { _type: "string" },
       },
       {
-        Header: 'Age',
-        accessor: 'age',
-        filter: { _type: 'number' },
+        Header: "Age",
+        accessor: "age",
+        filter: { _type: "number" },
       },
       {
-        Header: 'Verified',
-        accessor: 'verified',
+        Header: "Verified",
+        accessor: "verified",
         disableSortBy: true,
         filter: {
-          _type: 'boolean',
+          _type: "boolean",
           bag: [
-            { color: '#00ff00', label: 'Yes', value: 'true' },
-            { color: '#ff0000', label: 'No', value: 'false' },
+            { color: "#00ff00", label: "Yes", value: "true" },
+            { color: "#ff0000", label: "No", value: "false" },
           ],
         },
       },
       {
-        Header: 'Role',
-        accessor: 'role',
+        Header: "Role",
+        accessor: "role",
         disableSortBy: true,
         filter: {
-          _type: 'status',
+          _type: "status",
           bag: [
-            { color: '#00ff00', label: 'Admin', value: 'admin' },
-            { color: '#fff000', label: 'Editor', value: 'editor' },
-            { color: '#fff000', label: 'User', value: 'user' },
-            { color: '#ff00f0', label: 'Developer', value: 'developer' },
+            { color: "#00ff00", label: "Admin", value: "admin" },
+            { color: "#fff000", label: "Editor", value: "editor" },
+            { color: "#fff000", label: "User", value: "user" },
+            { color: "#ff00f0", label: "Developer", value: "developer" },
           ],
         },
       },
       {
-        Header: 'Author',
-        accessor: 'author',
+        Header: "Author",
+        accessor: "author",
         filter: {
-          _type: 'list',
+          _type: "list",
           bag: {
-            onChange: action('change Author'),
+            onChange: action("change Author"),
             selections: [
-              { id: 'fb', name: 'Facebook' },
-              { id: 'ggl', name: 'Google' },
+              { id: "fb", name: "Facebook" },
+              { id: "ggl", name: "Google" },
             ],
           },
         },
       },
       {
-        Header: 'Registered',
-        accessor: 'createdAt',
+        Header: "Registered",
+        accessor: "createdAt",
         filter: {
-          _type: 'date',
+          _type: "date",
         },
       },
       {
-        Header: 'Actions',
-        accessor: '__action__',
+        Header: "Actions",
+        accessor: "__action__",
         disableSortBy: true,
         Cell: () => <p>Some Action</p>,
       },
@@ -99,30 +99,30 @@ export default {
       data: {
         data: [
           {
-            name: 'React',
+            name: "React",
             age: 27,
-            verified: 'true',
-            approved: 'pending',
-            role: 'Admin',
-            author: 'Facbook',
+            verified: "true",
+            approved: "pending",
+            role: "Admin",
+            author: "Facbook",
             createdAt: new Date().toISOString(),
           },
           {
-            name: 'Angular',
+            name: "Angular",
             age: 28,
-            verified: 'true',
-            role: 'Editor',
-            approved: 'progress',
-            author: 'Goggle',
+            verified: "true",
+            role: "Editor",
+            approved: "progress",
+            author: "Goggle",
             createdAt: new Date().toISOString(),
           },
           {
-            name: 'Vue',
+            name: "Vue",
             age: 29,
-            role: 'User',
-            verified: 'false',
-            approved: 'done',
-            author: 'Evan Yue',
+            role: "User",
+            verified: "false",
+            approved: "done",
+            author: "Evan Yue",
             createdAt: new Date().toISOString(),
           },
         ],
@@ -171,7 +171,7 @@ Error.args = {
       totalRecords: 0,
     },
     isLoading: false,
-    error: 'Some Error Occured',
+    error: "Some Error Occured",
     isPreviousData: false,
   },
 };

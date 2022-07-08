@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
-import styled from 'styled-components';
-import shallow from 'zustand/shallow';
-import { useSideBarStore } from '../sidebar.store';
-import { ISelectionView } from '../types';
-import { PrimaryLeftSideNav } from './PrimaryLeftSideNav';
-import { SecondaryLeftSideNav } from './SecondarySideNav';
+import React, { ReactNode } from "react";
+import styled from "styled-components";
+import shallow from "zustand/shallow";
+import { useSideBarStore } from "../sidebar.store";
+import { ISelectionView } from "../types";
+import { PrimaryLeftSideNav } from "./PrimaryLeftSideNav";
+import { SecondaryLeftSideNav } from "./SecondarySideNav";
 
 export interface IProps {
   children: ReactNode;
@@ -24,13 +24,10 @@ const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
   background: #edf0f1;
 `;
 
-export function DynamicLayout({
-  children,
-  selectionView,
-}: IProps) {
+export function DynamicLayout({ children, selectionView }: IProps) {
   const [isFullSideBarOpen] = useSideBarStore(
     (state) => [state.isFullSideBarOpen],
-    shallow,
+    shallow
   );
   return (
     <Root>

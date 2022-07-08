@@ -1,8 +1,8 @@
 /* eslint-disable react/function-component-definition */
-import React, { useState } from 'react';
-import { Story } from '@storybook/react';
-import { AppWrapper } from '../../../AppWrapper';
-import { FormSwitch, IProps } from '.';
+import React, { useState } from "react";
+import { Story } from "@storybook/react";
+import { AppWrapper } from "../../../AppWrapper";
+import { FormSwitch, IProps } from ".";
 
 function Demo(args: IProps) {
   const [value, setValue] = useState(true);
@@ -18,7 +18,7 @@ function Demo(args: IProps) {
 }
 
 export default {
-  title: 'Components/FormSwitch',
+  title: "Components/FormSwitch",
   component: Demo,
   args: {},
 };
@@ -39,10 +39,10 @@ Disabled.args = {
 
 export const LabelLess = Template.bind({});
 LabelLess.args = {
-  label: '',
+  label: "",
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: 'sm',
+  size: "sm",
 };

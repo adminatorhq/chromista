@@ -1,21 +1,21 @@
-import React, { ReactNode } from 'react';
-import { StringFilters } from '@gothicgeeks/shared';
-import { StyledMutedText } from '../../styles/Text';
-import { ISystemStatusForDisplay } from '../../types';
-import { BadgeBuilder } from '../Badge';
-import { Currency } from '../Currency';
-import { StyledListGroup } from '../Lists';
-import { ListSkeleton } from '../Skeleton/ListSkeleton';
+import React, { ReactNode } from "react";
+import { StringFilters } from "@gothicgeeks/shared";
+import { StyledMutedText } from "../../styles/Text";
+import { ISystemStatusForDisplay } from "../../types";
+import { BadgeBuilder } from "../Badge";
+import { Currency } from "../Currency";
+import { StyledListGroup } from "../Lists";
+import { ListSkeleton } from "../Skeleton/ListSkeleton";
 
 export enum KeyValueDetailsFormat {
-  Money = 'money',
-  Number = 'number',
-  Status = 'status',
+  Money = "money",
+  Number = "number",
+  Status = "status",
 }
 
 export const KeyValueDetailsIconProps = {
   size: 15,
-  color: '#a4abc5',
+  color: "#a4abc5",
 };
 
 interface IKeyValueDetails {
@@ -30,18 +30,13 @@ interface IKeyValueDetails {
 }
 
 // :eyes throw error if statuses is not provided when it is KeyValueDetailsFormat
-export function KeyValueDetails({
-  isLoading,
-  keyValues,
-}: IKeyValueDetails) {
+export function KeyValueDetails({ isLoading, keyValues }: IKeyValueDetails) {
   if (isLoading) {
     return <ListSkeleton count={Object.entries(keyValues).length} />;
   }
   return (
     <StyledListGroup>
-      {keyValues.map(({
-        key, value, format, statuses, icon,
-      }) => {
+      {keyValues.map(({ key, value, format, statuses, icon }) => {
         let valueToRender = <span>{value}</span>;
         switch (format) {
           case KeyValueDetailsFormat.Status:
@@ -67,9 +62,7 @@ export function KeyValueDetails({
             className="list-group-item d-flex justify-content-between align-items-center"
           >
             <div>
-              {icon}
-              {' '}
-              <StyledMutedText as="span">{key}</StyledMutedText>
+              {icon} <StyledMutedText as="span">{key}</StyledMutedText>
             </div>
             {valueToRender}
           </li>

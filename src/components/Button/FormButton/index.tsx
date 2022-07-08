@@ -1,12 +1,12 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import {
   StyledButton,
   StyledOutlineButton,
   IStyledBaseButton,
-} from '../Button';
-import { Stack } from '../../../ui-blocks';
+} from "../Button";
+import { Stack } from "../../../ui-blocks";
 
 interface IFormButton extends IStyledBaseButton {
   text: string;
@@ -18,7 +18,7 @@ interface IFormButton extends IStyledBaseButton {
 
 export const actionButtonIsMakingRequest = (
   isMakingRequest: boolean,
-  text: string,
+  text: string
 ) => (isMakingRequest ? <FontAwesomeIcon icon={faSpinner} spin /> : text);
 
 export function FormButton({
@@ -27,8 +27,8 @@ export function FormButton({
   isMakingRequest,
   onClick,
   isInverse,
-  size = 'sm',
-  color = 'primary',
+  size = "sm",
+  color = "primary",
   ...rest
 }: IFormButton) {
   const options = {
@@ -36,7 +36,7 @@ export function FormButton({
     color,
     disabled: disabled || isMakingRequest,
     onClick,
-    type: 'submit' as 'submit' | 'button' | 'reset' | undefined,
+    type: "submit" as "submit" | "button" | "reset" | undefined,
     size,
   };
 

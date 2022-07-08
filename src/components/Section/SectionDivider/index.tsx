@@ -1,13 +1,11 @@
-import React, { ReactNode } from 'react';
-import * as StyledGrid from 'styled-bootstrap-grid';
+import React, { ReactNode } from "react";
+import * as StyledGrid from "styled-bootstrap-grid";
 
 export function SectionRow({ children }: { children: ReactNode }) {
   return <StyledGrid.Row>{children}</StyledGrid.Row>;
 }
 
-export function SectionLeft({
-  children,
-}: { children: ReactNode }) {
+export function SectionLeft({ children }: { children: ReactNode }) {
   return (
     <StyledGrid.Col sm={12} lg={3}>
       {children}
@@ -15,9 +13,7 @@ export function SectionLeft({
   );
 }
 
-export function SectionRight({
-  children,
-}: { children: ReactNode }) {
+export function SectionRight({ children }: { children: ReactNode }) {
   return (
     <StyledGrid.Col sm={12} lg={9}>
       {children}
@@ -25,9 +21,7 @@ export function SectionRight({
   );
 }
 
-export function SectionCenter({
-  children,
-}: { children: ReactNode }) {
+export function SectionCenter({ children }: { children: ReactNode }) {
   return (
     <SectionRow>
       <StyledGrid.Col sm={12} lg={8} lgOffset={2}>

@@ -1,9 +1,9 @@
-import React from 'react';
-import Select from 'react-select';
-import styled from 'styled-components';
-import { ISharedFormInput } from './_types';
-import { generateClassNames, wrapLabelAndError } from './_wrapForm';
-import { ISelectData } from '../../types';
+import React from "react";
+import Select from "react-select";
+import styled from "styled-components";
+import { ISharedFormInput } from "./_types";
+import { generateClassNames, wrapLabelAndError } from "./_wrapForm";
+import { ISelectData } from "../../types";
 
 interface ISelectOptions extends ISharedFormInput {
   disabledOptions?: string[];
@@ -16,7 +16,7 @@ interface IFormSelect extends ISelectOptions {
 }
 
 const sharedSelectProps = {
-  classNamePrefix: 'react-select',
+  classNamePrefix: "react-select",
 };
 
 const StyledSelect = styled(Select)`
@@ -59,7 +59,9 @@ export function FormMultiSelect({
       closeMenuOnSelect={false}
       defaultValue={[]}
       isMulti
-      value={values.map((value) => selectData.find((selectDatum) => selectDatum.value === value))}
+      value={values.map((value) =>
+        selectData.find((selectDatum) => selectDatum.value === value)
+      )}
       onChange={(newValues: any) => {
         onChange(newValues.map(({ value }: ISelectData) => value));
       }}
@@ -81,7 +83,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput) => {
   } = formInput;
   const selectDataWithDefault = [
     {
-      value: nullable ? null : '',
+      value: nullable ? null : "",
       label: defaultLabel || `--- Select ${formLabel} ---`,
     },
     ...selectData,
@@ -92,8 +94,8 @@ export const FormSelect: React.FC<IFormSelect> = (formInput) => {
       classNamePrefix={sharedSelectProps.classNamePrefix}
       value={
         selectDataWithDefault.find(({ value }) => value === input.value) || {
-          value: '',
-          label: '',
+          value: "",
+          label: "",
         }
       }
       onChange={({ value }: any) => {
@@ -107,11 +109,11 @@ export const FormSelect: React.FC<IFormSelect> = (formInput) => {
           return false;
         }
         return disabledOptions.includes(
-          (option as ISelectData).value as string,
+          (option as ISelectData).value as string
         );
       }}
     />,
-    formInput,
+    formInput
   );
 };
 
@@ -129,15 +131,15 @@ export function FormNoValueSelect({
   return (
     <Select
       classNamePrefix={sharedSelectProps.classNamePrefix}
-      value={{ value: '', label: '' }}
+      value={{ value: "", label: "" }}
       onChange={({ value, label }: any) => {
         onChange(value, label);
       }}
       options={
-      selectData.filter(
-        ({ value }) => !disabledOptions.includes(value as string),
-      ) as { value: string; label: string }[]
-    }
+        selectData.filter(
+          ({ value }) => !disabledOptions.includes(value as string)
+        ) as { value: string; label: string }[]
+      }
     />
   );
 }

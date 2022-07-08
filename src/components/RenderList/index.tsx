@@ -1,10 +1,10 @@
-import React, { ReactNode, useState } from 'react';
-import { ErrorAlert } from '../Alert';
-import { EmptyWrapper } from '../EmptyWrapper';
-import { ListSkeleton } from '../Skeleton/ListSkeleton';
-import { SectionList } from '../Section/SectionList';
-import { FormSearch } from '../Form/FormSearch';
-import { SoftButton } from '../Button/SoftButton';
+import React, { ReactNode, useState } from "react";
+import { ErrorAlert } from "../Alert";
+import { EmptyWrapper } from "../EmptyWrapper";
+import { ListSkeleton } from "../Skeleton/ListSkeleton";
+import { SectionList } from "../Section/SectionList";
+import { FormSearch } from "../Form/FormSearch";
+import { SoftButton } from "../Button/SoftButton";
 
 export interface IProps<T> {
   isLoading?: boolean;
@@ -20,9 +20,11 @@ export interface IProps<T> {
 
 function defaultSearchFunction<T extends { name: string }>(
   itemsToSearch: T[],
-  searchString: string,
+  searchString: string
 ) {
-  return itemsToSearch.filter(({ name }) => name.toLowerCase().includes(searchString));
+  return itemsToSearch.filter(({ name }) =>
+    name.toLowerCase().includes(searchString)
+  );
 }
 
 export function RenderList<T extends { name: string }>({
@@ -32,12 +34,12 @@ export function RenderList<T extends { name: string }>({
   error,
   sortByName,
   notSearchable,
-  singular = 'Item',
+  singular = "Item",
   render,
   searchFunction = defaultSearchFunction,
 }: IProps<T>) {
   const itemsLength = items.length;
-  const [searchString, setSearchString] = useState('');
+  const [searchString, setSearchString] = useState("");
   if (error) {
     return <ErrorAlert message={error} />;
   }
@@ -62,9 +64,10 @@ export function RenderList<T extends { name: string }>({
     ? [...items].sort((a, b) => a.name.localeCompare(b.name))
     : items;
 
-  const searchResults = searchString.length > 0
-    ? searchFunction(itemsToRender, searchString)
-    : itemsToRender;
+  const searchResults =
+    searchString.length > 0
+      ? searchFunction(itemsToRender, searchString)
+      : itemsToRender;
 
   return (
     <SectionList>

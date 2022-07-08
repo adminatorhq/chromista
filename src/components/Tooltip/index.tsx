@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactTooltip from 'react-tooltip';
+import React from "react";
+import ReactTooltip from "react-tooltip";
 
 export interface IProps {
   id: string;
-  place?: 'bottom' | 'right';
+  place?: "bottom" | "right";
   offset?: { right: number };
 }
 
@@ -11,7 +11,7 @@ export interface IProps {
 //     padding: .25rem .5rem;
 //   }
 
-export function Tooltip({ id, place = 'bottom', offset }: IProps) {
+export function Tooltip({ id, place = "bottom", offset }: IProps) {
   return (
     <ReactTooltip
       id={id}

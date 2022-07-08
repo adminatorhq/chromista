@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { ColorTypes } from '../../styles/types';
-import { getColor } from '../../styles/utils';
-import { ISystemStatusForDisplay } from '../../types';
+import React from "react";
+import styled, { css } from "styled-components";
+import { ColorTypes } from "../../styles/types";
+import { getColor } from "../../styles/utils";
+import { ISystemStatusForDisplay } from "../../types";
 
 const StyledBadge = styled.span<{ color: ColorTypes }>`
   display: inline-block;
@@ -37,8 +37,9 @@ const StyledBadgePill = styled(StyledBadge)<{ isIconBadge?: true }>`
   padding-left: 0.6em;
   border-radius: 10rem;
 
-  ${({ isIconBadge }) => isIconBadge
-    && css`
+  ${({ isIconBadge }) =>
+    isIconBadge &&
+    css`
       display: inline-block;
       position: absolute;
       top: 9px;
@@ -64,12 +65,9 @@ interface IBadgeBuilder {
   statusSelections: ISystemStatusForDisplay[];
 }
 
-export function BadgeBuilder({
-  value,
-  statusSelections,
-}: IBadgeBuilder) {
+export function BadgeBuilder({ value, statusSelections }: IBadgeBuilder) {
   const builderBagValue = statusSelections.find(
-    (statusSelection) => statusSelection.value === value,
+    (statusSelection) => statusSelection.value === value
   );
   if (!builderBagValue) {
     return null;
@@ -77,7 +75,7 @@ export function BadgeBuilder({
   return (
     <Badge
       text={builderBagValue.label}
-      color={(builderBagValue.color as ColorTypes) || 'primary'}
+      color={(builderBagValue.color as ColorTypes) || "primary"}
     />
   );
 }
@@ -88,11 +86,7 @@ interface IBadgePill {
   isIconBadge?: true;
 }
 
-export function BadgePill({
-  value,
-  color,
-  isIconBadge,
-}: IBadgePill) {
+export function BadgePill({ value, color, isIconBadge }: IBadgePill) {
   if (value === 0) {
     return null;
   }

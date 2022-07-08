@@ -1,11 +1,7 @@
-import { SLUG_LOADING_VALUE } from '@gothicgeeks/shared';
-import React, {
-  useMemo, useState, useEffect, ReactNode,
-} from 'react';
-import {
-  TabContent, TabPane, Nav, NavItem, NavLink,
-} from 'reactstrap';
-import styled, { css } from 'styled-components';
+import { SLUG_LOADING_VALUE } from "@gothicgeeks/shared";
+import React, { useMemo, useState, useEffect, ReactNode } from "react";
+import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
+import styled, { css } from "styled-components";
 
 export interface IProps {
   contents: {
@@ -49,15 +45,16 @@ const StyledNavLink = styled(NavLink)<{ active: boolean }>`
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 
-  ${(props) => (props.active
-    ? css`
+  ${(props) =>
+    props.active
+      ? css`
           color: ${props.theme.colors.primary};
           background-color: ${props.theme.colors.white};
           border-color: transparent transparent ${props.theme.colors.primary};
         `
-    : css`
+      : css`
           color: ${props.theme.text.main};
-        `)}
+        `}
 `;
 
 export function Tabs({ contents, currentTab, onChange }: IProps) {

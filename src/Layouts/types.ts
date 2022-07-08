@@ -1,7 +1,7 @@
-import { DataStateKeys } from '@gothicgeeks/shared';
-import { ReactNode } from 'react';
-import { Icon } from 'react-feather';
-import { SoftButtonIconTypes } from '../components/Button/SoftButton.types';
+import { DataStateKeys } from "@gothicgeeks/shared";
+import { ReactNode } from "react";
+import { Icon } from "react-feather";
+import { SoftButtonIconTypes } from "../components/Button/SoftButton.types";
 
 export interface ISideBarNavigation {
   title: string;

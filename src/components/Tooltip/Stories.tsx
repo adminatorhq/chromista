@@ -1,14 +1,14 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { Tooltip, IProps } from '.';
-import { AppWrapper } from '../../AppWrapper';
+import React from "react";
+import { Story } from "@storybook/react";
+import { Tooltip, IProps } from ".";
+import { AppWrapper } from "../../AppWrapper";
 
 export default {
-  title: 'Components/Tooltip',
+  title: "Components/Tooltip",
   component: Tooltip,
   args: {
-    id: 'foo',
+    id: "foo",
   },
 };
 
@@ -24,12 +24,12 @@ Default.args = {};
 
 export const ToTheRight = Template.bind({});
 ToTheRight.args = {
-  place: 'right',
+  place: "right",
 };
 
 export const OffsetRight = Template.bind({});
 OffsetRight.args = {
-  place: 'right',
+  place: "right",
   offset: {
     right: 40,
   },

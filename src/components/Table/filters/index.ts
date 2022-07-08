@@ -1,26 +1,25 @@
-import { FilterTableByStatus } from './Status';
-import { TableFilterType } from './types';
-import { FilterTableByListSelection } from './List';
-import { FilterTableByText } from './Text';
-import { FilterTableByNumbers } from './Number';
-import { FilterTableByBooleans } from './Boolean';
-import { FilterTableByDate } from './Date';
+import { FilterTableByStatus } from "./Status";
+import { TableFilterType } from "./types";
+import { FilterTableByListSelection } from "./List";
+import { FilterTableByText } from "./Text";
+import { FilterTableByNumbers } from "./Number";
+import { FilterTableByBooleans } from "./Boolean";
+import { FilterTableByDate } from "./Date";
 
-export function mapFilterTypeToComponent(
-  type: TableFilterType,
-) {
+export function mapFilterTypeToComponent(type: TableFilterType) {
   switch (type._type) {
-    case 'number':
+    case "number":
       return FilterTableByNumbers;
-    case 'date':
+    case "date":
       return FilterTableByDate;
-    case 'boolean':
+
+    case "boolean":
       return FilterTableByBooleans(type.bag);
-    case 'string':
+    case "string":
       return FilterTableByText;
-    case 'status':
+    case "status":
       return FilterTableByStatus(type.bag);
-    case 'list':
+    case "list":
       return FilterTableByListSelection(type.bag);
   }
 }

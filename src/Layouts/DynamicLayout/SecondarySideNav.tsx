@@ -1,13 +1,13 @@
-import React from 'react';
-import shallow from 'zustand/shallow';
-import styled from 'styled-components';
-import { SectionBox } from '../../components/Section';
-import { useSideBarStore } from '../sidebar.store';
-import { ISelectionView } from '../types';
-import { useNestedNavStore } from './nested-nav.store';
-import { ViewMenuItems } from './ViewMenuItems';
+import React from "react";
+import shallow from "zustand/shallow";
+import styled from "styled-components";
+import { SectionBox } from "../../components/Section";
+import { useSideBarStore } from "../sidebar.store";
+import { ISelectionView } from "../types";
+import { useNestedNavStore } from "./nested-nav.store";
+import { ViewMenuItems } from "./ViewMenuItems";
 
-const HOME_SELECTION = '__HOME__';
+const HOME_SELECTION = "__HOME__";
 
 interface IProps {
   selectionView: ISelectionView[];
@@ -26,22 +26,23 @@ const Root = styled.div<{ show: boolean }>`
   width: 300px;
   order: 1;
   z-index: 10;
-  display: ${({ show }) => (show ? 'block' : 'none')};
+  display: ${({ show }) => (show ? "block" : "none")};
 `;
 
 const StyledRenderView = styled.div<{ show: boolean }>`
-  display: ${({ show }) => (show ? 'block' : 'none')};
+  display: ${({ show }) => (show ? "block" : "none")};
 `;
 
 export function SecondaryLeftSideNav({ selectionView }: IProps) {
-  const [isFullSideBarOpen, currentMiniSideBar, closeFullSideBar] = useSideBarStore(
-    (state) => [
-      state.isFullSideBarOpen,
-      state.currentMiniSideBar,
-      state.closeFullSideBar,
-    ],
-    shallow,
-  );
+  const [isFullSideBarOpen, currentMiniSideBar, closeFullSideBar] =
+    useSideBarStore(
+      (state) => [
+        state.isFullSideBarOpen,
+        state.currentMiniSideBar,
+        state.closeFullSideBar,
+      ],
+      shallow
+    );
 
   const [deepLinks, pop] = useNestedNavStore((state) => [
     state.deepLinks,
@@ -52,7 +53,7 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
 
   if (currentMiniSideBar) {
     currentSelection = selectionView.find(
-      ({ link }) => link === currentMiniSideBar,
+      ({ link }) => link === currentMiniSideBar
     );
   }
 
@@ -62,7 +63,7 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
     ({ key, title: deepLinkTitle }) => ({
       label: deepLinkTitle,
       value: key,
-    }),
+    })
   );
 
   const currentViewBag = hasDeepLinks
@@ -70,7 +71,7 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
     : currentSelection;
 
   const { description, iconButtons = [] } = currentViewBag || {
-    description: '',
+    description: "",
     iconButtons: [],
   };
 
@@ -85,12 +86,10 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
   return (
     <Root show={!!currentMiniSideBar && isFullSideBarOpen}>
       <StyledHideScrollbar>
-        {selectionView.map(({
-          view, link, title, viewMenuItems,
-        }) => {
+        {selectionView.map(({ view, link, title, viewMenuItems }) => {
           if (!view && !viewMenuItems && !link) {
             throw new Error(
-              'Please pass what to render in the view, The view` or `viewMenuItems` is required to do this or pass the `link` prop to just go to a page',
+              "Please pass what to render in the view, The view` or `viewMenuItems` is required to do this or pass the `link` prop to just go to a page"
             );
           }
           return (
@@ -99,9 +98,9 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
                 backLink={
                   hasDeepLinks
                     ? {
-                      onClick: pop,
-                      label: fullBreadCrumb[fullBreadCrumb.length - 2].label,
-                    }
+                        onClick: pop,
+                        label: fullBreadCrumb[fullBreadCrumb.length - 2].label,
+                      }
                     : undefined
                 }
                 title={title}
@@ -109,7 +108,7 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
                 iconButtons={[
                   ...iconButtons,
                   {
-                    icon: 'close',
+                    icon: "close",
                     onClick: closeFullSideBar,
                   },
                 ]}

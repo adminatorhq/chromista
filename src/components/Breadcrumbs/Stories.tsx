@@ -1,29 +1,29 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { Breadcrumbs, IProps } from '.';
-import { AppWrapper } from '../../AppWrapper';
+import React from "react";
+import { Story } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { Breadcrumbs, IProps } from ".";
+import { AppWrapper } from "../../AppWrapper";
 
 export default {
-  title: 'Components/Breadcrumbs',
+  title: "Components/Breadcrumbs",
   component: Breadcrumbs,
   args: {
     items: [
       {
-        value: 'Foo',
-        label: 'Foo',
+        value: "Foo",
+        label: "Foo",
       },
       {
-        value: 'Bar',
-        label: 'Bar',
+        value: "Bar",
+        label: "Bar",
       },
       {
-        value: 'Baz',
-        label: 'Baz',
+        value: "Baz",
+        label: "Baz",
       },
     ],
-    onItemClick: action('onItemClick'),
+    onItemClick: action("onItemClick"),
   },
 };
 

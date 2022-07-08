@@ -1,9 +1,9 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { ChevronRight } from 'react-feather';
-import Link from 'next/link';
-import { StringUtils } from '@gothicgeeks/shared';
-import { ISideBarNavigation } from './FixedLayout/types';
+import React from "react";
+import styled, { css } from "styled-components";
+import { ChevronRight } from "react-feather";
+import Link from "next/link";
+import { StringUtils } from "@gothicgeeks/shared";
+import { ISideBarNavigation } from "./FixedLayout/types";
 
 interface IRenderNavigation {
   navigation: ISideBarNavigation[];
@@ -63,7 +63,7 @@ const StyledLeftSideNavMenuListAnchor = styled.a<{ $isSubMenu?: true }>`
 `;
 
 const StyledLeftSideNavMenuText = styled.span<{ $isSidebarOpen: boolean }>`
-  display: ${(props) => (props.$isSidebarOpen ? 'inline' : 'none')};
+  display: ${(props) => (props.$isSidebarOpen ? "inline" : "none")};
 `;
 
 const StyledDash = styled.hr`
@@ -80,19 +80,21 @@ const StyleMenuIcon = styled.span<{
   $isSidebarOpen: boolean;
   $isActive?: boolean;
 }>`
-  color: ${(props) => (props.$isActive ? props.theme.colors.primary : '#a9baca')};
+  color: ${(props) =>
+    props.$isActive ? props.theme.colors.primary : "#a9baca"};
   fill: rgba(112, 129, 185, 0.12);
-  ${(props) => (props.$isSidebarOpen
-    ? css`
+  ${(props) =>
+    props.$isSidebarOpen
+      ? css`
           margin-right: 11px;
           width: 18px;
           height: 18px;
         `
-    : css`
+      : css`
           margin-right: 0;
           width: 24px;
           height: 24px;
-        `)}
+        `}
   stroke-width: 1px;
   align-self: center;
   display: inline-block;
@@ -105,7 +107,7 @@ export function RenderNavigation({
   label,
   isSubMenu,
   showDash,
-  currentLink = 'hopefully this will never be true',
+  currentLink = "hopefully this will never be true",
 }: IRenderNavigation) {
   return (
     <>
@@ -113,9 +115,7 @@ export function RenderNavigation({
       {label && isSidebarOpen && navigation.length ? (
         <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
       ) : null}
-      {navigation.map(({
-        title, link, icon, action,
-      }) => {
+      {navigation.map(({ title, link, icon, action }) => {
         const isActive = currentLink === link;
         const content = (
           <>
@@ -143,7 +143,7 @@ export function RenderNavigation({
         return (
           <StyledLeftSideNavMenuList key={title}>
             {link ? (
-              <Link href={link || ''} passHref>
+              <Link href={link || ""} passHref>
                 <StyledLeftSideNavMenuListAnchor
                   $isSubMenu={isSubMenu}
                   onClick={() => {

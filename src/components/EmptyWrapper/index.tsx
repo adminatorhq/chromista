@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
-import noop from 'lodash/noop';
-import styled from 'styled-components';
-import { StyledMutedText } from '../../styles/Text';
+import React, { ReactNode } from "react";
+import noop from "lodash/noop";
+import styled from "styled-components";
+import { StyledMutedText } from "../../styles/Text";
 // import Empty  from "../../icons/empty.svg";
 
 export interface IProps {
@@ -22,22 +22,14 @@ const StyledWrapper = styled.div`
   background: ${(props) => props.theme.colors.white};
 `;
 
-export function EmptyWrapper({
-  text,
-  hideIcon,
-  children,
-}: IProps) {
+export function EmptyWrapper({ text, hideIcon, children }: IProps) {
   noop(hideIcon);
   return (
     <StyledWrapper>
       {/* {hideIcon ? null : <img src={Empty} alt="0" width="100px" />} */}
       <br />
       <br />
-      <StyledText>
-        {' '}
-        {text}
-        {' '}
-      </StyledText>
+      <StyledText> {text} </StyledText>
       {children}
     </StyledWrapper>
   );

@@ -1,7 +1,7 @@
-import React from 'react';
-import { StyledInput } from './Styles';
-import { ISharedFormInput } from './_types';
-import { wrapLabelAndError, generateClassNames } from './_wrapForm';
+import React from "react";
+import { StyledInput } from "./Styles";
+import { ISharedFormInput } from "./_types";
+import { wrapLabelAndError, generateClassNames } from "./_wrapForm";
 
 interface IFormNumberInput extends ISharedFormInput {
   allowNegative?: boolean;
@@ -49,13 +49,10 @@ const getNumberValue = (value: string | number | null, required: boolean) => {
   return value;
 };
 
-export const FormNumberInput: React.FC<IFormNumberInput> = (
-  formInput,
-) => {
-  const {
-    input, label, disabled, meta, allowNegative, required, sm,
-  } = formInput;
-  if (typeof input.value === 'string') {
+export const FormNumberInput: React.FC<IFormNumberInput> = (formInput) => {
+  const { input, label, disabled, meta, allowNegative, required, sm } =
+    formInput;
+  if (typeof input.value === "string") {
     input.onChange(getNumberValue(input.value, !!required));
   }
   const moreProps = { min: allowNegative ? Number.NEGATIVE_INFINITY : 0 };
@@ -73,6 +70,6 @@ export const FormNumberInput: React.FC<IFormNumberInput> = (
       className={generateClassNames(meta)}
       disabled={disabled}
     />,
-    formInput,
+    formInput
   );
 };

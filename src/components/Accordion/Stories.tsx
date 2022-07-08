@@ -1,16 +1,16 @@
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { Story } from '@storybook/react';
-import { AlertOctagon } from 'react-feather';
-import { AccordionItem, IProps } from '.';
-import { AppWrapper } from '../../AppWrapper';
+import React from "react";
+import { Story } from "@storybook/react";
+import { AlertOctagon } from "react-feather";
+import { AccordionItem, IProps } from ".";
+import { AppWrapper } from "../../AppWrapper";
 
 export default {
-  title: 'Components/AccordionItem',
+  title: "Components/AccordionItem",
   component: AccordionItem,
   args: {
     icon: AlertOctagon,
-    name: 'Foo Title',
+    name: "Foo Title",
     body: <>Some body content</>,
   },
 };

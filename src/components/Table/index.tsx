@@ -1,23 +1,21 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect, useMemo, ReactNode } from 'react';
-import {
-  useTable, usePagination, useSortBy, useFilters,
-} from 'react-table';
-import classnames from 'classnames';
-import styled from 'styled-components';
-import { IBEPaginatedDataState, PaginatedData } from '@gothicgeeks/shared';
-import { UseQueryResult } from 'react-query';
-import { ComponentIsLoading } from '../ComponentIsLoading';
-import { ErrorAlert } from '../Alert';
-import { EmptyWrapper } from '../EmptyWrapper';
-import { DEFAULT_TABLE_PARAMS } from './constants';
-import { Spacer, Stack, Text } from '../../ui-blocks';
-import { APP_COLORS } from '../../constants/colors';
-import { DropDownMenu, IDropDownMenuItem } from '../DropdownMenu';
-import { mapFilterTypeToComponent } from './filters';
-import { TablePagination } from './_Pagination';
-import { IColumnFilterBag, TableFilterType } from './filters/types';
+import React, { useEffect, useMemo, ReactNode } from "react";
+import { useTable, usePagination, useSortBy, useFilters } from "react-table";
+import classnames from "classnames";
+import styled from "styled-components";
+import { IBEPaginatedDataState, PaginatedData } from "@gothicgeeks/shared";
+import { UseQueryResult } from "react-query";
+import { ComponentIsLoading } from "../ComponentIsLoading";
+import { ErrorAlert } from "../Alert";
+import { EmptyWrapper } from "../EmptyWrapper";
+import { DEFAULT_TABLE_PARAMS } from "./constants";
+import { Spacer, Stack, Text } from "../../ui-blocks";
+import { APP_COLORS } from "../../constants/colors";
+import { DropDownMenu, IDropDownMenuItem } from "../DropdownMenu";
+import { mapFilterTypeToComponent } from "./filters";
+import { TablePagination } from "./_Pagination";
+import { IColumnFilterBag, TableFilterType } from "./filters/types";
 
 export { DEFAULT_TABLE_PARAMS };
 
@@ -129,7 +127,7 @@ const StyledOverlayText = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-interface ITableColumn {
+export interface ITableColumn {
   Header: string;
   accessor?: string;
   disableSortBy?: boolean;
@@ -151,7 +149,7 @@ export interface IProps {
   menuItems: IDropDownMenuItem[];
   tableData: Pick<
     UseQueryResult<PaginatedData<Record<string, unknown>>, unknown>,
-    'data' | 'isLoading' | 'error' | 'isPreviousData'
+    "data" | "isLoading" | "error" | "isPreviousData"
   >;
   paginatedDataState: IBEPaginatedDataState;
   setPaginatedDataState: (params: IBEPaginatedDataState) => void;
@@ -176,20 +174,22 @@ export function Table({
     error,
     isPreviousData,
   } = tableData;
-  const totalPageCount = data.totalRecords === 0
-    ? 0
-    : Math.ceil(
-      data.totalRecords
-            / (paginatedDataState?.pageSize ?? DEFAULT_TABLE_PARAMS.pageSize),
-    );
+  const totalPageCount =
+    data.totalRecords === 0
+      ? 0
+      : Math.ceil(
+          data.totalRecords /
+            (paginatedDataState?.pageSize ?? DEFAULT_TABLE_PARAMS.pageSize)
+        );
 
   const tableColumns = useMemo(
-    () => columns.map(({ filter, ...column }) => ({
-      ...column,
-      Filter: filter ? mapFilterTypeToComponent(filter) : undefined,
-      disableFilters: !filter,
-    })),
-    [columns],
+    () =>
+      columns.map(({ filter, ...column }) => ({
+        ...column,
+        Filter: filter ? mapFilterTypeToComponent(filter) : undefined,
+        disableFilters: !filter,
+      })),
+    [columns]
   );
 
   const {
@@ -220,21 +220,22 @@ export function Table({
     },
     useFilters,
     useSortBy,
-    usePagination,
+    usePagination
   );
 
   useEffect(() => {
     if (
-      tableState.filters.length === 0
-      || tableState.filters.some(
-        ({ value }: ITableFilter<unknown>) => !Object.values(value).some((value$1) => !value$1),
+      tableState.filters.length === 0 ||
+      tableState.filters.some(
+        ({ value }: ITableFilter<unknown>) =>
+          !Object.values(value).some((value$1) => !value$1)
       )
 
-    // if (typeof value === 'string' && value.length < 3) {
-    //   // TODO clean the false posities when my select value is less than three characters
-    //   // BY adding a new field to the parameter to check and filter out
-    //   return false;
-    // }
+      // if (typeof value === 'string' && value.length < 3) {
+      //   // TODO clean the false posities when my select value is less than three characters
+      //   // BY adding a new field to the parameter to check and filter out
+      //   return false;
+      // }
     ) {
       setPaginatedDataState(tableState);
     }
@@ -255,7 +256,7 @@ export function Table({
           <DropDownMenu menuItems={menuItems} />
         </Stack>
         <Spacer />
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: "relative" }}>
           {(isLoading || isPreviousData) && !error ? (
             <StyledOverlay>
               <StyledOverlayText>
@@ -274,7 +275,7 @@ export function Table({
                     >
                       <Stack justify="space-between">
                         <Text weight="bold" as="span">
-                          {column.render('Header')}
+                          {column.render("Header")}
                         </Text>
                         <Stack justify="end" width="auto">
                           {column.canSort && (
@@ -285,7 +286,7 @@ export function Table({
                               })}
                             />
                           )}
-                          {column.canFilter ? column.render('Filter') : null}
+                          {column.canFilter ? column.render("Filter") : null}
                         </Stack>
                       </Stack>
                     </StyledTh>
@@ -303,7 +304,7 @@ export function Table({
                         {...cell.getCellProps()}
                         key={cell.column.Header}
                       >
-                        {cell.render('Cell')}
+                        {cell.render("Cell")}
                       </StyledTd>
                     ))}
                   </StyledBodyTR>
@@ -313,7 +314,7 @@ export function Table({
                 <StyledBodyTR>
                   <StyledTd colSpan={10000}>
                     {isLoading ? (
-                      <div style={{ height: '204px' }} />
+                      <div style={{ height: "204px" }} />
                     ) : (
                       <EmptyWrapper text="No Data" />
                     )}

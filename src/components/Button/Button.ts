@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
-import { ColorTypes } from '../../styles/types';
-import { getColor } from '../../styles/utils';
+import styled, { css } from "styled-components";
+import { ColorTypes } from "../../styles/types";
+import { getColor } from "../../styles/utils";
 
 export interface IStyledBaseButton {
   block?: boolean;
-  size?: 'sm' | 'xs';
+  size?: "sm" | "xs";
   color?: ColorTypes;
   pushLeft?: true; // TODO remove all this rubbish
 }
@@ -30,27 +30,31 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
     transition: none;
   }
 
-  ${({ block }) => block
-    && css`
+  ${({ block }) =>
+    block &&
+    css`
       display: block;
       width: 100%;
     `}
 
-  ${({ pushLeft }) => pushLeft
-    && css`
+  ${({ pushLeft }) =>
+    pushLeft &&
+    css`
       margin-left: 0.5rem;
     `}
 
-  ${(props) => props.size === 'sm'
-    && css`
+  ${(props) =>
+    props.size === "sm" &&
+    css`
       padding: 0.25rem 0.5rem;
       font-size: 0.71rem;
       line-height: 1.8;
       border-radius: 0.2rem;
     `}
 
-    ${(props) => props.size === 'xs'
-    && css`
+    ${(props) =>
+    props.size === "xs" &&
+    css`
       padding: .25rem .5rem;
       font-size: .71rem;
       line-height: 1.2;

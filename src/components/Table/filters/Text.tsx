@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Search } from 'react-feather';
-import { useDebounce } from 'react-use';
-import { StyledInput } from '../../Form/Styles';
-import { SEARCH_DEBOUNCE_WAIT } from './constants';
-import { FilterOperators, IColumnFilterBag, IFilterProps } from './types';
-import { RenderFilterOperator } from './_FilterOperator';
-import { FilterWrapper } from './_FilterWrapper';
+import React, { useState, useEffect } from "react";
+import { Search } from "react-feather";
+import { useDebounce } from "react-use";
+import { StyledInput } from "../../Form/Styles";
+import { SEARCH_DEBOUNCE_WAIT } from "./constants";
+import { FilterOperators, IColumnFilterBag, IFilterProps } from "./types";
+import { RenderFilterOperator } from "./_FilterOperator";
+import { FilterWrapper } from "./_FilterWrapper";
 
 export function FilterTableByText({
   column: { filterValue, setFilter },
@@ -21,7 +21,7 @@ export function FilterTableByText({
       setFilter(localValue);
     },
     SEARCH_DEBOUNCE_WAIT,
-    [localValue],
+    [localValue]
   );
 
   return (
@@ -40,7 +40,7 @@ export function FilterTableByText({
         setFilter={setFilter}
       />
       <StyledInput
-        value={localValue?.value || ''}
+        value={localValue?.value || ""}
         onChange={(e: React.BaseSyntheticEvent) => {
           setLocalValue({
             ...filterValue,

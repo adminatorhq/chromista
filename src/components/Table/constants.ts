@@ -1,4 +1,4 @@
-import { IBEPaginatedDataState } from '@gothicgeeks/shared';
+import { IBEPaginatedDataState } from "@gothicgeeks/shared";
 
 export const DEFAULT_TABLE_PARAMS: Required<IBEPaginatedDataState> = {
   pageIndex: 0,

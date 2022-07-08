@@ -1,15 +1,18 @@
-import { ISystemStatusForDisplay } from '../../../types';
+import { ISystemStatusForDisplay } from "../../../types";
 
 export type TableFilterType =
-  | { _type: 'boolean'; bag: ISystemStatusForDisplay[] }
-  | { _type: 'date' }
-  | { _type: 'number' }
-  | { _type: 'string' }
-  | { _type: 'status'; bag: ISystemStatusForDisplay[] }
-  | { _type: 'list'; bag: {
-    onChange: (word: string) => void;
-    selections: {id: string, name: string}[];
-  } };
+  | { _type: "boolean"; bag: ISystemStatusForDisplay[] }
+  | { _type: "date" }
+  | { _type: "number" }
+  | { _type: "string" }
+  | { _type: "status"; bag: ISystemStatusForDisplay[] }
+  | {
+      _type: "list";
+      bag: {
+        onChange: (word: string) => void;
+        selections: { id: string; name: string }[];
+      };
+    };
 
 export interface IFilterProps<T> {
   column: {
@@ -19,14 +22,14 @@ export interface IFilterProps<T> {
 }
 
 export enum FilterOperators {
-  GREATER_THAN = 'g',
-  LESS_THAN = 'l',
-  EQUAL_TO = 'e',
-  NOT_IN = 'ni',
-  BETWEEN = 'bt',
-  IN = 'in',
-  CONTAINS = 'co',
-  NOT_EQUAL = 'ne',
+  GREATER_THAN = "g",
+  LESS_THAN = "l",
+  EQUAL_TO = "e",
+  NOT_IN = "ni",
+  BETWEEN = "bt",
+  IN = "in",
+  CONTAINS = "co",
+  NOT_EQUAL = "ne",
 }
 
 export interface IColumnFilterBag<T> {

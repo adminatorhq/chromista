@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { APP_COLORS } from '../../../constants/colors';
-import { Text, Stack } from '../../../ui-blocks';
+import React from "react";
+import styled from "styled-components";
+import { APP_COLORS } from "../../../constants/colors";
+import { Text, Stack } from "../../../ui-blocks";
 
-type Sizes = 'sm' | 'md';
+type Sizes = "sm" | "md";
 
 export interface IProps {
   value: boolean;
@@ -20,7 +20,7 @@ interface ISizeConfig {
   shift: number;
   circleSize: number;
   checkedShift: number;
-  fontSize: '4' | '5';
+  fontSize: "4" | "5";
   labelSpacing: number;
 }
 
@@ -32,7 +32,7 @@ const SIZES_CONFIG: Record<Sizes, ISizeConfig> = {
     checkedShift: 20,
     labelSpacing: 56,
     circleSize: 19,
-    fontSize: '4',
+    fontSize: "4",
   },
   sm: {
     width: 26,
@@ -41,7 +41,7 @@ const SIZES_CONFIG: Record<Sizes, ISizeConfig> = {
     labelSpacing: 32,
     checkedShift: 10,
     circleSize: 12,
-    fontSize: '5',
+    fontSize: "5",
   },
 };
 
@@ -68,7 +68,7 @@ const Slider = styled.span<{ size: Sizes }>`
 
   &:before {
     position: absolute;
-    content: '';
+    content: "";
     border-radius: 50%;
     background-color: white;
     height: ${(props) => SIZES_CONFIG[props.size].circleSize}px;
@@ -104,11 +104,11 @@ export function FormSwitch(props: IProps) {
     name,
     disabled,
     label,
-    size = 'md',
+    size = "md",
     ...rest
   } = props;
   const ariaProps = Object.fromEntries(
-    Object.entries(rest).filter(([key]) => key.startsWith('aria-')),
+    Object.entries(rest).filter(([key]) => key.startsWith("aria-"))
   );
   return (
     <DivBlock>

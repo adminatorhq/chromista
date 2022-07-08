@@ -1,67 +1,67 @@
-import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
-import { RenderList } from '.';
-import { themeContext } from '../../AppWrapper/Global';
+import React from "react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { ThemeProvider } from "styled-components";
+import { RenderList } from ".";
+import { themeContext } from "../../AppWrapper/Global";
 
-import '@testing-library/jest-dom/extend-expect';
+import "@testing-library/jest-dom/extend-expect";
 
-describe('RenderList', () => {
-  it('should render list items', () => {
+describe("RenderList", () => {
+  it("should render list items", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
           items={[
             {
-              name: 'Foo',
+              name: "Foo",
             },
             {
-              name: 'Bar',
+              name: "Bar",
             },
           ]}
           render={(item) => <div>{item.name}</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('Foo')).toBeInTheDocument();
-    expect(screen.getByText('Bar')).toBeInTheDocument();
+    expect(screen.getByText("Foo")).toBeInTheDocument();
+    expect(screen.getByText("Bar")).toBeInTheDocument();
   });
 
-  it('should not render search input when items are small', () => {
+  it("should not render search input when items are small", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
           items={[
             {
-              name: 'Foo',
+              name: "Foo",
             },
             {
-              name: 'Bar',
+              name: "Bar",
             },
           ]}
           render={(item) => <div>{item.name}</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.queryByPlaceholderText('Search')).not.toBeInTheDocument();
+    expect(screen.queryByPlaceholderText("Search")).not.toBeInTheDocument();
   });
 
-  it('should render search input when items are large', () => {
+  it("should render search input when items are large", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
           items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
           render={(item) => <div>{item.name}</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByPlaceholderText('Search')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Search")).toBeInTheDocument();
   });
 
-  it('should render not search input when items are large and list is declared `notSearchable`', () => {
+  it("should render not search input when items are large and list is declared `notSearchable`", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
@@ -69,142 +69,139 @@ describe('RenderList', () => {
           notSearchable
           render={(item) => <div>{item.name}</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.queryByPlaceholderText('Search')).not.toBeInTheDocument();
+    expect(screen.queryByPlaceholderText("Search")).not.toBeInTheDocument();
   });
 
-  it('should search items when search input is keyed', () => {
+  it("should search items when search input is keyed", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
           items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
           render={(item) => <div>{item.name}</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('foo0')).toBeInTheDocument();
-    expect(screen.getByText('foo1')).toBeInTheDocument();
+    expect(screen.getByText("foo0")).toBeInTheDocument();
+    expect(screen.getByText("foo1")).toBeInTheDocument();
 
-    fireEvent.change(screen.getByPlaceholderText('Search'), { target: { value: 'foo1' } });
+    fireEvent.change(screen.getByPlaceholderText("Search"), {
+      target: { value: "foo1" },
+    });
 
-    expect(screen.queryByText('foo0')).not.toBeInTheDocument();
-    expect(screen.getByText('foo1')).toBeInTheDocument();
-    expect(screen.queryByText('No Search Results')).not.toBeInTheDocument();
+    expect(screen.queryByText("foo0")).not.toBeInTheDocument();
+    expect(screen.getByText("foo1")).toBeInTheDocument();
+    expect(screen.queryByText("No Search Results")).not.toBeInTheDocument();
   });
 
-  it('should search items when search input is keyed', () => {
+  it("should search items when search input is keyed", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
           items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
           render={(item) => <div>{item.name}</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('foo0')).toBeInTheDocument();
-    expect(screen.getByText('foo1')).toBeInTheDocument();
-    expect(screen.queryByText('No Search Results')).not.toBeInTheDocument();
+    expect(screen.getByText("foo0")).toBeInTheDocument();
+    expect(screen.getByText("foo1")).toBeInTheDocument();
+    expect(screen.queryByText("No Search Results")).not.toBeInTheDocument();
 
-    fireEvent.change(screen.getByPlaceholderText('Search'), { target: { value: 'something to not exist' } });
+    fireEvent.change(screen.getByPlaceholderText("Search"), {
+      target: { value: "something to not exist" },
+    });
 
-    expect(screen.queryByText('foo0')).not.toBeInTheDocument();
-    expect(screen.queryByText('foo1')).not.toBeInTheDocument();
+    expect(screen.queryByText("foo0")).not.toBeInTheDocument();
+    expect(screen.queryByText("foo1")).not.toBeInTheDocument();
 
-    expect(screen.getByText('No Search Results')).toBeInTheDocument();
+    expect(screen.getByText("No Search Results")).toBeInTheDocument();
   });
 
-  it('should render sorted list items when asked to', () => {
+  it("should render sorted list items when asked to", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
           items={[
             {
-              name: 'Boo',
+              name: "Boo",
             },
             {
-              name: 'Zoo',
+              name: "Zoo",
             },
             {
-              name: 'Aoo',
+              name: "Aoo",
             },
           ]}
           sortByName
-          render={(item, index) => (
-            <div>
-              {`${index} - ${item.name}`}
-            </div>
-          )}
+          render={(item, index) => <div>{`${index} - ${item.name}`}</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('0 - Aoo')).toBeInTheDocument();
-    expect(screen.getByText('1 - Boo')).toBeInTheDocument();
-    expect(screen.getByText('2 - Zoo')).toBeInTheDocument();
+    expect(screen.getByText("0 - Aoo")).toBeInTheDocument();
+    expect(screen.getByText("1 - Boo")).toBeInTheDocument();
+    expect(screen.getByText("2 - Zoo")).toBeInTheDocument();
   });
 
-  it('should render skeleton when loading', () => {
+  it("should render skeleton when loading", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
           items={[
             {
-              name: 'Foo',
+              name: "Foo",
             },
             {
-              name: 'Bar',
+              name: "Bar",
             },
           ]}
           isLoading
           render={(item) => <div>{item.name}</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByTestId('list-skeleton')).toBeInTheDocument();
-    expect(screen.queryByText('Bar')).not.toBeInTheDocument();
+    expect(screen.getByTestId("list-skeleton")).toBeInTheDocument();
+    expect(screen.queryByText("Bar")).not.toBeInTheDocument();
   });
 
-  it('should render error when present', () => {
+  it("should render error when present", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
           items={[
             {
-              name: 'Foo',
+              name: "Foo",
             },
             {
-              name: 'Bar',
+              name: "Bar",
             },
           ]}
           error="Some nasty error"
           render={(item) => <div>{item.name}</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('Some nasty error')).toBeInTheDocument();
-    expect(screen.queryByText('Bar')).not.toBeInTheDocument();
+    expect(screen.getByText("Some nasty error")).toBeInTheDocument();
+    expect(screen.queryByText("Bar")).not.toBeInTheDocument();
   });
 
-  it('should render Empty view when empty', () => {
+  it("should render Empty view when empty", () => {
     render(
       <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={[]}
-          render={() => <div>foo</div>}
-        />
-      </ThemeProvider>,
+        <RenderList items={[]} render={() => <div>foo</div>} />
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('No Item To Look At')).toBeInTheDocument();
+    expect(screen.getByText("No Item To Look At")).toBeInTheDocument();
   });
 
-  it('should render Empty view and `add new item` when empty and there is a newItemLink', () => {
+  it("should render Empty view and `add new item` when empty and there is a newItemLink", () => {
     render(
       <ThemeProvider theme={themeContext}>
         <RenderList
@@ -213,9 +210,9 @@ describe('RenderList', () => {
           singular="Product"
           render={() => <div>foo</div>}
         />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
-    expect(screen.getByText('No Product To Look At')).toBeInTheDocument();
+    expect(screen.getByText("No Product To Look At")).toBeInTheDocument();
   });
 });

@@ -1,1 +1,3 @@
-export function defaultToEmptyArray<T>(input: T[] | undefined): T[] { return input || []; }
+export function defaultToEmptyArray<T>(input: T[] | undefined): T[] {
+  return input || [];
+}

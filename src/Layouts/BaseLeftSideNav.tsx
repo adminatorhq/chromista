@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import Link from "next/link";
+import React, { ReactNode } from "react";
+import styled from "styled-components";
 
 const StyledLogo = styled(Link)`
   line-height: 52px;

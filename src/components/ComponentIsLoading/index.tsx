@@ -1,5 +1,5 @@
-import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import * as React from "react";
+import styled, { keyframes } from "styled-components";
 
 const DELAY_MS = 300;
 
@@ -41,7 +41,7 @@ const StyledLds = styled.div`
 
 export function ComponentIsLoading() {
   return (
-    <div style={{ textAlign: 'center', margin: '30px', marginBottom: '20px' }}>
+    <div style={{ textAlign: "center", margin: "30px", marginBottom: "20px" }}>
       <StyledLdsWrapper>
         <StyledLds />
         <StyledLds />

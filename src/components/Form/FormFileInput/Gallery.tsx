@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import noop from 'lodash/noop';
-import Lightbox from 'react-image-lightbox';
-import styled from 'styled-components';
-import { FormFileInput } from '.';
-import { DeleteButton } from '../../Button/DeleteButton';
-import { BlockSkeleton } from '../../Skeleton/BlockSkeleton';
-import { actionButtonIsMakingRequest } from '../../Button/FormButton';
-import 'react-image-lightbox/style.css';
-import { themeContext } from '../../../AppWrapper/Global';
+import React, { useState } from "react";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import noop from "lodash/noop";
+import Lightbox from "react-image-lightbox";
+import styled from "styled-components";
+import { FormFileInput } from ".";
+import { DeleteButton } from "../../Button/DeleteButton";
+import { BlockSkeleton } from "../../Skeleton/BlockSkeleton";
+import { actionButtonIsMakingRequest } from "../../Button/FormButton";
+import "react-image-lightbox/style.css";
+import { themeContext } from "../../../AppWrapper/Global";
 
 interface ILoadedImage {
   image: string;
@@ -44,7 +44,7 @@ export function FormFileInputGallery({
   isMakingCreateRequest,
   isMakingDefaultRequest,
 }: IFormFileInputGallery) {
-  const [currentImageId, setCurrentImageId] = useState('');
+  const [currentImageId, setCurrentImageId] = useState("");
   const [lightBoxIndex, setLightBoxIndex] = useState(0);
   const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
 
@@ -58,10 +58,14 @@ export function FormFileInputGallery({
             images[(lightBoxIndex + images.length - 1) % images.length].image
           }
           onCloseRequest={() => setIsLightBoxOpen(false)}
-          onMovePrevRequest={() => setLightBoxIndex(
-            (lightBoxIndex + images.length - 1) % images.length,
-          )}
-          onMoveNextRequest={() => setLightBoxIndex((lightBoxIndex + 1) % images.length)}
+          onMovePrevRequest={() =>
+            setLightBoxIndex(
+              (lightBoxIndex + images.length - 1) % images.length
+            )
+          }
+          onMoveNextRequest={() =>
+            setLightBoxIndex((lightBoxIndex + 1) % images.length)
+          }
         />
       )}
       <div className="col-sm-12 col-lg-3">
@@ -69,7 +73,7 @@ export function FormFileInputGallery({
           input={{
             onChange: createImage,
             value: null,
-            name: 'hello',
+            name: "hello",
             onBlur: noop,
             onFocus: noop,
           }}
@@ -84,10 +88,10 @@ export function FormFileInputGallery({
       ) : null}
       {isLoading
         ? [1, 2, 3, 4, 5].map((keyIndex) => (
-          <div className="col-sm-12 col-lg-3" key={keyIndex}>
-            <BlockSkeleton height="200px" />
-          </div>
-        ))
+            <div className="col-sm-12 col-lg-3" key={keyIndex}>
+              <BlockSkeleton height="200px" />
+            </div>
+          ))
         : null}
       {images.map(({ image, id, isDefault }, index) => (
         <div className="col-sm-12 col-lg-3 position-relative" key={id}>
@@ -102,7 +106,7 @@ export function FormFileInputGallery({
           ) : null}
           <div
             className="dropify-wrapper has-preview"
-            style={{ height: '200px' }}
+            style={{ height: "200px" }}
             onClick={() => {
               setLightBoxIndex(index);
               setIsLightBoxOpen(true);
@@ -120,7 +124,7 @@ export function FormFileInputGallery({
               >
                 {actionButtonIsMakingRequest(
                   isMakingDefaultRequest,
-                  'Set As Default',
+                  "Set As Default"
                 )}
               </button>
             ) : null}
@@ -135,12 +139,12 @@ export function FormFileInputGallery({
                 isMakingDeleteRequest && currentImageId === id
               }
             />
-            <div className="dropify-preview" style={{ display: 'block' }}>
+            <div className="dropify-preview" style={{ display: "block" }}>
               <span className="dropify-render">
                 <img
                   src={image}
                   alt={`Product Gallery ${index}`}
-                  style={{ maxHeight: '200px' }}
+                  style={{ maxHeight: "200px" }}
                 />
               </span>
               <div className="dropify-infos" />

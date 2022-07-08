@@ -1,1 +1,1 @@
-export { DynamicLayout } from './DynamicLayout';
+export { DynamicLayout } from "./DynamicLayout";

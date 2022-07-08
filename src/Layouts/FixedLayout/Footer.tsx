@@ -1,7 +1,7 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 
 const StyledFooter = styled.footer`
   border-top: 1px solid ${(props) => props.theme.colors.border};
@@ -34,11 +34,7 @@ export function Footer() {
     <StyledFooter>
       &copy; 2021 MDStores
       <StyledText>
-        Crafted with
-        {' '}
-        <StyledIcon icon={faHeart} />
-        {' '}
-        by GothicGeeks
+        Crafted with <StyledIcon icon={faHeart} /> by GothicGeeks
       </StyledText>
     </StyledFooter>
   );

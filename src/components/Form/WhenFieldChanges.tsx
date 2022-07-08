@@ -1,7 +1,7 @@
-import { StringUtils } from '@gothicgeeks/shared';
-import React from 'react';
-import { Field, FormSpy } from 'react-final-form';
-import { OnChange } from 'react-final-form-listeners';
+import { StringUtils } from "@gothicgeeks/shared";
+import React from "react";
+import { Field, FormSpy } from "react-final-form";
+import { OnChange } from "react-final-form-listeners";
 
 // decorators={[calculator]}
 // const calculator = createDecorator({
@@ -20,7 +20,7 @@ interface IWhenFieldChanges {
   to: string;
 }
 
-export const SLUG_VALUE = '___SLUG_VALUE';
+export const SLUG_VALUE = "___SLUG_VALUE";
 
 // const ConditionWhenIsSet: React.FC<{ when: string }> = ({ when, children }) => (
 //   <Field name={when} subscription={{ value: true }}>
@@ -46,8 +46,10 @@ export function WhenFieldChanges({
           {() => (
             <OnChange name={field}>
               {(value: unknown) => {
-                const valueToChangeTo = to === SLUG_VALUE
-                  ? StringUtils.sluggify(value as string) : to;
+                const valueToChangeTo =
+                  to === SLUG_VALUE
+                    ? StringUtils.sluggify(value as string)
+                    : to;
                 if (becomes === undefined) {
                   onChange(valueToChangeTo);
                   return;

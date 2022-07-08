@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
-import styled, { css } from 'styled-components';
-import { IValueLabel } from '../../types';
+import React from "react";
+import Link from "next/link";
+import styled, { css } from "styled-components";
+import { IValueLabel } from "../../types";
 
 const StyledBreadcrumb = styled.ol`
   display: flex;
@@ -12,7 +12,7 @@ const StyledBreadcrumb = styled.ol`
   border-radius: 0.25rem;
   font-size: 12px;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   padding: 2px 0;
   background-color: transparent;
 `;
@@ -34,7 +34,7 @@ const StyledBreadcrumbItem = styled.li`
       display: inline-block;
       padding-right: 0.3rem;
       color: #7081b9;
-      content: '/';
+      content: "/";
     }
   }
 `;
@@ -46,8 +46,9 @@ const StyledBreadcrumbItemLink = styled.button<{ active: boolean }>`
   background-color: transparent;
   color: ${(props) => props.theme.colors.primary};
 
-  ${(props) => props.active
-    && css`
+  ${(props) =>
+    props.active &&
+    css`
       color: props.theme.text.muted;
     `}
 `;
