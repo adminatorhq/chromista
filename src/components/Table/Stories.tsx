@@ -48,8 +48,8 @@ export default {
         filter: {
           _type: 'boolean',
           bag: [
-            { color: '#00ff00', label: 'Yes', value: true },
-            { color: '#ff0000', label: 'No', value: false },
+            { color: '#00ff00', label: 'Yes', value: 'true' },
+            { color: '#ff0000', label: 'No', value: 'false' },
           ],
         },
       },

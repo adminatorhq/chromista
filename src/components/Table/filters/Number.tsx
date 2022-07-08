@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Filter } from 'react-feather';
 import useDebounce from 'react-use/lib/useDebounce';
 import { FilterWrapper } from './_FilterWrapper';
@@ -13,6 +13,10 @@ export function FilterTableByNumbers({
 }: IFilterProps<IColumnFilterBag<number>>) {
   const [localValue, setLocalValue] = useState(filterValue);
 
+  useEffect(() => {
+    setLocalValue(filterValue);
+  }, [filterValue]);
+
   useDebounce(
     () => {
       setFilter(localValue);
@@ -23,7 +27,7 @@ export function FilterTableByNumbers({
 
   return (
     <FilterWrapper
-      filterHasValue={!!filterValue}
+      filterHasValue={filterValue?.value !== undefined && filterValue?.value2 !== undefined}
       clearFilter={setFilter}
       IconComponent={Filter}
     >

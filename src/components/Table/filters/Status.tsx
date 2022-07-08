@@ -9,10 +9,10 @@ import { FilterWrapper } from './_FilterWrapper';
 export const FilterTableByStatus = (statuses:
   ISystemStatusForDisplay[]) => function StatusFilterImpl({
   column: { filterValue, setFilter },
-}: IFilterProps<IColumnFilterBag<string>>) {
+}: IFilterProps<IColumnFilterBag<string>>) { // change to multiple select
   return (
     <FilterWrapper
-      filterHasValue={!!filterValue}
+      filterHasValue={filterValue?.value !== undefined}
       clearFilter={setFilter}
       IconComponent={Filter}
     >

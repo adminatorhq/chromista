@@ -1,44 +1,38 @@
-import React, { useState } from 'react';
-import * as StyledGrid from 'styled-bootstrap-grid';
+import React from 'react';
+// import * as StyledGrid from 'styled-bootstrap-grid';
 import { Calendar } from 'react-feather';
-import styled from 'styled-components';
-import useDebounce from 'react-use/lib/useDebounce';
-import { SimpleSelect } from '../../Form/SimpleSelect';
+// import styled from 'styled-components';
+// import useDebounce from 'react-use/lib/useDebounce';
+// import { SimpleSelect } from '../../Form/SimpleSelect';
 import { FilterWrapper } from './_FilterWrapper';
-import { StyledInput } from '../../Form/Styles';
-import { IFilterProps } from './types';
-import { SEARCH_DEBOUNCE_WAIT } from './constants';
+// import { StyledInput } from '../../Form/Styles';
+import { IColumnFilterBag, IFilterProps } from './types';
+// import { SEARCH_DEBOUNCE_WAIT } from './constants';
 // Special case
-const StyledSecondGrid = styled(StyledGrid.Col)`
-  padding-left: 0.25rem;
-`;
 
 export function FilterTableByDate({
   column: {
-    filterValue = { comparision: undefined, value: undefined },
+    filterValue,
     setFilter,
   },
-}: IFilterProps<{
-  comparision: string | undefined;
-  value: number | undefined;
-}>) {
-  const [localValue, setLocalValue] = useState(filterValue);
+}: IFilterProps<IColumnFilterBag<string>>) {
+  // const [localValue, setLocalValue] = useState(filterValue);
 
-  useDebounce(
-    () => {
-      setFilter(localValue);
-    },
-    SEARCH_DEBOUNCE_WAIT,
-    [localValue],
-  );
+  // useDebounce(
+  //   () => {
+  //     setFilter(localValue);
+  //   },
+  //   SEARCH_DEBOUNCE_WAIT,
+  //   [localValue],
+  // );
 
   return (
     <FilterWrapper
-      filterHasValue={!!filterValue.value}
+      filterHasValue={filterValue?.value !== undefined && filterValue?.value2 !== undefined}
       clearFilter={setFilter}
       IconComponent={Calendar}
     >
-      <StyledGrid.Row>
+      {/* <StyledGrid.Row>
         <StyledGrid.Col sm={4}>
           <SimpleSelect
             options={[
@@ -68,7 +62,7 @@ export function FilterTableByDate({
             })}
           />
         </StyledSecondGrid>
-      </StyledGrid.Row>
+      </StyledGrid.Row> */}
     </FilterWrapper>
   );
 }

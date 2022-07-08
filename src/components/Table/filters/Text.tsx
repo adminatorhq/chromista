@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search } from 'react-feather';
 import { useDebounce } from 'react-use';
 import { StyledInput } from '../../Form/Styles';
@@ -12,6 +12,10 @@ export function FilterTableByText({
 }: IFilterProps<IColumnFilterBag<string>>) {
   const [localValue, setLocalValue] = useState(filterValue);
 
+  useEffect(() => {
+    setLocalValue(filterValue);
+  }, [filterValue]);
+
   useDebounce(
     () => {
       setFilter(localValue);
@@ -22,7 +26,7 @@ export function FilterTableByText({
 
   return (
     <FilterWrapper
-      filterHasValue={!!filterValue}
+      filterHasValue={filterValue?.value !== undefined}
       clearFilter={setFilter}
       IconComponent={Search}
     >
@@ -39,7 +43,7 @@ export function FilterTableByText({
         value={localValue?.value || ''}
         onChange={(e: React.BaseSyntheticEvent) => {
           setLocalValue({
-            ...localValue,
+            ...filterValue,
             value: e.target.value || undefined,
           });
         }}
@@ -48,7 +52,3 @@ export function FilterTableByText({
     </FilterWrapper>
   );
 }
-
-// starts with
-// ends with
-// not contain

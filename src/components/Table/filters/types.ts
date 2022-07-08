@@ -26,8 +26,6 @@ export enum FilterOperators {
   BETWEEN = 'bt',
   IN = 'in',
   CONTAINS = 'co',
-  // STARTS_WITH = 'sw',
-  // ENDS_WITH = 'ew',
   NOT_EQUAL = 'ne',
 }
 

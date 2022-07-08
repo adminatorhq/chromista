@@ -11,17 +11,18 @@ export const FilterTableByBooleans = (statuses:
 }: IFilterProps<IColumnFilterBag<boolean>>) {
   return (
     <FilterWrapper
-      filterHasValue={!!filterValue}
+      filterHasValue={filterValue?.value !== undefined}
       clearFilter={setFilter}
       IconComponent={ToggleLeft}
     >
       <SimpleSelect
         options={[{ label: '-- Select State --', value: '' }, ...statuses]}
         onChange={(value: string) => {
-          setFilter({ operator: FilterOperators.EQUAL_TO, value: value === 'true' });
+          setFilter({ operator: FilterOperators.EQUAL_TO, value: value === '' ? undefined : value === 'true' });
         }}
         fullWidth
-        value={filterValue?.value ? 'true' : 'false' || undefined}
+        // eslint-disable-next-line no-nested-ternary
+        value={filterValue?.value === undefined ? '' : filterValue?.value ? 'true' : 'false'}
       />
     </FilterWrapper>
   );

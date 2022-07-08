@@ -25,7 +25,6 @@ export function RenderFilterOperator<T>({ operators, filterValue, setFilter }: I
     <>
       <SimpleSelect
         options={[
-          { label: '', value: '' },
           ...operators.map((operator) => ({
             value: operator,
             label: FILTER_OPERATOR_LABELS[operator],

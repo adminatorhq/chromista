@@ -19,7 +19,7 @@ export const FilterTableByListSelection = (
 }: IFilterProps<IColumnFilterBag<string[]>>) {
   return (
     <FilterWrapper
-      filterHasValue={!!filterValue?.value && filterValue.value.length > 0}
+      filterHasValue={filterValue?.value !== undefined && filterValue.value.length > 0}
       clearFilter={setFilter}
       IconComponent={Filter}
     >
