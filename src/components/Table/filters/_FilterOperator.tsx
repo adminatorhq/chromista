@@ -9,6 +9,9 @@ const FILTER_OPERATOR_LABELS: Record<FilterOperators, string> = {
   [FilterOperators.LESS_THAN]: 'Less Than',
   [FilterOperators.NOT_IN]: 'Not In',
   [FilterOperators.IN]: 'In',
+  [FilterOperators.BETWEEN]: 'Between',
+  [FilterOperators.CONTAINS]: 'Contains',
+  [FilterOperators.NOT_EQUAL]: 'Not Equal To',
 };
 
   interface IProps<T> {

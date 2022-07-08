@@ -22,8 +22,13 @@ export enum FilterOperators {
   GREATER_THAN = 'g',
   LESS_THAN = 'l',
   EQUAL_TO = 'e',
-  NOT_IN = 'n',
-  IN = 'i',
+  NOT_IN = 'ni',
+  BETWEEN = 'bt',
+  IN = 'in',
+  CONTAINS = 'co',
+  // STARTS_WITH = 'sw',
+  // ENDS_WITH = 'ew',
+  NOT_EQUAL = 'ne',
 }
 
 export interface IColumnFilterBag<T> {

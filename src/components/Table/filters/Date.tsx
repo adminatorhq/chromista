@@ -8,7 +8,7 @@ import { FilterWrapper } from './_FilterWrapper';
 import { StyledInput } from '../../Form/Styles';
 import { IFilterProps } from './types';
 import { SEARCH_DEBOUNCE_WAIT } from './constants';
-
+// Special case
 const StyledSecondGrid = styled(StyledGrid.Col)`
   padding-left: 0.25rem;
 `;

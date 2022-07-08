@@ -3,10 +3,13 @@ import { Search } from 'react-feather';
 import { useDebounce } from 'react-use';
 import { StyledInput } from '../../Form/Styles';
 import { SEARCH_DEBOUNCE_WAIT } from './constants';
-import { IFilterProps } from './types';
+import { FilterOperators, IColumnFilterBag, IFilterProps } from './types';
+import { RenderFilterOperator } from './_FilterOperator';
 import { FilterWrapper } from './_FilterWrapper';
 
-export function FilterTableByText({ column: { filterValue, setFilter } }: IFilterProps<string>) {
+export function FilterTableByText({
+  column: { filterValue, setFilter },
+}: IFilterProps<IColumnFilterBag<string>>) {
   const [localValue, setLocalValue] = useState(filterValue);
 
   useDebounce(
@@ -23,10 +26,22 @@ export function FilterTableByText({ column: { filterValue, setFilter } }: IFilte
       clearFilter={setFilter}
       IconComponent={Search}
     >
+      <RenderFilterOperator
+        operators={[
+          FilterOperators.EQUAL_TO,
+          FilterOperators.CONTAINS,
+          FilterOperators.NOT_EQUAL,
+        ]}
+        filterValue={filterValue}
+        setFilter={setFilter}
+      />
       <StyledInput
-        value={localValue || ''}
+        value={localValue?.value || ''}
         onChange={(e: React.BaseSyntheticEvent) => {
-          setLocalValue(e.target.value || undefined);
+          setLocalValue({
+            ...localValue,
+            value: e.target.value || undefined,
+          });
         }}
         placeholder="Search"
       />
@@ -34,9 +49,6 @@ export function FilterTableByText({ column: { filterValue, setFilter } }: IFilte
   );
 }
 
-// Equal
-// contain
 // starts with
 // ends with
-// not equal
 // not contain
