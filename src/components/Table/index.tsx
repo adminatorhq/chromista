@@ -10,7 +10,8 @@ import { ITableProps } from './types';
 export function Table({ url, ...props }: ITableProps) {
   const [
     paginatedDataState,
-    setPaginatedDataState] = useState<IBEPaginatedDataState>(DEFAULT_TABLE_PARAMS);
+    setPaginatedDataState,
+  ] = useState<IBEPaginatedDataState>(DEFAULT_TABLE_PARAMS);
 
   const tableData = usePaginatedData(url, paginatedDataState);
 

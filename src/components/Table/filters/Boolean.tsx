@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToggleLeft } from 'react-feather';
 import { ISystemStatusForDisplay } from '../../../types';
 import { SimpleSelect } from '../../Form/SimpleSelect';
 import { IFilterProps } from './types';
@@ -11,7 +12,7 @@ export const FilterTableByBooleans = (
     <FilterWrapper
       filterHasValue={!!filterValue}
       clearFilter={setFilter}
-      iconType="filter"
+      IconComponent={ToggleLeft}
     >
       <SimpleSelect
         options={[{ label: '-- Select Status --', value: '' }, ...statuses]}

@@ -22,11 +22,5 @@ export function mapFilterTypeToComponent(
       return FilterTableByStatus(type.bag);
     case 'list':
       return FilterTableByListSelection(type.bag);
-    default:
-      throw new Error('Filter type not implemented');
   }
 }
-
-// (input: {
-//     column: { filterValue: T | undefined; setFilter: (filter: T | undefined) => void };
-//   }): ReactNode

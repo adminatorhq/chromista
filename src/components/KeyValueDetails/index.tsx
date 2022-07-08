@@ -60,8 +60,6 @@ export function KeyValueDetails({
           case KeyValueDetailsFormat.Number:
             valueToRender = <>{StringFilters.formatCount(value)}</>;
             break;
-          default:
-            valueToRender = <span>{value}</span>;
         }
         return (
           <li

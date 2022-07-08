@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Search } from 'react-feather';
 import { useDebounce } from 'react-use';
 import { StyledInput } from '../../Form/Styles';
 import { SEARCH_DEBOUNCE_WAIT } from './constants';
@@ -20,7 +21,7 @@ export function FilterTableByText({ column: { filterValue, setFilter } }: IFilte
     <FilterWrapper
       filterHasValue={!!filterValue}
       clearFilter={setFilter}
-      iconType="search"
+      IconComponent={Search}
     >
       <StyledInput
         value={localValue || ''}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Filter } from 'react-feather';
 import { mapIdAndNameToSelectData } from '../../Form/mappers';
 import { FormMultiSelect } from '../../Form/FormSelect';
 import { FilterWrapper } from './_FilterWrapper';
@@ -19,7 +20,7 @@ export const FilterTableByListSelection = (
     <FilterWrapper
       filterHasValue={filterValue.length > 0}
       clearFilter={setFilter}
-      iconType="list"
+      IconComponent={Filter}
     >
       <div style={{ minWidth: '250px' }}>
         <FormMultiSelect

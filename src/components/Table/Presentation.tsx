@@ -277,12 +277,12 @@ export function Presentation({
           ) : null}
           <StyledTable {...getTableProps()}>
             <StyledTHead>
-              {headerGroups.map((headerGroup: any, key2: number) => (
-                <tr {...headerGroup.getHeaderGroupProps()} key={key2}>
-                  {headerGroup.headers.map((column: any, key1: number) => (
+              {headerGroups.map((headerGroup: any) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column: any) => (
                     <StyledTh
                       {...column.getHeaderProps(column.getSortByToggleProps())}
-                      key={key1}
+                      key={column.Header}
                     >
                       <Stack justify="space-between">
                         <Text weight="bold" as="span">
@@ -306,12 +306,12 @@ export function Presentation({
               ))}
             </StyledTHead>
             <tbody {...getTableBodyProps()}>
-              {rows.map((row: any, key3: number) => {
+              {rows.map((row: any) => {
                 prepareRow(row);
                 return (
-                  <StyledBodyTR {...row.getRowProps()} key={key3}>
-                    {row.cells.map((cell: any, key: number) => (
-                      <StyledTd {...cell.getCellProps()} key={key}>
+                  <StyledBodyTR {...row.getRowProps()} key={row.id}>
+                    {row.cells.map((cell: any) => (
+                      <StyledTd {...cell.getCellProps()} key={cell.column.Header}>
                         {cell.render('Cell')}
                       </StyledTd>
                     ))}

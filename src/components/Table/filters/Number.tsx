@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as StyledGrid from 'styled-bootstrap-grid';
 import styled from 'styled-components';
+import { Filter } from 'react-feather';
 import useDebounce from 'react-use/lib/useDebounce';
 import { SimpleSelect } from '../../Form/SimpleSelect';
 import { FilterWrapper } from './_FilterWrapper';
@@ -35,7 +36,7 @@ export function FilterTableByNumbers({
     <FilterWrapper
       filterHasValue={!!filterValue.value}
       clearFilter={setFilter}
-      iconType="numeric"
+      IconComponent={Filter}
     >
       <StyledGrid.Row>
         <StyledGrid.Col sm={4}>

@@ -1,24 +1,20 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { ReactNode } from 'react';
-import { Filter, Search } from 'react-feather';
+import { Icon } from 'react-feather';
 import styled from 'styled-components';
 import { themeContext } from '../../../AppWrapper/Global';
 import { Dropdown } from '../../Dropdown';
 import { APP_COLORS } from '../../../constants/colors';
-import { Stack } from '../../../ui-blocks';
+import { Spacer, Stack } from '../../../ui-blocks';
 import { SoftButton } from '../../Button/SoftButton';
 
 interface IProps {
-    children: ReactNode;
-    filterHasValue: boolean;
-    clearFilter: (filter: undefined) => void;
-    iconType: 'search' | 'filter' | 'numeric' | 'list' | 'date' | 'boolean';
-  }
-
-const StyledSoftButton = styled(SoftButton)`
-  margin-bottom: 0.25rem;
-`;
+  children: ReactNode;
+  filterHasValue: boolean;
+  clearFilter: (filter: undefined) => void;
+  IconComponent: Icon;
+}
 
 const Root = styled.div`
   cursor: pointer;
@@ -36,7 +32,7 @@ export function FilterWrapper({
   children,
   filterHasValue,
   clearFilter,
-  iconType,
+  IconComponent,
 }: IProps) {
   const iconProps = {
     size: 15,
@@ -54,17 +50,13 @@ export function FilterWrapper({
         preserveVisibiltyOnClick
         target={(
           <Root>
-            {iconType === 'search' ? (
-              <Search {...iconProps} />
-            ) : (
-              <Filter {...iconProps} />
-            )}
+            <IconComponent {...iconProps} />
           </Root>
-          )}
+        )}
       >
         <DownRoot direction="column">
           <div>{children}</div>
-          <StyledSoftButton
+          <SoftButton
             onClick={() => {
               clearFilter(undefined);
             }}
@@ -72,6 +64,7 @@ export function FilterWrapper({
             icon="close"
             label="Reset"
           />
+          <Spacer />
         </DownRoot>
       </Dropdown>
     </span>

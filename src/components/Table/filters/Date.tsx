@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as StyledGrid from 'styled-bootstrap-grid';
+import { Calendar } from 'react-feather';
 import styled from 'styled-components';
 import useDebounce from 'react-use/lib/useDebounce';
 import { SimpleSelect } from '../../Form/SimpleSelect';
@@ -35,7 +36,7 @@ export function FilterTableByDate({
     <FilterWrapper
       filterHasValue={!!filterValue.value}
       clearFilter={setFilter}
-      iconType="numeric"
+      IconComponent={Calendar}
     >
       <StyledGrid.Row>
         <StyledGrid.Col sm={4}>
