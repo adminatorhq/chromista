@@ -189,7 +189,7 @@ export function Table({
         Filter: filter ? mapFilterTypeToComponent(filter) : undefined,
         disableFilters: !filter,
       })),
-    [columns]
+    [columns.length]
   );
 
   const {
@@ -239,7 +239,7 @@ export function Table({
     ) {
       setPaginatedDataState(tableState);
     }
-  }, [tableState]);
+  }, [JSON.stringify(tableState)]);
 
   return (
     <>
