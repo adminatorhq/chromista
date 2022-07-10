@@ -10,15 +10,14 @@ export function mapFilterTypeToComponent(type: TableFilterType) {
   switch (type._type) {
     case "number":
       return FilterTableByNumbers;
-    case "date":
-      return FilterTableByDate;
-
     case "boolean":
       return FilterTableByBooleans(type.bag);
     case "string":
       return FilterTableByText;
     case "status":
       return FilterTableByStatus(type.bag);
+    case "date":
+      return FilterTableByDate;
     case "list":
       return FilterTableByListSelection(type.bag);
   }

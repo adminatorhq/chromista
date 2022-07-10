@@ -223,6 +223,8 @@ export function Table({
     usePagination
   );
 
+  console.log(tableState);
+
   useEffect(() => {
     if (
       tableState.filters.length === 0 ||

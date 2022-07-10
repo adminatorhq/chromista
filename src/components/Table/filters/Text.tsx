@@ -32,8 +32,8 @@ export function FilterTableByText({
     >
       <RenderFilterOperator
         operators={[
-          FilterOperators.EQUAL_TO,
           FilterOperators.CONTAINS,
+          FilterOperators.EQUAL_TO,
           FilterOperators.NOT_EQUAL,
         ]}
         filterValue={filterValue}

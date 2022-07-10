@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Spacer } from "../../../ui-blocks/Spacer";
 import { SimpleSelect } from "../../Form/SimpleSelect";
 import { FilterOperators, IColumnFilterBag } from "./types";
@@ -25,6 +25,14 @@ export function RenderFilterOperator<T>({
   filterValue,
   setFilter,
 }: IProps<T>) {
+  useEffect(() => {
+    if (!filterValue?.operator && filterValue?.value) {
+      setFilter({
+        ...filterValue,
+        operator: operators[0],
+      });
+    }
+  }, [JSON.stringify(filterValue)]);
   return (
     <>
       <SimpleSelect

@@ -27,9 +27,7 @@ export function FilterTableByNumbers({
 
   return (
     <FilterWrapper
-      filterHasValue={
-        filterValue?.value !== undefined && filterValue?.value2 !== undefined
-      }
+      filterHasValue={filterValue?.value !== undefined}
       clearFilter={setFilter}
       IconComponent={Filter}
     >
