@@ -18,6 +18,7 @@ import { TablePagination } from "./_Pagination";
 import { IColumnFilterBag, TableFilterType } from "./filters/types";
 
 export { DEFAULT_TABLE_PARAMS };
+export { FilterOperators } from "./filters/types";
 
 const StyledBodyTR = styled.tr`
   padding: 4px;
@@ -222,8 +223,6 @@ export function Table({
     useSortBy,
     usePagination
   );
-
-  console.log(tableState);
 
   useEffect(() => {
     if (
