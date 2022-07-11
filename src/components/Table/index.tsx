@@ -15,7 +15,7 @@ import { APP_COLORS } from "../../constants/colors";
 import { DropDownMenu, IDropDownMenuItem } from "../DropdownMenu";
 import { mapFilterTypeToComponent } from "./filters";
 import { TablePagination } from "./_Pagination";
-import { IColumnFilterBag, TableFilterType } from "./filters/types";
+import { TableFilterType } from "./filters/types";
 
 export { DEFAULT_TABLE_PARAMS };
 export { FilterOperators } from "./filters/types";
@@ -139,11 +139,6 @@ export interface ITableColumn {
   }) => ReactNode;
 }
 
-interface ITableFilter<T> {
-  id: string;
-  value: IColumnFilterBag<T>;
-}
-
 export interface IProps {
   columns: ITableColumn[];
   title: string;
@@ -225,21 +220,7 @@ export function Table({
   );
 
   useEffect(() => {
-    if (
-      tableState.filters.length === 0 ||
-      tableState.filters.some(
-        ({ value }: ITableFilter<unknown>) =>
-          !Object.values(value).some((value$1) => !value$1)
-      )
-
-      // if (typeof value === 'string' && value.length < 3) {
-      //   // TODO clean the false posities when my select value is less than three characters
-      //   // BY adding a new field to the parameter to check and filter out
-      //   return false;
-      // }
-    ) {
-      setPaginatedDataState(tableState);
-    }
+    setPaginatedDataState(tableState);
   }, [JSON.stringify(tableState)]);
 
   return (
