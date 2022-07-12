@@ -219,6 +219,10 @@ export function Table({
     usePagination
   );
 
+  // useEffect(() => {
+  //   setTableState(paginatedDataState);
+  // }, [JSON.stringify(paginatedDataState)]);
+
   useEffect(() => {
     setPaginatedDataState(tableState);
   }, [JSON.stringify(tableState)]);

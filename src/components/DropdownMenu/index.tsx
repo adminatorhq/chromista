@@ -137,7 +137,7 @@ export function DropDownMenu({
 
   useEffect(() => {
     setCurrentMenuItem(menuItems[0]);
-  }, [menuItems]);
+  }, [JSON.stringify(menuItems)]);
 
   const onMenuItemClick = (menuIndex: number) => {
     const menuItem = menuItems[menuIndex];
@@ -195,7 +195,7 @@ export function DropDownMenu({
           <StyledSROnly>Toggle Dropdown</StyledSROnly>
         </StyledDropDownIcon>
       </StyledDropDownToggle>
-      <StyledDropDownMenu right>
+      <StyledDropDownMenu end>
         {menuItems.map(({ label: label$1, description }, index) => (
           <StyledDropDownItem
             key={label$1}
