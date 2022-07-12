@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import SkeletonLoader from "tiny-skeleton-loader-react";
+import { Stack } from "../../../ui-blocks";
 import { sharedSkeletonProps } from "../constants";
 
 export enum FormSkeletonSchema {
@@ -31,12 +32,15 @@ export function FormSkeleton({ schema }: IFormSkeleton) {
           />
         </Fragment>
       ))}
-      <SkeletonLoader
-        background={sharedSkeletonProps.background}
-        height="3em"
-        width="70px"
-        style={{ marginBottom: "3px", float: "right", marginTop: "-8px" }}
-      />
+      {/* :eyes test */}
+      <Stack justify="end">
+        <SkeletonLoader
+          background={sharedSkeletonProps.background}
+          height="3em"
+          width="70px"
+          style={{ marginBottom: "3px", marginTop: "-8px" }}
+        />
+      </Stack>
     </div>
   );
 }
