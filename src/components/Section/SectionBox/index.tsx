@@ -15,6 +15,7 @@ import {
 import { StyledMutedText } from "../../../styles/Text";
 import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
+import { Spacer } from "../../../ui-blocks";
 
 interface IProps {
   title: string;
@@ -54,10 +55,6 @@ const StyledCardTitle = styled.h4`
   font-family: "Poppins", sans-serif;
 `;
 
-const StyledFullHeight = styled.div`
-  // min-height: 100vh;
-`;
-
 const StyledDeleteButton = styled(DeleteButton)`
   margin-left: 0.25rem;
 `;
@@ -80,21 +77,24 @@ export function SectionBox({
   const [selectionValue, setSelectionValue] = useState("");
 
   return (
-    <StyledCard>
-      <StyledFullHeight>
+    <>
+      {backLink && (
+        <>
+          <SoftButton
+            to={backLink.link}
+            onClick={backLink.onClick}
+            size="xs"
+            icon="back"
+            label={backLink.label ? `Back To ${backLink.label}` : ""}
+          />
+          <Spacer />
+        </>
+      )}
+      <StyledCard>
         {!headLess ? (
           <StyledCardHeader>
             <StyledCenterRow>
               <StyledGrid.Col auto>
-                {backLink ? (
-                  <SoftButton
-                    to={backLink.link}
-                    onClick={backLink.onClick}
-                    size="xs"
-                    icon="back"
-                    label={backLink.label ? `Back To ${backLink.label}` : ""}
-                  />
-                ) : null}
                 <StyledCardTitle data-test-id="section-box__title">
                   {isLoading ? "Loading..." : title}
                   {description ? (
@@ -159,7 +159,7 @@ export function SectionBox({
           </StyledCardHeader>
         ) : null}
         {children ? <StyledCardBody>{children}</StyledCardBody> : null}
-      </StyledFullHeight>
-    </StyledCard>
+      </StyledCard>
+    </>
   );
 }

@@ -25,7 +25,6 @@ const StyledWrapper = styled.div`
   padding-top: 0.5rem;
 `;
 
-// TODO
 const StyledButtonGroup = styled.div`
   margin-right: 0.25rem;
   margin-bottom: 0.25rem;

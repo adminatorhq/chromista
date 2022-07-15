@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { APP_COLORS } from "../../../constants/colors";
 import { Text, Stack } from "../../../ui-blocks";
@@ -110,6 +110,13 @@ export function FormSwitch(props: IProps) {
   const ariaProps = Object.fromEntries(
     Object.entries(rest).filter(([key]) => key.startsWith("aria-"))
   );
+  // :eyes
+  useEffect(() => {
+    if (value === undefined) {
+      onChange(false);
+    }
+  }, [value, onChange]);
+
   return (
     <DivBlock>
       <Root htmlFor={name} size={size}>
