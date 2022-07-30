@@ -27,7 +27,7 @@ export function FormButton({
   isMakingRequest,
   onClick,
   isInverse,
-  size = "sm",
+  size,
   color = "primary",
   ...rest
 }: IFormButton) {
