@@ -110,9 +110,9 @@ export function FormSwitch(props: IProps) {
   const ariaProps = Object.fromEntries(
     Object.entries(rest).filter(([key]) => key.startsWith("aria-"))
   );
-  // :eyes
+
   useEffect(() => {
-    if (value === undefined) {
+    if (!value) {
       onChange(false);
     }
   }, [value, onChange]);

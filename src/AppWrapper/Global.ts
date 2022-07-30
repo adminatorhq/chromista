@@ -68,16 +68,6 @@ body {
   outline: 0 !important
 }
 
-h4 {
-  margin-top: 0;
-  margin-bottom: .5rem;
-  color: ${(props) => props.theme.text.main};
-  margin: 10px 0;
-  font-size: 1.125rem;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
 p {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -200,18 +190,6 @@ button::-moz-focus-inner {
   .badge {
       border: 1px solid #000
   }
-}
-
-h6, .h6 {
-  font-size: .8125rem;
-}
-
-h4 {
-  font-size: 1.125rem
-}
-
-h5, .h5 {
-  font-size: .8125rem;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {

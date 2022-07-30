@@ -145,12 +145,13 @@ export function SectionBox({
                       ))
                     : null}
                   {newItemLink ? (
-                    <SoftButton to={newItemLink} icon="add" />
+                    <SoftButton to={newItemLink} icon="add" pushLeft />
                   ) : null}
                   {deleteAction && !isLoading ? (
                     <StyledDeleteButton
                       onDelete={deleteAction}
                       isMakingDeleteRequest={isMakingDeleteRequest}
+                      pushLeft
                     />
                   ) : null}
                 </StyledGrid.Col>

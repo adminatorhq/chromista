@@ -1,5 +1,5 @@
 {
-  "version": "0.2.71",
+  "version": "0.2.72",
   "license": "MIT",
   "name": "@gothicgeeks/design-system",
   "main": "dist/index.js",
