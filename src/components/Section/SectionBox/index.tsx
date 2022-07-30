@@ -151,7 +151,6 @@ export function SectionBox({
                     <StyledDeleteButton
                       onDelete={deleteAction}
                       isMakingDeleteRequest={isMakingDeleteRequest}
-                      pushLeft
                     />
                   ) : null}
                 </StyledGrid.Col>
