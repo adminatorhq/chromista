@@ -1,5 +1,5 @@
 {
-  "version": "0.2.77",
+  "version": "0.2.78",
   "license": "MIT",
   "name": "@gothicgeeks/design-system",
   "main": "dist/index.js",
@@ -47,7 +47,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@gothicgeeks/shared": "git+ssh://git@github.com:thrownullexception/shared.git#63da71aebc27020ca81167776c82bbfffb0e6026",
+    "@gothicgeeks/shared": "git+ssh://git@github.com:thrownullexception/shared.git#776aa90ad3e9b41e205df4a53aa92f2dfe10d4c2",
     "@types/prismjs": "^1.26.0",
     "@types/react-datepicker": "^4.4.1",
     "@types/react-final-form-listeners": "^1.0.0",
