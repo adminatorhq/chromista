@@ -1,8 +1,9 @@
 {
-  "version": "0.2.76",
+  "version": "0.2.77",
   "license": "MIT",
   "name": "@gothicgeeks/design-system",
   "main": "dist/index.js",
+  "sideEffects": false,
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
