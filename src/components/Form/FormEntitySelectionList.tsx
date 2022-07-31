@@ -2,7 +2,7 @@ import React from "react";
 import debounce from "lodash/debounce";
 import AsyncSelect from "react-select/async";
 import { useQuery } from "react-query";
-import { RequestService } from "@gothicgeeks/shared";
+import { makeGetRequest } from "@gothicgeeks/shared";
 import { ISelectData } from "../../types";
 import { FormNoValueSelect } from "./FormSelect";
 
@@ -20,7 +20,7 @@ const debouncedSearch = debounce(
     resolve: (value: any) => void
   ) =>
     resolve(
-      (await RequestService.get(`${url}&search=${inputValue}`)).data.filter(
+      (await makeGetRequest(`${url}&search=${inputValue}`)).data.filter(
         ({ value }: ISelectData) => !disabledOptions.includes(value as string)
       )
     ),
@@ -34,7 +34,7 @@ export function FormEntitySelectionList({
 }: IProps) {
   const { data = [] } = useQuery<ISelectData[]>(
     [url],
-    async () => (await RequestService.get(url)).data
+    async () => (await makeGetRequest(url)).data
   );
 
   if (data.length && data[0].value === "SELECTION_LIST_LIMIT") {

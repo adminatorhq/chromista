@@ -2,7 +2,8 @@ import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import classnames from "classnames";
 import { v4 as uuidv4 } from "uuid";
-import { RequestService } from "@gothicgeeks/shared";
+import { makePostRequest } from "@gothicgeeks/shared";
+import noop from "lodash/noop";
 import { ISharedFormInput } from "../_types";
 import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
 import { ProgressBar } from "../../ProgressBar";
@@ -40,20 +41,21 @@ function FileInput({ input, meta, disabled, domain }: IFormFileInput) {
       acceptedFiles.forEach(async (file: any) => {
         setIsLoading(true);
         const { formData, config } = fileFormDatafy(file);
+        noop(config);
         formData.append("domain", domain);
         const { imageUrl } = (
-          await RequestService.post("image-upload", formData, {
-            ...config,
-            onUploadProgress: (progressEvent: {
-              loaded: number;
-              total: number;
-            }) => {
-              const percentCompleted = Math.round(
-                (progressEvent.loaded * 100) / progressEvent.total
-              );
-              setProgress(percentCompleted);
-              // After 100% label to processing file by timeout here .5seconds
-            },
+          await makePostRequest("image-upload", formData, {
+            // ...config,
+            // onUploadProgress: (progressEvent: {
+            //   loaded: number;
+            //   total: number;
+            // }) => {
+            //   const percentCompleted = Math.round(
+            //     (progressEvent.loaded * 100) / progressEvent.total
+            //   );
+            //   setProgress(percentCompleted);
+            //   // After 100% label to processing file by timeout here .5seconds
+            // },
           })
         ).data;
         setIsLoading(false);

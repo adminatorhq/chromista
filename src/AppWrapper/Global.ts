@@ -12,6 +12,7 @@ declare module "styled-components" {
   }
 }
 
+// TODO move to root variables
 export const themeContext: DefaultTheme = {
   text: {
     muted: "#a4abc5",
