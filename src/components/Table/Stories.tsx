@@ -29,7 +29,7 @@ export default {
       sortBy: [{ id: "name", desc: true }],
       hiddenColumns: [],
     },
-    setPaginatedDataState: console.log, //  action("setPaginatedDataState"),
+    setPaginatedDataState: action("setPaginatedDataState"),
     columns: [
       {
         Header: "Name Foo",
