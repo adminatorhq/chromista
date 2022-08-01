@@ -7,6 +7,7 @@ import { SectionListItem } from "../SectionList";
 interface IMenuItem {
   name: string;
   link: string;
+  action?: () => void;
   IconComponent?: Icon;
   disabled?: boolean;
 }
@@ -27,6 +28,8 @@ export function MenuSection({ menuItems, currentMenuItem }: IMenuSection) {
         render={(menuItem) => (
           <SectionListItem
             label={menuItem.name}
+            onClick={menuItem.action}
+            toNoWhere={menuItem.action ? true : undefined}
             active={menuItem.link.includes(`${currentMenuItem}`)}
             disabled={!!menuItem.disabled}
             key={menuItem.name}
