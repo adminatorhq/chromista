@@ -1,8 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import classnames from "classnames";
-import { v4 as uuidv4 } from "uuid";
-import { makePostRequest } from "@gothicgeeks/shared";
+import { makePostRequest, StringUtils } from "@gothicgeeks/shared";
 import noop from "lodash/noop";
 import { ISharedFormInput } from "../_types";
 import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
@@ -17,7 +16,7 @@ interface IFormFileInput extends ISharedFormInput {
 const fileFormDatafy = (file: any) => {
   const formData = new FormData();
   const extension = file.name.split(".").pop();
-  const name = `${uuidv4()}.${extension}`;
+  const name = `${StringUtils.generateUUID()}.${extension}`;
 
   formData.append("image", file, name);
   return {
