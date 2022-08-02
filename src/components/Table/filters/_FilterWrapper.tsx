@@ -57,7 +57,7 @@ export function FilterWrapper({
         <DownRoot direction="column">
           <div>{children}</div>
           <SoftButton
-            onClick={() => {
+            action={() => {
               clearFilter(undefined);
             }}
             size="xs"

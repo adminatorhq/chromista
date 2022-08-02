@@ -23,14 +23,13 @@ interface IProps {
   description?: string;
   newItemLink?: string;
   iconButtons?: {
-    link?: string;
-    onClick?: () => void;
+    action: string | (() => void);
     label?: string;
     icon?: SoftButtonIconTypes;
   }[];
   selection?: { options: ISelectData[]; onChange: (value: string) => void };
   deleteAction?: () => void;
-  backLink?: { label?: string; link?: string; onClick?: () => void };
+  backLink?: { label?: string; action: string | (() => void) };
   isMakingDeleteRequest?: boolean;
   isLoading?: boolean;
   headLess?: boolean;
@@ -81,8 +80,7 @@ export function SectionBox({
       {backLink && (
         <>
           <SoftButton
-            to={backLink.link}
-            onClick={backLink.onClick}
+            action={backLink.action}
             size="xs"
             icon="back"
             label={backLink.label ? `Back To ${backLink.label}` : ""}
@@ -133,19 +131,18 @@ export function SectionBox({
                     </StyledMutedText>
                   ) : null}
                   {iconButtons
-                    ? iconButtons.map(({ link, label, icon, onClick }) => (
+                    ? iconButtons.map(({ action, label, icon }) => (
                         <SoftButton
                           key={icon || label}
-                          to={link}
+                          action={action}
                           label={label}
                           icon={icon}
-                          onClick={onClick}
                           pushLeft
                         />
                       ))
                     : null}
                   {newItemLink ? (
-                    <SoftButton to={newItemLink} icon="add" pushLeft />
+                    <SoftButton action={newItemLink} icon="add" pushLeft />
                   ) : null}
                   {deleteAction && !isLoading ? (
                     <StyledDeleteButton

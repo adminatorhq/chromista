@@ -20,5 +20,5 @@ export interface ISelectionView extends ISideBarNavigation {
   view?: ReactNode;
   viewMenuItems?: DataStateKeys<INavigationMenuItems[]>;
   description?: string;
-  iconButtons?: { onClick: () => void; icon: SoftButtonIconTypes }[];
+  iconButtons?: { action: () => void; icon: SoftButtonIconTypes }[];
 }

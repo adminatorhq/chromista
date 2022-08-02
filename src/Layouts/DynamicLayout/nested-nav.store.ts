@@ -5,7 +5,7 @@ interface IDeepLink {
   description?: string;
   title: string;
   key: string;
-  iconButtons?: { onClick: () => void; icon: SoftButtonIconTypes }[];
+  iconButtons?: { action: () => void; icon: SoftButtonIconTypes }[];
 }
 
 type IStore = {

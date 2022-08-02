@@ -59,7 +59,7 @@ export const wrapLabelAndError = (
           {rightActions.map((rightAction) => (
             <SoftButton
               key={rightAction.label}
-              onClick={rightAction.action}
+              action={rightAction.action}
               size="xs"
               pushLeft
               type="button"

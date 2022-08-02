@@ -70,7 +70,7 @@ export function OffCanvas({
       <StyledHeader>
         <Stack justify="space-between">
           <Text size="3">{title}</Text>
-          <SoftButton justIcon icon="close" onClick={onClose} />
+          <SoftButton justIcon icon="close" action={onClose} />
         </Stack>
       </StyledHeader>
       <Divider />

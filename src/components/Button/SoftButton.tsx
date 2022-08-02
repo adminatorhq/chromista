@@ -15,11 +15,11 @@ interface ISoftButton {
   pushLeft?: true;
   disabled?: boolean;
   color?: ColorTypes;
-  to?: string;
+  action: string | (() => void);
+  secondaryAction?: () => void;
   justIcon?: true;
   className?: string;
   type?: "button";
-  onClick?: () => void;
   isMakingActionRequest?: boolean;
 }
 const StyledLabel = styled.span<{ $hasLabel: boolean }>`
@@ -35,14 +35,14 @@ export function SoftButton({
   label,
   block,
   color,
-  to,
   size = "sm",
   icon,
   justIcon,
   type,
   disabled,
   isMakingActionRequest,
-  onClick,
+  action,
+  secondaryAction,
   className,
 }: ISoftButton) {
   const content = isMakingActionRequest ? (
@@ -66,11 +66,17 @@ export function SoftButton({
     "aria-label": justIcon ? label : undefined,
   };
 
-  if (to) {
+  if (typeof action === "string") {
     return (
-      <Link href={to} passHref>
+      <Link href={action} passHref>
         <StyledSoftButton {...props} as="a">
-          {content}
+          {secondaryAction ? (
+            <span onClick={secondaryAction} aria-hidden="true">
+              {content}
+            </span>
+          ) : (
+            content
+          )}
         </StyledSoftButton>
       </Link>
     );
@@ -81,10 +87,8 @@ export function SoftButton({
       {...props}
       type={type}
       onClick={(e: { stopPropagation: () => void }) => {
-        if (onClick) {
-          e.stopPropagation();
-          onClick();
-        }
+        e.stopPropagation();
+        action();
       }}
     >
       {content}

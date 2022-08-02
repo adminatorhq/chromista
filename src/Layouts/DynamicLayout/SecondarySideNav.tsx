@@ -98,7 +98,7 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
                 backLink={
                   hasDeepLinks
                     ? {
-                        onClick: pop,
+                        action: pop,
                         label: fullBreadCrumb[fullBreadCrumb.length - 2].label,
                       }
                     : undefined
@@ -109,7 +109,7 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
                   ...iconButtons,
                   {
                     icon: "close",
-                    onClick: closeFullSideBar,
+                    action: closeFullSideBar,
                   },
                 ]}
               >

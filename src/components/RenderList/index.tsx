@@ -51,7 +51,7 @@ export function RenderList<T extends { name: string }>({
       <EmptyWrapper text={`No ${singular} To Look At`}>
         {newItemLink && (
           <SoftButton
-            to={newItemLink}
+            action={newItemLink}
             label={`Add New ${singular}`}
             icon="add"
           />
