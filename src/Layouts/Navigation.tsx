@@ -115,7 +115,7 @@ export function RenderNavigation({
       {label && isSidebarOpen && navigation.length ? (
         <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
       ) : null}
-      {navigation.map(({ title, link, icon }) => {
+      {navigation.map(({ title, link, icon, action }) => {
         const isActive = currentLink === link;
         const content = (
           <>
@@ -144,7 +144,10 @@ export function RenderNavigation({
           <StyledLeftSideNavMenuList key={title}>
             {typeof link === "string" ? (
               <Link href={link || ""} passHref>
-                <StyledLeftSideNavMenuListAnchor $isSubMenu={isSubMenu}>
+                <StyledLeftSideNavMenuListAnchor
+                  $isSubMenu={isSubMenu}
+                  onClick={() => action?.()}
+                >
                   {content}
                 </StyledLeftSideNavMenuListAnchor>
               </Link>
@@ -155,6 +158,7 @@ export function RenderNavigation({
                 as={StyledLinkLikeButton}
                 onClick={() => {
                   link?.();
+                  action?.();
                 }}
               >
                 {content}
