@@ -55,10 +55,10 @@ const StyledBreadcrumbItemLink = styled.button<{ active: boolean }>`
 
 export interface IProps {
   items: IValueLabel[];
-  onItemClick?: (value: string) => void;
+  onCrumbClick: (index: number) => void;
 }
 
-export function Breadcrumbs({ items, onItemClick }: IProps) {
+export function Breadcrumbs({ items, onCrumbClick }: IProps) {
   const itemsLength = items.length;
   return (
     <StyledBreadcrumb>
@@ -69,10 +69,10 @@ export function Breadcrumbs({ items, onItemClick }: IProps) {
             {/* eslint-disable-next-line no-nested-ternary */}
             {isLastElement ? (
               label
-            ) : onItemClick ? (
+            ) : onCrumbClick ? (
               <StyledBreadcrumbItemLink
                 active={isLastElement}
-                onClick={() => onItemClick(value)}
+                onClick={() => onCrumbClick(index)}
               >
                 {label}
               </StyledBreadcrumbItemLink>
