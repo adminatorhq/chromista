@@ -115,7 +115,7 @@ export function RenderNavigation({
       {label && isSidebarOpen && navigation.length ? (
         <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
       ) : null}
-      {navigation.map(({ title, link, icon, action }) => {
+      {navigation.map(({ title, link, icon }) => {
         const isActive = currentLink === link;
         const content = (
           <>
@@ -142,15 +142,9 @@ export function RenderNavigation({
         );
         return (
           <StyledLeftSideNavMenuList key={title}>
-            {link ? (
+            {typeof link === "string" ? (
               <Link href={link || ""} passHref>
-                <StyledLeftSideNavMenuListAnchor
-                  $isSubMenu={isSubMenu}
-                  onClick={() => {
-                    // Basically to clear the current content
-                    action?.();
-                  }}
-                >
+                <StyledLeftSideNavMenuListAnchor $isSubMenu={isSubMenu}>
                   {content}
                 </StyledLeftSideNavMenuListAnchor>
               </Link>
@@ -160,7 +154,7 @@ export function RenderNavigation({
                 $isActive={isActive}
                 as={StyledLinkLikeButton}
                 onClick={() => {
-                  action?.();
+                  link?.();
                 }}
               >
                 {content}

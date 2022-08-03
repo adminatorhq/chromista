@@ -30,10 +30,9 @@ export function PrimaryLeftSideNav({ navigation }: IProps) {
         action: () => {
           if (link) {
             closeFullSideBar();
-            clearDeepLinks();
-            return;
+          } else {
+            selectMiniSideBar(title);
           }
-          selectMiniSideBar(title);
           clearDeepLinks();
         },
       })),
