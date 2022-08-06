@@ -12,10 +12,9 @@ import {
   StyledCardBody,
   StyledCardHeader,
 } from "../../../styles/Card";
-import { StyledMutedText } from "../../../styles/Text";
 import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
-import { Spacer } from "../../../ui-blocks";
+import { Spacer, Text } from "../../../ui-blocks";
 
 interface IProps {
   title: string;
@@ -58,7 +57,6 @@ const StyledDeleteButton = styled(DeleteButton)`
   margin-left: 0.25rem;
 `;
 
-// TODO replace this Loading... with skeleton
 export function SectionBox({
   children,
   title,
@@ -125,10 +123,10 @@ export function SectionBox({
                     />
                   ) : null}
                   {lastUpdated ? (
-                    <StyledMutedText as="i">
+                    <Text color="muted" as="span">
                       Last modified{" "}
                       {TimeFilters.formatTime(new Date(lastUpdated), "L")}
-                    </StyledMutedText>
+                    </Text>
                   ) : null}
                   {iconButtons
                     ? iconButtons.map(({ action, label, icon }) => (

@@ -65,34 +65,3 @@ export function WhenFieldChanges({
     </Field>
   );
 }
-/*
-TODO
-If the slug is not touched then update it
-// Once it is not then stop
-export const WhenFieldChanges: React.FC<IWhenFieldChanges> = ({ field, becomes, set, to }) => (
-  <Field name={set} subscription={{ touched: true }}>
-    {({ meta, input }) => (
-      <FormSpy subscription={{}}>
-        {() => (
-          <OnChange name={field}>
-            {(value: unknown) => {
-              console.log(meta);
-              if (!meta.touched) {
-                return;
-              }
-              const valueToChangeTo = to === SLUG_VALUE ? sluggify(value as string) : to;
-              if (becomes === undefined) {
-                input.onChange(valueToChangeTo);
-                return;
-              }
-              if (value === becomes) {
-                input.onChange(valueToChangeTo);
-              }
-            }}
-          </OnChange>
-        )}
-      </FormSpy>
-    )}
-  </Field>
-);
-*/

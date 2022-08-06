@@ -155,5 +155,3 @@ export function FormFileInputGallery({
     </div>
   );
 }
-
-// TODO Upload multiple Product Images

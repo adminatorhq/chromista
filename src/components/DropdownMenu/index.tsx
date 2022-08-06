@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
 import { Icon } from "react-feather";
-import { StyledMutedText } from "../../styles/Text";
+import { Text } from "../../ui-blocks";
 import { StyledSoftButton } from "../Button/Button";
 
 const togglePreviousState = (prev: boolean) => !prev;
@@ -21,10 +21,6 @@ interface IProps {
   isMakingActionRequest?: boolean;
   disabled?: boolean;
 }
-
-const StyledDescriptionText = styled(StyledMutedText)`
-  font-size: 12px;
-`;
 
 const StyledDropDown = styled.div`
   position: relative;
@@ -204,9 +200,9 @@ export function DropDownMenu({
             {label$1}
             <br />
             {description ? (
-              <StyledDescriptionText as="span">
+              <Text size="5" color="muted" as="span">
                 {description}
-              </StyledDescriptionText>
+              </Text>
             ) : null}
           </StyledDropDownItem>
         ))}

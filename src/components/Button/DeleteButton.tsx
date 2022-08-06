@@ -27,7 +27,6 @@ export function DeleteButton({
       onClick={(e: React.BaseSyntheticEvent) => {
         e.stopPropagation();
         if (shouldConfirmAlert) {
-          // TODO move to a pop confirm
           return ConfirmAlert({
             title: "Confirm Delete",
             message: "Are you sure you want to do this.",

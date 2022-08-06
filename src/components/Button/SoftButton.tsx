@@ -56,7 +56,7 @@ export function SoftButton({
     </>
   );
 
-  const props = {
+  const buttonProps = {
     pushLeft,
     className,
     size,
@@ -69,7 +69,7 @@ export function SoftButton({
   if (typeof action === "string") {
     return (
       <Link href={action} passHref>
-        <StyledSoftButton {...props} as="a">
+        <StyledSoftButton {...buttonProps} as="a">
           {secondaryAction ? (
             <span onClick={secondaryAction} aria-hidden="true">
               {content}
@@ -84,7 +84,7 @@ export function SoftButton({
 
   return (
     <StyledSoftButton
-      {...props}
+      {...buttonProps}
       type={type}
       onClick={(e: { stopPropagation: () => void }) => {
         e.stopPropagation();

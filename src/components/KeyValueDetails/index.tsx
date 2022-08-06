@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { StringFilters } from "@gothicgeeks/shared";
-import { StyledMutedText } from "../../styles/Text";
+import { Text } from "../../ui-blocks";
 import { ISystemStatusForDisplay } from "../../types";
 import { BadgeBuilder } from "../Badge";
 import { Currency } from "../Currency";
@@ -62,7 +62,10 @@ export function KeyValueDetails({ isLoading, keyValues }: IKeyValueDetails) {
             className="list-group-item d-flex justify-content-between align-items-center"
           >
             <div>
-              {icon} <StyledMutedText as="span">{key}</StyledMutedText>
+              {icon}{" "}
+              <Text color="muted" as="span">
+                {key}
+              </Text>
             </div>
             {valueToRender}
           </li>
