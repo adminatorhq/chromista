@@ -22,6 +22,7 @@ export {
   Table,
   DEFAULT_TABLE_PARAMS,
   ITableColumn,
+  IColumnFilterBag,
   FilterOperators,
 } from "./Table";
 export { TableDataAsList } from "./TableDataAsList";
