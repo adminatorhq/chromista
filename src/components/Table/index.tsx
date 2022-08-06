@@ -18,7 +18,7 @@ import { TablePagination } from "./_Pagination";
 import { TableFilterType } from "./filters/types";
 
 export { DEFAULT_TABLE_PARAMS };
-export { FilterOperators } from "./filters/types";
+export { FilterOperators, IColumnFilterBag } from "./filters/types";
 
 const StyledBodyTR = styled.tr`
   padding: 4px;
