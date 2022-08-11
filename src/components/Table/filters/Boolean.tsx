@@ -1,7 +1,7 @@
 import React from "react";
 import { ToggleLeft } from "react-feather";
 import { ISystemStatusForDisplay } from "../../../types";
-import { SimpleSelect } from "../../Form/SimpleSelect";
+import { SimpleSelect } from "../../Form/FormSelect/Simple";
 import { FilterOperators, IColumnFilterBag, IFilterProps } from "./types";
 import { FilterWrapper } from "./_FilterWrapper";
 

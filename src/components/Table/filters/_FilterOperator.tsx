@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Spacer } from "../../../ui-blocks/Spacer";
-import { SimpleSelect } from "../../Form/SimpleSelect";
+import { SimpleSelect } from "../../Form/FormSelect/Simple";
 import { FilterOperators, IColumnFilterBag } from "./types";
 
 const FILTER_OPERATOR_LABELS: Record<FilterOperators, string> = {

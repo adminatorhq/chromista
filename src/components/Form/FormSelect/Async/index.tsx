@@ -2,16 +2,23 @@ import React from "react";
 import debounce from "lodash/debounce";
 import AsyncSelect from "react-select/async";
 import { makeGetRequest, useApi } from "@gothicgeeks/shared";
-import { ISelectData } from "../../../types";
-import { FormSelect, IBaseFormSelect, StyledSelect } from "../FormSelect";
-import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
-import { FormSkeleton, FormSkeletonSchema } from "../../Skeleton";
-import { ErrorAlert } from "../../Alert";
+import styled from "styled-components";
+import { ISelectData } from "../../../../types";
+import { FormSelect } from "..";
+import { generateClassNames, wrapLabelAndError } from "../../_wrapForm";
+import { FormSkeleton, FormSkeletonSchema } from "../../../Skeleton";
+import { ErrorAlert } from "../../../Alert";
+import { IBaseFormSelect } from "../types";
+import { SelectStyles } from "../styles";
 
 interface IProps extends IBaseFormSelect {
   url: string;
   limit?: number;
 }
+
+export const StyledSelect = styled(AsyncSelect)`
+  ${SelectStyles}
+`;
 
 const debouncedSearch = debounce(
   async (
@@ -56,7 +63,6 @@ export function AsyncFormSelect(props: IProps) {
   if (data.length >= limit) {
     return wrapLabelAndError(
       <StyledSelect
-        as={AsyncSelect}
         cacheOptions
         defaultOptions
         {...input}

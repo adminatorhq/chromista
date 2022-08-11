@@ -1,45 +1,17 @@
 import React from "react";
 import Select from "react-select";
 import styled from "styled-components";
-import { ISharedFormInput } from "./_types";
-import { generateClassNames, wrapLabelAndError } from "./_wrapForm";
-import { ISelectData } from "../../types";
-
-export interface IBaseFormSelect extends ISharedFormInput {
-  disabledOptions?: string[];
-  nullable?: boolean;
-  defaultLabel?: string;
-}
+import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
+import { ISelectData } from "../../../types";
+import { SelectStyles, SharedSelectProps } from "./styles";
+import { IBaseFormSelect } from "./types";
 
 interface IFormSelect extends IBaseFormSelect {
   selectData: ISelectData[];
 }
 
-const sharedSelectProps = {
-  classNamePrefix: "react-select",
-};
-
 export const StyledSelect = styled(Select)`
-  .react-select__control {
-    &:hover {
-      border: 1px solid ${(props) => props.theme.colors.border};
-    }
-    &:focus {
-      color: ${(props) => props.theme.text.main};
-      background-color: ${(props) => props.theme.colors.white};
-      border-color: rgba(23, 97, 253, 0.5);
-      outline: 0;
-    }
-    .react-select__single-value {
-      color: ${(props) => props.theme.text.main};
-      font-size: 0.8125rem;
-    }
-    border: 1px solid ${(props) => props.theme.colors.border};
-  }
-
-  &.invalid {
-    border-color: ${(props) => props.theme.colors.danger} !important;
-  }
+  ${SelectStyles}
 `;
 
 interface IFormMultiSelect {
@@ -55,7 +27,7 @@ export function FormMultiSelect({
 }: IFormMultiSelect) {
   return (
     <Select
-      classNamePrefix={sharedSelectProps.classNamePrefix}
+      classNamePrefix={SharedSelectProps.classNamePrefix}
       closeMenuOnSelect={false}
       defaultValue={[]}
       isMulti
@@ -91,7 +63,7 @@ export const FormSelect: React.FC<IFormSelect> = (props) => {
   return wrapLabelAndError(
     <StyledSelect
       {...input}
-      classNamePrefix={sharedSelectProps.classNamePrefix}
+      classNamePrefix={SharedSelectProps.classNamePrefix}
       value={
         selectDataWithDefault.find(({ value }) => value === input.value) || {
           value: "",
@@ -130,7 +102,7 @@ export function FormNoValueSelect({
 }: IFormNoValueSelect) {
   return (
     <Select
-      classNamePrefix={sharedSelectProps.classNamePrefix}
+      classNamePrefix={SharedSelectProps.classNamePrefix}
       value={{ value: "", label: "" }}
       onChange={({ value, label }: any) => {
         onChange(value, label);
