@@ -63,7 +63,7 @@ export function AsyncFormSelect(props: IProps) {
     }
 
     const isValueInFirstDataLoad = data.find(
-      ({ value }) => value === input.value
+      ({ value }: ISelectData) => value === input.value
     );
 
     if (isValueInFirstDataLoad) {
