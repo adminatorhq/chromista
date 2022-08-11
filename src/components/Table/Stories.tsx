@@ -72,13 +72,7 @@ export default {
         accessor: "author",
         filter: {
           _type: "list",
-          bag: {
-            onChange: action("change Author"),
-            selections: [
-              { id: "fb", name: "Facebook" },
-              { id: "ggl", name: "Google" },
-            ],
-          },
+          bag: "http://localhost:3000/roles",
         },
       },
       {

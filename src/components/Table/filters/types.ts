@@ -8,10 +8,7 @@ export type TableFilterType =
   | { _type: "status"; bag: ISystemStatusForDisplay[] }
   | {
       _type: "list";
-      bag: {
-        onChange: (word: string) => void;
-        selections: { id: string; name: string }[];
-      };
+      bag: string;
     };
 
 export interface IFilterProps<T> {

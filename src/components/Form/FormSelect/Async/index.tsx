@@ -9,7 +9,7 @@ import { FormSelect } from "..";
 import { generateClassNames, wrapLabelAndError } from "../../_wrapForm";
 import { ErrorAlert } from "../../../Alert";
 import { IBaseFormSelect } from "../types";
-import { SelectStyles } from "../styles";
+import { SelectStyles, SharedSelectProps } from "../styles";
 
 interface IProps extends IBaseFormSelect {
   url: string;
@@ -59,7 +59,11 @@ export function AsyncFormSelect(props: IProps) {
       return valueLabel;
     }
 
-    if (isLoading || !input.value) {
+    if (isLoading) {
+      return "Loading Options...";
+    }
+
+    if (!input.value) {
       return defaultLabel || `--- Select ${formLabel} ---`;
     }
 
@@ -88,7 +92,7 @@ export function AsyncFormSelect(props: IProps) {
           input.onChange(nullable && !value ? null : value);
           setValueLabel(label);
         }}
-        classNamePrefix="react-select"
+        classNamePrefix={SharedSelectProps.classNamePrefix}
         isDisabled={disabled}
         isLoading={isLoading}
         className={generateClassNames(meta)}
@@ -104,4 +108,40 @@ export function AsyncFormSelect(props: IProps) {
   }
 
   return <FormSelect {...props} selectData={data} />;
+}
+
+interface IFormMultiSelect {
+  url: string;
+  values: string[];
+  onChange: (values: string[]) => void;
+}
+
+export function AsyncFormMultiSelect({
+  url,
+  values = [],
+  onChange,
+}: IFormMultiSelect) {
+  const [cosmeticValues, setCosmeticValues] = useState<ISelectData[]>([]);
+  return (
+    <StyledSelect
+      cacheOptions
+      defaultOptions
+      classNamePrefix={SharedSelectProps.classNamePrefix}
+      closeMenuOnSelect={false}
+      defaultValue={values}
+      isMulti
+      value={cosmeticValues}
+      onChange={(newValues: unknown) => {
+        setCosmeticValues(newValues as ISelectData[]);
+        onChange(
+          (newValues as ISelectData[]).map(({ value }) => value as string)
+        );
+      }}
+      loadOptions={(inputValue) =>
+        new Promise((resolve) => {
+          debouncedSearch(inputValue, url, [], resolve);
+        })
+      }
+    />
+  );
 }

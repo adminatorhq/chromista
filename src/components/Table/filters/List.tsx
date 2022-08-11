@@ -1,15 +1,11 @@
 import React from "react";
 import { Filter } from "react-feather";
-import { mapIdAndNameToSelectData } from "../../Form/mappers";
-import { FormMultiSelect } from "../../Form/FormSelect";
 import { FilterWrapper } from "./_FilterWrapper";
 import { FilterOperators, IColumnFilterBag, IFilterProps } from "./types";
 import { RenderFilterOperator } from "./_FilterOperator";
+import { AsyncFormMultiSelect } from "../../Form/FormSelect/Async";
 
-export const FilterTableByListSelection = (bag: {
-  onChange: (word: string) => void;
-  selections: { id: string; name: string }[];
-}) =>
+export const FilterTableByListSelection = (bag: string) =>
   function FilterTableByListSelectionImpl({
     column: { filterValue, setFilter },
   }: IFilterProps<IColumnFilterBag<string[]>>) {
@@ -27,8 +23,8 @@ export const FilterTableByListSelection = (bag: {
           setFilter={setFilter}
         />
         <div style={{ minWidth: "250px" }}>
-          <FormMultiSelect
-            selectData={mapIdAndNameToSelectData(bag.selections)}
+          <AsyncFormMultiSelect
+            url={bag}
             values={filterValue?.value || []}
             onChange={(value) => {
               setFilter({
