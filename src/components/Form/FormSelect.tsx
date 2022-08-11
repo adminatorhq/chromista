@@ -19,7 +19,7 @@ const sharedSelectProps = {
   classNamePrefix: "react-select",
 };
 
-const StyledSelect = styled(Select)`
+export const StyledSelect = styled(Select)`
   .react-select__control {
     &:hover {
       border: 1px solid ${(props) => props.theme.colors.border};

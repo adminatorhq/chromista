@@ -13,6 +13,7 @@ import { FormDateInput } from "./FormDateInput";
 import { FormTextArea } from "./FormTextArea";
 import { FormSelect } from "./FormSelect";
 import { FormCodeEditor } from "./FormCodeEditor";
+import { AsyncFormSelect } from "./AsyncFormSelect";
 
 function DemoForm() {
   return (
@@ -95,6 +96,17 @@ function DemoForm() {
                   { label: "Bar", value: "bar" },
                 ]}
                 label="Example Select Input"
+                {...renderProps}
+              />
+            )}
+          </Field>
+
+          <Field name="asyncSelect" validateFields={[]}>
+            {(renderProps) => (
+              <AsyncFormSelect
+                url="http://localhost:3000/roles"
+                label="Async Select Input"
+                limit={2}
                 {...renderProps}
               />
             )}
