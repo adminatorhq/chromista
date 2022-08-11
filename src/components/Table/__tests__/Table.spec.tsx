@@ -70,13 +70,7 @@ const DEFAULT_TABLE_PROPS: IProps = {
       accessor: "author",
       filter: {
         _type: "list",
-        bag: {
-          onChange: jest.fn(),
-          selections: [
-            { id: "fb", name: "Facebook" },
-            { id: "ggl", name: "Google" },
-          ],
-        },
+        bag: "/test",
       },
     },
     {
