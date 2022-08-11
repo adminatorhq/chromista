@@ -58,8 +58,9 @@ export function AsyncFormSelect(props: IProps) {
     if (valueLabel) {
       return valueLabel;
     }
-    if (isLoading) {
-      return "";
+
+    if (isLoading || !input.value) {
+      return defaultLabel || `--- Select ${formLabel} ---`;
     }
 
     const isValueInFirstDataLoad = data.find(
@@ -70,12 +71,8 @@ export function AsyncFormSelect(props: IProps) {
       return isValueInFirstDataLoad?.label;
     }
 
-    if (!input.value) {
-      return defaultLabel || `--- Select ${formLabel} ---`;
-    }
-
     return await makeGetRequest(`${url}/${input.value}/reference`);
-  }, [url, valueLabel]);
+  }, [url, valueLabel, isLoading]);
 
   if (error) {
     return <ErrorAlert message={error} />;
