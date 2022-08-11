@@ -12,6 +12,7 @@ import { FormButton } from "../Button/FormButton";
 import { FormDateInput } from "./FormDateInput";
 import { FormTextArea } from "./FormTextArea";
 import { FormSelect } from "./FormSelect";
+import { FormCodeEditor } from "./FormCodeEditor";
 
 function DemoForm() {
   return (
@@ -80,7 +81,7 @@ function DemoForm() {
                     action: action("right click actions"),
                   },
                 ]}
-                label="With right action"
+                label="With multiple right action"
                 {...renderProps}
               />
             )}
@@ -133,6 +134,16 @@ function DemoForm() {
           <Field name="richText" validateFields={[]}>
             {(renderProps) => (
               <FormRichTextArea label="Example Rich Text" {...renderProps} />
+            )}
+          </Field>
+
+          <Field name="code" validateFields={[]}>
+            {(renderProps) => (
+              <FormCodeEditor
+                language="javascript"
+                label="Javascript"
+                {...renderProps}
+              />
             )}
           </Field>
 

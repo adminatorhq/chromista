@@ -38,6 +38,14 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box
 }
 
+:root {
+  --adminator-text-main: #656d9a;
+  
+  --adminator-colors-white: #ffffff;
+  --adminator-colors-theme: #0c213a;
+  --adminator-colors-primary: #1761fd;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;

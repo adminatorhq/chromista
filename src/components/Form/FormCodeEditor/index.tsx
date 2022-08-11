@@ -9,7 +9,7 @@ import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 
 interface IFormCodeEditor extends ISharedFormInput {
-  language: "javascript" | "json";
+  language?: "javascript";
 }
 
 const StyledWrapper = styled.div`
@@ -107,7 +107,9 @@ export const FormCodeEditor: React.FC<IFormCodeEditor> = (formInput) => {
       <Editor
         {...inputProps}
         onValueChange={inputProps.onChange}
-        highlight={(code) => highlight(code, languages[formInput.language])}
+        highlight={(code) =>
+          highlight(code, languages[formInput.language || "javascript"])
+        }
         padding={4}
         style={{
           fontFamily: '"Fira code", "Fira Mono", monospace',

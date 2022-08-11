@@ -5,13 +5,13 @@ import { ISharedFormInput } from "./_types";
 import { generateClassNames, wrapLabelAndError } from "./_wrapForm";
 import { ISelectData } from "../../types";
 
-interface ISelectOptions extends ISharedFormInput {
+export interface IBaseFormSelect extends ISharedFormInput {
   disabledOptions?: string[];
   nullable?: boolean;
   defaultLabel?: string;
 }
 
-interface IFormSelect extends ISelectOptions {
+interface IFormSelect extends IBaseFormSelect {
   selectData: ISelectData[];
 }
 
@@ -70,7 +70,7 @@ export function FormMultiSelect({
   );
 }
 
-export const FormSelect: React.FC<IFormSelect> = (formInput) => {
+export const FormSelect: React.FC<IFormSelect> = (props) => {
   const {
     input,
     selectData,
@@ -80,7 +80,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput) => {
     disabledOptions,
     nullable,
     defaultLabel,
-  } = formInput;
+  } = props;
   const selectDataWithDefault = [
     {
       value: nullable ? null : "",
@@ -113,7 +113,7 @@ export const FormSelect: React.FC<IFormSelect> = (formInput) => {
         );
       }}
     />,
-    formInput
+    props
   );
 };
 
