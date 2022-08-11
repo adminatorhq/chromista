@@ -11,15 +11,15 @@ import { FormRichTextArea } from "./FormRichTextArea";
 import { FormButton } from "../Button/FormButton";
 import { FormDateInput } from "./FormDateInput";
 import { FormTextArea } from "./FormTextArea";
-import { FormSelect } from "./FormSelect";
+import { FormMultiSelect, FormSelect } from "./FormSelect";
 import { FormCodeEditor } from "./FormCodeEditor";
-import { AsyncFormSelect } from "./AsyncFormSelect";
+import { AsyncFormSelect } from "./FormSelect/Async";
 
 function DemoForm() {
   return (
     <Form
       onSubmit={(values: unknown) => action(values as string)}
-      initialValues={{}}
+      // initialValues={{ asyncSelect: "Tunde" }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <Field name="checkbox" validateFields={[]}>
@@ -112,18 +112,21 @@ function DemoForm() {
             )}
           </Field>
 
-          {/* <Field name="foo7" validateFields={[]}>
-              {renderProps => (
-                <FormMultiSelect
-                  selectData={[
-                    { label: 'Foo', value: 'foo' },
-                    { label: 'Bar', value: 'bar' },
-                  ]}
-                  values={renderProps.input.value}
-                  onChange={renderProps.input.onChange}
-                />
-              )}
-            </Field> */}
+          <Field name="foo7" validateFields={[]}>
+            {(renderProps) => (
+              <FormMultiSelect
+                selectData={[
+                  { label: "Foo", value: "foo" },
+                  { label: "Bar", value: "bar" },
+                  { label: "Baz", value: "baz" },
+                  { label: "Noop", value: "noop" },
+                  { label: "Dupe", value: "dupe" },
+                ]}
+                values={renderProps.input.value || ["foo", "bar"]}
+                onChange={renderProps.input.onChange}
+              />
+            )}
+          </Field>
 
           <Field name="dateInput" validateFields={[]}>
             {(renderProps) => (

@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import debounce from "lodash/debounce";
 import AsyncSelect from "react-select/async";
 import { makeGetRequest, useApi } from "@gothicgeeks/shared";
 import styled from "styled-components";
+import { useAsync } from "react-use";
 import { ISelectData } from "../../../../types";
 import { FormSelect } from "..";
 import { generateClassNames, wrapLabelAndError } from "../../_wrapForm";
-import { FormSkeleton, FormSkeletonSchema } from "../../../Skeleton";
 import { ErrorAlert } from "../../../Alert";
 import { IBaseFormSelect } from "../types";
 import { SelectStyles } from "../styles";
@@ -28,7 +28,7 @@ const debouncedSearch = debounce(
     resolve: (value: any) => void
   ) => {
     const toReturn = (
-      await makeGetRequest(`${url}?value_like=${inputValue}`)
+      await makeGetRequest(`${url}?search=${inputValue}`)
     ).filter(
       ({ value }: ISelectData) => !disabledOptions.includes(value as string)
     );
@@ -44,17 +44,38 @@ export function AsyncFormSelect(props: IProps) {
     limit = 50,
     meta,
     disabled,
-    // label: formLabel,
+    label: formLabel,
     disabledOptions = [],
     nullable,
-    // defaultLabel,
+    defaultLabel,
   } = props;
+
+  const [valueLabel, setValueLabel] = useState("");
 
   const { isLoading, error, data = [] } = useApi<ISelectData[]>(url);
 
-  if (isLoading) {
-    return <FormSkeleton schema={[FormSkeletonSchema.Input]} />;
-  }
+  const valueLabelToUse = useAsync(async () => {
+    if (valueLabel) {
+      return valueLabel;
+    }
+    if (isLoading) {
+      return "";
+    }
+
+    const isValueInFirstDataLoad = data.find(
+      ({ value }) => value === input.value
+    );
+
+    if (isValueInFirstDataLoad) {
+      return isValueInFirstDataLoad?.label;
+    }
+
+    if (!input.value) {
+      return defaultLabel || `--- Select ${formLabel} ---`;
+    }
+
+    return await makeGetRequest(`${url}/${input.value}/reference`);
+  }, [url, valueLabel]);
 
   if (error) {
     return <ErrorAlert message={error} />;
@@ -66,24 +87,17 @@ export function AsyncFormSelect(props: IProps) {
         cacheOptions
         defaultOptions
         {...input}
-        onChange={({ value }: any) => {
+        onChange={({ value, label }: any) => {
           input.onChange(nullable && !value ? null : value);
+          setValueLabel(label);
         }}
         classNamePrefix="react-select"
         isDisabled={disabled}
+        isLoading={isLoading}
         className={generateClassNames(meta)}
-        value={{ value: input.value, label: "Selected Value" }}
+        value={{ value: input.value, label: valueLabelToUse.value }}
         loadOptions={(inputValue) =>
           new Promise((resolve) => {
-            if (inputValue.length < 3) {
-              resolve([
-                {
-                  value: "",
-                  label: "Input three or more characters to start searching",
-                },
-              ]);
-              return;
-            }
             debouncedSearch(inputValue, url, disabledOptions, resolve);
           })
         }
