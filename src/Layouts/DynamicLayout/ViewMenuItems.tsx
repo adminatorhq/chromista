@@ -15,6 +15,7 @@ export function ViewMenuItems({ viewMenuItems }: Props) {
         name: title,
         ...rest,
       }))}
+      searchKeywordsField="searchKeywordsField"
       error={viewMenuItems?.error}
       render={({ name, link, action }) => (
         <SectionListItem label={name} to={link} onClick={action} key={name} />

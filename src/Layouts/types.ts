@@ -11,6 +11,7 @@ export interface ISideBarNavigation {
 
 export interface INavigationMenuItems {
   title: string;
+  searchKeywordsField?: string;
   link?: string;
   action?: () => void;
 }
