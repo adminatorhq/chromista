@@ -21,7 +21,7 @@ const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
   display: block;
   margin-left: ${(props) => (props.isSidebarOpen ? 350 : 50)}px;
   width: calc(100% - ${(props) => (props.isSidebarOpen ? 350 : 50)}px);
-  background: #edf0f1;
+  background: ${(props) => props.theme.colors.appBackground};
 `;
 
 export function DynamicLayout({ children, selectionView }: IProps) {

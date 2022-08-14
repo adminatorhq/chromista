@@ -1419,9 +1419,9 @@
     eslint-plugin-testing-library "^5.5.1"
     prettier "^2.7.1"
 
-"@gothicgeeks/shared@git+ssh://git@github.com:thrownullexception/shared.git#c9983b74541f3e4fac14966938738ff4be9569f7":
-  version "0.2.41"
-  resolved "git+ssh://git@github.com:thrownullexception/shared.git#c9983b74541f3e4fac14966938738ff4be9569f7"
+"@gothicgeeks/shared@git+ssh://git@github.com:thrownullexception/shared.git#17b4f71328de1e6a612978a0f614466140e0ca5f":
+  version "0.2.45"
+  resolved "git+ssh://git@github.com:thrownullexception/shared.git#17b4f71328de1e6a612978a0f614466140e0ca5f"
   dependencies:
     "@types/lodash" "^4.14.182"
     "@types/nprogress" "^0.2.0"

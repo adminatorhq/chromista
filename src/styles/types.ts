@@ -4,6 +4,7 @@ export type ColorTypes =
   | "danger"
   | "warning"
   | "success"
+  | "appBackground"
   | "theme"
   | "border"
   | "softBackground";

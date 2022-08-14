@@ -21,6 +21,7 @@ export const themeContext: DefaultTheme = {
   },
   colors: {
     white: "#fff",
+    appBackground: "#edf0f1",
     theme: "#0c213a",
     primary: "#1761fd",
     border: "#e3ebf6",
