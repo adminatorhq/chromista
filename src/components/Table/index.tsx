@@ -4,7 +4,11 @@ import React, { useEffect, useMemo, ReactNode } from "react";
 import { useTable, usePagination, useSortBy, useFilters } from "react-table";
 import classnames from "classnames";
 import styled from "styled-components";
-import { IBEPaginatedDataState, PaginatedData } from "@gothicgeeks/shared";
+import {
+  IBEPaginatedDataState,
+  IFEPaginatedDataState,
+  PaginatedData,
+} from "@gothicgeeks/shared";
 import { UseQueryResult } from "react-query";
 import { ComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";
@@ -147,8 +151,10 @@ export interface IProps {
     UseQueryResult<PaginatedData<Record<string, unknown>>, unknown>,
     "data" | "isLoading" | "error" | "isPreviousData"
   >;
-  paginatedDataState: IBEPaginatedDataState;
-  setPaginatedDataState: (params: IBEPaginatedDataState) => void;
+  paginatedDataState: IBEPaginatedDataState | IFEPaginatedDataState<any>;
+  setPaginatedDataState: (
+    params: IBEPaginatedDataState | IFEPaginatedDataState<any>
+  ) => void;
 }
 
 export function Table({

@@ -121,7 +121,9 @@ export function AsyncFormMultiSelect({
   values = [],
   onChange,
 }: IFormMultiSelect) {
-  const [cosmeticValues, setCosmeticValues] = useState<ISelectData[]>([]);
+  const [cosmeticValues, setCosmeticValues] = useState<ISelectData[]>(
+    values.map((value) => ({ value, label: "TODO" }))
+  );
   return (
     <StyledSelect
       cacheOptions

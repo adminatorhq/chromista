@@ -112,8 +112,8 @@ export const FormCodeEditor: React.FC<IFormCodeEditor> = (formInput) => {
         }
         padding={4}
         style={{
+          height: "275px",
           fontFamily: '"Fira code", "Fira Mono", monospace',
-          fontSize: 11,
         }}
       />
     </StyledWrapper>,
