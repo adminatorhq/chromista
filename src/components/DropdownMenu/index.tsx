@@ -135,6 +135,10 @@ export function DropDownMenu({
     setCurrentMenuItem(menuItems[0]);
   }, [JSON.stringify(menuItems)]);
 
+  if (menuItems.length === 0) {
+    return null;
+  }
+
   const onMenuItemClick = (menuIndex: number) => {
     const menuItem = menuItems[menuIndex];
     toggleDropDown();
@@ -143,10 +147,6 @@ export function DropDownMenu({
   };
 
   const { IconComponent, onClick, label } = currentMenuItem;
-
-  if (menuItems.length === 0) {
-    return null;
-  }
 
   const currentItem = (
     <>
