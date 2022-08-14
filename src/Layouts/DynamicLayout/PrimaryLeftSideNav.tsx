@@ -2,11 +2,11 @@ import React, { useMemo } from "react";
 import { BaseLeftSideNav } from "../BaseLeftSideNav";
 import { RenderNavigation } from "../Navigation";
 import { useSideBarStore } from "../sidebar.store";
-import { ISideBarNavigation } from "../types";
+import { ISelectionView } from "../types";
 import { useNestedNavStore } from "./nested-nav.store";
 
 interface IProps {
-  navigation: ISideBarNavigation[];
+  navigation: ISelectionView[];
 }
 
 export function PrimaryLeftSideNav({ navigation }: IProps) {

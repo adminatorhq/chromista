@@ -4,11 +4,7 @@ import Link from "next/link";
 import styled, { css } from "styled-components";
 import { StyledListGroupFlush } from "../../Lists";
 import { FormButton } from "../../Button/FormButton";
-
-export enum OrderingDirection {
-  Up = "up",
-  Down = "down",
-}
+import { Stack } from "../../../ui-blocks";
 
 const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   width: 14px;
@@ -49,6 +45,7 @@ const StyledListItem = styled.button<{
   padding: 12px 0.75rem;
   background-color: ${(props) => props.theme.colors.white};
   border-left: 0;
+  border: 1px solid transparent;
   border-right: 0;
   border-bottom: 1px solid ${(props) => props.theme.colors.border};
 
@@ -116,17 +113,21 @@ const StyledListItem = styled.button<{
   }
 `;
 
-interface ISectionListItem {
+export interface IProps {
   label: string;
-  action: string | (() => void);
+  action?: string | (() => void);
   size?: "xs";
   subLabel?: string;
   IconComponent?: Icon;
   disabled?: boolean;
   active?: boolean;
+  toggle?: {
+    selected: boolean;
+    onChange: () => void;
+  };
   actionButtons?: {
     isInverse: boolean;
-    text: string;
+    label: string;
     onClick: () => void;
     isMakingRequest: boolean;
   }[];
@@ -140,43 +141,50 @@ export function SectionListItem({
   active,
   action,
   size,
-  actionButtons,
-}: ISectionListItem) {
+  actionButtons = [],
+}: IProps) {
   const content = (
-    <>
-      <span>
+    <Stack>
+      <Stack align="center">
         {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}{" "}
-        {label}
-        {subLabel ? (
-          <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
-        ) : null}
-      </span>
-      <span>
-        {actionButtons ? (
-          <>
-            {actionButtons.map(
-              ({ text, isInverse, onClick: onClick$1, isMakingRequest }) => (
-                <FormButton
-                  text={text}
-                  key={text}
-                  size="xs"
-                  isMakingRequest={isMakingRequest}
-                  isInverse={isInverse}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    onClick$1();
-                  }}
-                />
-              )
-            )}
-          </>
-        ) : null}
-        {!(disabled || typeof action !== "string") ? (
-          <StyledChevronRight $active={active} />
-        ) : null}
-      </span>
-    </>
+        <div>
+          {label}
+          {subLabel ? (
+            <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
+          ) : null}
+        </div>
+      </Stack>
+      <Stack justify="end" width="initial">
+        <>
+          {actionButtons.map(
+            ({
+              label: buttonLabel,
+              isInverse,
+              onClick: onClick$1,
+              isMakingRequest,
+            }) => (
+              <FormButton
+                text={buttonLabel}
+                key={buttonLabel}
+                size="xs"
+                isMakingRequest={isMakingRequest}
+                isInverse={isInverse}
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  onClick$1();
+                }}
+              />
+            )
+          )}
+          {!(disabled || typeof action !== "string") ? (
+            <div>
+              <StyledChevronRight $active={active} />
+            </div>
+          ) : null}
+        </>
+      </Stack>
+    </Stack>
   );
 
   const buttonProps = {
@@ -199,7 +207,7 @@ export function SectionListItem({
     <StyledListItem
       onClick={(e: { stopPropagation: () => void }) => {
         e.stopPropagation();
-        action();
+        action?.();
       }}
       {...buttonProps}
     >

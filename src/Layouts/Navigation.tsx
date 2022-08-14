@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 import { ChevronRight } from "react-feather";
 import Link from "next/link";
 import { StringUtils } from "@gothicgeeks/shared";
-import { ISideBarNavigation } from "./types";
+import { ISelectionView } from "./types";
 
 interface IRenderNavigation {
-  navigation: Array<ISideBarNavigation & { sideBarAction: () => void }>;
+  navigation: Array<ISelectionView & { sideBarAction: () => void }>;
   isSidebarOpen: boolean;
   label?: string;
   isSubMenu?: true;

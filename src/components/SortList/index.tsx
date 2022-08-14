@@ -105,7 +105,6 @@ export function SortList<T extends { value: string; label?: string }>({
             <div className="item">
               <SectionListItem
                 IconComponent={Move}
-                action={() => {}}
                 label={item.label || item.value}
               />
             </div>
