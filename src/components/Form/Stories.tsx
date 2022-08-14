@@ -14,17 +14,29 @@ import { FormTextArea } from "./FormTextArea";
 import { FormMultiSelect, FormSelect } from "./FormSelect";
 import { FormCodeEditor } from "./FormCodeEditor";
 import { AsyncFormSelect } from "./FormSelect/Async";
+import { FormSwitch } from "./FormSwitch";
 
 function DemoForm() {
   return (
     <Form
       onSubmit={(values: unknown) => action(values as string)}
-      // initialValues={{ asyncSelect: "Tunde" }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <Field name="checkbox" validateFields={[]}>
             {(renderProps) => (
               <FormCheckBox label="Example Checkbox Input" {...renderProps} />
+            )}
+          </Field>
+
+          <Field name="switch" validateFields={[]}>
+            {(renderProps) => (
+              <FormSwitch
+                name="switch"
+                value
+                onChange={action("")}
+                label="Example Form Switch Input"
+                {...renderProps}
+              />
             )}
           </Field>
 

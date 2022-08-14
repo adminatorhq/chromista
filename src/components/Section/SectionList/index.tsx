@@ -1,10 +1,11 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useId } from "react";
 import { ChevronRight, Icon } from "react-feather";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { StyledListGroupFlush } from "../../Lists";
 import { FormButton } from "../../Button/FormButton";
 import { Stack } from "../../../ui-blocks";
+import { FormSwitch } from "../../Form/FormSwitch";
 
 const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   width: 14px;
@@ -67,12 +68,6 @@ const StyledListItem = styled.button<{
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
     border-top: 0;
-  }
-
-  &:last-child {
-    // border-bottom-right-radius: inherit;
-    // border-bottom-left-radius: inherit;
-    // border-bottom: 0;
   }
 
   ${({ disabled }) =>
@@ -139,10 +134,12 @@ export function SectionListItem({
   disabled,
   subLabel,
   active,
+  toggle,
   action,
   size,
   actionButtons = [],
 }: IProps) {
+  const id = useId();
   const content = (
     <Stack>
       <Stack align="center">
@@ -182,6 +179,13 @@ export function SectionListItem({
               <StyledChevronRight $active={active} />
             </div>
           ) : null}
+          {toggle && (
+            <FormSwitch
+              name={id}
+              onChange={toggle.onChange}
+              value={toggle.selected}
+            />
+          )}
         </>
       </Stack>
     </Stack>

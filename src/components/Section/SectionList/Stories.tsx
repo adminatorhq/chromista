@@ -18,6 +18,9 @@ export default {
 const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <SectionListItem {...args} />
+    <SectionListItem {...args} />
+    <SectionListItem {...args} />
+    <SectionListItem {...args} />
   </AppWrapper>
 );
 
@@ -82,4 +85,16 @@ WithActionButtons.args = {
       isMakingRequest: true,
     },
   ],
+};
+
+export const WithToggleSelected = Template.bind({});
+WithToggleSelected.args = {
+  action: undefined,
+  toggle: { selected: true, onChange: action("onChange") },
+};
+
+export const WithToggleNotSelected = Template.bind({});
+WithToggleNotSelected.args = {
+  action: undefined,
+  toggle: { selected: false, onChange: action("onChange") },
 };

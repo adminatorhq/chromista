@@ -45,8 +45,6 @@ const SIZES_CONFIG: Record<Sizes, ISizeConfig> = {
   },
 };
 
-const DivBlock = styled.div``;
-
 const Root = styled.label<{ size: Sizes }>`
   position: relative;
   display: inline-block;
@@ -118,24 +116,22 @@ export function FormSwitch(props: IProps) {
   }, [value, onChange]);
 
   return (
-    <DivBlock>
-      <Root htmlFor={name} size={size}>
-        <Stack spacing={SIZES_CONFIG[size].labelSpacing} align="center">
-          <Input
-            id={name}
-            type="checkbox"
-            checked={value}
-            disabled={disabled}
-            $inputSize={size}
-            onChange={() => {
-              onChange(!value);
-            }}
-            {...ariaProps}
-          />
-          <Slider size={size} />
-          <Text size={SIZES_CONFIG[size].fontSize}>{label}</Text>
-        </Stack>
-      </Root>
-    </DivBlock>
+    <Root htmlFor={name} size={size}>
+      <Stack spacing={SIZES_CONFIG[size].labelSpacing} align="center">
+        <Input
+          id={name}
+          type="checkbox"
+          checked={value}
+          disabled={disabled}
+          $inputSize={size}
+          onChange={() => {
+            onChange(!value);
+          }}
+          {...ariaProps}
+        />
+        <Slider size={size} />
+        <Text size={SIZES_CONFIG[size].fontSize}>{label}</Text>
+      </Stack>
+    </Root>
   );
 }
