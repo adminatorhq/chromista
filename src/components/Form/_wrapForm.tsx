@@ -55,19 +55,18 @@ export const wrapLabelAndError = (
             </>
           ) : null}
         </div>
-        <div>
+        <Stack flex={1} justify="end">
           {rightActions.map((rightAction) => (
             <SoftButton
               key={rightAction.label}
               action={rightAction.action}
               size="xs"
-              pushLeft
               type="button"
               icon="settings"
               label={rightAction.label}
             />
           ))}
-        </div>
+        </Stack>
       </Stack>
       {formComponent}
       <StyledFormFeedback sm={sm}>

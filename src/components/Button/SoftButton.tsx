@@ -12,7 +12,6 @@ interface ISoftButton {
   icon?: SoftButtonIconTypes;
   size?: "sm" | "xs";
   block?: true;
-  pushLeft?: true;
   disabled?: boolean;
   color?: ColorTypes;
   action: string | (() => void);
@@ -31,7 +30,6 @@ const StyledLabel = styled.span<{ $hasLabel: boolean }>`
 `;
 
 export function SoftButton({
-  pushLeft,
   label,
   block,
   color,
@@ -57,7 +55,6 @@ export function SoftButton({
   );
 
   const buttonProps = {
-    pushLeft,
     className,
     size,
     block,

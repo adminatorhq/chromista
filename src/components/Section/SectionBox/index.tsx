@@ -14,7 +14,7 @@ import {
 } from "../../../styles/Card";
 import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
-import { Spacer, Text } from "../../../ui-blocks";
+import { Spacer, Stack, Text } from "../../../ui-blocks";
 
 interface IProps {
   title: string;
@@ -106,50 +106,50 @@ export function SectionBox({
                 </StyledCardTitle>
                 {description ? <Tooltip id="section-box" /> : null}
               </StyledGrid.Col>
-              {newItemLink ||
-              deleteAction ||
-              iconButtons ||
-              selection ||
-              lastUpdated ? (
-                <StyledGrid.Col auto>
-                  {selection ? (
-                    <SimpleSelect
-                      options={selection.options}
-                      onChange={(newSelectionValue: string) => {
-                        setSelectionValue(newSelectionValue);
-                        selection.onChange(newSelectionValue);
-                      }}
-                      value={selectionValue}
-                    />
-                  ) : null}
-                  {lastUpdated ? (
-                    <Text color="muted" as="span">
-                      Last modified{" "}
-                      {TimeFilters.formatTime(new Date(lastUpdated), "L")}
-                    </Text>
-                  ) : null}
-                  {iconButtons
-                    ? iconButtons.map(({ action, label, icon }) => (
-                        <SoftButton
-                          key={icon || label}
-                          action={action}
-                          label={label}
-                          icon={icon}
-                          pushLeft
-                        />
-                      ))
-                    : null}
-                  {newItemLink ? (
-                    <SoftButton action={newItemLink} icon="add" pushLeft />
-                  ) : null}
-                  {deleteAction && !isLoading ? (
-                    <StyledDeleteButton
-                      onDelete={deleteAction}
-                      isMakingDeleteRequest={isMakingDeleteRequest}
-                    />
-                  ) : null}
-                </StyledGrid.Col>
-              ) : null}
+              <Stack>
+                {newItemLink ||
+                deleteAction ||
+                iconButtons ||
+                selection ||
+                lastUpdated ? (
+                  <StyledGrid.Col auto>
+                    {selection ? (
+                      <SimpleSelect
+                        options={selection.options}
+                        onChange={(newSelectionValue: string) => {
+                          setSelectionValue(newSelectionValue);
+                          selection.onChange(newSelectionValue);
+                        }}
+                        value={selectionValue}
+                      />
+                    ) : null}
+                    {lastUpdated ? (
+                      <Text color="muted" as="span">
+                        Last modified{" "}
+                        {TimeFilters.formatTime(new Date(lastUpdated), "L")}
+                      </Text>
+                    ) : null}
+                    {iconButtons
+                      ? iconButtons.map(({ action, label, icon }) => (
+                          <SoftButton
+                            key={icon || label}
+                            action={action}
+                            label={label}
+                          />
+                        ))
+                      : null}
+                    {newItemLink ? (
+                      <SoftButton action={newItemLink} icon="add" />
+                    ) : null}
+                    {deleteAction && !isLoading ? (
+                      <StyledDeleteButton
+                        onDelete={deleteAction}
+                        isMakingDeleteRequest={isMakingDeleteRequest}
+                      />
+                    ) : null}
+                  </StyledGrid.Col>
+                ) : null}
+              </Stack>
             </StyledCenterRow>
           </StyledCardHeader>
         ) : null}

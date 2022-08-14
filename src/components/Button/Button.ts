@@ -6,7 +6,6 @@ export interface IStyledBaseButton {
   block?: boolean;
   size?: "sm" | "xs";
   color?: ColorTypes;
-  pushLeft?: true; // TODO remove all this rubbish
 }
 
 export const StyledBaseButton = styled.button<IStyledBaseButton>`
@@ -35,12 +34,6 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
     css`
       display: block;
       width: 100%;
-    `}
-
-  ${({ pushLeft }) =>
-    pushLeft &&
-    css`
-      margin-left: 0.5rem;
     `}
 
   ${(props) =>
