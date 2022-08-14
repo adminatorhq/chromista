@@ -23,12 +23,12 @@ export function PrimaryLeftSideNav({ navigation }: IProps) {
 
   const navigationToUse = useMemo(
     () =>
-      navigation.map(({ link, title, ...rest }) => ({
+      navigation.map(({ action, title, ...rest }) => ({
         ...rest,
-        link,
+        action,
         title,
-        action: () => {
-          if (link) {
+        sideBarAction: () => {
+          if (typeof action === "string") {
             closeFullSideBar();
           } else {
             selectMiniSideBar(title);

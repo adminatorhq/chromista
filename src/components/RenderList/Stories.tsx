@@ -1,6 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React from "react";
 import { Story } from "@storybook/react";
+import { actions } from "@storybook/addon-actions";
 import { RenderList, IProps } from ".";
 import { AppWrapper } from "../../AppWrapper";
 import { SectionListItem } from "../Section/SectionList";
@@ -22,7 +23,11 @@ export default {
       { name: "Curie", age: 27 },
     ],
     render: ({ name }: IDemoType) => (
-      <SectionListItem label={name} key={name} />
+      <SectionListItem
+        label={name}
+        key={name}
+        action={() => actions(`Clicking on ${name}`)}
+      />
     ),
   },
 };

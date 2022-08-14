@@ -6,14 +6,13 @@ import { SoftButtonIconTypes } from "../components/Button/SoftButton.types";
 export interface ISideBarNavigation {
   title: string;
   icon: Icon;
-  link?: string | (() => void);
+  action: string | (() => void);
 }
 
 export interface INavigationMenuItems {
   title: string;
   searchKeywordsField?: string;
-  link?: string;
-  action?: () => void;
+  action: string | (() => void);
 }
 
 export interface ISelectionView extends ISideBarNavigation {

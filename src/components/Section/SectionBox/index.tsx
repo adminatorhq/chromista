@@ -2,7 +2,6 @@ import React, { useState, ReactNode } from "react";
 import * as StyledGrid from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { HelpCircle } from "react-feather";
-import { TimeFilters } from "@gothicgeeks/shared";
 import { DeleteButton } from "../../Button/DeleteButton";
 import { ISelectData } from "../../../types";
 import { SimpleSelect } from "../../Form";
@@ -16,7 +15,7 @@ import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
 import { Spacer, Stack, Text } from "../../../ui-blocks";
 
-interface IProps {
+export interface IProps {
   title: string;
   children: ReactNode;
   description?: string;
@@ -27,12 +26,11 @@ interface IProps {
     icon?: SoftButtonIconTypes;
   }[];
   selection?: { options: ISelectData[]; onChange: (value: string) => void };
-  deleteAction?: () => void;
+  deleteAction?: { action: () => void; isMakingDeleteRequest: boolean };
   backLink?: { label?: string; action: string | (() => void) };
-  isMakingDeleteRequest?: boolean;
   isLoading?: boolean;
   headLess?: boolean;
-  lastUpdated?: string;
+  sideText?: string;
 }
 
 const StyledCenterRow = styled(StyledGrid.Row)`
@@ -67,9 +65,8 @@ export function SectionBox({
   selection,
   backLink,
   deleteAction,
-  isMakingDeleteRequest,
   headLess,
-  lastUpdated,
+  sideText,
 }: IProps) {
   const [selectionValue, setSelectionValue] = useState("");
 
@@ -81,7 +78,7 @@ export function SectionBox({
             action={backLink.action}
             size="xs"
             icon="back"
-            label={backLink.label ? `Back To ${backLink.label}` : ""}
+            label={backLink.label}
           />
           <Spacer />
         </>
@@ -106,13 +103,13 @@ export function SectionBox({
                 </StyledCardTitle>
                 {description ? <Tooltip id="section-box" /> : null}
               </StyledGrid.Col>
-              <Stack>
-                {newItemLink ||
-                deleteAction ||
-                iconButtons ||
-                selection ||
-                lastUpdated ? (
-                  <StyledGrid.Col auto>
+              {newItemLink ||
+              deleteAction ||
+              iconButtons ||
+              selection ||
+              sideText ? (
+                <StyledGrid.Col auto>
+                  <Stack align="center">
                     {selection ? (
                       <SimpleSelect
                         options={selection.options}
@@ -123,10 +120,9 @@ export function SectionBox({
                         value={selectionValue}
                       />
                     ) : null}
-                    {lastUpdated ? (
-                      <Text color="muted" as="span">
-                        Last modified{" "}
-                        {TimeFilters.formatTime(new Date(lastUpdated), "L")}
+                    {sideText ? (
+                      <Text color="muted" size="5" as="span" textStyle="italic">
+                        {sideText}
                       </Text>
                     ) : null}
                     {iconButtons
@@ -135,6 +131,7 @@ export function SectionBox({
                             key={icon || label}
                             action={action}
                             label={label}
+                            icon={icon}
                           />
                         ))
                       : null}
@@ -143,13 +140,15 @@ export function SectionBox({
                     ) : null}
                     {deleteAction && !isLoading ? (
                       <StyledDeleteButton
-                        onDelete={deleteAction}
-                        isMakingDeleteRequest={isMakingDeleteRequest}
+                        onDelete={deleteAction.action}
+                        isMakingDeleteRequest={
+                          deleteAction.isMakingDeleteRequest
+                        }
                       />
                     ) : null}
-                  </StyledGrid.Col>
-                ) : null}
-              </Stack>
+                  </Stack>
+                </StyledGrid.Col>
+              ) : null}
             </StyledCenterRow>
           </StyledCardHeader>
         ) : null}

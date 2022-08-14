@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 import { ChevronRight } from "react-feather";
 import Link from "next/link";
 import { StringUtils } from "@gothicgeeks/shared";
-import { ISideBarNavigation } from "./FixedLayout/types";
+import { ISideBarNavigation } from "./types";
 
 interface IRenderNavigation {
-  navigation: ISideBarNavigation[];
+  navigation: Array<ISideBarNavigation & { sideBarAction: () => void }>;
   isSidebarOpen: boolean;
   label?: string;
   isSubMenu?: true;
@@ -115,8 +115,8 @@ export function RenderNavigation({
       {label && isSidebarOpen && navigation.length ? (
         <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
       ) : null}
-      {navigation.map(({ title, link, icon, action }) => {
-        const isActive = currentLink === link;
+      {navigation.map(({ title, icon, action, sideBarAction }) => {
+        const isActive = currentLink === action;
         const content = (
           <>
             <div>
@@ -142,11 +142,11 @@ export function RenderNavigation({
         );
         return (
           <StyledLeftSideNavMenuList key={title}>
-            {typeof link === "string" ? (
-              <Link href={link || ""} passHref>
+            {typeof action === "string" ? (
+              <Link href={action || ""} passHref>
                 <StyledLeftSideNavMenuListAnchor
                   $isSubMenu={isSubMenu}
-                  onClick={() => action?.()}
+                  onClick={() => sideBarAction?.()}
                 >
                   {content}
                 </StyledLeftSideNavMenuListAnchor>
@@ -157,8 +157,8 @@ export function RenderNavigation({
                 $isActive={isActive}
                 as={StyledLinkLikeButton}
                 onClick={() => {
-                  link?.();
                   action?.();
+                  sideBarAction?.();
                 }}
               >
                 {content}

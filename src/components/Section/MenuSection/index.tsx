@@ -6,18 +6,17 @@ import { SectionListItem } from "../SectionList";
 
 interface IMenuItem {
   name: string;
-  link: string;
-  action?: () => void;
+  action: string | (() => void);
   IconComponent?: Icon;
   disabled?: boolean;
 }
 
-interface IMenuSection {
+export interface IProps {
   menuItems: IMenuItem[];
   currentMenuItem?: string;
 }
 
-export function MenuSection({ menuItems, currentMenuItem }: IMenuSection) {
+export function MenuSection({ menuItems, currentMenuItem }: IProps) {
   return (
     <SectionBox title="" headLess>
       <RenderList
@@ -28,13 +27,14 @@ export function MenuSection({ menuItems, currentMenuItem }: IMenuSection) {
         render={(menuItem) => (
           <SectionListItem
             label={menuItem.name}
-            onClick={menuItem.action}
-            toNoWhere={menuItem.action ? true : undefined}
-            active={menuItem.link.includes(`${currentMenuItem}`)}
+            action={menuItem.action}
+            active={(typeof menuItem.action === "string"
+              ? menuItem.action
+              : ""
+            ).includes(`${currentMenuItem}`)}
             disabled={!!menuItem.disabled}
             key={menuItem.name}
             IconComponent={menuItem.IconComponent}
-            to={menuItem.link}
           />
         )}
       />

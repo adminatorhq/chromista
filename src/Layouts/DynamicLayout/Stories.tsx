@@ -82,7 +82,7 @@ export default {
       {
         title: "No action just links",
         icon: HardDrive,
-        link: "/foo",
+        action: "/foo",
         description: "Some Description here",
       },
     ],

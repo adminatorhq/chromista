@@ -53,7 +53,7 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
 
   if (currentMiniSideBar) {
     currentSelection = selectionView.find(
-      ({ link }) => link === currentMiniSideBar
+      ({ action }) => action === currentMiniSideBar
     );
   }
 
@@ -86,10 +86,10 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
   return (
     <Root show={!!currentMiniSideBar && isFullSideBarOpen}>
       <StyledHideScrollbar>
-        {selectionView.map(({ view, link, title, viewMenuItems }) => {
-          if (!view && !viewMenuItems && !link) {
+        {selectionView.map(({ view, action, title, viewMenuItems }) => {
+          if (!view && !viewMenuItems && !action) {
             throw new Error(
-              "Please pass what to render in the view, The view` or `viewMenuItems` is required to do this or pass the `link` prop to just go to a page"
+              "Please pass what to render in the view, The view` or `viewMenuItems` is required to do this or pass the `action` prop to just go to a page"
             );
           }
           return (
