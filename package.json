@@ -1,7 +1,7 @@
 {
-  "version": "0.2.99",
+  "version": "0.2.100",
   "license": "MIT",
-  "name": "chromista",
+  "name": "@adminator/chromista",
   "main": "dist/index.js",
   "sideEffects": false,
   "typings": "dist/index.d.ts",
@@ -47,7 +47,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@adminator/protozoa": "git+https://github.com/adminatorhq/protozoa.git#17b4f71328de1e6a612978a0f614466140e0ca5f",
+    "@adminator/protozoa": "git+https://github.com/adminatorhq/protozoa.git#e692186aa58909fcd7dd301abd6deb2b2d0db6bb",
     "@types/prismjs": "^1.26.0",
     "@types/react-datepicker": "^4.4.1",
     "@types/react-final-form-listeners": "^1.0.0",
@@ -83,7 +83,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
-    "@adminator/eslint-config": "git+https://github.com/adminatorhq/eslint-config.git#c002cdbbc8097daa41ae09e9927f41e2ad90babd",
+    "@adminator/eslint-config": "git+https://github.com/adminatorhq/eslint-config.git#fa543075dfc90bd210834a53c16ecb6775ee781f",
     "@rollup/plugin-url": "^7.0.0",
     "@size-limit/preset-small-lib": "^7.0.8",
     "@storybook/addon-essentials": "^6.5.3",
