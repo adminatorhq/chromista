@@ -81,7 +81,7 @@ const Input = styled.input<{ $inputSize: Sizes }>`
   appearance: none;
 
   &:checked + ${Slider} {
-    background-color: ${APP_COLORS.success};
+    background-color: ${APP_COLORS.primary};
 
     &:before {
       transform: translateX(
@@ -91,7 +91,7 @@ const Input = styled.input<{ $inputSize: Sizes }>`
   }
 
   &:focus + ${Slider} {
-    box-shadow: 0 0 1px ${APP_COLORS.success};
+    box-shadow: 0 0 1px ${APP_COLORS.primary};
   }
 `;
 

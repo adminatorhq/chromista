@@ -1,4 +1,4 @@
-import { StringUtils } from "@gothicgeeks/shared";
+import { StringUtils } from "@adminator/protozoa";
 import React from "react";
 import { Field, FormSpy } from "react-final-form";
 import { OnChange } from "react-final-form-listeners";

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styled, { css } from "styled-components";
-import { getBestErrorMessage } from "@gothicgeeks/shared";
+import { getBestErrorMessage } from "@adminator/protozoa";
 
 export enum AlertType {
   Success = "success",

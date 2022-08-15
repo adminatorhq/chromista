@@ -1,4 +1,4 @@
-import { DataStateKeys } from "@gothicgeeks/shared";
+import { DataStateKeys } from "@adminator/protozoa";
 import { ReactNode } from "react";
 import { Icon } from "react-feather";
 import { SoftButtonIconTypes } from "../components/Button/SoftButton.types";

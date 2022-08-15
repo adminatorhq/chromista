@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SortableList, { SortableItem } from "react-easy-sort";
-import { DataStateKeys, StringUtils } from "@gothicgeeks/shared";
+import { DataStateKeys, StringUtils } from "@adminator/protozoa";
 import { Move } from "react-feather";
 import { SectionList, SectionListItem } from "../Section/SectionList";
 import { ErrorAlert } from "../Alert";

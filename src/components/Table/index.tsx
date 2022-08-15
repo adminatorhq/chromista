@@ -8,7 +8,7 @@ import {
   IBEPaginatedDataState,
   IFEPaginatedDataState,
   PaginatedData,
-} from "@gothicgeeks/shared";
+} from "@adminator/protozoa";
 import { UseQueryResult } from "react-query";
 import { ComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";

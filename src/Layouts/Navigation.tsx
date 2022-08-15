@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { ChevronRight } from "react-feather";
 import Link from "next/link";
-import { StringUtils } from "@gothicgeeks/shared";
+import { StringUtils } from "@adminator/protozoa";
 import { ISelectionView } from "./types";
 
 interface IRenderNavigation {

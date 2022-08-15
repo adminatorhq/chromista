@@ -1,5 +1,5 @@
 import React from "react";
-import { DataStateKeys } from "@gothicgeeks/shared";
+import { DataStateKeys } from "@adminator/protozoa";
 import { RenderList, SectionListItem } from "../../components";
 import { INavigationMenuItems } from "../types";
 

@@ -3,7 +3,7 @@ import React from "react";
 import { Story } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { HardDrive } from "react-feather";
-import { DataStateKeys } from "@gothicgeeks/shared";
+import { DataStateKeys } from "@adminator/protozoa";
 import { DynamicLayout, IProps } from ".";
 import { AppWrapper } from "../../AppWrapper";
 import { INavigationMenuItems } from "../types";

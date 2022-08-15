@@ -1,4 +1,4 @@
-import { createStore } from "@gothicgeeks/shared";
+import { createStore } from "@adminator/protozoa";
 import { SoftButtonIconTypes } from "../../components/Button/SoftButton.types";
 
 interface IDeepLink {

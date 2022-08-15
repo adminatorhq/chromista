@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import { SLUG_LOADING_VALUE } from "@gothicgeeks/shared";
+import { SLUG_LOADING_VALUE } from "@adminator/protozoa";
 import { ThemeProvider } from "styled-components";
 import { Tabs } from ".";
 import { themeContext } from "../../AppWrapper/Global";

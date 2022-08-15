@@ -1,7 +1,7 @@
 {
-  "version": "0.2.98",
+  "version": "0.2.99",
   "license": "MIT",
-  "name": "@gothicgeeks/design-system",
+  "name": "chromista",
   "main": "dist/index.js",
   "sideEffects": false,
   "typings": "dist/index.d.ts",
@@ -32,14 +32,14 @@
     "react": ">=16"
   },
   "author": "Ayobami Akingbade",
-  "module": "dist/design-system.esm.js",
+  "module": "dist/chromista.esm.js",
   "size-limit": [
     {
-      "path": "dist/design-system.cjs.production.min.js",
+      "path": "dist/chromista.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/design-system.esm.js",
+      "path": "dist/chromista.esm.js",
       "limit": "10 KB"
     }
   ],
@@ -47,7 +47,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@gothicgeeks/shared": "git+ssh://git@github.com:thrownullexception/shared.git#17b4f71328de1e6a612978a0f614466140e0ca5f",
+    "@adminator/protozoa": "git+https://github.com/adminatorhq/protozoa.git#17b4f71328de1e6a612978a0f614466140e0ca5f",
     "@types/prismjs": "^1.26.0",
     "@types/react-datepicker": "^4.4.1",
     "@types/react-final-form-listeners": "^1.0.0",
@@ -83,7 +83,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
-    "@gothicgeeks/eslint-config": "git+ssh://git@github.com:thrownullexception/eslint-config.git#c002cdbbc8097daa41ae09e9927f41e2ad90babd",
+    "@adminator/eslint-config": "git+https://github.com/adminatorhq/eslint-config.git#c002cdbbc8097daa41ae09e9927f41e2ad90babd",
     "@rollup/plugin-url": "^7.0.0",
     "@size-limit/preset-small-lib": "^7.0.8",
     "@storybook/addon-essentials": "^6.5.3",

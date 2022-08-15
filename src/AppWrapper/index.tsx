@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
-import { QueryProvider } from "@gothicgeeks/shared";
+import { QueryProvider } from "@adminator/protozoa";
 import { Toaster } from "react-hot-toast";
 import { GlobalStyle, themeContext } from "./Global";
 
