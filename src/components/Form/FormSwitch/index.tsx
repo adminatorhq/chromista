@@ -110,7 +110,7 @@ export function FormSwitch(props: IProps) {
   );
 
   useEffect(() => {
-    if (!value) {
+    if (value === undefined) {
       onChange(false);
     }
   }, [value, onChange]);

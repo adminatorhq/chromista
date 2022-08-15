@@ -77,7 +77,6 @@ const StyledAlertButton = styled.button`
   border: 0;
 `;
 
-// TODO Add the retry mechanism
 export function Alert({ type, message, renderJsx }: IProps) {
   const [shouldRender, setShouldRender] = useState(true);
 
