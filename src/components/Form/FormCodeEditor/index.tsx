@@ -17,7 +17,7 @@ const StyledWrapper = styled.div`
   border-radius: 0.25rem;
 
   &:focus {
-    border-color: rgba(23, 97, 253, 0.5);
+    border-color: ${(props) => props.theme.colors.primary};
     outline: 0;
   }
 

@@ -21,6 +21,7 @@ const StyledPagination = styled.div`
   .page-item.active {
     .page-link {
       z-index: 3;
+      color: ${(props) => props.theme.text.white};
       background-color: ${(props) => props.theme.colors.primary};
       border-color: ${(props) => props.theme.colors.primary};
     }

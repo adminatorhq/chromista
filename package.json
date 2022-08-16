@@ -1,5 +1,5 @@
 {
-  "version": "0.2.101",
+  "version": "0.2.102",
   "license": "MIT",
   "name": "@adminator/chromista",
   "main": "dist/index.js",

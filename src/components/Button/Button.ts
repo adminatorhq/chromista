@@ -58,7 +58,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   &:focus {
     box-shadow: none;
     outline: 0;
-    box-shadow: 0 0 0 0.15rem rgba(23, 97, 253, 0.25);
+    box-shadow: 0 0 0 0.15rem ${(props) => props.theme.colors.primary};
   }
 
   &:disabled {
