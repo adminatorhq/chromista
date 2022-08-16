@@ -1,4 +1,5 @@
 import { createGlobalStyle, DefaultTheme } from "styled-components";
+import { APP_COLORS } from "../constants/colors";
 import { ColorTypes } from "../styles/types";
 
 declare module "styled-components" {
@@ -16,14 +17,13 @@ declare module "styled-components" {
 export const themeContext: DefaultTheme = {
   text: {
     muted: "#a4abc5",
-    main: "#656d9a",
+    main: "#5f6270",
     white: "#fff",
   },
   colors: {
     white: "#fff",
-    appBackground: "#edf0f1",
-    theme: "#0c213a",
-    primary: "#1761fd",
+    appBackground: "#ebeff2",
+    primary: APP_COLORS.primary,
     border: "#e3ebf6",
     softBackground: "#f1f5fa",
     danger: "#f5325c",

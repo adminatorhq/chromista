@@ -32,7 +32,7 @@ export const StyledInput = styled.input<IInput>`
   &:focus {
     color: ${(props) => props.theme.text.main};
     background-color: ${(props) => props.theme.colors.white};
-    border-color: rgba(23, 97, 253, 0.5);
+    border-color: ${(props) => props.theme.colors.primary};
     outline: 0;
   }
 

@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
 import * as StyledGrid from "styled-bootstrap-grid";
+import styled from "styled-components";
 import { GuestFooter, GuestHeader, GuestContainer } from "./_partials";
-import { StyledCard, StyledCardBody } from "../../styles/Card";
+import { StyledCardBody } from "../../styles/Card";
 
 export interface IProps {
   children: ReactNode;
@@ -14,6 +15,12 @@ export interface IProps {
   };
 }
 
+const Root = styled.div`
+  box-shadow: 0 4px 6px 0 rgb(85 85 85 / 9%), 0 1px 20px 0 rgb(0 0 0 / 8%),
+    0px 1px 11px 0px rgb(0 0 0 / 6%);
+  border-radius: 24px;
+`;
+
 export function GuestLayout({
   children,
   title,
@@ -23,11 +30,11 @@ export function GuestLayout({
   return (
     <GuestContainer>
       <StyledGrid.Col lg={5}>
-        <GuestHeader title={title} subTitle={subTitle} {...appDetails} />
-        <StyledCard>
+        <Root>
+          <GuestHeader title={title} subTitle={subTitle} {...appDetails} />
           <StyledCardBody>{children}</StyledCardBody>
           <GuestFooter name={appDetails.name} />
-        </StyledCard>
+        </Root>
       </StyledGrid.Col>
     </GuestContainer>
   );

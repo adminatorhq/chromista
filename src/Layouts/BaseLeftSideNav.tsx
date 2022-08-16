@@ -8,6 +8,7 @@ const StyledLogo = styled(Link)`
 
 const StyledLogoSm = styled.img`
   height: 22px;
+  margin-top: 16px;
 `;
 
 const StyledMenuContent = styled.div`
@@ -33,7 +34,7 @@ export const StyledLeftSideNavMenu = styled.ul`
 
 const Root = styled.div<{ isSidebarOpen: boolean }>`
   width: ${(props) => (props.isSidebarOpen ? 220 : 50)}px;
-  background-color: ${(props) => props.theme.colors.theme};
+  background-color: ${(props) => props.theme.colors.primary};
   min-height: 100vh;
   transition: 0.3s;
   position: fixed;
@@ -54,7 +55,7 @@ export function BaseLeftSideNav({ isSidebarOpen, children }: IProps) {
         <StyledLogo href="/">
           <span>
             <StyledLogoSm
-              src="/assets/images/logo-sm-dark.png"
+              src="/assets/images/logo.svg"
               alt="logo-small"
               data-test-id="nav-menu__small-logo"
             />

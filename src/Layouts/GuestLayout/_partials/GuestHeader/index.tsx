@@ -4,7 +4,9 @@ import { StyledCardBody } from "../../../../styles/Card";
 import { Spacer, Text } from "../../../../ui-blocks";
 
 const Root = styled(StyledCardBody)`
-  background-color: ${(props) => props.theme.colors.theme};
+  background-color: ${(props) => props.theme.colors.primary};
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   padding: 0px;
   text-align: center;
   padding: 1rem;
@@ -20,7 +22,7 @@ interface IProps {
 export function GuestHeader({
   title,
   subTitle,
-  logo = "/assets/images/logo-sm-dark.png",
+  logo = "/assets/images/logo.svg",
   homeLink = "/",
 }: IProps) {
   return (

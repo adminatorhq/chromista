@@ -6,7 +6,7 @@ import { Stack } from "../../../../ui-blocks";
 const Root = styled.div`
   width: 100%;
   height: 100vh;
-  background-image: url("/assets/images/auth-bg.png");
+  background-image: url("/assets/images/auth-bg.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: repeat;

@@ -81,7 +81,7 @@ const StyleMenuIcon = styled.span<{
   $isActive?: boolean;
 }>`
   color: ${(props) =>
-    props.$isActive ? props.theme.colors.primary : "#a9baca"};
+    props.$isActive ? props.theme.colors.primary : props.theme.text.white};
   fill: rgba(112, 129, 185, 0.12);
   ${(props) =>
     props.$isSidebarOpen

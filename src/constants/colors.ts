@@ -1,13 +1,12 @@
 export const TEXT_COLORS = {
   muted: "#a4abc5",
-  primary: "#656d9a",
+  primary: "#5f6270",
   white: "#ffffff",
 };
 
 export const APP_COLORS = {
   white: "#fff",
-  theme: "#0c213a",
-  primary: "#1761fd",
+  primary: "#0B5D6B",
   border: "#e3ebf6",
   softBackground: "#f1f5fa",
   danger: "#f5325c",
