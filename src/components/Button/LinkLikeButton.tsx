@@ -4,7 +4,7 @@ export const StyledLinkLikeButton = styled.button`
   &:focus {
     outline: 0;
   }
-  color: #1761fd;
+  color: ${(props) => props.theme.colors.primary};
   border: 0;
   background: inherit;
 `;
