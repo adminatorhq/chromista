@@ -1,5 +1,5 @@
 {
-  "version": "0.2.103",
+  "version": "0.2.104",
   "license": "MIT",
   "name": "@adminator/chromista",
   "main": "dist/index.js",
@@ -47,7 +47,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@adminator/protozoa": "git+https://github.com/adminatorhq/protozoa.git#e692186aa58909fcd7dd301abd6deb2b2d0db6bb",
+    "@adminator/protozoa": "git+https://github.com/adminatorhq/protozoa.git#790e501c4aeabed2786050235349fd29698ae32a",
     "@types/prismjs": "^1.26.0",
     "@types/react-datepicker": "^4.4.1",
     "@types/react-final-form-listeners": "^1.0.0",
