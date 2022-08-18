@@ -28,7 +28,7 @@
     "react": ">=16"
   },
   "dependencies": {
-    "@adminator/protozoa": "git+https://github.com/adminatorhq/protozoa.git#cd123d7e97e2d7f8b6ad8f5c731d7f2bbb6169e7",
+    "@adminator/protozoa": "^0.2.51",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
@@ -66,7 +66,7 @@
     "zustand": "3.4.2"
   },
   "devDependencies": {
-    "@adminator/eslint-config": "git+https://github.com/adminatorhq/eslint-config.git#fa543075dfc90bd210834a53c16ecb6775ee781f",
+    "@adminator/eslint-config": "^0.1.8",
     "@babel/core": "^7.18.0",
     "@rollup/plugin-url": "^7.0.0",
     "@storybook/addon-essentials": "^6.5.3",

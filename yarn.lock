@@ -2,9 +2,10 @@
 # yarn lockfile v1
 
 
-"@adminator/eslint-config@git+https://github.com/adminatorhq/eslint-config.git#fa543075dfc90bd210834a53c16ecb6775ee781f":
+"@adminator/eslint-config@^0.1.8":
   version "0.1.8"
-  resolved "git+https://github.com/adminatorhq/eslint-config.git#fa543075dfc90bd210834a53c16ecb6775ee781f"
+  resolved "https://registry.yarnpkg.com/@adminator/eslint-config/-/eslint-config-0.1.8.tgz#6da44895712480c1c355dff08a9b70ad43122d67"
+  integrity sha512-OTHu6l7KUG2MXGfqn1ha56FdCaZrjVg2YN0G2lqyxyT6RffNKAahAB3qmJOMWI+1VQpXWA3bByaVaqgf0nRrhA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.30.5"
     "@typescript-eslint/parser" "^5.30.5"
@@ -22,9 +23,10 @@
     eslint-plugin-testing-library "^5.5.1"
     prettier "^2.7.1"
 
-"@adminator/protozoa@git+https://github.com/adminatorhq/protozoa.git#cd123d7e97e2d7f8b6ad8f5c731d7f2bbb6169e7":
-  version "0.2.50"
-  resolved "git+https://github.com/adminatorhq/protozoa.git#cd123d7e97e2d7f8b6ad8f5c731d7f2bbb6169e7"
+"@adminator/protozoa@^0.2.51":
+  version "0.2.51"
+  resolved "https://registry.yarnpkg.com/@adminator/protozoa/-/protozoa-0.2.51.tgz#068aa20dfc68d7b70e435a70bc19dd7a9e93808d"
+  integrity sha512-EqQl8XD82rzNMFcgL8WA2veqVrYk6FO3ZRK34CzVH3h9TVNVgShm6U7LS1Co6hNKe6gLuPqxSP5Oj/AC2AX+jg==
   dependencies:
     "@types/lodash" "^4.14.182"
     "@types/nprogress" "^0.2.0"
