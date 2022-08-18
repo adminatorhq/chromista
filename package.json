@@ -1,18 +1,15 @@
 {
-  "version": "0.2.104",
-  "license": "MIT",
   "name": "@adminator/chromista",
+  "version": "0.2.105",
+  "license": "MIT",
   "main": "dist/index.js",
-  "sideEffects": false,
   "typings": "dist/index.d.ts",
+  "author": "Ayobami Akingbade",
+  "module": "dist/chromista.esm.js",
   "files": [
     "dist",
     "src"
   ],
-  "engines": {
-    "node": "=16",
-    "npm": "8"
-  },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
@@ -22,32 +19,19 @@
     "lint": "eslint --ext ts,tsx src",
     "lint:fix": "eslint --fix",
     "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
+    "setup-husky": "husky install",
+    "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "verify": "npm run typecheck && npm run lint && npm run test && npm run build"
+    "build-storybook": "build-storybook"
   },
   "peerDependencies": {
     "react": ">=16"
   },
-  "author": "Ayobami Akingbade",
-  "module": "dist/chromista.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/chromista.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/chromista.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "dependencies": {
+    "@adminator/protozoa": "git+https://github.com/adminatorhq/protozoa.git#cd123d7e97e2d7f8b6ad8f5c731d7f2bbb6169e7",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@adminator/protozoa": "git+https://github.com/adminatorhq/protozoa.git#790e501c4aeabed2786050235349fd29698ae32a",
     "@types/prismjs": "^1.26.0",
     "@types/react-datepicker": "^4.4.1",
     "@types/react-final-form-listeners": "^1.0.0",
@@ -82,10 +66,9 @@
     "zustand": "3.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.0",
     "@adminator/eslint-config": "git+https://github.com/adminatorhq/eslint-config.git#fa543075dfc90bd210834a53c16ecb6775ee781f",
+    "@babel/core": "^7.18.0",
     "@rollup/plugin-url": "^7.0.0",
-    "@size-limit/preset-small-lib": "^7.0.8",
     "@storybook/addon-essentials": "^6.5.3",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.5.3",
@@ -110,9 +93,13 @@
     "react-is": "^18.1.0",
     "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-svg-import": "^1.6.0",
-    "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"
-  }
+  },
+  "engines": {
+    "node": "=16",
+    "npm": "8"
+  },
+  "sideEffects": false
 }
