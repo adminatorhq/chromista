@@ -9,7 +9,7 @@ import { FilterWrapper } from "./_FilterWrapper";
 import { IColumnFilterBag, IFilterProps } from "./types";
 // import { SEARCH_DEBOUNCE_WAIT } from './constants';
 // Special case
-
+// TODO
 export function FilterTableByDate({
   column: { filterValue, setFilter },
 }: IFilterProps<IColumnFilterBag<string>>) {
