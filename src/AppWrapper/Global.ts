@@ -22,13 +22,10 @@ export const themeContext: DefaultTheme = {
   },
   colors: {
     white: "#fff",
-    appBackground: "#ebeff2",
+    appBackground: "rgb(243, 246, 249)",
     primary: APP_COLORS.primary,
     border: "#e3ebf6",
     softBackground: "#f1f5fa",
-    danger: "#f5325c",
-    warning: "#ffb822",
-    success: "#03d87f",
   },
 };
 
@@ -41,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
 
 :root {
   --adminator-text-main: #656d9a;
-  
+
   --adminator-colors-white: #ffffff;
   --adminator-colors-theme: #0c213a;
   --adminator-colors-primary: #1761fd;
@@ -63,7 +60,7 @@ nav {
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   color: ${(props) => props.theme.text.main};
@@ -92,7 +89,7 @@ ol, ul {
 }
 
 a {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   color: ${(props) => props.theme.colors.primary};
   text-decoration: none;
   background-color: transparent

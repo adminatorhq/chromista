@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { QueryProvider } from "@adminator/protozoa";
 import { Toaster } from "react-hot-toast";
 import { GlobalStyle, themeContext } from "./Global";
+import "../fonts/font-face.css";
 
 export function AppWrapper({ children }: { children: ReactNode }) {
   return (
