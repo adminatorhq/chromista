@@ -15,18 +15,18 @@ import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
 import { DEFAULT_TABLE_PARAMS } from "./constants";
 import { Spacer, Stack, Text } from "../../ui-blocks";
-import { APP_COLORS } from "../../constants/colors";
 import { DropDownMenu, IDropDownMenuItem } from "../DropdownMenu";
 import { mapFilterTypeToComponent } from "./filters";
 import { TablePagination } from "./_Pagination";
 import { TableFilterType } from "./filters/types";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 export { DEFAULT_TABLE_PARAMS };
 export { FilterOperators, IColumnFilterBag } from "./filters/types";
 
 const StyledBodyTR = styled.tr`
   padding: 4px;
-  border-top: 2px solid ${APP_COLORS.border};
+  border-top: 2px solid ${USE_ROOT_COLOR("border-color")};
   page-break-inside: avoid;
   &:hover {
     color: #303e67;
@@ -55,7 +55,7 @@ const StyledSorting = styled.span`
 
   &.desc:after,
   &.asc:before {
-    color: ${(props) => props.theme.colors.primary};
+    color: ${USE_ROOT_COLOR("primary-color")};
     opacity: 1;
   }
 `;
@@ -70,16 +70,16 @@ const StyledTableResponsive = styled.div`
   border: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background: ${(props) => props.theme.colors.white};
+  background: ${USE_ROOT_COLOR("base-color")};
   padding: 0.5rem;
 `;
 
 const StyledTh = styled.th`
   padding: 0.45rem;
   vertical-align: middle;
-  border: 1px solid ${APP_COLORS.border};
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   border-bottom-width: 2px;
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
   font-weight: 500;
   border-top: none;
 `;
@@ -87,10 +87,10 @@ const StyledTh = styled.th`
 const StyledTd = styled.td`
   padding: 0.45rem;
   border: 1px solid #eaf0f9;
-  border: 1px solid ${APP_COLORS.border};
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   vertical-align: middle;
   font-weight: 400;
-  border-top: 1px solid ${APP_COLORS.border};
+  border-top: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;
 
 const StyledTableTitle = styled.h4`
@@ -101,9 +101,9 @@ const StyledTableTitle = styled.h4`
 const StyledTable = styled.table`
   width: 100%;
   margin-bottom: 1rem;
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
   border-collapse: collapse;
-  border: 1px solid ${APP_COLORS.border};
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   .dropdown-toggle::after {
     display: none;
   }

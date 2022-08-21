@@ -1,9 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { ReactNode } from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
 import { SortList } from ".";
-import { themeContext } from "../../AppWrapper/Global";
 
 import "@testing-library/jest-dom/extend-expect";
 
@@ -36,25 +34,23 @@ jest.mock("react-easy-sort", () => ({
 describe("SortList", () => {
   it("should render labels if present else value", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <SortList
-          data={{
-            data: [
-              {
-                value: "foo-value",
-              },
-              {
-                value: "bar-value",
-                label: "Bar Label",
-              },
-            ],
-            error: null,
-            isLoading: false,
-            isRefetching: false,
-          }}
-          onSave={jest.fn()}
-        />
-      </ThemeProvider>
+      <SortList
+        data={{
+          data: [
+            {
+              value: "foo-value",
+            },
+            {
+              value: "bar-value",
+              label: "Bar Label",
+            },
+          ],
+          error: null,
+          isLoading: false,
+          isRefetching: false,
+        }}
+        onSave={jest.fn()}
+      />
     );
     expect(screen.getByText("foo-value")).toBeInTheDocument();
     expect(screen.getByText("Bar Label")).toBeInTheDocument();
@@ -63,22 +59,20 @@ describe("SortList", () => {
 
   it("should warn when just one item", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <SortList
-          data={{
-            data: [
-              {
-                value: "bar-value",
-                label: "Bar Label",
-              },
-            ],
-            error: null,
-            isLoading: false,
-            isRefetching: false,
-          }}
-          onSave={jest.fn()}
-        />
-      </ThemeProvider>
+      <SortList
+        data={{
+          data: [
+            {
+              value: "bar-value",
+              label: "Bar Label",
+            },
+          ],
+          error: null,
+          isLoading: false,
+          isRefetching: false,
+        }}
+        onSave={jest.fn()}
+      />
     );
     expect(screen.queryByText("Bar Label")).not.toBeInTheDocument();
     expect(screen.queryByText("bar-value")).not.toBeInTheDocument();
@@ -87,42 +81,38 @@ describe("SortList", () => {
 
   it("should warn when there are no items", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <SortList
-          data={{
-            data: [],
-            error: null,
-            isLoading: false,
-            isRefetching: false,
-          }}
-          onSave={jest.fn()}
-        />
-      </ThemeProvider>
+      <SortList
+        data={{
+          data: [],
+          error: null,
+          isLoading: false,
+          isRefetching: false,
+        }}
+        onSave={jest.fn()}
+      />
     );
     expect(screen.getByText("Cant sort 0 items")).toBeInTheDocument();
   });
 
   it("should render skeleton when loading", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <SortList
-          data={{
-            data: [
-              {
-                value: "bar-value",
-                label: "Bar Label",
-              },
-              {
-                value: "foo-value",
-              },
-            ],
-            error: null,
-            isLoading: true,
-            isRefetching: false,
-          }}
-          onSave={jest.fn()}
-        />
-      </ThemeProvider>
+      <SortList
+        data={{
+          data: [
+            {
+              value: "bar-value",
+              label: "Bar Label",
+            },
+            {
+              value: "foo-value",
+            },
+          ],
+          error: null,
+          isLoading: true,
+          isRefetching: false,
+        }}
+        onSave={jest.fn()}
+      />
     );
     expect(screen.getByTestId("list-skeleton")).toBeInTheDocument();
     expect(screen.queryByText("Bar Label")).not.toBeInTheDocument();
@@ -130,25 +120,23 @@ describe("SortList", () => {
 
   it("should render Error when present", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <SortList
-          data={{
-            data: [
-              {
-                value: "bar-value",
-                label: "Bar Label",
-              },
-              {
-                value: "foo-value",
-              },
-            ],
-            error: "Some nasty error",
-            isLoading: false,
-            isRefetching: false,
-          }}
-          onSave={jest.fn()}
-        />
-      </ThemeProvider>
+      <SortList
+        data={{
+          data: [
+            {
+              value: "bar-value",
+              label: "Bar Label",
+            },
+            {
+              value: "foo-value",
+            },
+          ],
+          error: "Some nasty error",
+          isLoading: false,
+          isRefetching: false,
+        }}
+        onSave={jest.fn()}
+      />
     );
     expect(screen.getByText("Some nasty error")).toBeInTheDocument();
     expect(screen.queryByText("Bar Label")).not.toBeInTheDocument();
@@ -156,17 +144,15 @@ describe("SortList", () => {
 
   it("should render save button twice for large list", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <SortList
-          data={{
-            data: Array.from({ length: 11 }, (_, i) => ({ value: `foo${i}` })),
-            error: null,
-            isLoading: false,
-            isRefetching: false,
-          }}
-          onSave={jest.fn()}
-        />
-      </ThemeProvider>
+      <SortList
+        data={{
+          data: Array.from({ length: 11 }, (_, i) => ({ value: `foo${i}` })),
+          error: null,
+          isLoading: false,
+          isRefetching: false,
+        }}
+        onSave={jest.fn()}
+      />
     );
     expect(
       screen.queryAllByRole("button", { name: "Save Order" })
@@ -175,17 +161,15 @@ describe("SortList", () => {
 
   it("should render save button once for small list", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <SortList
-          data={{
-            data: Array.from({ length: 2 }, (_, i) => ({ value: `foo${i}` })),
-            error: null,
-            isLoading: false,
-            isRefetching: false,
-          }}
-          onSave={jest.fn()}
-        />
-      </ThemeProvider>
+      <SortList
+        data={{
+          data: Array.from({ length: 2 }, (_, i) => ({ value: `foo${i}` })),
+          error: null,
+          isLoading: false,
+          isRefetching: false,
+        }}
+        onSave={jest.fn()}
+      />
     );
     expect(
       screen.queryAllByRole("button", { name: "Save Order" })
@@ -195,27 +179,25 @@ describe("SortList", () => {
   it("should sort items", async () => {
     const onSave = jest.fn();
     render(
-      <ThemeProvider theme={themeContext}>
-        <SortList
-          data={{
-            data: [
-              {
-                value: "foo-value",
-              },
-              {
-                value: "bar-value",
-              },
-              {
-                value: "baz-value",
-              },
-            ],
-            error: null,
-            isLoading: false,
-            isRefetching: false,
-          }}
-          onSave={onSave}
-        />
-      </ThemeProvider>
+      <SortList
+        data={{
+          data: [
+            {
+              value: "foo-value",
+            },
+            {
+              value: "bar-value",
+            },
+            {
+              value: "baz-value",
+            },
+          ],
+          error: null,
+          isLoading: false,
+          isRefetching: false,
+        }}
+        onSave={onSave}
+      />
     );
 
     fireEvent.click(screen.getByTestId("fake-sorting"));

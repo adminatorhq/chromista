@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import noop from "lodash/noop";
 import styled from "styled-components";
 import { Text } from "../../ui-blocks";
-// import Empty  from "../../icons/empty.svg";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 export interface IProps {
   text: string;
@@ -15,7 +15,7 @@ const StyledWrapper = styled.div`
   padding: 30px;
   padding-bottom: 20px;
   border-radius: 0.25rem;
-  background: ${(props) => props.theme.colors.white};
+  background: ${USE_ROOT_COLOR("base-color")};
 `;
 
 export function EmptyWrapper({ text, hideIcon, children }: IProps) {

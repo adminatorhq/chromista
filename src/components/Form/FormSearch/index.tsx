@@ -4,6 +4,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { StyledInput } from "../Styles";
 import { StyledBaseButton } from "../../Button/Button";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 const StyledInputGroup = styled.div`
   position: relative;
@@ -26,8 +27,8 @@ const StyledInputGroupPrepend = styled.span`
 `;
 
 const StyledButtonSearch = styled(StyledBaseButton)`
-  border-bottom: 1px solid ${(props) => props.theme.colors.border};
-  color: ${(props) => props.theme.colors.primary};
+  border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
+  color: ${USE_ROOT_COLOR("primary-color")};
   &:focus {
     box-shadow: none;
   }
@@ -42,7 +43,7 @@ const StyledFormSearch = styled(StyledInput)`
   padding-left: 0.75rem;
 
   &:focus {
-    border-color: ${(props) => props.theme.colors.border};
+    border-color: ${USE_ROOT_COLOR("border-color")};
   }
 `;
 

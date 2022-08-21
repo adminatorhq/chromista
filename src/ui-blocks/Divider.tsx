@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { APP_COLORS } from "../constants/colors";
+import { USE_ROOT_COLOR } from "../AppWrapper/colors";
 
 export const Divider = styled.div`
-  border-top: 1px solid ${APP_COLORS.border};
+  border-top: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;

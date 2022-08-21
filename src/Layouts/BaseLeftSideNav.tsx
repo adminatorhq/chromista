@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
+import { USE_ROOT_COLOR } from "../AppWrapper/colors";
 
 const StyledLogo = styled(Link)`
   line-height: 52px;
@@ -34,13 +35,13 @@ export const StyledLeftSideNavMenu = styled.ul`
 
 const Root = styled.div<{ isSidebarOpen: boolean }>`
   width: ${(props) => (props.isSidebarOpen ? 220 : 50)}px;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${USE_ROOT_COLOR("primary-color")};
   min-height: 100vh;
   transition: 0.3s;
   position: fixed;
   bottom: 0;
   top: 0;
-  border-right: 1px solid ${(props) => props.theme.colors.border};
+  border-right: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;
 
 interface IProps {

@@ -1,33 +1,24 @@
 import { DefaultTheme } from "styled-components";
-import { ColorTypes } from "./types";
-
-const hexToRgba = (hex: string, opacity: number): string => {
-  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  const fullHex = hex.replace(
-    shorthandRegex,
-    (_, r, g, b) => r + r + g + g + b + b
-  );
-
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(fullHex);
-  return result
-    ? `rgba(${parseInt(result[1], 16)},${parseInt(result[2], 16)},${parseInt(
-        result[3],
-        16
-      )},${opacity})`
-    : "";
-};
+import { SYSTEM_COLORS } from "../AppWrapper/colors";
 
 interface IGetColor {
-  color?: ColorTypes;
+  color?: keyof typeof SYSTEM_COLORS;
   theme: DefaultTheme;
 }
+
+const percentToHex = (inputPercent: number): string => {
+  const percent = Math.max(0, Math.min(100, inputPercent));
+  const intValue = Math.round((percent / 100) * 255);
+  const hexValue = intValue.toString(16);
+  return hexValue.padStart(2, "0").toUpperCase();
+};
 
 export const getColor =
   (opacity = 1) =>
   (props: IGetColor) => {
-    const color = props.theme.colors[props.color || "primary"];
+    const color = SYSTEM_COLORS[props.color || "accent"];
     if (opacity === 1) {
       return color;
     }
-    return hexToRgba(color, opacity);
+    return color + percentToHex(opacity);
   };

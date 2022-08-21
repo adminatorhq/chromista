@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { USE_ROOT_COLOR } from "../../../../AppWrapper/colors";
 import { StyledCardBody } from "../../../../styles/Card";
 import { Spacer, Text } from "../../../../ui-blocks";
 
 const Root = styled(StyledCardBody)`
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${USE_ROOT_COLOR("primary-color")};
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   padding: 0px;
@@ -30,7 +31,7 @@ export function GuestHeader({
       <a href={homeLink}>
         <img src={logo} height="50" alt="logo" />
         <Spacer />
-        <Text color="white" data-test-id="guest__header">
+        <Text color="inverse" data-test-id="guest__header">
           {title}
         </Text>
         <Spacer size="xs" />

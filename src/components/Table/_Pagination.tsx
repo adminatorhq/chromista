@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { SimpleSelect } from "../Form";
 import { Stack, Text } from "../../ui-blocks";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 const StyledPagination = styled.div`
   .pagination {
@@ -15,15 +16,15 @@ const StyledPagination = styled.div`
     padding: 0.25rem 0.5rem;
     font-size: 0.71rem;
     line-height: 1.8;
-    color: ${(props) => props.theme.colors.primary};
+    color: ${USE_ROOT_COLOR("primary-color")};
   }
 
   .page-item.active {
     .page-link {
       z-index: 3;
-      color: ${(props) => props.theme.text.white};
-      background-color: ${(props) => props.theme.colors.primary};
-      border-color: ${(props) => props.theme.colors.primary};
+      color: ${USE_ROOT_COLOR("inverse-text")};
+      background-color: ${USE_ROOT_COLOR("primary-color")};
+      border-color: ${USE_ROOT_COLOR("primary-color")};
     }
   }
 

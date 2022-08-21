@@ -5,6 +5,7 @@ import { useSideBarStore } from "../sidebar.store";
 import { ISelectionView } from "../types";
 import { PrimaryLeftSideNav } from "./PrimaryLeftSideNav";
 import { SecondaryLeftSideNav } from "./SecondarySideNav";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 export interface IProps {
   children: ReactNode;
@@ -21,7 +22,7 @@ const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
   display: block;
   margin-left: ${(props) => (props.isSidebarOpen ? 350 : 50)}px;
   width: calc(100% - ${(props) => (props.isSidebarOpen ? 350 : 50)}px);
-  background: ${(props) => props.theme.colors.appBackground};
+  background: ${USE_ROOT_COLOR("foundation-color")};
 `;
 
 export function DynamicLayout({ children, selectionView }: IProps) {

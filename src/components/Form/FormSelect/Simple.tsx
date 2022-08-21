@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import React from "react";
 import { StyledInput } from "../Styles";
 import { ISelectData } from "../../../types";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 interface ISimpleSelect {
   options: ISelectData[];
@@ -15,7 +16,7 @@ const StyledSimpleSelect = styled(StyledInput)<{ fullWidth?: boolean }>`
   display: inline-block;
   width: 50px;
   vertical-align: middle;
-  background: ${(props) => props.theme.colors.white}
+  background: ${USE_ROOT_COLOR("base-color")}
     url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%232c3652' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
     no-repeat right 0.75rem center/8px 10px;
   appearance: none;

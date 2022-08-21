@@ -1,17 +1,17 @@
 import styled, { css } from "styled-components";
-import { ColorTypes } from "../../styles/types";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
 import { getColor } from "../../styles/utils";
 
 export interface IStyledBaseButton {
   block?: boolean;
   size?: "sm" | "xs";
-  color?: ColorTypes;
+  color?: keyof typeof SYSTEM_COLORS;
 }
 
 export const StyledBaseButton = styled.button<IStyledBaseButton>`
   display: inline-block;
   font-weight: 400;
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -58,7 +58,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   &:focus {
     box-shadow: none;
     outline: 0;
-    box-shadow: 0 0 0 0.15rem ${(props) => props.theme.colors.primary};
+    box-shadow: 0 0 0 0.15rem ${USE_ROOT_COLOR("primary-color")};
   }
 
   &:disabled {
@@ -77,7 +77,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
 `;
 
 export const StyledButton = styled(StyledBaseButton)`
-  color: ${(props) => props.theme.text.white};
+  color: ${USE_ROOT_COLOR("inverse-text")};
   background-color: ${getColor()};
   border-color: ${getColor()};
 `;
@@ -87,13 +87,13 @@ export const StyledSoftButton = styled(StyledBaseButton)`
   color: ${getColor()};
   &:hover {
     background-color: ${getColor()};
-    color: ${(props) => props.theme.text.white};
+    color: ${USE_ROOT_COLOR("inverse-text")};
   }
 
   &:focus {
     box-shadow: 0 0 0 0.1rem ${getColor(0.2)};
     background-color: ${getColor(0.8)};
-    color: ${(props) => props.theme.text.white};
+    color: ${USE_ROOT_COLOR("inverse-text")};
   }
 `;
 
@@ -102,7 +102,7 @@ export const StyledOutlineButton = styled(StyledBaseButton)`
   border-color: ${getColor()};
 
   &:hover {
-    color: ${(props) => props.theme.text.white};
+    color: ${USE_ROOT_COLOR("inverse-text")};
     background-color: ${getColor()};
     border-color: ${getColor()};
   }
@@ -118,7 +118,7 @@ export const StyledOutlineButton = styled(StyledBaseButton)`
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active {
-    color: ${(props) => props.theme.text.white};
+    color: ${USE_ROOT_COLOR("inverse-text")};
     background-color: ${getColor()};
     border-color: ${getColor()};
   }

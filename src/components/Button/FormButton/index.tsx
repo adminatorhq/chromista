@@ -28,7 +28,7 @@ export function FormButton({
   onClick,
   isInverse,
   size,
-  color = "primary",
+  color = "accent",
   ...rest
 }: IFormButton) {
   const options = {

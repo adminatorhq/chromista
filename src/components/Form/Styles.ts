@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 interface IInput {
   sm?: true;
@@ -12,10 +13,10 @@ export const StyledInput = styled.input<IInput>`
   font-size: 0.8125rem;
   font-weight: 400;
   line-height: 1.8;
-  color: ${(props) => props.theme.text.main};
-  background-color: ${(props) => props.theme.colors.white};
+  color: ${USE_ROOT_COLOR("main-text")};
+  background-color: ${USE_ROOT_COLOR("base-color")};
   background-clip: padding-box;
-  border: 1px solid ${(props) => props.theme.colors.border};
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out;
 
@@ -30,14 +31,14 @@ export const StyledInput = styled.input<IInput>`
     `}
 
   &:focus {
-    color: ${(props) => props.theme.text.main};
-    background-color: ${(props) => props.theme.colors.white};
-    border-color: ${(props) => props.theme.colors.primary};
+    color:${USE_ROOT_COLOR("main-text")};
+    background-color: ${USE_ROOT_COLOR("base-color")};
+    border-color: ${USE_ROOT_COLOR("primary-color")};
     outline: 0;
   }
 
   &.invalid {
-    border-color: ${(props) => props.theme.colors.danger} !important;
+    border-color: ${SYSTEM_COLORS.danger}; !important;
   }
 
   &::-ms-expand {
@@ -47,11 +48,11 @@ export const StyledInput = styled.input<IInput>`
 
   &:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 ${(props) => props.theme.text.main};
+    text-shadow: 0 0 0 ${USE_ROOT_COLOR("main-text")};
   }
 
   &:disabled {
-    background-color: ${(props) => props.theme.colors.softBackground};
+    background-color: ${USE_ROOT_COLOR("soft-color")};
     opacity: 1;
   }
 `;
@@ -74,11 +75,11 @@ export const StyledFormLabel = styled.label<{ sm?: true }>`
     css`
       font-size: 11px;
     `}
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
 `;
 
 export const StyledFormFeedback = styled.p<{ sm?: true }>`
-  color: ${(props) => props.theme.colors.danger};
+  color: ${SYSTEM_COLORS.danger};
   font-size: 12px;
   padding-bottom: 0px;
   margin-bottom: 0px;
@@ -90,6 +91,6 @@ export const StyledFormFeedback = styled.p<{ sm?: true }>`
 `;
 
 export const StyledRequiredAsterick = styled.span`
-  color: ${(props) => props.theme.colors.danger};
+  color: ${SYSTEM_COLORS.danger};
   font-weight: bolder;
 `;

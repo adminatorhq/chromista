@@ -14,6 +14,7 @@ import {
 import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
 import { Spacer, Stack, Text } from "../../../ui-blocks";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 export interface IProps {
   title: string;
@@ -46,9 +47,8 @@ const StyledCardTitle = styled.h4`
   font-weight: 500;
   line-height: 30px;
   margin: 0;
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
   text-shadow: 0 0 1px rgba(241, 245, 250, 0.1);
-  font-family: "Poppins", sans-serif;
 `;
 
 const StyledDeleteButton = styled(DeleteButton)`
@@ -88,7 +88,7 @@ export function SectionBox({
           <StyledCardHeader>
             <StyledCenterRow>
               <StyledGrid.Col auto>
-                <StyledCardTitle data-test-id="section-box__title">
+                <StyledCardTitle>
                   {isLoading ? "Loading..." : title}
                   {description ? (
                     <>

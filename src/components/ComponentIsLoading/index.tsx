@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled, { keyframes } from "styled-components";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 const DELAY_MS = 300;
 
@@ -29,7 +30,7 @@ export const StyledLdsWrapper = styled.div`
 
 const StyledLds = styled.div`
   position: absolute;
-  border: 4px solid ${(props) => props.theme.colors.primary};
+  border: 4px solid ${USE_ROOT_COLOR("primary-color")};
   opacity: 1;
   border-radius: 50%;
   animation: ${ldsRippleAnimation} 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;

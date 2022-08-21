@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import { Icon } from "react-feather";
 import { Text } from "../../ui-blocks";
 import { StyledSoftButton } from "../Button/Button";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 const togglePreviousState = (prev: boolean) => !prev;
 
@@ -33,13 +34,13 @@ const StyledDropDownItem = styled.button`
   clear: both;
   font-weight: 400;
   line-height: 20px;
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
   text-align: inherit;
   background-color: transparent;
   border: 0;
   &:hover {
     background-color: rgba(248, 248, 252, 0.5);
-    color: ${(props) => props.theme.text.main};
+    color: ${USE_ROOT_COLOR("main-text")};
   }
 `;
 
@@ -57,10 +58,10 @@ const StyledDropDownMenu = styled(DropdownMenu)`
   padding: 4px 0;
   margin: 0.125rem 0 0;
   font-size: 0.8125rem;
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
   text-align: left;
   list-style: none;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${USE_ROOT_COLOR("base-color")};
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 0.25rem;

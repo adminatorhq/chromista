@@ -1,6 +1,7 @@
 import React from "react";
 import { confirmAlert } from "react-confirm-alert";
 import styled, { keyframes } from "styled-components";
+import { SYSTEM_COLORS } from "../../AppWrapper/colors";
 import { Z_INDEXES } from "../../constants/zIndex";
 import { Stack } from "../../ui-blocks";
 
@@ -13,16 +14,19 @@ interface IProps {
 const StyledButton = styled.button<{ danger?: boolean }>`
   outline: none;
   background: #fff;
-  border: 1px solid ${(props) => (props.danger ? "#f5325c" : "#1761fd")};
+  border: 1px solid
+    ${(props) => (props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.accent)};
   display: inline-block;
   padding: 6px 18px;
-  color: ${(props) => (props.danger ? "#f5325c" : "#1761fd")};
+  color: ${(props) =>
+    props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.accent};
   margin-right: 10px;
   border-radius: 5px;
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    background: ${(props) => (props.danger ? "#f5325c" : "#1761fd")};
+    background: ${(props) =>
+      props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.accent};
     color: #fff;
   }
 `;
@@ -41,7 +45,6 @@ const StyledTitle = styled.h1`
 `;
 
 const StyledBody = styled.div`
-  font-family: Arial, Helvetica, sans-serif;
   width: 300px;
   padding: 30px;
   text-align: center;

@@ -5,7 +5,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { StyledSoftButton } from "./Button";
 import { SoftButtonIconTypes, ICON_MAP } from "./SoftButton.types";
-import { ColorTypes } from "../../styles/types";
+import { SYSTEM_COLORS } from "../../AppWrapper/colors";
 
 interface ISoftButton {
   label?: string;
@@ -13,7 +13,7 @@ interface ISoftButton {
   size?: "sm" | "xs";
   block?: true;
   disabled?: boolean;
-  color?: ColorTypes;
+  color?: keyof typeof SYSTEM_COLORS;
   action: string | (() => void);
   secondaryAction?: () => void;
   justIcon?: true;

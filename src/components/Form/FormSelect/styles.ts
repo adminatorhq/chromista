@@ -1,25 +1,26 @@
 import { css } from "styled-components";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 export const SelectStyles = css`
   .react-select__control {
     &:hover {
-      border: 1px solid ${(props) => props.theme.colors.border};
+      border: 1px solid ${USE_ROOT_COLOR("border-color")};
     }
     &:focus {
-      color: ${(props) => props.theme.text.main};
-      background-color: ${(props) => props.theme.colors.white};
-      border-color: ${(props) => props.theme.colors.primary};
+      color: ${USE_ROOT_COLOR("main-text")};
+      background-color: ${USE_ROOT_COLOR("base-color")};
+      border-color: ${USE_ROOT_COLOR("primary-color")};
       outline: 0;
     }
     .react-select__single-value {
-      color: ${(props) => props.theme.text.main};
+      color: ${USE_ROOT_COLOR("main-text")};
       font-size: 0.8125rem;
     }
-    border: 1px solid ${(props) => props.theme.colors.border};
+    border: 1px solid ${USE_ROOT_COLOR("border-color")};
   }
 
   &.invalid {
-    border-color: ${(props) => props.theme.colors.danger} !important;
+    border-color: ${SYSTEM_COLORS.danger} !important;
   }
 `;
 

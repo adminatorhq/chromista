@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { APP_COLORS } from "../../../constants/colors";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 import { Text, Stack } from "../../../ui-blocks";
 
 type Sizes = "sm" | "md";
@@ -60,7 +60,7 @@ const Slider = styled.span<{ size: Sizes }>`
   bottom: 0;
   width: ${(props) => SIZES_CONFIG[props.size].width}px;
   height: ${(props) => SIZES_CONFIG[props.size].height}px;
-  background-color: ${APP_COLORS.softBackground};
+  background-color: ${USE_ROOT_COLOR("soft-color")};
   border-radius: ${(props) => SIZES_CONFIG[props.size].height}px;
   transition: 0.4s;
 
@@ -81,7 +81,7 @@ const Input = styled.input<{ $inputSize: Sizes }>`
   appearance: none;
 
   &:checked + ${Slider} {
-    background-color: ${APP_COLORS.primary};
+    background-color: ${USE_ROOT_COLOR("primary-color")};
 
     &:before {
       transform: translateX(
@@ -91,7 +91,7 @@ const Input = styled.input<{ $inputSize: Sizes }>`
   }
 
   &:focus + ${Slider} {
-    box-shadow: 0 0 1px ${APP_COLORS.primary};
+    box-shadow: 0 0 1px ${USE_ROOT_COLOR("primary-color")};
   }
 `;
 

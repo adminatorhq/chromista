@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import styled, { css } from "styled-components";
 import { ChevronDown, ChevronUp, Icon } from "react-feather";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 const ARROW_SIZE = 16;
 
@@ -26,7 +27,7 @@ const StyledAnchor = styled.button`
 const StyledBodyWrapper = styled.div`
   padding: 0 1rem;
   margin-bottom: 1rem;
-  border-top: 1px solid ${(props) => props.theme.colors.border};
+  border-top: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;
 
 const StyledLabelIcon = styled.i`
@@ -36,7 +37,9 @@ const StyledLabelIcon = styled.i`
 const StyledIcon = styled.i<{ highlight?: boolean }>`
   margin-top: 0.3rem;
   color: ${(props) =>
-    props.highlight ? props.theme.text.white : props.theme.text.main};
+    props.highlight
+      ? USE_ROOT_COLOR("inverse-text")
+      : USE_ROOT_COLOR("main-text")};
 `;
 
 const Root = styled.div<{ highlight?: boolean }>`
@@ -44,9 +47,9 @@ const Root = styled.div<{ highlight?: boolean }>`
   ${(props) =>
     props.highlight &&
     css`
-      background: ${props.theme.colors.primary};
+      background: ${USE_ROOT_COLOR("primary-color")}};
     `};
-  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+  border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
   margin-bottom: 1px;
 `;
 
@@ -54,7 +57,9 @@ const StyledLabel = styled.p<{ highlight?: boolean }>`
   margin-bottom: 0;
   font-size: 16px;
   color: ${(props) =>
-    props.highlight ? props.theme.text.white : props.theme.text.main};
+    props.highlight
+      ? USE_ROOT_COLOR("inverse-text")
+      : USE_ROOT_COLOR("main-text")};
 `;
 
 export function AccordionItem({ icon, name, body, highlight }: IProps) {

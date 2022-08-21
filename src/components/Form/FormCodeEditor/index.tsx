@@ -7,17 +7,18 @@ import { ISharedFormInput } from "../_types";
 import { wrapLabelAndError } from "../_wrapForm";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 interface IFormCodeEditor extends ISharedFormInput {
   language?: "javascript";
 }
 
 const StyledWrapper = styled.div`
-  border: 1px solid ${(props) => props.theme.colors.border};
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   border-radius: 0.25rem;
 
   &:focus {
-    border-color: ${(props) => props.theme.colors.primary};
+    border-color: ${USE_ROOT_COLOR("primary-color")};
     outline: 0;
   }
 

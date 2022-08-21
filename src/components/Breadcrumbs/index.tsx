@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { IValueLabel } from "../../types";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 const StyledBreadcrumb = styled.ol`
   display: flex;
@@ -12,14 +13,13 @@ const StyledBreadcrumb = styled.ol`
   border-radius: 0.25rem;
   font-size: 12px;
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
   padding: 2px 0;
   background-color: transparent;
 `;
 
 const StyledBreadcrumbItem = styled.li`
   display: flex;
-  color: ${(props) => props.theme.text.muted};
+  color: ${USE_ROOT_COLOR("muted-text")};
 
   & + & {
     padding-left: 0.3rem;
@@ -44,12 +44,12 @@ const StyledBreadcrumbItemLink = styled.button<{ active: boolean }>`
   border: none;
   padding: 0;
   background-color: transparent;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${USE_ROOT_COLOR("primary-color")};
 
   ${(props) =>
     props.active &&
     css`
-      color: props.theme.text.muted;
+      color: ${USE_ROOT_COLOR("muted-text")};
     `}
 `;
 

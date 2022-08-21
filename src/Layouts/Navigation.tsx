@@ -4,6 +4,7 @@ import { ChevronRight } from "react-feather";
 import Link from "next/link";
 import { StringUtils } from "@adminator/protozoa";
 import { ISelectionView } from "./types";
+import { USE_ROOT_COLOR } from "../AppWrapper/colors";
 
 interface IRenderNavigation {
   navigation: Array<ISelectionView & { sideBarAction: () => void }>;
@@ -58,7 +59,7 @@ const StyledLeftSideNavMenuListAnchor = styled.a<{ $isSubMenu?: true }>`
   margin: 0;
 
   &:hover {
-    color: ${(props) => props.theme.colors.primary};
+    color: ${USE_ROOT_COLOR("primary-color")};
   }
 `;
 
@@ -69,7 +70,7 @@ const StyledLeftSideNavMenuText = styled.span<{ $isSidebarOpen: boolean }>`
 const StyledDash = styled.hr`
   margin: 0.5rem 0;
   border: 0;
-  border-top: 1px dashed ${(props) => props.theme.colors.border};
+  border-top: 1px dashed ${USE_ROOT_COLOR("border-color")};
   box-sizing: content-box;
   height: 0;
   overflow: visible;
@@ -81,7 +82,9 @@ const StyleMenuIcon = styled.span<{
   $isActive?: boolean;
 }>`
   color: ${(props) =>
-    props.$isActive ? props.theme.colors.primary : props.theme.text.white};
+    props.$isActive
+      ? USE_ROOT_COLOR("primary-color")
+      : USE_ROOT_COLOR("inverse-text")};
   fill: rgba(112, 129, 185, 0.12);
   ${(props) =>
     props.$isSidebarOpen

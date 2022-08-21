@@ -5,6 +5,7 @@ import { Text } from "../../../ui-blocks/Text";
 import { Stack } from "../../../ui-blocks";
 import { StyledFormFeedback, StyledFormGroup } from "../Styles";
 import { isFormMetaWithError } from "../_wrapForm";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 const StyledCheckBoxInput = styled.input`
   border-radius: 0.25em;
@@ -21,8 +22,8 @@ const StyledCheckBoxInput = styled.input`
   color-adjust: exact;
 
   &:checked {
-    background-color: ${(props) => props.theme.colors.primary};
-    border-color: ${(props) => props.theme.colors.primary};
+    background-color: ${USE_ROOT_COLOR("primary-color")};
+    border-color: ${USE_ROOT_COLOR("primary-color")};
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
   }
 `;

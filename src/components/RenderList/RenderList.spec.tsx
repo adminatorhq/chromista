@@ -1,27 +1,23 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
 import { RenderList } from ".";
-import { themeContext } from "../../AppWrapper/Global";
 
 import "@testing-library/jest-dom/extend-expect";
 
 describe("RenderList", () => {
   it("should render list items", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={[
-            {
-              name: "Foo",
-            },
-            {
-              name: "Bar",
-            },
-          ]}
-          render={(item) => <div>{item.name}</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={[
+          {
+            name: "Foo",
+          },
+          {
+            name: "Bar",
+          },
+        ]}
+        render={(item) => <div>{item.name}</div>}
+      />
     );
 
     expect(screen.getByText("Foo")).toBeInTheDocument();
@@ -30,19 +26,17 @@ describe("RenderList", () => {
 
   it("should not render search input when items are small", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={[
-            {
-              name: "Foo",
-            },
-            {
-              name: "Bar",
-            },
-          ]}
-          render={(item) => <div>{item.name}</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={[
+          {
+            name: "Foo",
+          },
+          {
+            name: "Bar",
+          },
+        ]}
+        render={(item) => <div>{item.name}</div>}
+      />
     );
 
     expect(screen.queryByPlaceholderText("Search")).not.toBeInTheDocument();
@@ -50,12 +44,10 @@ describe("RenderList", () => {
 
   it("should render search input when items are large", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
-          render={(item) => <div>{item.name}</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
+        render={(item) => <div>{item.name}</div>}
+      />
     );
 
     expect(screen.getByPlaceholderText("Search")).toBeInTheDocument();
@@ -63,13 +55,11 @@ describe("RenderList", () => {
 
   it("should render not search input when items are large and list is declared `notSearchable`", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
-          notSearchable
-          render={(item) => <div>{item.name}</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
+        notSearchable
+        render={(item) => <div>{item.name}</div>}
+      />
     );
 
     expect(screen.queryByPlaceholderText("Search")).not.toBeInTheDocument();
@@ -77,12 +67,10 @@ describe("RenderList", () => {
 
   it("should search items when search input is keyed", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
-          render={(item) => <div>{item.name}</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
+        render={(item) => <div>{item.name}</div>}
+      />
     );
 
     expect(screen.getByText("foo0")).toBeInTheDocument();
@@ -99,12 +87,10 @@ describe("RenderList", () => {
 
   it("should search items when search input is keyed", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
-          render={(item) => <div>{item.name}</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
+        render={(item) => <div>{item.name}</div>}
+      />
     );
 
     expect(screen.getByText("foo0")).toBeInTheDocument();
@@ -123,23 +109,21 @@ describe("RenderList", () => {
 
   it("should render sorted list items when asked to", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={[
-            {
-              name: "Boo",
-            },
-            {
-              name: "Zoo",
-            },
-            {
-              name: "Aoo",
-            },
-          ]}
-          sortByName
-          render={(item, index) => <div>{`${index} - ${item.name}`}</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={[
+          {
+            name: "Boo",
+          },
+          {
+            name: "Zoo",
+          },
+          {
+            name: "Aoo",
+          },
+        ]}
+        sortByName
+        render={(item, index) => <div>{`${index} - ${item.name}`}</div>}
+      />
     );
 
     expect(screen.getByText("0 - Aoo")).toBeInTheDocument();
@@ -149,20 +133,18 @@ describe("RenderList", () => {
 
   it("should render skeleton when loading", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={[
-            {
-              name: "Foo",
-            },
-            {
-              name: "Bar",
-            },
-          ]}
-          isLoading
-          render={(item) => <div>{item.name}</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={[
+          {
+            name: "Foo",
+          },
+          {
+            name: "Bar",
+          },
+        ]}
+        isLoading
+        render={(item) => <div>{item.name}</div>}
+      />
     );
 
     expect(screen.getByTestId("list-skeleton")).toBeInTheDocument();
@@ -171,20 +153,18 @@ describe("RenderList", () => {
 
   it("should render error when present", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={[
-            {
-              name: "Foo",
-            },
-            {
-              name: "Bar",
-            },
-          ]}
-          error="Some nasty error"
-          render={(item) => <div>{item.name}</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={[
+          {
+            name: "Foo",
+          },
+          {
+            name: "Bar",
+          },
+        ]}
+        error="Some nasty error"
+        render={(item) => <div>{item.name}</div>}
+      />
     );
 
     expect(screen.getByText("Some nasty error")).toBeInTheDocument();
@@ -192,25 +172,19 @@ describe("RenderList", () => {
   });
 
   it("should render Empty view when empty", () => {
-    render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList items={[]} render={() => <div>foo</div>} />
-      </ThemeProvider>
-    );
+    render(<RenderList items={[]} render={() => <div>foo</div>} />);
 
     expect(screen.getByText("No Item To Look At")).toBeInTheDocument();
   });
 
   it("should render Empty view and `add new item` when empty and there is a newItemLink", () => {
     render(
-      <ThemeProvider theme={themeContext}>
-        <RenderList
-          items={[]}
-          newItemLink="/add/new"
-          singular="Product"
-          render={() => <div>foo</div>}
-        />
-      </ThemeProvider>
+      <RenderList
+        items={[]}
+        newItemLink="/add/new"
+        singular="Product"
+        render={() => <div>foo</div>}
+      />
     );
 
     expect(screen.getByText("No Product To Look At")).toBeInTheDocument();

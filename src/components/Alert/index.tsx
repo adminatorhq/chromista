@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styled, { css } from "styled-components";
 import { getBestErrorMessage } from "@adminator/protozoa";
+import { SYSTEM_COLORS } from "../../AppWrapper/colors";
 
 export enum AlertType {
   Success = "success",
@@ -15,7 +16,7 @@ interface IAlert {
   message: Record<string, unknown> | string | unknown;
   renderJsx?: boolean;
 }
-
+// :eyes on the static colors here;
 export type IProps = {
   type: AlertType;
 } & IAlert;
@@ -34,7 +35,7 @@ const StyledAlert = styled.div<{
   ${(props) =>
     props.type === AlertType.Success &&
     css`
-      color: #03d87f;
+      color: ${SYSTEM_COLORS.success};
       background-color: #e1faf0;
       border-color: #b8f4db;
     `}
@@ -42,7 +43,7 @@ const StyledAlert = styled.div<{
   ${(props) =>
     props.type === AlertType.Error &&
     css`
-      color: ${props.theme.colors.danger};
+      color: ${SYSTEM_COLORS.danger};
       background-color: #fee6eb;
       border-color: #fcc6d1;
     `}
@@ -50,7 +51,7 @@ const StyledAlert = styled.div<{
       ${(props) =>
     props.type === AlertType.Warning &&
     css`
-      color: #ffb822;
+      color: ${SYSTEM_COLORS.warning};
       background-color: #fff6e4;
       border-color: #ffebc1;
     `}
@@ -58,7 +59,7 @@ const StyledAlert = styled.div<{
         ${(props) =>
     props.type === AlertType.Info &&
     css`
-      color: #12a4ed;
+      color: ${SYSTEM_COLORS.info};
       background-color: #e3f4fd;
       border-color: #bde6fa;
     `}

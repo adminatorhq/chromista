@@ -1,10 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { ColorTypes } from "../../styles/types";
 import { getColor } from "../../styles/utils";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
 import { ISystemStatusForDisplay } from "../../types";
 
-const StyledBadge = styled.span<{ color: ColorTypes }>`
+const StyledBadge = styled.span<{ color: keyof typeof SYSTEM_COLORS }>`
   display: inline-block;
   padding: 0.36em 0.4em;
   font-weight: 400;
@@ -22,7 +22,6 @@ const StyledBadge = styled.span<{ color: ColorTypes }>`
     transition: none;
   }
 `;
-// line-height: 10px
 
 const StyledSoftBadge = styled(StyledBadge)`
   background-color: ${getColor(0.15)};
@@ -32,7 +31,7 @@ const StyledSoftBadge = styled(StyledBadge)`
 
 const StyledBadgePill = styled(StyledBadge)<{ isIconBadge?: true }>`
   background-color: ${getColor()};
-  color: ${(props) => props.theme.text.white};
+  color: ${USE_ROOT_COLOR("inverse-text")};
   padding-right: 0.6em;
   padding-left: 0.6em;
   border-radius: 10rem;
@@ -53,7 +52,7 @@ const StyledBadgePill = styled(StyledBadge)<{ isIconBadge?: true }>`
 
 interface IBadge {
   text: string;
-  color: ColorTypes;
+  color: keyof typeof SYSTEM_COLORS;
 }
 
 export function Badge({ text, color }: IBadge) {
@@ -75,14 +74,14 @@ export function BadgeBuilder({ value, statusSelections }: IBadgeBuilder) {
   return (
     <Badge
       text={builderBagValue.label}
-      color={(builderBagValue.color as ColorTypes) || "primary"}
+      color={(builderBagValue.color as keyof typeof SYSTEM_COLORS) || "primary"}
     />
   );
 }
 
 interface IBadgePill {
   value: number;
-  color: ColorTypes;
+  color: keyof typeof SYSTEM_COLORS;
   isIconBadge?: true;
 }
 

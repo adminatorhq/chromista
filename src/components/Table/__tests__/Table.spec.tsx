@@ -1,9 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
 import { Download, Plus } from "react-feather";
 import { Table, IProps } from "..";
-import { themeContext } from "../../../AppWrapper/Global";
 
 import "@testing-library/jest-dom/extend-expect";
 
@@ -130,11 +128,7 @@ const DEFAULT_TABLE_PROPS: IProps = {
 
 describe("Table", () => {
   it("should render data rows", () => {
-    render(
-      <ThemeProvider theme={themeContext}>
-        <Table {...DEFAULT_TABLE_PROPS} />
-      </ThemeProvider>
-    );
+    render(<Table {...DEFAULT_TABLE_PROPS} />);
 
     expect(screen.getByText("Some Table title")).toBeInTheDocument();
     // expect(screen.getByText("Create Item")).toBeInTheDocument();

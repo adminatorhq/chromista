@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TEXT_COLORS } from "../constants/colors";
+import { TEXT_COLORS } from "../AppWrapper/colors";
 
 export type TextProps = {
   size: "1" | "2" | "3" | "4" | "5" | "6";
@@ -28,7 +28,7 @@ const weights: Record<TextProps["weight"], number> = {
 export const Text = styled.p.attrs((props: TextProps) => ({
   role: props.as || "p",
 }))<Partial<TextProps>>(
-  ({ size = "4", color = "primary", weight = "regular", textStyle }) => ({
+  ({ size = "4", color = "main", weight = "regular", textStyle }) => ({
     color: TEXT_COLORS[color],
     fontStyle: textStyle || "normal",
     fontWeight: weights[weight],

@@ -3,11 +3,10 @@
 import React, { ReactNode } from "react";
 import { Icon } from "react-feather";
 import styled from "styled-components";
-import { themeContext } from "../../../AppWrapper/Global";
 import { Dropdown } from "../../Dropdown";
-import { APP_COLORS } from "../../../constants/colors";
 import { Spacer, Stack } from "../../../ui-blocks";
 import { SoftButton } from "../../Button/SoftButton";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 interface IProps {
   children: ReactNode;
@@ -21,10 +20,10 @@ const Root = styled.div`
 `;
 
 const DownRoot = styled(Stack)`
-  background: ${APP_COLORS.white};
+  background: ${USE_ROOT_COLOR("base-color")};
   padding: 8px;
   border-radius: 2px;
-  border: 1px solid ${(props) => props.theme.colors.border};
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   min-width: 250px;
 `;
 
@@ -36,7 +35,9 @@ export function FilterWrapper({
 }: IProps) {
   const iconProps = {
     size: 15,
-    color: filterHasValue ? themeContext.colors.primary : "rgb(48, 62, 103)",
+    color: filterHasValue
+      ? USE_ROOT_COLOR("primary-color")
+      : USE_ROOT_COLOR("muted-text"), // :eyes "rgb(48, 62, 103)",
     style: { opacity: filterHasValue ? 1 : 0.3 },
   };
   return (

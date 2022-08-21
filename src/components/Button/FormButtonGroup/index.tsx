@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { StyledOutlineButton } from "../Button";
 import { ISelectData } from "../../../types";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 export interface IProps {
   options: ISelectData[];
@@ -19,9 +20,9 @@ const StyledButton = styled(StyledOutlineButton)<{ isActive: boolean }>`
   ${(props) =>
     props.isActive &&
     css`
-      color: ${props.theme.text.white};
-      background-color: ${props.theme.colors.primary};
-      border-color: ${props.theme.colors.primary};
+      color: ${USE_ROOT_COLOR("inverse-text")}
+      background-color: ${USE_ROOT_COLOR("primary-color")};
+      border-color: ${USE_ROOT_COLOR("primary-color")};
     `}
 `;
 

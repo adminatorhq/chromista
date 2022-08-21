@@ -6,17 +6,22 @@ import { StyledListGroupFlush } from "../../Lists";
 import { FormButton } from "../../Button/FormButton";
 import { Stack } from "../../../ui-blocks";
 import { FormSwitch } from "../../Form/FormSwitch";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   width: 14px;
   color: ${(props) =>
-    props.$active ? props.theme.colors.white : props.theme.colors.primary};
+    props.$active
+      ? USE_ROOT_COLOR("inverse-text")
+      : USE_ROOT_COLOR("primary-color")};
   margin-left: 0.25rem;
 `;
 
 const StyledSublabel = styled.p<{ $active?: boolean }>`
   color: ${(props) =>
-    props.$active ? props.theme.colors.white : props.theme.text.muted};
+    props.$active
+      ? USE_ROOT_COLOR("inverse-text")
+      : USE_ROOT_COLOR("muted-text")};
   padding: 0;
   margin: 0;
   font-size: 10px;
@@ -44,14 +49,14 @@ const StyledListItem = styled.button<{
 
   position: relative;
   padding: 12px 0.75rem;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${USE_ROOT_COLOR("base-color")};
   border-left: 0;
   border: 1px solid transparent;
   border-right: 0;
-  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+  border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
 
   width: 100%;
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
   cursor: pointer;
   text-align: inherit;
 
@@ -75,7 +80,7 @@ const StyledListItem = styled.button<{
     css`
       color: #7081b9;
       pointer-events: none;
-      background-color: ${(props) => props.theme.colors.white};
+      background-color: ${USE_ROOT_COLOR("base-color")};
     `}
 
   ${({ size }) =>
@@ -88,23 +93,23 @@ const StyledListItem = styled.button<{
   &:hover,
   &:focus {
     z-index: 1;
-    color: ${(props) => props.theme.text.main};
+    color: ${USE_ROOT_COLOR("main-text")};
     text-decoration: none;
     background-color: #f8f8fc;
   }
 
-  ${({ active, theme }) =>
+  ${({ active }) =>
     active &&
     css`
       z-index: 2;
-      color: ${(props) => props.theme.text.white} !important;
-      background-color: ${theme.colors.primary} !important;
-      border-color: ${theme.colors.primary};
+      color: ${USE_ROOT_COLOR("inverse-text")} !important;
+      background-color: ${USE_ROOT_COLOR("primary-color")} !important;
+      border-color: ${USE_ROOT_COLOR("primary-color")};
     `}
 
   &:active {
-    color: ${(props) => props.theme.text.main};
-    background-color: ${(props) => props.theme.colors.softBackground};
+    color: ${USE_ROOT_COLOR("main-text")};
+    background-color: ${USE_ROOT_COLOR("soft-color")};
   }
 `;
 

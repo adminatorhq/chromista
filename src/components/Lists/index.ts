@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 export const StyledListGroup = styled.ul`
   display: flex;
@@ -17,8 +18,8 @@ export const StyledListGroupItem = styled.div`
   position: relative;
   display: block;
   padding: 12px 0.75rem;
-  background-color: ${(props) => props.theme.colors.white};
-  border: 1px solid ${(props) => props.theme.colors.border};
+  background-color: ${USE_ROOT_COLOR("base-color")};
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   border-left: 0;
   border-right: 0;
   border-width: 0 0 1px;
@@ -37,35 +38,35 @@ export const StyledListGroupItem = styled.div`
 
   &.active {
     z-index: 2;
-    color: ${(props) => props.theme.text.white};
-    background-color: ${(props) => props.theme.colors.primary};
-    border-color: ${(props) => props.theme.colors.primary};
+    color: ${USE_ROOT_COLOR("inverse-text")};
+    background-color: ${USE_ROOT_COLOR("primary-color")};
+    border-color: ${USE_ROOT_COLOR("primary-color")};
   }
 
   &.disabled,
   &:disabled {
     color: #7081b9;
     pointer-events: none;
-    background-color: ${(props) => props.theme.colors.white};
+    background-color: ${USE_ROOT_COLOR("base-color")};
   }
 `;
 
 export const StyledListGroupItemAction = styled(StyledListGroupItem)`
   width: 100%;
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
   cursor: pointer;
   text-align: inherit;
 
   &:hover,
   &:focus {
     z-index: 1;
-    color: ${(props) => props.theme.text.main};
+    color: ${USE_ROOT_COLOR("main-text")};
     text-decoration: none;
     background-color: #f8f8fc;
   }
 
   &:active {
-    color: ${(props) => props.theme.text.main};
-    background-color: ${(props) => props.theme.colors.softBackground};
+    color: ${USE_ROOT_COLOR("main-text")};
+    background-color: ${USE_ROOT_COLOR("soft-color")};
   }
 `;

@@ -2,6 +2,7 @@ import { SLUG_LOADING_VALUE } from "@adminator/protozoa";
 import React, { useMemo, useState, useEffect, ReactNode } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import styled, { css } from "styled-components";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 export interface IProps {
   contents: {
@@ -29,7 +30,7 @@ const StyledNav = styled(Nav)`
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+  border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;
 
 const StyledNavItem = styled(NavItem)`
@@ -39,21 +40,22 @@ const StyledNavItem = styled(NavItem)`
 const StyledNavLink = styled(NavLink)<{ active: boolean }>`
   display: block;
   padding: 0.5rem 1rem;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${USE_ROOT_COLOR("base-color")};
   border: 1px solid transparent;
-  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+  border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 
   ${(props) =>
     props.active
       ? css`
-          color: ${props.theme.colors.primary};
-          background-color: ${props.theme.colors.white};
-          border-color: transparent transparent ${props.theme.colors.primary};
+          color: ${USE_ROOT_COLOR("primary-color")};
+          background-color: ${USE_ROOT_COLOR("base-color")};
+          border-color: transparent transparent
+            ${USE_ROOT_COLOR("primary-color")};
         `
       : css`
-          color: ${props.theme.text.main};
+          color: ${USE_ROOT_COLOR("main-text")};
         `}
 `;
 

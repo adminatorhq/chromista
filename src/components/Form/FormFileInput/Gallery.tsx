@@ -11,7 +11,6 @@ import { DeleteButton } from "../../Button/DeleteButton";
 import { BlockSkeleton } from "../../Skeleton/BlockSkeleton";
 import { actionButtonIsMakingRequest } from "../../Button/FormButton";
 import "react-image-lightbox/style.css";
-import { themeContext } from "../../../AppWrapper/Global";
 
 interface ILoadedImage {
   image: string;
@@ -97,11 +96,7 @@ export function FormFileInputGallery({
         <div className="col-sm-12 col-lg-3 position-relative" key={id}>
           {isDefault ? (
             <div className="is-default-image-check">
-              <FontAwesomeIcon
-                icon={faCheckCircle}
-                size="lg"
-                color={themeContext.colors.primary}
-              />
+              <FontAwesomeIcon icon={faCheckCircle} size="lg" />
             </div>
           ) : null}
           <div

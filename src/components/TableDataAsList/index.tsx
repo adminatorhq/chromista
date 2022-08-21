@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { Edit } from "react-feather";
 import React from "react";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 export interface IProps {
   onSelect: () => void;
@@ -8,7 +9,7 @@ export interface IProps {
 }
 
 const EditButton = styled.span`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${USE_ROOT_COLOR("primary-color")};
   cursor: pointer;
   position: absolute;
   right: 1rem;
@@ -16,18 +17,18 @@ const EditButton = styled.span`
 `;
 
 const StyledLabel = styled.p`
-  color: ${(props) => props.theme.text.muted};
+  color: ${USE_ROOT_COLOR("muted-text")};
   margin-bottom: 0;
   font-size: 11px;
 `;
 
 const StyledValue = styled.p`
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
   margin-bottom: 0;
 `;
 
 const StyledBlockWrapper = styled.div`
-  background: ${(props) => props.theme.colors.softBackground};
+  background: ${USE_ROOT_COLOR("soft-color")};
   margin-top: 0.5rem;
   padding: 0.25rem 0.25rem;
   border-radius: 5px;
@@ -37,7 +38,7 @@ const StyledDataWrapper = styled.div<{ isLastChild: boolean }>`
   ${({ isLastChild }) =>
     !isLastChild &&
     css`
-      border-bottom: 1px dashed ${(props) => props.theme.colors.border};
+      border-bottom: 1px dashed ${USE_ROOT_COLOR("border-color")};
     `}
 `;
 

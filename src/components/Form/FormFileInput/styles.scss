@@ -13,7 +13,6 @@
 .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon:before,
 [class*=" dropify-font-"]:before,
 [class^=dropify-font-]:before {
-    font-family: dropify;
     font-style: normal;
     font-weight: 400;
     speak: none;
@@ -26,11 +25,6 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1em
-}
-
-.dropify-wrapper,
-.dropify-wrapper .dropify-clear {
-    font-family: Roboto, "Helvetica Neue", Helvetica, Arial
 }
 
 .dropify-wrapper.has-error .dropify-message .dropify-error,

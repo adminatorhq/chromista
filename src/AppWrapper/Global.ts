@@ -1,33 +1,9 @@
-import { createGlobalStyle, DefaultTheme } from "styled-components";
-import { APP_COLORS } from "../constants/colors";
-import { ColorTypes } from "../styles/types";
+import { createGlobalStyle } from "styled-components";
+import { ROOT_COLORS, USE_ROOT_COLOR } from "./colors";
 
-declare module "styled-components" {
-  export interface DefaultTheme {
-    colors: Record<ColorTypes, string>;
-    text: {
-      main: string;
-      muted: string;
-      white: string;
-    };
-  }
-}
-
-// TODO move to root variables
-export const themeContext: DefaultTheme = {
-  text: {
-    muted: "#a4abc5",
-    main: "#5f6270",
-    white: "#fff",
-  },
-  colors: {
-    white: "#fff",
-    appBackground: "rgb(243, 246, 249)",
-    primary: APP_COLORS.primary,
-    border: "#e3ebf6",
-    softBackground: "#f1f5fa",
-  },
-};
+const rootColorString = Object.entries(ROOT_COLORS)
+  .map(([key, value]) => `--adminator-${key}: ${value}`)
+  .join(";");
 
 export const GlobalStyle = createGlobalStyle`
 *,
@@ -37,15 +13,11 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 :root {
-  --adminator-text-main: #656d9a;
-
-  --adminator-colors-white: #ffffff;
-  --adminator-colors-theme: #0c213a;
-  --adminator-colors-primary: #1761fd;
+  ${rootColorString};
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -60,11 +32,10 @@ nav {
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  color: ${(props) => props.theme.text.main};
-  background-color: ${(props) => props.theme.colors.white};
+  color: ${USE_ROOT_COLOR("main-text")};
+  background-color: ${USE_ROOT_COLOR("base-color")};
   min-height: 100vh;
   letter-spacing: 0.1px;
   line-height: 1.5;
@@ -90,7 +61,7 @@ ol, ul {
 
 a {
   font-family: "Inter", sans-serif;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${USE_ROOT_COLOR("primary-color")};
   text-decoration: none;
   background-color: transparent
 }
@@ -115,7 +86,7 @@ hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
-  border-top: 1px solid ${(props) => props.theme.colors.border};
+  border-top: 1px solid ${USE_ROOT_COLOR("border-color")};
   box-sizing: content-box;
   height: 0;
   overflow: visible
@@ -199,12 +170,12 @@ button::-moz-focus-inner {
   }
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: .5rem;
   font-weight: 500;
   line-height: 1.2;
-  color: ${(props) => props.theme.text.main};
+  color: ${USE_ROOT_COLOR("main-text")};
 
 }
 button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
@@ -287,11 +258,3 @@ background-color: #000;
   }
 }
 `;
-
-// :root {
-//   --font-family-sans-serif: "Roboto", sans-serif;
-//   --font-family-monospace: SFMono-Regular, Menlo, Monaco,
-// Consolas, "Liberation Mono", "Courier New", monospace
-// }
-
-// TODO remove as much RGBA as possible
