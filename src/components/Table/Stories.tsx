@@ -32,6 +32,11 @@ export default {
     setPaginatedDataState: action("setPaginatedDataState"),
     columns: [
       {
+        Header: "Id",
+        accessor: "id",
+        filter: { _type: "idField" },
+      },
+      {
         Header: "Name Foo",
         accessor: "name",
         filter: { _type: "string" },
@@ -93,6 +98,7 @@ export default {
       data: {
         data: [
           {
+            id: 1,
             name: "React",
             age: 27,
             verified: "true",
@@ -102,6 +108,7 @@ export default {
             createdAt: new Date().toISOString(),
           },
           {
+            id: 2,
             name: "Angular",
             age: 28,
             verified: "true",
@@ -111,6 +118,7 @@ export default {
             createdAt: new Date().toISOString(),
           },
           {
+            id: 3,
             name: "Vue",
             age: 29,
             role: "User",

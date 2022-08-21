@@ -260,8 +260,8 @@ export function Table({
                       {...column.getHeaderProps(column.getSortByToggleProps())}
                       key={column.Header}
                     >
-                      <Stack justify="space-between">
-                        <Text size="6" as="span">
+                      <Stack justify="space-between" align="center">
+                        <Text size="6" weight="bold" as="span">
                           {column.render("Header")}
                         </Text>
                         <Stack justify="end" width="auto">

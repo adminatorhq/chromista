@@ -14,9 +14,12 @@ const StyledPagination = styled.div`
 
   .page-link {
     padding: 0.25rem 0.5rem;
+    margin-left: 4px;
     font-size: 0.71rem;
+    border-radius: 4px;
     line-height: 1.8;
     color: ${USE_ROOT_COLOR("primary-color")};
+    border: 1px solid ${USE_ROOT_COLOR("primary-color")};
   }
 
   .page-item.active {
@@ -65,7 +68,8 @@ export function TablePagination({
           onChange={(value) => setPageSize(Number(value))}
           value={pageSize}
         />{" "}
-        entries of <b>{totalRecords}</b> results
+        entries of <b>{Intl.NumberFormat("en-US").format(totalRecords)}</b>{" "}
+        results
       </Text>
       <StyledPagination>
         <ReactPaginate
