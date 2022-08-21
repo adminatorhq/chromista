@@ -32,7 +32,6 @@ export function FormSkeleton({ schema }: IFormSkeleton) {
           />
         </Fragment>
       ))}
-      {/* :eyes test */}
       <Stack justify="end">
         <SkeletonLoader
           background={sharedSkeletonProps.background}

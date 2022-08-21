@@ -20,5 +20,5 @@ export const getColor =
     if (opacity === 1) {
       return color;
     }
-    return color + percentToHex(opacity);
+    return color + percentToHex(opacity * 100);
   };

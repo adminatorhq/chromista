@@ -37,7 +37,7 @@ export function FilterWrapper({
     size: 15,
     color: filterHasValue
       ? USE_ROOT_COLOR("primary-color")
-      : USE_ROOT_COLOR("muted-text"), // :eyes "rgb(48, 62, 103)",
+      : USE_ROOT_COLOR("muted-text"),
     style: { opacity: filterHasValue ? 1 : 0.3 },
   };
   return (
