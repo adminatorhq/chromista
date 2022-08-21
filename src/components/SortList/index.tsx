@@ -9,7 +9,7 @@ import { EmptyWrapper } from "../EmptyWrapper";
 import { Spacer, Stack } from "../../ui-blocks";
 import { FormButton } from "../Button";
 import { HSpacer } from "../../ui-blocks/Spacer";
-import { defaultToEmptyArray } from "../../utils";
+import { defaultToEmptyArray } from "./utils";
 
 function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
   const startIndex = fromIndex < 0 ? array.length + fromIndex : fromIndex;

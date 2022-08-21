@@ -6,11 +6,7 @@ import { DeleteButton } from "../../Button/DeleteButton";
 import { ISelectData } from "../../../types";
 import { SimpleSelect } from "../../Form";
 import { SoftButton } from "../../Button/SoftButton";
-import {
-  StyledCard,
-  StyledCardBody,
-  StyledCardHeader,
-} from "../../../styles/Card";
+import { StyledCard, StyledCardBody, StyledCardHeader } from "../../Card";
 import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
 import { Spacer, Stack, Text } from "../../../ui-blocks";

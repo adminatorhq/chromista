@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import * as StyledGrid from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { GuestFooter, GuestHeader, GuestContainer } from "./_partials";
-import { StyledCardBody } from "../../styles/Card";
+import { StyledCardBody } from "../../components/Card";
 
 export interface IProps {
   children: ReactNode;

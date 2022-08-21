@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 export const StyledCard = styled.div`
   background-color: ${USE_ROOT_COLOR("base-color")};

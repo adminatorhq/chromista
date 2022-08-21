@@ -8,12 +8,10 @@ export function SectionRow({ children }: { children: ReactNode }) {
 
 export function SectionLeft({ children }: { children: ReactNode }) {
   return (
-    <>
-      <StyledGrid.Col sm={12} lg={3}>
-        {children}
-      </StyledGrid.Col>
+    <StyledGrid.Col sm={12} lg={3}>
+      {children}
       <Spacer />
-    </>
+    </StyledGrid.Col>
   );
 }
 

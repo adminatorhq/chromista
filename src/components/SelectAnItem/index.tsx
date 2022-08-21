@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { StyledCard } from "../../styles/Card";
+import { StyledCard } from "../Card";
 import { Text } from "../../ui-blocks/Text";
 
 const StyledWrapper = styled.div`

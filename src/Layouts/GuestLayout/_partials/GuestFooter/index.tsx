@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { USE_ROOT_COLOR } from "../../../../AppWrapper/colors";
-import { StyledCardBody } from "../../../../styles/Card";
+import { StyledCardBody } from "../../../../components/Card";
 import { Text, Stack } from "../../../../ui-blocks";
 
 const Root = styled(StyledCardBody)`

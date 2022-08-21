@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { getColor } from "../../styles/utils";
+import { getColor } from "../../utils";
 import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
 import { ISystemStatusForDisplay } from "../../types";
 

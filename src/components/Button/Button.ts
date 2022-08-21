@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
-import { getColor } from "../../styles/utils";
+import { getColor } from "../../utils";
 
 export interface IStyledBaseButton {
   block?: boolean;

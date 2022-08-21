@@ -11,6 +11,7 @@ export { EmptyWrapper } from "./EmptyWrapper";
 export * from "./Form";
 export * from "./KeyValueDetails";
 export * from "./Lists";
+export * from "./Card";
 export * from "./ProgressBar";
 export { OffCanvas } from "./OffCanvas";
 export { RenderList } from "./RenderList";
