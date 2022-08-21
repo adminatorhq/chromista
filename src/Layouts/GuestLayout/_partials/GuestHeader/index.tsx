@@ -23,7 +23,7 @@ interface IProps {
 export function GuestHeader({
   title,
   subTitle,
-  logo = "/assets/images/logo.svg",
+  logo = "/assets/images/logo.png",
   homeLink = "/",
 }: IProps) {
   return (

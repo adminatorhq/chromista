@@ -21,6 +21,7 @@ const StyledMenuContent = styled.div`
 const StyledBrand = styled.div`
   text-align: center;
   height: 52px;
+  margin-top: 8px;
 `;
 
 export const StyledLeftSideNavMenu = styled.ul`
@@ -56,7 +57,7 @@ export function BaseLeftSideNav({ isSidebarOpen, children }: IProps) {
         <StyledLogo href="/">
           <span>
             <StyledLogoSm
-              src="/assets/images/logo.svg"
+              src="/assets/images/logo.png"
               alt="logo-small"
               data-test-id="nav-menu__small-logo"
             />
