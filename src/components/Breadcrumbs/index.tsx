@@ -40,7 +40,7 @@ const StyledBreadcrumbItem = styled.li`
 `;
 
 const StyledBreadcrumbItemLink = styled.button<{ active: boolean }>`
-  font-weight: 500;
+  font-weight: 400;
   border: none;
   padding: 0;
   background-color: transparent;

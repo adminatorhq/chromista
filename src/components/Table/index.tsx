@@ -80,7 +80,7 @@ const StyledTh = styled.th`
   border: 1px solid ${USE_ROOT_COLOR("border-color")};
   border-bottom-width: 2px;
   color: ${USE_ROOT_COLOR("main-text")};
-  font-weight: 500;
+  font-weight: 400;
   border-top: none;
 `;
 

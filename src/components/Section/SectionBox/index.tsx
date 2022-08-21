@@ -39,8 +39,8 @@ const StyledCardTitle = styled.h4`
   margin-bottom: 0.75rem;
   text-transform: capitalize;
   letter-spacing: 0.02em;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 30px;
   margin: 0;
   color: ${USE_ROOT_COLOR("main-text")};
