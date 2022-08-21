@@ -68,7 +68,6 @@ const StyledTableResponsive = styled.div`
   display: block;
   width: 100%;
   border: 0;
-  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   background: ${USE_ROOT_COLOR("base-color")};
   padding: 0.5rem;
@@ -244,7 +243,7 @@ export function Table({
           <DropDownMenu menuItems={menuItems} />
         </Stack>
         <Spacer />
-        <div style={{ position: "relative" }}>
+        <div style={{ position: "relative", overflowX: "auto" }}>
           {(isLoading || isPreviousData) && !error ? (
             <StyledOverlay>
               <StyledOverlayText>
@@ -262,7 +261,7 @@ export function Table({
                       key={column.Header}
                     >
                       <Stack justify="space-between">
-                        <Text weight="bold" as="span">
+                        <Text size="6" as="span">
                           {column.render("Header")}
                         </Text>
                         <Stack justify="end" width="auto">
