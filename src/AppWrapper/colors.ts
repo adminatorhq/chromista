@@ -3,8 +3,8 @@ export const ROOT_COLORS = {
   "inverse-text": "#ffffff",
   "muted-text": "#a4abc5",
 
-  "primary-color": "#299cdb",
-  "accent-color": "#299cdb",
+  "primary-color": "#4b38b3",
+  "accent-color": "#4b38b3",
   "border-color": "#e3ebf6",
   "soft-color": "#f1f5fa",
   "base-color": "#ffffff",
@@ -16,7 +16,7 @@ export const USE_ROOT_COLOR = (color: keyof typeof ROOT_COLORS) => {
 };
 
 export const SYSTEM_COLORS = {
-  accent: "#299cdb", // USE_ROOT_COLOR("accent-color"),
+  accent: "#4b38b3", // USE_ROOT_COLOR("accent-color"),
   danger: "#f5325c",
   warning: "#ffb822",
   info: "#12a4ed",
