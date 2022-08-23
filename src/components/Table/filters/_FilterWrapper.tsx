@@ -49,6 +49,7 @@ export function FilterWrapper({
     >
       <Dropdown
         preserveVisibiltyOnClick
+        align="right"
         target={
           <Root>
             <IconComponent {...iconProps} />

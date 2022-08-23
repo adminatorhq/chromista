@@ -128,30 +128,3 @@ export const StyledOutlineButton = styled(StyledBaseButton)`
     box-shadow: 0 0 0 0.15rem ${getColor(0.5)};
   }
 `;
-
-// export const StyledButtonGroup = styled.div`
-//   position: relative;
-//   display: inline-flex;
-//   vertical-align: middle;
-
-//   &>button {
-//     position: relative;
-//     flex: 1 1 auto;
-//   }
-// `;
-
-//  .btn-group>button:not(:last-child):not(.dropdown-toggle),
-//  .btn-group>.btn-group:not(:last-child)>button {
-//   border-top-right-radius: 0;
-//   border-bottom-right-radius: 0;
-//  }
-
-// &>button:not(:first-child),
-// &>.btn-group:not(:first-child)>.btn {
-//   border-top-left-radius: 0;
-//   border-bottom-left-radius: 0;
-// }
-
-// .btn-group>button:not(:first-child),
-// .btn-group>.btn-group:not(:first-child) {
-//   margin-left: -1px;

@@ -85,7 +85,6 @@ const StyledTh = styled.th`
 
 const StyledTd = styled.td`
   padding: 0.45rem;
-  border: 1px solid #eaf0f9;
   border: 1px solid ${USE_ROOT_COLOR("border-color")};
   vertical-align: middle;
   font-weight: 400;
@@ -185,9 +184,9 @@ export function Table({
 
   const tableColumns = useMemo(
     () =>
-      columns.map(({ filter, ...column }) => ({
+      columns.map(({ filter, ...column }, index) => ({
         ...column,
-        Filter: filter ? mapFilterTypeToComponent(filter) : undefined,
+        Filter: filter ? mapFilterTypeToComponent(filter, index) : undefined,
         disableFilters: !filter,
       })),
     [columns.length]
