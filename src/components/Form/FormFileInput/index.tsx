@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import classnames from "classnames";
-import { makePostRequest, StringUtils } from "@adminator/protozoa";
+import { makePostRequest, StringUtils } from "@hadmean/protozoa";
 import noop from "lodash/noop";
 import { ISharedFormInput } from "../_types";
 import { generateClassNames, wrapLabelAndError } from "../_wrapForm";

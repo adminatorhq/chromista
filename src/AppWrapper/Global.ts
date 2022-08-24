@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import { ROOT_COLORS, USE_ROOT_COLOR } from "./colors";
 
 const rootColorString = Object.entries(ROOT_COLORS)
-  .map(([key, value]) => `--adminator-${key}: ${value}`)
+  .map(([key, value]) => `--hadmean-${key}: ${value}`)
   .join(";");
 
 export const GlobalStyle = createGlobalStyle`

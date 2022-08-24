@@ -8,7 +8,7 @@ import {
   IBEPaginatedDataState,
   IFEPaginatedDataState,
   PaginatedData,
-} from "@adminator/protozoa";
+} from "@hadmean/protozoa";
 import { UseQueryResult } from "react-query";
 import { ComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";
@@ -184,9 +184,9 @@ export function Table({
 
   const tableColumns = useMemo(
     () =>
-      columns.map(({ filter, ...column }, index) => ({
+      columns.map(({ filter, ...column }) => ({
         ...column,
-        Filter: filter ? mapFilterTypeToComponent(filter, index) : undefined,
+        Filter: filter ? mapFilterTypeToComponent(filter) : undefined,
         disableFilters: !filter,
       })),
     [columns.length]

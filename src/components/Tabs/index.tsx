@@ -1,4 +1,4 @@
-import { SLUG_LOADING_VALUE } from "@adminator/protozoa";
+import { SLUG_LOADING_VALUE } from "@hadmean/protozoa";
 import React, { useMemo, useState, useEffect, ReactNode } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import styled, { css } from "styled-components";

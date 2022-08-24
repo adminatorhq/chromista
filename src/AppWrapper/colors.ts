@@ -12,7 +12,7 @@ export const ROOT_COLORS = {
 };
 
 export const USE_ROOT_COLOR = (color: keyof typeof ROOT_COLORS) => {
-  return `var(--adminator-${color})`;
+  return `var(--hadmean-${color})`;
 };
 
 export const SYSTEM_COLORS = {

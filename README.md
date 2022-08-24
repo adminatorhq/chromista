@@ -1,6 +1,6 @@
-# Adminator Chromista
+# Hadmean Chromista
 
-This is the design system used for Adminator
+This is the design system used for Hadmean
 
 ## Commands
 ### Development

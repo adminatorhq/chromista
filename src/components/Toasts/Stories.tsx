@@ -2,7 +2,7 @@
 import React from "react";
 import { Story } from "@storybook/react";
 import { action as storyAction } from "@storybook/addon-actions";
-import { ToastService } from "@adminator/protozoa";
+import { ToastService } from "@hadmean/protozoa";
 import { AppWrapper } from "../../AppWrapper";
 
 interface IProps {

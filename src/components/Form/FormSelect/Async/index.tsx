@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import debounce from "lodash/debounce";
 import AsyncSelect from "react-select/async";
-import { makeGetRequest, useApi } from "@adminator/protozoa";
+import { makeGetRequest, useApi } from "@hadmean/protozoa";
 import styled from "styled-components";
 import { useAsync } from "react-use";
 import { ISelectData } from "../../../../types";

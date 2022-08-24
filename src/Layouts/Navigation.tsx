@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { ChevronRight } from "react-feather";
 import Link from "next/link";
-import { StringUtils } from "@adminator/protozoa";
+import { StringUtils } from "@hadmean/protozoa";
 import { ISelectionView } from "./types";
 import { USE_ROOT_COLOR } from "../AppWrapper/colors";
 

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import SkeletonLoader from "tiny-skeleton-loader-react";
-import { randomNumber } from "@adminator/protozoa";
+import { randomNumber } from "@hadmean/protozoa";
 import styled from "styled-components";
 import { EmptyWrapper } from "../EmptyWrapper";
 import { sharedSkeletonProps } from "../Skeleton/constants";

@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { StringFilters } from "@adminator/protozoa";
+import { StringFilters } from "@hadmean/protozoa";
 import { Text } from "../../ui-blocks";
 import { ISystemStatusForDisplay } from "../../types";
 import { BadgeBuilder } from "../Badge";

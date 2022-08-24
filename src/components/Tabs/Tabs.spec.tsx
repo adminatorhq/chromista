@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import { SLUG_LOADING_VALUE } from "@adminator/protozoa";
+import { SLUG_LOADING_VALUE } from "@hadmean/protozoa";
 import { Tabs } from ".";
 
 import "@testing-library/jest-dom/extend-expect";

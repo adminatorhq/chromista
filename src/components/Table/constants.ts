@@ -1,4 +1,4 @@
-import { IBEPaginatedDataState } from "@adminator/protozoa";
+import { IBEPaginatedDataState } from "@hadmean/protozoa";
 
 export const DEFAULT_TABLE_PARAMS: Required<IBEPaginatedDataState> = {
   pageIndex: 0,
