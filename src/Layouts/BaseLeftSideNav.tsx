@@ -8,7 +8,8 @@ const StyledLogo = styled(Link)`
 `;
 
 const StyledLogoSm = styled.img`
-  height: 22px;
+  height: 40px;
+  width: 24px;
   margin-top: 16px;
 `;
 
