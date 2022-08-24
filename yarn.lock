@@ -3490,13 +3490,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-final-form-listeners@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-final-form-listeners/-/react-final-form-listeners-1.0.0.tgz#f45e91665d40792c16129429c4709650f0dcccf4"
-  integrity sha512-DovKaDfBqBzPnThFV8mGXL4iAbMCObEFIPUkH7wbD/EN3jZEjpDuPibrqY+w4W1dzicO109YP1LT9KsDDxdYnw==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-syntax-highlighter@11.0.4":
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-11.0.4.tgz#d86d17697db62f98046874f62fdb3e53a0bbc4cd"
@@ -12499,13 +12492,6 @@ react-feather@^2.0.9:
   integrity sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==
   dependencies:
     prop-types "^15.7.2"
-
-react-final-form-listeners@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-final-form-listeners/-/react-final-form-listeners-1.0.3.tgz#88e0bd6af06edc9a74b81ddad2ce0ded53f3331e"
-  integrity sha512-OrdCNxSS4JQS/EXD+R530kZKFqaPfa+WcXPgVro/h4BpaBDF/Ja+BtHyCzDezCIb5rWaGGdOJIj+tN2YdtvrXg==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
 
 react-final-form@^6.5.9:
   version "6.5.9"
