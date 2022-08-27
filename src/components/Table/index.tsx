@@ -10,6 +10,7 @@ import {
   PaginatedData,
 } from "@hadmean/protozoa";
 import { UseQueryResult } from "react-query";
+import usePrevious from "react-use/lib/usePrevious";
 import { ComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
@@ -130,6 +131,12 @@ const StyledOverlayText = styled.div`
   transform: translate(-50%, -50%);
 `;
 
+type DataState = IBEPaginatedDataState | IFEPaginatedDataState<any>;
+
+const buildTableStateToRefreshPageNumber = (input: DataState | undefined) => {
+  return JSON.stringify([input?.filters, input?.pageSize, input?.sortBy]);
+};
+
 export interface ITableColumn {
   Header: string;
   accessor?: string;
@@ -149,10 +156,8 @@ export interface IProps {
     UseQueryResult<PaginatedData<Record<string, unknown>>, unknown>,
     "data" | "isLoading" | "error" | "isPreviousData"
   >;
-  paginatedDataState: IBEPaginatedDataState | IFEPaginatedDataState<any>;
-  setPaginatedDataState: (
-    params: IBEPaginatedDataState | IFEPaginatedDataState<any>
-  ) => void;
+  paginatedDataState: DataState;
+  setPaginatedDataState: (params: DataState) => void;
 }
 
 export function Table({
@@ -223,7 +228,17 @@ export function Table({
     usePagination
   );
 
+  const previousTableState = usePrevious<DataState>(tableState);
+
   useEffect(() => {
+    if (
+      buildTableStateToRefreshPageNumber(previousTableState) !==
+      buildTableStateToRefreshPageNumber(tableState)
+    ) {
+      gotoPage(1);
+      return;
+    }
+
     setPaginatedDataState(tableState);
   }, [JSON.stringify(tableState)]);
 
