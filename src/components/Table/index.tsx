@@ -308,6 +308,7 @@ export function Table({
             setPageSize,
             totalRecords: data.totalRecords,
             pageSize: tableState.pageSize,
+            pageIndex: tableState.pageIndex,
             totalPageCount,
             gotoPage,
           }}

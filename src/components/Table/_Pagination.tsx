@@ -43,6 +43,7 @@ interface IProps {
   setPageSize: (pageSize: number) => void;
   gotoPage: (page: number) => void;
   totalRecords: number;
+  pageIndex: number;
   pageSize: number;
   totalPageCount: number;
 }
@@ -53,6 +54,7 @@ export function TablePagination({
   setPageSize,
   gotoPage,
   totalRecords,
+  pageIndex,
   pageSize,
   totalPageCount,
 }: IProps) {
@@ -77,10 +79,12 @@ export function TablePagination({
           nextLabel="next"
           breakLabel="..."
           pageCount={totalPageCount}
+          renderOnZeroPageCount={() => null}
           marginPagesDisplayed={2}
           pageRangeDisplayed={3}
           breakClassName="page-item"
           nextClassName="page-item"
+          forcePage={pageIndex}
           previousClassName="page-item"
           pageClassName="page-item"
           breakLinkClassName="page-link"
