@@ -1,27 +1,23 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect, useMemo, ReactNode } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useTable, usePagination, useSortBy, useFilters } from "react-table";
 import classnames from "classnames";
 import styled from "styled-components";
-import {
-  IBEPaginatedDataState,
-  IFEPaginatedDataState,
-  PaginatedData,
-} from "@hadmean/protozoa";
-import { UseQueryResult } from "react-query";
 import usePrevious from "react-use/lib/usePrevious";
 import { ComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
 import { DEFAULT_TABLE_PARAMS } from "./constants";
 import { Spacer, Stack, Text } from "../../ui-blocks";
-import { DropDownMenu, IDropDownMenuItem } from "../DropdownMenu";
+import { DropDownMenu } from "../DropdownMenu";
 import { mapFilterTypeToComponent } from "./filters";
 import { TablePagination } from "./_Pagination";
-import { TableFilterType } from "./filters/types";
 import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
+import { IProps, ITableColumn, PaginatedDataState } from "./types";
+
+export { ITableColumn, IProps };
 export { DEFAULT_TABLE_PARAMS };
 export { FilterOperators, IColumnFilterBag } from "./filters/types";
 
@@ -131,34 +127,17 @@ const StyledOverlayText = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-type DataState = IBEPaginatedDataState | IFEPaginatedDataState<any>;
+const DEFAULT_PAGE_SIZE = 10;
 
-const buildTableStateToRefreshPageNumber = (input: DataState | undefined) => {
-  return JSON.stringify([input?.filters, input?.pageSize, input?.sortBy]);
+const buildTableStateToRefreshPageNumber = (
+  input: PaginatedDataState | undefined
+) => {
+  return JSON.stringify([
+    input?.filters || [],
+    input?.pageSize || DEFAULT_PAGE_SIZE,
+    input?.sortBy || [],
+  ]);
 };
-
-export interface ITableColumn {
-  Header: string;
-  accessor?: string;
-  disableSortBy?: boolean;
-  filter?: TableFilterType;
-  Cell?: (cellProps: {
-    value: unknown;
-    row: { original: Record<string, unknown> };
-  }) => ReactNode;
-}
-
-export interface IProps {
-  columns: ITableColumn[];
-  title: string;
-  menuItems: IDropDownMenuItem[];
-  tableData: Pick<
-    UseQueryResult<PaginatedData<Record<string, unknown>>, unknown>,
-    "data" | "isLoading" | "error" | "isPreviousData"
-  >;
-  paginatedDataState: DataState;
-  setPaginatedDataState: (params: DataState) => void;
-}
 
 export function Table({
   paginatedDataState,
@@ -172,7 +151,7 @@ export function Table({
     data = {
       data: [],
       pageIndex: 0,
-      pageSize: 10,
+      pageSize: DEFAULT_PAGE_SIZE,
       totalRecords: 0,
     },
     isLoading,
@@ -228,15 +207,14 @@ export function Table({
     usePagination
   );
 
-  const previousTableState = usePrevious<DataState>(tableState);
+  const previousTableState = usePrevious<PaginatedDataState>(tableState);
 
   useEffect(() => {
     if (
       buildTableStateToRefreshPageNumber(previousTableState) !==
       buildTableStateToRefreshPageNumber(tableState)
     ) {
-      gotoPage(1);
-      return;
+      gotoPage(0);
     }
 
     setPaginatedDataState(tableState);
