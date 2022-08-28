@@ -3,7 +3,7 @@ import debounce from "lodash/debounce";
 import AsyncSelect from "react-select/async";
 import { makeGetRequest, useApi } from "@hadmean/protozoa";
 import styled from "styled-components";
-import { useAsync } from "react-use";
+import { useAsync, useSessionStorage } from "react-use";
 import { ISelectData } from "../../../../types";
 import { FormSelect } from "..";
 import { generateClassNames, wrapLabelAndError } from "../../_wrapForm";
@@ -121,7 +121,8 @@ export function AsyncFormMultiSelect({
   values = [],
   onChange,
 }: IFormMultiSelect) {
-  const [cosmeticValues, setCosmeticValues] = useState<ISelectData[]>(
+  const [cosmeticValues, setCosmeticValues] = useSessionStorage<ISelectData[]>(
+    "cosmetic-multi-select-values",
     values.map((value) => ({ value, label: "TODO" }))
   );
   return (

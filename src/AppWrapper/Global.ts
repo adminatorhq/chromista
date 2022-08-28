@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { normalize } from "polished";
 import { ROOT_COLORS, USE_ROOT_COLOR } from "./colors";
 
 const rootColorString = Object.entries(ROOT_COLORS)
@@ -6,11 +7,7 @@ const rootColorString = Object.entries(ROOT_COLORS)
   .join(";");
 
 export const GlobalStyle = createGlobalStyle`
-*,
-*::before,
-*::after {
-  box-sizing: border-box
-}
+${normalize()}
 
 :root {
   ${rootColorString};
@@ -23,11 +20,6 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   position: relative;
   min-height: 100%
-}
-
-footer,
-nav {
-  display: block
 }
 
 body {
@@ -54,11 +46,6 @@ p {
   font-weight: 400
 }
 
-ol, ul {
-  margin-top: 0;
-  margin-bottom: 1rem
-}
-
 a {
   font-family: "Inter", sans-serif;
   color: ${USE_ROOT_COLOR("primary-color")};
@@ -67,20 +54,9 @@ a {
 }
 
 a:hover {
-  color: #0241c6;
+  color: ${USE_ROOT_COLOR("primary-color")};
 }
 
-a:hover,
-a:active,
-a:focus {
-  outline: 0;
-  text-decoration: none
-}
-
-img {
-  vertical-align: middle;
-  border-style: none
-}
 
 hr {
   margin-top: 1rem;
@@ -90,11 +66,6 @@ hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible
-}
-
-small {
-  font-size: 86%;
-  font-weight: 400
 }
 
 button {
@@ -116,10 +87,6 @@ button:focus {
 button::-moz-focus-inner {
   padding: 0;
   border-style: none
-}
-
-[role="button"] {
-  cursor: pointer
 }
 
 * {

@@ -93,6 +93,12 @@ const StyledTableTitle = styled.h4`
   margin: 0;
 `;
 
+const StyledTableRoot = styled.div`
+  position: relative;
+  overflow-x: auto;
+  min-height: calc(100vh - 250px);
+`;
+
 const StyledTable = styled.table`
   width: 100%;
   margin-bottom: 1rem;
@@ -235,7 +241,7 @@ export function Table({
           <DropDownMenu menuItems={menuItems} />
         </Stack>
         <Spacer />
-        <div style={{ position: "relative", overflowX: "auto" }}>
+        <StyledTableRoot>
           {(isLoading || isPreviousData) && !error ? (
             <StyledOverlay>
               <StyledOverlayText>
@@ -302,7 +308,7 @@ export function Table({
               ) : null}
             </tbody>
           </StyledTable>
-        </div>
+        </StyledTableRoot>
         <TablePagination
           {...{
             setPageSize,

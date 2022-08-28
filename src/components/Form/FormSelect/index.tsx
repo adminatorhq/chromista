@@ -93,17 +93,19 @@ interface IFormNoValueSelect {
   selectData: ISelectData[];
   disabledOptions: string[];
   onChange: (value: string, label?: string) => void;
+  defaultLabel?: string;
 }
 
 export function FormNoValueSelect({
   selectData,
   disabledOptions,
+  defaultLabel,
   onChange,
 }: IFormNoValueSelect) {
   return (
     <Select
       classNamePrefix={SharedSelectProps.classNamePrefix}
-      value={{ value: "", label: "" }}
+      value={{ value: "", label: defaultLabel || "" }}
       onChange={({ value, label }: any) => {
         onChange(value, label);
       }}
