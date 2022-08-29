@@ -50,7 +50,6 @@ const StyledProgressBar = styled.div`
 
   animation: ${progressBarStripes} 1s linear infinite;
 `;
-// background-size: 6px 6px;
 
 export function ProgressBar({ progress }: IProgressBar) {
   return (
