@@ -7,6 +7,12 @@ const rootColorString = Object.entries(ROOT_COLORS)
   .join(";");
 
 export const GlobalStyle = createGlobalStyle`
+*,
+*::before,
+*::after {
+  box-sizing: border-box
+}
+
 ${normalize()}
 
 :root {
