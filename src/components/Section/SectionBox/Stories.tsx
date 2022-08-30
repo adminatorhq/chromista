@@ -38,12 +38,13 @@ WithIconButtons.args = {
   iconButtons: [
     {
       action: "/foo",
-      label: "Foo",
+      label: "Add Me",
       icon: "add",
     },
     {
       action: "/baz",
-      icon: "settings",
+      icon: "help",
+      label: "Link to help",
     },
     {
       action: "/baz",

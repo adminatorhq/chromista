@@ -66,7 +66,11 @@ export function SoftButton({
   if (typeof action === "string") {
     return (
       <Link href={action} passHref>
-        <StyledSoftButton {...buttonProps} as="a">
+        <StyledSoftButton
+          {...buttonProps}
+          as="a"
+          target={action.startsWith("http") ? "_blank" : undefined}
+        >
           {secondaryAction ? (
             <span onClick={secondaryAction} aria-hidden="true">
               {content}

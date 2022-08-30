@@ -6,6 +6,7 @@ import {
   faTimes,
   faEye,
   faSave,
+  faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const ICON_MAP = {
@@ -15,6 +16,7 @@ export const ICON_MAP = {
   settings: faCog,
   close: faTimes,
   eye: faEye,
+  help: faQuestionCircle,
   back: faChevronLeft,
 };
 
