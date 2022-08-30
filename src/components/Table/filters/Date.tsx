@@ -1,14 +1,13 @@
 import React from "react";
 // import * as StyledGrid from 'styled-bootstrap-grid';
 import { Calendar } from "react-feather";
-// import styled from 'styled-components';
 // import useDebounce from 'react-use/lib/useDebounce';
 // import { SimpleSelect } from '../../Form/SimpleSelect';
 import { FilterWrapper } from "./_FilterWrapper";
 // import { StyledInput } from '../../Form/Styles';
 import { IColumnFilterBag, IFilterProps } from "./types";
 // import { SEARCH_DEBOUNCE_WAIT } from './constants';
-// Special case
+
 // TODO
 export function FilterTableByDate({
   column: { filterValue, setFilter },
@@ -65,8 +64,6 @@ export function FilterTableByDate({
     </FilterWrapper>
   );
 }
-
-// On
 
 // From
 // now
