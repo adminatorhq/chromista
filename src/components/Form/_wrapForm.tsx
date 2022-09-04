@@ -36,12 +36,14 @@ export const wrapLabelAndError = (
       <Stack justify="space-between" align="baseline">
         <div>
           {label && (
-            <StyledFormLabel sm={sm} htmlFor={input.name}>
-              {label}{" "}
+            <>
+              <StyledFormLabel sm={sm} htmlFor={input.name}>
+                {label}
+              </StyledFormLabel>
               {required ? (
-                <StyledRequiredAsterick>*</StyledRequiredAsterick>
+                <StyledRequiredAsterick> *</StyledRequiredAsterick>
               ) : null}
-            </StyledFormLabel>
+            </>
           )}
           {description ? (
             <>
