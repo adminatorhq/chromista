@@ -69,6 +69,7 @@ export const FormRichTextArea: React.FC<IFormRichText> = (formInput) => {
         {...inputProps}
         readOnly={disabled}
         modules={modules}
+        id={formInput.input.name}
         placeholder="Write something..."
         theme="snow"
       />

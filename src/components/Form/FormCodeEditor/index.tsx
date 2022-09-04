@@ -111,6 +111,7 @@ export const FormCodeEditor: React.FC<IFormCodeEditor> = (formInput) => {
         highlight={(code) =>
           highlight(code, languages[formInput.language || "javascript"])
         }
+        id={formInput.input.name}
         padding={4}
         style={{
           height: "275px",

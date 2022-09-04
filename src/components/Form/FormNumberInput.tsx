@@ -30,6 +30,7 @@ export const FormNumberInput: React.FC<IFormNumberInput> = (formInput) => {
       {...input}
       {...moreProps}
       sm={sm}
+      id={formInput.input.name}
       onChange={(e) => {
         input.onChange(getNumberValue(e.target.value, !!required));
       }}

@@ -15,6 +15,7 @@ export const FormInput: React.FC<IFormInput> = (formInput) => {
       {...input}
       {...rest}
       type={type}
+      id={formInput.input.name}
       placeholder={label}
       className={generateClassNames(meta)}
       disabled={disabled}

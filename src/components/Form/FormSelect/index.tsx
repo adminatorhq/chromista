@@ -70,6 +70,7 @@ export const FormSelect: React.FC<IFormSelect> = (props) => {
           label: "",
         }
       }
+      id={input.name}
       onChange={({ value }: any) => {
         input.onChange(nullable && !value ? null : value);
       }}

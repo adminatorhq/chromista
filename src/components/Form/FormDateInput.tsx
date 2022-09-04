@@ -25,6 +25,7 @@ export const FormDateInput: React.FC<IFormDateInput> = (formInput) => {
       showTwoColumnMonthYearPicker
       isClearable={!required}
       selected={selected}
+      id={formInput.input.name}
       minDate={minDate}
       maxDate={maxDate}
       className={generateClassNames(meta)}

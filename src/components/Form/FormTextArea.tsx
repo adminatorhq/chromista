@@ -19,6 +19,7 @@ export const FormTextArea: React.FC<IFormTextArea> = (formInput) => {
       as="textarea"
       value={input.value}
       name={input.name}
+      id={formInput.input.name}
       onChange={input.onChange}
       onFocus={input.onFocus}
       onBlur={input.onBlur}

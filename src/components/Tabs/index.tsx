@@ -28,7 +28,7 @@ const StyledNav = styled(Nav)`
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style: none;
   border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;

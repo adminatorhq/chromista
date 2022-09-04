@@ -92,6 +92,7 @@ export function AsyncFormSelect(props: IProps) {
           input.onChange(nullable && !value ? null : value);
           setValueLabel(label);
         }}
+        id={input.name}
         classNamePrefix={SharedSelectProps.classNamePrefix}
         isDisabled={disabled}
         isLoading={isLoading}
