@@ -58,6 +58,9 @@ export function TablePagination({
   pageSize,
   totalPageCount,
 }: IProps) {
+  if (totalPageCount === 0) {
+    return null;
+  }
   return (
     <Stack justify="space-between" align="center">
       <Text>

@@ -124,7 +124,7 @@ export function AsyncFormMultiSelect({
 }: IFormMultiSelect) {
   const [cosmeticValues, setCosmeticValues] = useSessionStorage<ISelectData[]>(
     "cosmetic-multi-select-values",
-    values.map((value) => ({ value, label: "TODO" }))
+    values.map((value) => ({ value, label: value }))
   );
   return (
     <StyledSelect

@@ -81,11 +81,13 @@ export function Tabs({ contents, currentTab, onChange }: IProps) {
 
   return (
     <>
-      <StyledNav tabs>
+      <StyledNav tabs role="tablist">
         {labels.map((label) => (
           <StyledNavItem key={label}>
             <StyledNavLink
               tag="button"
+              role="tab"
+              aria-selected={activeTab === label ? "true" : "false"}
               active={activeTab === label}
               onClick={() => {
                 changeTab(label);
@@ -96,7 +98,7 @@ export function Tabs({ contents, currentTab, onChange }: IProps) {
           </StyledNavItem>
         ))}
       </StyledNav>
-      <StyledTabContent activeTab={activeTab}>
+      <StyledTabContent activeTab={activeTab} role="tabpanel">
         {contents.map(({ label, content }) => (
           <StyledTabPane tabId={label} key={label}>
             {content}

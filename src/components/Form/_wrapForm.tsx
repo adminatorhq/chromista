@@ -79,9 +79,6 @@ export const wrapLabelAndError = (
   </StyledFormGroup>
 );
 
-// TODO use meta.validating to show a loading indicator
-// that this form is perform an async validation
-
 export const generateClassNames = (meta: FieldMetaState<any>): string =>
   classnames({
     invalid: !!isFormMetaWithError(meta),
