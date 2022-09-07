@@ -39,6 +39,11 @@ const StyledPagination = styled.div`
   }
 `;
 
+const Root = styled.div`
+  background: ${USE_ROOT_COLOR("base-color")};
+  padding: 0 0.5rem;
+`;
+
 interface IProps {
   setPageSize: (pageSize: number) => void;
   gotoPage: (page: number) => void;
@@ -62,45 +67,47 @@ export function TablePagination({
     return null;
   }
   return (
-    <Stack justify="space-between" align="center">
-      <Text>
-        Showing{" "}
-        <SimpleSelect
-          options={PAGE_SIZES.map((option) => ({
-            value: `${option}`,
-            label: `${option}`,
-          }))}
-          onChange={(value) => setPageSize(Number(value))}
-          value={pageSize}
-        />{" "}
-        entries of <b>{Intl.NumberFormat("en-US").format(totalRecords)}</b>{" "}
-        results
-      </Text>
-      <StyledPagination>
-        <ReactPaginate
-          previousLabel="prev"
-          nextLabel="next"
-          breakLabel="..."
-          pageCount={totalPageCount}
-          renderOnZeroPageCount={() => null}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={3}
-          breakClassName="page-item"
-          nextClassName="page-item"
-          forcePage={pageIndex}
-          previousClassName="page-item"
-          pageClassName="page-item"
-          breakLinkClassName="page-link"
-          pageLinkClassName="page-link"
-          nextLinkClassName="page-link"
-          previousLinkClassName="page-link"
-          containerClassName="pagination"
-          activeClassName="active"
-          onPageChange={({ selected }) => {
-            gotoPage(selected);
-          }}
-        />
-      </StyledPagination>
-    </Stack>
+    <Root>
+      <Stack justify="space-between" align="center">
+        <Text>
+          Showing{" "}
+          <SimpleSelect
+            options={PAGE_SIZES.map((option) => ({
+              value: `${option}`,
+              label: `${option}`,
+            }))}
+            onChange={(value) => setPageSize(Number(value))}
+            value={pageSize}
+          />{" "}
+          entries of <b>{Intl.NumberFormat("en-US").format(totalRecords)}</b>{" "}
+          results
+        </Text>
+        <StyledPagination>
+          <ReactPaginate
+            previousLabel="prev"
+            nextLabel="next"
+            breakLabel="..."
+            pageCount={totalPageCount}
+            renderOnZeroPageCount={() => null}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={3}
+            breakClassName="page-item"
+            nextClassName="page-item"
+            forcePage={pageIndex}
+            previousClassName="page-item"
+            pageClassName="page-item"
+            breakLinkClassName="page-link"
+            pageLinkClassName="page-link"
+            nextLinkClassName="page-link"
+            previousLinkClassName="page-link"
+            containerClassName="pagination"
+            activeClassName="active"
+            onPageChange={({ selected }) => {
+              gotoPage(selected);
+            }}
+          />
+        </StyledPagination>
+      </Stack>
+    </Root>
   );
 }

@@ -5,7 +5,6 @@ import {
 } from "@hadmean/protozoa";
 import { ReactNode } from "react";
 import { UseQueryResult } from "react-query";
-import { IDropDownMenuItem } from "../DropdownMenu";
 import { TableFilterType } from "./filters/types";
 
 export interface ITableColumn {
@@ -25,8 +24,6 @@ export type PaginatedDataState =
 
 export interface IProps {
   columns: ITableColumn[];
-  title: string;
-  menuItems: IDropDownMenuItem[];
   tableData: Pick<
     UseQueryResult<PaginatedData<Record<string, unknown>>, unknown>,
     "data" | "isLoading" | "error" | "isPreviousData"

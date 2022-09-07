@@ -10,7 +10,6 @@ import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
 import { DEFAULT_TABLE_PARAMS } from "./constants";
 import { Spacer, Stack, Text } from "../../ui-blocks";
-import { DropDownMenu } from "../DropdownMenu";
 import { mapFilterTypeToComponent } from "./filters";
 import { TablePagination } from "./_Pagination";
 import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
@@ -66,8 +65,6 @@ const StyledTableResponsive = styled.div`
   width: 100%;
   border: 0;
   -webkit-overflow-scrolling: touch;
-  background: ${USE_ROOT_COLOR("base-color")};
-  padding: 0.5rem;
 `;
 
 const StyledTh = styled.th`
@@ -88,14 +85,10 @@ const StyledTd = styled.td`
   border-top: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;
 
-const StyledTableTitle = styled.h4`
-  line-height: 1.8em;
-  margin: 0;
-`;
-
 const StyledTableRoot = styled.div`
   position: relative;
   overflow-x: auto;
+  background: ${USE_ROOT_COLOR("base-color")};
   min-height: calc(100vh - 250px);
 `;
 
@@ -149,9 +142,7 @@ export function Table({
   paginatedDataState,
   tableData,
   setPaginatedDataState,
-  title,
   columns,
-  menuItems,
 }: IProps) {
   const {
     data = {
@@ -236,11 +227,6 @@ export function Table({
         </>
       ) : null}
       <StyledTableResponsive>
-        <Stack justify="space-between">
-          <StyledTableTitle>{title}</StyledTableTitle>
-          <DropDownMenu menuItems={menuItems} />
-        </Stack>
-        <Spacer />
         <StyledTableRoot>
           {(isLoading || isPreviousData) && !error ? (
             <StyledOverlay>
