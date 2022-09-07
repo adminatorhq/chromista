@@ -10,6 +10,7 @@ export interface IProps {
     content: ReactNode;
   }[];
   currentTab?: string;
+  padContent?: boolean;
   onChange?: (tab: string) => void;
 }
 
@@ -20,8 +21,12 @@ const StyledTabPane = styled(TabPane)`
   }
 `;
 
-const StyledTabContent = styled(TabContent)`
-  padding-top: 1rem;
+const StyledTabContent = styled(TabContent)<{ padContent: boolean }>`
+  ${(props) =>
+    props.padContent &&
+    css`
+      padding-top: 1rem;
+    `}
 `;
 
 const StyledNav = styled(Nav)`
@@ -59,7 +64,12 @@ const StyledNavLink = styled(NavLink)<{ active: boolean }>`
         `}
 `;
 
-export function Tabs({ contents, currentTab, onChange }: IProps) {
+export function Tabs({
+  contents,
+  currentTab,
+  onChange,
+  padContent = true,
+}: IProps) {
   const [activeTab, setActiveTab] = useState(currentTab || contents[0].label);
 
   useEffect(() => {
@@ -98,7 +108,11 @@ export function Tabs({ contents, currentTab, onChange }: IProps) {
           </StyledNavItem>
         ))}
       </StyledNav>
-      <StyledTabContent activeTab={activeTab} role="tabpanel">
+      <StyledTabContent
+        activeTab={activeTab}
+        role="tabpanel"
+        padContent={padContent}
+      >
         {contents.map(({ label, content }) => (
           <StyledTabPane tabId={label} key={label}>
             {content}

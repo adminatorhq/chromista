@@ -33,3 +33,8 @@ const Template: Story<IProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {};
+
+export const NoContentPaddding = Template.bind({});
+NoContentPaddding.args = {
+  padContent: false,
+};
