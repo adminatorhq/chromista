@@ -1,24 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Download, Plus } from "react-feather";
 import { Table, IProps } from "..";
 
 import "@testing-library/jest-dom/extend-expect";
 
 const DEFAULT_TABLE_PROPS: IProps = {
-  title: "Some Table title",
-  menuItems: [
-    {
-      label: "Create Item",
-      onClick: jest.fn(),
-      IconComponent: Plus,
-    },
-    {
-      label: "Download Data",
-      onClick: jest.fn(),
-      IconComponent: Download,
-    },
-  ],
   paginatedDataState: {
     pageSize: 10,
     pageIndex: 1,
@@ -130,7 +116,6 @@ describe("Table", () => {
   it("should render data rows", () => {
     render(<Table {...DEFAULT_TABLE_PROPS} />);
 
-    expect(screen.getByText("Some Table title")).toBeInTheDocument();
     // expect(screen.getByText("Create Item")).toBeInTheDocument();
     expect(screen.getByText("React")).toBeInTheDocument();
     expect(screen.getByText("Angular")).toBeInTheDocument();
