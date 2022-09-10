@@ -15,6 +15,7 @@ export default {
       },
       {
         label: "Bar",
+        overrideLabel: "Override Label",
         content: <p>Bar Content</p>,
       },
       {

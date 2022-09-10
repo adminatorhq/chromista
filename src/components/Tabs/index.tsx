@@ -1,5 +1,5 @@
 import { SLUG_LOADING_VALUE } from "@hadmean/protozoa";
-import React, { useMemo, useState, useEffect, ReactNode } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import styled, { css } from "styled-components";
 import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
@@ -7,6 +7,7 @@ import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 export interface IProps {
   contents: {
     label: string;
+    overrideLabel?: string;
     content: ReactNode;
   }[];
   currentTab?: string;
@@ -21,9 +22,9 @@ const StyledTabPane = styled(TabPane)`
   }
 `;
 
-const StyledTabContent = styled(TabContent)<{ padContent: boolean }>`
+const StyledTabContent = styled(TabContent)<{ $padContent: boolean }>`
   ${(props) =>
-    props.padContent &&
+    props.$padContent &&
     css`
       padding-top: 1rem;
     `}
@@ -87,12 +88,10 @@ export function Tabs({
     }
   };
 
-  const labels = useMemo(() => contents.map(({ label }) => label), [contents]);
-
   return (
     <>
       <StyledNav tabs role="tablist">
-        {labels.map((label) => (
+        {contents.map(({ label, overrideLabel }) => (
           <StyledNavItem key={label}>
             <StyledNavLink
               tag="button"
@@ -103,7 +102,7 @@ export function Tabs({
                 changeTab(label);
               }}
             >
-              {label}
+              {overrideLabel || label}
             </StyledNavLink>
           </StyledNavItem>
         ))}
@@ -111,7 +110,7 @@ export function Tabs({
       <StyledTabContent
         activeTab={activeTab}
         role="tabpanel"
-        padContent={padContent}
+        $padContent={padContent}
       >
         {contents.map(({ label, content }) => (
           <StyledTabPane tabId={label} key={label}>
