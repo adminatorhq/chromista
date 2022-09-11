@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import * as StyledGrid from "styled-bootstrap-grid";
+import { Container } from "styled-bootstrap-grid";
 import { Stack } from "../../../../ui-blocks";
 
 const Root = styled.div`
@@ -20,11 +20,11 @@ const StyledWrapperRow = styled(Stack)`
 export function GuestContainer({ children }: { children: ReactNode }) {
   return (
     <Root>
-      <StyledGrid.Container>
+      <Container>
         <StyledWrapperRow justify="center" align="center">
           {children}
         </StyledWrapperRow>
-      </StyledGrid.Container>
+      </Container>
     </Root>
   );
 }

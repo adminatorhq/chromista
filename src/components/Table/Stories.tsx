@@ -26,7 +26,16 @@ export default {
     paginatedDataState: {
       pageSize: 10,
       pageIndex: 1,
-      sortBy: [{ id: "name", desc: true }],
+      sortBy: [{ id: "id", desc: false }],
+      filters: [
+        {
+          id: "name",
+          value: {
+            value: "React",
+            operator: "e",
+          },
+        },
+      ],
       hiddenColumns: [],
     },
     setPaginatedDataState: action("setPaginatedDataState"),

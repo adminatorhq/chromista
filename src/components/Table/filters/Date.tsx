@@ -1,5 +1,5 @@
 import React from "react";
-// import * as StyledGrid from 'styled-bootstrap-grid';
+// import { Row, Col } from 'styled-bootstrap-grid';
 import { Calendar } from "react-feather";
 // import useDebounce from 'react-use/lib/useDebounce';
 // import { SimpleSelect } from '../../Form/SimpleSelect';
@@ -30,8 +30,8 @@ export function FilterTableByDate({
       clearFilter={setFilter}
       IconComponent={Calendar}
     >
-      {/* <StyledGrid.Row>
-        <StyledGrid.Col sm={4}>
+      {/* <Row>
+        <Col sm={4}>
           <SimpleSelect
             options={[
               { label: '', value: '' },
@@ -48,7 +48,7 @@ export function FilterTableByDate({
             }}
             value={filterValue.comparision || ''}
           />
-        </StyledGrid.Col>
+        </Col>
         <StyledSecondGrid sm={8}>
           <StyledInput
             type="number"
@@ -60,7 +60,7 @@ export function FilterTableByDate({
             })}
           />
         </StyledSecondGrid>
-      </StyledGrid.Row> */}
+      </Row> */}
     </FilterWrapper>
   );
 }

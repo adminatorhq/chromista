@@ -1,5 +1,5 @@
 import React, { useState, ReactNode } from "react";
-import * as StyledGrid from "styled-bootstrap-grid";
+import { Row, Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { HelpCircle } from "react-feather";
 import { DeleteButton } from "../../Button/DeleteButton";
@@ -30,7 +30,7 @@ export interface IProps {
   sideText?: string;
 }
 
-const StyledCenterRow = styled(StyledGrid.Row)`
+const StyledCenterRow = styled(Row)`
   align-items: center;
   justify-content: space-between;
 `;
@@ -83,7 +83,7 @@ export function SectionBox({
         {!headLess ? (
           <StyledCardHeader>
             <StyledCenterRow>
-              <StyledGrid.Col auto>
+              <Col auto>
                 <StyledCardTitle>
                   {isLoading ? "Loading..." : title}
                   {description ? (
@@ -98,13 +98,13 @@ export function SectionBox({
                   ) : null}
                 </StyledCardTitle>
                 {description ? <Tooltip id="section-box" /> : null}
-              </StyledGrid.Col>
+              </Col>
               {newItemLink ||
               deleteAction ||
               iconButtons ||
               selection ||
               sideText ? (
-                <StyledGrid.Col auto>
+                <Col auto>
                   <Stack align="center">
                     {selection ? (
                       <SimpleSelect
@@ -143,7 +143,7 @@ export function SectionBox({
                       />
                     ) : null}
                   </Stack>
-                </StyledGrid.Col>
+                </Col>
               ) : null}
             </StyledCenterRow>
           </StyledCardHeader>

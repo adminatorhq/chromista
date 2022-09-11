@@ -1,34 +1,34 @@
 import React, { ReactNode } from "react";
-import * as StyledGrid from "styled-bootstrap-grid";
+import { Col, Row } from "styled-bootstrap-grid";
 import { Spacer } from "../../../ui-blocks";
 
 export function SectionRow({ children }: { children: ReactNode }) {
-  return <StyledGrid.Row>{children}</StyledGrid.Row>;
+  return <Row>{children}</Row>;
 }
 
 export function SectionLeft({ children }: { children: ReactNode }) {
   return (
-    <StyledGrid.Col sm={12} lg={3}>
+    <Col sm={12} lg={3}>
       {children}
       <Spacer />
-    </StyledGrid.Col>
+    </Col>
   );
 }
 
 export function SectionRight({ children }: { children: ReactNode }) {
   return (
-    <StyledGrid.Col sm={12} lg={9}>
+    <Col sm={12} lg={9}>
       {children}
-    </StyledGrid.Col>
+    </Col>
   );
 }
 
 export function SectionCenter({ children }: { children: ReactNode }) {
   return (
     <SectionRow>
-      <StyledGrid.Col sm={12} lg={8} lgOffset={2}>
+      <Col sm={12} lg={8} lgOffset={2}>
         {children}
-      </StyledGrid.Col>
+      </Col>
     </SectionRow>
   );
 }

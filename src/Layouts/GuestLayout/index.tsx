@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import * as StyledGrid from "styled-bootstrap-grid";
+import { Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { GuestFooter, GuestHeader, GuestContainer } from "./_partials";
 import { StyledCardBody } from "../../components/Card";
@@ -29,13 +29,13 @@ export function GuestLayout({
 }: IProps) {
   return (
     <GuestContainer>
-      <StyledGrid.Col lg={5}>
+      <Col lg={5}>
         <Root>
           <GuestHeader title={title} subTitle={subTitle} {...appDetails} />
           <StyledCardBody>{children}</StyledCardBody>
           <GuestFooter name={appDetails.name} />
         </Root>
-      </StyledGrid.Col>
+      </Col>
     </GuestContainer>
   );
 }

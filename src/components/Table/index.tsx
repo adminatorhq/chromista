@@ -126,14 +126,12 @@ const StyledOverlayText = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const DEFAULT_PAGE_SIZE = 10;
-
 const buildTableStateToRefreshPageNumber = (
   input: PaginatedDataState | undefined
 ) => {
   return JSON.stringify([
     input?.filters || [],
-    input?.pageSize || DEFAULT_PAGE_SIZE,
+    input?.pageSize || DEFAULT_TABLE_PARAMS.pageSize,
     input?.sortBy || [],
   ]);
 };
@@ -148,7 +146,7 @@ export function Table({
     data = {
       data: [],
       pageIndex: 0,
-      pageSize: DEFAULT_PAGE_SIZE,
+      pageSize: DEFAULT_TABLE_PARAMS.pageSize,
       totalRecords: 0,
     },
     isLoading,
@@ -194,7 +192,9 @@ export function Table({
       autoResetSortBy: false,
       autoResetPage: false,
       autoResetFilters: false,
-      initialState: DEFAULT_TABLE_PARAMS,
+      initialState: paginatedDataState
+        ? { ...DEFAULT_TABLE_PARAMS, ...paginatedDataState }
+        : DEFAULT_TABLE_PARAMS,
       defaultColumn: {
         Filter: null,
       },
