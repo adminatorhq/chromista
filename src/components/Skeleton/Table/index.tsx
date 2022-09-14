@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import SkeletonLoader from "tiny-skeleton-loader-react";
 import { Stack } from "../../../ui-blocks/Stack";
 import { sharedSkeletonProps } from "../constants";
@@ -7,17 +8,23 @@ const count = 10;
 
 const columnCount = 5;
 
+const Root = styled.div`
+  padding: 8px;
+`;
+
 export function TableSkeleton() {
   return (
-    <div data-testid="table-skeleton">
-      {Array.from({ length: count }, (_, k) => k + 1).map((key) => (
+    <Root>
+      {Array.from({ length: count }, (_, k) => k + 1).map((key, index) => (
         <div key={key}>
-          <SkeletonLoader
-            background={sharedSkeletonProps.background}
-            height="1px"
-            radius="3px"
-            style={{ margin: "4px 0" }}
-          />
+          {index > 0 && (
+            <SkeletonLoader
+              background={sharedSkeletonProps.background}
+              height="1px"
+              radius="3px"
+              style={{ margin: "4px 0" }}
+            />
+          )}
           <Stack>
             {Array.from({ length: columnCount }, (_, k) => k + 1).map(
               (key$1) => (
@@ -44,6 +51,6 @@ export function TableSkeleton() {
           </Stack>
         </div>
       ))}
-    </div>
+    </Root>
   );
 }
