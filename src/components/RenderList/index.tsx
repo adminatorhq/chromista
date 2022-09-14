@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
-import { ListSkeleton } from "../Skeleton/ListSkeleton";
+import { ListSkeleton } from "../Skeleton/List";
 import { SectionList } from "../Section/SectionList";
 import { FormSearch } from "../Form/FormSearch";
 import { SoftButton } from "../Button/SoftButton";

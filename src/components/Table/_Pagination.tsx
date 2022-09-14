@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { SimpleSelect } from "../Form";
 import { Stack, Text } from "../../ui-blocks";
 import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
-
+// :eyes cursor
 const StyledPagination = styled.div`
   .pagination {
     display: flex;
@@ -18,6 +18,7 @@ const StyledPagination = styled.div`
     font-size: 0.71rem;
     border-radius: 4px;
     line-height: 1.8;
+    cursor: pointer;
     color: ${USE_ROOT_COLOR("primary-color")};
     border: 1px solid ${USE_ROOT_COLOR("primary-color")};
   }
@@ -33,6 +34,7 @@ const StyledPagination = styled.div`
 
   .page-item.disabled {
     .page-link {
+      cursor: not-allowed;
       color: #b6c2e4;
       border-color: #eaf0f9;
     }

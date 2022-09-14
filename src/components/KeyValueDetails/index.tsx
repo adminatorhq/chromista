@@ -5,7 +5,7 @@ import { ISystemStatusForDisplay } from "../../types";
 import { BadgeBuilder } from "../Badge";
 import { Currency } from "../Currency";
 import { StyledListGroup } from "../Lists";
-import { ListSkeleton } from "../Skeleton/ListSkeleton";
+import { ListSkeleton } from "../Skeleton/List";
 
 export enum KeyValueDetailsFormat {
   Money = "money",

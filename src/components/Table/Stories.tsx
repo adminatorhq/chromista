@@ -201,3 +201,18 @@ Loading.args = {
     isPreviousData: false,
   },
 };
+
+export const PreviousData = Template.bind({});
+PreviousData.args = {
+  tableData: {
+    data: {
+      data: [],
+      pageIndex: 1,
+      pageSize: 10,
+      totalRecords: 0,
+    },
+    isLoading: false,
+    error: false,
+    isPreviousData: true,
+  },
+};

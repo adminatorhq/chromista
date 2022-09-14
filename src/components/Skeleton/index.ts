@@ -1,3 +1,4 @@
-export { ListSkeleton } from "./ListSkeleton";
-export { FormSkeleton, FormSkeletonSchema } from "./FormSkeleton";
-export { BlockSkeleton } from "./BlockSkeleton";
+export { ListSkeleton } from "./List";
+export { FormSkeleton, FormSkeletonSchema } from "./Form";
+export { BlockSkeleton } from "./Block";
+export { TableSkeleton } from "./Table";

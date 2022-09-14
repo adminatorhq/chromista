@@ -8,7 +8,7 @@ import Lightbox from "react-image-lightbox";
 import styled from "styled-components";
 import { FormFileInput } from ".";
 import { DeleteButton } from "../../Button/DeleteButton";
-import { BlockSkeleton } from "../../Skeleton/BlockSkeleton";
+import { BlockSkeleton } from "../../Skeleton/Block";
 import { actionButtonIsMakingRequest } from "../../Button/FormButton";
 import "react-image-lightbox/style.css";
 

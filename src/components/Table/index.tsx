@@ -9,12 +9,13 @@ import { ComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
 import { DEFAULT_TABLE_PARAMS } from "./constants";
-import { Spacer, Stack, Text } from "../../ui-blocks";
+import { Stack, Text } from "../../ui-blocks";
 import { mapFilterTypeToComponent } from "./filters";
 import { TablePagination } from "./_Pagination";
 import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 import { IProps, ITableColumn, PaginatedDataState } from "./types";
+import { TableSkeleton } from "../Skeleton";
 
 export { ITableColumn, IProps };
 export { DEFAULT_TABLE_PARAMS };
@@ -217,96 +218,92 @@ export function Table({
     setPaginatedDataState(tableState);
   }, [JSON.stringify(tableState)]);
 
+  if (error) {
+    return <ErrorAlert message={error} />;
+  }
+
+  if (isLoading) {
+    return <TableSkeleton />;
+  }
+
   return (
-    <>
-      {error ? (
-        <>
-          <Spacer />
-          <ErrorAlert message={error} />
-          <Spacer />
-        </>
-      ) : null}
-      <StyledTableResponsive>
-        <StyledTableRoot>
-          {(isLoading || isPreviousData) && !error ? (
-            <StyledOverlay>
-              <StyledOverlayText>
-                <ComponentIsLoading />
-              </StyledOverlayText>
-            </StyledOverlay>
-          ) : null}
-          <StyledTable {...getTableProps()}>
-            <StyledTHead>
-              {headerGroups.map((headerGroup: any) => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column: any) => (
-                    <StyledTh
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
-                      key={column.Header}
-                    >
-                      <Stack justify="space-between" align="center">
-                        <Text size="6" weight="bold" as="span">
-                          {column.render("Header")}
-                        </Text>
-                        <Stack justify="end" width="auto">
-                          {column.canSort && (
-                            <StyledSorting
-                              className={classnames({
-                                desc: column.isSorted && column.isSortedDesc,
-                                asc: column.isSorted && !column.isSortedDesc,
-                              })}
-                            />
-                          )}
-                          {column.canFilter ? column.render("Filter") : null}
-                        </Stack>
+    <StyledTableResponsive>
+      <StyledTableRoot>
+        {isPreviousData ? (
+          <StyledOverlay>
+            <StyledOverlayText>
+              <ComponentIsLoading />
+            </StyledOverlayText>
+          </StyledOverlay>
+        ) : null}
+        <StyledTable {...getTableProps()}>
+          <StyledTHead>
+            {headerGroups.map((headerGroup: any) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column: any) => (
+                  <StyledTh
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    key={column.Header}
+                  >
+                    <Stack justify="space-between" align="center">
+                      <Text size="6" weight="bold" as="span">
+                        {column.render("Header")}
+                      </Text>
+                      <Stack justify="end" width="auto">
+                        {column.canSort && (
+                          <StyledSorting
+                            className={classnames({
+                              desc: column.isSorted && column.isSortedDesc,
+                              asc: column.isSorted && !column.isSortedDesc,
+                            })}
+                          />
+                        )}
+                        {column.canFilter ? column.render("Filter") : null}
                       </Stack>
-                    </StyledTh>
+                    </Stack>
+                  </StyledTh>
+                ))}
+              </tr>
+            ))}
+          </StyledTHead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row: any) => {
+              prepareRow(row);
+              return (
+                <StyledBodyTR {...row.getRowProps()} key={row.id}>
+                  {row.cells.map((cell: any) => (
+                    <StyledTd {...cell.getCellProps()} key={cell.column.Header}>
+                      {cell.render("Cell")}
+                    </StyledTd>
                   ))}
-                </tr>
-              ))}
-            </StyledTHead>
-            <tbody {...getTableBodyProps()}>
-              {rows.map((row: any) => {
-                prepareRow(row);
-                return (
-                  <StyledBodyTR {...row.getRowProps()} key={row.id}>
-                    {row.cells.map((cell: any) => (
-                      <StyledTd
-                        {...cell.getCellProps()}
-                        key={cell.column.Header}
-                      >
-                        {cell.render("Cell")}
-                      </StyledTd>
-                    ))}
-                  </StyledBodyTR>
-                );
-              })}
-              {data.data.length === 0 ? (
-                <StyledBodyTR>
-                  <StyledTd colSpan={10000}>
-                    {isLoading ? (
-                      <div style={{ height: "204px" }} />
-                    ) : (
-                      <EmptyWrapper text="No Data" />
-                    )}
-                  </StyledTd>
                 </StyledBodyTR>
-              ) : null}
-            </tbody>
-          </StyledTable>
-        </StyledTableRoot>
-        <TablePagination
-          {...{
-            setPageSize,
-            totalRecords: data.totalRecords,
-            pageSize: tableState.pageSize,
-            pageIndex: tableState.pageIndex,
-            totalPageCount,
-            gotoPage,
-          }}
-        />
-      </StyledTableResponsive>
-    </>
+              );
+            })}
+            {data.data.length === 0 ? (
+              <StyledBodyTR>
+                <StyledTd colSpan={10000}>
+                  {isLoading ? (
+                    <div style={{ height: "204px" }} />
+                  ) : (
+                    <EmptyWrapper text="No Data" />
+                  )}
+                </StyledTd>
+              </StyledBodyTR>
+            ) : null}
+          </tbody>
+        </StyledTable>
+      </StyledTableRoot>
+      <TablePagination
+        {...{
+          setPageSize,
+          totalRecords: data.totalRecords,
+          pageSize: tableState.pageSize,
+          pageIndex: tableState.pageIndex,
+          totalPageCount,
+          gotoPage,
+        }}
+      />
+    </StyledTableResponsive>
   );
 }
 
