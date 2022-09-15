@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import classnames from "classnames";
-import { makePostRequest, StringUtils } from "@hadmean/protozoa";
+import { makePostRequest } from "@hadmean/protozoa";
 import noop from "lodash/noop";
 import { ISharedFormInput } from "../_types";
 import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
@@ -15,10 +15,10 @@ interface IFormFileInput extends ISharedFormInput {
 
 const fileFormDatafy = (file: any) => {
   const formData = new FormData();
-  const extension = file.name.split(".").pop();
-  const name = `${StringUtils.generateUUID()}.${extension}`;
+  // const extension = file.name.split(".").pop();
+  // const name = `${StringUtils.generateUUID()}.${extension}`;
 
-  formData.append("image", file, name);
+  formData.append("image", file, file.name);
   return {
     formData,
     config: {
