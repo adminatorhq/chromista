@@ -28,6 +28,7 @@ export interface IProps {
     UseQueryResult<PaginatedData<Record<string, unknown>>, unknown>,
     "data" | "isLoading" | "error" | "isPreviousData"
   >;
+  lean?: true;
   paginatedDataState: PaginatedDataState;
   setPaginatedDataState: (params: PaginatedDataState) => void;
 }

@@ -67,14 +67,18 @@ export function OffCanvas({
       placement="end"
       width={width}
     >
-      <StyledHeader>
-        <Stack justify="space-between">
-          <Text size="3">{title}</Text>
-          <SoftButton justIcon icon="close" action={onClose} />
-        </Stack>
-      </StyledHeader>
-      <Divider />
-      <StyledBody>{children}</StyledBody>
+      {show && (
+        <>
+          <StyledHeader>
+            <Stack justify="space-between">
+              <Text size="3">{title}</Text>
+              <SoftButton justIcon icon="close" action={onClose} />
+            </Stack>
+          </StyledHeader>
+          <Divider />
+          <StyledBody>{children}</StyledBody>
+        </>
+      )}
     </StyledRoot>
   );
 }

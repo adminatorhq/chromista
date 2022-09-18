@@ -86,11 +86,11 @@ const StyledTd = styled.td`
   border-top: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;
 
-const StyledTableRoot = styled.div`
+const StyledTableRoot = styled.div<{ lean?: true }>`
   position: relative;
   overflow-x: auto;
   background: ${USE_ROOT_COLOR("base-color")};
-  min-height: calc(100vh - 250px);
+  ${(props) => !props.lean && `min-height: calc(100vh - 250px);`}
 `;
 
 const StyledTable = styled.table`
@@ -142,6 +142,7 @@ export function Table({
   tableData,
   setPaginatedDataState,
   columns,
+  lean,
 }: IProps) {
   const {
     data = {
@@ -293,16 +294,18 @@ export function Table({
           </tbody>
         </StyledTable>
       </StyledTableRoot>
-      <TablePagination
-        {...{
-          setPageSize,
-          totalRecords: data.totalRecords,
-          pageSize: tableState.pageSize,
-          pageIndex: tableState.pageIndex,
-          totalPageCount,
-          gotoPage,
-        }}
-      />
+      {!lean && (
+        <TablePagination
+          {...{
+            setPageSize,
+            totalRecords: data.totalRecords,
+            pageSize: tableState.pageSize,
+            pageIndex: tableState.pageIndex,
+            totalPageCount,
+            gotoPage,
+          }}
+        />
+      )}
     </StyledTableResponsive>
   );
 }
