@@ -1,27 +1,83 @@
-import React from "react";
-// import { Row, Col } from 'styled-bootstrap-grid';
+import React, { useEffect, useState } from "react";
 import { Calendar } from "react-feather";
-// import useDebounce from 'react-use/lib/useDebounce';
-// import { SimpleSelect } from '../../Form/SimpleSelect';
+import useDebounce from "react-use/lib/useDebounce";
+import { SimpleSelect } from "../../Form/FormSelect/Simple";
 import { FilterWrapper } from "./_FilterWrapper";
-// import { StyledInput } from '../../Form/Styles';
-import { IColumnFilterBag, IFilterProps } from "./types";
-// import { SEARCH_DEBOUNCE_WAIT } from './constants';
+import { FilterOperators, IColumnFilterBag, IFilterProps } from "./types";
+import { SEARCH_DEBOUNCE_WAIT } from "./constants";
+import { RenderFilterOperator } from "./_FilterOperator";
+import { Spacer } from "../../../ui-blocks";
 
-// TODO
+const BEGINNING_OF_TIME_VALUE = "bot";
+const NOW_VALUE = "now";
+
+const DATE_OPTIONS: {
+  label: string;
+  value: string;
+  hideOnFrom?: true;
+  hideOnTo?: true;
+  countLimit?: number;
+}[] = [
+  {
+    label: "Beggining of time",
+    value: BEGINNING_OF_TIME_VALUE,
+    hideOnTo: true,
+  },
+  {
+    label: "Beggining of Year",
+    value: "boy",
+    hideOnTo: true,
+  },
+  {
+    label: "Hour",
+    value: "h",
+    countLimit: 24,
+  },
+  {
+    label: "Day",
+    value: "d",
+    countLimit: 7,
+  },
+  {
+    label: "Week",
+    value: "w",
+    countLimit: 4,
+  },
+  {
+    label: "Month",
+    value: "m",
+    countLimit: 12,
+  },
+  {
+    label: "Year",
+    value: "y",
+    countLimit: 10,
+  },
+  {
+    label: "Now",
+    value: NOW_VALUE,
+    hideOnFrom: true,
+  },
+];
+
+// custom date
+
 export function FilterTableByDate({
   column: { filterValue, setFilter },
 }: IFilterProps<IColumnFilterBag<string>>) {
-  // const [localValue, setLocalValue] = useState(filterValue);
+  const [localValue, setLocalValue] = useState(filterValue);
 
-  // useDebounce(
-  //   () => {
-  //     setFilter(localValue);
-  //   },
-  //   SEARCH_DEBOUNCE_WAIT,
-  //   [localValue],
-  // );
+  useEffect(() => {
+    setLocalValue(filterValue);
+  }, [filterValue]);
 
+  useDebounce(
+    () => {
+      setFilter(localValue);
+    },
+    SEARCH_DEBOUNCE_WAIT,
+    [localValue]
+  );
   return (
     <FilterWrapper
       filterHasValue={
@@ -30,56 +86,56 @@ export function FilterTableByDate({
       clearFilter={setFilter}
       IconComponent={Calendar}
     >
-      {/* <Row>
-        <Col sm={4}>
-          <SimpleSelect
-            options={[
-              { label: '', value: '' },
-              { label: '<', value: 'l' },
-              { label: '>', value: 'g' },
-              { label: '=', value: 'e' },
-              { label: '<>', value: 'between' },
-            ]}
-            onChange={(value) => {
-              setLocalValue({
-                value: filterValue.value,
-                comparision: value || undefined,
-              });
-            }}
-            value={filterValue.comparision || ''}
-          />
-        </Col>
-        <StyledSecondGrid sm={8}>
-          <StyledInput
-            type="number"
-            sm
-            value={filterValue.value || ''}
-            onChange={(e) => setLocalValue({
-              comparision: filterValue.comparision,
-              value: +e.target.value || undefined,
-            })}
-          />
-        </StyledSecondGrid>
-      </Row> */}
+      <div style={{ display: "none" }}>
+        <RenderFilterOperator
+          operators={[FilterOperators.BETWEEN]}
+          filterValue={filterValue}
+          setFilter={setFilter}
+        />
+      </div>
+
+      <SimpleSelect
+        options={DATE_OPTIONS.filter(({ hideOnFrom }) => !hideOnFrom).map(
+          ({ value, label }) => ({ label, value })
+        )}
+        fullWidth
+        onChange={(value) => {
+          setFilter({
+            ...filterValue,
+            value,
+          });
+        }}
+        value={filterValue?.value || BEGINNING_OF_TIME_VALUE}
+      />
+
+      <SimpleSelect
+        options={DATE_OPTIONS.filter(({ hideOnFrom }) => !hideOnFrom).map(
+          ({ value, label }) => ({ label, value })
+        )}
+        fullWidth
+        onChange={(value) => {
+          setFilter({
+            ...filterValue,
+            value,
+          });
+        }}
+        value={filterValue?.value || BEGINNING_OF_TIME_VALUE}
+      />
+
+      <Spacer />
+      <SimpleSelect
+        options={DATE_OPTIONS.filter(({ hideOnTo }) => !hideOnTo).map(
+          ({ value, label }) => ({ label, value })
+        )}
+        fullWidth
+        onChange={(value2) => {
+          setFilter({
+            ...filterValue,
+            value2,
+          });
+        }}
+        value={filterValue?.value2 || NOW_VALUE}
+      />
     </FilterWrapper>
   );
 }
-
-// From
-// now
-
-// Past 1 hour
-// 6 hours
-// 12 hours
-// 1 Day
-// 3 days
-// 1 Week
-// 1 month
-// Past 3 month
-// 6 month
-// 1 year
-// Beginning of year
-// custom date
-
-// To
-// Beggining of time

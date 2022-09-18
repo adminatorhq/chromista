@@ -229,7 +229,7 @@ export function Table({
 
   return (
     <StyledTableResponsive>
-      <StyledTableRoot>
+      <StyledTableRoot lean={lean}>
         {isPreviousData ? (
           <StyledOverlay>
             <StyledOverlayText>
