@@ -1,11 +1,11 @@
 import React from "react";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
-import { InputStyles } from "./Styles";
-import { ISharedFormInput } from "./_types";
-import { wrapLabelAndError, generateClassNames } from "./_wrapForm";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { InputStyles } from "../Styles";
+import { ISharedFormInput } from "../_types";
+import { wrapLabelAndError, generateClassNames } from "../_wrapForm";
+import { dateLibraryStyle } from "./defaultStyle";
 
 interface IFormDateInput extends ISharedFormInput {
   minDate?: Date;
@@ -13,6 +13,7 @@ interface IFormDateInput extends ISharedFormInput {
 }
 
 const Root = styled.div`
+  ${dateLibraryStyle}
   .react-datepicker {
     border: 1px solid ${USE_ROOT_COLOR("border-color")};
   }
