@@ -1,8 +1,9 @@
 import React from "react";
 import { ToggleLeft } from "react-feather";
+import { FilterOperators, IColumnFilterBag } from "@hadmean/protozoa";
 import { ISystemStatusForDisplay } from "../../../types";
 import { SimpleSelect } from "../../Form/FormSelect/Simple";
-import { FilterOperators, IColumnFilterBag, IFilterProps } from "./types";
+import { IFilterProps } from "./types";
 import { FilterWrapper } from "./_FilterWrapper";
 
 export const FilterTableByBooleans = (statuses: ISystemStatusForDisplay[]) =>

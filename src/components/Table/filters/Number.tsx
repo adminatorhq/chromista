@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Filter } from "react-feather";
 import useDebounce from "react-use/lib/useDebounce";
+import { FilterOperators, IColumnFilterBag } from "@hadmean/protozoa";
 import { FilterWrapper } from "./_FilterWrapper";
 import { StyledInput } from "../../Form/Styles";
-import { FilterOperators, IColumnFilterBag, IFilterProps } from "./types";
+import { IFilterProps } from "./types";
 import { SEARCH_DEBOUNCE_WAIT } from "./constants";
 import { Spacer } from "../../../ui-blocks/Spacer";
 import { RenderFilterOperator } from "./_FilterOperator";

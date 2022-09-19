@@ -1,8 +1,10 @@
 import React from "react";
 import { Filter } from "react-feather";
+import { FilterOperators, IColumnFilterBag } from "@hadmean/protozoa";
 import { FilterWrapper } from "./_FilterWrapper";
-import { FilterOperators, IColumnFilterBag, IFilterProps } from "./types";
+import { IFilterProps } from "./types";
 import { RenderFilterOperator } from "./_FilterOperator";
+
 import { AsyncFormMultiSelect } from "../../Form/FormSelect/Async";
 
 export const FilterTableByListSelection = (bag: string) =>

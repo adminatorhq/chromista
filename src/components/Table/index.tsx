@@ -19,7 +19,7 @@ import { TableSkeleton } from "../Skeleton";
 
 export { ITableColumn, IProps };
 export { DEFAULT_TABLE_PARAMS };
-export { FilterOperators, IColumnFilterBag } from "./filters/types";
+export { FilterOperators, IColumnFilterBag } from "@hadmean/protozoa";
 
 const StyledBodyTR = styled.tr`
   padding: 4px;

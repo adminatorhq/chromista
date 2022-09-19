@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Calendar } from "react-feather";
 import useDebounce from "react-use/lib/useDebounce";
+import {
+  FilterOperators,
+  IColumnFilterBag,
+  DATE_FILTER_OPTIONS,
+  DATE_FILTER_VALUE,
+} from "@hadmean/protozoa";
 import { FilterWrapper } from "../_FilterWrapper";
-import { FilterOperators, IColumnFilterBag, IFilterProps } from "../types";
+import { IFilterProps } from "../types";
 import { SEARCH_DEBOUNCE_WAIT } from "../constants";
 import { RenderFilterOperator } from "../_FilterOperator";
 import { Spacer } from "../../../../ui-blocks";
 import { DateSelection } from "./_Selection";
-import {
-  BEGINNING_OF_TIME_VALUE,
-  DATE_FILTER_OPTIONS,
-  NOW_VALUE,
-} from "./constants";
 
 export function FilterTableByDate({
   column: { filterValue, setFilter },
@@ -39,7 +40,7 @@ export function FilterTableByDate({
     >
       <div style={{ display: "none" }}>
         <RenderFilterOperator
-          operators={[FilterOperators.BETWEEN]}
+          operators={[FilterOperators.DATE]}
           filterValue={filterValue}
           setFilter={setFilter}
         />
@@ -48,7 +49,7 @@ export function FilterTableByDate({
         setFilter={setFilter}
         filterValue={filterValue}
         field="value"
-        defaultValue={BEGINNING_OF_TIME_VALUE}
+        defaultValue={DATE_FILTER_VALUE.BEGINNING_OF_TIME_VALUE}
         dateOptions={DATE_FILTER_OPTIONS.filter(
           ({ hideOnFrom }) => !hideOnFrom
         )}
@@ -58,7 +59,7 @@ export function FilterTableByDate({
         setFilter={setFilter}
         filterValue={filterValue}
         field="value2"
-        defaultValue={NOW_VALUE}
+        defaultValue={DATE_FILTER_VALUE.NOW}
         dateOptions={DATE_FILTER_OPTIONS.filter(({ hideOnTo }) => !hideOnTo)}
       />
     </FilterWrapper>

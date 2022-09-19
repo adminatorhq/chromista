@@ -1,9 +1,12 @@
+import {
+  DATE_FILTER_OPTIONS,
+  IColumnFilterBag,
+  IDateFilterOption,
+} from "@hadmean/protozoa";
 import React from "react";
 import { Col, Row } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { SimpleSelect } from "../../../Form/FormSelect/Simple";
-import { IColumnFilterBag } from "../types";
-import { DATE_FILTER_OPTIONS, IDateFilterOption } from "./constants";
 // custom date
 
 const getOptionValue = (value: string) => {

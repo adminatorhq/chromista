@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
+import { FilterOperators, IColumnFilterBag } from "@hadmean/protozoa";
 import { Spacer } from "../../../ui-blocks/Spacer";
 import { SimpleSelect } from "../../Form/FormSelect/Simple";
-import { FilterOperators, IColumnFilterBag } from "./types";
 
 const FILTER_OPERATOR_LABELS: Record<FilterOperators, string> = {
   [FilterOperators.EQUAL_TO]: "Equal To",
@@ -9,6 +9,7 @@ const FILTER_OPERATOR_LABELS: Record<FilterOperators, string> = {
   [FilterOperators.LESS_THAN]: "Less Than",
   [FilterOperators.NOT_IN]: "Not In",
   [FilterOperators.IN]: "In",
+  [FilterOperators.DATE]: "Date",
   [FilterOperators.BETWEEN]: "Between",
   [FilterOperators.CONTAINS]: "Contains",
   [FilterOperators.NOT_EQUAL]: "Not Equal To",
