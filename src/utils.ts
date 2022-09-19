@@ -1,9 +1,7 @@
-import { DefaultTheme } from "styled-components";
 import { SYSTEM_COLORS } from "./AppWrapper/colors";
 
 interface IGetColor {
   color?: keyof typeof SYSTEM_COLORS;
-  theme: DefaultTheme;
 }
 
 const percentToHex = (inputPercent: number): string => {

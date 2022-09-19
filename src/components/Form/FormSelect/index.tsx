@@ -26,7 +26,7 @@ export function FormMultiSelect({
   onChange,
 }: IFormMultiSelect) {
   return (
-    <Select
+    <StyledSelect
       classNamePrefix={SharedSelectProps.classNamePrefix}
       closeMenuOnSelect={false}
       defaultValue={[]}
@@ -104,7 +104,7 @@ export function FormNoValueSelect({
   onChange,
 }: IFormNoValueSelect) {
   return (
-    <Select
+    <StyledSelect
       classNamePrefix={SharedSelectProps.classNamePrefix}
       value={{ value: "", label: defaultLabel || "" }}
       onChange={({ value, label }: any) => {

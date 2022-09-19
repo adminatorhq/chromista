@@ -224,7 +224,7 @@ export function Table({
   }
 
   if (isLoading) {
-    return <TableSkeleton />;
+    return <TableSkeleton lean={lean} />;
   }
 
   return (

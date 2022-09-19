@@ -1,5 +1,6 @@
 export { FormTextArea } from "./FormTextArea";
 export { FormInput } from "./FormInput";
+export { FormDateInput } from "./FormDateInput";
 export { FormCodeEditor } from "./FormCodeEditor";
 export { AsyncFormSelect } from "./FormSelect/Async";
 export { FormSelect, FormNoValueSelect } from "./FormSelect";
