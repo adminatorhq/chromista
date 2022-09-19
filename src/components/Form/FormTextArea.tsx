@@ -5,7 +5,7 @@ import { ISharedFormInput } from "./_types";
 import { wrapLabelAndError, generateClassNames } from "./_wrapForm";
 
 const StyledTextArea = styled(StyledInput)`
-  height: initial;
+  height: auto;
 `;
 
 interface IFormTextArea extends ISharedFormInput {
