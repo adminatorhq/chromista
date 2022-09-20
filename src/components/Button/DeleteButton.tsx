@@ -1,8 +1,10 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 import { StyledSoftButton } from "./Button";
 import { ConfirmAlert } from "../ConfirmAlert";
+import { SYSTEM_COLORS } from "../../AppWrapper/colors";
 
 interface IProps {
   onDelete: () => void;
@@ -12,6 +14,16 @@ interface IProps {
   shouldConfirmAlert?: boolean;
 }
 
+const StyledDeleteButton = styled(StyledSoftButton)`
+  background-color: ${SYSTEM_COLORS.danger}1A;
+  color: ${SYSTEM_COLORS.danger};
+  border: 1px solid ${SYSTEM_COLORS.danger};
+
+  &:hover {
+    background-color: ${SYSTEM_COLORS.danger};
+  }
+`;
+
 export function DeleteButton({
   onDelete,
   isMakingDeleteRequest,
@@ -20,9 +32,8 @@ export function DeleteButton({
   shouldConfirmAlert = true,
 }: IProps) {
   return (
-    <StyledSoftButton
+    <StyledDeleteButton
       size={size}
-      color="danger"
       type="button"
       onClick={(e: React.BaseSyntheticEvent) => {
         e.stopPropagation();
@@ -44,6 +55,6 @@ export function DeleteButton({
           <FontAwesomeIcon icon={faTrash} /> {text ? `Delete ${text}` : null}
         </>
       )}
-    </StyledSoftButton>
+    </StyledDeleteButton>
   );
 }

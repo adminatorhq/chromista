@@ -7,7 +7,6 @@ import React from "react";
 import { Col, Row } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { SimpleSelect } from "../../../Form/FormSelect/Simple";
-// custom date
 
 const getOptionValue = (value: string) => {
   const dateOption = DATE_FILTER_OPTIONS.find(

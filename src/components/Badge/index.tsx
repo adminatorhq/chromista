@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { getColor } from "../../utils";
 import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
 import { ISystemStatusForDisplay } from "../../types";
 
@@ -24,13 +23,13 @@ const StyledBadge = styled.span<{ color: keyof typeof SYSTEM_COLORS }>`
 `;
 
 const StyledSoftBadge = styled(StyledBadge)`
-  background-color: ${getColor(0.15)};
-  color: ${getColor()};
-  box-shadow: 0px 0px 13px 0px ${getColor(0.05)};
+  background-color: ${USE_ROOT_COLOR("primary-shade-color")};
+  color: ${USE_ROOT_COLOR("primary-color")};
+  box-shadow: 0px 0px 13px 0px ${USE_ROOT_COLOR("primary-shade-color")};
 `;
 
 const StyledBadgePill = styled(StyledBadge)<{ isIconBadge?: true }>`
-  background-color: ${getColor()};
+  background-color: ${USE_ROOT_COLOR("primary-color")};
   color: ${USE_ROOT_COLOR("inverse-text")};
   padding-right: 0.6em;
   padding-left: 0.6em;
@@ -74,7 +73,7 @@ export function BadgeBuilder({ value, statusSelections }: IBadgeBuilder) {
   return (
     <Badge
       text={builderBagValue.label}
-      color={(builderBagValue.color as keyof typeof SYSTEM_COLORS) || "primary"}
+      color={(builderBagValue.color as keyof typeof SYSTEM_COLORS) || "info"}
     />
   );
 }

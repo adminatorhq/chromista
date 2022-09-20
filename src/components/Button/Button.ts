@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
-import { getColor } from "../../utils";
 
 export interface IStyledBaseButton {
   block?: boolean;
@@ -58,7 +57,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   &:focus {
     box-shadow: none;
     outline: 0;
-    box-shadow: 0 0 0 0.15rem ${USE_ROOT_COLOR("primary-color")};
+    box-shadow: 0 0 0 0.2rem ${USE_ROOT_COLOR("primary-color")};
   }
 
   &:disabled {
@@ -78,53 +77,53 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
 
 export const StyledButton = styled(StyledBaseButton)`
   color: ${USE_ROOT_COLOR("inverse-text")};
-  background-color: ${getColor()};
-  border-color: ${getColor()};
+  background-color: ${USE_ROOT_COLOR("primary-color")};
+  border-color: ${USE_ROOT_COLOR("primary-color")};
 `;
 
 export const StyledSoftButton = styled(StyledBaseButton)`
-  background-color: ${getColor(0.1)};
-  color: ${getColor()};
+  background-color: ${USE_ROOT_COLOR("primary-shade-color")};
+  color: ${USE_ROOT_COLOR("primary-color")};
   &:hover {
-    background-color: ${getColor()};
+    background-color: ${USE_ROOT_COLOR("primary-color")};
     color: ${USE_ROOT_COLOR("inverse-text")};
   }
 
   &:focus {
-    box-shadow: 0 0 0 0.1rem ${getColor(0.2)};
-    background-color: ${getColor(0.8)};
+    box-shadow: 0 0 0 0.1rem ${USE_ROOT_COLOR("primary-shade-color")};
+    background-color: ${USE_ROOT_COLOR("primary-color")};
     color: ${USE_ROOT_COLOR("inverse-text")};
   }
 `;
 
 export const StyledOutlineButton = styled(StyledBaseButton)`
-  color: ${getColor()};
-  border-color: ${getColor()};
+  color: ${USE_ROOT_COLOR("primary-color")};
+  border-color: ${USE_ROOT_COLOR("primary-color")};
 
   &:hover {
     color: ${USE_ROOT_COLOR("inverse-text")};
-    background-color: ${getColor()};
-    border-color: ${getColor()};
+    background-color: ${USE_ROOT_COLOR("primary-color")};
+    border-color: ${USE_ROOT_COLOR("primary-color")};
   }
 
   &:focus {
-    box-shadow: 0 0 0 0.15rem ${getColor(0.5)};
+    box-shadow: 0 0 0 0.2rem ${USE_ROOT_COLOR("primary-shade-color")};
   }
 
   &:disabled {
-    color: ${getColor()};
+    color: ${USE_ROOT_COLOR("primary-color")};
     background-color: transparent;
   }
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active {
     color: ${USE_ROOT_COLOR("inverse-text")};
-    background-color: ${getColor()};
-    border-color: ${getColor()};
+    background-color: ${USE_ROOT_COLOR("primary-color")};
+    border-color: ${USE_ROOT_COLOR("primary-color")};
   }
 
   &:not(:disabled):not(.disabled):active:focus,
   &:not(:disabled):not(.disabled).active:focus {
-    box-shadow: 0 0 0 0.15rem ${getColor(0.5)};
+    box-shadow: 0 0 0 0.2rem ${USE_ROOT_COLOR("primary-shade-color")};
   }
 `;

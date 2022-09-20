@@ -15,18 +15,18 @@ const StyledButton = styled.button<{ danger?: boolean }>`
   outline: none;
   background: #fff;
   border: 1px solid
-    ${(props) => (props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.accent)};
+    ${(props) => (props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.success)};
   display: inline-block;
   padding: 6px 18px;
   color: ${(props) =>
-    props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.accent};
+    props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.success};
   margin-right: 10px;
   border-radius: 5px;
   font-size: 12px;
   cursor: pointer;
   &:hover {
     background: ${(props) =>
-      props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.accent};
+      props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.success};
     color: #fff;
   }
 `;

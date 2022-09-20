@@ -1,6 +1,5 @@
 import { css } from "styled-components";
 import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../AppWrapper/colors";
-import { getColor } from "../../../utils";
 
 export const SelectStyles = css`
   .react-select__control {
@@ -26,7 +25,7 @@ export const SelectStyles = css`
   }
 
   .react-select__option--is-focused {
-    background: ${getColor(0.1)({ color: "accent" })};
+    background: ${USE_ROOT_COLOR("primary-shade-color")};
   }
 
   .react-select__option--is-selected {
@@ -34,7 +33,7 @@ export const SelectStyles = css`
   }
 
   .react-select__multi-value {
-    background: ${getColor(0.1)({ color: "accent" })};
+    background: ${USE_ROOT_COLOR("primary-shade-color")};
   }
 
   &.invalid {

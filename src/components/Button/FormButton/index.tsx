@@ -28,12 +28,10 @@ export function FormButton({
   onClick,
   isInverse,
   size,
-  color = "accent",
   ...rest
 }: IFormButton) {
   const options = {
     ...rest,
-    color,
     disabled: disabled || isMakingRequest,
     onClick,
     type: "submit" as "submit" | "button" | "reset" | undefined,

@@ -15,6 +15,7 @@ import { FormMultiSelect, FormSelect } from "./FormSelect";
 import { FormCodeEditor } from "./FormCodeEditor";
 import { AsyncFormSelect } from "./FormSelect/Async";
 import { FormSwitch } from "./FormSwitch";
+import { DeleteButton } from "../Button";
 
 function DemoForm() {
   return (
@@ -173,7 +174,11 @@ function DemoForm() {
               />
             )}
           </Field>
-
+          <DeleteButton
+            onDelete={action("")}
+            isMakingDeleteRequest={false}
+            text="Me"
+          />
           <FormButton text="Do Something" isMakingRequest={false} />
         </form>
       )}

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { SimpleSelect } from "../Form";
 import { Stack, Text } from "../../ui-blocks";
 import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
-// :eyes cursor
+
 const StyledPagination = styled.div`
   .pagination {
     display: flex;

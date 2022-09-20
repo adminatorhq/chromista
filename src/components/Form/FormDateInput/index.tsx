@@ -21,13 +21,13 @@ const Root = styled.div`
     ${InputStyles};
   }
   .react-datepicker__day--selected {
-    background-color: ${USE_ROOT_COLOR("accent-color")};
+    background-color: ${USE_ROOT_COLOR("primary-color")};
   }
   .react-datepicker__header {
     border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
   }
   .react-datepicker__close-icon::after {
-    background-color: ${USE_ROOT_COLOR("accent-color")};
+    background-color: ${USE_ROOT_COLOR("primary-color")};
   }
   .react-datepicker__header {
     background-color: ${USE_ROOT_COLOR("soft-color")};
