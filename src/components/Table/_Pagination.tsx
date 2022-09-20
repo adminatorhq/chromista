@@ -35,8 +35,8 @@ const StyledPagination = styled.div`
   .page-item.disabled {
     .page-link {
       cursor: not-allowed;
-      color: #b6c2e4;
-      border-color: #eaf0f9;
+      color: ${USE_ROOT_COLOR("muted-text")};
+      border-color: ${USE_ROOT_COLOR("border-color")};
     }
   }
 `;

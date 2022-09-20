@@ -16,10 +16,18 @@ interface IAlert {
   message: Record<string, unknown> | string | unknown;
   renderJsx?: boolean;
 }
-// :eyes on the static colors here;
+
 export type IProps = {
   type: AlertType;
 } & IAlert;
+
+const buildColor = (color: string) => {
+  return css`
+    color: ${color};
+    background-color: ${color}1A;
+    border-color: ${color};
+  `;
+};
 
 const StyledAlert = styled.div<{
   type: AlertType;
@@ -33,36 +41,16 @@ const StyledAlert = styled.div<{
   text-align: center;
 
   ${(props) =>
-    props.type === AlertType.Success &&
-    css`
-      color: ${SYSTEM_COLORS.success};
-      background-color: #e1faf0;
-      border-color: #b8f4db;
-    `}
+    props.type === AlertType.Success && buildColor(SYSTEM_COLORS.success)}
 
   ${(props) =>
-    props.type === AlertType.Error &&
-    css`
-      color: ${SYSTEM_COLORS.danger};
-      background-color: #fee6eb;
-      border-color: #fcc6d1;
-    `}
+    props.type === AlertType.Error && buildColor(SYSTEM_COLORS.danger)}
 
       ${(props) =>
-    props.type === AlertType.Warning &&
-    css`
-      color: ${SYSTEM_COLORS.warning};
-      background-color: #fff6e4;
-      border-color: #ffebc1;
-    `}
+    props.type === AlertType.Warning && buildColor(SYSTEM_COLORS.warning)}
 
         ${(props) =>
-    props.type === AlertType.Info &&
-    css`
-      color: ${SYSTEM_COLORS.info};
-      background-color: #e3f4fd;
-      border-color: #bde6fa;
-    `}
+    props.type === AlertType.Info && buildColor(SYSTEM_COLORS.info)}
 `;
 
 const StyledAlertButton = styled.button`
@@ -70,8 +58,8 @@ const StyledAlertButton = styled.button`
   font-size: 1.21875rem;
   font-weight: 700;
   line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
+  color: ${SYSTEM_COLORS.black};
+  text-shadow: 0 1px 0 ${SYSTEM_COLORS.white};
   opacity: 0.5;
   padding: 0;
   background-color: transparent;

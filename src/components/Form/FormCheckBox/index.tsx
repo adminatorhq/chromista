@@ -13,11 +13,11 @@ const StyledCheckBoxInput = styled.input`
   height: 1em;
   margin-top: 0.25em;
   vertical-align: top;
-  background-color: #fff;
+  background-color: ${USE_ROOT_COLOR("base-color")};
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   appearance: none;
   color-adjust: exact;
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { confirmAlert } from "react-confirm-alert";
 import styled, { keyframes } from "styled-components";
-import { SYSTEM_COLORS } from "../../AppWrapper/colors";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
 import { Z_INDEXES } from "../../constants/zIndex";
 import { Stack } from "../../ui-blocks";
 
@@ -13,7 +13,7 @@ interface IProps {
 
 const StyledButton = styled.button<{ danger?: boolean }>`
   outline: none;
-  background: #fff;
+  background: ${USE_ROOT_COLOR("base-color")};
   border: 1px solid
     ${(props) => (props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.success)};
   display: inline-block;
@@ -27,7 +27,7 @@ const StyledButton = styled.button<{ danger?: boolean }>`
   &:hover {
     background: ${(props) =>
       props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.success};
-    color: #fff;
+    color: ${SYSTEM_COLORS.white};
   }
 `;
 
@@ -39,7 +39,7 @@ const StyledButtonGroup = styled.div`
 
 const StyledTitle = styled.h1`
   margin-top: 0;
-  color: #303e67;
+  color: ${USE_ROOT_COLOR("main-text")};
   font-size: 16px;
   font-weight: bold;
 `;
@@ -48,11 +48,11 @@ const StyledBody = styled.div`
   width: 300px;
   padding: 30px;
   text-align: center;
-  background: #fff;
+  background: ${USE_ROOT_COLOR("base-color")};
   border-radius: 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-  color: #a4abc5;
+  color: ${USE_ROOT_COLOR("main-text")};
 `;
 
 const fadeIn = keyframes`
@@ -77,7 +77,7 @@ const StyledOverlay = styled(Stack).attrs({
   right: 0;
   bottom: 0;
   z-index: ${Z_INDEXES.confirmDelete};
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   animation: ${fadeIn} 0.1s 0.1s forwards;
 `;

@@ -78,7 +78,7 @@ const StyledListItem = styled.button<{
   ${({ disabled }) =>
     disabled &&
     css`
-      color: #7081b9;
+      color: ${USE_ROOT_COLOR("muted-text")};
       pointer-events: none;
       background-color: ${USE_ROOT_COLOR("base-color")};
     `}
@@ -95,7 +95,7 @@ const StyledListItem = styled.button<{
     z-index: 1;
     color: ${USE_ROOT_COLOR("main-text")};
     text-decoration: none;
-    background-color: #f8f8fc;
+    background-color: ${USE_ROOT_COLOR("soft-color")};
   }
 
   ${({ active }) =>

@@ -17,7 +17,6 @@ interface IProps {
 const StyledDeleteButton = styled(StyledSoftButton)`
   background-color: ${SYSTEM_COLORS.danger}1A;
   color: ${SYSTEM_COLORS.danger};
-  border: 1px solid ${SYSTEM_COLORS.danger};
 
   &:hover {
     background-color: ${SYSTEM_COLORS.danger};

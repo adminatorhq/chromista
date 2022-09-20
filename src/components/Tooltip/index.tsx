@@ -1,5 +1,6 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
+import { SYSTEM_COLORS } from "../../AppWrapper/colors";
 
 export interface IProps {
   id: string;
@@ -15,7 +16,7 @@ export function Tooltip({ id, place = "bottom", offset }: IProps) {
   return (
     <ReactTooltip
       id={id}
-      backgroundColor="#000"
+      backgroundColor={SYSTEM_COLORS.black}
       effect="solid"
       className="hello"
       offset={offset}

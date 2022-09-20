@@ -26,8 +26,7 @@ const StyledBodyTR = styled.tr`
   border-top: 2px solid ${USE_ROOT_COLOR("border-color")};
   page-break-inside: avoid;
   &:hover {
-    color: #303e67;
-    background-color: #f8f8fc;
+    background-color: ${USE_ROOT_COLOR("soft-color")};
   }
 `;
 
@@ -58,7 +57,7 @@ const StyledSorting = styled.span`
 `;
 
 const StyledTHead = styled.thead`
-  background-color: #f1f5fa;
+  background-color: ${USE_ROOT_COLOR("soft-color")};
 `;
 
 const StyledTableResponsive = styled.div`

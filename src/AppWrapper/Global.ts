@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "polished";
-import { ROOT_COLORS, USE_ROOT_COLOR } from "./colors";
+import { ROOT_COLORS, SYSTEM_COLORS, USE_ROOT_COLOR } from "./colors";
 
 const rootColorString = Object.entries(ROOT_COLORS)
   .map(([key, value]) => `--hadmean-${key}: ${value}`)
@@ -134,13 +134,6 @@ button::-moz-focus-inner {
   body {
       min-width: 992px !important
   }
-
-  .container {
-      min-width: 992px !important
-  }
-  .badge {
-      border: 1px solid #000
-  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -220,7 +213,7 @@ left: 0;
 z-index: 1040;
 width: 100vw;
 height: 100vh;
-background-color: #000;
+background-color: ${SYSTEM_COLORS.black};
 
   &.fade{
       opacity: 0;

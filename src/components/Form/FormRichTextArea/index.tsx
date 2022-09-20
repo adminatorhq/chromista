@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 import { ISharedFormInput } from "../_types";
 import { wrapLabelAndError } from "../_wrapForm";
+import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 const Root = styled.div`
   .ql-editor {
@@ -15,23 +16,23 @@ const Root = styled.div`
 
   .ql-toolbar.ql-snow {
     display: block;
-    background: #f1f5fa;
-    color: #595959;
-    border: 1px solid #e5ebf6;
+    background: ${USE_ROOT_COLOR("soft-color")};
+    color: ${USE_ROOT_COLOR("main-text")};
+    border: 1px solid ${USE_ROOT_COLOR("border-color")};
     border-radius: 0.25rem 0.25rem 0 0;
   }
 
   .ql-container {
-    background: #fff;
-    border: 1px solid #e3ebf6;
+    background: ${USE_ROOT_COLOR("base-color")};
+    border: 1px solid ${USE_ROOT_COLOR("border-color")};
   }
 
   .ql-container.ql-snow {
-    border: 1px solid #e5ebf6;
+    border: 1px solid ${USE_ROOT_COLOR("border-color")};
     border-radius: 0 0 0.25rem 0.25rem;
   }
   .ql-snow .ql-picker {
-    color: #595959;
+    color: ${USE_ROOT_COLOR("main-text")};
   }
 `;
 

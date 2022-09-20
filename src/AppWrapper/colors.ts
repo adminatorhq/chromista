@@ -3,7 +3,7 @@ export const ROOT_COLORS = {
   "inverse-text": "#ffffff",
   "muted-text": "#a4abc5",
 
-  "primary-color": "#ff00ff",
+  "primary-color": "#4b38b3",
   "primary-shade-color": "#4b38b31A",
   "border-color": "#e3ebf6",
   "soft-color": "#f1f5fa",
@@ -17,6 +17,8 @@ export const USE_ROOT_COLOR = (color: keyof typeof ROOT_COLORS) => {
 
 export const SYSTEM_COLORS = {
   danger: "#f5325c",
+  black: "#000",
+  white: "#fff",
   warning: "#ffb822",
   info: "#12a4ed",
   success: "#03d87f",

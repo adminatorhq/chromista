@@ -33,7 +33,7 @@ const StyledBreadcrumbItem = styled.li`
     &::before {
       display: inline-block;
       padding-right: 0.3rem;
-      color: #7081b9;
+      color: ${USE_ROOT_COLOR("muted-text")};
       content: "/";
     }
   }
