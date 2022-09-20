@@ -45,8 +45,8 @@ const StyledSorting = styled.span`
 
   &:after,
   &:before {
-    color: rgb(48, 62, 103);
-    opacity: 0.3;
+    color: ${USE_ROOT_COLOR("main-text")};
+    opacity: 0.4;
   }
 
   &.desc:after,
@@ -68,7 +68,7 @@ const StyledTableResponsive = styled.div`
 `;
 
 const StyledTh = styled.th`
-  padding: 0.45rem;
+  padding: 0.65rem 0.45rem;
   vertical-align: middle;
   border: 1px solid ${USE_ROOT_COLOR("border-color")};
   border-bottom-width: 2px;
@@ -246,7 +246,7 @@ export function Table({
                     key={column.Header}
                   >
                     <Stack justify="space-between" align="center">
-                      <Text size="6" weight="bold" as="span">
+                      <Text size="5" weight="bold" as="span">
                         {column.render("Header")}
                       </Text>
                       <Stack justify="end" width="auto">

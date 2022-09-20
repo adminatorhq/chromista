@@ -38,7 +38,7 @@ export function FilterWrapper({
     color: filterHasValue
       ? USE_ROOT_COLOR("primary-color")
       : USE_ROOT_COLOR("muted-text"),
-    style: { opacity: filterHasValue ? 1 : 0.3 },
+    style: { opacity: filterHasValue ? 1 : 0.7 },
   };
   return (
     <span
