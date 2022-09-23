@@ -34,23 +34,59 @@ const Root = styled.div`
   }
 `;
 
+interface IProps {
+  minDate?: Date;
+  maxDate?: Date;
+  onChange: (value: Date | null) => void;
+  value: Date;
+  id?: string;
+  isClearable?: boolean;
+  disabled?: boolean;
+  className?: string;
+}
+
+export function ControlledFormDateInput({
+  minDate,
+  maxDate,
+  onChange,
+  value,
+  isClearable,
+  id,
+  disabled,
+  className,
+}: IProps) {
+  return (
+    <DatePicker
+      onChange={(value$1) => {
+        onChange(value$1);
+      }}
+      showTwoColumnMonthYearPicker
+      isClearable={isClearable}
+      selected={value}
+      id={id}
+      minDate={minDate}
+      maxDate={maxDate}
+      className={className}
+      disabled={disabled}
+    />
+  );
+}
+
 export const FormDateInput: React.FC<IFormDateInput> = (formInput) => {
   const { input, disabled, meta, required, minDate, maxDate } = formInput;
-  let selected = input.value;
-  if (selected && typeof selected === "string") {
-    selected = new Date(selected);
-    input.onChange(selected);
+  let { value } = input;
+  if (value && typeof value === "string") {
+    value = new Date(value);
+    input.onChange(value);
   }
   return wrapLabelAndError(
     <Root>
-      <DatePicker
-        {...input}
-        onChange={(value) => {
-          input.onChange(value);
+      <ControlledFormDateInput
+        onChange={(value$1) => {
+          input.onChange(value$1);
         }}
-        showTwoColumnMonthYearPicker
         isClearable={!required}
-        selected={selected}
+        value={value}
         id={formInput.input.name}
         minDate={minDate}
         maxDate={maxDate}

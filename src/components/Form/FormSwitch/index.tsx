@@ -20,6 +20,7 @@ interface ISizeConfig {
   shift: number;
   circleSize: number;
   checkedShift: number;
+  marginBottom: number;
   fontSize: "4" | "5";
   labelSpacing: number;
 }
@@ -33,6 +34,7 @@ const SIZES_CONFIG: Record<Sizes, ISizeConfig> = {
     labelSpacing: 56,
     circleSize: 19,
     fontSize: "4",
+    marginBottom: 24,
   },
   sm: {
     width: 26,
@@ -41,6 +43,7 @@ const SIZES_CONFIG: Record<Sizes, ISizeConfig> = {
     labelSpacing: 32,
     checkedShift: 10,
     circleSize: 12,
+    marginBottom: 12,
     fontSize: "5",
   },
 };
@@ -48,13 +51,13 @@ const SIZES_CONFIG: Record<Sizes, ISizeConfig> = {
 const Root = styled.label<{ size: Sizes }>`
   position: relative;
   display: inline-block;
-  margin-bottom: 24px;
+  margin-bottom: ${(props) => SIZES_CONFIG[props.size].marginBottom}px;
 `;
 
 const Slider = styled.span<{ size: Sizes }>`
   position: absolute;
   cursor: pointer;
-  top: 0;
+  top: 2px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -95,6 +98,10 @@ const Input = styled.input<{ $inputSize: Sizes }>`
   }
 `;
 
+const TextLabel = styled(Text)`
+  cursor: pointer;
+`;
+
 export function FormSwitch(props: IProps) {
   const {
     value,
@@ -130,7 +137,7 @@ export function FormSwitch(props: IProps) {
           {...ariaProps}
         />
         <Slider size={size} />
-        <Text size={SIZES_CONFIG[size].fontSize}>{label}</Text>
+        <TextLabel size={SIZES_CONFIG[size].fontSize}>{label}</TextLabel>
       </Stack>
     </Root>
   );

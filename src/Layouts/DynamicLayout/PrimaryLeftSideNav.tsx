@@ -1,4 +1,6 @@
 import React, { useMemo } from "react";
+import { Settings } from "react-feather";
+import { Stack } from "../../ui-blocks";
 import { BaseLeftSideNav } from "../BaseLeftSideNav";
 import { RenderNavigation } from "../Navigation";
 import { useSideBarStore } from "../sidebar.store";
@@ -41,12 +43,35 @@ export function PrimaryLeftSideNav({ navigation }: IProps) {
 
   return (
     <BaseLeftSideNav isSidebarOpen={isSidebarOpen}>
-      <RenderNavigation
-        navigation={navigationToUse}
-        isSidebarOpen={isSidebarOpen}
-        currentLink={currentMiniSideBar}
-        showDash
-      />
+      <Stack
+        justify="space-between"
+        direction="column"
+        style={{ height: "calc(100% - 50px)" }}
+      >
+        <div>
+          <RenderNavigation
+            navigation={navigationToUse}
+            isSidebarOpen={isSidebarOpen}
+            currentLink={currentMiniSideBar}
+            showDash
+          />
+        </div>
+        <div>
+          <RenderNavigation
+            navigation={[
+              {
+                icon: Settings,
+                action: () => {},
+                sideBarAction: () => {},
+                title: "Hello",
+              },
+            ]}
+            isSidebarOpen={isSidebarOpen}
+            currentLink={currentMiniSideBar}
+            showDash
+          />
+        </div>
+      </Stack>
     </BaseLeftSideNav>
   );
 }

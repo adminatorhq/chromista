@@ -33,7 +33,7 @@ function DemoForm() {
             {(renderProps) => (
               <FormSwitch
                 name="switch"
-                value
+                value={renderProps.input.value}
                 onChange={action("")}
                 label="Example Form Switch Input"
                 {...renderProps}

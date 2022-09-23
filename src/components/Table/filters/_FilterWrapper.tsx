@@ -57,7 +57,7 @@ export function FilterWrapper({
         }
       >
         <DownRoot direction="column">
-          <div>{children}</div>
+          <div style={{ textAlign: "left" }}>{children}</div>
           <SoftButton
             action={() => {
               clearFilter(undefined);

@@ -27,6 +27,7 @@ const StyledBrand = styled.div`
 
 export const StyledLeftSideNavMenu = styled.ul`
   padding-left: 0;
+  height: 100%;
   margin-bottom: 0;
   padding: 13px;
 
