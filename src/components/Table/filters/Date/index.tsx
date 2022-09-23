@@ -55,14 +55,12 @@ export function FilterTableByDate({
         name="customDate"
         onChange={(newFormat) => {
           if (newFormat) {
-            console.log("1");
             setFilter({
               ...filterValue,
               value: DATE_FILTER_VALUE.BEGINNING_OF_TIME_VALUE,
               value2: DATE_FILTER_VALUE.NOW,
             });
           } else {
-            console.log("2");
             setFilter({
               ...filterValue,
               value: new Date().toDateString(),
