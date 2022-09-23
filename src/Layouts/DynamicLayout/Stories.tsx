@@ -2,7 +2,7 @@
 import React from "react";
 import { Story } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { HardDrive } from "react-feather";
+import { HardDrive, Settings } from "react-feather";
 import { DataStateKeys } from "@hadmean/protozoa";
 import { DynamicLayout, IProps } from ".";
 import { AppWrapper } from "../../AppWrapper";
@@ -79,12 +79,6 @@ export default {
         } as DataStateKeys<INavigationMenuItems[]>,
         description: "Some Description here",
       },
-      {
-        title: "No action just links",
-        icon: HardDrive,
-        action: "/foo",
-        description: "Some Description here",
-      },
     ],
   },
 };
@@ -97,3 +91,15 @@ const Template: Story<IProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {};
+
+export const WithSecondary = Template.bind({});
+WithSecondary.args = {
+  secondarySelectionView: [
+    {
+      title: "No action just links",
+      icon: Settings,
+      action: "/foo",
+      description: "Some Description here",
+    },
+  ],
+};

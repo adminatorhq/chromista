@@ -10,6 +10,7 @@ import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 export interface IProps {
   children: ReactNode;
   selectionView: ISelectionView[];
+  secondarySelectionView?: ISelectionView[];
 }
 
 const Root = styled.div`
@@ -25,14 +26,21 @@ const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
   background: ${USE_ROOT_COLOR("foundation-color")};
 `;
 
-export function DynamicLayout({ children, selectionView }: IProps) {
+export function DynamicLayout({
+  children,
+  selectionView,
+  secondarySelectionView = [],
+}: IProps) {
   const [isFullSideBarOpen] = useSideBarStore(
     (state) => [state.isFullSideBarOpen],
     shallow
   );
   return (
     <Root>
-      <PrimaryLeftSideNav navigation={selectionView} />
+      <PrimaryLeftSideNav
+        navigation={selectionView}
+        secondaryNavigation={secondarySelectionView}
+      />
       <SecondaryLeftSideNav selectionView={selectionView} />
       <StyledPage isSidebarOpen={isFullSideBarOpen}>{children}</StyledPage>
     </Root>
