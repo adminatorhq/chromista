@@ -10,7 +10,7 @@ const Root = styled.div`
   padding: 8px;
 `;
 
-interface IProps {
+export interface IProps {
   lean?: true;
 }
 

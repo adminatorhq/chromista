@@ -6,15 +6,14 @@ import { sharedSkeletonProps } from "../constants";
 export enum FormSkeletonSchema {
   Textarea = "83px",
   Input = "38px",
-  Image = "200px",
   RichTextArea = "277px",
 }
 
-interface IFormSkeleton {
+export interface IProps {
   schema: FormSkeletonSchema[];
 }
 
-export function FormSkeleton({ schema }: IFormSkeleton) {
+export function FormSkeleton({ schema }: IProps) {
   return (
     <div style={{ paddingTop: "8px" }}>
       {Array.from({ length: schema.length }, (_, k) => k).map((key) => (

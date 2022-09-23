@@ -2,11 +2,11 @@ import React from "react";
 import SkeletonLoader from "tiny-skeleton-loader-react";
 import { sharedSkeletonProps } from "../constants";
 
-interface IBlockSkeleton {
+export interface IProps {
   height: string;
 }
 
-export function BlockSkeleton({ height }: IBlockSkeleton) {
+export function BlockSkeleton({ height }: IProps) {
   return (
     <SkeletonLoader
       background={sharedSkeletonProps.background}
