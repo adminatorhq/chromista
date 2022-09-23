@@ -35,7 +35,7 @@ export function FilterTableByDate({
 
   const isOnCustomDate =
     new Date(filterValue?.value || "").toString() === "Invalid Date";
-  console.log(isOnCustomDate);
+
   return (
     <FilterWrapper
       filterHasValue={

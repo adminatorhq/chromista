@@ -1,5 +1,4 @@
-import React, { useMemo } from "react";
-import { Settings } from "react-feather";
+import React, { useCallback, useMemo } from "react";
 import { Stack } from "../../ui-blocks";
 import { BaseLeftSideNav } from "../BaseLeftSideNav";
 import { RenderNavigation } from "../Navigation";
@@ -9,9 +8,13 @@ import { useNestedNavStore } from "./nested-nav.store";
 
 interface IProps {
   navigation: ISelectionView[];
+  secondaryNavigation: ISelectionView[];
 }
 
-export function PrimaryLeftSideNav({ navigation }: IProps) {
+export function PrimaryLeftSideNav({
+  navigation,
+  secondaryNavigation,
+}: IProps) {
   const isSidebarOpen = false;
 
   const [selectMiniSideBar, currentMiniSideBar, closeFullSideBar] =
@@ -23,9 +26,9 @@ export function PrimaryLeftSideNav({ navigation }: IProps) {
 
   const clearDeepLinks = useNestedNavStore((state) => state.clear);
 
-  const navigationToUse = useMemo(
-    () =>
-      navigation.map(({ action, title, ...rest }) => ({
+  const mapMapNavigationToUse = useCallback(
+    (navigation$1: ISelectionView[]) => {
+      return navigation$1.map(({ action, title, ...rest }) => ({
         ...rest,
         action,
         title,
@@ -37,8 +40,19 @@ export function PrimaryLeftSideNav({ navigation }: IProps) {
           }
           clearDeepLinks();
         },
-      })),
-    [navigation, selectMiniSideBar, clearDeepLinks]
+      }));
+    },
+    [selectMiniSideBar, clearDeepLinks]
+  );
+
+  const navigationToUse = useMemo(
+    () => mapMapNavigationToUse(navigation),
+    [navigation]
+  );
+
+  const secondaryNavigationToUse = useMemo(
+    () => mapMapNavigationToUse(secondaryNavigation),
+    [secondaryNavigation]
   );
 
   return (
@@ -58,14 +72,7 @@ export function PrimaryLeftSideNav({ navigation }: IProps) {
         </div>
         <div>
           <RenderNavigation
-            navigation={[
-              {
-                icon: Settings,
-                action: () => {},
-                sideBarAction: () => {},
-                title: "Hello",
-              },
-            ]}
+            navigation={secondaryNavigationToUse}
             isSidebarOpen={isSidebarOpen}
             currentLink={currentMiniSideBar}
             showDash
