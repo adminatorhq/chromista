@@ -14,7 +14,7 @@ import { Stack } from "../../ui-blocks";
 import { SoftButton } from "../Button";
 
 export const isFormMetaWithError = (meta: FieldMetaState<any>) =>
-  meta.touched && meta.invalid && meta.error;
+  meta && meta.touched && meta.invalid && meta.error;
 
 export const wrapLabelAndError = (
   formComponent: React.DetailedHTMLProps<

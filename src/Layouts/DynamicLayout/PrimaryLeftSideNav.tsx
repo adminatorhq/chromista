@@ -60,7 +60,7 @@ export function PrimaryLeftSideNav({
       <Stack
         justify="space-between"
         direction="column"
-        style={{ height: "calc(100% - 50px)" }}
+        style={{ height: "calc(100% - 42px)" }}
       >
         <div>
           <RenderNavigation

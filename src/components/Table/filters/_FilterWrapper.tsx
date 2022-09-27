@@ -41,34 +41,27 @@ export function FilterWrapper({
     style: { opacity: filterHasValue ? 1 : 0.7 },
   };
   return (
-    <span
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-      }}
+    <Dropdown
+      preserveVisibiltyOnClick
+      align="right"
+      target={
+        <Root>
+          <IconComponent {...iconProps} />
+        </Root>
+      }
     >
-      <Dropdown
-        preserveVisibiltyOnClick
-        align="right"
-        target={
-          <Root>
-            <IconComponent {...iconProps} />
-          </Root>
-        }
-      >
-        <DownRoot direction="column">
-          <div style={{ textAlign: "left" }}>{children}</div>
-          <SoftButton
-            action={() => {
-              clearFilter(undefined);
-            }}
-            size="xs"
-            icon="close"
-            label="Reset"
-          />
-          <Spacer size="xxs" />
-        </DownRoot>
-      </Dropdown>
-    </span>
+      <DownRoot direction="column">
+        <div style={{ textAlign: "left" }}>{children}</div>
+        <SoftButton
+          action={() => {
+            clearFilter(undefined);
+          }}
+          size="xs"
+          icon="close"
+          label="Reset"
+        />
+        <Spacer size="xxs" />
+      </DownRoot>
+    </Dropdown>
   );
 }

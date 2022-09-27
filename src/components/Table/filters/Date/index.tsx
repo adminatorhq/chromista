@@ -33,8 +33,7 @@ export function FilterTableByDate({
     [localValue]
   );
 
-  const isOnCustomDate =
-    new Date(filterValue?.value || "").toString() === "Invalid Date";
+  const [isOnCustomDate, setIsOnCustomDate] = useState(false);
 
   return (
     <FilterWrapper
@@ -52,9 +51,10 @@ export function FilterTableByDate({
         />
       </div>
       <FormSwitch
-        name="customDate"
+        name="custom_date"
         onChange={(newFormat) => {
-          if (newFormat) {
+          setIsOnCustomDate(newFormat);
+          if (!newFormat) {
             setFilter({
               ...filterValue,
               value: DATE_FILTER_VALUE.BEGINNING_OF_TIME_VALUE,
@@ -72,7 +72,7 @@ export function FilterTableByDate({
         size="sm"
         label="Custom Date"
       />
-      {isOnCustomDate ? (
+      {new Date(filterValue?.value || "").toString() !== "Invalid Date" ? (
         <>
           <ControlledFormDateInput
             onChange={(value) => {
@@ -83,6 +83,7 @@ export function FilterTableByDate({
             }}
             value={new Date(filterValue?.value || "")}
           />
+          <Spacer />
           <ControlledFormDateInput
             onChange={(value) => {
               setFilter({

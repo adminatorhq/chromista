@@ -57,17 +57,25 @@ export function Dropdown({
 
   return (
     <Root ref={rootRef}>
-      <span onClick={() => setMenuVisible(!menuVisible)}>{target}</span>
+      <span
+        onClick={(e) => {
+          setMenuVisible(!menuVisible);
+          e.stopPropagation();
+        }}
+      >
+        {target}
+      </span>
       {menuVisible && (
         // The click handling on the element is not real interactivity,
         // this is a workaround for the useClickAway on the container.
         <DropdownRoot
           align={align}
           zIndex={rootZIndex}
-          onClick={() => {
+          onClick={(e) => {
             if (!preserveVisibiltyOnClick) {
               close();
             }
+            e.stopPropagation();
           }}
         >
           {children}

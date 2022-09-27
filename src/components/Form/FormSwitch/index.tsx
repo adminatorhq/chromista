@@ -18,6 +18,7 @@ interface ISizeConfig {
   width: number;
   height: number;
   shift: number;
+  top: number;
   circleSize: number;
   checkedShift: number;
   marginBottom: number;
@@ -30,6 +31,7 @@ const SIZES_CONFIG: Record<Sizes, ISizeConfig> = {
     width: 44,
     height: 24,
     shift: 3,
+    top: 0,
     checkedShift: 20,
     labelSpacing: 56,
     circleSize: 19,
@@ -40,6 +42,7 @@ const SIZES_CONFIG: Record<Sizes, ISizeConfig> = {
     width: 26,
     height: 16,
     shift: 2,
+    top: 2,
     labelSpacing: 32,
     checkedShift: 10,
     circleSize: 12,
@@ -57,7 +60,7 @@ const Root = styled.label<{ size: Sizes }>`
 const Slider = styled.span<{ size: Sizes }>`
   position: absolute;
   cursor: pointer;
-  top: 2px;
+  top: ${(props) => SIZES_CONFIG[props.size].top}px;
   left: 0;
   right: 0;
   bottom: 0;
