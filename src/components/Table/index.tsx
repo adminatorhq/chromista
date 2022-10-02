@@ -89,7 +89,7 @@ const StyledTableRoot = styled.div<{ lean?: true }>`
   position: relative;
   overflow-x: auto;
   background: ${USE_ROOT_COLOR("base-color")};
-  ${(props) => !props.lean && `min-height: 300px;`}
+  ${(props) => !props.lean && `min-height: 500px;`}
 `;
 
 const StyledTable = styled.table`
