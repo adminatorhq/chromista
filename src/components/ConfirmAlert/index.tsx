@@ -93,10 +93,16 @@ export function Presentation({
   title,
 }: IPresentationProps) {
   return (
-    <StyledOverlay>
+    <StyledOverlay
+      role="alertdialog"
+      aria-modal="true"
+      aria-labelledby="confirm_delete_label"
+      aria-describedby="confirm_delete_desc"
+      tabIndex={-1}
+    >
       <StyledBody>
-        <StyledTitle>{title}</StyledTitle>
-        {message}
+        <StyledTitle id="confirm_delete_label">{title}</StyledTitle>
+        <span id="confirm_delete_desc"> {message} </span>
         <StyledButtonGroup>
           <StyledButton
             danger
@@ -105,9 +111,9 @@ export function Presentation({
               onClose();
             }}
           >
-            Yes
+            Confirm
           </StyledButton>
-          <StyledButton onClick={onClose}>No</StyledButton>
+          <StyledButton onClick={onClose}>Cancel</StyledButton>
         </StyledButtonGroup>
       </StyledBody>
     </StyledOverlay>
