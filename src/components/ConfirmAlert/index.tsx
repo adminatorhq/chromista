@@ -1,7 +1,7 @@
 import React from "react";
 import { confirmAlert } from "react-confirm-alert";
 import styled, { keyframes } from "styled-components";
-import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 import { Z_INDEXES } from "../../constants/zIndex";
 import { Stack } from "../../ui-blocks";
 
@@ -13,22 +13,23 @@ interface IProps {
 
 const StyledButton = styled.button<{ danger?: boolean }>`
   outline: none;
-  background: ${USE_ROOT_COLOR("base-color")};
-  border: 1px solid
-    ${(props) => (props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.success)};
+
+  background: ${(props) =>
+    props.danger
+      ? USE_ROOT_COLOR("primary-color")
+      : USE_ROOT_COLOR("base-color")};
+
+  border: 1px solid ${USE_ROOT_COLOR("primary-color")};
   display: inline-block;
   padding: 6px 18px;
   color: ${(props) =>
-    props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.success};
+    props.danger
+      ? USE_ROOT_COLOR("base-color")
+      : USE_ROOT_COLOR("primary-color")};
   margin-right: 10px;
   border-radius: 5px;
   font-size: 12px;
   cursor: pointer;
-  &:hover {
-    background: ${(props) =>
-      props.danger ? SYSTEM_COLORS.danger : SYSTEM_COLORS.success};
-    color: ${SYSTEM_COLORS.white};
-  }
 `;
 
 const StyledButtonGroup = styled.div`
