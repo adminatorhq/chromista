@@ -150,7 +150,7 @@ export function SectionListItem({
       <Stack align="center">
         {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}{" "}
         <div>
-          {label}
+          <label htmlFor={id}>{label}</label>
           {subLabel ? (
             <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
           ) : null}
