@@ -107,13 +107,15 @@ export function Tabs({
           </StyledNavItem>
         ))}
       </StyledNav>
-      <StyledTabContent
-        activeTab={activeTab}
-        role="tabpanel"
-        $padContent={padContent}
-      >
+      <StyledTabContent activeTab={activeTab} $padContent={padContent}>
         {contents.map(({ label, content }) => (
-          <StyledTabPane tabId={label} key={label}>
+          <StyledTabPane
+            role="tabpanel"
+            active={activeTab === label}
+            aria-hidden={activeTab === label ? "false" : "true"}
+            tabId={label}
+            key={label}
+          >
             {content}
           </StyledTabPane>
         ))}
