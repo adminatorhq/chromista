@@ -140,7 +140,9 @@ export function FormSwitch(props: IProps) {
           {...ariaProps}
         />
         <Slider size={size} />
-        <TextLabel size={SIZES_CONFIG[size].fontSize}>{label}</TextLabel>
+        {label ? (
+          <TextLabel size={SIZES_CONFIG[size].fontSize}>{label}</TextLabel>
+        ) : null}
       </Stack>
     </Root>
   );
