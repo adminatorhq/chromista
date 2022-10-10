@@ -142,7 +142,10 @@ export function FormSwitch(props: IProps) {
         <Slider size={size} />
         {label ? (
           <TextLabel size={SIZES_CONFIG[size].fontSize}>{label}</TextLabel>
-        ) : null}
+        ) : (
+          // Some weird flex issues here so this is need
+          <div />
+        )}
       </Stack>
     </Root>
   );
