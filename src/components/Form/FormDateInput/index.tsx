@@ -1,10 +1,11 @@
 import React from "react";
 import DatePicker from "react-datepicker";
+import { FieldMetaState } from "react-final-form";
 import styled from "styled-components";
 import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 import { InputStyles } from "../Styles";
 import { ISharedFormInput } from "../_types";
-import { wrapLabelAndError, generateClassNames } from "../_wrapForm";
+import { wrapLabelAndError, generateFormArias } from "../_wrapForm";
 import { dateLibraryStyle } from "./defaultStyle";
 
 interface IFormDateInput extends ISharedFormInput {
@@ -43,6 +44,7 @@ interface IProps {
   isClearable?: boolean;
   disabled?: boolean;
   className?: string;
+  meta?: FieldMetaState<any>;
 }
 
 export function ControlledFormDateInput({
@@ -54,6 +56,7 @@ export function ControlledFormDateInput({
   id,
   disabled,
   className,
+  meta,
 }: IProps) {
   return (
     <Root>
@@ -61,6 +64,7 @@ export function ControlledFormDateInput({
         onChange={(value$1) => {
           onChange(value$1);
         }}
+        {...generateFormArias(meta)}
         showTwoColumnMonthYearPicker
         isClearable={isClearable}
         selected={value}
@@ -91,7 +95,7 @@ export const FormDateInput: React.FC<IFormDateInput> = (formInput) => {
       id={formInput.input.name}
       minDate={minDate}
       maxDate={maxDate}
-      className={`${generateClassNames(meta)}`}
+      meta={meta}
       disabled={disabled}
     />,
     formInput

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { StyledInput } from "./Styles";
 import { ISharedFormInput } from "./_types";
-import { wrapLabelAndError, generateClassNames } from "./_wrapForm";
+import { wrapLabelAndError, generateFormArias } from "./_wrapForm";
 
 const StyledTextArea = styled(StyledInput)`
   height: auto;
@@ -16,6 +16,7 @@ export const FormTextArea: React.FC<IFormTextArea> = (formInput) => {
   const { input, rows = 3, label, disabled, meta } = formInput;
   return wrapLabelAndError(
     <StyledTextArea
+      {...generateFormArias(meta)}
       as="textarea"
       value={input.value}
       name={input.name}
@@ -25,7 +26,6 @@ export const FormTextArea: React.FC<IFormTextArea> = (formInput) => {
       onBlur={input.onBlur}
       rows={rows}
       placeholder={label}
-      className={generateClassNames(meta)}
       disabled={disabled}
     >
       {input.value}

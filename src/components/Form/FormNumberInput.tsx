@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledInput } from "./Styles";
 import { ISharedFormInput } from "./_types";
-import { wrapLabelAndError, generateClassNames } from "./_wrapForm";
+import { wrapLabelAndError, generateFormArias } from "./_wrapForm";
 
 interface IFormNumberInput extends ISharedFormInput {
   allowNegative?: boolean;
@@ -28,6 +28,7 @@ export const FormNumberInput: React.FC<IFormNumberInput> = (formInput) => {
   return wrapLabelAndError(
     <StyledInput
       {...input}
+      {...generateFormArias(meta)}
       {...moreProps}
       sm={sm}
       id={formInput.input.name}
@@ -36,7 +37,6 @@ export const FormNumberInput: React.FC<IFormNumberInput> = (formInput) => {
       }}
       placeholder={label}
       type="number"
-      className={generateClassNames(meta)}
       disabled={disabled}
     />,
     formInput

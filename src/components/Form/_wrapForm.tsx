@@ -71,7 +71,10 @@ export const wrapLabelAndError = (
         </Stack>
       </Stack>
       {formComponent}
-      <StyledFormFeedback sm={sm}>
+      <StyledFormFeedback
+        role={isFormMetaWithError(meta) ? "alert" : undefined}
+        sm={sm}
+      >
         {isFormMetaWithError(meta)}
         &nbsp;
       </StyledFormFeedback>
@@ -83,3 +86,15 @@ export const generateClassNames = (meta: FieldMetaState<any>): string =>
   classnames({
     invalid: !!isFormMetaWithError(meta),
   });
+
+export const generateFormArias = (
+  meta?: FieldMetaState<any>
+): Record<string, string> => {
+  if (!meta) {
+    return {};
+  }
+  if (isFormMetaWithError(meta)) {
+    return { "aria-invalid": "true", ariaInvalid: "true" };
+  }
+  return {};
+};

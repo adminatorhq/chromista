@@ -4,7 +4,7 @@ import classnames from "classnames";
 import { makePostRequest } from "@hadmean/protozoa";
 import noop from "lodash/noop";
 import { ISharedFormInput } from "../_types";
-import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
+import { wrapLabelAndError } from "../_wrapForm";
 import { ProgressBar } from "../../ProgressBar";
 // import './styles.scss';
 
@@ -30,6 +30,7 @@ const fileFormDatafy = (file: any) => {
 };
 
 function FileInput({ input, meta, disabled, domain }: IFormFileInput) {
+  noop(meta);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
   // const queryCache = useQueryCache();
@@ -79,7 +80,7 @@ function FileInput({ input, meta, disabled, domain }: IFormFileInput) {
         "dropify-wrapper": true,
         "has-preview": value,
         disabled,
-        [generateClassNames(meta)]: true,
+        // [generateClassNames(meta)]: true,
       })}
       {...getRootProps()}
     >

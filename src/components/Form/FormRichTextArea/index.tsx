@@ -4,8 +4,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 import { ISharedFormInput } from "../_types";
-import { wrapLabelAndError } from "../_wrapForm";
-import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 const Root = styled.div`
   .ql-editor {
@@ -33,6 +33,12 @@ const Root = styled.div`
   }
   .ql-snow .ql-picker {
     color: ${USE_ROOT_COLOR("main-text")};
+  }
+
+  .quill {
+    &.invalid {
+      border: 1px solid ${SYSTEM_COLORS.danger} !important;
+    }
   }
 `;
 
@@ -62,12 +68,14 @@ export const FormRichTextArea: React.FC<IFormRichText> = (formInput) => {
   const {
     input: { onFocus, onBlur, ...inputProps },
     disabled,
+    meta,
   } = formInput;
   noop(onBlur, onFocus);
   return wrapLabelAndError(
     <Root>
       <ReactQuill
         {...inputProps}
+        className={generateClassNames(meta)}
         readOnly={disabled}
         modules={modules}
         id={formInput.input.name}

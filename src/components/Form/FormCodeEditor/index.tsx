@@ -4,10 +4,10 @@ import noop from "lodash/noop";
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import { ISharedFormInput } from "../_types";
-import { wrapLabelAndError } from "../_wrapForm";
+import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
-import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../AppWrapper/colors";
 
 interface IFormCodeEditor extends ISharedFormInput {
   language?: "javascript";
@@ -15,6 +15,11 @@ interface IFormCodeEditor extends ISharedFormInput {
 
 const StyledWrapper = styled.div`
   border: 1px solid ${USE_ROOT_COLOR("border-color")};
+
+  &.invalid {
+    border-color: ${SYSTEM_COLORS.danger} !important;
+  }
+
   border-radius: 0.25rem;
 
   &:focus {
@@ -101,10 +106,11 @@ const StyledWrapper = styled.div`
 export const FormCodeEditor: React.FC<IFormCodeEditor> = (formInput) => {
   const {
     input: { onFocus, onBlur, ...inputProps },
+    meta,
   } = formInput;
   noop(onFocus, onBlur);
   return wrapLabelAndError(
-    <StyledWrapper>
+    <StyledWrapper className={generateClassNames(meta)}>
       <Editor
         {...inputProps}
         onValueChange={inputProps.onChange}

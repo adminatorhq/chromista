@@ -1,7 +1,11 @@
 import React from "react";
 import Select from "react-select";
 import styled from "styled-components";
-import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
+import {
+  generateClassNames,
+  wrapLabelAndError,
+  generateFormArias,
+} from "../_wrapForm";
 import { ISelectData } from "../../../types";
 import { SelectStyles, SharedSelectProps } from "./styles";
 import { IBaseFormSelect } from "./types";
@@ -63,6 +67,7 @@ export const FormSelect: React.FC<IFormSelect> = (props) => {
   return wrapLabelAndError(
     <StyledSelect
       {...input}
+      {...generateFormArias(meta)}
       classNamePrefix={SharedSelectProps.classNamePrefix}
       value={
         selectDataWithDefault.find(({ value }) => value === input.value) || {

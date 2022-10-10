@@ -3,6 +3,7 @@ import React from "react";
 import { Story } from "@storybook/react";
 import { Field, Form } from "react-final-form";
 import { action } from "@storybook/addon-actions";
+import { required } from "@hadmean/protozoa";
 import { AppWrapper } from "../../AppWrapper";
 import { FormCheckBox } from "./FormCheckBox";
 import { FormInput } from "./FormInput";
@@ -22,7 +23,7 @@ function DemoForm() {
     <Form
       onSubmit={(values: unknown) => action(values as string)}
       render={({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <Field name="checkbox" validateFields={[]}>
             {(renderProps) => (
               <FormCheckBox label="Example Checkbox Input" {...renderProps} />
@@ -41,13 +42,13 @@ function DemoForm() {
             )}
           </Field>
 
-          <Field name="exampleText" validateFields={[]}>
+          <Field name="exampleText" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormInput label="Example Text Input" {...renderProps} />
             )}
           </Field>
 
-          <Field name="requiredText" validateFields={[]}>
+          <Field name="requiredText" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormInput
                 label="Required Text Input"
@@ -57,7 +58,7 @@ function DemoForm() {
             )}
           </Field>
 
-          <Field name="descriptionText" validateFields={[]}>
+          <Field name="descriptionText" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormInput
                 description="Some Description here"
@@ -67,7 +68,11 @@ function DemoForm() {
             )}
           </Field>
 
-          <Field name="rightActionInput" validateFields={[]}>
+          <Field
+            name="rightActionInput"
+            validateFields={[]}
+            validate={required}
+          >
             {(renderProps) => (
               <FormInput
                 rightActions={[
@@ -82,7 +87,11 @@ function DemoForm() {
             )}
           </Field>
 
-          <Field name="rightMultipleActionInput" validateFields={[]}>
+          <Field
+            name="rightMultipleActionInput"
+            validateFields={[]}
+            validate={required}
+          >
             {(renderProps) => (
               <FormInput
                 rightActions={[
@@ -101,7 +110,7 @@ function DemoForm() {
             )}
           </Field>
 
-          <Field name="baseSelect" validateFields={[]}>
+          <Field name="baseSelect" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormSelect
                 selectData={[
@@ -114,7 +123,7 @@ function DemoForm() {
             )}
           </Field>
 
-          <Field name="asyncSelect" validateFields={[]}>
+          <Field name="asyncSelect" validateFields={[]} validate={required}>
             {(renderProps) => (
               <AsyncFormSelect
                 url="http://localhost:3000/roles"
@@ -141,31 +150,31 @@ function DemoForm() {
             )}
           </Field>
 
-          <Field name="dateInput" validateFields={[]}>
+          <Field name="dateInput" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormDateInput label="Example Date Input" {...renderProps} />
             )}
           </Field>
 
-          <Field name="numberInput" validateFields={[]}>
+          <Field name="numberInput" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormNumberInput label="Example Number Input" {...renderProps} />
             )}
           </Field>
 
-          <Field name="textArea" validateFields={[]}>
+          <Field name="textArea" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormTextArea label="Example Text Area Input" {...renderProps} />
             )}
           </Field>
 
-          <Field name="richText" validateFields={[]}>
+          <Field name="richText" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormRichTextArea label="Example Rich Text" {...renderProps} />
             )}
           </Field>
 
-          <Field name="code" validateFields={[]}>
+          <Field name="code" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormCodeEditor
                 language="javascript"

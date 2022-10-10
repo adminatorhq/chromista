@@ -6,7 +6,11 @@ import styled from "styled-components";
 import { useAsync, useSessionStorage } from "react-use";
 import { ISelectData } from "../../../../types";
 import { FormSelect } from "..";
-import { generateClassNames, wrapLabelAndError } from "../../_wrapForm";
+import {
+  generateClassNames,
+  generateFormArias,
+  wrapLabelAndError,
+} from "../../_wrapForm";
 import { ErrorAlert } from "../../../Alert";
 import { IBaseFormSelect } from "../types";
 import { SelectStyles, SharedSelectProps } from "../styles";
@@ -88,6 +92,7 @@ export function AsyncFormSelect(props: IProps) {
         cacheOptions
         defaultOptions
         {...input}
+        {...generateFormArias(meta)}
         onChange={({ value, label }: any) => {
           input.onChange(nullable && !value ? null : value);
           setValueLabel(label);
