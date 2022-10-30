@@ -14,6 +14,7 @@ export const StyledCardBody = styled.div`
   flex: 1 1 auto;
   min-height: 1px;
   padding: 0.75rem;
+  background-color: ${USE_ROOT_COLOR("base-color")};
 `;
 
 export const StyledCardHeader = styled.div`

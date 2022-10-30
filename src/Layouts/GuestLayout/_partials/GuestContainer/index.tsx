@@ -2,15 +2,17 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Container } from "styled-bootstrap-grid";
 import { Stack } from "../../../../ui-blocks";
+import { USE_ROOT_COLOR } from "../../../../AppWrapper/colors";
 
 const Root = styled.div`
   width: 100%;
   height: 100vh;
-  background-image: url("/assets/images/auth-bg.jpg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: repeat;
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
+  background-image: radial-gradient(
+    ${USE_ROOT_COLOR("primary-color")} 0.75px,
+    #ffffff 0.75px
+  );
+  background-size: 15px 15px;
 `;
 
 const StyledWrapperRow = styled(Stack)`
