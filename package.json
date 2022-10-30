@@ -1,6 +1,6 @@
 {
   "name": "@hadmean/chromista",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -30,7 +30,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@hadmean/protozoa": "^1.0.9",
+    "@hadmean/protozoa": "^1.0.10",
     "@types/prismjs": "^1.26.0",
     "@types/react-datepicker": "^4.4.1",
     "@types/styled-components": "^5.1.25",

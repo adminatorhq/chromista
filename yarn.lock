@@ -1420,10 +1420,10 @@
     eslint-plugin-testing-library "^5.5.1"
     prettier "^2.7.1"
 
-"@hadmean/protozoa@1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@hadmean/protozoa/-/protozoa-1.0.8.tgz#02a976535021fb2a1f7bfc517fd8d2efed962946"
-  integrity sha512-RJ6slXHGrPm9xIqCnVhUGpkUNlJdZFExUbOlXc+XHjW5oUgZd6pLp1us0hgnBI6gfl2JizD6oMvtWCKvzTOrdw==
+"@hadmean/protozoa@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@hadmean/protozoa/-/protozoa-1.0.10.tgz#e298df0c6a41301d77e5512aaa619fa272862dc9"
+  integrity sha512-Mkz4WTAA9GBfW5LgHZuEzEk3JhJu5Q1Kq9E+CTzA1r6pBBZSUFhPMkCSGBtD1Jr21AO+VCru8HrvK9pTgrOk0g==
   dependencies:
     "@types/lodash" "^4.14.182"
     "@types/nprogress" "^0.2.0"
