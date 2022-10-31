@@ -1,6 +1,6 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
-import { SYSTEM_COLORS } from "../../AppWrapper/colors";
+import { SYSTEM_COLORS } from "../../theme";
 
 export interface IProps {
   id: string;

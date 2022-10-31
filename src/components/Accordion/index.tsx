@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import styled, { css } from "styled-components";
 import { ChevronDown, ChevronUp, Icon } from "react-feather";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 
 const ARROW_SIZE = 16;
 
@@ -38,7 +38,7 @@ const StyledIcon = styled.i<{ highlight?: boolean }>`
   margin-top: 0.3rem;
   color: ${(props) =>
     props.highlight
-      ? USE_ROOT_COLOR("inverse-text")
+      ? USE_ROOT_COLOR("text-on-primary")
       : USE_ROOT_COLOR("main-text")};
 `;
 
@@ -58,7 +58,7 @@ const StyledLabel = styled.p<{ highlight?: boolean }>`
   font-size: 16px;
   color: ${(props) =>
     props.highlight
-      ? USE_ROOT_COLOR("inverse-text")
+      ? USE_ROOT_COLOR("text-on-primary")
       : USE_ROOT_COLOR("main-text")};
 `;
 

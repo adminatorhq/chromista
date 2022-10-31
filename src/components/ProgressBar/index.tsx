@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 
 interface IProgressBar {
   progress: number;
@@ -26,7 +26,7 @@ const StyledProgressBar = styled.div`
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  color: $ ${USE_ROOT_COLOR("inverse-text")};
+  color: $ ${USE_ROOT_COLOR("text-on-primary")};
   text-align: center;
   white-space: nowrap;
   background-color: ${USE_ROOT_COLOR("primary-color")};

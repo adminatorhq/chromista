@@ -4,7 +4,7 @@ import { faTrash, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { StyledSoftButton } from "./Button";
 import { ConfirmAlert } from "../ConfirmAlert";
-import { SYSTEM_COLORS } from "../../AppWrapper/colors";
+import { SYSTEM_COLORS } from "../../theme";
 
 interface IProps {
   onDelete: () => void;

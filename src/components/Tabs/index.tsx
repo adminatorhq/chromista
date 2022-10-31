@@ -2,7 +2,7 @@ import { SLUG_LOADING_VALUE } from "@hadmean/protozoa";
 import React, { useState, useEffect, ReactNode } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import styled, { css } from "styled-components";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 
 export interface IProps {
   contents: {

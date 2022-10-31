@@ -1,7 +1,7 @@
 import React from "react";
 import { confirmAlert } from "react-confirm-alert";
 import styled, { keyframes } from "styled-components";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 import { Z_INDEXES } from "../../constants/zIndex";
 import { Stack } from "../../ui-blocks";
 

@@ -4,7 +4,7 @@ import { ChevronRight } from "react-feather";
 import Link from "next/link";
 import { StringUtils } from "@hadmean/protozoa";
 import { ISelectionView } from "./types";
-import { USE_ROOT_COLOR } from "../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../theme";
 
 interface IRenderNavigation {
   navigation: Array<ISelectionView & { sideBarAction: () => void }>;
@@ -84,7 +84,7 @@ const StyleMenuIcon = styled.span<{
   color: ${(props) =>
     props.$isActive
       ? USE_ROOT_COLOR("primary-color")
-      : USE_ROOT_COLOR("inverse-text")};
+      : USE_ROOT_COLOR("text-on-primary")};
   fill: rgba(112, 129, 185, 0.12);
   ${(props) =>
     props.$isSidebarOpen

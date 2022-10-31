@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { SimpleSelect } from "../Form";
 import { Stack, Text } from "../../ui-blocks";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 
 const StyledPagination = styled.div`
   .pagination {
@@ -26,7 +26,7 @@ const StyledPagination = styled.div`
   .page-item.active {
     .page-link {
       z-index: 3;
-      color: ${USE_ROOT_COLOR("inverse-text")};
+      color: ${USE_ROOT_COLOR("text-on-primary")};
       background-color: ${USE_ROOT_COLOR("primary-color")};
       border-color: ${USE_ROOT_COLOR("primary-color")};
     }

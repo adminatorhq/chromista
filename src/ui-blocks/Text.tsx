@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { TEXT_COLORS } from "../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../theme";
+
+const TEXT_COLORS = {
+  main: USE_ROOT_COLOR("main-text"),
+  muted: USE_ROOT_COLOR("muted-text"),
+  inverse: USE_ROOT_COLOR("text-on-primary"),
+};
 
 export type TextProps = {
   size: "1" | "2" | "3" | "4" | "5" | "6";

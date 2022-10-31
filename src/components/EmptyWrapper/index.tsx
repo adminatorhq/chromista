@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import noop from "lodash/noop";
 import styled from "styled-components";
 import { Text } from "../../ui-blocks";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 
 export interface IProps {
   text: string;

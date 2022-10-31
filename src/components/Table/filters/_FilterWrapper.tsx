@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Dropdown } from "../../Dropdown";
 import { Spacer, Stack } from "../../../ui-blocks";
 import { SoftButton } from "../../Button/SoftButton";
-import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../../theme";
 
 interface IProps {
   children: ReactNode;

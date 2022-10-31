@@ -7,7 +7,7 @@ import { ISharedFormInput } from "../_types";
 import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
-import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../theme";
 
 interface IFormCodeEditor extends ISharedFormInput {
   language?: "javascript";

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styled, { css } from "styled-components";
 import { getBestErrorMessage } from "@hadmean/protozoa";
-import { SYSTEM_COLORS } from "../../AppWrapper/colors";
+import { SYSTEM_COLORS } from "../../theme";
 
 export enum AlertType {
   Success = "success",

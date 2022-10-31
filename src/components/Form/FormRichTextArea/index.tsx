@@ -5,7 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 import { ISharedFormInput } from "../_types";
 import { generateClassNames, wrapLabelAndError } from "../_wrapForm";
-import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../theme";
 
 const Root = styled.div`
   .ql-editor {

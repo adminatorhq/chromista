@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { USE_ROOT_COLOR, SYSTEM_COLORS } from "../../../theme";
 
 export const SelectStyles = css`
   &.invalid {

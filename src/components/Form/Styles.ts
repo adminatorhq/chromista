@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../theme";
 
 interface IInput {
   sm?: true;

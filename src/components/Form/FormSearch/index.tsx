@@ -4,7 +4,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { StyledInput } from "../Styles";
 import { StyledBaseButton } from "../../Button/Button";
-import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../../theme";
 
 const StyledInputGroup = styled.div`
   position: relative;

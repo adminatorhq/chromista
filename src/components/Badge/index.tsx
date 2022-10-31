@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../theme";
 import { ISystemStatusForDisplay } from "../../types";
 
 const StyledBadge = styled.span<{ color: keyof typeof SYSTEM_COLORS }>`
@@ -30,7 +30,7 @@ const StyledSoftBadge = styled(StyledBadge)`
 
 const StyledBadgePill = styled(StyledBadge)<{ isIconBadge?: true }>`
   background-color: ${USE_ROOT_COLOR("primary-color")};
-  color: ${USE_ROOT_COLOR("inverse-text")};
+  color: ${USE_ROOT_COLOR("text-on-primary")};
   padding-right: 0.6em;
   padding-left: 0.6em;
   border-radius: 10rem;

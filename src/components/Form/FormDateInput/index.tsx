@@ -2,7 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import { FieldMetaState } from "react-final-form";
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../../theme";
 import { InputStyles } from "../Styles";
 import { ISharedFormInput } from "../_types";
 import { wrapLabelAndError, generateFormArias } from "../_wrapForm";

@@ -10,7 +10,7 @@ import { StyledCard, StyledCardBody, StyledCardHeader } from "../../Card";
 import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
 import { Spacer, Stack, Text } from "../../../ui-blocks";
-import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../../theme";
 
 export interface IProps {
   title: string;

@@ -1,11 +1,11 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 import shallow from "zustand/shallow";
+import { USE_ROOT_COLOR } from "../../theme";
 import { useSideBarStore } from "../sidebar.store";
 import { ISelectionView } from "../types";
 import { PrimaryLeftSideNav } from "./PrimaryLeftSideNav";
 import { SecondaryLeftSideNav } from "./SecondarySideNav";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
 
 export interface IProps {
   children: ReactNode;

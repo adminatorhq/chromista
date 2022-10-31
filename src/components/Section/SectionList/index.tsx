@@ -6,13 +6,13 @@ import { StyledListGroupFlush } from "../../Lists";
 import { FormButton } from "../../Button/FormButton";
 import { Stack } from "../../../ui-blocks";
 import { FormSwitch } from "../../Form/FormSwitch";
-import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../../theme";
 
 const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   width: 14px;
   color: ${(props) =>
     props.$active
-      ? USE_ROOT_COLOR("inverse-text")
+      ? USE_ROOT_COLOR("text-on-primary")
       : USE_ROOT_COLOR("primary-color")};
   margin-left: 0.25rem;
 `;
@@ -20,7 +20,7 @@ const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
 const StyledSublabel = styled.p<{ $active?: boolean }>`
   color: ${(props) =>
     props.$active
-      ? USE_ROOT_COLOR("inverse-text")
+      ? USE_ROOT_COLOR("text-on-primary")
       : USE_ROOT_COLOR("muted-text")};
   padding: 0;
   margin: 0;
@@ -102,7 +102,7 @@ const StyledListItem = styled.button<{
     active &&
     css`
       z-index: 2;
-      color: ${USE_ROOT_COLOR("inverse-text")} !important;
+      color: ${USE_ROOT_COLOR("text-on-primary")} !important;
       background-color: ${USE_ROOT_COLOR("primary-color")} !important;
       border-color: ${USE_ROOT_COLOR("primary-color")};
     `}

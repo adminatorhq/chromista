@@ -1,9 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "polished";
-import { ROOT_COLORS, SYSTEM_COLORS, USE_ROOT_COLOR } from "./colors";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../theme";
+import { LIGHT_MODE } from "../theme/modes";
+import { DEFAULT_PRIMARY_COLOR } from "../theme/constants";
+import { generateRootColors } from "../theme/generate";
 
-const rootColorString = Object.entries(ROOT_COLORS)
-  .map(([key, value]) => `--hadmean-${key}: ${value}`)
+const rootColorString = Object.entries(
+  generateRootColors(DEFAULT_PRIMARY_COLOR, LIGHT_MODE)
+)
+  .map(([key, value]) => `${key}: ${value}`)
   .join(";");
 
 export const GlobalStyle = createGlobalStyle`

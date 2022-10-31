@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../theme";
 
 const StyledLogo = styled(Link)`
   line-height: 52px;

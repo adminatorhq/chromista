@@ -5,7 +5,7 @@ import { Text } from "../../../ui-blocks/Text";
 import { Stack } from "../../../ui-blocks";
 import { StyledFormFeedback, StyledFormGroup } from "../Styles";
 import { isFormMetaWithError } from "../_wrapForm";
-import { USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../../theme";
 
 const StyledCheckBoxInput = styled.input`
   border-radius: 0.25em;

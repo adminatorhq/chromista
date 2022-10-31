@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../../../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../../../theme";
 import { StyledCardBody } from "../../../../components/Card";
 import { Spacer, Text } from "../../../../ui-blocks";
 

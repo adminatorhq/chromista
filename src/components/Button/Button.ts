@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../theme";
 
 export interface IStyledBaseButton {
   block?: boolean;
@@ -76,7 +76,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
 `;
 
 export const StyledButton = styled(StyledBaseButton)`
-  color: ${USE_ROOT_COLOR("inverse-text")};
+  color: ${USE_ROOT_COLOR("text-on-primary")};
   background-color: ${USE_ROOT_COLOR("primary-color")};
   border-color: ${USE_ROOT_COLOR("primary-color")};
 `;
@@ -86,13 +86,13 @@ export const StyledSoftButton = styled(StyledBaseButton)`
   color: ${USE_ROOT_COLOR("primary-color")};
   &:hover {
     background-color: ${USE_ROOT_COLOR("primary-color")};
-    color: ${USE_ROOT_COLOR("inverse-text")};
+    color: ${USE_ROOT_COLOR("text-on-primary")};
   }
 
   &:focus {
     box-shadow: 0 0 0 0.1rem ${USE_ROOT_COLOR("primary-shade-color")};
     background-color: ${USE_ROOT_COLOR("primary-color")};
-    color: ${USE_ROOT_COLOR("inverse-text")};
+    color: ${USE_ROOT_COLOR("text-on-primary")};
   }
 `;
 
@@ -101,7 +101,7 @@ export const StyledOutlineButton = styled(StyledBaseButton)`
   border-color: ${USE_ROOT_COLOR("primary-color")};
 
   &:hover {
-    color: ${USE_ROOT_COLOR("inverse-text")};
+    color: ${USE_ROOT_COLOR("text-on-primary")};
     background-color: ${USE_ROOT_COLOR("primary-color")};
     border-color: ${USE_ROOT_COLOR("primary-color")};
   }
@@ -117,7 +117,7 @@ export const StyledOutlineButton = styled(StyledBaseButton)`
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active {
-    color: ${USE_ROOT_COLOR("inverse-text")};
+    color: ${USE_ROOT_COLOR("text-on-primary")};
     background-color: ${USE_ROOT_COLOR("primary-color")};
     border-color: ${USE_ROOT_COLOR("primary-color")};
   }

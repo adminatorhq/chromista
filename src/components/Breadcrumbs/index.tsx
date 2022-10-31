@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { IValueLabel } from "../../types";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 
 const StyledBreadcrumb = styled.ol`
   display: flex;

@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import { Icon } from "react-feather";
 import { Text } from "../../ui-blocks";
 import { StyledSoftButton } from "../Button/Button";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 
 const togglePreviousState = (prev: boolean) => !prev;
 

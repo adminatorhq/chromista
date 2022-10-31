@@ -12,7 +12,7 @@ import { DEFAULT_TABLE_PARAMS } from "./constants";
 import { Stack, Text } from "../../ui-blocks";
 import { mapFilterTypeToComponent } from "./filters";
 import { TablePagination } from "./_Pagination";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 
 import { IProps, ITableColumn, PaginatedDataState } from "./types";
 import { TableSkeleton } from "../Skeleton";

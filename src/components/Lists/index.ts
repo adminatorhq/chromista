@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../../AppWrapper/colors";
+import { USE_ROOT_COLOR } from "../../theme";
 
 export const StyledListGroup = styled.ul`
   display: flex;
@@ -38,7 +38,7 @@ export const StyledListGroupItem = styled.div`
 
   &.active {
     z-index: 2;
-    color: ${USE_ROOT_COLOR("inverse-text")};
+    color: ${USE_ROOT_COLOR("text-on-primary")};
     background-color: ${USE_ROOT_COLOR("primary-color")};
     border-color: ${USE_ROOT_COLOR("primary-color")};
   }

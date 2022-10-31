@@ -1,5 +1,5 @@
 import { ArrowDownLeft, ArrowUpRight, Icon } from "react-feather";
-import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../AppWrapper/colors";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../theme";
 
 export const DirectionImplementation: Record<
   "up" | "down" | "side",
