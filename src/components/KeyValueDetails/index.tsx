@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { StringFilters } from "@hadmean/protozoa";
 import { Text } from "../../ui-blocks";
 import { ISystemStatusForDisplay } from "../../types";
-import { BadgeBuilder } from "../Badge";
+import { BadgeBuilder } from "./BadgeBuilder";
 import { Currency } from "../Currency";
 import { StyledListGroup } from "../Lists";
 import { ListSkeleton } from "../Skeleton/List";
