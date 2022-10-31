@@ -27,6 +27,10 @@ const Root = styled.div`
     border: 1px solid ${USE_ROOT_COLOR("border-color")};
   }
 
+  .ql-editor.ql-blank::before {
+    color: ${USE_ROOT_COLOR("muted-text")};
+  }
+
   .ql-container.ql-snow {
     border: 1px solid ${USE_ROOT_COLOR("border-color")};
     border-radius: 0 0 0.25rem 0.25rem;

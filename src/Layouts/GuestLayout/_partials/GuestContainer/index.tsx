@@ -7,10 +7,10 @@ import { USE_ROOT_COLOR } from "../../../../theme";
 const Root = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: ${USE_ROOT_COLOR("foundation-color")};
+  background-color: ${USE_ROOT_COLOR("base-color")};
   background-image: radial-gradient(
     ${USE_ROOT_COLOR("primary-color")} 0.75px,
-    ${USE_ROOT_COLOR("foundation-color")} 0.75px
+    ${USE_ROOT_COLOR("base-color")} 0.75px
   );
   background-size: 15px 15px;
 `;

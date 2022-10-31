@@ -10,6 +10,7 @@ export const SelectStyles = css`
 
   .react-select__control {
     box-shadow: none;
+    background: ${USE_ROOT_COLOR("base-color")};
     border: 1px solid ${USE_ROOT_COLOR("border-color")};
 
     &:hover {
@@ -29,6 +30,14 @@ export const SelectStyles = css`
     padding: 4px 8px;
     text-align: left;
     font-size: 14px;
+  }
+
+  .react-select__menu {
+    background: ${USE_ROOT_COLOR("base-color")};
+  }
+
+  .react-select__multi-value__label {
+    color: ${USE_ROOT_COLOR("text-on-shade")};
   }
 
   .react-select__option--is-focused {

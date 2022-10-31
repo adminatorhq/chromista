@@ -33,6 +33,10 @@ const Root = styled.div`
   .react-datepicker__header {
     background-color: ${USE_ROOT_COLOR("soft-color")};
   }
+  .react-datepicker__current-month,
+  .react-datepicker__day-name {
+    color: ${USE_ROOT_COLOR("main-text")};
+  }
 `;
 
 interface IProps {

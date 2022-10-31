@@ -24,7 +24,7 @@ const StyledButton = styled.button<{ danger?: boolean }>`
   padding: 6px 18px;
   color: ${(props) =>
     props.danger
-      ? USE_ROOT_COLOR("base-color")
+      ? USE_ROOT_COLOR("text-on-primary")
       : USE_ROOT_COLOR("primary-color")};
   margin-right: 10px;
   border-radius: 5px;

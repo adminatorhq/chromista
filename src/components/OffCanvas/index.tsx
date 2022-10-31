@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Divider, Text, Stack } from "../../ui-blocks";
 import { SoftButton } from "../Button";
+import { USE_ROOT_COLOR } from "../../theme";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ const StyledRoot = styled.div<{ width: number }>`
   flex-direction: column;
   max-width: 100%;
   visibility: hidden;
-  background-color: white;
+  background-color: ${USE_ROOT_COLOR("base-color")};
   background-clip: padding-box;
   outline: 0;
   transition: transform 0.3s ease-in-out;
