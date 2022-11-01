@@ -30,5 +30,5 @@ export const useTheme = (
     ).forEach(([key, value]) => {
       document.documentElement.style.setProperty(key, value);
     });
-  }, [themeColor]);
+  }, [themeColor, colorMode]);
 };

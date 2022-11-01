@@ -18,7 +18,8 @@ export interface IProps {
 const Root = styled.div`
   box-shadow: 0 4px 6px 0 rgb(85 85 85 / 9%), 0 1px 20px 0 rgb(0 0 0 / 8%),
     0px 1px 11px 0px rgb(0 0 0 / 6%);
-  border-radius: 24px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 `;
 
 export function GuestLayout({

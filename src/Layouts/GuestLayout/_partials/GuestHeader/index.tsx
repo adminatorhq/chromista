@@ -6,8 +6,8 @@ import { Spacer, Text } from "../../../../ui-blocks";
 
 const Root = styled(StyledCardBody)`
   background-color: ${USE_ROOT_COLOR("primary-color")};
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   padding: 0px;
   text-align: center;
   padding: 1rem;
@@ -36,7 +36,7 @@ export function GuestHeader({
         </Text>
         <Spacer size="xs" />
         {subTitle ? (
-          <Text color="muted" size="5">
+          <Text size="6" color="inverse">
             {subTitle}
           </Text>
         ) : null}

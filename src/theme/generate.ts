@@ -13,10 +13,8 @@ export const generateRootColors = (
     primaryColor + colorMode["shade-opacity"];
 
   Object.entries(colorMode).forEach(([key, value]) => {
-    if (value.startsWith("#")) {
-      rootColors[prefixVarNameSpace(key)] =
-        value === REPLACE_WITH_PRIMARY ? primaryColor : value;
-    }
+    rootColors[prefixVarNameSpace(key)] =
+      value === REPLACE_WITH_PRIMARY ? primaryColor : value;
   });
   return rootColors;
 };

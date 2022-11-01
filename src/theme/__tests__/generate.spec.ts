@@ -14,8 +14,10 @@ describe("generateRootColors", () => {
         "--hadmean-muted-text": "#a4abc5",
         "--hadmean-primary-color": "#4b38b3",
         "--hadmean-primary-shade-color": "#4b38b31A",
+        "--hadmean-shade-opacity": "1A",
         "--hadmean-soft-color": "#f1f5fa",
         "--hadmean-text-on-primary": "#ffffff",
+        "--hadmean-text-on-shade": "#4b38b3",
       }
     `);
   });
