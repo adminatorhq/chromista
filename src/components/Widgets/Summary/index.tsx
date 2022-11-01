@@ -11,7 +11,7 @@ const StyledBox = styled.div`
 `;
 
 const IconRoot = styled.div<{ color: string }>`
-  background: ${(props) => props.color}2a;
+  background: ${(props) => props.color}2A;
   color: ${(props) => props.color};
   border: 1px solid ${(props) => props.color};
   width: 56px;
@@ -20,6 +20,16 @@ const IconRoot = styled.div<{ color: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const DirectionRoot = styled(Stack)<{ color: string }>`
+  border: 1px solid transparent;
+  width: auto;
+  border-radius: 8px;
+  padding: 0 4px;
+  color: ${(props) => props.color};
+  background-color: ${(props) => props.color}0A;
+  border-color: ${(props) => props.color};
 `;
 
 export interface IProps extends IWidgetHeaderProps {
@@ -56,10 +66,16 @@ export function SummaryWidget({
                 {fullCount}
               </Text>
               {relativeCount ? (
-                <Text size="6">
+                <DirectionRoot color={directionColor} spacing={2}>
                   <DirectionIcon size={20} style={{ color: directionColor }} />
-                  <span style={{ color: directionColor }}>{relativeCount}</span>
-                </Text>
+                  <Text
+                    size="6"
+                    weight="bold"
+                    style={{ lineHeight: "20.5px", color: directionColor }}
+                  >
+                    {relativeCount}
+                  </Text>
+                </DirectionRoot>
               ) : null}
             </Stack>
           </div>
