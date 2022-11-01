@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
-import { normalize } from "polished";
 import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../theme";
 import { LIGHT_MODE } from "../theme/modes";
 import { DEFAULT_PRIMARY_COLOR } from "../theme/constants";
 import { generateRootColors } from "../theme/generate";
+import { NORAMLIZE } from "./normalize";
 
 const rootColorString = Object.entries(
   generateRootColors(DEFAULT_PRIMARY_COLOR, LIGHT_MODE)
@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box
 }
 
-${normalize()}
+${NORAMLIZE}
 
 :root {
   ${rootColorString};
