@@ -7,6 +7,7 @@ import { Icon } from "react-feather";
 import { Text } from "../../ui-blocks";
 import { StyledSoftButton } from "../Button/Button";
 import { USE_ROOT_COLOR } from "../../theme";
+import { BREAKPOINTS } from "../../constants";
 
 const togglePreviousState = (prev: boolean) => !prev;
 
@@ -17,7 +18,7 @@ export interface IDropDownMenuItem {
   onClick: () => void;
 }
 
-interface IProps {
+export interface IProps {
   menuItems: IDropDownMenuItem[];
   isMakingActionRequest?: boolean;
   disabled?: boolean;
@@ -25,6 +26,12 @@ interface IProps {
 
 const StyledDropDown = styled.div`
   position: relative;
+`;
+
+const Label = styled.span`
+  @media (max-width: ${BREAKPOINTS.sm}) {
+    display: none;
+  }
 `;
 
 const StyledDropDownItem = styled.button`
@@ -157,7 +164,7 @@ export function DropDownMenu({
       ) : IconComponent ? (
         <IconComponent size="14" />
       ) : null}{" "}
-      {label}
+      <Label>{label}</Label>
     </>
   );
 

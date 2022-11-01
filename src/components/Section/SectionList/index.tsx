@@ -2,7 +2,6 @@ import React, { ReactNode, useId } from "react";
 import { ChevronRight, Icon } from "react-feather";
 import Link from "next/link";
 import styled, { css } from "styled-components";
-import { StyledListGroupFlush } from "../../Lists";
 import { FormButton } from "../../Button/FormButton";
 import { Stack } from "../../../ui-blocks";
 import { FormSwitch } from "../../Form/FormSwitch";
@@ -28,8 +27,18 @@ const StyledSublabel = styled.p<{ $active?: boolean }>`
   line-height: 0.6;
 `;
 
+const Root = styled.ul`
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-radius: 0.25rem;
+  margin: -0.75rem;
+  border-radius: 0px;
+`;
+
 export function SectionList({ children }: { children: ReactNode }) {
-  return <StyledListGroupFlush>{children}</StyledListGroupFlush>;
+  return <Root>{children}</Root>;
 }
 
 const StyledIcon = styled.span`
@@ -150,7 +159,9 @@ export function SectionListItem({
       <Stack align="center">
         {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}{" "}
         <div>
-          <label htmlFor={id}>{label}</label>
+          <label htmlFor={id} style={{ cursor: "pointer" }}>
+            {label}
+          </label>
           {subLabel ? (
             <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
           ) : null}

@@ -1,16 +1,15 @@
 export { AccordionItem } from "./Accordion";
 export { ErrorAlert, SuccessAlert, WarningAlert } from "./Alert";
-export * from "./Badge";
+export { Badge, BadgePill } from "./Badge";
 export { Breadcrumbs } from "./Breadcrumbs";
 export * from "./Button";
 export * from "./ComponentIsLoading";
 export * from "./ConfirmAlert";
 export * from "./Currency";
-export * from "./DropdownMenu";
+export { IDropDownMenuItem, DropDownMenu } from "./DropdownMenu";
 export { EmptyWrapper } from "./EmptyWrapper";
 export * from "./Form";
 export * from "./KeyValueDetails";
-export * from "./Lists";
 export * from "./Card";
 export * from "./Widgets";
 export * from "./ProgressBar";
