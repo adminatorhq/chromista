@@ -4,17 +4,6 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import styled, { css } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 
-export interface IProps {
-  contents: {
-    label: string;
-    overrideLabel?: string;
-    content: ReactNode;
-  }[];
-  currentTab?: string;
-  padContent?: boolean;
-  onChange?: (tab: string) => void;
-}
-
 const StyledTabPane = styled(TabPane)`
   display: none;
   &.active {
@@ -43,7 +32,7 @@ const StyledNavItem = styled(NavItem)`
   margin-bottom: -1px;
 `;
 
-const StyledNavLink = styled(NavLink)<{ active: boolean }>`
+const StyledNavLink = styled(NavLink)<{ active: boolean; $disabled: boolean }>`
   display: block;
   padding: 0.5rem 1rem;
   background-color: ${USE_ROOT_COLOR("base-color")};
@@ -63,7 +52,25 @@ const StyledNavLink = styled(NavLink)<{ active: boolean }>`
       : css`
           color: ${USE_ROOT_COLOR("main-text")};
         `}
+
+  ${(props) =>
+    props.$disabled &&
+    css`
+      color: ${USE_ROOT_COLOR("muted-text")};
+    `}
 `;
+
+export interface IProps {
+  contents: {
+    label: string;
+    overrideLabel?: string;
+    disabled?: boolean;
+    content: ReactNode;
+  }[];
+  currentTab?: string;
+  padContent?: boolean;
+  onChange?: (tab: string) => void;
+}
 
 export function Tabs({
   contents,
@@ -91,13 +98,14 @@ export function Tabs({
   return (
     <>
       <StyledNav tabs role="tablist">
-        {contents.map(({ label, overrideLabel }) => (
+        {contents.map(({ label, overrideLabel, disabled }) => (
           <StyledNavItem key={label}>
             <StyledNavLink
               tag="button"
               role="tab"
               aria-selected={activeTab === label ? "true" : "false"}
               active={activeTab === label}
+              $disabled={disabled}
               onClick={() => {
                 changeTab(label);
               }}

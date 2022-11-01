@@ -22,6 +22,11 @@ export default {
         label: "Baz",
         content: <p>Baz Content</p>,
       },
+      {
+        label: "Disabled",
+        content: <p>Baz Content</p>,
+        disabled: true,
+      },
     ],
   },
 };
