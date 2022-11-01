@@ -17,12 +17,13 @@ export default {
       },
       {
         label: "Menu Item 2",
+        description: "Hello There, Lorem Ipsum, Dolor Amet",
         IconComponent: Plus,
         onClick: () => {},
       },
       {
         label: "Menu Item 3",
-        description: "Hello There",
+        description: "Hello There, Lorem Ipsum, Dolor Amet",
         IconComponent: Minus,
         onClick: () => {},
       },

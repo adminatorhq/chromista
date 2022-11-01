@@ -40,6 +40,7 @@ const StyledDropDownItem = styled.button`
   padding: 6px 12px;
   clear: both;
   font-weight: 400;
+  font-size: 16px;
   line-height: 20px;
   color: ${USE_ROOT_COLOR("main-text")};
   text-align: inherit;
@@ -208,7 +209,7 @@ export function DropDownMenu({
             {label$1}
             <br />
             {description ? (
-              <Text size="5" color="muted" as="span">
+              <Text size="6" color="muted" as="span">
                 {description}
               </Text>
             ) : null}
