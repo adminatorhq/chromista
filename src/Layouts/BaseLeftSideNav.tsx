@@ -48,18 +48,19 @@ const Root = styled.div<{ isSidebarOpen: boolean }>`
 `;
 
 interface IProps {
+  logo: string;
   isSidebarOpen: boolean;
   children: ReactNode;
 }
 
-export function BaseLeftSideNav({ isSidebarOpen, children }: IProps) {
+export function BaseLeftSideNav({ isSidebarOpen, children, logo }: IProps) {
   return (
     <Root isSidebarOpen={isSidebarOpen}>
       <StyledBrand>
         <StyledLogo href="/">
           <span>
             <StyledLogoSm
-              src="/assets/images/logo.png"
+              src={logo}
               alt="logo-small"
               data-test-id="nav-menu__small-logo"
             />

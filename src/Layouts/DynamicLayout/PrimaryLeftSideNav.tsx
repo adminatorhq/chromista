@@ -7,11 +7,13 @@ import { ISelectionView } from "../types";
 import { useNestedNavStore } from "./nested-nav.store";
 
 interface IProps {
+  logo: string;
   navigation: ISelectionView[];
   secondaryNavigation: ISelectionView[];
 }
 
 export function PrimaryLeftSideNav({
+  logo,
   navigation,
   secondaryNavigation,
 }: IProps) {
@@ -56,7 +58,7 @@ export function PrimaryLeftSideNav({
   );
 
   return (
-    <BaseLeftSideNav isSidebarOpen={isSidebarOpen}>
+    <BaseLeftSideNav isSidebarOpen={isSidebarOpen} logo={logo}>
       <Stack
         justify="space-between"
         direction="column"

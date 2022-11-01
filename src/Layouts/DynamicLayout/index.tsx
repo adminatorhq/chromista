@@ -9,6 +9,7 @@ import { SecondaryLeftSideNav } from "./SecondarySideNav";
 
 export interface IProps {
   children: ReactNode;
+  logo?: string;
   selectionView: ISelectionView[];
   secondarySelectionView?: ISelectionView[];
 }
@@ -27,6 +28,7 @@ const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
 `;
 
 export function DynamicLayout({
+  logo = "/assets/images/logo.png",
   children,
   selectionView,
   secondarySelectionView = [],
@@ -38,6 +40,7 @@ export function DynamicLayout({
   return (
     <Root>
       <PrimaryLeftSideNav
+        logo={logo}
         navigation={selectionView}
         secondaryNavigation={secondarySelectionView}
       />
