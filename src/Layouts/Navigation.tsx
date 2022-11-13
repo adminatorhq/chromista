@@ -20,8 +20,8 @@ const StyledLeftSideNavMenuList = styled.li<{ $isActive: boolean }>`
   list-style: none;
   display: block;
   width: 100%;
-  padding: 6px 15px 6px 13px;
-  border-left: 3px solid transparent;
+  padding: 6px 12px;
+  border-left: 2px solid transparent;
 
   ${(props) =>
     props.$isActive &&
@@ -54,8 +54,8 @@ const StyleMenuIcon = styled.span<{
 }>`
   color: ${USE_ROOT_COLOR("text-on-primary")};
   margin-right: 0;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   stroke-width: ${(props) => (props.$isActive ? 2 : 1)}px;
   align-self: center;
   display: inline-block;

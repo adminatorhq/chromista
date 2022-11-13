@@ -8,15 +8,13 @@ const StyledLogo = styled(Link)`
 `;
 
 const StyledLogoSm = styled.img`
-  height: 40px;
-  width: 24px;
+  width: 28px;
   margin-top: 16px;
 `;
 
 const StyledMenuContent = styled.div`
   height: 100%;
   padding-bottom: 30px;
-  height: 100%;
 `;
 
 const StyledBrand = styled.div`

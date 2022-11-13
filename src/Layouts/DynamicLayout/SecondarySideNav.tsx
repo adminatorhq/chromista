@@ -21,7 +21,7 @@ const StyledHideScrollbar = styled.div`
 
 const Root = styled.div<{ show: boolean }>`
   height: 100vh;
-  left: 50px;
+  left: 54px;
   position: fixed;
   width: 300px;
   order: 1;
