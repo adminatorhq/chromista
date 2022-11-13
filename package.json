@@ -1,6 +1,6 @@
 {
   "name": "@hadmean/chromista",
-  "version": "1.0.49",
+  "version": "1.0.50",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "start": "tsdx watch",
+    "start": "npm run storybook",
     "build": "tsdx build",
     "test": "jest --detectOpenHandles --runInBand",
     "typecheck": "tsc",

@@ -25,19 +25,7 @@ const StyledBrand = styled.div`
   margin-top: 8px;
 `;
 
-export const StyledLeftSideNavMenu = styled.ul`
-  padding-left: 0;
-  height: 100%;
-  margin-bottom: 0;
-  padding: 13px;
-
-  hr:first-child {
-    display: none;
-  }
-`;
-
-const Root = styled.div<{ isSidebarOpen: boolean }>`
-  width: ${(props) => (props.isSidebarOpen ? 220 : 50)}px;
+const Root = styled.div`
   background-color: ${USE_ROOT_COLOR("primary-color")};
   min-height: 100vh;
   transition: 0.3s;
@@ -49,13 +37,12 @@ const Root = styled.div<{ isSidebarOpen: boolean }>`
 
 interface IProps {
   logo: string;
-  isSidebarOpen: boolean;
   children: ReactNode;
 }
 
-export function BaseLeftSideNav({ isSidebarOpen, children, logo }: IProps) {
+export function BaseLeftSideNav({ children, logo }: IProps) {
   return (
-    <Root isSidebarOpen={isSidebarOpen}>
+    <Root>
       <StyledBrand>
         <StyledLogo href="/">
           <span>
@@ -67,9 +54,7 @@ export function BaseLeftSideNav({ isSidebarOpen, children, logo }: IProps) {
           </span>
         </StyledLogo>
       </StyledBrand>
-      <StyledMenuContent>
-        <StyledLeftSideNavMenu>{children}</StyledLeftSideNavMenu>
-      </StyledMenuContent>
+      <StyledMenuContent>{children}</StyledMenuContent>
     </Root>
   );
 }

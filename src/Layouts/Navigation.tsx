@@ -1,21 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { ChevronRight } from "react-feather";
 import Link from "next/link";
-import { StringUtils } from "@hadmean/protozoa";
 import { ISelectionView } from "./types";
 import { USE_ROOT_COLOR } from "../theme";
 
 interface IRenderNavigation {
   navigation: Array<ISelectionView & { sideBarAction: () => void }>;
-  isSidebarOpen: boolean;
-  label?: string;
-  isSubMenu?: true;
-  showDash?: true;
-  currentLink?: string;
+  currentTitle: string;
 }
-
-const ARROW_SIZE = 14;
 
 const StyledLinkLikeButton = styled.button`
   &:focus {
@@ -24,34 +16,28 @@ const StyledLinkLikeButton = styled.button`
   background: inherit;
 `;
 
-const StyledLeftSideNavMenuList = styled.li`
+const StyledLeftSideNavMenuList = styled.li<{ $isActive: boolean }>`
   list-style: none;
   display: block;
   width: 100%;
-  margin-top: 6px;
+  padding: 6px 15px 6px 13px;
+  border-left: 3px solid transparent;
+
+  ${(props) =>
+    props.$isActive &&
+    css`
+      border-color: ${USE_ROOT_COLOR("text-on-primary")};
+    `}
 `;
 
-const StyledLeftSideNavMenuListLabel = styled(StyledLeftSideNavMenuList)`
-  text-transform: uppercase;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  color: #687598;
-  padding: 8px 0;
-`;
-
-const StyledMenuArrow = styled.span`
-  margin-left: auto;
-`;
-
-const StyledLeftSideNavMenuListAnchor = styled.a<{ $isSubMenu?: true }>`
+const StyledLeftSideNavMenuListAnchor = styled.a`
   display: flex;
   align-items: center;
   width: 100%;
   outline: none !important;
-  padding: ${(props) => (props.$isSubMenu ? 5 : 7)}px 0px;
-  font-size: ${(props) => (props.$isSubMenu ? 12 : 13)}px;
-  color: #a9baca;
+  padding: 4px 0px;
+  font-size: 13px;
+
   transition: all 0.3s ease-out;
   font-weight: 400;
   background: inherit;
@@ -63,105 +49,52 @@ const StyledLeftSideNavMenuListAnchor = styled.a<{ $isSubMenu?: true }>`
   }
 `;
 
-const StyledLeftSideNavMenuText = styled.span<{ $isSidebarOpen: boolean }>`
-  display: ${(props) => (props.$isSidebarOpen ? "inline" : "none")};
-`;
-
-const StyledDash = styled.hr`
-  margin: 0.5rem 0;
-  border: 0;
-  border-top: 1px dashed ${USE_ROOT_COLOR("border-color")};
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-  border-color: #20446f;
-`;
-
 const StyleMenuIcon = styled.span<{
-  $isSidebarOpen: boolean;
   $isActive?: boolean;
 }>`
-  color: ${(props) =>
-    props.$isActive
-      ? USE_ROOT_COLOR("primary-color")
-      : USE_ROOT_COLOR("text-on-primary")};
-  fill: rgba(112, 129, 185, 0.12);
-  ${(props) =>
-    props.$isSidebarOpen
-      ? css`
-          margin-right: 11px;
-          width: 18px;
-          height: 18px;
-        `
-      : css`
-          margin-right: 0;
-          width: 24px;
-          height: 24px;
-        `}
-  stroke-width: 1px;
+  color: ${USE_ROOT_COLOR("text-on-primary")};
+  margin-right: 0;
+  width: 24px;
+  height: 24px;
+  stroke-width: ${(props) => (props.$isActive ? 2 : 1)}px;
   align-self: center;
   display: inline-block;
-  opacity: 0.9;
+`;
+
+const StyledLeftSideNavMenu = styled.ul`
+  padding-left: 0;
+  margin-bottom: 0;
+
+  hr:first-child {
+    display: none;
+  }
 `;
 
 export function RenderNavigation({
   navigation,
-  isSidebarOpen,
-  label,
-  isSubMenu,
-  showDash,
-  currentLink = "hopefully this will never be true",
+  currentTitle,
 }: IRenderNavigation) {
   return (
-    <>
-      {showDash && navigation.length ? <StyledDash /> : null}
-      {label && isSidebarOpen && navigation.length ? (
-        <StyledLeftSideNavMenuListLabel>{label}</StyledLeftSideNavMenuListLabel>
-      ) : null}
+    <StyledLeftSideNavMenu>
       {navigation.map(({ title, icon, action, sideBarAction }) => {
-        const isActive = currentLink === action;
-        const content = (
-          <>
-            <div>
-              <StyleMenuIcon
-                as={icon}
-                $isActive={isActive}
-                $isSidebarOpen={isSidebarOpen}
-                data-test-id={`nav-icon__${StringUtils.sluggify(title)}`}
-              />
-            </div>
-            <StyledLeftSideNavMenuText
-              data-test-id={`nav-menu-item__${StringUtils.sluggify(title)}`}
-              $isSidebarOpen={isSidebarOpen}
-            >
-              {title}
-            </StyledLeftSideNavMenuText>
-            {isSidebarOpen ? (
-              <StyledMenuArrow>
-                <ChevronRight size={ARROW_SIZE} />
-              </StyledMenuArrow>
-            ) : null}
-          </>
-        );
+        const isActive = currentTitle === title;
+        const content = <StyleMenuIcon as={icon} $isActive={isActive} />;
         return (
-          <StyledLeftSideNavMenuList key={title}>
+          <StyledLeftSideNavMenuList key={title} $isActive={isActive}>
             {typeof action === "string" ? (
               <Link href={action || ""} passHref>
                 <StyledLeftSideNavMenuListAnchor
-                  $isSubMenu={isSubMenu}
-                  onClick={() => sideBarAction?.()}
+                  onClick={() => sideBarAction()}
                 >
                   {content}
                 </StyledLeftSideNavMenuListAnchor>
               </Link>
             ) : (
               <StyledLeftSideNavMenuListAnchor
-                $isSubMenu={isSubMenu}
-                $isActive={isActive}
                 as={StyledLinkLikeButton}
                 onClick={() => {
                   action?.();
-                  sideBarAction?.();
+                  sideBarAction();
                 }}
               >
                 {content}
@@ -170,6 +103,6 @@ export function RenderNavigation({
           </StyledLeftSideNavMenuList>
         );
       })}
-    </>
+    </StyledLeftSideNavMenu>
   );
 }

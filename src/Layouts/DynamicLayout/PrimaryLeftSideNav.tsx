@@ -17,13 +17,12 @@ export function PrimaryLeftSideNav({
   navigation,
   secondaryNavigation,
 }: IProps) {
-  const isSidebarOpen = false;
-
-  const [selectMiniSideBar, currentMiniSideBar, closeFullSideBar] =
+  const [selectMiniSideBar, closeFullSideBar, currentTitle, setCurrentTitle] =
     useSideBarStore((state) => [
       state.selectMiniSideBar,
-      state.currentMiniSideBar,
       state.closeFullSideBar,
+      state.currentTitle,
+      state.setCurrentTitle,
     ]);
 
   const clearDeepLinks = useNestedNavStore((state) => state.clear);
@@ -40,6 +39,7 @@ export function PrimaryLeftSideNav({
           } else {
             selectMiniSideBar(title);
           }
+          setCurrentTitle(title);
           clearDeepLinks();
         },
       }));
@@ -58,28 +58,20 @@ export function PrimaryLeftSideNav({
   );
 
   return (
-    <BaseLeftSideNav isSidebarOpen={isSidebarOpen} logo={logo}>
+    <BaseLeftSideNav logo={logo}>
       <Stack
         justify="space-between"
         direction="column"
         style={{ height: "calc(100% - 42px)" }}
       >
-        <div>
-          <RenderNavigation
-            navigation={navigationToUse}
-            isSidebarOpen={isSidebarOpen}
-            currentLink={currentMiniSideBar}
-            showDash
-          />
-        </div>
-        <div>
-          <RenderNavigation
-            navigation={secondaryNavigationToUse}
-            isSidebarOpen={isSidebarOpen}
-            currentLink={currentMiniSideBar}
-            showDash
-          />
-        </div>
+        <RenderNavigation
+          navigation={navigationToUse}
+          currentTitle={currentTitle}
+        />
+        <RenderNavigation
+          navigation={secondaryNavigationToUse}
+          currentTitle={currentTitle}
+        />
       </Stack>
     </BaseLeftSideNav>
   );
