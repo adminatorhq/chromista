@@ -44,11 +44,7 @@ export function BaseLeftSideNav({ children, logo }: IProps) {
       <StyledBrand>
         <StyledLogo href="/">
           <span>
-            <StyledLogoSm
-              src={logo}
-              alt="logo-small"
-              data-test-id="nav-menu__small-logo"
-            />
+            <StyledLogoSm src={logo} alt="small logo" />
           </span>
         </StyledLogo>
       </StyledBrand>
