@@ -57,20 +57,29 @@ export function SummaryWidget({
     <StyledCard>
       <StyledBox>
         <Stack spacing={18}>
-          <IconRoot color={color} dangerouslySetInnerHTML={{ __html: icon }} />
+          <IconRoot
+            color={color}
+            aria-label={`${title} Icon`}
+            dangerouslySetInnerHTML={{ __html: icon }}
+          />
           <div style={{ width: "100%" }}>
             <WidgetHeader setting={setting} title={title} link={link} />
             <Spacer size="xs" />
             <Stack justify="space-between" align="end">
-              <Text size="3" weight="bold">
+              <Text size="3" weight="bold" aria-label="Total Count">
                 {fullCount}
               </Text>
               {relativeCount ? (
-                <DirectionRoot color={directionColor} spacing={2}>
+                <DirectionRoot
+                  color={directionColor}
+                  spacing={2}
+                  aria-label="Relative Direction"
+                >
                   <DirectionIcon size={20} style={{ color: directionColor }} />
                   <Text
                     size="6"
                     weight="bold"
+                    aria-label="Relative Count"
                     style={{ lineHeight: "20.5px", color: directionColor }}
                   >
                     {relativeCount}

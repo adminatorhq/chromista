@@ -13,6 +13,7 @@ export interface ISelectionView {
   title: string;
   icon: Icon;
   action?: string | (() => void);
+  secondaryAction?: () => void;
   view?: ReactNode;
   viewMenuItems?: DataStateKeys<INavigationMenuItems[]>;
   description?: string;

@@ -10,7 +10,13 @@ export function WidgetHeader({ title, setting, link }: IWidgetHeaderProps) {
       <Stack width="auto">
         {setting && (
           <>
-            <SoftButton action={() => setting.setId()} icon="edit" size="xs" />
+            <SoftButton
+              action={() => setting.setId()}
+              icon="edit"
+              size="xs"
+              label="Edit Widget"
+              justIcon
+            />
             <DeleteButton
               onDelete={() => setting.delete()}
               size="xs"

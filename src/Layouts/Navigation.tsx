@@ -76,33 +76,39 @@ export function RenderNavigation({
 }: IRenderNavigation) {
   return (
     <StyledLeftSideNavMenu>
-      {navigation.map(({ title, icon, action, sideBarAction }) => {
-        const isActive = currentTitle === title;
-        const content = <StyleMenuIcon as={icon} $isActive={isActive} />;
-        return (
-          <StyledLeftSideNavMenuList key={title} $isActive={isActive}>
-            {typeof action === "string" ? (
-              <Link href={action || ""} passHref>
+      {navigation.map(
+        ({ title, icon, action, sideBarAction, secondaryAction }) => {
+          const isActive = currentTitle === title;
+          const content = <StyleMenuIcon as={icon} $isActive={isActive} />;
+          return (
+            <StyledLeftSideNavMenuList key={title} $isActive={isActive}>
+              {typeof action === "string" ? (
+                <Link href={action || ""} passHref>
+                  <StyledLeftSideNavMenuListAnchor
+                    onClick={() => {
+                      sideBarAction();
+                      secondaryAction?.();
+                    }}
+                  >
+                    {content}
+                  </StyledLeftSideNavMenuListAnchor>
+                </Link>
+              ) : (
                 <StyledLeftSideNavMenuListAnchor
-                  onClick={() => sideBarAction()}
+                  as={StyledLinkLikeButton}
+                  onClick={() => {
+                    action?.();
+                    sideBarAction();
+                    secondaryAction?.();
+                  }}
                 >
                   {content}
                 </StyledLeftSideNavMenuListAnchor>
-              </Link>
-            ) : (
-              <StyledLeftSideNavMenuListAnchor
-                as={StyledLinkLikeButton}
-                onClick={() => {
-                  action?.();
-                  sideBarAction();
-                }}
-              >
-                {content}
-              </StyledLeftSideNavMenuListAnchor>
-            )}
-          </StyledLeftSideNavMenuList>
-        );
-      })}
+              )}
+            </StyledLeftSideNavMenuList>
+          );
+        }
+      )}
     </StyledLeftSideNavMenu>
   );
 }
