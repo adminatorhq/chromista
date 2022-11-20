@@ -20,6 +20,10 @@ const StyledWrapper = styled.div`
     border-color: ${SYSTEM_COLORS.danger} !important;
   }
 
+  textarea:disabled {
+    background: ${USE_ROOT_COLOR("soft-color")} !important;
+  }
+
   border-radius: 0.25rem;
 
   &:focus {
@@ -117,6 +121,7 @@ export const FormCodeEditor: React.FC<IFormCodeEditor> = (formInput) => {
         highlight={(code) =>
           highlight(code, languages[formInput.language || "javascript"])
         }
+        disabled={formInput.disabled}
         textareaId={formInput.input.name}
         padding={4}
         style={{

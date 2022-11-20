@@ -26,6 +26,11 @@ export const SelectStyles = css`
     }
   }
 
+  .react-select__control--is-disabled {
+    background-color: ${USE_ROOT_COLOR("soft-color")};
+    opacity: 1;
+  }
+
   .react-select__option {
     padding: 4px 8px;
     text-align: left;

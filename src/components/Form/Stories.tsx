@@ -48,6 +48,16 @@ function DemoForm() {
             )}
           </Field>
 
+          <Field name="disabled" validateFields={[]} validate={required}>
+            {(renderProps) => (
+              <FormInput
+                label="Disabled Text Input"
+                {...renderProps}
+                disabled
+              />
+            )}
+          </Field>
+
           <Field name="requiredText" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormInput
@@ -123,6 +133,20 @@ function DemoForm() {
             )}
           </Field>
 
+          <Field name="baseSelect" validateFields={[]} validate={required}>
+            {(renderProps) => (
+              <FormSelect
+                selectData={[
+                  { label: "Foo", value: "foo" },
+                  { label: "Bar", value: "bar" },
+                ]}
+                label="Disabled Select Input"
+                {...renderProps}
+                disabled
+              />
+            )}
+          </Field>
+
           <Field name="asyncSelect" validateFields={[]} validate={required}>
             {(renderProps) => (
               <AsyncFormSelect
@@ -156,9 +180,29 @@ function DemoForm() {
             )}
           </Field>
 
+          <Field name="dateInput" validateFields={[]} validate={required}>
+            {(renderProps) => (
+              <FormDateInput
+                label="Disbaled Date Input"
+                {...renderProps}
+                disabled
+              />
+            )}
+          </Field>
+
           <Field name="numberInput" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormNumberInput label="Example Number Input" {...renderProps} />
+            )}
+          </Field>
+
+          <Field name="numberInput" validateFields={[]} validate={required}>
+            {(renderProps) => (
+              <FormNumberInput
+                label="Disabled Number Input"
+                {...renderProps}
+                disabled
+              />
             )}
           </Field>
 
@@ -168,9 +212,29 @@ function DemoForm() {
             )}
           </Field>
 
+          <Field name="textArea" validateFields={[]} validate={required}>
+            {(renderProps) => (
+              <FormTextArea
+                label="Disabled Text Area Input"
+                {...renderProps}
+                disabled
+              />
+            )}
+          </Field>
+
           <Field name="richText" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormRichTextArea label="Example Rich Text" {...renderProps} />
+            )}
+          </Field>
+
+          <Field name="richText" validateFields={[]} validate={required}>
+            {(renderProps) => (
+              <FormRichTextArea
+                label="Disabled Rich Text"
+                {...renderProps}
+                disabled
+              />
             )}
           </Field>
 
@@ -180,6 +244,17 @@ function DemoForm() {
                 language="javascript"
                 label="Javascript"
                 {...renderProps}
+              />
+            )}
+          </Field>
+
+          <Field name="code" validateFields={[]} validate={required}>
+            {(renderProps) => (
+              <FormCodeEditor
+                language="javascript"
+                label="Disabled Javascript"
+                {...renderProps}
+                disabled
               />
             )}
           </Field>
