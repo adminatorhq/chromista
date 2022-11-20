@@ -143,6 +143,7 @@ const Styledlabel = styled.label<{ $active?: boolean; $subtle?: boolean }>`
 export interface IProps {
   label: string;
   action?: string | (() => void);
+  secondaryAction?: () => void;
   size?: "xs";
   subLabel?: string;
   IconComponent?: Icon;
@@ -169,6 +170,7 @@ export function SectionListItem({
   active,
   toggle,
   action,
+  secondaryAction,
   subtle,
   size,
   actionButtons = [],
@@ -243,7 +245,13 @@ export function SectionListItem({
   if (typeof action === "string") {
     return (
       <Link href={action} passHref>
-        <StyledListItem as="a" {...buttonProps}>
+        <StyledListItem
+          as="a"
+          {...buttonProps}
+          onClick={() => {
+            secondaryAction?.();
+          }}
+        >
           {content}
         </StyledListItem>
       </Link>
@@ -255,6 +263,7 @@ export function SectionListItem({
       onClick={(e: { stopPropagation: () => void }) => {
         e.stopPropagation();
         action?.();
+        secondaryAction?.();
       }}
       {...buttonProps}
     >

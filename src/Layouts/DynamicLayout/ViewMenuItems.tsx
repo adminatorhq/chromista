@@ -15,10 +15,15 @@ export function ViewMenuItems({ viewMenuItems }: Props) {
         name: title,
         ...rest,
       }))}
-      searchKeywordsField="searchKeywordsField"
+      searchKeywordsField="searchKeywords"
       error={viewMenuItems?.error}
-      render={({ name, action }) => (
-        <SectionListItem label={name} action={action} key={name} />
+      render={({ name, action, secondaryAction }) => (
+        <SectionListItem
+          label={name}
+          action={action}
+          secondaryAction={secondaryAction}
+          key={name}
+        />
       )}
     />
   );

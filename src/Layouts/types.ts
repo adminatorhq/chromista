@@ -5,7 +5,8 @@ import { SoftButtonIconTypes } from "../components/Button/SoftButton.types";
 
 export interface INavigationMenuItems {
   title: string;
-  searchKeywordsField?: string;
+  searchKeywords?: string;
+  secondaryAction?: () => void;
   action: string | (() => void);
 }
 
