@@ -16,17 +16,6 @@ const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   margin-left: 0.25rem;
 `;
 
-const StyledSublabel = styled.p<{ $active?: boolean }>`
-  color: ${(props) =>
-    props.$active
-      ? USE_ROOT_COLOR("text-on-primary")
-      : USE_ROOT_COLOR("muted-text")};
-  padding: 0;
-  margin: 0;
-  font-size: 10px;
-  line-height: 0.6;
-`;
-
 const Root = styled.ul`
   display: flex;
   flex-direction: column;
@@ -40,12 +29,6 @@ const Root = styled.ul`
 export function SectionList({ children }: { children: ReactNode }) {
   return <Root>{children}</Root>;
 }
-
-const StyledIcon = styled.span`
-  position: relative;
-  bottom: 2px;
-  margin-right: 0.5rem;
-`;
 
 const StyledListItem = styled.button<{
   active: boolean;
@@ -122,6 +105,41 @@ const StyledListItem = styled.button<{
   }
 `;
 
+const StyledSublabel = styled.p<{ $active?: boolean }>`
+  color: ${(props) =>
+    props.$active
+      ? USE_ROOT_COLOR("text-on-primary")
+      : USE_ROOT_COLOR("muted-text")};
+  padding: 0;
+  margin: 0;
+  font-size: 10px;
+  line-height: 0.6;
+`;
+
+const StyledIcon = styled.span<{ $active?: boolean; $subtle?: boolean }>`
+  position: relative;
+  bottom: 2px;
+  margin-right: 0.5rem;
+  color: ${(props) =>
+    // eslint-disable-next-line no-nested-ternary
+    props.$active
+      ? USE_ROOT_COLOR("text-on-primary")
+      : props.$subtle
+      ? USE_ROOT_COLOR("muted-text")
+      : USE_ROOT_COLOR("main-text")};
+`;
+
+const Styledlabel = styled.label<{ $active?: boolean; $subtle?: boolean }>`
+  cursor: pointer;
+  color: ${(props) =>
+    // eslint-disable-next-line no-nested-ternary
+    props.$active
+      ? USE_ROOT_COLOR("text-on-primary")
+      : props.$subtle
+      ? USE_ROOT_COLOR("muted-text")
+      : USE_ROOT_COLOR("main-text")};
+`;
+
 export interface IProps {
   label: string;
   action?: string | (() => void);
@@ -129,6 +147,7 @@ export interface IProps {
   subLabel?: string;
   IconComponent?: Icon;
   disabled?: boolean;
+  subtle?: boolean;
   active?: boolean;
   toggle?: {
     selected: boolean;
@@ -150,6 +169,7 @@ export function SectionListItem({
   active,
   toggle,
   action,
+  subtle,
   size,
   actionButtons = [],
 }: IProps) {
@@ -157,11 +177,18 @@ export function SectionListItem({
   const content = (
     <Stack>
       <Stack align="center">
-        {IconComponent ? <StyledIcon as={IconComponent} size="16" /> : null}{" "}
+        {IconComponent ? (
+          <StyledIcon
+            as={IconComponent}
+            $active={active}
+            $subtle={subtle}
+            size="16"
+          />
+        ) : null}{" "}
         <div>
-          <label htmlFor={id} style={{ cursor: "pointer" }}>
+          <Styledlabel htmlFor={id} $active={active} $subtle={subtle}>
             {label}
-          </label>
+          </Styledlabel>
           {subLabel ? (
             <StyledSublabel $active={active}>{subLabel}</StyledSublabel>
           ) : null}

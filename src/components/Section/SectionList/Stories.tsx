@@ -47,6 +47,11 @@ Disabled.args = {
   disabled: true,
 };
 
+export const Subtle = Template.bind({});
+Subtle.args = {
+  subtle: true,
+};
+
 export const Active = Template.bind({});
 Active.args = {
   active: true,
