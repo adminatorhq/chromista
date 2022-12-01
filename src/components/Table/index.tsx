@@ -142,6 +142,7 @@ export function Table({
   setPaginatedDataState,
   columns,
   lean,
+  emptyMessage,
 }: IProps) {
   const {
     data = {
@@ -285,7 +286,7 @@ export function Table({
                   {isLoading ? (
                     <div style={{ height: "204px" }} />
                   ) : (
-                    <EmptyWrapper text="No Data" />
+                    <EmptyWrapper text={emptyMessage || "No Data"} />
                   )}
                 </StyledTd>
               </StyledBodyTR>

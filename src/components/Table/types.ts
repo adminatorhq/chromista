@@ -31,4 +31,5 @@ export interface IProps {
   lean?: true;
   paginatedDataState: PaginatedDataState;
   setPaginatedDataState: (params: PaginatedDataState) => void;
+  emptyMessage?: string;
 }
