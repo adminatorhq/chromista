@@ -31,7 +31,7 @@ jest.mock("react-easy-sort", () => ({
   ),
 }));
 
-describe("SortList", () => {
+describe.skip("SortList", () => {
   it("should render labels if present else value", () => {
     render(
       <SortList
