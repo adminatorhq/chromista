@@ -65,7 +65,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@hadmean/eslint-config": "^1.0.5",
-    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-info": "^4.1.18",
     "@storybook/addon-links": "^6.5.3",
     "@storybook/addons": "^6.5.3",
