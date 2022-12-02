@@ -59,7 +59,7 @@
     "reactstrap": "^9.0.2",
     "styled-bootstrap-grid": "^3.1.2",
     "styled-components": "^5.3.6",
-    "tiny-skeleton-loader-react": "^1.1.8",
+    "tiny-skeleton-loader-react": "^1.2.1",
     "zustand": "3.4.2"
   },
   "devDependencies": {
