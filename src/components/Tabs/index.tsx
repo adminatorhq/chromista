@@ -4,11 +4,8 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import styled, { css } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 
-const StyledTabPane = styled(TabPane)`
-  display: none;
-  &.active {
-    display: block;
-  }
+const StyledTabPane = styled(TabPane)<{ $active: boolean }>`
+  display: ${(props) => (props.$active ? "block" : "none")};
 `;
 
 const StyledTabContent = styled(TabContent)<{ $padContent: boolean }>`
@@ -32,7 +29,7 @@ const StyledNavItem = styled(NavItem)`
   margin-bottom: -1px;
 `;
 
-const StyledNavLink = styled(NavLink)<{ active: boolean; $disabled: boolean }>`
+const StyledNavLink = styled(NavLink)<{ $active: boolean; $disabled: boolean }>`
   display: block;
   padding: 0.5rem 1rem;
   background-color: ${USE_ROOT_COLOR("base-color")};
@@ -42,7 +39,7 @@ const StyledNavLink = styled(NavLink)<{ active: boolean; $disabled: boolean }>`
   border-top-right-radius: 0.25rem;
 
   ${(props) =>
-    props.active
+    props.$active
       ? css`
           color: ${USE_ROOT_COLOR("primary-color")};
           background-color: ${USE_ROOT_COLOR("base-color")};
@@ -104,7 +101,7 @@ export function Tabs({
               tag="button"
               role="tab"
               aria-selected={activeTab === label ? "true" : "false"}
-              active={activeTab === label}
+              $active={activeTab === label}
               $disabled={disabled}
               onClick={() => {
                 changeTab(label);
@@ -119,7 +116,7 @@ export function Tabs({
         {contents.map(({ label, content }) => (
           <StyledTabPane
             role="tabpanel"
-            active={activeTab === label}
+            $active={activeTab === label}
             aria-hidden={activeTab === label ? "false" : "true"}
             tabId={label}
             key={label}
