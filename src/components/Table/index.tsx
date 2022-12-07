@@ -5,7 +5,7 @@ import { useTable, usePagination, useSortBy, useFilters } from "react-table";
 import classnames from "classnames";
 import styled from "styled-components";
 import usePrevious from "react-use/lib/usePrevious";
-import { ComponentIsLoading } from "../ComponentIsLoading";
+import { DelayedComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
 import { DEFAULT_TABLE_PARAMS } from "./constants";
@@ -233,7 +233,7 @@ export function Table({
         {isPreviousData ? (
           <StyledOverlay>
             <StyledOverlayText>
-              <ComponentIsLoading />
+              <DelayedComponentIsLoading />
             </StyledOverlayText>
           </StyledOverlay>
         ) : null}
