@@ -22,7 +22,7 @@ export function FormSkeleton({ schema }: IProps) {
         </Fragment>
       ))}
       <Stack justify="end">
-        <BaseSkeleton height="3em" width="70px" bottom={3} top={-8} />
+        <BaseSkeleton height="3em" width="120px" bottom={3} top={-8} />
       </Stack>
     </div>
   );

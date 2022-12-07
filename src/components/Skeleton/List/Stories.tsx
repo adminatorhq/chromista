@@ -7,7 +7,9 @@ import { AppWrapper } from "../../../AppWrapper";
 export default {
   title: "Components/Skeleton/List",
   component: ListSkeleton,
-  args: {},
+  args: {
+    count: 5,
+  },
 };
 
 const Template: Story<IProps> = (args) => (
