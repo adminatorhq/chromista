@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { DESIGN_SYSTEM_SIZES } from "../constants/sizes";
 
 type SpacerSize = "xxs" | "xs" | "sm" | "md" | "xl" | "xxl";
@@ -28,5 +28,21 @@ export function HSpacer({ size = "md" }: IProps) {
         marginRight: MARGIN_CONFIG[size],
       }}
     />
+  );
+}
+
+export function HRoot({
+  children,
+  size = "md",
+}: IProps & { children: ReactNode }) {
+  return (
+    <div
+      style={{
+        marginLeft: MARGIN_CONFIG[size],
+        marginRight: MARGIN_CONFIG[size],
+      }}
+    >
+      {children}
+    </div>
   );
 }

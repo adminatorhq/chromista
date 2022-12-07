@@ -1,25 +1,31 @@
 /* eslint-disable react/function-component-definition */
 import React from "react";
 import { Story } from "@storybook/react";
-import { BlockSkeleton, IProps } from ".";
+import { BaseSkeleton, IProps } from ".";
 import { AppWrapper } from "../../../AppWrapper";
 
 export default {
-  title: "Components/Skeleton/Block",
-  component: BlockSkeleton,
+  title: "Components/Skeleton/Base",
+  component: BaseSkeleton,
   args: {},
 };
 
 const Template: Story<IProps> = (args) => (
   <AppWrapper>
-    <BlockSkeleton {...args} />
+    <BaseSkeleton {...args} />
   </AppWrapper>
 );
 
 export const Default = Template.bind({});
 Default.args = {};
 
-export const CustomHeight = Template.bind({});
-CustomHeight.args = {
+export const FullWidth = Template.bind({});
+FullWidth.args = {
   height: "200px",
+};
+
+export const CustomWidth = Template.bind({});
+CustomWidth.args = {
+  height: "200px",
+  width: "200px",
 };

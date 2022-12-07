@@ -4,15 +4,18 @@ import { sharedSkeletonProps } from "../constants";
 
 export interface IProps {
   height: string;
+  width?: string;
+  bottom?: number;
+  top?: number;
 }
 
-export function BlockSkeleton({ height }: IProps) {
+export function BaseSkeleton({ height, width, bottom, top }: IProps) {
   return (
     <SkeletonLoader
       background={sharedSkeletonProps.background}
       height={height}
-      radius="0px"
-      style={{ marginBottom: "2px" }}
+      width={width}
+      style={{ marginTop: top, marginBottom: bottom }}
     />
   );
 }
