@@ -1,5 +1,5 @@
-// export { FormTextArea } from "./FormTextArea";
-export { FormRichTextArea } from "./FormRichTextArea";
+// export { FormRichTextArea } from "./FormRichTextArea";
+export { FormTextArea } from "./FormTextArea";
 export { FormInput } from "./FormInput";
 export { FormDateInput } from "./FormDateInput";
 export { FormCodeEditor } from "./FormCodeEditor";
