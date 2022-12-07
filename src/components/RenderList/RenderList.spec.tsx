@@ -142,7 +142,7 @@ describe("RenderList", () => {
             name: "Bar",
           },
         ]}
-        isLoading
+        isLoading={5}
         render={(item) => <div>{item.name}</div>}
       />
     );

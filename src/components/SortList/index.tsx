@@ -31,7 +31,6 @@ function arrayMoveImmutable<T>(array: T[], fromIndex: number, toIndex: number) {
 export interface IProps<T> {
   data: DataStateKeys<T[]>;
   onSave: (data: string[]) => Promise<void>;
-  count: number;
 }
 
 const THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP = 10;
@@ -39,7 +38,6 @@ const THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP = 10;
 export function SortList<T extends { value: string; label?: string }>({
   data,
   onSave,
-  count,
 }: IProps<T>) {
   const [isMakingRequest, setIsMakingRequest] = useState(false);
   const [touched, setTouched] = useState(false);
@@ -59,7 +57,7 @@ export function SortList<T extends { value: string; label?: string }>({
   }
 
   if (data.isLoading) {
-    return <ListSkeleton count={count} />;
+    return <ListSkeleton count={10} />;
   }
 
   const itemsLength = defaultToEmptyArray(data?.data)?.length;

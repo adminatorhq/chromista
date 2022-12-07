@@ -7,7 +7,7 @@ import { FormSearch } from "../Form/FormSearch";
 import { SoftButton } from "../Button/SoftButton";
 
 export interface IProps<T> {
-  isLoading?: boolean;
+  isLoading?: false | number;
   items: T[];
   newItemLink?: string;
   singular?: string;
@@ -52,7 +52,7 @@ export function RenderList<T extends { name: string }>({
     return <ErrorAlert message={error} />;
   }
   if (isLoading) {
-    return <ListSkeleton />;
+    return <ListSkeleton count={isLoading} />;
   }
   if (itemsLength === 0) {
     return (

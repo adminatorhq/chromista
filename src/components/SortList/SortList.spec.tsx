@@ -49,7 +49,6 @@ describe.skip("SortList", () => {
           isLoading: false,
           isRefetching: false,
         }}
-        count={5}
         onSave={jest.fn()}
       />
     );
@@ -72,7 +71,6 @@ describe.skip("SortList", () => {
           isLoading: false,
           isRefetching: false,
         }}
-        count={5}
         onSave={jest.fn()}
       />
     );
@@ -90,7 +88,6 @@ describe.skip("SortList", () => {
           isLoading: false,
           isRefetching: false,
         }}
-        count={5}
         onSave={jest.fn()}
       />
     );
@@ -114,7 +111,6 @@ describe.skip("SortList", () => {
           isLoading: true,
           isRefetching: false,
         }}
-        count={5}
         onSave={jest.fn()}
       />
     );
@@ -139,7 +135,6 @@ describe.skip("SortList", () => {
           isLoading: false,
           isRefetching: false,
         }}
-        count={5}
         onSave={jest.fn()}
       />
     );
@@ -156,7 +151,6 @@ describe.skip("SortList", () => {
           isLoading: false,
           isRefetching: false,
         }}
-        count={5}
         onSave={jest.fn()}
       />
     );
@@ -174,7 +168,6 @@ describe.skip("SortList", () => {
           isLoading: false,
           isRefetching: false,
         }}
-        count={5}
         onSave={jest.fn()}
       />
     );
@@ -203,7 +196,6 @@ describe.skip("SortList", () => {
           isLoading: false,
           isRefetching: false,
         }}
-        count={5}
         onSave={onSave}
       />
     );

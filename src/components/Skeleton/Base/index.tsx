@@ -7,15 +7,16 @@ export interface IProps {
   width?: string;
   bottom?: number;
   top?: number;
+  style?: React.CSSProperties;
 }
 
-export function BaseSkeleton({ height, width, bottom, top }: IProps) {
+export function BaseSkeleton({ height, width, bottom, top, style }: IProps) {
   return (
     <SkeletonLoader
       background={sharedSkeletonProps.background}
       height={height}
       width={width}
-      style={{ marginTop: top, marginBottom: bottom }}
+      style={{ ...style, marginTop: top, marginBottom: bottom }}
     />
   );
 }

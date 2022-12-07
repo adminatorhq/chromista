@@ -43,7 +43,7 @@ Default.args = {};
 
 export const Loading = Template.bind({});
 Loading.args = {
-  isLoading: true,
+  isLoading: 5,
 };
 
 export const NewItemLink = Template.bind({});

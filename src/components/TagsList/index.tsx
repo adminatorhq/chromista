@@ -1,12 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import SkeletonLoader from "tiny-skeleton-loader-react";
 import { randomNumber } from "@hadmean/protozoa";
 import styled from "styled-components";
 import { EmptyWrapper } from "../EmptyWrapper";
-import { sharedSkeletonProps } from "../Skeleton/constants";
 import { StyledOutlineButton } from "../Button/Button";
+import { BaseSkeleton } from "../Skeleton";
 
 export interface ITagItem {
   id: string;
@@ -58,19 +57,17 @@ export function TagsList({
     return (
       <StyledWrapper>
         {Array.from({ length: 10 }, (_, k) => k).map((key) => (
-          <Fragment key={key}>
-            <SkeletonLoader
-              background={sharedSkeletonProps.background}
-              height="30px"
-              width={`${randomNumber(50, 120)}px`}
-              style={{
-                marginBottom: ".50rem",
-                marginTop: "0.25rem",
-                float: "left",
-                marginRight: ".75rem",
-              }}
-            />
-          </Fragment>
+          <BaseSkeleton
+            key={key}
+            height="30px"
+            width={`${randomNumber(50, 120)}px`}
+            bottom={8}
+            top={4}
+            style={{
+              float: "left",
+              marginRight: ".75rem",
+            }}
+          />
         ))}
       </StyledWrapper>
     );

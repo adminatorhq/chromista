@@ -10,7 +10,7 @@ interface Props {
 export function ViewMenuItems({ viewMenuItems }: Props) {
   return (
     <RenderList
-      isLoading={viewMenuItems?.isLoading}
+      isLoading={viewMenuItems?.isLoading && 20}
       items={(viewMenuItems?.data || []).map(({ title, ...rest }) => ({
         name: title,
         ...rest,
