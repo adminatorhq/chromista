@@ -16,6 +16,7 @@ export const FilterTableByStatus = (statuses: ISystemStatusForDisplay[]) =>
         filterHasValue={filterValue?.value !== undefined}
         clearFilter={setFilter}
         IconComponent={Filter}
+        label="Status"
       >
         <RenderFilterOperator
           operators={[FilterOperators.IN, FilterOperators.NOT_IN]}

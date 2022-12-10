@@ -18,6 +18,7 @@ export const FilterTableByListSelection = (bag: string) =>
         }
         clearFilter={setFilter}
         IconComponent={Filter}
+        label="List"
       >
         <RenderFilterOperator
           operators={[FilterOperators.IN, FilterOperators.NOT_IN]}

@@ -13,6 +13,7 @@ interface IProps {
   filterHasValue: boolean;
   clearFilter: (filter: undefined) => void;
   IconComponent: Icon;
+  label: string;
 }
 
 const Root = styled.div`
@@ -32,6 +33,7 @@ export function FilterWrapper({
   filterHasValue,
   clearFilter,
   IconComponent,
+  label,
 }: IProps) {
   const iconProps = {
     size: 15,
@@ -45,7 +47,9 @@ export function FilterWrapper({
       preserveVisibiltyOnClick
       align="right"
       target={
-        <Root>
+        <Root
+          aria-label={`Filter By ${label}${filterHasValue ? " Is Active" : ""}`}
+        >
           <IconComponent {...iconProps} />
         </Root>
       }

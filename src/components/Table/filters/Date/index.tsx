@@ -42,6 +42,7 @@ export function FilterTableByDate({
       }
       clearFilter={setFilter}
       IconComponent={Calendar}
+      label="Date"
     >
       <div style={{ display: "none" }}>
         <RenderFilterOperator

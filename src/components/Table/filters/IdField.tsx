@@ -30,6 +30,7 @@ export function FilterTableByIdField({
       filterHasValue={filterValue?.value !== undefined}
       clearFilter={setFilter}
       IconComponent={Filter}
+      label="Id"
     >
       <div style={{ display: "none" }}>
         <RenderFilterOperator

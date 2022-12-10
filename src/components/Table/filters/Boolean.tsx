@@ -15,6 +15,7 @@ export const FilterTableByBooleans = (statuses: ISystemStatusForDisplay[]) =>
         filterHasValue={filterValue?.value !== undefined}
         clearFilter={setFilter}
         IconComponent={ToggleLeft}
+        label="Boolean"
       >
         <SimpleSelect
           options={[{ label: "-- Select State --", value: "" }, ...statuses]}

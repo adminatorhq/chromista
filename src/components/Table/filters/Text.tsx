@@ -30,6 +30,7 @@ export function FilterTableByText({
       filterHasValue={filterValue?.value !== undefined}
       clearFilter={setFilter}
       IconComponent={Search}
+      label="Search"
     >
       <RenderFilterOperator
         operators={[

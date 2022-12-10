@@ -11,6 +11,7 @@ import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
 import { Spacer, Stack, Text } from "../../../ui-blocks";
 import { USE_ROOT_COLOR } from "../../../theme";
+import { BaseSkeleton } from "../../Skeleton";
 
 export interface IProps {
   title: string;
@@ -85,7 +86,11 @@ export function SectionBox({
             <StyledCenterRow>
               <Col auto>
                 <StyledCardTitle>
-                  {isLoading ? "Loading..." : title}
+                  {isLoading ? (
+                    <BaseSkeleton width="150px" height="20px" />
+                  ) : (
+                    title
+                  )}
                   {description ? (
                     <>
                       {" "}

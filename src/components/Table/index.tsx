@@ -245,6 +245,7 @@ export function Table({
                   <StyledTh
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     key={column.Header}
+                    title={undefined}
                   >
                     <Stack justify="space-between" align="center">
                       <Text size="5" weight="bold" as="span">
@@ -253,6 +254,14 @@ export function Table({
                       <Stack justify="end" width="auto">
                         {column.canSort && (
                           <StyledSorting
+                            aria-label={`Sort By ${column.render("Header")} ${
+                              // eslint-disable-next-line no-nested-ternary
+                              column.isSorted
+                                ? column.isSortedDesc
+                                  ? "Asc"
+                                  : "Desc"
+                                : ""
+                            }`}
                             className={classnames({
                               desc: column.isSorted && column.isSortedDesc,
                               asc: column.isSorted && !column.isSortedDesc,

@@ -31,6 +31,7 @@ export function FilterTableByNumbers({
       filterHasValue={filterValue?.value !== undefined}
       clearFilter={setFilter}
       IconComponent={Filter}
+      label="Number"
     >
       <RenderFilterOperator
         operators={[
