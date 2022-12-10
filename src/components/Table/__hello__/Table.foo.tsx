@@ -4,7 +4,7 @@ import { Table, IProps } from "..";
 
 import "@testing-library/jest-dom/extend-expect";
 
-const DEFAULT_TABLE_PROPS: IProps = {
+const DEFAULT_TABLE_PROPS: IProps<unknown> = {
   paginatedDataState: {
     pageSize: 10,
     pageIndex: 1,

@@ -19,13 +19,7 @@ export { SortList } from "./SortList";
 export * from "./Section";
 export * from "./SelectAnItem";
 export * from "./Skeleton";
-export {
-  Table,
-  DEFAULT_TABLE_PARAMS,
-  ITableColumn,
-  IColumnFilterBag,
-  FilterOperators,
-} from "./Table";
+export { Table, DEFAULT_TABLE_PARAMS, ITableColumn } from "./Table";
 export { TableDataAsList } from "./TableDataAsList";
 export { Tabs } from "./Tabs";
 export { TagsList } from "./TagsList";

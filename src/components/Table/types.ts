@@ -1,8 +1,4 @@
-import {
-  PaginatedData,
-  IBEPaginatedDataState,
-  IFEPaginatedDataState,
-} from "@hadmean/protozoa";
+import { IPaginatedDataState, PaginatedData } from "@hadmean/protozoa";
 import { ReactNode } from "react";
 import { UseQueryResult } from "react-query";
 import { TableFilterType } from "./filters/types";
@@ -18,18 +14,14 @@ export interface ITableColumn {
   }) => ReactNode;
 }
 
-export type PaginatedDataState =
-  | IBEPaginatedDataState
-  | IFEPaginatedDataState<any>;
-
-export interface IProps {
+export interface IProps<T> {
   columns: ITableColumn[];
   tableData: Pick<
     UseQueryResult<PaginatedData<Record<string, unknown>>, unknown>,
     "data" | "isLoading" | "error" | "isPreviousData"
   >;
   lean?: true;
-  paginatedDataState: PaginatedDataState;
-  setPaginatedDataState: (params: PaginatedDataState) => void;
+  paginatedDataState: IPaginatedDataState<T>;
+  setPaginatedDataState: (params: IPaginatedDataState<T>) => void;
   emptyMessage?: string;
 }

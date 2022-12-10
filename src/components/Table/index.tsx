@@ -5,6 +5,7 @@ import { useTable, usePagination, useSortBy, useFilters } from "react-table";
 import classnames from "classnames";
 import styled from "styled-components";
 import usePrevious from "react-use/lib/usePrevious";
+import { IPaginatedDataState } from "@hadmean/protozoa";
 import { DelayedComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
@@ -14,12 +15,11 @@ import { mapFilterTypeToComponent } from "./filters";
 import { TablePagination } from "./_Pagination";
 import { USE_ROOT_COLOR } from "../../theme";
 
-import { IProps, ITableColumn, PaginatedDataState } from "./types";
+import { IProps, ITableColumn } from "./types";
 import { TableSkeleton } from "../Skeleton";
 
 export { ITableColumn, IProps };
 export { DEFAULT_TABLE_PARAMS };
-export { FilterOperators, IColumnFilterBag } from "@hadmean/protozoa";
 
 const StyledBodyTR = styled.tr`
   padding: 4px;
@@ -127,7 +127,7 @@ const StyledOverlayText = styled.div`
 `;
 
 const buildTableStateToRefreshPageNumber = (
-  input: PaginatedDataState | undefined
+  input: IPaginatedDataState<unknown> | undefined
 ) => {
   return JSON.stringify([
     input?.filters || [],
@@ -136,14 +136,14 @@ const buildTableStateToRefreshPageNumber = (
   ]);
 };
 
-export function Table({
+export function Table<T extends unknown>({
   paginatedDataState,
   tableData,
   setPaginatedDataState,
   columns,
   lean,
   emptyMessage,
-}: IProps) {
+}: IProps<T>) {
   const {
     data = {
       data: [],
@@ -206,7 +206,7 @@ export function Table({
     usePagination
   );
 
-  const previousTableState = usePrevious<PaginatedDataState>(tableState);
+  const previousTableState = usePrevious<IPaginatedDataState<T>>(tableState);
 
   useEffect(() => {
     if (

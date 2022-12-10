@@ -145,10 +145,10 @@ export default {
       error: false,
       isPreviousData: false,
     },
-  } as IProps,
+  } as IProps<unknown>,
 };
 
-const Template: Story<IProps> = (args) => (
+const Template: Story<IProps<unknown>> = (args) => (
   <AppWrapper>
     <Table {...args} />
   </AppWrapper>
