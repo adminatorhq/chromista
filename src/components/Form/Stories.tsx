@@ -18,6 +18,7 @@ import { AsyncFormSelect } from "./FormSelect/Async";
 import { FormSwitch } from "./FormSwitch";
 import { DeleteButton } from "../Button";
 import { FormSearch } from "./FormSearch";
+import { FormFileInput } from "./FormFileInput";
 
 function DemoForm() {
   return (
@@ -74,6 +75,17 @@ function DemoForm() {
               <FormInput
                 description="Some Description here"
                 label="With description"
+                {...renderProps}
+              />
+            )}
+          </Field>
+
+          <Field name="file" validateFields={[]} validate={required}>
+            {(renderProps) => (
+              <FormFileInput
+                label="Image"
+                required
+                domain="foo"
                 {...renderProps}
               />
             )}

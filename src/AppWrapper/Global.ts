@@ -1,12 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../theme";
-import { LIGHT_MODE } from "../theme/modes";
+import { DARK_MODE } from "../theme/modes";
 import { DEFAULT_PRIMARY_COLOR } from "../theme/constants";
 import { generateRootColors } from "../theme/generate";
 import { NORAMLIZE } from "./normalize";
 
 const rootColorString = Object.entries(
-  generateRootColors(DEFAULT_PRIMARY_COLOR, LIGHT_MODE)
+  generateRootColors(DEFAULT_PRIMARY_COLOR, DARK_MODE)
 )
   .map(([key, value]) => `${key}: ${value}`)
   .join(";");
