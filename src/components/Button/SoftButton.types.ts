@@ -1,23 +1,23 @@
 import {
-  faPlus,
-  faEdit,
-  faChevronLeft,
-  faCog,
-  faTimes,
-  faEye,
-  faSave,
-  faQuestionCircle,
-} from "@fortawesome/free-solid-svg-icons";
+  ChevronsLeft,
+  Edit,
+  Eye,
+  HelpCircle,
+  Plus,
+  Save,
+  Settings,
+  X,
+} from "react-feather";
 
 export const ICON_MAP = {
-  edit: faEdit,
-  add: faPlus,
-  save: faSave,
-  settings: faCog,
-  close: faTimes,
-  eye: faEye,
-  help: faQuestionCircle,
-  back: faChevronLeft,
+  edit: Edit,
+  add: Plus,
+  save: Save,
+  settings: Settings,
+  close: X,
+  eye: Eye,
+  help: HelpCircle,
+  back: ChevronsLeft,
 };
 
 export type SoftButtonIconTypes = keyof typeof ICON_MAP;

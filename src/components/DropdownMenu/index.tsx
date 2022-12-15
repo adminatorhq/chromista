@@ -43,16 +43,16 @@ const StyledDropDownItem = styled.button`
   line-height: 20px;
   color: ${USE_ROOT_COLOR("main-text")};
   text-align: inherit;
-  background-color: transparent;
+  background: ${USE_ROOT_COLOR("base-color")};
   border: 0;
   &:hover {
-    background-color: rgba(248, 248, 252, 0.5);
+    background-color: ${USE_ROOT_COLOR("soft-color")};
     color: ${USE_ROOT_COLOR("main-text")};
   }
 `;
 
 const StyledDropDownMenu = styled(Dropdown.Menu)`
-  box-shadow: 0 3px 12px #d6e4f1;
+  box-shadow: 0 3px 12px ${USE_ROOT_COLOR("border-color")};
   margin: 0;
 
   position: absolute;
@@ -96,6 +96,9 @@ const StyledDropDownToggle = styled.div`
   position: relative;
   display: inline-flex;
   vertical-align: middle;
+  border: 0;
+  padding: 0;
+  background: none;
 `;
 
 const StyledCurrentButton = styled(StyledSoftButton)`

@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { Loader } from "react-feather";
 import { StyledSoftButton } from "./Button";
@@ -44,11 +43,12 @@ export function SoftButton({
   secondaryAction,
   className,
 }: IProps) {
+  const Icon = icon ? ICON_MAP[icon] : null;
   const content = isMakingActionRequest ? (
     <Spin as={Loader} size={14} />
   ) : (
     <>
-      {icon ? <FontAwesomeIcon icon={ICON_MAP[icon]} /> : null}
+      {Icon ? <Icon size={14} /> : null}
       {label && !justIcon ? (
         <StyledLabel $hasLabel={!!label}>{label}</StyledLabel>
       ) : null}

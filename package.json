@@ -28,9 +28,6 @@
     "react": ">=16"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "@fortawesome/react-fontawesome": "^0.1.18",
     "@hadmean/protozoa": "^1.0.15",
     "@types/prismjs": "^1.26.0",
     "@types/react-datepicker": "^4.4.1",
