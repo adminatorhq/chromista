@@ -1,10 +1,10 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { Loader, Trash2 } from "react-feather";
 import { StyledSoftButton } from "./Button";
 import { ConfirmAlert } from "../ConfirmAlert";
 import { SYSTEM_COLORS } from "../../theme";
+import { Spin } from "../_/Spin";
 
 interface IProps {
   onDelete: () => void;
@@ -49,10 +49,11 @@ export function DeleteButton({
       disabled={isMakingDeleteRequest}
     >
       {isMakingDeleteRequest ? (
-        <FontAwesomeIcon icon={faSpinner} spin />
+        <Spin as={Loader} size={14} />
       ) : (
         <>
-          <FontAwesomeIcon icon={faTrash} /> {text ? `Delete ${text}` : null}
+          <Trash2 size={14} />
+          {text ? ` Delete ${text}` : null}
         </>
       )}
     </StyledDeleteButton>

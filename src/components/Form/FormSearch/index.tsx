@@ -1,7 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { Search } from "react-feather";
 import { StyledInput } from "../Styles";
 import { StyledBaseButton } from "../../Button/Button";
 import { USE_ROOT_COLOR } from "../../../theme";
@@ -61,7 +60,7 @@ export function FormSearch({ onChange }: IProps) {
       />
       <StyledInputGroupPrepend>
         <StyledButtonSearch type="button">
-          <FontAwesomeIcon icon={faSearch} />
+          <Search size={18} />
         </StyledButtonSearch>
       </StyledInputGroupPrepend>
     </StyledInputGroup>

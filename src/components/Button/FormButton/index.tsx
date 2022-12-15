@@ -1,12 +1,12 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { Loader } from "react-feather";
 import {
   StyledButton,
   StyledOutlineButton,
   IStyledBaseButton,
 } from "../Button";
 import { Stack } from "../../../ui-blocks";
+import { Spin } from "../../_/Spin";
 
 interface IFormButton extends IStyledBaseButton {
   text: string;
@@ -19,7 +19,7 @@ interface IFormButton extends IStyledBaseButton {
 export const actionButtonIsMakingRequest = (
   isMakingRequest: boolean,
   text: string
-) => (isMakingRequest ? <FontAwesomeIcon icon={faSpinner} spin /> : text);
+) => (isMakingRequest ? <Spin as={Loader} size={16} /> : text);
 
 export function FormButton({
   text,

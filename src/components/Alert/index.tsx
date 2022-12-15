@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styled, { css } from "styled-components";
 import { getBestErrorMessage } from "@hadmean/protozoa";
+import { X } from "react-feather";
 import { SYSTEM_COLORS } from "../../theme";
 
 export enum AlertType {
@@ -85,7 +84,7 @@ export function Alert({ type, message, renderJsx }: IProps) {
         }}
         aria-label="Close"
       >
-        <FontAwesomeIcon icon={faTimes} size="xs" />
+        <X />
       </StyledAlertButton>
       {(renderJsx ? message : getBestErrorMessage(message)) as string}
     </StyledAlert>

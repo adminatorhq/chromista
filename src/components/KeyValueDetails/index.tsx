@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Text } from "../../ui-blocks";
 import { ISystemStatusForDisplay } from "../../types";
 import { BadgeBuilder } from "./BadgeBuilder";
-import { Currency } from "../Currency";
 import { ListSkeleton } from "../Skeleton/List";
 
 export enum KeyValueDetailsFormat {
@@ -57,9 +56,6 @@ export function KeyValueDetails({ isLoading, keyValues }: IKeyValueDetails) {
                 />
               );
             }
-            break;
-          case KeyValueDetailsFormat.Money:
-            valueToRender = <Currency price={value as number} />;
             break;
           case KeyValueDetailsFormat.Number:
             valueToRender = <>{StringFilters.formatCount(value)}</>;

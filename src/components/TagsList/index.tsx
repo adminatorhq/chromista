@@ -1,11 +1,11 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { randomNumber } from "@hadmean/protozoa";
 import styled from "styled-components";
+import { Loader, X } from "react-feather";
 import { EmptyWrapper } from "../EmptyWrapper";
 import { StyledOutlineButton } from "../Button/Button";
 import { BaseSkeleton } from "../Skeleton";
+import { Spin } from "../_/Spin";
 
 export interface ITagItem {
   id: string;
@@ -38,12 +38,12 @@ const renderIcon = ({
   id: string;
 }) => {
   if (!id) {
-    return <FontAwesomeIcon icon={faSpinner} spin />;
+    return <Spin as={Loader} size={14} />;
   }
   if (isMakingDeleteRequestForId === id) {
-    return <FontAwesomeIcon icon={faSpinner} color="red" spin />;
+    return <Spin as={Loader} size={14} color="red" />;
   }
-  return <FontAwesomeIcon icon={faTimes} />;
+  return <X size={12} />;
 };
 
 export function TagsList({

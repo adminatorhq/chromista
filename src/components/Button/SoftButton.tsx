@@ -1,13 +1,14 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { Loader } from "react-feather";
 import { StyledSoftButton } from "./Button";
 import { SoftButtonIconTypes, ICON_MAP } from "./SoftButton.types";
 import { SYSTEM_COLORS } from "../../theme";
+import { Spin } from "../_/Spin";
 
-interface ISoftButton {
+export interface IProps {
   label?: string;
   icon?: SoftButtonIconTypes;
   size?: "sm" | "xs";
@@ -42,9 +43,9 @@ export function SoftButton({
   action,
   secondaryAction,
   className,
-}: ISoftButton) {
+}: IProps) {
   const content = isMakingActionRequest ? (
-    <FontAwesomeIcon icon={faSpinner} spin />
+    <Spin as={Loader} size={14} />
   ) : (
     <>
       {icon ? <FontAwesomeIcon icon={ICON_MAP[icon]} /> : null}

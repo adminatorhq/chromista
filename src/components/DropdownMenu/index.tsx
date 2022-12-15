@@ -1,13 +1,12 @@
-import { Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
+import { Dropdown } from "react-bootstrap";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
-import { Icon } from "react-feather";
+import { Icon, Loader } from "react-feather";
 import { Text } from "../../ui-blocks";
 import { StyledSoftButton } from "../Button/Button";
 import { USE_ROOT_COLOR } from "../../theme";
 import { BREAKPOINTS } from "../../constants";
+import { Spin } from "../_/Spin";
 
 const togglePreviousState = (prev: boolean) => !prev;
 
@@ -52,7 +51,7 @@ const StyledDropDownItem = styled.button`
   }
 `;
 
-const StyledDropDownMenu = styled(DropdownMenu)`
+const StyledDropDownMenu = styled(Dropdown.Menu)`
   box-shadow: 0 3px 12px #d6e4f1;
   margin: 0;
 
@@ -161,7 +160,7 @@ export function DropDownMenu({
     <>
       {/* eslint-disable-next-line no-nested-ternary */}
       {isMakingActionRequest ? (
-        <FontAwesomeIcon icon={faSpinner} spin />
+        <Spin as={Loader} size={14} />
       ) : IconComponent ? (
         <IconComponent size="14" />
       ) : null}{" "}
@@ -195,7 +194,7 @@ export function DropDownMenu({
       >
         {currentItem}
       </StyledCurrentButton>
-      <StyledDropDownToggle as={DropdownToggle} tag="div">
+      <StyledDropDownToggle split as={Dropdown.Toggle}>
         <StyledDropDownIcon size="sm">
           <StyledSROnly>Toggle Dropdown</StyledSROnly>
         </StyledDropDownIcon>

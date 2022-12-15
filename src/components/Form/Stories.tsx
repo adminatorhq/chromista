@@ -17,6 +17,7 @@ import { FormCodeEditor } from "./FormCodeEditor";
 import { AsyncFormSelect } from "./FormSelect/Async";
 import { FormSwitch } from "./FormSwitch";
 import { DeleteButton } from "../Button";
+import { FormSearch } from "./FormSearch";
 
 function DemoForm() {
   return (
@@ -258,6 +259,9 @@ function DemoForm() {
               />
             )}
           </Field>
+
+          <FormSearch onChange={() => {}} />
+
           <DeleteButton
             onDelete={action("")}
             isMakingDeleteRequest={false}

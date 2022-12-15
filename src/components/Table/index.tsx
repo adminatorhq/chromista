@@ -9,7 +9,7 @@ import { IPaginatedDataState } from "@hadmean/protozoa";
 import { DelayedComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
-import { DEFAULT_TABLE_PARAMS } from "./constants";
+import { DEFAULT_TABLE_STATE } from "./constants";
 import { Stack, Text } from "../../ui-blocks";
 import { mapFilterTypeToComponent } from "./filters";
 import { TablePagination } from "./_Pagination";
@@ -19,7 +19,7 @@ import { IProps, ITableColumn } from "./types";
 import { TableSkeleton } from "../Skeleton";
 
 export { ITableColumn, IProps };
-export { DEFAULT_TABLE_PARAMS };
+export { DEFAULT_TABLE_STATE };
 
 const StyledBodyTR = styled.tr`
   padding: 4px;
@@ -131,7 +131,7 @@ const buildTableStateToRefreshPageNumber = (
 ) => {
   return JSON.stringify([
     input?.filters || [],
-    input?.pageSize || DEFAULT_TABLE_PARAMS.pageSize,
+    input?.pageSize || DEFAULT_TABLE_STATE.pageSize,
     input?.sortBy || [],
   ]);
 };
@@ -148,7 +148,7 @@ export function Table<T extends unknown>({
     data = {
       data: [],
       pageIndex: 0,
-      pageSize: DEFAULT_TABLE_PARAMS.pageSize,
+      pageSize: DEFAULT_TABLE_STATE.pageSize,
       totalRecords: 0,
     },
     isLoading,
@@ -160,7 +160,7 @@ export function Table<T extends unknown>({
       ? 0
       : Math.ceil(
           data.totalRecords /
-            (paginatedDataState?.pageSize ?? DEFAULT_TABLE_PARAMS.pageSize)
+            (paginatedDataState?.pageSize ?? DEFAULT_TABLE_STATE.pageSize)
         );
 
   const tableColumns = useMemo(
@@ -195,8 +195,8 @@ export function Table<T extends unknown>({
       autoResetPage: false,
       autoResetFilters: false,
       initialState: paginatedDataState
-        ? { ...DEFAULT_TABLE_PARAMS, ...paginatedDataState }
-        : DEFAULT_TABLE_PARAMS,
+        ? { ...DEFAULT_TABLE_STATE, ...paginatedDataState }
+        : DEFAULT_TABLE_STATE,
       defaultColumn: {
         Filter: null,
       },

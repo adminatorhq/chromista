@@ -1,6 +1,6 @@
 import { SLUG_LOADING_VALUE } from "@hadmean/protozoa";
 import React, { useState, useEffect, ReactNode } from "react";
-import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
+import { TabContent, TabPane, Nav, NavItem, NavLink } from "react-bootstrap";
 import styled, { css } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 
@@ -32,6 +32,7 @@ const StyledNavItem = styled(NavItem)`
 const StyledNavLink = styled(NavLink)<{ $active: boolean; $disabled: boolean }>`
   display: block;
   padding: 0.5rem 1rem;
+  cursor: pointer;
   background-color: ${USE_ROOT_COLOR("base-color")};
   border: 1px solid transparent;
   border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
@@ -53,7 +54,7 @@ const StyledNavLink = styled(NavLink)<{ $active: boolean; $disabled: boolean }>`
   ${(props) =>
     props.$disabled &&
     css`
-      color: ${USE_ROOT_COLOR("muted-text")};
+      color: ${USE_ROOT_COLOR("muted-text")} !important;
     `}
 `;
 
