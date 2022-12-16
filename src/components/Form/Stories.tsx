@@ -85,7 +85,7 @@ function DemoForm() {
               <FormFileInput
                 label="Image"
                 required
-                domain="foo"
+                uploadUrl="http://localhost:3000/api/upload"
                 {...renderProps}
               />
             )}
