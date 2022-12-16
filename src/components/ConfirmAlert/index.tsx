@@ -64,7 +64,6 @@ from {
   to {
     opacity: 1;
   }
-}
 `;
 
 const StyledOverlay = styled(Stack).attrs({
