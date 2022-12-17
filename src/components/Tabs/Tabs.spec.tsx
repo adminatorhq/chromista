@@ -109,11 +109,15 @@ describe("Tabs", () => {
     expect(screen.getByText("Bar Content")).not.toBeVisible();
     expect(screen.getByText("Baz Content")).toBeVisible();
 
+    expect(screen.getByRole("tabpanel")).toHaveTextContent("Baz Content");
+
     fireEvent.click(screen.getByText("Bar Label"));
 
     expect(screen.getByText("Foo Content")).not.toBeVisible();
     expect(screen.getByText("Bar Content")).toBeVisible();
     expect(screen.getByText("Baz Content")).not.toBeVisible();
+
+    expect(screen.getByRole("tabpanel")).toHaveTextContent("Bar Content");
 
     expect(onChange).toHaveBeenCalled();
   });

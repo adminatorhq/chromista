@@ -1,4 +1,4 @@
-import { Dropdown } from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { Icon, Loader } from "react-feather";

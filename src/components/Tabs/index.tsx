@@ -1,61 +1,60 @@
 import { SLUG_LOADING_VALUE } from "@hadmean/protozoa";
 import React, { useState, useEffect, ReactNode } from "react";
-import { TabContent, TabPane, Nav, NavItem, NavLink } from "react-bootstrap";
 import styled, { css } from "styled-components";
+import RBTab from "react-bootstrap/Tab";
+import RBTabs from "react-bootstrap/Tabs";
 import { USE_ROOT_COLOR } from "../../theme";
 
-const StyledTabPane = styled(TabPane)<{ $active: boolean }>`
-  display: ${(props) => (props.$active ? "block" : "none")};
-`;
+const Root = styled.div<{ $padContent: boolean }>`
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
+  }
 
-const StyledTabContent = styled(TabContent)<{ $padContent: boolean }>`
-  ${(props) =>
-    props.$padContent &&
-    css`
-      padding-top: 1rem;
-    `}
-`;
+  .tab-pane {
+    display: none;
+    &.show {
+      display: block;
+    }
+  }
 
-const StyledNav = styled(Nav)`
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  margin: 0;
-  list-style: none;
-  border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
-`;
+  .nav-item {
+    margin-bottom: -1px;
+  }
 
-const StyledNavItem = styled(NavItem)`
-  margin-bottom: -1px;
-`;
+  .tab-content {
+    ${(props) =>
+      props.$padContent &&
+      css`
+        padding-top: 1rem;
+      `}
+  }
 
-const StyledNavLink = styled(NavLink)<{ $active: boolean; $disabled: boolean }>`
-  display: block;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  background-color: ${USE_ROOT_COLOR("base-color")};
-  border: 1px solid transparent;
-  border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: ${USE_ROOT_COLOR("base-color")};
+    border: 1px solid transparent;
+    border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    color: ${USE_ROOT_COLOR("main-text")};
 
-  ${(props) =>
-    props.$active
-      ? css`
-          color: ${USE_ROOT_COLOR("primary-color")};
-          background-color: ${USE_ROOT_COLOR("base-color")};
-          border-color: transparent transparent
-            ${USE_ROOT_COLOR("primary-color")};
-        `
-      : css`
-          color: ${USE_ROOT_COLOR("main-text")};
-        `}
-
-  ${(props) =>
-    props.$disabled &&
-    css`
+    &.disabled {
       color: ${USE_ROOT_COLOR("muted-text")} !important;
-    `}
+    }
+
+    &.active {
+      color: ${USE_ROOT_COLOR("primary-color")};
+      background-color: ${USE_ROOT_COLOR("base-color")};
+      border-color: transparent transparent ${USE_ROOT_COLOR("primary-color")};
+    }
+  }
 `;
 
 export interface IProps {
@@ -76,7 +75,9 @@ export function Tabs({
   onChange,
   padContent = true,
 }: IProps) {
-  const [activeTab, setActiveTab] = useState(currentTab || contents[0].label);
+  const [activeTab, setActiveTab] = useState<string>(
+    currentTab || contents[0].label
+  );
 
   useEffect(() => {
     if (currentTab && currentTab !== SLUG_LOADING_VALUE) {
@@ -86,7 +87,10 @@ export function Tabs({
     }
   }, [currentTab]);
 
-  const changeTab = (tabLabel: string) => {
+  const changeTab = (tabLabel: string | null) => {
+    if (!tabLabel) {
+      return;
+    }
     if (activeTab !== tabLabel) {
       setActiveTab(tabLabel);
       onChange?.(tabLabel);
@@ -94,38 +98,23 @@ export function Tabs({
   };
 
   return (
-    <>
-      <StyledNav tabs role="tablist">
-        {contents.map(({ label, overrideLabel, disabled }) => (
-          <StyledNavItem key={label}>
-            <StyledNavLink
-              tag="button"
-              role="tab"
-              aria-selected={activeTab === label ? "true" : "false"}
-              $active={activeTab === label}
-              $disabled={disabled}
-              onClick={() => {
-                changeTab(label);
-              }}
-            >
-              {overrideLabel || label}
-            </StyledNavLink>
-          </StyledNavItem>
-        ))}
-      </StyledNav>
-      <StyledTabContent activeTab={activeTab} $padContent={padContent}>
-        {contents.map(({ label, content }) => (
-          <StyledTabPane
-            role="tabpanel"
-            $active={activeTab === label}
-            aria-hidden={activeTab === label ? "false" : "true"}
-            tabId={label}
+    <Root $padContent={padContent}>
+      <RBTabs
+        defaultActiveKey={activeTab}
+        activeKey={activeTab}
+        onSelect={changeTab}
+      >
+        {contents.map(({ label, overrideLabel, disabled, content }) => (
+          <RBTab
+            eventKey={label}
             key={label}
+            title={overrideLabel || label}
+            tabClassName={disabled ? "disabled" : ""}
           >
             {content}
-          </StyledTabPane>
+          </RBTab>
         ))}
-      </StyledTabContent>
-    </>
+      </RBTabs>
+    </Root>
   );
 }
