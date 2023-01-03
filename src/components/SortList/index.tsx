@@ -8,7 +8,6 @@ import { ListSkeleton } from "../Skeleton";
 import { EmptyWrapper } from "../EmptyWrapper";
 import { Spacer, Stack } from "../../ui-blocks";
 import { FormButton } from "../Button";
-import { HSpacer } from "../../ui-blocks/Spacer";
 import { defaultToEmptyArray } from "./utils";
 
 function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
@@ -85,7 +84,7 @@ export function SortList<T extends { value: string; label?: string }>({
           disabled={!touched}
           isMakingRequest={isMakingRequest}
         />
-        <HSpacer size="sm" />
+        <Spacer direction="horizontal" size="sm" />
       </Stack>
       <Spacer size="sm" />
     </>

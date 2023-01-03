@@ -5,6 +5,8 @@ type SpacerSize = "xxs" | "xs" | "sm" | "md" | "xl" | "xxl";
 
 interface IProps {
   size?: SpacerSize;
+  children?: ReactNode;
+  direction?: "horizontal";
 }
 
 const MARGIN_CONFIG: Record<SpacerSize, number> = {
@@ -16,33 +18,15 @@ const MARGIN_CONFIG: Record<SpacerSize, number> = {
   md: DESIGN_SYSTEM_SIZES.margin,
 };
 
-export function Spacer({ size = "md" }: IProps) {
-  return <div style={{ margin: MARGIN_CONFIG[size] }} />;
-}
-
-export function HSpacer({ size = "md" }: IProps) {
-  return (
-    <div
-      style={{
+const getMarginProps = (size: SpacerSize, direction?: "horizontal") => {
+  return direction === "horizontal"
+    ? {
         marginLeft: MARGIN_CONFIG[size],
         marginRight: MARGIN_CONFIG[size],
-      }}
-    />
-  );
-}
+      }
+    : { margin: MARGIN_CONFIG[size] };
+};
 
-export function HRoot({
-  children,
-  size = "md",
-}: IProps & { children: ReactNode }) {
-  return (
-    <div
-      style={{
-        marginLeft: MARGIN_CONFIG[size],
-        marginRight: MARGIN_CONFIG[size],
-      }}
-    >
-      {children}
-    </div>
-  );
+export function Spacer({ size = "md", direction, children }: IProps) {
+  return <div style={getMarginProps(size, direction)}> {children} </div>;
 }

@@ -84,3 +84,5 @@ function FileInput({
 export const FormFileInput: React.FC<IFormFileInput> = (formInput) => {
   return wrapLabelAndError(<FileInput {...formInput} />, formInput);
 };
+
+// https://react-dropzone.js.org/#section-styling-dropzone
