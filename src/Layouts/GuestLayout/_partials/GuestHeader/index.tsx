@@ -31,9 +31,7 @@ export function GuestHeader({
       <a href={homeLink}>
         <img src={logo} height="50" alt="logo" />
         <Spacer />
-        <Text color="inverse" data-test-id="guest__header">
-          {title}
-        </Text>
+        <Text color="inverse">{title}</Text>
         <Spacer size="xs" />
         {subTitle ? (
           <Text size="6" color="inverse">

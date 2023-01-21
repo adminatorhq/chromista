@@ -50,8 +50,11 @@ export function SummaryWidget({
   title,
   icon,
 }: IProps) {
-  const { Icon: DirectionIcon, color: directionColor } =
-    DirectionImplementation[direction];
+  const {
+    Icon: DirectionIcon,
+    color: directionColor,
+    label: directionLabel,
+  } = DirectionImplementation[direction];
 
   return (
     <StyledCard>
@@ -75,7 +78,12 @@ export function SummaryWidget({
                   spacing={2}
                   aria-label="Relative Direction"
                 >
-                  <DirectionIcon size={20} style={{ color: directionColor }} />
+                  <span aria-label={directionLabel}>
+                    <DirectionIcon
+                      size={20}
+                      style={{ color: directionColor }}
+                    />
+                  </span>
                   <Text
                     size="6"
                     weight="bold"

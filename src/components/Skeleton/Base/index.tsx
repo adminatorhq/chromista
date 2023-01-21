@@ -21,7 +21,6 @@ export function BaseSkeleton({
 }: IProps) {
   return (
     <SkeletonLoader
-      data-testid="skeleton"
       height={height}
       width={width}
       circle={circle}

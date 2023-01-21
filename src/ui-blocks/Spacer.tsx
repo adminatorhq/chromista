@@ -28,5 +28,5 @@ const getMarginProps = (size: SpacerSize, direction?: "horizontal") => {
 };
 
 export function Spacer({ size = "md", direction, children }: IProps) {
-  return <div style={getMarginProps(size, direction)}> {children} </div>;
+  return <div style={getMarginProps(size, direction)}>{children}</div>;
 }
