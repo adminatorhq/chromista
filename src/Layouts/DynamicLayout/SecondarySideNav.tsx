@@ -113,7 +113,10 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
                   },
                 ]}
               >
-                {view || <ViewMenuItems viewMenuItems={viewMenuItems} />}
+                {view ||
+                  (viewMenuItems && (
+                    <ViewMenuItems viewMenuItems={viewMenuItems} />
+                  ))}
               </SectionBox>
             </StyledRenderView>
           );

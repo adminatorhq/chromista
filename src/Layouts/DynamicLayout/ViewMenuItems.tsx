@@ -1,30 +1,47 @@
 import React from "react";
-import { DataStateKeys } from "@hadmean/protozoa";
-import { RenderList, SectionListItem } from "../../components";
-import { INavigationMenuItems } from "../types";
+import { RenderList, SectionListItem, SoftButton } from "../../components";
+import { Spacer } from "../../ui-blocks";
+import { IViewMenuItems } from "../types";
 
 interface Props {
-  viewMenuItems?: DataStateKeys<INavigationMenuItems[]>;
+  viewMenuItems: IViewMenuItems;
 }
 
-export function ViewMenuItems({ viewMenuItems }: Props) {
+export function ViewMenuItems({
+  viewMenuItems: { menuItems, singular, newItemLink, topAction },
+}: Props) {
   return (
-    <RenderList
-      isLoading={viewMenuItems?.isLoading && 20}
-      items={(viewMenuItems?.data || []).map(({ title, ...rest }) => ({
-        name: title,
-        ...rest,
-      }))}
-      searchKeywordsField="searchKeywords"
-      error={viewMenuItems?.error}
-      render={({ name, action, secondaryAction }) => (
-        <SectionListItem
-          label={name}
-          action={action}
-          secondaryAction={secondaryAction}
-          key={name}
-        />
+    <>
+      {topAction && (
+        <>
+          <SoftButton
+            action={topAction?.action}
+            block
+            label={topAction.title}
+            icon="settings"
+          />
+          <Spacer size="xxl" />
+        </>
       )}
-    />
+      <RenderList
+        isLoading={menuItems?.isLoading && 20}
+        items={(menuItems?.data || []).map(({ title, ...rest }) => ({
+          name: title,
+          ...rest,
+        }))}
+        singular={singular}
+        newItemLink={newItemLink}
+        searchKeywordsField="searchKeywords"
+        error={menuItems?.error}
+        render={({ name, action, secondaryAction }) => (
+          <SectionListItem
+            label={name}
+            action={action}
+            secondaryAction={secondaryAction}
+            key={name}
+          />
+        )}
+      />
+    </>
   );
 }

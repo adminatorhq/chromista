@@ -10,13 +10,23 @@ export interface INavigationMenuItems {
   action: string | (() => void);
 }
 
+export interface IViewMenuItems {
+  menuItems: DataStateKeys<INavigationMenuItems[]>;
+  singular?: string;
+  newItemLink?: string;
+  topAction?: {
+    title: string;
+    action: string | (() => void);
+  };
+}
+
 export interface ISelectionView {
   title: string;
   icon: Icon;
   action?: string | (() => void);
   secondaryAction?: () => void;
   view?: ReactNode;
-  viewMenuItems?: DataStateKeys<INavigationMenuItems[]>;
+  viewMenuItems?: IViewMenuItems;
   description?: string;
   iconButtons?: { action: () => void; icon: SoftButtonIconTypes }[];
 }

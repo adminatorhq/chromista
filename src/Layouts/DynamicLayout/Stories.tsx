@@ -32,11 +32,13 @@ export default {
         icon: HardDrive,
         action: action("menu Action"),
         viewMenuItems: {
-          error: "Some Error Message",
-          isLoading: false,
-          data: [],
-          isRefetching: false,
-        } as DataStateKeys<INavigationMenuItems[]>,
+          menuItems: {
+            error: "Some Error Message",
+            isLoading: false,
+            data: [],
+            isRefetching: false,
+          } as DataStateKeys<INavigationMenuItems[]>,
+        },
         description: "Some Description here",
       },
       {
@@ -44,11 +46,13 @@ export default {
         icon: HardDrive,
         action: action("menu Action"),
         viewMenuItems: {
-          error: "",
-          isLoading: true,
-          data: [],
-          isRefetching: false,
-        } as DataStateKeys<INavigationMenuItems[]>,
+          menuItems: {
+            error: "",
+            isLoading: true,
+            data: [],
+            isRefetching: false,
+          } as DataStateKeys<INavigationMenuItems[]>,
+        },
         description: "Some Description here",
       },
       {
@@ -56,11 +60,13 @@ export default {
         icon: HardDrive,
         action: action("menu Action"),
         viewMenuItems: {
-          error: "",
-          isLoading: false,
-          data: [],
-          isRefetching: false,
-        } as DataStateKeys<INavigationMenuItems[]>,
+          menuItems: {
+            error: "",
+            isLoading: false,
+            data: [],
+            isRefetching: false,
+          } as DataStateKeys<INavigationMenuItems[]>,
+        },
         description: "Some Description here",
       },
       {
@@ -68,15 +74,39 @@ export default {
         icon: HardDrive,
         action: action("menu Action"),
         viewMenuItems: {
-          error: "",
-          isLoading: false,
-          data: [
-            { title: "Foo", link: "link1" },
-            { title: "Foo2", link: "link2" },
-            { title: "Foo3", action: action("Foo 3") },
-          ],
-          isRefetching: false,
-        } as DataStateKeys<INavigationMenuItems[]>,
+          menuItems: {
+            error: "",
+            isLoading: false,
+            data: [
+              { title: "Foo", link: "link1" },
+              { title: "Foo2", link: "link2" },
+              { title: "Foo3", action: action("Foo 3") },
+            ],
+            isRefetching: false,
+          } as DataStateKeys<INavigationMenuItems[]>,
+        },
+        description: "Some Description here",
+      },
+      {
+        title: "With Menu Items Top Action",
+        icon: HardDrive,
+        action: action("menu Action"),
+        viewMenuItems: {
+          topAction: {
+            title: "Please Click Me",
+            action: "link-some-where",
+          },
+          menuItems: {
+            error: "",
+            isLoading: false,
+            data: [
+              { title: "Foo", link: "link1" },
+              { title: "Foo2", link: "link2" },
+              { title: "Foo3", action: action("Foo 3") },
+            ],
+            isRefetching: false,
+          } as DataStateKeys<INavigationMenuItems[]>,
+        },
         description: "Some Description here",
       },
     ],
