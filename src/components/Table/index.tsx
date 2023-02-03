@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useTable, usePagination, useSortBy, useFilters } from "react-table";
 import classnames from "classnames";
 import styled from "styled-components";
@@ -137,9 +137,9 @@ const buildTableStateToRefreshPageNumber = (
 };
 
 export function Table<T extends unknown>({
-  paginatedDataState,
+  overridePaginatedDataState,
   tableData,
-  setPaginatedDataState,
+  syncPaginatedDataStateOut,
   columns,
   lean,
   emptyMessage,
@@ -160,7 +160,7 @@ export function Table<T extends unknown>({
       ? 0
       : Math.ceil(
           data.totalRecords /
-            (paginatedDataState?.pageSize ?? DEFAULT_TABLE_STATE.pageSize)
+            (tableData.data?.pageSize ?? DEFAULT_TABLE_STATE.pageSize)
         );
 
   const tableColumns = useMemo(
@@ -173,6 +173,8 @@ export function Table<T extends unknown>({
     [columns.length]
   );
 
+  const [resetPage, setResetPage] = useState(true);
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -181,6 +183,9 @@ export function Table<T extends unknown>({
     prepareRow,
     gotoPage,
     setPageSize,
+    setAllFilters,
+    setSortBy,
+    setHiddenColumns,
     state: tableState,
   } = useTable(
     {
@@ -194,20 +199,9 @@ export function Table<T extends unknown>({
       autoResetSortBy: false,
       autoResetPage: false,
       autoResetFilters: false,
-      initialState: paginatedDataState
-        ? { ...DEFAULT_TABLE_STATE, ...paginatedDataState }
-        : DEFAULT_TABLE_STATE,
+      initialState: DEFAULT_TABLE_STATE,
       defaultColumn: {
         Filter: null,
-      },
-      useControlledState: (state: Record<string, unknown>) => {
-        return React.useMemo(
-          () => ({
-            ...state,
-            ...paginatedDataState,
-          }),
-          [state, paginatedDataState]
-        );
       },
     },
     useFilters,
@@ -216,17 +210,46 @@ export function Table<T extends unknown>({
   );
 
   const previousTableState = usePrevious<IPaginatedDataState<T>>(tableState);
-
   useEffect(() => {
     if (
+      resetPage &&
       buildTableStateToRefreshPageNumber(previousTableState) !==
-      buildTableStateToRefreshPageNumber(tableState)
+        buildTableStateToRefreshPageNumber(tableState)
     ) {
       gotoPage(0);
     }
 
-    setPaginatedDataState(tableState);
+    setResetPage(true);
+    syncPaginatedDataStateOut(tableState);
   }, [JSON.stringify(tableState)]);
+
+  useEffect(() => {
+    if (!overridePaginatedDataState) {
+      return;
+    }
+
+    setResetPage(false);
+
+    if (overridePaginatedDataState.pageSize) {
+      setPageSize(overridePaginatedDataState.pageSize);
+    }
+
+    if (overridePaginatedDataState.sortBy) {
+      setSortBy(overridePaginatedDataState.sortBy);
+    }
+
+    if (overridePaginatedDataState.filters) {
+      setAllFilters(overridePaginatedDataState.filters);
+    }
+
+    if (typeof overridePaginatedDataState.pageIndex === "number") {
+      gotoPage(overridePaginatedDataState.pageIndex);
+    }
+
+    if (overridePaginatedDataState.hiddenColumns) {
+      setHiddenColumns(overridePaginatedDataState.hiddenColumns);
+    }
+  }, [JSON.stringify(overridePaginatedDataState)]);
 
   if (error) {
     return <ErrorAlert message={error} />;

@@ -1,10 +1,11 @@
 /* eslint-disable react/function-component-definition */
-import React from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Download, Plus } from "react-feather";
+import { IPaginatedDataState } from "@hadmean/protozoa";
 import { AppWrapper } from "../../AppWrapper";
-import { Table, IProps } from ".";
+import { Table, IProps, DEFAULT_TABLE_STATE } from ".";
 
 export default {
   title: "Components/Table",
@@ -23,7 +24,7 @@ export default {
         IconComponent: Download,
       },
     ],
-    paginatedDataState: {
+    overridePaginatedDataState: {
       pageSize: 10,
       pageIndex: 1,
       sortBy: [{ id: "id", desc: false }],
@@ -38,7 +39,7 @@ export default {
       ],
       hiddenColumns: [],
     },
-    setPaginatedDataState: action("setPaginatedDataState"),
+    syncPaginatedDataStateOut: action("setPaginatedDataState"),
     columns: [
       {
         Header: "Id",
@@ -148,11 +149,39 @@ export default {
   } as IProps<unknown>,
 };
 
-const Template: Story<IProps<unknown>> = (args) => (
-  <AppWrapper>
-    <Table {...args} />
-  </AppWrapper>
-);
+const Template: Story<IProps<unknown>> = (args) => {
+  const [paginatedDataState, setPaginatedDataState] = useState<
+    IPaginatedDataState<any>
+  >({ ...DEFAULT_TABLE_STATE });
+
+  return (
+    <AppWrapper>
+      <button
+        type="button"
+        onClick={() => {
+          setPaginatedDataState({
+            pageSize: 10,
+            pageIndex: 4,
+            sortBy: [{ id: "id", desc: false }],
+            filters: [
+              {
+                id: "name",
+                value: {
+                  value: new Date(),
+                  operator: "e",
+                },
+              },
+            ],
+            hiddenColumns: [],
+          });
+        }}
+      >
+        Click Me
+      </button>
+      <Table {...args} overridePaginatedDataState={paginatedDataState} />
+    </AppWrapper>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {};
