@@ -200,6 +200,15 @@ export function Table<T extends unknown>({
       defaultColumn: {
         Filter: null,
       },
+      useControlledState: (state: Record<string, unknown>) => {
+        return React.useMemo(
+          () => ({
+            ...state,
+            ...paginatedDataState,
+          }),
+          [state, paginatedDataState]
+        );
+      },
     },
     useFilters,
     useSortBy,
