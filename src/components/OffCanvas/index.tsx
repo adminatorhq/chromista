@@ -1,4 +1,5 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
+import ReactDOM from "react-dom";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Divider, Text, Stack } from "../../ui-blocks";
@@ -60,7 +61,7 @@ export function OffCanvas({
   children,
   width = DEFAULT_CANVAS_WIDTH,
 }: IProps) {
-  return (
+  return ReactDOM.createPortal(
     <StyledRoot
       as={Offcanvas}
       show={show}
@@ -80,6 +81,7 @@ export function OffCanvas({
           <StyledBody>{children}</StyledBody>
         </>
       )}
-    </StyledRoot>
+    </StyledRoot>,
+    document.body
   );
 }
