@@ -3,7 +3,9 @@ import { confirmAlert } from "react-confirm-alert";
 import styled, { keyframes } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 import { Z_INDEXES } from "../../constants/zIndex";
-import { Stack } from "../../ui-blocks";
+import { Spacer, Stack, Text } from "../../ui-blocks";
+import { SoftButton } from "../Button";
+import { StyledDeleteButton } from "../Button/Button";
 
 interface IProps {
   action: () => void;
@@ -11,46 +13,12 @@ interface IProps {
   message: string;
 }
 
-const StyledButton = styled.button<{ danger?: boolean }>`
-  outline: none;
-
-  background: ${(props) =>
-    props.danger
-      ? USE_ROOT_COLOR("primary-color")
-      : USE_ROOT_COLOR("base-color")};
-
-  border: 1px solid ${USE_ROOT_COLOR("primary-color")};
-  display: inline-block;
-  padding: 6px 18px;
-  color: ${(props) =>
-    props.danger
-      ? USE_ROOT_COLOR("text-on-primary")
-      : USE_ROOT_COLOR("primary-color")};
-  margin-right: 10px;
-  border-radius: 5px;
-  font-size: 12px;
-  cursor: pointer;
-`;
-
-const StyledButtonGroup = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-`;
-
-const StyledTitle = styled.h1`
-  margin-top: 0;
-  color: ${USE_ROOT_COLOR("main-text")};
-  font-size: 16px;
-  font-weight: bold;
-`;
-
 const StyledBody = styled.div`
   width: 300px;
   padding: 30px;
   text-align: center;
   background: ${USE_ROOT_COLOR("base-color")};
-  border-radius: 0.25rem;
+  border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
   color: ${USE_ROOT_COLOR("main-text")};
@@ -101,20 +69,27 @@ export function Presentation({
       tabIndex={-1}
     >
       <StyledBody>
-        <StyledTitle id="confirm_delete_label">{title}</StyledTitle>
-        <span id="confirm_delete_desc"> {message} </span>
-        <StyledButtonGroup>
-          <StyledButton
-            danger
+        <Text size="4" weight="bold" id="confirm_delete_label">
+          {title}
+        </Text>
+        <Spacer size="xl" />
+        <Text size="6">
+          <span id="confirm_delete_desc"> {message} </span>{" "}
+        </Text>
+        <Spacer size="xxl" />
+        <Stack justify="center" spacing={8}>
+          <SoftButton action={onClose} label="Cancel" />
+          <StyledDeleteButton
+            type="button"
+            size="sm"
             onClick={() => {
               action();
               onClose();
             }}
           >
             Confirm
-          </StyledButton>
-          <StyledButton onClick={onClose}>Cancel</StyledButton>
-        </StyledButtonGroup>
+          </StyledDeleteButton>
+        </Stack>
       </StyledBody>
     </StyledOverlay>
   );

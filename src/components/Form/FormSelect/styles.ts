@@ -11,7 +11,9 @@ export const SelectStyles = css`
   .react-select__control {
     box-shadow: none;
     background: ${USE_ROOT_COLOR("base-color")};
-    border: 1px solid ${USE_ROOT_COLOR("border-color")};
+    box-shadow: 0 0 ${USE_ROOT_COLOR("border-color")},
+      0 0 ${USE_ROOT_COLOR("border-color")},
+      0 1px 2px 0 ${USE_ROOT_COLOR("border-color")};
 
     &:hover {
       border: 1px solid ${USE_ROOT_COLOR("primary-color")};

@@ -17,7 +17,10 @@ export const InputStyles = css<IInput>`
   background-color: ${USE_ROOT_COLOR("base-color")};
   background-clip: padding-box;
   border: 1px solid ${USE_ROOT_COLOR("border-color")};
-  border-radius: 0.25rem;
+  border-radius: 6px;
+  box-shadow: 0 0 ${USE_ROOT_COLOR("border-color")},
+    0 0 ${USE_ROOT_COLOR("border-color")},
+    0 1px 2px 0 ${USE_ROOT_COLOR("border-color")};
   transition: border-color 0.15s ease-in-out;
 
   ${(props) =>
@@ -27,10 +30,11 @@ export const InputStyles = css<IInput>`
       padding: 0.25rem 0.5rem;
       font-size: 0.71rem;
       line-height: 1.8;
-      border-radius: 0.2rem;
+      border-radius: 4px;
     `}
 
   &:focus {
+    border-width: 1.5px;
     color: ${USE_ROOT_COLOR("main-text")};
     background-color: ${USE_ROOT_COLOR("base-color")};
     border-color: ${USE_ROOT_COLOR("primary-color")};
@@ -38,6 +42,7 @@ export const InputStyles = css<IInput>`
   }
 
   &[aria-invalid] {
+    border-width: 2px;
     border-color: ${SYSTEM_COLORS.danger} !important;
   }
 

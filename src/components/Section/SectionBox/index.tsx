@@ -10,7 +10,6 @@ import { StyledCard, StyledCardBody, StyledCardHeader } from "../../Card";
 import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
 import { Spacer, Stack, Text } from "../../../ui-blocks";
-import { USE_ROOT_COLOR } from "../../../theme";
 import { BaseSkeleton } from "../../Skeleton";
 
 export interface IProps {
@@ -34,18 +33,6 @@ export interface IProps {
 const StyledCenterRow = styled(Row)`
   align-items: center;
   justify-content: space-between;
-`;
-
-const StyledCardTitle = styled.h4`
-  margin-bottom: 0.75rem;
-  text-transform: capitalize;
-  letter-spacing: 0.02em;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 30px;
-  margin: 0;
-  color: ${USE_ROOT_COLOR("main-text")};
-  text-shadow: 0 0 1px rgba(241, 245, 250, 0.1);
 `;
 
 const StyledDeleteButton = styled(DeleteButton)`
@@ -85,7 +72,7 @@ export function SectionBox({
           <StyledCardHeader>
             <StyledCenterRow>
               <Col auto>
-                <StyledCardTitle>
+                <Text size="4" weight="bold">
                   {isLoading ? (
                     <BaseSkeleton width="150px" height="20px" />
                   ) : (
@@ -101,7 +88,7 @@ export function SectionBox({
                       />
                     </>
                   ) : null}
-                </StyledCardTitle>
+                </Text>
                 {description ? <Tooltip id="section-box" /> : null}
               </Col>
               {newItemLink ||

@@ -2,10 +2,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useMemo, useState } from "react";
 import { useTable, usePagination, useSortBy, useFilters } from "react-table";
-import classnames from "classnames";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import usePrevious from "react-use/lib/usePrevious";
 import { IPaginatedDataState } from "@hadmean/protozoa";
+import { ArrowUp } from "react-feather";
 import { DelayedComponentIsLoading } from "../ComponentIsLoading";
 import { ErrorAlert } from "../Alert";
 import { EmptyWrapper } from "../EmptyWrapper";
@@ -23,36 +23,10 @@ export { DEFAULT_TABLE_STATE };
 
 const StyledBodyTR = styled.tr`
   padding: 4px;
-  border-top: 2px solid ${USE_ROOT_COLOR("border-color")};
+  border-top: 1px solid ${USE_ROOT_COLOR("border-color")};
   page-break-inside: avoid;
   &:hover {
     background-color: ${USE_ROOT_COLOR("soft-color")};
-  }
-`;
-
-const StyledSorting = styled.span`
-  cursor: pointer;
-
-  &:before {
-    left: 0.8em;
-    content: "\\2191";
-  }
-
-  &:after {
-    left: 0.3em;
-    content: "\\2193";
-  }
-
-  &:after,
-  &:before {
-    color: ${USE_ROOT_COLOR("main-text")};
-    opacity: 0.4;
-  }
-
-  &.desc:after,
-  &.asc:before {
-    color: ${USE_ROOT_COLOR("primary-color")};
-    opacity: 1;
   }
 `;
 
@@ -63,15 +37,12 @@ const StyledTHead = styled.thead`
 const StyledTableResponsive = styled.div`
   display: block;
   width: 100%;
-  border: 0;
   -webkit-overflow-scrolling: touch;
 `;
 
 const StyledTh = styled.th`
-  padding: 0.65rem 0.45rem;
+  padding: 8px;
   vertical-align: middle;
-  border: 1px solid ${USE_ROOT_COLOR("border-color")};
-  border-bottom-width: 2px;
   color: ${USE_ROOT_COLOR("main-text")};
   font-weight: 400;
   border-top: none;
@@ -79,10 +50,8 @@ const StyledTh = styled.th`
 
 const StyledTd = styled.td`
   padding: 0.45rem;
-  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   vertical-align: middle;
   font-weight: 400;
-  border-top: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;
 
 const StyledTableRoot = styled.div<{ lean?: true }>`
@@ -124,6 +93,22 @@ const StyledOverlayText = styled.div`
   font-size: 50px;
   color: white;
   transform: translate(-50%, -50%);
+`;
+
+const StyledSorting = styled(ArrowUp)<{ isSorted: boolean; isDesc: boolean }>`
+  color: ${USE_ROOT_COLOR("main-text")};
+  opacity: 0.4;
+  cursor: pointer;
+  margin-left: 4px;
+  transition: transform 0.3s;
+  ${(props) => props.isDesc && "transform: rotate(180deg);"}
+
+  ${(props) =>
+    props.isSorted &&
+    css`
+      color: ${USE_ROOT_COLOR("primary-color")};
+      opacity: 1;
+    `}
 `;
 
 const buildTableStateToRefreshPageNumber = (
@@ -280,12 +265,11 @@ export function Table<T extends unknown>({
                     title={undefined}
                   >
                     <Stack justify="space-between" align="center">
-                      <Text size="5" weight="bold" as="span">
+                      <Text size="6" weight="bold" as="span">
                         {column.render("Header")}
-                      </Text>
-                      <Stack justify="end" width="auto">
                         {column.canSort && (
                           <StyledSorting
+                            size={18}
                             aria-label={`Sort By ${column.render("Header")} ${
                               // eslint-disable-next-line no-nested-ternary
                               column.isSorted
@@ -294,12 +278,12 @@ export function Table<T extends unknown>({
                                   : "Desc"
                                 : ""
                             }`}
-                            className={classnames({
-                              desc: column.isSorted && column.isSortedDesc,
-                              asc: column.isSorted && !column.isSortedDesc,
-                            })}
+                            isSorted={column.isSorted}
+                            isDesc={column.isSortedDesc}
                           />
                         )}
+                      </Text>
+                      <Stack justify="end" width="auto">
                         {column.canFilter ? column.render("Filter") : null}
                       </Stack>
                     </Stack>

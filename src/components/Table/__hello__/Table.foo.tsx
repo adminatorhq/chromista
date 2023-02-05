@@ -5,13 +5,13 @@ import { Table, IProps } from "..";
 import "@testing-library/jest-dom/extend-expect";
 
 const DEFAULT_TABLE_PROPS: IProps<unknown> = {
-  paginatedDataState: {
+  overridePaginatedDataState: {
     pageSize: 10,
     pageIndex: 1,
     sortBy: [{ id: "name", desc: true }],
     hiddenColumns: [],
   },
-  setPaginatedDataState: jest.fn(),
+  syncPaginatedDataStateOut: jest.fn(),
   columns: [
     {
       Header: "Name Header",

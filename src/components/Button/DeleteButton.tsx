@@ -1,9 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { Loader, Trash2 } from "react-feather";
-import { StyledSoftButton } from "./Button";
+import { StyledDeleteButton } from "./Button";
 import { ConfirmAlert } from "../ConfirmAlert";
-import { SYSTEM_COLORS } from "../../theme";
 import { Spin } from "../_/Spin";
 
 interface IProps {
@@ -13,15 +11,6 @@ interface IProps {
   size?: "sm" | "xs";
   shouldConfirmAlert?: boolean;
 }
-
-const StyledDeleteButton = styled(StyledSoftButton)`
-  background-color: ${SYSTEM_COLORS.danger}1A;
-  color: ${SYSTEM_COLORS.danger};
-
-  &:hover {
-    background-color: ${SYSTEM_COLORS.danger};
-  }
-`;
 
 export function DeleteButton({
   onDelete,

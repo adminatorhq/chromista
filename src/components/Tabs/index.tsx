@@ -12,7 +12,7 @@ const Root = styled.div<{ $padContent: boolean }>`
     padding-left: 0;
     margin: 0;
     list-style: none;
-    border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
+    border-bottom: 2px solid ${USE_ROOT_COLOR("border-color")};
   }
 
   .tab-pane {
