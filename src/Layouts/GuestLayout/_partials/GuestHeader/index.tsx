@@ -8,6 +8,8 @@ const Root = styled(StyledCardBody)`
   background-color: ${USE_ROOT_COLOR("primary-color")};
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   padding: 0px;
   text-align: center;
   padding: 1rem;

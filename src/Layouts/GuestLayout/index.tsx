@@ -20,6 +20,8 @@ const Root = styled.div`
     0px 1px 11px 0px rgb(0 0 0 / 6%);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 `;
 
 export function GuestLayout({

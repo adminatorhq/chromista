@@ -17,10 +17,13 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   background-color: transparent;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
-  font-size: 0.8125rem;
-  box-shadow: none;
+  font-size: 1rem;
   line-height: 1.8;
-  border-radius: 0.25rem;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
@@ -41,7 +44,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
       padding: 0.25rem 0.5rem;
       font-size: 0.71rem;
       line-height: 1.8;
-      border-radius: 0.2rem;
+      border-radius: 4px;
     `}
 
     ${(props) =>
@@ -50,15 +53,10 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
       padding: .25rem .5rem;
       font-size: .71rem;
       line-height: 1.2;
-      border-radius: .2rem;
+      border-radius: 4px;
   }
       `}
 
-  &:focus {
-    box-shadow: none;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem ${USE_ROOT_COLOR("primary-color")};
-  }
 
   &:disabled {
     opacity: 0.65;
@@ -67,18 +65,22 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   &:not(:disabled):not(.disabled) {
     cursor: pointer;
   }
-
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
 `;
 
 export const StyledButton = styled(StyledBaseButton)`
   color: ${USE_ROOT_COLOR("text-on-primary")};
   background-color: ${USE_ROOT_COLOR("primary-color")};
   border-color: ${USE_ROOT_COLOR("primary-color")};
+
+  &:hover {
+    outline: 0;
+    color: ${USE_ROOT_COLOR("text-on-shade")};
+    background-color: ${USE_ROOT_COLOR("primary-shade-color")};
+    box-shadow: 0 0 ${USE_ROOT_COLOR("border-color")},
+      0 0 ${USE_ROOT_COLOR("primary-color")},
+      0 1px 3px 0 ${USE_ROOT_COLOR("primary-color")},
+      0 1px 2px -1px ${USE_ROOT_COLOR("primary-color")};
+  }
 `;
 
 export const StyledSoftButton = styled(StyledBaseButton)`

@@ -66,7 +66,6 @@ const StyledTable = styled.table`
   margin-bottom: 1rem;
   color: ${USE_ROOT_COLOR("main-text")};
   border-collapse: collapse;
-  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   .dropdown-toggle::after {
     display: none;
   }

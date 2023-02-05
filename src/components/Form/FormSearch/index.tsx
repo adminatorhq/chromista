@@ -37,6 +37,7 @@ const StyledFormSearch = styled(StyledInput)`
   border-radius: 0;
   border-top: 0;
   border-left: 0;
+  box-shadow: none;
   border-right: 0;
   height: calc(1.8em + 0.75rem + 10px);
   padding-left: 0.75rem;

@@ -22,7 +22,7 @@ const Root = styled.ul`
   padding-left: 0;
   margin-bottom: 0;
   border-radius: 0.25rem;
-  margin: -0.75rem;
+  margin: -16px;
   border-radius: 0px;
 `;
 
