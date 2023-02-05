@@ -5,6 +5,13 @@ interface IInput {
   sm?: true;
 }
 
+export const FORM_INPUT_SHADOW_CSS = css`
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
+  box-shadow: 0 0 ${USE_ROOT_COLOR("border-color")},
+    0 0 ${USE_ROOT_COLOR("border-color")},
+    0 1px 2px 0 ${USE_ROOT_COLOR("border-color")};
+`;
+
 export const InputStyles = css<IInput>`
   display: block;
   width: 100%;
@@ -16,11 +23,9 @@ export const InputStyles = css<IInput>`
   color: ${USE_ROOT_COLOR("main-text")};
   background-color: ${USE_ROOT_COLOR("base-color")};
   background-clip: padding-box;
-  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   border-radius: 6px;
-  box-shadow: 0 0 ${USE_ROOT_COLOR("border-color")},
-    0 0 ${USE_ROOT_COLOR("border-color")},
-    0 1px 2px 0 ${USE_ROOT_COLOR("border-color")};
+  ${FORM_INPUT_SHADOW_CSS}
+
   transition: border-color 0.15s ease-in-out;
 
   ${(props) =>

@@ -6,7 +6,9 @@ import { IWidgetHeaderProps } from "./types";
 export function WidgetHeader({ title, setting, link }: IWidgetHeaderProps) {
   return (
     <Stack justify="space-between" align="flex-start">
-      <Text size="4">{title}</Text>
+      <Text size="4" ellipsis>
+        {title}
+      </Text>
       <Stack width="auto">
         {setting && (
           <>

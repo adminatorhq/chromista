@@ -1,5 +1,6 @@
 import { css } from "styled-components";
 import { USE_ROOT_COLOR, SYSTEM_COLORS } from "../../../theme";
+import { FORM_INPUT_SHADOW_CSS } from "../Styles";
 
 export const SelectStyles = css`
   &.invalid {
@@ -10,10 +11,7 @@ export const SelectStyles = css`
 
   .react-select__control {
     background: ${USE_ROOT_COLOR("base-color")};
-    border: 1px solid ${USE_ROOT_COLOR("border-color")};
-    box-shadow: 0 0 ${USE_ROOT_COLOR("border-color")},
-      0 0 ${USE_ROOT_COLOR("border-color")},
-      0 1px 2px 0 ${USE_ROOT_COLOR("border-color")};
+    ${FORM_INPUT_SHADOW_CSS}
 
     &:hover {
       border: 1px solid ${USE_ROOT_COLOR("primary-color")};

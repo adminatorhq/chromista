@@ -1,26 +1,34 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 
-export const StyledCard = styled.div`
-  background-color: ${USE_ROOT_COLOR("base-color")};
+export const SHADOW_CSS = css`
   border: 1px solid ${USE_ROOT_COLOR("border-color")};
-  position: relative;
-  word-wrap: break-word;
   box-shadow: 0 0 ${USE_ROOT_COLOR("border-color")},
     0 0 ${USE_ROOT_COLOR("border-color")},
     0 1px 3px 0 ${USE_ROOT_COLOR("border-color")},
     0 1px 2px -1px ${USE_ROOT_COLOR("border-color")};
-  border-radius: 8px;
 `;
 
-export const StyledCardBody = styled.div`
+export const StyledCard = styled.div`
+  background-color: ${USE_ROOT_COLOR("base-color")};
+  position: relative;
+  word-wrap: break-word;
+  border-radius: 8px;
+  ${SHADOW_CSS}
+`;
+
+export const StyledCardBody = styled.div<{ radiusLess?: true }>`
   flex: 1 1 auto;
   min-height: 1px;
   padding: 16px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  ${(props) =>
+    !props.radiusLess &&
+    css`
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    `}
   background-color: ${USE_ROOT_COLOR("base-color")};
 `;
 

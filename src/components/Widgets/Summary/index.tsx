@@ -15,7 +15,8 @@ const IconRoot = styled.div<{ color: string }>`
   color: ${(props) => props.color};
   border: 1px solid ${(props) => props.color};
   width: 56px;
-  border-radius: 4px;
+  min-width: 56px;
+  border-radius: 56px;
   padding: 8px;
   display: flex;
   justify-content: center;

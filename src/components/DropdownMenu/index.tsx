@@ -7,6 +7,7 @@ import { StyledSoftButton } from "../Button/Button";
 import { USE_ROOT_COLOR } from "../../theme";
 import { BREAKPOINTS } from "../../constants";
 import { Spin } from "../_/Spin";
+import { SHADOW_CSS } from "../Card";
 
 const togglePreviousState = (prev: boolean) => !prev;
 
@@ -52,7 +53,7 @@ const StyledDropDownItem = styled.button`
 `;
 
 const StyledDropDownMenu = styled(Dropdown.Menu)`
-  box-shadow: 0 3px 12px ${USE_ROOT_COLOR("border-color")};
+  ${SHADOW_CSS}
   margin: 0;
 
   position: absolute;
@@ -202,7 +203,7 @@ export function DropDownMenu({
           <StyledSROnly>Toggle Dropdown</StyledSROnly>
         </StyledDropDownIcon>
       </StyledDropDownToggle>
-      <StyledDropDownMenu end>
+      <StyledDropDownMenu>
         {menuItems.map(({ label: label$1, description }, index) => (
           <StyledDropDownItem
             key={label$1}

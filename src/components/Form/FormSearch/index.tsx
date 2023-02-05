@@ -27,6 +27,7 @@ const StyledInputGroupPrepend = styled.span`
 
 const StyledButtonSearch = styled(StyledBaseButton)`
   border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
+  border-radius: 0;
   color: ${USE_ROOT_COLOR("primary-color")};
   &:focus {
     box-shadow: none;

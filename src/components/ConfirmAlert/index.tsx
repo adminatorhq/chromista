@@ -6,6 +6,7 @@ import { Z_INDEXES } from "../../constants/zIndex";
 import { Spacer, Stack, Text } from "../../ui-blocks";
 import { SoftButton } from "../Button";
 import { StyledDeleteButton } from "../Button/Button";
+import { SHADOW_CSS } from "../Card";
 
 interface IProps {
   action: () => void;
@@ -20,7 +21,7 @@ const StyledBody = styled.div`
   background: ${USE_ROOT_COLOR("base-color")};
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  ${SHADOW_CSS}
   color: ${USE_ROOT_COLOR("main-text")};
 `;
 

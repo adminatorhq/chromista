@@ -1,7 +1,8 @@
 import React from "react";
 import { Icon } from "react-feather";
+import styled from "styled-components";
+import { SHADOW_CSS, StyledCardBody } from "../../Card";
 import { RenderList } from "../../RenderList";
-import { SectionBox } from "../SectionBox";
 import { SectionListItem } from "../SectionList";
 
 interface IMenuItem {
@@ -16,9 +17,13 @@ export interface IProps {
   currentMenuItem?: string;
 }
 
+const Root = styled(StyledCardBody)`
+  ${SHADOW_CSS}
+`;
+
 export function MenuSection({ menuItems, currentMenuItem }: IProps) {
   return (
-    <SectionBox title="" headLess>
+    <Root>
       <RenderList
         items={menuItems}
         notSearchable
@@ -38,6 +43,6 @@ export function MenuSection({ menuItems, currentMenuItem }: IProps) {
           />
         )}
       />
-    </SectionBox>
+    </Root>
   );
 }

@@ -23,7 +23,7 @@ export { DEFAULT_TABLE_STATE };
 
 const StyledBodyTR = styled.tr`
   padding: 4px;
-  border-top: 1px solid ${USE_ROOT_COLOR("border-color")};
+  border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
   page-break-inside: avoid;
   &:hover {
     background-color: ${USE_ROOT_COLOR("soft-color")};
@@ -52,6 +52,10 @@ const StyledTd = styled.td`
   padding: 0.45rem;
   vertical-align: middle;
   font-weight: 400;
+
+  &:not(:last-child) {
+    border-right: 1px solid ${USE_ROOT_COLOR("border-color")};
+  }
 `;
 
 const StyledTableRoot = styled.div<{ lean?: true }>`

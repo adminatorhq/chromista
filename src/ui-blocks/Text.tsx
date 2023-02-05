@@ -13,6 +13,7 @@ export type TextProps = {
   weight: "light" | "regular" | "bold" | "thick";
   textStyle?: "italic";
   as: "p" | "span";
+  ellipsis?: true;
 };
 
 const sizes: Record<TextProps["size"], number> = {
@@ -34,7 +35,13 @@ const weights: Record<TextProps["weight"], number> = {
 export const Text = styled.p.attrs((props: TextProps) => ({
   role: props.as || "p",
 }))<Partial<TextProps>>(
-  ({ size = "4", color = "main", weight = "regular", textStyle }) => ({
+  ({
+    size = "4",
+    color = "main",
+    weight = "regular",
+    textStyle,
+    ellipsis,
+  }) => ({
     color: TEXT_COLORS[color],
     fontStyle: textStyle || "normal",
     fontWeight: weights[weight],
@@ -42,5 +49,8 @@ export const Text = styled.p.attrs((props: TextProps) => ({
     lineHeight: `${sizes[size] * 1.25}px`,
     margin: 0,
     padding: 0,
+    textOverflow: ellipsis ? "ellipsis" : undefined,
+    whiteSpace: ellipsis ? "nowrap" : undefined,
+    overflow: ellipsis ? "hidden" : undefined,
   })
 );

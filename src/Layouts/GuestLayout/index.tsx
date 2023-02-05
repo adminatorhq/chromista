@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { GuestFooter, GuestHeader, GuestContainer } from "./_partials";
-import { StyledCardBody } from "../../components/Card";
+import { SHADOW_CSS, StyledCardBody } from "../../components/Card";
 
 export interface IProps {
   children: ReactNode;
@@ -16,12 +16,12 @@ export interface IProps {
 }
 
 const Root = styled.div`
-  box-shadow: 0 4px 6px 0 rgb(85 85 85 / 9%), 0 1px 20px 0 rgb(0 0 0 / 8%),
-    0px 1px 11px 0px rgb(0 0 0 / 6%);
+  ${SHADOW_CSS}
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+  border-width: 0px;
 `;
 
 export function GuestLayout({
@@ -35,7 +35,7 @@ export function GuestLayout({
       <Col lg={5}>
         <Root>
           <GuestHeader title={title} subTitle={subTitle} {...appDetails} />
-          <StyledCardBody>{children}</StyledCardBody>
+          <StyledCardBody radiusLess>{children}</StyledCardBody>
           <GuestFooter name={appDetails.name} />
         </Root>
       </Col>

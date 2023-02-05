@@ -74,12 +74,7 @@ export const StyledButton = styled(StyledBaseButton)`
 
   &:hover {
     outline: 0;
-    color: ${USE_ROOT_COLOR("text-on-shade")};
-    background-color: ${USE_ROOT_COLOR("primary-shade-color")};
-    box-shadow: 0 0 ${USE_ROOT_COLOR("border-color")},
-      0 0 ${USE_ROOT_COLOR("primary-color")},
-      0 1px 3px 0 ${USE_ROOT_COLOR("primary-color")},
-      0 1px 2px -1px ${USE_ROOT_COLOR("primary-color")};
+    box-shadow: 0 0 0 4px ${USE_ROOT_COLOR("primary-shade-color")};
   }
 `;
 
@@ -136,7 +131,8 @@ export const StyledDeleteButton = styled(StyledSoftButton)`
   color: ${SYSTEM_COLORS.danger};
   border-color: ${SYSTEM_COLORS.danger};
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${SYSTEM_COLORS.danger};
   }
 `;

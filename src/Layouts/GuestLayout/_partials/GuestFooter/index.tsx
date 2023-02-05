@@ -6,8 +6,8 @@ import { Text, Stack } from "../../../../ui-blocks";
 
 const Root = styled(StyledCardBody)`
   background-color: ${USE_ROOT_COLOR("soft-color")};
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 `;
 
 interface IProps {

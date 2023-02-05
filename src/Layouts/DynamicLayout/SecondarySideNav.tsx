@@ -1,13 +1,11 @@
 import React from "react";
 import shallow from "zustand/shallow";
 import styled from "styled-components";
-import { SectionBox } from "../../components/Section";
 import { useSideBarStore } from "../sidebar.store";
 import { ISelectionView } from "../types";
-import { useNestedNavStore } from "./nested-nav.store";
 import { ViewMenuItems } from "./ViewMenuItems";
-
-const HOME_SELECTION = "__HOME__";
+import { SoftButton, StyledCardBody } from "../../components";
+import { Divider, Stack, Text } from "../../ui-blocks";
 
 interface IProps {
   selectionView: ISelectionView[];
@@ -44,45 +42,6 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
       shallow
     );
 
-  const [deepLinks, pop] = useNestedNavStore((state) => [
-    state.deepLinks,
-    state.pop,
-  ]);
-
-  let currentSelection: ISelectionView | null | undefined = null;
-
-  if (currentMiniSideBar) {
-    currentSelection = selectionView.find(
-      ({ action }) => action === currentMiniSideBar
-    );
-  }
-
-  const hasDeepLinks = deepLinks.length > 0;
-
-  const deepLinkAsBreadCrumb = deepLinks.map(
-    ({ key, title: deepLinkTitle }) => ({
-      label: deepLinkTitle,
-      value: key,
-    })
-  );
-
-  const currentViewBag = hasDeepLinks
-    ? deepLinks[deepLinks.length - 1]
-    : currentSelection;
-
-  const { description, iconButtons = [] } = currentViewBag || {
-    description: "",
-    iconButtons: [],
-  };
-
-  const fullBreadCrumb = [
-    {
-      label: `${currentSelection?.title}`,
-      value: HOME_SELECTION,
-    },
-    ...deepLinkAsBreadCrumb,
-  ];
-
   return (
     <Root show={!!currentMiniSideBar && isFullSideBarOpen}>
       <StyledHideScrollbar>
@@ -94,30 +53,26 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
           }
           return (
             <StyledRenderView key={title} show={title === currentMiniSideBar}>
-              <SectionBox
-                backLink={
-                  hasDeepLinks
-                    ? {
-                        action: pop,
-                        label: fullBreadCrumb[fullBreadCrumb.length - 2].label,
-                      }
-                    : undefined
-                }
-                title={title}
-                description={description}
-                iconButtons={[
-                  ...iconButtons,
-                  {
-                    icon: "close",
-                    action: closeFullSideBar,
-                  },
-                ]}
-              >
+              <StyledCardBody radiusLess>
+                <Stack justify="space-between" align="center">
+                  <Text size="4" weight="bold" ellipsis>
+                    {title}
+                  </Text>
+                  <SoftButton
+                    action={closeFullSideBar}
+                    icon="close"
+                    label="Close Sidebar"
+                    justIcon
+                  />
+                </Stack>
+              </StyledCardBody>
+              <Divider />
+              <StyledCardBody radiusLess>
                 {view ||
                   (viewMenuItems && (
                     <ViewMenuItems viewMenuItems={viewMenuItems} />
                   ))}
-              </SectionBox>
+              </StyledCardBody>
             </StyledRenderView>
           );
         })}
