@@ -98,16 +98,16 @@ const StyledOverlayText = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const StyledSorting = styled(ArrowUp)<{ isSorted: boolean; isDesc: boolean }>`
+const StyledSorting = styled(ArrowUp)<{ $isSorted: boolean; $isDesc: boolean }>`
   color: ${USE_ROOT_COLOR("main-text")};
   opacity: 0.4;
   cursor: pointer;
   margin-left: 0px;
   transition: transform 0.3s;
-  ${(props) => props.isDesc && "transform: rotate(180deg);"}
+  ${(props) => props.$isDesc && "transform: rotate(180deg);"}
 
   ${(props) =>
-    props.isSorted &&
+    props.$isSorted &&
     css`
       color: ${USE_ROOT_COLOR("primary-color")};
       opacity: 1;
@@ -288,8 +288,8 @@ export function Table<T extends unknown>({
                                   : "Asc"
                                 : ""
                             }`}
-                            isSorted={column.isSorted}
-                            isDesc={column.isSortedDesc}
+                            $isSorted={column.isSorted}
+                            $isDesc={column.isSortedDesc}
                           />
                         )}
                         {column.canFilter ? column.render("Filter") : null}

@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 import { Z_INDEXES } from "../../constants/zIndex";
 import { Spacer, Stack, Text } from "../../ui-blocks";
-import { SoftButton } from "../Button";
+import { SoftButton } from "../Button/SoftButton";
 import { StyledDeleteButton } from "../Button/Button";
 import { SHADOW_CSS } from "../Card";
 

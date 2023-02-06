@@ -24,10 +24,6 @@ export interface IProps {
   disabled?: boolean;
 }
 
-const StyledDropDown = styled.div`
-  position: relative;
-`;
-
 const Label = styled.span`
   @media (max-width: ${BREAKPOINTS.sm}) {
     display: none;
@@ -63,7 +59,6 @@ const StyledDropDownMenu = styled(Dropdown.Menu)`
   display: none;
   float: left;
   min-width: 10rem;
-  padding: 4px 0;
   margin: 0.125rem 0 0;
   font-size: 0.8125rem;
   color: ${USE_ROOT_COLOR("main-text")};
@@ -185,12 +180,7 @@ export function DropDownMenu({
   }
 
   return (
-    <StyledDropDown
-      as={Dropdown}
-      isOpen={isDropDownOpen}
-      tag="span"
-      toggle={toggleDropDown}
-    >
+    <Dropdown show={isDropDownOpen} align="end" onToggle={toggleDropDown}>
       <StyledCurrentButton
         size="sm"
         disabled={isMakingActionRequest || disabled}
@@ -209,7 +199,9 @@ export function DropDownMenu({
             key={label$1}
             onClick={() => onMenuItemClick(index)}
           >
-            {label$1}
+            <Text size="6" as="span">
+              {label$1}
+            </Text>
             <br />
             {description ? (
               <Text size="6" color="muted" as="span">
@@ -219,6 +211,6 @@ export function DropDownMenu({
           </StyledDropDownItem>
         ))}
       </StyledDropDownMenu>
-    </StyledDropDown>
+    </Dropdown>
   );
 }

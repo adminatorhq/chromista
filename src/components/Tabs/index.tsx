@@ -85,7 +85,7 @@ export function Tabs({
     } else {
       setActiveTab(contents[0].label);
     }
-  }, [currentTab]);
+  }, [currentTab, JSON.stringify(contents.map((content) => content.label))]);
 
   const changeTab = (tabLabel: string | null) => {
     if (!tabLabel) {

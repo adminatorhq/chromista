@@ -1,8 +1,8 @@
 import React from "react";
 import { Loader, Trash2 } from "react-feather";
-import { StyledDeleteButton } from "./Button";
 import { ConfirmAlert } from "../ConfirmAlert";
 import { Spin } from "../_/Spin";
+import { StyledDeleteButton } from "./Button";
 
 interface IProps {
   onDelete: () => void;

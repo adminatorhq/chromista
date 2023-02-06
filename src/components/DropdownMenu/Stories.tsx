@@ -33,7 +33,9 @@ export default {
 
 const Template: Story<IProps> = (args) => (
   <AppWrapper>
-    <DropDownMenu {...args} />
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <DropDownMenu {...args} />
+    </div>
   </AppWrapper>
 );
 
