@@ -5,6 +5,7 @@ export interface IStyledBaseButton {
   block?: boolean;
   size?: "sm" | "xs";
   color?: keyof typeof SYSTEM_COLORS;
+  justIcon?: boolean;
 }
 
 export const StyledBaseButton = styled.button<IStyledBaseButton>`
@@ -56,6 +57,17 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
       border-radius: 4px;
   }
       `}
+
+      ${(props) =>
+    props.justIcon &&
+    css`
+    padding: 8px;
+    font-size: 10px;
+    line-height: initial;
+    border-radius: 50%;
+    width: 29px;
+      }
+          `}
 
 
   &:disabled {

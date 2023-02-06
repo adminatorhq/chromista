@@ -102,7 +102,7 @@ const StyledSorting = styled(ArrowUp)<{ isSorted: boolean; isDesc: boolean }>`
   color: ${USE_ROOT_COLOR("main-text")};
   opacity: 0.4;
   cursor: pointer;
-  margin-left: 4px;
+  margin-left: 0px;
   transition: transform 0.3s;
   ${(props) => props.isDesc && "transform: rotate(180deg);"}
 
@@ -270,6 +270,13 @@ export function Table<T extends unknown>({
                     <Stack justify="space-between" align="center">
                       <Text size="6" weight="bold" as="span">
                         {column.render("Header")}
+                      </Text>
+                      <Stack
+                        justify="end"
+                        width="auto"
+                        align="center"
+                        spacing={0}
+                      >
                         {column.canSort && (
                           <StyledSorting
                             size={18}
@@ -277,16 +284,14 @@ export function Table<T extends unknown>({
                               // eslint-disable-next-line no-nested-ternary
                               column.isSorted
                                 ? column.isSortedDesc
-                                  ? "Asc"
-                                  : "Desc"
+                                  ? "Desc"
+                                  : "Asc"
                                 : ""
                             }`}
                             isSorted={column.isSorted}
                             isDesc={column.isSortedDesc}
                           />
                         )}
-                      </Text>
-                      <Stack justify="end" width="auto">
                         {column.canFilter ? column.render("Filter") : null}
                       </Stack>
                     </Stack>

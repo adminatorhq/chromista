@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   ChevronsLeft,
   Edit,
   Eye,
@@ -16,6 +17,7 @@ export const ICON_MAP = {
   settings: Settings,
   close: X,
   eye: Eye,
+  right: ArrowRight,
   help: HelpCircle,
   back: ChevronsLeft,
 };

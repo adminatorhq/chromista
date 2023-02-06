@@ -23,6 +23,7 @@ export function DeleteButton({
     <StyledDeleteButton
       size={size}
       type="button"
+      justIcon={!text}
       aria-label={text ? undefined : `Delete Button`}
       onClick={(e: React.BaseSyntheticEvent) => {
         e.stopPropagation();

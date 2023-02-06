@@ -61,6 +61,7 @@ export function SoftButton({
     block,
     disabled,
     color,
+    justIcon,
     "aria-label": justIcon ? label : undefined,
   };
 

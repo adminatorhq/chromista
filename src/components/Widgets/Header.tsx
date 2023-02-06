@@ -15,19 +15,19 @@ export function WidgetHeader({ title, setting, link }: IWidgetHeaderProps) {
             <SoftButton
               action={() => setting.setId()}
               icon="edit"
-              size="xs"
               label="Edit Widget"
               justIcon
             />
             <DeleteButton
               onDelete={() => setting.delete()}
-              size="xs"
               isMakingDeleteRequest={false}
               shouldConfirmAlert
             />
           </>
         )}
-        {link ? <SoftButton action={link} label="View" size="xs" /> : null}
+        {link ? (
+          <SoftButton action={link} label="View" icon="right" justIcon />
+        ) : null}
       </Stack>
     </Stack>
   );
