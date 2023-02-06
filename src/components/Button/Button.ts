@@ -17,9 +17,9 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   background-color: transparent;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  font-size: 0.8125rem;
   line-height: 1.8;
-  border-radius: 8px;
+  border-radius: 4px;
   position: relative;
   cursor: pointer;
   overflow: hidden;

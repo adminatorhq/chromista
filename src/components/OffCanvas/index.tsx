@@ -1,10 +1,11 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
-import ReactDOM from "react-dom";
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Divider, Text, Stack } from "../../ui-blocks";
 import { SoftButton } from "../Button";
 import { USE_ROOT_COLOR } from "../../theme";
+import { NextPortal } from "../_/NextPortal";
+import { IOffCanvasProps } from "./types";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -44,14 +45,6 @@ const StyledRoot = styled.div<{ width: number }>`
   }
 `;
 
-export interface IProps {
-  show: boolean;
-  title: string;
-  children: ReactNode;
-  onClose: () => void;
-  width?: number;
-}
-
 const DEFAULT_CANVAS_WIDTH = 400;
 
 export function OffCanvas({
@@ -60,28 +53,31 @@ export function OffCanvas({
   title,
   children,
   width = DEFAULT_CANVAS_WIDTH,
-}: IProps) {
-  return ReactDOM.createPortal(
-    <StyledRoot
-      as={Offcanvas}
-      show={show}
-      onHide={onClose}
-      placement="end"
-      width={width}
-    >
-      {show && (
-        <>
-          <StyledHeader>
-            <Stack justify="space-between">
-              <Text size="3">{title}</Text>
-              <SoftButton justIcon icon="close" action={onClose} />
-            </Stack>
-          </StyledHeader>
-          <Divider />
-          <StyledBody>{children}</StyledBody>
-        </>
-      )}
-    </StyledRoot>,
-    document.body
+}: IOffCanvasProps) {
+  return (
+    <NextPortal>
+      <StyledRoot
+        as={Offcanvas}
+        show={show}
+        onHide={onClose}
+        placement="end"
+        width={width}
+      >
+        {show && (
+          <>
+            <StyledHeader>
+              <Stack justify="space-between" align="center">
+                <Text size="4" weight="bold">
+                  {title}
+                </Text>
+                <SoftButton justIcon icon="close" action={onClose} />
+              </Stack>
+            </StyledHeader>
+            <Divider />
+            <StyledBody>{children}</StyledBody>
+          </>
+        )}
+      </StyledRoot>
+    </NextPortal>
   );
 }
