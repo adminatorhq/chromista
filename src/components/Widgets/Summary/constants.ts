@@ -1,4 +1,4 @@
-import { ArrowDownLeft, ArrowUpRight, Icon } from "react-feather";
+import { ChevronsDown, ChevronsUp, Icon } from "react-feather";
 import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../theme";
 
 export const DirectionImplementation: Record<
@@ -10,12 +10,12 @@ export const DirectionImplementation: Record<
   }
 > = {
   down: {
-    Icon: ArrowDownLeft,
+    Icon: ChevronsDown,
     label: "Down",
     color: SYSTEM_COLORS.danger,
   },
   up: {
-    Icon: ArrowUpRight,
+    Icon: ChevronsUp,
     label: "Up",
     color: SYSTEM_COLORS.success,
   },

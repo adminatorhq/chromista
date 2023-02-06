@@ -77,12 +77,13 @@ export function SummaryWidget({
                 <DirectionRoot
                   color={directionColor}
                   spacing={2}
+                  align="center"
                   aria-label="Relative Direction"
                 >
                   <span aria-label={directionLabel}>
                     <DirectionIcon
                       size={20}
-                      style={{ color: directionColor }}
+                      style={{ color: directionColor, verticalAlign: "sub" }}
                     />
                   </span>
                   <Text
