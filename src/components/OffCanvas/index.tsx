@@ -1,11 +1,18 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Divider, Text, Stack } from "../../ui-blocks";
 import { SoftButton } from "../Button";
 import { USE_ROOT_COLOR } from "../../theme";
 import { NextPortal } from "../_/NextPortal";
-import { IOffCanvasProps } from "./types";
+
+export interface IProps {
+  show: boolean;
+  title: string;
+  children: ReactNode;
+  onClose: () => void;
+  width?: number;
+}
 
 const StyledHeader = styled.div`
   display: flex;
@@ -53,7 +60,7 @@ export function OffCanvas({
   title,
   children,
   width = DEFAULT_CANVAS_WIDTH,
-}: IOffCanvasProps) {
+}: IProps) {
   return (
     <NextPortal>
       <StyledRoot

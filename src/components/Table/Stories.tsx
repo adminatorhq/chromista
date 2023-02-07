@@ -186,6 +186,11 @@ const Template: Story<IProps<unknown>> = (args) => {
 export const Default = Template.bind({});
 Default.args = {};
 
+export const WithBorder = Template.bind({});
+WithBorder.args = {
+  border: true,
+};
+
 export const Empty = Template.bind({});
 Empty.args = {
   tableData: {

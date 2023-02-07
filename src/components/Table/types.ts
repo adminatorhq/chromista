@@ -21,6 +21,7 @@ export interface IProps<T> {
     "data" | "isLoading" | "error" | "isPreviousData"
   >;
   lean?: true;
+  border?: boolean;
   overridePaginatedDataState?: IPaginatedDataState<T>;
   syncPaginatedDataStateOut: (params: IPaginatedDataState<T>) => void;
   emptyMessage?: string;

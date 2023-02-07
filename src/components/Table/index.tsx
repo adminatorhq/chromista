@@ -44,8 +44,9 @@ const StyledTh = styled.th`
   padding: 8px;
   vertical-align: middle;
   color: ${USE_ROOT_COLOR("main-text")};
-  font-weight: 400;
-  border-top: none;
+  &:not(:last-child) {
+    border-right: 1px solid ${USE_ROOT_COLOR("border-color")};
+  }
 `;
 
 const StyledTd = styled.td`
@@ -65,7 +66,7 @@ const StyledTableRoot = styled.div<{ lean?: true }>`
   ${(props) => !props.lean && `min-height: 500px;`}
 `;
 
-const StyledTable = styled.table`
+const StyledTable = styled.table<{ $border?: boolean }>`
   width: 100%;
   margin-bottom: 1rem;
   color: ${USE_ROOT_COLOR("main-text")};
@@ -73,6 +74,13 @@ const StyledTable = styled.table`
   .dropdown-toggle::after {
     display: none;
   }
+
+  ${(props) =>
+    props.$border &&
+    css`
+      border-right: 1px solid ${USE_ROOT_COLOR("border-color")};
+      border-left: 1px solid ${USE_ROOT_COLOR("border-color")};
+    `}
 `;
 
 const StyledOverlay = styled.div`
@@ -99,8 +107,8 @@ const StyledOverlayText = styled.div`
 `;
 
 const StyledSorting = styled(ArrowUp)<{ $isSorted: boolean; $isDesc: boolean }>`
-  color: ${USE_ROOT_COLOR("main-text")};
-  opacity: 0.4;
+  color: ${USE_ROOT_COLOR("muted-text")};
+  opacity: 0.7;
   cursor: pointer;
   margin-left: 0px;
   transition: transform 0.3s;
@@ -130,6 +138,7 @@ export function Table<T extends unknown>({
   syncPaginatedDataStateOut,
   columns,
   lean,
+  border,
   emptyMessage,
 }: IProps<T>) {
   const {
@@ -257,7 +266,7 @@ export function Table<T extends unknown>({
             </StyledOverlayText>
           </StyledOverlay>
         ) : null}
-        <StyledTable {...getTableProps()}>
+        <StyledTable {...getTableProps()} $border={border}>
           <StyledTHead>
             {headerGroups.map((headerGroup: any) => (
               <tr {...headerGroup.getHeaderGroupProps()}>

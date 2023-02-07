@@ -2,8 +2,7 @@
 import React from "react";
 import { Story } from "@storybook/react";
 import { useState } from "@storybook/addons";
-import { OffCanvas } from ".";
-import { IOffCanvasProps } from "./types";
+import { OffCanvas, IProps } from ".";
 import { AppWrapper } from "../../AppWrapper";
 
 export default {
@@ -20,7 +19,7 @@ export default {
   },
 };
 
-const Template: Story<IOffCanvasProps> = (args) => {
+const Template: Story<IProps> = (args) => {
   const [open, setOpen] = useState(false);
   return (
     <AppWrapper>
