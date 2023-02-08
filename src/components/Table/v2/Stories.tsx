@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { Story } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { IPaginatedDataState } from "@hadmean/protozoa";
-import { AppWrapper } from "../../AppWrapper";
+import { AppWrapper } from "../../../AppWrapper";
 import { Table, IProps, DEFAULT_TABLE_STATE } from ".";
 
 export default {
-  title: "Components/Table",
+  title: "Components/Table V2",
   component: Table,
   args: {
     overridePaginatedDataState: {

@@ -5,7 +5,7 @@ import { TableFilterType } from "./filters/types";
 
 export interface ITableColumn {
   Header: string;
-  accessor?: string;
+  accessor: string;
   disableSortBy?: boolean;
   filter?: TableFilterType;
   Cell?: (cellProps: {

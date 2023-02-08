@@ -2,7 +2,7 @@ import * as React from "react";
 import styled, { keyframes } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 
-const DELAY_MS = 300;
+const DELAY_MS = 500;
 
 const ldsRippleAnimation = keyframes`
 0% {
