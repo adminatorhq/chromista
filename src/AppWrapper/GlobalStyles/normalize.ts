@@ -1,4 +1,4 @@
-export const NORAMLIZE = `
+export const GLOBAL_NORMALIZE_CSS = `
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;

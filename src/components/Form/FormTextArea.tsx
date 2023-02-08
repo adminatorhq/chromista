@@ -6,6 +6,8 @@ import { wrapLabelAndError, generateFormArias } from "./_wrapForm";
 
 const StyledTextArea = styled(StyledInput)`
   height: auto;
+  overflow: auto;
+  resize: vertical;
 `;
 
 interface IFormTextArea extends ISharedFormInput {

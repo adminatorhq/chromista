@@ -79,17 +79,11 @@ export function SectionBox({
                     title
                   )}
                   {description ? (
-                    <>
-                      {" "}
-                      <HelpCircle
-                        data-for="section-box"
-                        size="15"
-                        data-tip={description}
-                      />
-                    </>
+                    <Tooltip text={description}>
+                      <HelpCircle size="15" />
+                    </Tooltip>
                   ) : null}
                 </Text>
-                {description ? <Tooltip id="section-box" /> : null}
               </Col>
               {newItemLink ||
               deleteAction ||

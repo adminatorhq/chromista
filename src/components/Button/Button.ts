@@ -24,6 +24,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   position: relative;
   cursor: pointer;
   overflow: hidden;
+  -webkit-appearance: button
   -webkit-tap-highlight-color: transparent;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -49,8 +50,8 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
     `}
 
     ${(props) =>
-    props.size === "xs" &&
-    css`
+      props.size === "xs" &&
+      css`
       padding: .25rem .5rem;
       font-size: .71rem;
       line-height: 1.2;
@@ -59,8 +60,8 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
       `}
 
       ${(props) =>
-    props.justIcon &&
-    css`
+        props.justIcon &&
+        css`
     padding: 8px;
     font-size: 10px;
     line-height: initial;

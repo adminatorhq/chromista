@@ -21,7 +21,7 @@ const Root = styled.div<{ show: boolean }>`
   height: 100vh;
   left: 54px;
   position: fixed;
-  width: 300px;
+  width: 296px;
   order: 1;
   z-index: 10;
   display: ${({ show }) => (show ? "block" : "none")};

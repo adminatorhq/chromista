@@ -1,26 +1,19 @@
-import React from "react";
-import ReactTooltip from "react-tooltip";
-import { SYSTEM_COLORS } from "../../theme";
+import React, { ReactNode, useId } from "react";
+import { Tooltip as BaseTooltip } from "react-tooltip";
 
 export interface IProps {
-  id: string;
-  place?: "bottom" | "right";
-  offset?: { right: number };
+  children: ReactNode;
+  text: string;
+  place?: React.ComponentProps<typeof BaseTooltip>["place"];
+  offset?: number;
 }
 
-// .hello{
-//     padding: .25rem .5rem;
-//   }
-
-export function Tooltip({ id, place = "bottom", offset }: IProps) {
+export function Tooltip({ children, text, place = "right", offset }: IProps) {
+  const id = useId();
   return (
-    <ReactTooltip
-      id={id}
-      backgroundColor={SYSTEM_COLORS.black}
-      effect="solid"
-      className="hello"
-      offset={offset}
-      place={place}
-    />
+    <>
+      <span id={id}> {children} </span>
+      <BaseTooltip anchorId={id} content={text} place={place} offset={offset} />
+    </>
   );
 }

@@ -13,6 +13,8 @@ export const FORM_INPUT_SHADOW_CSS = css`
 `;
 
 export const InputStyles = css<IInput>`
+  margin: 0;
+  overflow: visible;
   display: block;
   width: 100%;
   height: calc(1.8em + 0.75rem + 2px);

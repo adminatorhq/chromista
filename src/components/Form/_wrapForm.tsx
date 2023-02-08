@@ -46,15 +46,9 @@ export const wrapLabelAndError = (
             </>
           )}
           {description ? (
-            <>
-              {" "}
-              <HelpCircle
-                data-for="form-wrapper"
-                size="15"
-                data-tip={description}
-              />
-              <Tooltip id="form-wrapper" />
-            </>
+            <Tooltip text={description} place="right">
+              <HelpCircle size="15" />
+            </Tooltip>
           ) : null}
         </div>
         <Stack flex={1} justify="end">

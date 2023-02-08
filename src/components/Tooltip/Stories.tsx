@@ -8,29 +8,26 @@ export default {
   title: "Components/Tooltip",
   component: Tooltip,
   args: {
-    id: "foo",
+    text: "I am a tooltip content",
   },
 };
 
 const Template: Story<IProps> = (args) => (
   <AppWrapper>
-    <p id="foo">Hover over me</p>
-    <Tooltip {...args} />
+    <Tooltip {...args}>Hover over me</Tooltip>
   </AppWrapper>
 );
 
 export const Default = Template.bind({});
 Default.args = {};
 
-export const ToTheRight = Template.bind({});
-ToTheRight.args = {
+export const Right = Template.bind({});
+Right.args = {
   place: "right",
 };
 
-export const OffsetRight = Template.bind({});
-OffsetRight.args = {
+export const Offset = Template.bind({});
+Offset.args = {
   place: "right",
-  offset: {
-    right: 40,
-  },
+  offset: 30,
 };

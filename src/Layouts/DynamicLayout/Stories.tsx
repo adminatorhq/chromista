@@ -2,7 +2,7 @@
 import React from "react";
 import { Story } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { HardDrive, Settings } from "react-feather";
+import { Home, Settings, Shield, Table, User, Users, Zap } from "react-feather";
 import { DataStateKeys } from "@hadmean/protozoa";
 import { DynamicLayout, IProps } from ".";
 import { AppWrapper } from "../../AppWrapper";
@@ -15,8 +15,8 @@ export default {
     children: <p>Layout Content Will Be Here</p>,
     selectionView: [
       {
-        title: "Menu Item 1",
-        icon: HardDrive,
+        title: "Home",
+        icon: Home,
         action: action("menu Action"),
         view: <p>First View</p>,
         description: "Some Description here",
@@ -28,8 +28,8 @@ export default {
         ],
       },
       {
-        title: "Error Menu Items",
-        icon: HardDrive,
+        title: "Tables",
+        icon: Table,
         action: action("menu Action"),
         viewMenuItems: {
           menuItems: {
@@ -42,8 +42,8 @@ export default {
         description: "Some Description here",
       },
       {
-        title: "Loading Menu Items",
-        icon: HardDrive,
+        title: "Actions",
+        icon: Zap,
         action: action("menu Action"),
         viewMenuItems: {
           menuItems: {
@@ -56,8 +56,8 @@ export default {
         description: "Some Description here",
       },
       {
-        title: "Empty Menu Items",
-        icon: HardDrive,
+        title: "Settings",
+        icon: Settings,
         action: action("menu Action"),
         viewMenuItems: {
           menuItems: {
@@ -70,8 +70,8 @@ export default {
         description: "Some Description here",
       },
       {
-        title: "With Menu Items",
-        icon: HardDrive,
+        title: "Users",
+        icon: Users,
         action: action("menu Action"),
         viewMenuItems: {
           menuItems: {
@@ -90,8 +90,8 @@ export default {
         description: "Some Description here",
       },
       {
-        title: "With Menu Items Top Action",
-        icon: HardDrive,
+        title: "Roles",
+        icon: Shield,
         action: action("menu Action"),
         viewMenuItems: {
           topAction: {
@@ -128,8 +128,8 @@ export const WithSecondary = Template.bind({});
 WithSecondary.args = {
   secondarySelectionView: [
     {
-      title: "No action just links",
-      icon: Settings,
+      title: "Account",
+      icon: User,
       action: "/foo",
       description: "Some Description here",
     },
