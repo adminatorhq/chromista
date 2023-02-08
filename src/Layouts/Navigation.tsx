@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import Link from "next/link";
 import { ISelectionView } from "./types";
 import { USE_ROOT_COLOR } from "../theme";
+import { Tooltip } from "../components/Tooltip";
 
 interface IRenderNavigation {
   navigation: Array<ISelectionView & { sideBarAction: () => void }>;
@@ -81,30 +82,36 @@ export function RenderNavigation({
           const isActive = currentTitle === title;
           const content = <StyleMenuIcon as={icon} $isActive={isActive} />;
           return (
-            <StyledLeftSideNavMenuList key={title} $isActive={isActive}>
-              {typeof action === "string" ? (
-                <Link href={action || ""} passHref>
+            <StyledLeftSideNavMenuList
+              key={title}
+              $isActive={isActive}
+              className="brand-tooltip"
+            >
+              <Tooltip text={title} offset={8} place="right">
+                {typeof action === "string" ? (
+                  <Link href={action || ""} passHref>
+                    <StyledLeftSideNavMenuListAnchor
+                      onClick={() => {
+                        sideBarAction();
+                        secondaryAction?.();
+                      }}
+                    >
+                      {content}
+                    </StyledLeftSideNavMenuListAnchor>
+                  </Link>
+                ) : (
                   <StyledLeftSideNavMenuListAnchor
+                    as={StyledLinkLikeButton}
                     onClick={() => {
+                      action?.();
                       sideBarAction();
                       secondaryAction?.();
                     }}
                   >
                     {content}
                   </StyledLeftSideNavMenuListAnchor>
-                </Link>
-              ) : (
-                <StyledLeftSideNavMenuListAnchor
-                  as={StyledLinkLikeButton}
-                  onClick={() => {
-                    action?.();
-                    sideBarAction();
-                    secondaryAction?.();
-                  }}
-                >
-                  {content}
-                </StyledLeftSideNavMenuListAnchor>
-              )}
+                )}
+              </Tooltip>
             </StyledLeftSideNavMenuList>
           );
         }

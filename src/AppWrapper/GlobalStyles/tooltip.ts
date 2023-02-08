@@ -47,4 +47,19 @@ export const GLOBAL_TOOLTIP_CSS = css`
     visibility: visible;
     opacity: 1;
   }
+
+  .brand-tooltip .styles-module_tooltip__mnnfp {
+    background-color: ${USE_ROOT_COLOR("primary-color")};
+    color: ${USE_ROOT_COLOR("text-on-primary")};
+    box-shadow: none;
+    border: none;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .brand-tooltip .styles-module_arrow__K0L3T {
+    background-color: ${USE_ROOT_COLOR("primary-color")};
+    width: 0px;
+    height: 0px;
+    border: none;
+  }
 `;
