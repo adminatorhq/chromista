@@ -22,11 +22,11 @@ import {
   getPageCount,
   internalTableStateToStandard,
 } from "./utils";
-import { DelayedComponentIsLoading } from "../../ComponentIsLoading";
 import { TablePagination } from "../_Pagination";
 import { EmptyWrapper } from "../../EmptyWrapper";
 import { ErrorAlert } from "../../Alert";
 import { TableSkeleton } from "../../Skeleton/Table";
+import { BaseSkeleton } from "../../Skeleton";
 
 export { ITableColumn, IProps };
 
@@ -90,7 +90,6 @@ const StyledTableRoot = styled.div<{ lean?: true }>`
 
 const StyledTable = styled.table<{ $border?: boolean }>`
   width: 100%;
-  margin-bottom: 1rem;
   color: ${USE_ROOT_COLOR("main-text")};
   border-collapse: collapse;
   .dropdown-toggle::after {
@@ -103,29 +102,6 @@ const StyledTable = styled.table<{ $border?: boolean }>`
       border-right: 1px solid ${USE_ROOT_COLOR("border-color")};
       border-left: 1px solid ${USE_ROOT_COLOR("border-color")};
     `}
-`;
-
-const StyledOverlay = styled.div`
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.6);
-  z-index: 4;
-  cursor: pointer;
-`;
-
-const StyledOverlayText = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 50px;
-  color: white;
-  transform: translate(-50%, -50%);
 `;
 
 const StyledSorting = styled(ArrowUp)<{ $isSorted: boolean; $isDesc: boolean }>`
@@ -254,17 +230,24 @@ export function Table<T extends unknown>({
     return <TableSkeleton lean={lean} />;
   }
 
+  const previousDataRender = (
+    <>
+      {isPreviousData ? (
+        <BaseSkeleton
+          height="3px"
+          width="100%"
+          style={{
+            background: USE_ROOT_COLOR("primary-color"),
+          }}
+        />
+      ) : null}
+    </>
+  );
+
   return (
     <StyledTableResponsive>
       <StyledTableRoot lean={lean}>
-        {isPreviousData ? (
-          // TODO change this to progress bar
-          <StyledOverlay>
-            <StyledOverlayText>
-              <DelayedComponentIsLoading />
-            </StyledOverlayText>
-          </StyledOverlay>
-        ) : null}
+        {previousDataRender}
         <StyledTable $border={border}>
           <StyledTHead>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -360,6 +343,7 @@ export function Table<T extends unknown>({
             </StyledTFoot>
           )}
         </StyledTable>
+        {previousDataRender}
       </StyledTableRoot>
       {!lean && (
         <TablePagination
