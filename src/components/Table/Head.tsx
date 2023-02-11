@@ -2,10 +2,10 @@ import { flexRender, Table } from "@tanstack/react-table";
 import * as React from "react";
 import { ArrowUp } from "react-feather";
 import styled, { css } from "styled-components";
-import { USE_ROOT_COLOR } from "../../../theme/root";
-import { Stack, Text } from "../../../ui-blocks";
-import { TableFilter } from "../filters";
-import { TableFilterType } from "../filters/types";
+import { USE_ROOT_COLOR } from "../../theme/root";
+import { Stack, Text } from "../../ui-blocks";
+import { TableFilter } from "./filters";
+import { TableFilterType } from "./filters/types";
 import { StyledTh } from "./styles";
 
 const StyledTHead = styled.thead`

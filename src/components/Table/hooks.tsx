@@ -2,7 +2,7 @@ import { IPaginatedDataState } from "@hadmean/protozoa";
 import { createColumnHelper, Table } from "@tanstack/react-table";
 import { useEffect, useMemo, useState } from "react";
 import { usePrevious } from "react-use";
-import { ITableColumn } from "../types";
+import { ITableColumn } from "./types";
 import {
   buildTableStateToRefreshPageNumber,
   internalTableStateToStandard,

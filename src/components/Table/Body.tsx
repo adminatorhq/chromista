@@ -1,8 +1,8 @@
 import React from "react";
 import { flexRender, Table } from "@tanstack/react-table";
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../../../theme/root";
-import { EmptyWrapper } from "../../EmptyWrapper";
+import { USE_ROOT_COLOR } from "../../theme/root";
+import { EmptyWrapper } from "../EmptyWrapper";
 
 const StyledTd = styled.td`
   padding: 0.45rem;

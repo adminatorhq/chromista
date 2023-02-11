@@ -1,8 +1,8 @@
 import { flexRender, Table } from "@tanstack/react-table";
 import React from "react";
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../../../theme/root";
-import { Stack, Text } from "../../../ui-blocks";
+import { USE_ROOT_COLOR } from "../../theme/root";
+import { Stack, Text } from "../../ui-blocks";
 import { StyledTh } from "./styles";
 
 const SHOW_FOOTER_THRESHOLD = 20;

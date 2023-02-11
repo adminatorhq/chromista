@@ -18,6 +18,7 @@ interface IProps {
 
 const Root = styled.div`
   cursor: pointer;
+  line-height: 0;
 `;
 
 const DownRoot = styled(Stack)`

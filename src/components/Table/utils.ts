@@ -1,6 +1,6 @@
 import { IPaginatedDataState } from "@hadmean/protozoa";
 import { TableState } from "@tanstack/react-table";
-import { DEFAULT_TABLE_STATE } from "../constants";
+import { DEFAULT_TABLE_STATE } from "./constants";
 
 export function getPageCount(totalRecords: number, pageSize?: number) {
   return totalRecords === 0
