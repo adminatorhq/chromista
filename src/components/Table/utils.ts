@@ -24,7 +24,7 @@ export function internalTableStateToStandard<T>(
   return {
     pageIndex: tableState.pagination.pageIndex,
     pageSize: tableState.pagination.pageSize,
-    filters: [],
+    filters: tableState.columnFilters as unknown as Record<string, T>[],
     hiddenColumns: [],
     sortBy: tableState.sorting,
   };

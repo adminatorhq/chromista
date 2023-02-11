@@ -78,8 +78,19 @@ export function Table<T extends unknown>({
 
   const internalColumns = useInternalColumns(columns);
 
+  const tableDataStringified = React.useMemo(() => {
+    return data.data.map((datum) =>
+      Object.fromEntries(
+        Object.entries(datum).map(([key, value]) => [
+          key,
+          typeof value === "number" ? `${value}` : value,
+        ])
+      )
+    );
+  }, [data.data]);
+
   const table = useReactTable({
-    data: data.data,
+    data: tableDataStringified,
     pageCount: totalPageCount,
     columns: internalColumns,
     manualPagination: true,

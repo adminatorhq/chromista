@@ -1,5 +1,10 @@
 import { IPaginatedDataState } from "@hadmean/protozoa";
-import { createColumnHelper, Table } from "@tanstack/react-table";
+import {
+  ColumnFiltersState,
+  createColumnHelper,
+  Table,
+  Updater,
+} from "@tanstack/react-table";
 import { useEffect, useMemo, useState } from "react";
 import { usePrevious } from "react-use";
 import { ITableColumn } from "./types";
@@ -67,9 +72,11 @@ export function useSyncTableState<T>(
       table.setSorting(overridePaginatedDataState.sortBy);
     }
 
-    // if (overridePaginatedDataState.filters) {
-    //   table.setGlobalFilters(overridePaginatedDataState.filters);
-    // }
+    if (overridePaginatedDataState.filters) {
+      table.setColumnFilters(
+        overridePaginatedDataState.filters as unknown as Updater<ColumnFiltersState>
+      );
+    }
 
     if (typeof overridePaginatedDataState.pageIndex === "number") {
       table.setPageIndex(overridePaginatedDataState.pageIndex);
