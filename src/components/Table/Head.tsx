@@ -42,6 +42,10 @@ export function TableHead({ table }: IProps) {
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
           {headerGroup.headers.map((header) => {
+            const view = flexRender(
+              header.column.columnDef.header,
+              header.getContext()
+            );
             return (
               <StyledTh
                 key={header.id}
@@ -50,18 +54,13 @@ export function TableHead({ table }: IProps) {
               >
                 <Stack justify="space-between" align="center">
                   <Typo.SM weight="bold" as="span">
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                    {header.isPlaceholder ? null : view}
                   </Typo.SM>
                   <Stack justify="end" width="auto" align="center" spacing={0}>
                     {header.column.getCanSort() && (
                       <StyledSorting
                         size={18}
-                        aria-label={`Sort By ${header.id} ${
+                        aria-label={`Sort By ${view} ${
                           // eslint-disable-next-line no-nested-ternary
                           header.column.getIsSorted()
                             ? header.column.getIsSorted() === "desc"
@@ -75,6 +74,7 @@ export function TableHead({ table }: IProps) {
                     )}
                     {header.column.getCanFilter() ? (
                       <TableFilter
+                        view={view}
                         column={header.column}
                         type={
                           (header.column.columnDef.meta as IColumnMeta).filter

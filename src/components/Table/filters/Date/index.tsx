@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Calendar } from "react-feather";
 import useDebounce from "react-use/lib/useDebounce";
 import {
-  FilterOperators,
   IColumnFilterBag,
   DATE_FILTER_OPTIONS,
   DATE_FILTER_VALUE,
 } from "@hadmean/protozoa";
-import { FilterWrapper } from "../_FilterWrapper";
 import { IFilterProps } from "../types";
 import { SEARCH_DEBOUNCE_WAIT } from "../constants";
-import { RenderFilterOperator } from "../_FilterOperator";
 import { Spacer } from "../../../../ui-blocks";
 import { DateSelection } from "./_Selection";
 import { FormSwitch } from "../../../Form";
@@ -18,7 +14,7 @@ import { ControlledFormDateInput } from "../../../Form/FormDateInput";
 
 export function FilterTableByDate({
   column: { filterValue, setFilter },
-}: IFilterProps<IColumnFilterBag<string>>) {
+}: IFilterProps<IColumnFilterBag<string>, undefined>) {
   const [localValue, setLocalValue] = useState(filterValue);
 
   useEffect(() => {
@@ -36,21 +32,7 @@ export function FilterTableByDate({
   const [isOnCustomDate, setIsOnCustomDate] = useState(false);
 
   return (
-    <FilterWrapper
-      filterHasValue={
-        filterValue?.value !== undefined || filterValue?.value2 !== undefined
-      }
-      clearFilter={setFilter}
-      IconComponent={Calendar}
-      label="Date"
-    >
-      <div style={{ display: "none" }}>
-        <RenderFilterOperator
-          operators={[FilterOperators.DATE]}
-          filterValue={filterValue}
-          setFilter={setFilter}
-        />
-      </div>
+    <>
       <FormSwitch
         name="custom_date"
         onChange={(newFormat) => {
@@ -118,6 +100,6 @@ export function FilterTableByDate({
           />
         </>
       )}
-    </FilterWrapper>
+    </>
   );
 }

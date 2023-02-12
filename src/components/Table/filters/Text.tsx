@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Search } from "react-feather";
 import { useDebounce } from "react-use";
-import { FilterOperators, IColumnFilterBag } from "@hadmean/protozoa";
+import { IColumnFilterBag } from "@hadmean/protozoa";
 import { StyledInput } from "../../Form/Styles";
 import { SEARCH_DEBOUNCE_WAIT } from "./constants";
 import { IFilterProps } from "./types";
-import { RenderFilterOperator } from "./_FilterOperator";
-import { FilterWrapper } from "./_FilterWrapper";
 
 export function FilterTableByText({
   column: { filterValue, setFilter },
-}: IFilterProps<IColumnFilterBag<string>>) {
+}: IFilterProps<IColumnFilterBag<string>, undefined>) {
   const [localValue, setLocalValue] = useState(filterValue);
+
+  // Coming for this
 
   useEffect(() => {
     setLocalValue(filterValue);
@@ -26,31 +25,15 @@ export function FilterTableByText({
   );
 
   return (
-    <FilterWrapper
-      filterHasValue={filterValue?.value !== undefined}
-      clearFilter={setFilter}
-      IconComponent={Search}
-      label="Search"
-    >
-      <RenderFilterOperator
-        operators={[
-          FilterOperators.CONTAINS,
-          FilterOperators.EQUAL_TO,
-          FilterOperators.NOT_EQUAL,
-        ]}
-        filterValue={filterValue}
-        setFilter={setFilter}
-      />
-      <StyledInput
-        value={localValue?.value || ""}
-        onChange={(e: React.BaseSyntheticEvent) => {
-          setLocalValue({
-            ...filterValue,
-            value: e.target.value || undefined,
-          });
-        }}
-        placeholder="Search"
-      />
-    </FilterWrapper>
+    <StyledInput
+      value={localValue?.value || ""}
+      onChange={(e: React.BaseSyntheticEvent) => {
+        setLocalValue({
+          ...filterValue,
+          value: e.target.value || undefined,
+        });
+      }}
+      placeholder="Search"
+    />
   );
 }

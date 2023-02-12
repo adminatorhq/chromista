@@ -1,53 +1,55 @@
 import { Column } from "@tanstack/react-table";
 import React from "react";
 import { IColumnFilterBag } from "@hadmean/protozoa";
-import { FilterTableByStatus } from "./Status";
 import { TableFilterType } from "./types";
-import { FilterTableByListSelection } from "./List";
-import { FilterTableByIdField } from "./IdField";
-import { FilterTableByText } from "./Text";
-import { FilterTableByNumbers } from "./Number";
-import { FilterTableByBooleans } from "./Boolean";
-import { FilterTableByDate } from "./Date";
+import { FilterWrapper } from "./_FilterWrapper";
+import { RenderFilterOperator } from "./_FilterOperator";
+import { FilterComponentImpl } from "./config";
 
 interface IProps {
   type?: TableFilterType;
   column: Column<Record<string, unknown>, unknown>;
+  view?: React.ReactNode;
 }
 
-export function TableFilter({ type, column }: IProps) {
+export function TableFilter({ type, column, view }: IProps) {
   if (!type) {
     return null;
   }
-  const getComponent = () => {
-    switch (type._type) {
-      case "idField":
-        return FilterTableByIdField;
-      case "number":
-        return FilterTableByNumbers;
-      case "boolean":
-        return FilterTableByBooleans(type.bag);
-      case "string":
-        return FilterTableByText;
-      case "status":
-        return FilterTableByStatus(type.bag);
-      case "date":
-        return FilterTableByDate;
-      case "list":
-        return FilterTableByListSelection(type.bag);
-    }
+
+  const filterValue: IColumnFilterBag<any> =
+    column.getFilterValue() as IColumnFilterBag<any>;
+
+  const setFilter = (value?: IColumnFilterBag<unknown>) => {
+    return column.setFilterValue(value);
   };
 
-  const FilterComponent = getComponent();
+  const { filterHasValueImpl, operators, FilterComponent } =
+    FilterComponentImpl[type._type];
 
   return (
-    <FilterComponent
-      column={{
-        filterValue: column.getFilterValue() as IColumnFilterBag<any>,
-        setFilter: (value?: IColumnFilterBag<unknown>) => {
-          return column.setFilterValue(value);
-        },
-      }}
-    />
+    <FilterWrapper
+      filterHasValue={filterHasValueImpl(filterValue)}
+      clearFilter={setFilter}
+      columnLabel={view}
+      filterType={type._type}
+    >
+      {operators.length > 0 && (
+        <div style={{ display: operators.length === 1 ? "none" : "block" }}>
+          <RenderFilterOperator
+            operators={operators}
+            filterValue={filterValue}
+            setFilter={setFilter}
+          />
+        </div>
+      )}
+      <FilterComponent
+        column={{
+          filterValue,
+          setFilter,
+        }}
+        bag={type.bag}
+      />
+    </FilterWrapper>
   );
 }
