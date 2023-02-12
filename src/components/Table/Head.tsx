@@ -49,14 +49,14 @@ export function TableHead({ table }: IProps) {
                 onClick={header.column.getToggleSortingHandler()}
               >
                 <Stack justify="space-between" align="center">
-                  <Typo.XS weight="bold" as="span">
+                  <Typo.SM weight="bold" as="span">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
                           header.getContext()
                         )}
-                  </Typo.XS>
+                  </Typo.SM>
                   <Stack justify="end" width="auto" align="center" spacing={0}>
                     {header.column.getCanSort() && (
                       <StyledSorting

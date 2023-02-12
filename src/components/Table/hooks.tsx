@@ -25,6 +25,7 @@ export const useInternalColumns = (columns: ITableColumn[]) => {
         },
         enableSorting: !column.disableSortBy,
         header: column.Header,
+        footer: column.Header,
         enableColumnFilter: !!column.filter,
         cell: (props) =>
           column?.Cell

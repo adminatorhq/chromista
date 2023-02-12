@@ -121,13 +121,19 @@ export function Table<T extends unknown>({
       }}
     />
   ) : (
-    <div style={{ height: "2px" }} />
+    <div
+      style={{
+        height: dataLength === 0 || lean ? "0px" : "2px",
+        width: "100%",
+        background: USE_ROOT_COLOR("soft-color"),
+      }}
+    />
   );
 
   return (
     <StyledTableResponsive>
-      {previousDataRender}
       <StyledTableRoot $enforceHeight={dataLength > 0 && !lean}>
+        {previousDataRender}
         <StyledTable $border={border}>
           <TableHead table={table} />
           <TableBody
@@ -138,8 +144,8 @@ export function Table<T extends unknown>({
           />
           <TableFoot table={table} dataLength={dataLength} />
         </StyledTable>
+        {previousDataRender}
       </StyledTableRoot>
-      {previousDataRender}
       {!lean && (
         <TablePagination
           {...{

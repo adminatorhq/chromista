@@ -26,15 +26,15 @@ export function TableFoot({ table, dataLength }: IProps) {
         <tr key={footerGroup.id}>
           {footerGroup.headers.map((header) => (
             <StyledTh key={header.id}>
-              <Stack justify="center">
-                <Typo.XS weight="bold" as="span">
+              <Stack justify="start">
+                <Typo.SM weight="bold" as="span">
                   {header.isPlaceholder
                     ? null
                     : flexRender(
                         header.column.columnDef.footer,
                         header.getContext()
                       )}
-                </Typo.XS>
+                </Typo.SM>
               </Stack>
             </StyledTh>
           ))}

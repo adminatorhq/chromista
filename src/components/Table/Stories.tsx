@@ -6,6 +6,49 @@ import { IPaginatedDataState } from "@hadmean/protozoa";
 import { AppWrapper } from "../../AppWrapper";
 import { Table, IProps, DEFAULT_TABLE_STATE } from ".";
 
+const TABLE_DATA = {
+  data: {
+    data: [
+      {
+        id: 1,
+        name: "React",
+        age: 27,
+        verified: "true",
+        approved: "pending",
+        role: "Admin",
+        author: "Facbook",
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: 2,
+        name: "Angular",
+        age: 28,
+        verified: "true",
+        role: "Editor",
+        approved: "progress",
+        author: "Goggle",
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: 3,
+        name: "Vue",
+        age: 29,
+        role: "User",
+        verified: "false",
+        approved: "done",
+        author: "Evan Yue",
+        createdAt: new Date().toISOString(),
+      },
+    ],
+    pageIndex: 1,
+    pageSize: 10,
+    totalRecords: 200,
+  },
+  isLoading: false,
+  error: false,
+  isPreviousData: false,
+};
+
 export default {
   title: "Components/Table",
   component: Table,
@@ -90,48 +133,7 @@ export default {
         Cell: () => <span>Some Action</span>,
       },
     ],
-    tableData: {
-      data: {
-        data: [
-          {
-            id: 1,
-            name: "React",
-            age: 27,
-            verified: "true",
-            approved: "pending",
-            role: "Admin",
-            author: "Facbook",
-            createdAt: new Date().toISOString(),
-          },
-          {
-            id: 2,
-            name: "Angular",
-            age: 28,
-            verified: "true",
-            role: "Editor",
-            approved: "progress",
-            author: "Goggle",
-            createdAt: new Date().toISOString(),
-          },
-          {
-            id: 3,
-            name: "Vue",
-            age: 29,
-            role: "User",
-            verified: "false",
-            approved: "done",
-            author: "Evan Yue",
-            createdAt: new Date().toISOString(),
-          },
-        ],
-        pageIndex: 1,
-        pageSize: 10,
-        totalRecords: 200,
-      },
-      isLoading: false,
-      error: false,
-      isPreviousData: false,
-    },
+    tableData: TABLE_DATA,
   } as IProps<unknown>,
 };
 
@@ -225,14 +227,7 @@ Loading.args = {
 export const PreviousData = Template.bind({});
 PreviousData.args = {
   tableData: {
-    data: {
-      data: [],
-      pageIndex: 1,
-      pageSize: 10,
-      totalRecords: 0,
-    },
-    isLoading: false,
-    error: false,
+    ...TABLE_DATA,
     isPreviousData: true,
   },
 };

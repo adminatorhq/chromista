@@ -3,6 +3,7 @@ import { flexRender, Table } from "@tanstack/react-table";
 import styled from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme/root";
 import { EmptyWrapper } from "../EmptyWrapper";
+import { Typo } from "../../ui-blocks/Text";
 
 const StyledTd = styled.td`
   padding: 0.45rem;
@@ -42,7 +43,9 @@ export function TableBody({
         <StyledBodyTR key={row.id}>
           {row.getVisibleCells().map((cell) => (
             <StyledTd key={cell.id}>
-              {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              <Typo.SM as="span">
+                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              </Typo.SM>
             </StyledTd>
           ))}
         </StyledBodyTR>
