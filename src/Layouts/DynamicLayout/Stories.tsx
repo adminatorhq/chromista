@@ -7,12 +7,35 @@ import { DataStateKeys } from "@hadmean/protozoa";
 import { DynamicLayout, IProps } from ".";
 import { AppWrapper } from "../../AppWrapper";
 import { INavigationMenuItems } from "../types";
+import { Table as TableCmp } from "../../components/Table";
 
 export default {
   title: "Layouts/DynamicLayout",
   component: DynamicLayout,
   args: {
-    children: <p>Layout Content Will Be Here</p>,
+    children: (
+      <TableCmp
+        columns={[
+          {
+            Header: "Id",
+            accessor: "id",
+            filter: { _type: "idField" },
+          },
+        ]}
+        syncPaginatedDataStateOut={() => {}}
+        tableData={{
+          data: {
+            data: [],
+            pageIndex: 1,
+            pageSize: 10,
+            totalRecords: 0,
+          },
+          isLoading: false,
+          error: false,
+          isPreviousData: false,
+        }}
+      />
+    ),
     selectionView: [
       {
         title: "Home",

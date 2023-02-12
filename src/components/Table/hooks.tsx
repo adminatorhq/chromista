@@ -28,7 +28,7 @@ export const useInternalColumns = (columns: ITableColumn[]) => {
         enableColumnFilter: !!column.filter,
         cell: (props) =>
           column?.Cell
-            ? column?.Cell({ value: "", row: props.row })
+            ? column?.Cell({ value: props.getValue(), row: props.row })
             : props.getValue(),
       });
     });

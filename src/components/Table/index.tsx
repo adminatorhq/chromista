@@ -28,11 +28,11 @@ const StyledTableResponsive = styled.div`
   -webkit-overflow-scrolling: touch;
 `;
 
-const StyledTableRoot = styled.div<{ lean?: true }>`
+const StyledTableRoot = styled.div<{ $enforceHeight?: boolean }>`
   position: relative;
   overflow-x: auto;
   background: ${USE_ROOT_COLOR("base-color")};
-  ${(props) => !props.lean && `min-height: 500px;`}
+  ${(props) => props.$enforceHeight && `min-height: 500px;`}
 `;
 
 const StyledTable = styled.table<{ $border?: boolean }>`
@@ -114,18 +114,20 @@ export function Table<T extends unknown>({
 
   const previousDataRender = isPreviousData ? (
     <BaseSkeleton
-      height="3px"
+      height="2px"
       width="100%"
       style={{
         background: USE_ROOT_COLOR("primary-color"),
       }}
     />
-  ) : null;
+  ) : (
+    <div style={{ height: "2px" }} />
+  );
 
   return (
     <StyledTableResponsive>
-      <StyledTableRoot lean={lean}>
-        {previousDataRender}
+      {previousDataRender}
+      <StyledTableRoot $enforceHeight={dataLength > 0 && !lean}>
         <StyledTable $border={border}>
           <TableHead table={table} />
           <TableBody
@@ -136,8 +138,8 @@ export function Table<T extends unknown>({
           />
           <TableFoot table={table} dataLength={dataLength} />
         </StyledTable>
-        {previousDataRender}
       </StyledTableRoot>
+      {previousDataRender}
       {!lean && (
         <TablePagination
           {...{

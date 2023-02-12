@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useSideBarStore } from "../sidebar.store";
 import { ISelectionView } from "../types";
 import { ViewMenuItems } from "./ViewMenuItems";
-import { SoftButton, StyledCardBody } from "../../components";
+import { SHADOW_CSS, SoftButton, StyledCardBody } from "../../components";
 import { Divider, Stack, Typo } from "../../ui-blocks";
 
 interface IProps {
@@ -15,6 +15,7 @@ const StyledHideScrollbar = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   height: 101vh;
+  ${SHADOW_CSS};
 `;
 
 const Root = styled.div<{ show: boolean }>`

@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import Link from "next/link";
 import { ISelectionView } from "./types";
 import { USE_ROOT_COLOR } from "../theme";
-import { Tooltip } from "../components/Tooltip";
 
 interface IRenderNavigation {
   navigation: Array<ISelectionView & { sideBarAction: () => void }>;
@@ -87,31 +86,29 @@ export function RenderNavigation({
               $isActive={isActive}
               className="brand-tooltip"
             >
-              <Tooltip text={title} offset={8} place="right">
-                {typeof action === "string" ? (
-                  <Link href={action || ""} passHref>
-                    <StyledLeftSideNavMenuListAnchor
-                      onClick={() => {
-                        sideBarAction();
-                        secondaryAction?.();
-                      }}
-                    >
-                      {content}
-                    </StyledLeftSideNavMenuListAnchor>
-                  </Link>
-                ) : (
+              {typeof action === "string" ? (
+                <Link href={action || ""} passHref>
                   <StyledLeftSideNavMenuListAnchor
-                    as={StyledLinkLikeButton}
                     onClick={() => {
-                      action?.();
                       sideBarAction();
                       secondaryAction?.();
                     }}
                   >
                     {content}
                   </StyledLeftSideNavMenuListAnchor>
-                )}
-              </Tooltip>
+                </Link>
+              ) : (
+                <StyledLeftSideNavMenuListAnchor
+                  as={StyledLinkLikeButton}
+                  onClick={() => {
+                    action?.();
+                    sideBarAction();
+                    secondaryAction?.();
+                  }}
+                >
+                  {content}
+                </StyledLeftSideNavMenuListAnchor>
+              )}
             </StyledLeftSideNavMenuList>
           );
         }
