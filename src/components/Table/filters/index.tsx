@@ -44,8 +44,8 @@ export function TableFilter({ type, column }: IProps) {
     <FilterComponent
       column={{
         filterValue: column.getFilterValue() as IColumnFilterBag<any>,
-        setFilter: (value) => {
-          column.setFilterValue(value);
+        setFilter: (value?: IColumnFilterBag<unknown>) => {
+          return column.setFilterValue(value);
         },
       }}
     />
