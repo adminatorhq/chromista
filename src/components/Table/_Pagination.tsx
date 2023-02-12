@@ -2,7 +2,7 @@ import ReactPaginate from "react-paginate";
 import React from "react";
 import styled from "styled-components";
 import { SimpleSelect } from "../Form";
-import { Stack, Text } from "../../ui-blocks";
+import { Stack, Typo } from "../../ui-blocks";
 import { USE_ROOT_COLOR } from "../../theme";
 
 const StyledPagination = styled.div`
@@ -71,7 +71,7 @@ export function TablePagination({
   return (
     <Root>
       <Stack justify="space-between" align="center">
-        <Text>
+        <Typo.MD>
           Showing{" "}
           <SimpleSelect
             options={PAGE_SIZES.map((option) => ({
@@ -83,7 +83,7 @@ export function TablePagination({
           />{" "}
           entries of <b>{Intl.NumberFormat("en-US").format(totalRecords)}</b>{" "}
           results
-        </Text>
+        </Typo.MD>
         <StyledPagination>
           <ReactPaginate
             previousLabel="prev"

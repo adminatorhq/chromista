@@ -9,7 +9,7 @@ export function ListSkeleton({ count }: IProps) {
   return (
     <div data-testid="list-skeleton">
       {Array.from({ length: count }, (_, k) => k + 1).map((key) => (
-        <BaseSkeleton key={key} height="44px" bottom={2} />
+        <BaseSkeleton key={key} height="40px" bottom={2} />
       ))}
     </div>
   );

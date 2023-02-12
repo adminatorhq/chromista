@@ -2,7 +2,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { Icon, Loader } from "react-feather";
-import { Text } from "../../ui-blocks";
+import { Typo } from "../../ui-blocks";
 import { StyledSoftButton } from "../Button/Button";
 import { USE_ROOT_COLOR } from "../../theme";
 import { BREAKPOINTS } from "../../constants";
@@ -199,14 +199,12 @@ export function DropDownMenu({
             key={label$1}
             onClick={() => onMenuItemClick(index)}
           >
-            <Text size="6" as="span">
-              {label$1}
-            </Text>
+            <Typo.XS as="span">{label$1}</Typo.XS>
             <br />
             {description ? (
-              <Text size="6" color="muted" as="span">
+              <Typo.XS color="muted" as="span">
                 {description}
-              </Text>
+              </Typo.XS>
             ) : null}
           </StyledDropDownItem>
         ))}

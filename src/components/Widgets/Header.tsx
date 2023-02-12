@@ -1,14 +1,12 @@
 import React from "react";
-import { Stack, Text } from "../../ui-blocks";
+import { Stack, Typo } from "../../ui-blocks";
 import { DeleteButton, SoftButton } from "../Button";
 import { IWidgetHeaderProps } from "./types";
 
 export function WidgetHeader({ title, setting, link }: IWidgetHeaderProps) {
   return (
     <Stack justify="space-between" align="flex-start">
-      <Text size="4" ellipsis>
-        {title}
-      </Text>
+      <Typo.MD ellipsis>{title}</Typo.MD>
       <Stack width="auto">
         {setting && (
           <>

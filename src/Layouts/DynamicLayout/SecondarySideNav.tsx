@@ -5,7 +5,7 @@ import { useSideBarStore } from "../sidebar.store";
 import { ISelectionView } from "../types";
 import { ViewMenuItems } from "./ViewMenuItems";
 import { SoftButton, StyledCardBody } from "../../components";
-import { Divider, Stack, Text } from "../../ui-blocks";
+import { Divider, Stack, Typo } from "../../ui-blocks";
 
 interface IProps {
   selectionView: ISelectionView[];
@@ -55,9 +55,9 @@ export function SecondaryLeftSideNav({ selectionView }: IProps) {
             <StyledRenderView key={title} show={title === currentMiniSideBar}>
               <StyledCardBody radiusLess>
                 <Stack justify="space-between" align="center">
-                  <Text size="4" weight="bold" ellipsis>
+                  <Typo.MD weight="bold" ellipsis>
                     {title}
-                  </Text>
+                  </Typo.MD>
                   <SoftButton
                     action={closeFullSideBar}
                     icon="close"

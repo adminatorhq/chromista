@@ -9,7 +9,7 @@ import { SoftButton } from "../../Button/SoftButton";
 import { StyledCard, StyledCardBody, StyledCardHeader } from "../../Card";
 import { Tooltip } from "../../Tooltip";
 import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
-import { Spacer, Stack, Text } from "../../../ui-blocks";
+import { Spacer, Stack, Typo } from "../../../ui-blocks";
 import { BaseSkeleton } from "../../Skeleton";
 
 export interface IProps {
@@ -72,7 +72,7 @@ export function SectionBox({
           <StyledCardHeader>
             <StyledCenterRow>
               <Col auto>
-                <Text size="4" weight="bold">
+                <Typo.MD weight="bold">
                   {isLoading ? (
                     <BaseSkeleton width="150px" height="20px" />
                   ) : (
@@ -83,7 +83,7 @@ export function SectionBox({
                       <HelpCircle size="15" />
                     </Tooltip>
                   ) : null}
-                </Text>
+                </Typo.MD>
               </Col>
               {newItemLink ||
               deleteAction ||
@@ -103,9 +103,9 @@ export function SectionBox({
                       />
                     ) : null}
                     {sideText ? (
-                      <Text color="muted" size="5" as="span" textStyle="italic">
+                      <Typo.SM color="muted" as="span" textStyle="italic">
                         {sideText}
-                      </Text>
+                      </Typo.SM>
                     ) : null}
                     {iconButtons
                       ? iconButtons.map(({ action, label, icon }) => (

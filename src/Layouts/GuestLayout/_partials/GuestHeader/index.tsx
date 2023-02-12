@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { USE_ROOT_COLOR } from "../../../../theme";
 import { StyledCardBody } from "../../../../components/Card";
-import { Spacer, Text } from "../../../../ui-blocks";
+import { Spacer, Typo } from "../../../../ui-blocks";
 
 const Root = styled(StyledCardBody)`
   background-color: ${USE_ROOT_COLOR("primary-color")};
@@ -33,13 +33,9 @@ export function GuestHeader({
       <a href={homeLink}>
         <img src={logo} height="50" alt="logo" />
         <Spacer />
-        <Text color="inverse">{title}</Text>
+        <Typo.MD color="inverse">{title}</Typo.MD>
         <Spacer size="xs" />
-        {subTitle ? (
-          <Text size="6" color="inverse">
-            {subTitle}
-          </Text>
-        ) : null}
+        {subTitle ? <Typo.XS color="inverse">{subTitle}</Typo.XS> : null}
       </a>
     </Root>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { StyledCard } from "../Card";
-import { Text } from "../../ui-blocks/Text";
+import { Typo } from "../../ui-blocks/Text";
 
 const StyledWrapper = styled.div`
   text-align: center;
@@ -16,7 +16,7 @@ export function SelectAnItem() {
         <img src="/assets/svgs/select.svg" alt="0" width="100px" />
         <br />
         <br />
-        <Text color="muted">I display selected items</Text>
+        <Typo.MD color="muted">I display selected items</Typo.MD>
       </StyledWrapper>
     </StyledCard>
   );

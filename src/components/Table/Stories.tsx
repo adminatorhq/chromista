@@ -87,7 +87,7 @@ export default {
         Header: "Actions",
         accessor: "__action__",
         disableSortBy: true,
-        Cell: () => <p>Some Action</p>,
+        Cell: () => <span>Some Action</span>,
       },
     ],
     tableData: {

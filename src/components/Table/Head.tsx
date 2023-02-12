@@ -3,7 +3,7 @@ import * as React from "react";
 import { ArrowUp } from "react-feather";
 import styled, { css } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme/root";
-import { Stack, Text } from "../../ui-blocks";
+import { Stack, Typo } from "../../ui-blocks";
 import { TableFilter } from "./filters";
 import { TableFilterType } from "./filters/types";
 import { StyledTh } from "./styles";
@@ -49,14 +49,14 @@ export function TableHead({ table }: IProps) {
                 onClick={header.column.getToggleSortingHandler()}
               >
                 <Stack justify="space-between" align="center">
-                  <Text size="6" weight="bold" as="span">
+                  <Typo.XS weight="bold" as="span">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
                           header.getContext()
                         )}
-                  </Text>
+                  </Typo.XS>
                   <Stack justify="end" width="auto" align="center" spacing={0}>
                     {header.column.getCanSort() && (
                       <StyledSorting

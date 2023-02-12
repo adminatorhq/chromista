@@ -6,7 +6,7 @@ import { DropzoneState } from "react-dropzone";
 import { ProgressBar } from "../../ProgressBar";
 import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../theme";
 import { DeleteButton } from "../../Button";
-import { Spacer, Text } from "../../../ui-blocks";
+import { Spacer, Typo } from "../../../ui-blocks";
 
 const StyledFileInput = styled.input`
   position: absolute;
@@ -84,10 +84,6 @@ const ProgressRoot = styled.div`
   top: 5px;
 `;
 
-const ErrorText = styled(Text)`
-  color: ${SYSTEM_COLORS.danger};
-`;
-
 export interface IProps {
   progress: number;
   disabled?: boolean;
@@ -122,14 +118,14 @@ export function Presentation({
       )}
       <div>
         <Upload size={40} color={USE_ROOT_COLOR("primary-color")} />
-        <Text>
+        <Typo.MD>
           {value
             ? "Drag and drop or click to replace"
             : "Drag and drop a file here, or click to select file"}
-        </Text>
+        </Typo.MD>
         <Spacer />
         {value && (
-          <Text color="muted" size="5">
+          <Typo.SM color="muted">
             {value}{" "}
             {!disabled ? (
               <DeleteButton
@@ -138,9 +134,13 @@ export function Presentation({
                 size="xs"
               />
             ) : null}
-          </Text>
+          </Typo.SM>
         )}
-        {error && <ErrorText weight="bold">{error}</ErrorText>}
+        {error && (
+          <Typo.MD color="danger" weight="bold">
+            {error}
+          </Typo.MD>
+        )}
       </div>
       <StyledFileInput type="file" {...dropZoneProps.getInputProps()} />
     </Root>

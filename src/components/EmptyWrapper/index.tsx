@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
-import noop from "lodash/noop";
 import styled from "styled-components";
-import { Text } from "../../ui-blocks";
+import { Frown as Droplet } from "react-feather";
+import { Typo } from "../../ui-blocks";
 import { USE_ROOT_COLOR } from "../../theme";
 
 export interface IProps {
@@ -19,13 +19,14 @@ const StyledWrapper = styled.div`
 `;
 
 export function EmptyWrapper({ text, hideIcon, children }: IProps) {
-  noop(hideIcon);
   return (
     <StyledWrapper>
-      {/* {hideIcon ? null : <img src={Empty} alt="0" width="100px" />} */}
+      {hideIcon ? null : (
+        <Droplet size={50} color={USE_ROOT_COLOR("muted-text")} />
+      )}
       <br />
       <br />
-      <Text color="muted"> {text} </Text>
+      <Typo.MD color="muted"> {text} </Typo.MD>
       {children}
     </StyledWrapper>
   );

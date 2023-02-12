@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { StyledCard } from "../../Card";
-import { Spacer, Stack, Text } from "../../../ui-blocks";
+import { Spacer, Stack, Typo } from "../../../ui-blocks";
 import { WidgetHeader } from "../Header";
 import { IWidgetHeaderProps } from "../types";
 import { DirectionImplementation } from "./constants";
@@ -10,7 +10,7 @@ const StyledBox = styled.div`
   padding: 24px;
 `;
 
-const IconRoot = styled.div<{ color: string }>`
+const StyledIconRoot = styled.div<{ color: string }>`
   background: ${(props) => props.color}2A;
   color: ${(props) => props.color};
   border: 1px solid ${(props) => props.color};
@@ -23,7 +23,12 @@ const IconRoot = styled.div<{ color: string }>`
   align-items: center;
 `;
 
-const DirectionRoot = styled(Stack)<{ color: string }>`
+const StyledRelativeCount = styled(Typo.XS)<{ directionColor: string }>`
+  lineheight: 20.5px;
+  color: ${(props) => props.directionColor};
+`;
+
+const StyledDirectionRoot = styled(Stack)<{ color: string }>`
   border: 1px solid transparent;
   width: auto;
   border-radius: 8px;
@@ -61,7 +66,7 @@ export function SummaryWidget({
     <StyledCard>
       <StyledBox>
         <Stack spacing={18}>
-          <IconRoot
+          <StyledIconRoot
             color={color}
             aria-label={`${title} Icon`}
             dangerouslySetInnerHTML={{ __html: icon }}
@@ -70,11 +75,11 @@ export function SummaryWidget({
             <WidgetHeader setting={setting} title={title} link={link} />
             <Spacer size="xs" />
             <Stack justify="space-between" align="end">
-              <Text size="3" weight="bold" aria-label="Total Count">
+              <Typo.L weight="bold" aria-label="Total Count">
                 {fullCount}
-              </Text>
+              </Typo.L>
               {relativeCount ? (
-                <DirectionRoot
+                <StyledDirectionRoot
                   color={directionColor}
                   spacing={2}
                   align="center"
@@ -86,15 +91,14 @@ export function SummaryWidget({
                       style={{ color: directionColor, verticalAlign: "sub" }}
                     />
                   </span>
-                  <Text
-                    size="6"
+                  <StyledRelativeCount
                     weight="bold"
                     aria-label="Relative Count"
-                    style={{ lineHeight: "20.5px", color: directionColor }}
+                    directionColor={directionColor}
                   >
                     {relativeCount}
-                  </Text>
-                </DirectionRoot>
+                  </StyledRelativeCount>
+                </StyledDirectionRoot>
               ) : null}
             </Stack>
           </div>

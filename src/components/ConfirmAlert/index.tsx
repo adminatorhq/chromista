@@ -3,7 +3,7 @@ import { confirmAlert } from "react-confirm-alert";
 import styled, { keyframes } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 import { Z_INDEXES } from "../../constants/zIndex";
-import { Spacer, Stack, Text } from "../../ui-blocks";
+import { Spacer, Stack, Typo } from "../../ui-blocks";
 import { SoftButton } from "../Button/SoftButton";
 import { StyledDeleteButton } from "../Button/Button";
 import { SHADOW_CSS } from "../Card";
@@ -70,13 +70,13 @@ export function Presentation({
       tabIndex={-1}
     >
       <StyledBody>
-        <Text size="4" weight="bold" id="confirm_delete_label">
-          {title}
-        </Text>
+        <Typo.MD weight="bold">
+          <span id="confirm_delete_label"> {title} </span>
+        </Typo.MD>
         <Spacer size="xl" />
-        <Text size="6">
+        <Typo.XS>
           <span id="confirm_delete_desc"> {message} </span>{" "}
-        </Text>
+        </Typo.XS>
         <Spacer size="xxl" />
         <Stack justify="center" spacing={8}>
           <SoftButton action={onClose} label="Cancel" />

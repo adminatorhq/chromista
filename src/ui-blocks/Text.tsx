@@ -1,10 +1,12 @@
+import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../theme";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../theme";
 
 const TEXT_COLORS = {
   main: USE_ROOT_COLOR("main-text"),
   muted: USE_ROOT_COLOR("muted-text"),
   inverse: USE_ROOT_COLOR("text-on-primary"),
+  danger: SYSTEM_COLORS.danger,
 };
 
 export type TextProps = {
@@ -14,6 +16,7 @@ export type TextProps = {
   textStyle?: "italic";
   as: "p" | "span";
   ellipsis?: true;
+  children: ReactNode;
 };
 
 const sizes: Record<TextProps["size"], number> = {
@@ -32,7 +35,7 @@ const weights: Record<TextProps["weight"], number> = {
   thick: 600,
 };
 
-export const Text = styled.p.attrs((props: TextProps) => ({
+const Text = styled.p.attrs((props: TextProps) => ({
   role: props.as || "p",
 }))<Partial<TextProps>>(
   ({
@@ -54,3 +57,43 @@ export const Text = styled.p.attrs((props: TextProps) => ({
     overflow: ellipsis ? "hidden" : undefined,
   })
 );
+
+type EscapeTypoProps = Partial<TextProps>;
+type TypoProps = Omit<EscapeTypoProps, "size">;
+
+export function Typo(
+  props: Partial<TypoProps> & {
+    P: (props: TypoProps) => Element;
+    Small: (props: TypoProps) => Element;
+    Tiny: (props: TypoProps) => Element;
+    Large: (props: TypoProps) => Element;
+    XLarge: (props: TypoProps) => Element;
+    Escape: (props: TypoProps & { size: TextProps["size"] }) => Element;
+  }
+) {
+  return <Text {...props} />;
+}
+
+Typo.Escape = function Escape(props: TypoProps & { size: TextProps["size"] }) {
+  return <Text {...props} />;
+};
+
+Typo.XL = function XLarge(props: TypoProps) {
+  return <Text {...props} size="2" />;
+};
+
+Typo.L = function Large(props: TypoProps) {
+  return <Text {...props} size="3" />;
+};
+
+Typo.MD = function Medium(props: TypoProps) {
+  return <Text {...props} size="4" />;
+};
+
+Typo.SM = function Small(props: TypoProps) {
+  return <Text {...props} size="5" />;
+};
+
+Typo.XS = function XSmall(props: TypoProps) {
+  return <Text {...props} size="6" />;
+};

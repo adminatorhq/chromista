@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { StringFilters } from "@hadmean/protozoa";
 import styled from "styled-components";
-import { Text } from "../../ui-blocks";
+import { Typo } from "../../ui-blocks";
 import { ISystemStatusForDisplay } from "../../types";
 import { BadgeBuilder } from "./BadgeBuilder";
 import { ListSkeleton } from "../Skeleton/List";
@@ -68,9 +68,9 @@ export function KeyValueDetails({ isLoading, keyValues }: IKeyValueDetails) {
           >
             <div>
               {icon}{" "}
-              <Text color="muted" as="span">
+              <Typo.MD color="muted" as="span">
                 {key}
-              </Text>
+              </Typo.MD>
             </div>
             {valueToRender}
           </li>

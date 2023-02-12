@@ -27,15 +27,15 @@ export function TableSkeleton({ lean }: IProps) {
                 (key$1) => (
                   <BaseSkeleton
                     key={key$1}
-                    height="30px"
-                    style={{ margin: "8px 0", flex: key$1 % 3 ? 2 : 1 }}
+                    height="24px"
+                    style={{ margin: "4px 0", flex: key$1 % 3 ? 2 : 1 }}
                   />
                 )
               )}
               {!lean && (
-                <Stack style={{ flexBasis: 70, margin: "8px 0" }}>
-                  <BaseSkeleton height="30px" circle />
-                  <BaseSkeleton height="30px" circle />
+                <Stack style={{ flexBasis: 70, margin: "4px 0" }}>
+                  <BaseSkeleton height="24px" width="24px" circle />
+                  <BaseSkeleton height="24px" width="24px" circle />
                 </Stack>
               )}
             </Stack>

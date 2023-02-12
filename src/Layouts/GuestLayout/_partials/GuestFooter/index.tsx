@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { USE_ROOT_COLOR } from "../../../../theme";
 import { StyledCardBody } from "../../../../components/Card";
-import { Text, Stack } from "../../../../ui-blocks";
+import { Stack, Typo } from "../../../../ui-blocks";
 
 const Root = styled(StyledCardBody)`
   background-color: ${USE_ROOT_COLOR("soft-color")};
@@ -18,9 +18,7 @@ export function GuestFooter({ name }: IProps) {
   return (
     <Root>
       <Stack justify="center">
-        <Text as="span" size="5">
-          {name || "My Site"} © 2022
-        </Text>
+        <Typo.SM as="span">{name || "My Site"} © 2022</Typo.SM>
       </Stack>
     </Root>
   );

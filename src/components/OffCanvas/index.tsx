@@ -1,7 +1,7 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { Divider, Text, Stack } from "../../ui-blocks";
+import { Divider, Stack, Typo } from "../../ui-blocks";
 import { SoftButton } from "../Button";
 import { USE_ROOT_COLOR } from "../../theme";
 import { NextPortal } from "../_/NextPortal";
@@ -74,9 +74,7 @@ export function OffCanvas({
           <>
             <StyledHeader>
               <Stack justify="space-between" align="center">
-                <Text size="4" weight="bold">
-                  {title}
-                </Text>
+                <Typo.MD weight="bold">{title}</Typo.MD>
                 <SoftButton justIcon icon="close" action={onClose} />
               </Stack>
             </StyledHeader>

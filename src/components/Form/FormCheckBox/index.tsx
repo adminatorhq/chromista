@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ISharedFormInput } from "../_types";
-import { Text } from "../../../ui-blocks/Text";
-import { Stack } from "../../../ui-blocks";
+import { Stack, Typo } from "../../../ui-blocks";
 import { StyledFormFeedback, StyledFormGroup } from "../Styles";
 import { isFormMetaWithError } from "../_wrapForm";
 import { USE_ROOT_COLOR } from "../../../theme";
@@ -34,7 +33,7 @@ export function FormCheckBox({ input, label, meta }: ISharedFormInput) {
       <Stack>
         <StyledCheckBoxInput {...input} type="checkbox" id={input.name} />
         <label htmlFor={input.name}>
-          <Text size="4">{label}</Text>
+          <Typo.MD>{label}</Typo.MD>
         </label>
       </Stack>
       <StyledFormFeedback>

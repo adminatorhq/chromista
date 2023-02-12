@@ -23,3 +23,15 @@ export { TableDataAsList } from "./TableDataAsList";
 export { Tabs } from "./Tabs";
 export { TagsList } from "./TagsList";
 export { Tooltip } from "./Tooltip";
+
+// TODO TO storybook
+/*
+Button
+Text
+// Divider
+ComponentIsLoading
+Dropdown
+Keyvalue details
+Progress bar
+SelectAnItem
+*/

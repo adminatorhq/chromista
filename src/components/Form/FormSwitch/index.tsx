@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { USE_ROOT_COLOR } from "../../../theme";
-import { Text, Stack } from "../../../ui-blocks";
+import { Typo, Stack } from "../../../ui-blocks";
 
 type Sizes = "sm" | "md";
 
@@ -101,10 +101,6 @@ const Input = styled.input<{ $inputSize: Sizes }>`
   }
 `;
 
-const TextLabel = styled(Text)`
-  cursor: pointer;
-`;
-
 export function FormSwitch(props: IProps) {
   const {
     value,
@@ -141,7 +137,11 @@ export function FormSwitch(props: IProps) {
         />
         <Slider size={size} />
         {label ? (
-          <TextLabel size={SIZES_CONFIG[size].fontSize}>{label}</TextLabel>
+          <div style={{ cursor: "pointer" }}>
+            <Typo.Escape size={SIZES_CONFIG[size].fontSize}>
+              {label}
+            </Typo.Escape>
+          </div>
         ) : (
           // Some weird flex issues here so this is need
           <div />
