@@ -1,34 +1,18 @@
-import React, { useEffect, useState } from "react";
-import useDebounce from "react-use/lib/useDebounce";
+import React, { useState } from "react";
 import {
   IColumnFilterBag,
   DATE_FILTER_OPTIONS,
   DATE_FILTER_VALUE,
 } from "@hadmean/protozoa";
 import { IFilterProps } from "../types";
-import { SEARCH_DEBOUNCE_WAIT } from "../constants";
 import { Spacer } from "../../../../ui-blocks";
 import { DateSelection } from "./_Selection";
-import { FormSwitch } from "../../../Form";
+import { FormSwitch } from "../../../Form/FormSwitch";
 import { ControlledFormDateInput } from "../../../Form/FormDateInput";
 
 export function FilterTableByDate({
   column: { filterValue, setFilter },
 }: IFilterProps<IColumnFilterBag<string>, undefined>) {
-  const [localValue, setLocalValue] = useState(filterValue);
-
-  useEffect(() => {
-    setLocalValue(filterValue);
-  }, [filterValue]);
-
-  useDebounce(
-    () => {
-      setFilter(localValue);
-    },
-    SEARCH_DEBOUNCE_WAIT,
-    [localValue]
-  );
-
   const [isOnCustomDate, setIsOnCustomDate] = useState(false);
 
   return (

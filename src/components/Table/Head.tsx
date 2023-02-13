@@ -46,6 +46,8 @@ export function TableHead({ table }: IProps) {
               header.column.columnDef.header,
               header.getContext()
             );
+            const { filter } = header.column.columnDef.meta as IColumnMeta;
+            const isSorted = header.column.getIsSorted();
             return (
               <StyledTh
                 key={header.id}
@@ -62,23 +64,17 @@ export function TableHead({ table }: IProps) {
                         size={18}
                         aria-label={`Sort By ${view} ${
                           // eslint-disable-next-line no-nested-ternary
-                          header.column.getIsSorted()
-                            ? header.column.getIsSorted() === "desc"
-                              ? "Desc"
-                              : "Asc"
-                            : ""
+                          isSorted ? (isSorted === "desc" ? "Desc" : "Asc") : ""
                         }`}
-                        $isSorted={!!header.column.getIsSorted()}
-                        $isDesc={header.column.getIsSorted() === "desc"}
+                        $isSorted={!!isSorted}
+                        $isDesc={isSorted === "desc"}
                       />
                     )}
-                    {header.column.getCanFilter() ? (
+                    {header.column.getCanFilter() && filter ? (
                       <TableFilter
                         view={view}
                         column={header.column}
-                        type={
-                          (header.column.columnDef.meta as IColumnMeta).filter
-                        }
+                        type={filter}
                       />
                     ) : null}
                   </Stack>

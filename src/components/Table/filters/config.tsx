@@ -9,7 +9,7 @@ import { FilterTableByText } from "./Text";
 import { FilterTableByNumbers } from "./Number";
 import { FilterTableByDate } from "./Date";
 
-export const FilterComponentImpl: Record<
+export const FilterTypesConfigBag: Record<
   TableFilterType["_type"],
   {
     operators: FilterOperators[];
