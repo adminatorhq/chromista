@@ -101,7 +101,7 @@ export const StyledFormFeedback = styled.p<{ sm?: true }>`
   color: ${SYSTEM_COLORS.danger};
   font-size: 12px;
   padding-bottom: 0px;
-  margin-bottom: 0px;
+  margin: 0px;
   ${(props) =>
     props.sm &&
     css`

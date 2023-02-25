@@ -19,6 +19,8 @@ import { FormSwitch } from "./FormSwitch";
 import { DeleteButton } from "../Button";
 import { FormSearch } from "./FormSearch";
 import { FormFileInput } from "./FormFileInput";
+import { Stack } from "../../ui-blocks";
+import { FormSelectButton } from "./FormSelectButton";
 
 function DemoForm() {
   return (
@@ -35,10 +37,33 @@ function DemoForm() {
           <Field name="switch" validateFields={[]}>
             {(renderProps) => (
               <FormSwitch
-                name="switch"
+                name={renderProps.input.name}
                 value={renderProps.input.value}
                 onChange={renderProps.input.onChange}
                 label="Example Form Switch Input"
+                {...renderProps}
+              />
+            )}
+          </Field>
+
+          <Field name="checkbox-disabled" validateFields={[]}>
+            {(renderProps) => (
+              <FormCheckBox
+                disabled
+                label="Disabled Example Checkbox Input"
+                {...renderProps}
+              />
+            )}
+          </Field>
+
+          <Field name="switch-disabled" validateFields={[]}>
+            {(renderProps) => (
+              <FormSwitch
+                name={renderProps.input.name}
+                disabled
+                value={renderProps.input.value}
+                onChange={renderProps.input.onChange}
+                label="Disabled Example Form Switch Input"
                 {...renderProps}
               />
             )}
@@ -75,17 +100,6 @@ function DemoForm() {
               <FormInput
                 description="Some Description here"
                 label="With description"
-                {...renderProps}
-              />
-            )}
-          </Field>
-
-          <Field name="file" validateFields={[]} validate={required}>
-            {(renderProps) => (
-              <FormFileInput
-                label="Image"
-                required
-                uploadUrl="http://localhost:3000/api/upload"
                 {...renderProps}
               />
             )}
@@ -133,7 +147,25 @@ function DemoForm() {
             )}
           </Field>
 
-          <Field name="baseSelect" validateFields={[]} validate={required}>
+          <Field
+            name="baseSelectButton"
+            validateFields={[]}
+            validate={required}
+          >
+            {(renderProps) => (
+              <FormSelectButton
+                selectData={[
+                  { label: "Bronze", value: "bronze" },
+                  { label: "Silver", value: "silver" },
+                  { label: "Gold", value: "gold" },
+                ]}
+                label="Example Select Button"
+                {...renderProps}
+              />
+            )}
+          </Field>
+
+          <Field name="baseSelectInput" validateFields={[]} validate={required}>
             {(renderProps) => (
               <FormSelect
                 selectData={[
@@ -146,7 +178,11 @@ function DemoForm() {
             )}
           </Field>
 
-          <Field name="baseSelect" validateFields={[]} validate={required}>
+          <Field
+            name="diasbledSelectInput"
+            validateFields={[]}
+            validate={required}
+          >
             {(renderProps) => (
               <FormSelect
                 selectData={[
@@ -183,6 +219,17 @@ function DemoForm() {
                 ]}
                 values={renderProps.input.value || ["foo", "bar"]}
                 onChange={renderProps.input.onChange}
+              />
+            )}
+          </Field>
+
+          <Field name="file" validateFields={[]} validate={required}>
+            {(renderProps) => (
+              <FormFileInput
+                label="Image"
+                required
+                uploadUrl="http://localhost:3000/api/upload"
+                {...renderProps}
               />
             )}
           </Field>
@@ -279,7 +326,10 @@ function DemoForm() {
             isMakingDeleteRequest={false}
             text="Me"
           />
-          <FormButton text="Do Something" isMakingRequest={false} />
+          <Stack justify="flex-end">
+            <FormButton text="Making Progress" isMakingRequest />
+            <FormButton text="Do Something" isMakingRequest={false} />
+          </Stack>
         </form>
       )}
     />

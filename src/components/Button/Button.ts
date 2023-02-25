@@ -6,6 +6,7 @@ export interface IStyledBaseButton {
   size?: "sm" | "xs";
   color?: keyof typeof SYSTEM_COLORS;
   justIcon?: boolean;
+  cursor?: "progress";
 }
 
 export const StyledBaseButton = styled.button<IStyledBaseButton>`
@@ -22,7 +23,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   line-height: 1.8;
   border-radius: 4px;
   position: relative;
-  cursor: pointer;
+  cursor: ${(props) => props.cursor || "pointer"};
   overflow: hidden;
   -webkit-appearance: button
   -webkit-tap-highlight-color: transparent;
@@ -74,10 +75,6 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   &:disabled {
     opacity: 0.65;
   }
-
-  &:not(:disabled):not(.disabled) {
-    cursor: pointer;
-  }
 `;
 
 export const StyledButton = styled(StyledBaseButton)`
@@ -111,7 +108,8 @@ export const StyledOutlineButton = styled(StyledBaseButton)`
   color: ${USE_ROOT_COLOR("primary-color")};
   border-color: ${USE_ROOT_COLOR("primary-color")};
 
-  &:hover {
+  &:hover,
+  &.active {
     color: ${USE_ROOT_COLOR("text-on-primary")};
     background-color: ${USE_ROOT_COLOR("primary-color")};
     border-color: ${USE_ROOT_COLOR("primary-color")};

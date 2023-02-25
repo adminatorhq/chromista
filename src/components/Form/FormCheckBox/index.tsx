@@ -27,13 +27,23 @@ const StyledCheckBoxInput = styled.input`
   }
 `;
 
-export function FormCheckBox({ input, label, meta }: ISharedFormInput) {
+export function FormCheckBox({
+  input,
+  label,
+  meta,
+  disabled,
+}: ISharedFormInput) {
   return (
     <StyledFormGroup>
       <Stack>
-        <StyledCheckBoxInput {...input} type="checkbox" id={input.name} />
+        <StyledCheckBoxInput
+          {...input}
+          type="checkbox"
+          disabled={disabled}
+          id={input.name}
+        />
         <label htmlFor={input.name}>
-          <Typo.MD>{label}</Typo.MD>
+          <Typo.MD color={disabled ? "muted" : undefined}>{label}</Typo.MD>
         </label>
       </Stack>
       <StyledFormFeedback>

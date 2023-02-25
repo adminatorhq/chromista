@@ -138,12 +138,15 @@ export function FormSwitch(props: IProps) {
         <Slider size={size} />
         {label ? (
           <div style={{ cursor: "pointer" }}>
-            <Typo.Escape size={SIZES_CONFIG[size].fontSize}>
+            <Typo.Escape
+              color={disabled ? "muted" : undefined}
+              size={SIZES_CONFIG[size].fontSize}
+            >
               {label}
             </Typo.Escape>
           </div>
         ) : (
-          // Some weird flex issues here so this is need
+          // Some weird flex issues here so this is needed
           <div />
         )}
       </Stack>

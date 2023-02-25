@@ -19,7 +19,14 @@ interface IFormButton extends IStyledBaseButton {
 export const actionButtonIsMakingRequest = (
   isMakingRequest: boolean,
   text: string
-) => (isMakingRequest ? <Spin as={Loader} size={16} /> : text);
+) =>
+  isMakingRequest ? (
+    <>
+      <Spin as={Loader} size={16} /> {text}
+    </>
+  ) : (
+    text
+  );
 
 export function FormButton({
   text,
@@ -34,7 +41,8 @@ export function FormButton({
     ...rest,
     disabled: disabled || isMakingRequest,
     onClick,
-    type: "submit" as "submit" | "button" | "reset" | undefined,
+    type: "submit" as const,
+    cursor: isMakingRequest ? ("progress" as const) : undefined,
     size,
   };
 
