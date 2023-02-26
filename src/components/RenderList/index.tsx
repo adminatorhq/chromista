@@ -13,40 +13,39 @@ export interface IProps<T> {
   singular?: string;
   error?: unknown;
   notSearchable?: boolean;
-  sortByName?: boolean;
-  searchKeywordsField?: keyof T;
-  render: (item: T, index: number) => ReactNode;
-  searchFunction?: (items: T[], searchString: string) => T[];
+  sortByLabel?: boolean;
+  getLabel?: (name: string) => string;
+  render: (item: T & { label: string }, index: number) => ReactNode;
+  searchFunction?: (
+    items: Array<T & { label: string }>,
+    searchString: string
+  ) => Array<T & { label: string }>;
 }
 
-function defaultSearchFunction<T extends { name: string }>(
-  metaSearchKey?: keyof T
-) {
-  return (itemsToSearch: T[], searchString: string) => {
-    return itemsToSearch.filter(
-      (value) =>
-        value.name.toLowerCase().includes(searchString) ||
-        (metaSearchKey &&
-          (value[metaSearchKey] as unknown as string)
-            .toLowerCase()
-            .includes(searchString))
-    );
-  };
+function defaultSearchFunction<T extends { name: string; label: string }>(
+  itemsToSearch: T[],
+  searchString: string
+): Array<T & { label: string }> {
+  return itemsToSearch.filter(
+    (value) =>
+      value.name.toLowerCase().includes(searchString) ||
+      value.label.toLowerCase().includes(searchString)
+  );
 }
 
 export function RenderList<T extends { name: string }>({
   isLoading,
-  items,
+  items: items$1,
+  getLabel,
   newItemLink,
   error,
-  sortByName,
+  sortByLabel,
   notSearchable,
   singular = "Item",
   render,
-  searchKeywordsField,
   searchFunction,
 }: IProps<T>) {
-  const itemsLength = items.length;
+  const itemsLength = items$1.length;
   const [searchString, setSearchString] = useState("");
   if (error) {
     return <ErrorAlert message={error} />;
@@ -68,12 +67,16 @@ export function RenderList<T extends { name: string }>({
     );
   }
 
-  const itemsToRender = sortByName
-    ? [...items].sort((a, b) => a.name.localeCompare(b.name))
-    : items;
+  const labelledItems = items$1.map((item) => ({
+    ...item,
+    label: getLabel ? getLabel(item.name) : item.name,
+  }));
 
-  const searchFnToUse =
-    searchFunction || defaultSearchFunction(searchKeywordsField);
+  const itemsToRender = sortByLabel
+    ? [...labelledItems].sort((a, b) => a.label.localeCompare(b.label))
+    : labelledItems;
+
+  const searchFnToUse = searchFunction || defaultSearchFunction;
 
   const searchResults =
     searchString.length > 0

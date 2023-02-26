@@ -6,7 +6,7 @@ import { Home, Settings, Shield, Table, User, Users, Zap } from "react-feather";
 import { DataStateKeys } from "@hadmean/protozoa";
 import { DynamicLayout, IProps } from ".";
 import { AppWrapper } from "../../AppWrapper";
-import { INavigationMenuItems } from "../types";
+import { IViewMenuItem } from "../types";
 import { Table as TableCmp } from "../../components/Table";
 
 export default {
@@ -19,7 +19,7 @@ export default {
           {
             Header: "Id",
             accessor: "id",
-            filter: { _type: "idField" },
+            filter: { _type: "idField", bag: undefined },
           },
         ]}
         syncPaginatedDataStateOut={() => {}}
@@ -60,7 +60,7 @@ export default {
             isLoading: false,
             data: [],
             isRefetching: false,
-          } as DataStateKeys<INavigationMenuItems[]>,
+          } as DataStateKeys<IViewMenuItem[]>,
         },
         description: "Some Description here",
       },
@@ -74,7 +74,7 @@ export default {
             isLoading: true,
             data: [],
             isRefetching: false,
-          } as DataStateKeys<INavigationMenuItems[]>,
+          } as DataStateKeys<IViewMenuItem[]>,
         },
         description: "Some Description here",
       },
@@ -88,7 +88,7 @@ export default {
             isLoading: false,
             data: [],
             isRefetching: false,
-          } as DataStateKeys<INavigationMenuItems[]>,
+          } as DataStateKeys<IViewMenuItem[]>,
         },
         description: "Some Description here",
       },
@@ -97,18 +97,19 @@ export default {
         icon: Users,
         action: action("menu Action"),
         viewMenuItems: {
+          getLabel: (name: string) => `${name} + label`,
           menuItems: {
             error: "",
             isLoading: false,
             data: [
-              { title: "Foo1", link: "link1" },
-              { title: "Foo2", link: "link2" },
-              { title: "Foo3", link: "link3" },
-              { title: "Foo4", action: action("Foo 4") },
-              { title: "Foo5", link: "link5" },
+              { value: "Foo1", link: "link1" },
+              { value: "Foo2", link: "link2" },
+              { value: "Foo3", link: "link3" },
+              { value: "Foo4", action: action("Foo 4") },
+              { value: "Foo5", link: "link5" },
             ],
             isRefetching: false,
-          } as DataStateKeys<INavigationMenuItems[]>,
+          } as DataStateKeys<IViewMenuItem[]>,
         },
         description: "Some Description here",
       },
@@ -125,12 +126,12 @@ export default {
             error: "",
             isLoading: false,
             data: [
-              { title: "Foo", link: "link1" },
-              { title: "Foo2", link: "link2" },
-              { title: "Foo3", action: action("Foo 3") },
+              { value: "Foo", link: "link1" },
+              { value: "Foo2", link: "link2" },
+              { value: "Foo3", action: action("Foo 3") },
             ],
             isRefetching: false,
-          } as DataStateKeys<INavigationMenuItems[]>,
+          } as DataStateKeys<IViewMenuItem[]>,
         },
         description: "Some Description here",
       },

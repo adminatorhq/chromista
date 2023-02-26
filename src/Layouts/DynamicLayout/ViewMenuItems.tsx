@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function ViewMenuItems({
-  viewMenuItems: { menuItems, singular, newItemLink, topAction },
+  viewMenuItems: { menuItems, singular, newItemLink, topAction, getLabel },
 }: Props) {
   return (
     <>
@@ -25,20 +25,20 @@ export function ViewMenuItems({
       )}
       <RenderList
         isLoading={menuItems?.isLoading && 20}
-        items={(menuItems?.data || []).map(({ title, ...rest }) => ({
-          name: title,
+        items={(menuItems?.data || []).map(({ value, ...rest }) => ({
+          name: value,
           ...rest,
         }))}
+        getLabel={getLabel}
         singular={singular}
         newItemLink={newItemLink}
-        searchKeywordsField="searchKeywords"
         error={menuItems?.error}
-        render={({ name, action, secondaryAction }) => (
+        render={({ label, action, secondaryAction }) => (
           <SectionListItem
-            label={name}
+            label={label}
             action={action}
             secondaryAction={secondaryAction}
-            key={name}
+            key={label}
           />
         )}
       />

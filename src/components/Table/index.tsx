@@ -94,7 +94,7 @@ export function Table<T extends unknown>({
     pageCount: totalPageCount,
     columns: internalColumns,
     manualPagination: true,
-    manualSorting: true, // :eyes
+    manualSorting: true,
     getSortedRowModel: getSortedRowModel(),
     getCoreRowModel: getCoreRowModel(),
   });

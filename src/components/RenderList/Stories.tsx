@@ -41,6 +41,11 @@ const Template: Story<IProps<IDemoType>> = (args) => (
 export const Default = Template.bind({});
 Default.args = {};
 
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  getLabel: (name) => `${name} - Label`,
+};
+
 export const Loading = Template.bind({});
 Loading.args = {
   isLoading: 5,
@@ -69,5 +74,5 @@ Error.args = {
 
 export const Sorted = Template.bind({});
 Sorted.args = {
-  sortByName: true,
+  sortByLabel: true,
 };

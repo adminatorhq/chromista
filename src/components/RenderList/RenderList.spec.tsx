@@ -24,6 +24,26 @@ describe("RenderList", () => {
     expect(screen.getByText("Bar")).toBeInTheDocument();
   });
 
+  it("should render computed labels", () => {
+    render(
+      <RenderList
+        items={[
+          {
+            name: "Foo",
+          },
+          {
+            name: "Bar",
+          },
+        ]}
+        getLabel={(name) => `${name} + Label`}
+        render={(item) => <div>{item.label}</div>}
+      />
+    );
+
+    expect(screen.getByText("Foo + Label")).toBeInTheDocument();
+    expect(screen.getByText("Bar + Label")).toBeInTheDocument();
+  });
+
   it("should not render search input when items are small", () => {
     render(
       <RenderList
@@ -65,49 +85,41 @@ describe("RenderList", () => {
     expect(screen.queryByPlaceholderText("Search")).not.toBeInTheDocument();
   });
 
-  it("should search items when search input is keyed", () => {
+  it("should search items by label and name when search input is keyed", () => {
     render(
       <RenderList
         items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
-        render={(item) => <div>{item.name}</div>}
+        getLabel={(name) => `1-${name}`}
+        render={(item) => <div>{item.label}</div>}
       />
     );
-
-    expect(screen.getByText("foo0")).toBeInTheDocument();
-    expect(screen.getByText("foo1")).toBeInTheDocument();
 
     fireEvent.change(screen.getByPlaceholderText("Search"), {
       target: { value: "foo1" },
     });
 
-    expect(screen.queryByText("foo0")).not.toBeInTheDocument();
-    expect(screen.getByText("foo1")).toBeInTheDocument();
-    expect(screen.queryByText("No Search Results")).not.toBeInTheDocument();
-  });
-
-  it("should search items when search input is keyed", () => {
-    render(
-      <RenderList
-        items={Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))}
-        render={(item) => <div>{item.name}</div>}
-      />
-    );
-
-    expect(screen.getByText("foo0")).toBeInTheDocument();
-    expect(screen.getByText("foo1")).toBeInTheDocument();
+    expect(screen.queryByText("1-foo0")).not.toBeInTheDocument();
+    expect(screen.getByText("1-foo1")).toBeInTheDocument();
     expect(screen.queryByText("No Search Results")).not.toBeInTheDocument();
 
     fireEvent.change(screen.getByPlaceholderText("Search"), {
       target: { value: "something to not exist" },
     });
 
-    expect(screen.queryByText("foo0")).not.toBeInTheDocument();
-    expect(screen.queryByText("foo1")).not.toBeInTheDocument();
+    expect(screen.queryByText("1-foo0")).not.toBeInTheDocument();
+    expect(screen.queryByText("1-foo1")).not.toBeInTheDocument();
 
-    expect(screen.getByText("No Search Results")).toBeInTheDocument();
+    fireEvent.change(screen.getByPlaceholderText("Search"), {
+      target: { value: "1-foo0" },
+    });
+
+    expect(screen.getByText("1-foo0")).toBeInTheDocument();
+    expect(screen.queryByText("1-foo1")).not.toBeInTheDocument();
+
+    expect(screen.queryByText("No Search Results")).not.toBeInTheDocument();
   });
 
-  it("should render sorted list items when asked to", () => {
+  it("should render sorted list items by name", () => {
     render(
       <RenderList
         items={[
@@ -121,14 +133,41 @@ describe("RenderList", () => {
             name: "Aoo",
           },
         ]}
-        sortByName
-        render={(item, index) => <div>{`${index} - ${item.name}`}</div>}
+        sortByLabel
+        render={(item) => <p role="alert">{item.name}</p>}
       />
     );
 
-    expect(screen.getByText("0 - Aoo")).toBeInTheDocument();
-    expect(screen.getByText("1 - Boo")).toBeInTheDocument();
-    expect(screen.getByText("2 - Zoo")).toBeInTheDocument();
+    const paragraphs = screen.getAllByRole("alert");
+    expect(paragraphs[0]).toHaveTextContent("Aoo");
+    expect(paragraphs[1]).toHaveTextContent("Boo");
+    expect(paragraphs[2]).toHaveTextContent("Zoo");
+  });
+
+  it("should render sorted list items by label", () => {
+    render(
+      <RenderList
+        items={[
+          {
+            name: "YY",
+          },
+          {
+            name: "X",
+          },
+          {
+            name: "ZZZ",
+          },
+        ]}
+        getLabel={(name) => `${name.length} ${name}`}
+        sortByLabel
+        render={(item) => <p role="alert">{item.label}</p>}
+      />
+    );
+
+    const paragraphs = screen.getAllByRole("alert");
+    expect(paragraphs[0]).toHaveTextContent("1 X");
+    expect(paragraphs[1]).toHaveTextContent("2 YY");
+    expect(paragraphs[2]).toHaveTextContent("3 ZZZ");
   });
 
   it("should render skeleton when loading", () => {

@@ -3,15 +3,15 @@ import { ReactNode } from "react";
 import { Icon } from "react-feather";
 import { SoftButtonIconTypes } from "../components/Button/SoftButton.types";
 
-export interface INavigationMenuItems {
-  title: string;
-  searchKeywords?: string;
+export interface IViewMenuItem {
+  value: string;
   secondaryAction?: () => void;
   action: string | (() => void);
 }
 
 export interface IViewMenuItems {
-  menuItems: DataStateKeys<INavigationMenuItems[]>;
+  menuItems: DataStateKeys<IViewMenuItem[]>;
+  getLabel: (value: string) => string;
   singular?: string;
   newItemLink?: string;
   topAction?: {
