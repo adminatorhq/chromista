@@ -76,16 +76,15 @@ export function FilterWrapper({
     >
       <DownRoot direction="column">
         <div style={{ textAlign: "left" }}>{children}</div>
-        <Stack justify="end">
-          <SoftButton
-            action={() => {
-              clearFilter(undefined);
-            }}
-            size="xs"
-            icon="close"
-            label="Reset"
-          />
-        </Stack>
+        <SoftButton
+          action={() => {
+            clearFilter(undefined);
+          }}
+          block
+          size="xs"
+          icon="close"
+          label="Reset"
+        />
       </DownRoot>
     </Dropdown>
   );

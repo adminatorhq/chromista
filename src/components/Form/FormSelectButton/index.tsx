@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { StringUtils } from "@hadmean/protozoa";
 import { StyledOutlineButton } from "../../Button/Button";
 import { ISelectData } from "../../../types";
 import { IBaseFormSelect } from "../FormSelect/types";
@@ -52,6 +53,8 @@ function BaseFormSelectButton({
         return (
           <StyledOutlineButton
             type="button"
+            role="option"
+            aria-selected={isChecked}
             disabled={disabled}
             key={`${value}`}
             className={isChecked ? "active" : ""}
@@ -59,9 +62,12 @@ function BaseFormSelectButton({
           >
             <StyledInput
               type="radio"
-              name={name}
-              checked={isChecked}
+              name={`${name}__${StringUtils.sluggify(
+                // eslint-disable-next-line no-nested-ternary
+                typeof value === "boolean" ? (value ? "true" : "false") : value
+              )}`}
               readOnly
+              checked={isChecked}
             />
             {label}
           </StyledOutlineButton>

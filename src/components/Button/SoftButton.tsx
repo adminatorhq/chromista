@@ -44,7 +44,12 @@ export function SoftButton({
   const content = isMakingActionRequest ? (
     <Spin as={Loader} {...iconProps} />
   ) : (
-    <Stack spacing={4} width="auto" align="center">
+    <Stack
+      spacing={4}
+      width="auto"
+      align="center"
+      justify={block ? "center" : undefined}
+    >
       <>
         {Icon ? <Icon {...iconProps} /> : null}
         {label && !justIcon ? label : null}
