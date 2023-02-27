@@ -5,7 +5,7 @@ import { FORM_INPUT_SHADOW_CSS } from "../Styles";
 export const SelectStyles = css`
   &.invalid {
     .react-select__control {
-      border: 2px solid ${SYSTEM_COLORS.danger} !important;
+      border: 1px solid ${SYSTEM_COLORS.danger} !important;
     }
   }
 

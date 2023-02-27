@@ -22,7 +22,8 @@ export const actionButtonIsMakingRequest = (
 ) =>
   isMakingRequest ? (
     <>
-      <Spin as={Loader} size={16} /> {text}
+      <Spin as={Loader} size={16} />
+      <span style={{ marginLeft: "0.4rem" }}>{text}</span>
     </>
   ) : (
     text
@@ -48,16 +49,13 @@ export function FormButton({
 
   const toRender = actionButtonIsMakingRequest(isMakingRequest, text);
 
-  if (isInverse) {
-    return (
-      <Stack justify="end">
-        <StyledOutlineButton {...options}>{toRender}</StyledOutlineButton>
-      </Stack>
-    );
-  }
   return (
     <Stack justify="end">
-      <StyledButton {...options}>{toRender}</StyledButton>
+      {isInverse ? (
+        <StyledOutlineButton {...options}>{toRender}</StyledOutlineButton>
+      ) : (
+        <StyledButton {...options}>{toRender}</StyledButton>
+      )}
     </Stack>
   );
 }

@@ -117,9 +117,6 @@ const StyledSublabel = styled.p<{ $active?: boolean }>`
 `;
 
 const StyledIcon = styled.span<{ $active?: boolean; $subtle?: boolean }>`
-  position: relative;
-  bottom: 2px;
-  margin-right: 0.5rem;
   color: ${(props) =>
     // eslint-disable-next-line no-nested-ternary
     props.$active
@@ -227,6 +224,7 @@ export function SectionListItem({
           {toggle && (
             <FormSwitch
               name={id}
+              size="sm"
               onChange={toggle.onChange}
               value={toggle.selected}
             />
@@ -264,6 +262,7 @@ export function SectionListItem({
         e.stopPropagation();
         action?.();
         secondaryAction?.();
+        toggle?.onChange();
       }}
       {...buttonProps}
     >

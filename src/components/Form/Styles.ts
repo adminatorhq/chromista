@@ -49,7 +49,7 @@ export const InputStyles = css<IInput>`
   }
 
   &[aria-invalid] {
-    border-width: 2px;
+    border-width: 1px;
     border-color: ${SYSTEM_COLORS.danger} !important;
   }
 

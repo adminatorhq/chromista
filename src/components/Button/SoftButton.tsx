@@ -1,11 +1,11 @@
 import React from "react";
-import styled, { css } from "styled-components";
 import Link from "next/link";
 import { Loader } from "react-feather";
 import { StyledSoftButton } from "./Button";
 import { SoftButtonIconTypes, ICON_MAP } from "./SoftButton.types";
 import { SYSTEM_COLORS } from "../../theme";
 import { Spin } from "../_/Spin";
+import { Stack } from "../../ui-blocks";
 
 export interface IProps {
   label?: string;
@@ -21,13 +21,6 @@ export interface IProps {
   type?: "button";
   isMakingActionRequest?: boolean;
 }
-const StyledLabel = styled.span<{ $hasLabel: boolean }>`
-  ${(props) =>
-    props.$hasLabel &&
-    css`
-      margin-left: 0.4rem;
-    `}
-`;
 
 export function SoftButton({
   label,
@@ -44,15 +37,19 @@ export function SoftButton({
   className,
 }: IProps) {
   const Icon = icon ? ICON_MAP[icon] : null;
+  const iconProps = {
+    size: 14,
+  };
+
   const content = isMakingActionRequest ? (
-    <Spin as={Loader} size={14} />
+    <Spin as={Loader} {...iconProps} />
   ) : (
-    <>
-      {Icon ? <Icon size={14} /> : null}
-      {label && !justIcon ? (
-        <StyledLabel $hasLabel={!!label}>{label}</StyledLabel>
-      ) : null}
-    </>
+    <Stack spacing={4} width="auto" align="center">
+      <>
+        {Icon ? <Icon {...iconProps} /> : null}
+        {label && !justIcon ? label : null}
+      </>
+    </Stack>
   );
 
   const buttonProps = {

@@ -8,33 +8,37 @@ import { DynamicLayout, IProps } from ".";
 import { AppWrapper } from "../../AppWrapper";
 import { IViewMenuItem } from "../types";
 import { Table as TableCmp } from "../../components/Table";
+import { TextButton } from "../../components";
 
 export default {
   title: "Layouts/DynamicLayout",
   component: DynamicLayout,
   args: {
     children: (
-      <TableCmp
-        columns={[
-          {
-            Header: "Id",
-            accessor: "id",
-            filter: { _type: "idField", bag: undefined },
-          },
-        ]}
-        syncPaginatedDataStateOut={() => {}}
-        tableData={{
-          data: {
-            data: [],
-            pageIndex: 1,
-            pageSize: 10,
-            totalRecords: 0,
-          },
-          isLoading: false,
-          error: false,
-          isPreviousData: false,
-        }}
-      />
+      <>
+        <TextButton>Please hover over me</TextButton>
+        <TableCmp
+          columns={[
+            {
+              Header: "Id",
+              accessor: "id",
+              filter: { _type: "idField", bag: undefined },
+            },
+          ]}
+          syncPaginatedDataStateOut={() => {}}
+          tableData={{
+            data: {
+              data: [],
+              pageIndex: 1,
+              pageSize: 10,
+              totalRecords: 0,
+            },
+            isLoading: false,
+            error: false,
+            isPreviousData: false,
+          }}
+        />
+      </>
     ),
     selectionView: [
       {

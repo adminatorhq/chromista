@@ -44,9 +44,10 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   ${(props) =>
     props.size === "sm" &&
     css`
+      height: 28px;
       padding: 0.25rem 0.5rem;
       font-size: 0.71rem;
-      line-height: 1.5;
+      line-height: 1.7;
       border-radius: 4px;
     `}
 

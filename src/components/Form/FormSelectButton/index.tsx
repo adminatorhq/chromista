@@ -22,7 +22,7 @@ const StyledInput = styled.input`
 const Root = styled.div`
   position: relative;
   display: inline-flex;
-  vertical-align: mnamedle;
+  vertical-align: middle;
 
   & > button:not(:last-child) {
     border-top-right-radius: 0;

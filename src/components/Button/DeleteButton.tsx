@@ -1,5 +1,6 @@
 import React from "react";
 import { Loader, Trash2 } from "react-feather";
+import { Stack } from "../../ui-blocks/Stack";
 import { ConfirmAlert } from "../ConfirmAlert";
 import { Spin } from "../_/Spin";
 import { StyledDeleteButton } from "./Button";
@@ -38,14 +39,17 @@ export function DeleteButton({
       }}
       disabled={isMakingDeleteRequest}
     >
-      {isMakingDeleteRequest ? (
-        <Spin as={Loader} size={14} />
-      ) : (
+      <Stack spacing={4} align="center">
         <>
-          <Trash2 size={14} />
+          {isMakingDeleteRequest ? (
+            <Spin as={Loader} size={14} />
+          ) : (
+            <Trash2 size={14} />
+          )}
+
           {text ? ` Delete ${text}` : null}
         </>
-      )}
+      </Stack>
     </StyledDeleteButton>
   );
 }

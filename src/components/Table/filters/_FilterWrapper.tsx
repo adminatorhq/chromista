@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import { Icon, ToggleLeft, Filter, Search, Calendar } from "react-feather";
 import styled from "styled-components";
 import { Dropdown } from "../../Dropdown";
-import { Spacer, Stack } from "../../../ui-blocks";
+import { Stack } from "../../../ui-blocks";
 import { SoftButton } from "../../Button/SoftButton";
 import { USE_ROOT_COLOR } from "../../../theme";
 import { TableFilterType } from "./types";
@@ -76,15 +76,16 @@ export function FilterWrapper({
     >
       <DownRoot direction="column">
         <div style={{ textAlign: "left" }}>{children}</div>
-        <SoftButton
-          action={() => {
-            clearFilter(undefined);
-          }}
-          size="xs"
-          icon="close"
-          label="Reset"
-        />
-        <Spacer size="xxs" />
+        <Stack justify="end">
+          <SoftButton
+            action={() => {
+              clearFilter(undefined);
+            }}
+            size="xs"
+            icon="close"
+            label="Reset"
+          />
+        </Stack>
       </DownRoot>
     </Dropdown>
   );

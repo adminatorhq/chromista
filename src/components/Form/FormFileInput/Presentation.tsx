@@ -45,7 +45,7 @@ const Root = styled.div`
   text-align: center;
   transition: border-color 0.15s linear;
   background-color: ${USE_ROOT_COLOR("base-color")};
-  border: 2px dashed ${USE_ROOT_COLOR("border-color")};
+  border: 1px dashed ${USE_ROOT_COLOR("border-color")};
 
   &:hover {
     background-size: 30px 30px;

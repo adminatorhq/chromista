@@ -2,7 +2,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { Icon, Loader } from "react-feather";
-import { Typo } from "../../ui-blocks";
+import { Stack, Typo } from "../../ui-blocks";
 import { StyledSoftButton } from "../Button/Button";
 import { USE_ROOT_COLOR } from "../../theme";
 import { BREAKPOINTS } from "../../constants";
@@ -103,6 +103,7 @@ const StyledCurrentButton = styled(StyledSoftButton)`
 `;
 
 const StyledDropDownIcon = styled(StyledSoftButton)`
+  display: inline-block;
   margin-left: -1px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -112,7 +113,7 @@ const StyledDropDownIcon = styled(StyledSoftButton)`
 
   &::after {
     display: inline-block;
-    vertical-align: 0.255em;
+    vertical-align: middle;
     content: "";
     border-top: 0.3em solid;
     border-right: 0.3em solid transparent;
@@ -156,15 +157,15 @@ export function DropDownMenu({
   const { IconComponent, onClick, label } = currentMenuItem;
 
   const currentItem = (
-    <>
+    <Stack spacing={4} align="center">
       {/* eslint-disable-next-line no-nested-ternary */}
       {isMakingActionRequest ? (
         <Spin as={Loader} size={14} />
       ) : IconComponent ? (
         <IconComponent size="14" />
-      ) : null}{" "}
+      ) : null}
       <Label>{label}</Label>
-    </>
+    </Stack>
   );
 
   if (menuItems.length === 1) {
@@ -180,7 +181,14 @@ export function DropDownMenu({
   }
 
   return (
-    <Dropdown show={isDropDownOpen} align="end" onToggle={toggleDropDown}>
+    <Dropdown
+      as={Stack}
+      spacing={0}
+      width="auto"
+      show={isDropDownOpen}
+      align="end"
+      onToggle={toggleDropDown}
+    >
       <StyledCurrentButton
         size="sm"
         disabled={isMakingActionRequest || disabled}
