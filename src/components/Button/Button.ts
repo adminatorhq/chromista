@@ -10,17 +10,17 @@ export interface IStyledBaseButton {
 }
 
 export const StyledBaseButton = styled.button<IStyledBaseButton>`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-weight: 400;
   color: ${USE_ROOT_COLOR("main-text")};
   text-align: center;
-  vertical-align: middle;
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
-  font-size: 0.8125rem;
-  line-height: 1.8;
+  font-size: 0.9rem;
+  line-height: 1.7;
   border-radius: 4px;
   position: relative;
   cursor: ${(props) => props.cursor || "pointer"};
@@ -46,7 +46,7 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
     css`
       padding: 0.25rem 0.5rem;
       font-size: 0.71rem;
-      line-height: 1.8;
+      line-height: 1.5;
       border-radius: 4px;
     `}
 

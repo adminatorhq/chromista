@@ -155,6 +155,7 @@ function DemoForm() {
             {(renderProps) => (
               <FormSelectButton
                 selectData={[
+                  { label: "Wood", value: "wood" },
                   { label: "Bronze", value: "bronze" },
                   { label: "Silver", value: "silver" },
                   { label: "Gold", value: "gold" },

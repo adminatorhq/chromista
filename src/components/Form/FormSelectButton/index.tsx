@@ -6,7 +6,7 @@ import { IBaseFormSelect } from "../FormSelect/types";
 import { generateFormArias, wrapLabelAndError } from "../_wrapForm";
 
 interface IProps {
-  id?: string;
+  name: string;
   disabled?: boolean;
   options: ISelectData[];
   value: string | boolean;
@@ -22,7 +22,7 @@ const StyledInput = styled.input`
 const Root = styled.div`
   position: relative;
   display: inline-flex;
-  vertical-align: middle;
+  vertical-align: mnamedle;
 
   & > button:not(:last-child) {
     border-top-right-radius: 0;
@@ -37,13 +37,13 @@ const Root = styled.div`
 
 function BaseFormSelectButton({
   options,
-  id,
+  name,
   value: selectedValue,
   onChange,
   disabled,
 }: IProps) {
   return (
-    <Root id={id}>
+    <Root>
       {options.map(({ value, label }, index) => {
         const isChecked =
           selectedValue === value ||
@@ -51,14 +51,18 @@ function BaseFormSelectButton({
 
         return (
           <StyledOutlineButton
-            size="xs"
             type="button"
             disabled={disabled}
             key={`${value}`}
             className={isChecked ? "active" : ""}
             onClick={() => onChange(value)}
           >
-            <StyledInput type="checkbox" checked={isChecked} readOnly />
+            <StyledInput
+              type="radio"
+              name={name}
+              checked={isChecked}
+              readOnly
+            />
             {label}
           </StyledOutlineButton>
         );
@@ -78,7 +82,7 @@ export function FormSelectButton(props: IFormSelect) {
     <BaseFormSelectButton
       {...input}
       {...generateFormArias(meta)}
-      id={input.name}
+      name={input.name}
       disabled={disabled}
       options={selectData}
     />,

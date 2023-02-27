@@ -66,6 +66,7 @@ export interface IProps {
   }[];
   currentTab?: string;
   padContent?: boolean;
+  lazy?: true;
   onChange?: (tab: string) => void;
 }
 
@@ -73,6 +74,7 @@ export function Tabs({
   contents,
   currentTab,
   onChange,
+  lazy,
   padContent = true,
 }: IProps) {
   const [activeTab, setActiveTab] = useState<string>(
@@ -103,6 +105,7 @@ export function Tabs({
         defaultActiveKey={activeTab}
         activeKey={activeTab}
         onSelect={changeTab}
+        mountOnEnter={lazy}
       >
         {contents.map(({ label, overrideLabel, disabled, content }) => (
           <RBTab

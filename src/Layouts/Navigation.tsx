@@ -3,18 +3,12 @@ import styled, { css } from "styled-components";
 import Link from "next/link";
 import { ISelectionView } from "./types";
 import { USE_ROOT_COLOR } from "../theme";
+import { StyledPlainButton } from "../components/Button/TextButton";
 
 interface IRenderNavigation {
   navigation: Array<ISelectionView & { sideBarAction: () => void }>;
   currentTitle: string;
 }
-
-const StyledLinkLikeButton = styled.button`
-  &:focus {
-    outline: 0;
-  }
-  background: inherit;
-`;
 
 const StyledLeftSideNavMenuList = styled.li<{ $isActive: boolean }>`
   list-style: none;
@@ -99,7 +93,7 @@ export function RenderNavigation({
                 </Link>
               ) : (
                 <StyledLeftSideNavMenuListAnchor
-                  as={StyledLinkLikeButton}
+                  as={StyledPlainButton}
                   onClick={() => {
                     action?.();
                     sideBarAction();

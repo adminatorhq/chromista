@@ -4,6 +4,10 @@ import { Story } from "@storybook/react";
 import { Tabs, IProps } from ".";
 import { AppWrapper } from "../../AppWrapper";
 
+const Content = ({ label }: { label: string }) => {
+  return <p>{label}</p>;
+};
+
 export default {
   title: "Components/Tabs",
   component: Tabs,
@@ -11,20 +15,20 @@ export default {
     contents: [
       {
         label: "Foo",
-        content: <p>Foo Content</p>,
+        content: <Content label="Foo" />,
       },
       {
         label: "Bar",
         overrideLabel: "Override Label",
-        content: <p>Bar Content</p>,
+        content: <Content label="Bar" />,
       },
       {
         label: "Baz",
-        content: <p>Baz Content</p>,
+        content: <Content label="Baz" />,
       },
       {
         label: "Disabled",
-        content: <p>Baz Content</p>,
+        content: <Content label="Bar" />,
         disabled: true,
       },
     ],
