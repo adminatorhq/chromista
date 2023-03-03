@@ -225,6 +225,7 @@ export function SectionListItem({
             <FormSwitch
               name={id}
               size="sm"
+              disabled
               onChange={toggle.onChange}
               value={toggle.selected}
             />
