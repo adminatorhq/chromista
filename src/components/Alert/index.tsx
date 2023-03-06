@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { getBestErrorMessage } from "@hadmean/protozoa";
-import { X } from "react-feather";
+import {
+  AlertTriangle,
+  ThumbsUp,
+  Icon,
+  Info as InfoIcon,
+  X,
+} from "react-feather";
 import { SYSTEM_COLORS } from "../../theme";
+import { Spacer, Stack, Typo } from "../../ui-blocks";
+import { StyledSoftButton } from "../Button/Button";
 
 export enum AlertType {
   Success = "success",
@@ -18,56 +26,84 @@ interface IAlert {
 
 export type IProps = {
   type: AlertType;
+  action?: {
+    label: string;
+    action: () => void;
+    Icon: Icon;
+  };
 } & IAlert;
 
-const buildColor = (color: string) => {
-  return css`
-    color: ${color};
-    background-color: ${color}1A;
-    border-color: ${color};
-  `;
-};
-
-const StyledAlert = styled.div<{
+const Root = styled.div<{
   type: AlertType;
+  color: string;
 }>`
+  display: flex;
+  justify: space-between;
+  align-items: stretch;
   border: 0;
-  position: relative;
-  padding: 0.5rem;
+  width: 100%;
   margin-bottom: 0;
   border: 1px solid transparent;
-  border-radius: 0.25rem;
-  text-align: center;
-
-  ${(props) =>
-    props.type === AlertType.Success && buildColor(SYSTEM_COLORS.success)}
-
-  ${(props) =>
-    props.type === AlertType.Error && buildColor(SYSTEM_COLORS.danger)}
-
-      ${(props) =>
-    props.type === AlertType.Warning && buildColor(SYSTEM_COLORS.warning)}
-
-        ${(props) =>
-    props.type === AlertType.Info && buildColor(SYSTEM_COLORS.info)}
+  border-radius: 4px;
+  color: ${(props) => props.color};
+  background-color: ${(props) => props.color}05;
+  border-color: ${(props) => props.color}11;
 `;
 
-const StyledAlertButton = styled.button`
-  float: right;
-  font-size: 1.21875rem;
-  font-weight: 700;
-  line-height: 1;
-  color: ${SYSTEM_COLORS.black};
-  text-shadow: 0 1px 0 ${SYSTEM_COLORS.white};
-  opacity: 0.5;
+const StyledAlertButton = styled.button<{ color: string }>`
+  color: ${(props) => props.color}AA;
   padding: 0;
+  align-self: flex-start;
+  cursor: pointer;
   background-color: transparent;
   border: 0;
+  margin-right: 8px;
+  margin-top: 8px;
 `;
 
-export function Alert({ type, message, renderJsx }: IProps) {
-  const [shouldRender, setShouldRender] = useState(true);
+const IconRoot = styled.div<{ color: string }>`
+  display: flex;
+  align-items: center;
+  background-color: ${(props) => props.color}1A;
+  color: ${(props) => props.color};
+  padding: 8px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  margin-right: 8px;
+  vertical-align: middle;
+`;
 
+const AlertMap: Record<AlertType, { Icon: Icon; color: string }> = {
+  [AlertType.Info]: { Icon: InfoIcon, color: SYSTEM_COLORS.info },
+  [AlertType.Error]: { Icon: AlertTriangle, color: SYSTEM_COLORS.danger },
+  [AlertType.Warning]: { Icon: AlertTriangle, color: SYSTEM_COLORS.warning },
+  [AlertType.Success]: { Icon: ThumbsUp, color: SYSTEM_COLORS.success },
+};
+
+const Content = styled.div`
+  width: 100%;
+  margin: 4px 0;
+  align-self: center;
+`;
+
+const StyledText = styled(Typo.XS)<{ $color: string }>`
+  color: ${(props) => props.$color};
+`;
+
+const ActionButton = styled(StyledSoftButton)<{ $color: string }>`
+  background-color: ${(props) => props.$color}1A;
+  color: ${(props) => props.$color};
+  border-color: ${(props) => props.$color};
+
+  &:hover,
+  &:focus {
+    background-color: ${(props) => props.$color};
+  }
+`;
+
+export function Alert({ type, message, renderJsx, action }: IProps) {
+  const [shouldRender, setShouldRender] = useState(true);
+  const { Icon: IconCmp, color } = AlertMap[type];
   useEffect(() => {
     setShouldRender(true);
   }, [message]);
@@ -76,18 +112,37 @@ export function Alert({ type, message, renderJsx }: IProps) {
     return null;
   }
   return (
-    <StyledAlert type={type} role="alert">
+    <Root type={type} color={color} role="alert">
+      <IconRoot color={color}>
+        <IconCmp size={20} />
+      </IconRoot>
+      <Content>
+        <StyledText $color={color}>
+          {(renderJsx ? message : getBestErrorMessage(message)) as string}
+        </StyledText>
+        {action && (
+          <>
+            <Spacer />
+            <ActionButton onClick={action.action} $color={color} size="xs">
+              <Stack>
+                <action.Icon size="14" />
+                {action.label}
+              </Stack>
+            </ActionButton>
+          </>
+        )}
+      </Content>
       <StyledAlertButton
         type="button"
         onClick={() => {
           setShouldRender(false);
         }}
+        color={color}
         aria-label="Close"
       >
-        <X />
+        <X size={16} />
       </StyledAlertButton>
-      {(renderJsx ? message : getBestErrorMessage(message)) as string}
-    </StyledAlert>
+    </Root>
   );
 }
 
@@ -95,6 +150,9 @@ export function ErrorAlert(props: IAlert) {
   return <Alert {...props} type={AlertType.Error} />;
 }
 export function SuccessAlert(props: IAlert) {
+  return <Alert {...props} type={AlertType.Success} />;
+}
+export function InfoAlert(props: IAlert) {
   return <Alert {...props} type={AlertType.Success} />;
 }
 export function WarningAlert(props: IAlert) {
