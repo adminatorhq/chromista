@@ -1,5 +1,11 @@
 export { AccordionItem } from "./Accordion";
-export { ErrorAlert, SuccessAlert, WarningAlert, InfoAlert } from "./Alert";
+export {
+  ErrorAlert,
+  Alert,
+  SuccessAlert,
+  WarningAlert,
+  InfoAlert,
+} from "./Alert";
 export { Badge, BadgePill } from "./Badge";
 export { Breadcrumbs } from "./Breadcrumbs";
 export * from "./Button";

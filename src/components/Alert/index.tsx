@@ -21,16 +21,16 @@ export enum AlertType {
 
 interface IAlert {
   message: Record<string, unknown> | string | unknown;
-  renderJsx?: boolean;
-}
-
-export type IProps = {
-  type: AlertType;
   action?: {
     label: string;
     action: () => void;
     Icon: Icon;
   };
+  renderJsx?: boolean;
+}
+
+export type IProps = {
+  type: AlertType;
 } & IAlert;
 
 const Root = styled.div<{
@@ -153,7 +153,7 @@ export function SuccessAlert(props: IAlert) {
   return <Alert {...props} type={AlertType.Success} />;
 }
 export function InfoAlert(props: IAlert) {
-  return <Alert {...props} type={AlertType.Success} />;
+  return <Alert {...props} type={AlertType.Info} />;
 }
 export function WarningAlert(props: IAlert) {
   return <Alert {...props} type={AlertType.Warning} />;
