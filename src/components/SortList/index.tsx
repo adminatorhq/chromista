@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import SortableList, { SortableItem } from "react-easy-sort";
 import { DataStateKeys, StringUtils } from "@hadmean/protozoa";
 import { Move } from "react-feather";
-import { SectionList, SectionListItem } from "../Section/SectionList";
+import styled from "styled-components";
 import { ErrorAlert } from "../Alert";
 import { ListSkeleton } from "../Skeleton";
 import { EmptyWrapper } from "../EmptyWrapper";
-import { Spacer, Stack } from "../../ui-blocks";
+import { Spacer, Stack, Typo } from "../../ui-blocks";
 import { FormButton } from "../Button";
 import { defaultToEmptyArray } from "./utils";
+import { USE_ROOT_COLOR } from "../../theme";
 
 function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
   const startIndex = fromIndex < 0 ? array.length + fromIndex : fromIndex;
@@ -33,6 +34,18 @@ export interface IProps<T> {
 }
 
 const THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP = 10;
+
+const SortItem = styled(Stack)`
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
+  margin: 4px 0px;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: move;
+`;
+
+const Root = styled.div`
+  padding: 0px 4px;
+`;
 
 export function SortList<T extends { value: string; label?: string }>({
   data,
@@ -71,7 +84,7 @@ export function SortList<T extends { value: string; label?: string }>({
 
   const saveChanges = (
     <>
-      <Spacer size="sm" />
+      <Spacer />
       <Stack>
         <FormButton
           onClick={async () => {
@@ -84,14 +97,13 @@ export function SortList<T extends { value: string; label?: string }>({
           disabled={!touched}
           isMakingRequest={isMakingRequest}
         />
-        <Spacer direction="horizontal" size="sm" />
       </Stack>
       <Spacer size="sm" />
     </>
   );
 
   return (
-    <SectionList>
+    <Root>
       {sortedData.length >
         THRESHOLD_FOR_LONG_ITEMS_TO_SHOW_SAVE_CHANGES_AT_TOP && saveChanges}
       <SortableList
@@ -102,15 +114,15 @@ export function SortList<T extends { value: string; label?: string }>({
         {sortedData.map((item) => (
           <SortableItem key={item.value}>
             <div className="item">
-              <SectionListItem
-                IconComponent={Move}
-                label={item.label || item.value}
-              />
+              <SortItem align="center">
+                <Move />
+                <Typo.SM>{item.label || item.value}</Typo.SM>
+              </SortItem>
             </div>
           </SortableItem>
         ))}
       </SortableList>
       {saveChanges}
-    </SectionList>
+    </Root>
   );
 }

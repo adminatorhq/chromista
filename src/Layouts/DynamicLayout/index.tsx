@@ -23,7 +23,7 @@ const StyledPage = styled.div<{ isSidebarOpen: boolean }>`
   min-height: 100vh;
   display: block;
   margin-left: ${(props) => (props.isSidebarOpen ? 350 : 50)}px;
-  width: calc(100% - ${(props) => (props.isSidebarOpen ? 350 : 50)}px);
+  width: calc(100vw - ${(props) => (props.isSidebarOpen ? 350 : 50)}px);
   background: ${USE_ROOT_COLOR("foundation-color")};
 `;
 
