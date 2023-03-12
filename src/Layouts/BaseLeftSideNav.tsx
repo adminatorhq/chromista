@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { USE_ROOT_COLOR } from "../theme";
+import { useThemeColorShade } from "../theme/useTheme";
 
 const StyledLogo = styled(Link)`
   line-height: 52px;
@@ -24,13 +24,11 @@ const StyledBrand = styled.div`
 `;
 
 const Root = styled.div`
-  background-color: ${USE_ROOT_COLOR("primary-color")};
   min-height: 100vh;
   transition: 0.3s;
   position: fixed;
   bottom: 0;
   top: 0;
-  border-right: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;
 
 interface IProps {
@@ -39,8 +37,9 @@ interface IProps {
 }
 
 export function BaseLeftSideNav({ children, logo }: IProps) {
+  const colorShade = useThemeColorShade();
   return (
-    <Root>
+    <Root style={{ background: colorShade("primary-color", 30) }}>
       <StyledBrand>
         <StyledLogo href="/">
           <span>

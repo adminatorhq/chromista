@@ -1,13 +1,16 @@
 import React from "react";
 import { Icon, Loader } from "react-feather";
+import styled from "styled-components";
 import {
-  StyledButton,
   StyledOutlineButton,
   IStyledBaseButton,
+  StyledBaseButton,
 } from "../Button";
 import { Stack } from "../../../ui-blocks";
 import { Spin } from "../../_/Spin";
 import { ICON_MAP, ButtonIconTypes } from "../constants";
+import { useThemeColorShade } from "../../../theme/useTheme";
+import { USE_ROOT_COLOR } from "../../../theme/root";
 
 interface IFormButton extends IStyledBaseButton {
   text: string;
@@ -42,6 +45,18 @@ export const actionButtonIsMakingRequest = (
   );
 };
 
+export const StyledButton = styled(StyledBaseButton)<{ $hoverColor: string }>`
+  color: ${USE_ROOT_COLOR("text-on-primary")};
+  background-color: ${USE_ROOT_COLOR("primary-color")};
+  border-color: ${USE_ROOT_COLOR("primary-color")};
+
+  &:hover {
+    background-color: ${(props) => props.$hoverColor};
+    outline: 0;
+    box-shadow: 0 0 0 4px ${USE_ROOT_COLOR("primary-shade-color")};
+  }
+`;
+
 export function FormButton({
   text,
   disabled,
@@ -52,6 +67,8 @@ export function FormButton({
   icon,
   ...rest
 }: IFormButton) {
+  const colorShade = useThemeColorShade();
+
   const options = {
     ...rest,
     disabled: disabled || isMakingRequest,
@@ -70,7 +87,12 @@ export function FormButton({
       {isInverse ? (
         <StyledOutlineButton {...options}>{toRender}</StyledOutlineButton>
       ) : (
-        <StyledButton {...options}>{toRender}</StyledButton>
+        <StyledButton
+          {...options}
+          $hoverColor={colorShade("primary-color", 20)}
+        >
+          {toRender}
+        </StyledButton>
       )}
     </Stack>
   );

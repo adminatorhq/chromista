@@ -78,17 +78,6 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   }
 `;
 
-export const StyledButton = styled(StyledBaseButton)`
-  color: ${USE_ROOT_COLOR("text-on-primary")};
-  background-color: ${USE_ROOT_COLOR("primary-color")};
-  border-color: ${USE_ROOT_COLOR("primary-color")};
-
-  &:hover {
-    outline: 0;
-    box-shadow: 0 0 0 4px ${USE_ROOT_COLOR("primary-shade-color")};
-  }
-`;
-
 export const StyledSoftButton = styled(StyledBaseButton)`
   background-color: ${USE_ROOT_COLOR("primary-shade-color")};
   color: ${USE_ROOT_COLOR("text-on-shade")};

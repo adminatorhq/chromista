@@ -2,16 +2,17 @@ import { createGlobalStyle } from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 import { LIGHT_MODE } from "../../theme/modes";
 import { DEFAULT_PRIMARY_COLOR } from "../../theme/constants";
-import { generateRootColors } from "../../theme/generate";
 import { GLOBAL_NORMALIZE_CSS } from "./normalize";
 import { GLOBAL_TOOLTIP_CSS } from "./tooltip";
 import { GLOBAL_CONFIRM_ALERT_CSS } from "./confirm-alert";
 import { GLOBAL_OFF_CANVAS_CSS } from "./off-canvas";
+import { colorModeToRootColors } from "../../theme/generate";
+import { prefixVarNameSpace } from "../../theme/root";
 
 const rootColorString = Object.entries(
-  generateRootColors(DEFAULT_PRIMARY_COLOR, LIGHT_MODE)
+  colorModeToRootColors(DEFAULT_PRIMARY_COLOR, LIGHT_MODE)
 )
-  .map(([key, value]) => `${key}: ${value}`)
+  .map(([key, value]) => `${prefixVarNameSpace(key)}: ${value}`)
   .join(";");
 
 export const GlobalStyles = createGlobalStyle`

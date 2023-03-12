@@ -7,6 +7,7 @@ import {
   Plus,
   Save,
   Settings,
+  Slash,
   X,
 } from "react-feather";
 
@@ -16,6 +17,7 @@ export const ICON_MAP = {
   save: Save,
   settings: Settings,
   close: X,
+  ban: Slash,
   check: CheckSquare,
   right: ArrowRight,
   help: HelpCircle,

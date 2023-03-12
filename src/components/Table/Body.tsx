@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme/root";
 import { EmptyWrapper } from "../EmptyWrapper";
 import { Typo } from "../../ui-blocks/Text";
+import { useThemeColorShade } from "../../theme/useTheme";
 
 const StyledTd = styled.td`
   padding: 0.45rem;
@@ -15,12 +16,12 @@ const StyledTd = styled.td`
   }
 `;
 
-const StyledBodyTR = styled.tr`
+const StyledBodyTR = styled.tr<{ $hoverColor: string }>`
   padding: 4px;
   border-bottom: 1px solid ${USE_ROOT_COLOR("border-color")};
   page-break-inside: avoid;
   &:hover {
-    background-color: ${USE_ROOT_COLOR("soft-color")};
+    background-color: ${(props) => props.$hoverColor};
   }
 `;
 
@@ -37,10 +38,11 @@ export function TableBody({
   emptyMessage,
   isLoading,
 }: IProps) {
+  const colorShade = useThemeColorShade();
   return (
     <tbody>
       {table.getRowModel().rows.map((row) => (
-        <StyledBodyTR key={row.id}>
+        <StyledBodyTR key={row.id} $hoverColor={colorShade("base-color", 2)}>
           {row.getVisibleCells().map((cell) => (
             <StyledTd key={cell.id}>
               <Typo.SM as="span">
@@ -51,7 +53,7 @@ export function TableBody({
         </StyledBodyTR>
       ))}
       {dataLength === 0 ? (
-        <StyledBodyTR>
+        <StyledBodyTR $hoverColor={colorShade("base-color", 2)}>
           <StyledTd colSpan={10000}>
             {isLoading ? (
               <div style={{ height: "204px" }} />
