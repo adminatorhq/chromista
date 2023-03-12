@@ -9,6 +9,7 @@ export function AppWrapper({ children }: { children: ReactNode }) {
     <QueryProvider>
       <Toaster />
       <GlobalStyles />
+      <></>
       {children}
     </QueryProvider>
   );

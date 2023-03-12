@@ -92,6 +92,54 @@ WithActionButtons.args = {
   ],
 };
 
+export const Permission = Template.bind({});
+Permission.args = {
+  actionButtons: [
+    {
+      isInverse: false,
+      label: "Table",
+      icon: "check",
+      onClick: action("Click Me"),
+      isMakingRequest: false,
+    },
+    {
+      isInverse: false,
+      label: "Details",
+      icon: "check",
+      onClick: action("Click Me"),
+      isMakingRequest: false,
+    },
+    {
+      isInverse: false,
+      label: "Create",
+      icon: "check",
+      onClick: action("Click Me"),
+      isMakingRequest: false,
+    },
+    {
+      isInverse: true,
+      label: "Update",
+      icon: "close",
+      onClick: action("Click Me"),
+      isMakingRequest: false,
+    },
+    {
+      isInverse: true,
+      label: "Delete",
+      icon: "close",
+      onClick: action("Click Me"),
+      isMakingRequest: false,
+    },
+    {
+      isInverse: true,
+      label: "Export",
+      icon: "close",
+      onClick: action("Click Me"),
+      isMakingRequest: false,
+    },
+  ],
+};
+
 export const WithToggleSelected = Template.bind({});
 WithToggleSelected.args = {
   action: undefined,

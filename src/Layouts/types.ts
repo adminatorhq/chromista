@@ -1,7 +1,7 @@
 import { DataStateKeys } from "@hadmean/protozoa";
 import { ReactNode } from "react";
 import { Icon } from "react-feather";
-import { SoftButtonIconTypes } from "../components/Button/SoftButton.types";
+import { ButtonIconTypes } from "../components/Button/constants";
 
 export interface IViewMenuItem {
   value: string;
@@ -28,5 +28,5 @@ export interface ISelectionView {
   view?: ReactNode;
   viewMenuItems?: IViewMenuItems;
   description?: string;
-  iconButtons?: { action: () => void; icon: SoftButtonIconTypes }[];
+  iconButtons?: { action: () => void; icon: ButtonIconTypes }[];
 }

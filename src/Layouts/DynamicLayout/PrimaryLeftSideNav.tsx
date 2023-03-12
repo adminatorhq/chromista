@@ -4,7 +4,6 @@ import { BaseLeftSideNav } from "../BaseLeftSideNav";
 import { RenderNavigation } from "../Navigation";
 import { useSideBarStore } from "../sidebar.store";
 import { ISelectionView } from "../types";
-import { useNestedNavStore } from "./nested-nav.store";
 
 interface IProps {
   logo: string;
@@ -25,8 +24,6 @@ export function PrimaryLeftSideNav({
       state.setCurrentTitle,
     ]);
 
-  const clearDeepLinks = useNestedNavStore((state) => state.clear);
-
   const mapMapNavigationToUse = useCallback(
     (navigation$1: ISelectionView[]) => {
       return navigation$1.map(({ action, title, ...rest }) => ({
@@ -40,11 +37,10 @@ export function PrimaryLeftSideNav({
             selectMiniSideBar(title);
           }
           setCurrentTitle(title);
-          clearDeepLinks();
         },
       }));
     },
-    [selectMiniSideBar, clearDeepLinks]
+    [selectMiniSideBar]
   );
 
   const navigationToUse = useMemo(

@@ -6,6 +6,7 @@ import { FormButton } from "../../Button/FormButton";
 import { Stack } from "../../../ui-blocks";
 import { FormSwitch } from "../../Form/FormSwitch";
 import { USE_ROOT_COLOR } from "../../../theme";
+import { ButtonIconTypes } from "../../Button/constants";
 
 const StyledChevronRight = styled(ChevronRight)<{ $active?: boolean }>`
   width: 14px;
@@ -154,8 +155,9 @@ export interface IProps {
   actionButtons?: {
     isInverse: boolean;
     label: string;
+    icon?: ButtonIconTypes;
     onClick: () => void;
-    isMakingRequest: boolean;
+    isMakingRequest?: boolean;
   }[];
 }
 
@@ -201,12 +203,14 @@ export function SectionListItem({
               isInverse,
               onClick: onClick$1,
               isMakingRequest,
+              icon,
             }) => (
               <FormButton
                 text={buttonLabel}
                 key={buttonLabel}
                 size="xs"
-                isMakingRequest={isMakingRequest}
+                icon={icon}
+                isMakingRequest={!!isMakingRequest}
                 isInverse={isInverse}
                 onClick={(event) => {
                   event.preventDefault();

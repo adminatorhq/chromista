@@ -2,14 +2,14 @@ import React from "react";
 import Link from "next/link";
 import { Loader } from "react-feather";
 import { StyledSoftButton } from "./Button";
-import { SoftButtonIconTypes, ICON_MAP } from "./SoftButton.types";
+import { ButtonIconTypes, ICON_MAP } from "./constants";
 import { SYSTEM_COLORS } from "../../theme";
 import { Spin } from "../_/Spin";
 import { Stack } from "../../ui-blocks";
 
 export interface IProps {
   label?: string;
-  icon?: SoftButtonIconTypes;
+  icon?: ButtonIconTypes;
   size?: "sm" | "xs";
   block?: true;
   disabled?: boolean;

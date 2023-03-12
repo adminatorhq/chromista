@@ -1,8 +1,8 @@
 import {
   ArrowRight,
+  CheckSquare,
   ChevronsLeft,
   Edit,
-  Eye,
   HelpCircle,
   Plus,
   Save,
@@ -16,10 +16,10 @@ export const ICON_MAP = {
   save: Save,
   settings: Settings,
   close: X,
-  eye: Eye,
+  check: CheckSquare,
   right: ArrowRight,
   help: HelpCircle,
   back: ChevronsLeft,
 };
 
-export type SoftButtonIconTypes = keyof typeof ICON_MAP;
+export type ButtonIconTypes = keyof typeof ICON_MAP;

@@ -329,7 +329,11 @@ function DemoForm() {
           />
           <Stack justify="flex-end">
             <FormButton text="Making Progress" isMakingRequest />
-            <FormButton text="Do Something" isMakingRequest={false} />
+            <FormButton
+              text="Do Something"
+              isMakingRequest={false}
+              icon="save"
+            />
           </Stack>
         </form>
       )}

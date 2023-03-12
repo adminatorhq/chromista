@@ -8,7 +8,7 @@ import { SimpleSelect } from "../../Form";
 import { SoftButton } from "../../Button/SoftButton";
 import { StyledCard, StyledCardBody, StyledCardHeader } from "../../Card";
 import { Tooltip } from "../../Tooltip";
-import { SoftButtonIconTypes } from "../../Button/SoftButton.types";
+import { ButtonIconTypes } from "../../Button/constants";
 import { Spacer, Stack, Typo } from "../../../ui-blocks";
 import { BaseSkeleton } from "../../Skeleton";
 
@@ -20,7 +20,7 @@ export interface IProps {
   iconButtons?: {
     action: string | (() => void);
     label?: string;
-    icon?: SoftButtonIconTypes;
+    icon?: ButtonIconTypes;
   }[];
   selection?: { options: ISelectData[]; onChange: (value: string) => void };
   deleteAction?: { action: () => void; isMakingDeleteRequest: boolean };
