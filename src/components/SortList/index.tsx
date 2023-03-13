@@ -39,6 +39,7 @@ const SortItem = styled(Stack)`
   border: 1px solid ${USE_ROOT_COLOR("border-color")};
   margin: 4px 0px;
   padding: 8px;
+  user-select: none;
   border-radius: 4px;
   cursor: move;
 `;
