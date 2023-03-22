@@ -5,6 +5,7 @@ import useClickAway from "react-use/lib/useClickAway";
 import useKey from "react-use/lib/useKey";
 import styled from "styled-components";
 import { Z_INDEXES } from "../../constants/zIndex";
+import { USE_ROOT_COLOR } from "../../theme/root";
 
 const Root = styled.div`
   position: relative;
@@ -19,9 +20,12 @@ const DropdownRoot = styled.div<{ zIndex: number; align: Align }>`
   left: ${(props) => (props.align === "left" ? "0" : "auto")};
   top: calc(100% + 8px);
   z-index: ${(props) => props.zIndex};
+  background: ${USE_ROOT_COLOR("base-color")};
+  border-radius: 2px;
+  border: 1px solid ${USE_ROOT_COLOR("border-color")};
 `;
 
-interface IProps {
+export interface IProps {
   target: ReactNode;
   children: ReactNode;
   rootZIndex?: number;
@@ -66,8 +70,6 @@ export function Dropdown({
         {target}
       </span>
       {menuVisible && (
-        // The click handling on the element is not real interactivity,
-        // this is a workaround for the useClickAway on the container.
         <DropdownRoot
           align={align}
           zIndex={rootZIndex}

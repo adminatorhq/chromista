@@ -164,7 +164,6 @@ export function Table<T extends unknown>({
 }
 
 // nice to have, column ordering
-// https://react-table.tanstack.com/docs/examples/row-selection-and-pagination
 // https://react-table.tanstack.com/docs/examples/editable-data
 // https://react-table.tanstack.com/docs/examples/column-hiding
 // https://react-table.tanstack.com/docs/examples/column-resizing

@@ -36,10 +36,7 @@ const Root = styled.div`
 `;
 
 const DownRoot = styled(Stack)`
-  background: ${USE_ROOT_COLOR("base-color")};
   padding: 8px;
-  border-radius: 2px;
-  border: 1px solid ${USE_ROOT_COLOR("border-color")};
   min-width: 250px;
 `;
 

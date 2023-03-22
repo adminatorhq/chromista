@@ -1,10 +1,15 @@
 import { IPaginatedDataState, PaginatedData } from "@hadmean/protozoa";
+import { HeaderContext } from "@tanstack/react-table";
 import { ReactNode } from "react";
 import { UseQueryResult } from "react-query";
 import { TableFilterType } from "./filters/types";
 
 export interface ITableColumn {
-  Header: string;
+  Header:
+    | string
+    | ((
+        headerContext: HeaderContext<Record<string, unknown>, unknown>
+      ) => ReactNode);
   accessor: string;
   disableSortBy?: boolean;
   filter?: TableFilterType;

@@ -1,6 +1,6 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Icon, Loader } from "react-feather";
 import { Stack, Typo } from "../../ui-blocks";
 import { StyledSoftButton } from "../Button/Button";
@@ -12,10 +12,12 @@ import { SHADOW_CSS } from "../Card";
 const togglePreviousState = (prev: boolean) => !prev;
 
 export interface IDropDownMenuItem {
+  id?: string;
   label: string;
   description?: string;
   IconComponent?: Icon;
   onClick: () => void;
+  order?: number;
 }
 
 export interface IProps {
@@ -123,7 +125,7 @@ const StyledDropDownIcon = styled(StyledSoftButton)`
 `;
 
 export function DropDownMenu({
-  menuItems,
+  menuItems: menuItems$1,
   isMakingActionRequest,
   disabled,
 }: IProps) {
@@ -134,6 +136,12 @@ export function DropDownMenu({
       setDropDownOpen(togglePreviousState);
     }
   };
+
+  const menuItems = useMemo(() => {
+    return [...menuItems$1].sort((a, b) => {
+      return (a.order || 0) - (b.order || 0);
+    });
+  }, [menuItems$1]);
 
   const [currentMenuItem, setCurrentMenuItem] = useState<IDropDownMenuItem>(
     menuItems[0]

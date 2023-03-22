@@ -20,12 +20,12 @@ export type TextProps = {
 };
 
 const sizes: Record<TextProps["size"], number> = {
-  1: 60,
-  2: 48,
-  3: 24,
-  4: 18,
-  5: 16,
-  6: 14,
+  1: 48,
+  2: 24,
+  3: 18,
+  4: 16,
+  5: 14,
+  6: 12,
 };
 
 const weights: Record<TextProps["weight"], number> = {
@@ -61,16 +61,7 @@ const Text = styled.p.attrs((props: TextProps) => ({
 type EscapeTypoProps = Partial<TextProps>;
 type TypoProps = Omit<EscapeTypoProps, "size">;
 
-export function Typo(
-  props: Partial<TypoProps> & {
-    P: (props: TypoProps) => Element;
-    Small: (props: TypoProps) => Element;
-    Tiny: (props: TypoProps) => Element;
-    Large: (props: TypoProps) => Element;
-    XLarge: (props: TypoProps) => Element;
-    Escape: (props: TypoProps & { size: TextProps["size"] }) => Element;
-  }
-) {
+export function Typo(props: Partial<TypoProps>) {
   return <Text {...props} />;
 }
 
@@ -79,21 +70,25 @@ Typo.Escape = function Escape(props: TypoProps & { size: TextProps["size"] }) {
 };
 
 Typo.XL = function XLarge(props: TypoProps) {
-  return <Text {...props} size="2" />;
+  return <Text {...props} size="1" />;
 };
 
 Typo.L = function Large(props: TypoProps) {
-  return <Text {...props} size="3" />;
+  return <Text {...props} size="2" />;
 };
 
 Typo.MD = function Medium(props: TypoProps) {
-  return <Text {...props} size="4" />;
+  return <Text {...props} size="3" />;
 };
 
 Typo.SM = function Small(props: TypoProps) {
-  return <Text {...props} size="5" />;
+  return <Text {...props} size="4" />;
 };
 
 Typo.XS = function XSmall(props: TypoProps) {
+  return <Text {...props} size="5" />;
+};
+
+Typo.XXS = function XSmall(props: TypoProps) {
   return <Text {...props} size="6" />;
 };

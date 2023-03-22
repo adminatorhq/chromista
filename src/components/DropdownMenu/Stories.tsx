@@ -62,3 +62,27 @@ SingleAction.args = {
     },
   ],
 };
+
+export const OrderItems = Template.bind({});
+OrderItems.args = {
+  menuItems: [
+    {
+      label: "Menu Item 2",
+      IconComponent: Save,
+      onClick: () => {},
+      order: 2,
+    },
+    {
+      label: "Menu Item 1",
+      IconComponent: Save,
+      onClick: () => {},
+      order: 1,
+    },
+    {
+      label: "Menu Item 3",
+      IconComponent: Save,
+      onClick: () => {},
+      order: 3,
+    },
+  ],
+};

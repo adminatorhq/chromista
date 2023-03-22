@@ -2,6 +2,7 @@ import { IPaginatedDataState } from "@hadmean/protozoa";
 import {
   ColumnFiltersState,
   createColumnHelper,
+  HeaderContext,
   Table,
   Updater,
 } from "@tanstack/react-table";
@@ -18,14 +19,21 @@ const columnHelper = createColumnHelper<Record<string, unknown>>();
 export const useInternalColumns = (columns: ITableColumn[]) => {
   return useMemo(() => {
     return columns.map((column) => {
+      const header = (
+        headerContext: HeaderContext<Record<string, unknown>, unknown>
+      ) => {
+        return typeof column.Header === "string"
+          ? column.Header
+          : column.Header(headerContext);
+      };
       return columnHelper.accessor(column.accessor, {
         id: column.accessor,
         meta: {
           filter: column.filter,
         },
         enableSorting: !column.disableSortBy,
-        header: column.Header,
-        footer: column.Header,
+        header,
+        footer: header,
         enableColumnFilter: !!column.filter,
         cell: (props) =>
           column?.Cell

@@ -12,6 +12,7 @@ export * from "./Button";
 export * from "./ComponentIsLoading";
 export * from "./ConfirmAlert";
 export { IDropDownMenuItem, DropDownMenu } from "./DropdownMenu";
+export { Dropdown } from "./Dropdown";
 export { EmptyWrapper } from "./EmptyWrapper";
 export * from "./Form";
 export * from "./KeyValueDetails";
@@ -29,6 +30,7 @@ export { TableDataAsList } from "./TableDataAsList";
 export { Tabs } from "./Tabs";
 export { TagsList } from "./TagsList";
 export { Tooltip } from "./Tooltip";
+export { IntermediateCheckBox } from "./IntermediateCheckBox";
 
 // TODO TO storybook
 /*
@@ -36,7 +38,6 @@ Button
 Text
 // Divider
 ComponentIsLoading
-Dropdown
 Keyvalue details
 Progress bar
 SelectAnItem

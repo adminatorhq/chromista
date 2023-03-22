@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { USE_ROOT_COLOR } from "../../theme";
 
-export const StyledPlainButton = styled.button`
+export const PlainButton = styled.button`
   &:focus {
     outline: 0;
   }
@@ -11,7 +11,7 @@ export const StyledPlainButton = styled.button`
   padding: 0;
 `;
 
-export const TextButton = styled(StyledPlainButton)`
+export const TextButton = styled(PlainButton)`
   display: inline-block;
   position: relative;
   color: ${USE_ROOT_COLOR("primary-color")};
