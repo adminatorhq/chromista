@@ -73,6 +73,7 @@ export function TableHead({ table }: IProps) {
                     {header.column.getCanFilter() && filter ? (
                       <TableFilter
                         view={view}
+                        headerIndex={header.index}
                         column={header.column}
                         type={filter}
                       />

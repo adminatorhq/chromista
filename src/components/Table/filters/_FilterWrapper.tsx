@@ -24,6 +24,7 @@ const FILTER_TYPE_CONFIG: Record<
 
 interface IProps {
   children: ReactNode;
+  toLeft: boolean;
   filterHasValue: boolean;
   clearFilter: (filter: undefined) => void;
   filterType: TableFilterType["_type"];
@@ -45,6 +46,7 @@ export function FilterWrapper({
   filterHasValue,
   clearFilter,
   columnLabel,
+  toLeft,
   filterType,
 }: IProps) {
   const iconProps = {
@@ -60,7 +62,7 @@ export function FilterWrapper({
   return (
     <Dropdown
       preserveVisibiltyOnClick
-      align="right"
+      align={toLeft ? "left" : "right"}
       target={
         <Root
           aria-label={`Filter ${columnLabel} By ${filterLabel}${

@@ -13,9 +13,10 @@ interface IProps {
   type: TableFilterType;
   column: Column<Record<string, unknown>, unknown>;
   view?: React.ReactNode;
+  headerIndex: number;
 }
 
-export function TableFilter({ type, column, view }: IProps) {
+export function TableFilter({ type, column, view, headerIndex }: IProps) {
   const filterValue = column.getFilterValue() as IColumnFilterBag<any>;
 
   const setFilter = (value?: IColumnFilterBag<unknown>) => {
@@ -46,6 +47,7 @@ export function TableFilter({ type, column, view }: IProps) {
       filterHasValue={filterHasValueImpl(filterValue)}
       clearFilter={setFilter}
       columnLabel={view}
+      toLeft={headerIndex === 0}
       filterType={type._type}
     >
       {operators.length > 0 && (
