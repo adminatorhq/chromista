@@ -13,7 +13,7 @@ const IconWrapper = styled.span<{ $disabled?: boolean }>`
   width: 16px;
   height: 16px;
   border-radius: 2px;
-  margin-right: 16px;
+  cursor: ${(props) => (props.$disabled ? "not-allowed" : "pointer")};
   color: ${(props) =>
     props.$disabled
       ? USE_ROOT_COLOR("muted-text")
@@ -27,7 +27,7 @@ const Icon = styled.i`
 type CheckboxState = "checked" | "unchecked" | "partial";
 
 export interface IProps {
-  onClick?: (previousState: CheckboxState) => void;
+  onClick: (previousState: CheckboxState) => void;
   state: CheckboxState;
   disabled?: boolean;
   label?: string;
@@ -49,10 +49,8 @@ export function IntermediateCheckBox({
   label,
 }: IProps) {
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if (onClick) {
-      e.stopPropagation();
-      onClick(state);
-    }
+    e.stopPropagation();
+    onClick(state);
   };
 
   return (

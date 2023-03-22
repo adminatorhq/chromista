@@ -1,5 +1,5 @@
 /* eslint-disable react/function-component-definition */
-import React from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { IntermediateCheckBox, IProps } from ".";
@@ -14,31 +14,31 @@ export default {
   },
 };
 
-const Template: Story<IProps> = (args) => {
+const ControlledTemplate: Story<IProps> = (args) => {
+  const [state, setState] = useState<IProps["state"]>("unchecked");
   return (
     <AppWrapper>
-      <IntermediateCheckBox {...args} />
+      <IntermediateCheckBox
+        {...args}
+        state={state}
+        onClick={() => {
+          if (state === "checked") {
+            setState("unchecked");
+          } else if (state === "unchecked") {
+            setState("partial");
+          } else if (state === "partial") {
+            setState("checked");
+          }
+        }}
+      />
     </AppWrapper>
   );
 };
 
-export const Checked = Template.bind({});
-Checked.args = {
-  state: "checked",
-};
+export const Controlled = ControlledTemplate.bind({});
+Controlled.args = {};
 
-export const Unchecked = Template.bind({});
-Unchecked.args = {
-  state: "unchecked",
-};
-
-export const Partial = Template.bind({});
-Partial.args = {
-  state: "partial",
-};
-
-export const Disabled = Template.bind({});
+export const Disabled = ControlledTemplate.bind({});
 Disabled.args = {
-  state: "unchecked",
   disabled: true,
 };
