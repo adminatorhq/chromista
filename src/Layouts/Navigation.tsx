@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import Link from "next/link";
 import { ISelectionView } from "./types";
 import { USE_ROOT_COLOR } from "../theme";
-import { StyledPlainButton } from "../components/Button/TextButton";
+import { PlainButton } from "../components/Button/TextButton";
 
 interface IRenderNavigation {
   navigation: Array<ISelectionView & { sideBarAction: () => void }>;
@@ -93,7 +93,7 @@ export function RenderNavigation({
                 </Link>
               ) : (
                 <StyledLeftSideNavMenuListAnchor
-                  as={StyledPlainButton}
+                  as={PlainButton}
                   onClick={() => {
                     action?.();
                     sideBarAction();
