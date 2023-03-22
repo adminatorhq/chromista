@@ -19,7 +19,7 @@ export default {
 const Template: Story<IProps> = (args) => (
   <AppWrapper>
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <Dropdown {...args} />
+      <Dropdown {...args} width={200} />
     </div>
   </AppWrapper>
 );
