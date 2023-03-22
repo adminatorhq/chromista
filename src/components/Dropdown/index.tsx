@@ -12,11 +12,19 @@ const Root = styled.div`
   display: inline-block;
 `;
 
-type Align = "left" | "right";
+type Align = "right" | "left";
 
-const DropdownRoot = styled.div<{ zIndex: number; align: Align }>`
+const DropdownRoot = styled.div<{
+  zIndex: number;
+  align: Align;
+  offset: number;
+  $width: number;
+}>`
   position: absolute;
-  right: ${(props) => (props.align === "right" ? "0" : "auto")};
+  right: ${(props) =>
+    props.align === "right"
+      ? `${Math.min(0, props.offset - props.$width)}px`
+      : "auto"};
   left: ${(props) => (props.align === "left" ? "0" : "auto")};
   top: calc(100% + 8px);
   z-index: ${(props) => props.zIndex};
@@ -32,18 +40,20 @@ export interface IProps {
   preserveVisibiltyOnClick?: boolean;
   onDropDownActiveChange?: (isActive: boolean) => void;
   align?: Align;
+  width: number;
 }
 
 export function Dropdown({
   align = "right",
   target,
+  width,
   children,
   preserveVisibiltyOnClick,
   onDropDownActiveChange,
   rootZIndex = Z_INDEXES.dropDown,
 }: IProps) {
   const [menuVisible, setMenuVisible] = useState(false);
-  const rootRef = useRef(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useClickAway(rootRef, () => setMenuVisible(false));
 
@@ -71,7 +81,9 @@ export function Dropdown({
       </span>
       {menuVisible && (
         <DropdownRoot
+          offset={rootRef.current?.offsetLeft || 0}
           align={align}
+          $width={width}
           zIndex={rootZIndex}
           onClick={(e) => {
             if (!preserveVisibiltyOnClick) {

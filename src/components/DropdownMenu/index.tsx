@@ -12,7 +12,7 @@ import { SHADOW_CSS } from "../Card";
 const togglePreviousState = (prev: boolean) => !prev;
 
 export interface IDropDownMenuItem {
-  id?: string;
+  id: string;
   label: string;
   description?: string;
   IconComponent?: Icon;
