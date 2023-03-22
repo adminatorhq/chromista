@@ -19,13 +19,12 @@ const columnHelper = createColumnHelper<Record<string, unknown>>();
 export const useInternalColumns = (columns: ITableColumn[]) => {
   return useMemo(() => {
     return columns.map((column) => {
-      const header = (
-        headerContext: HeaderContext<Record<string, unknown>, unknown>
-      ) => {
-        return typeof column.Header === "string"
-          ? column.Header
-          : column.Header(headerContext);
-      };
+      const columnHeader = column.Header;
+      const header =
+        typeof columnHeader === "string"
+          ? columnHeader
+          : (headerContext: HeaderContext<Record<string, unknown>, unknown>) =>
+              columnHeader(headerContext);
       return columnHelper.accessor(column.accessor, {
         id: column.accessor,
         meta: {
