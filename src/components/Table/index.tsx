@@ -162,10 +162,3 @@ export function Table<T extends unknown>({
     </StyledTableResponsive>
   );
 }
-
-// nice to have, column ordering
-// https://react-table.tanstack.com/docs/examples/editable-data
-// https://react-table.tanstack.com/docs/examples/column-hiding
-// https://react-table.tanstack.com/docs/examples/column-resizing
-// https://react-table.tanstack.com/docs/examples/full-width-table
-// https://react-table.tanstack.com/docs/examples/full-width-resizable-table

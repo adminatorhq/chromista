@@ -17,6 +17,7 @@ import { SelectStyles, SharedSelectProps } from "../styles";
 
 interface IProps extends IBaseFormSelect {
   url: string;
+  referenceUrl?: (value: string) => string;
   limit?: number;
 }
 
@@ -45,6 +46,7 @@ export function AsyncFormSelect(props: IProps) {
   const {
     input,
     url,
+    referenceUrl,
     limit = 50,
     meta,
     disabled,
@@ -78,8 +80,10 @@ export function AsyncFormSelect(props: IProps) {
     if (isValueInFirstDataLoad) {
       return isValueInFirstDataLoad?.label;
     }
-
-    return await makeGetRequest(`${url}/${input.value}/reference`);
+    if (!referenceUrl) {
+      return input.value;
+    }
+    return await makeGetRequest(referenceUrl(input.value));
   }, [url, valueLabel, isLoading]);
 
   if (error) {

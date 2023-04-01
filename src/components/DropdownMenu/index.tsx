@@ -38,6 +38,7 @@ const StyledDropDownItem = styled.button`
   padding: 6px 12px;
   clear: both;
   font-weight: 400;
+  cursor: pointer;
   font-size: 16px;
   line-height: 20px;
   color: ${USE_ROOT_COLOR("main-text")};
