@@ -16,6 +16,7 @@ export interface IProps {
 
 const Root = styled.div`
   width: 100%;
+  overflow-x: hidden;
 `;
 
 const StyledPage = styled.div<{ isSidebarOpen: boolean }>`

@@ -52,7 +52,7 @@ body {
   min-height: 100vh;
   letter-spacing: 0.1px;
   line-height: 1.5;
-  position: relative
+  position: relative;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
