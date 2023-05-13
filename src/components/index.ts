@@ -22,6 +22,7 @@ export * from "./ProgressBar";
 export { OffCanvas } from "./OffCanvas";
 export { RenderList } from "./RenderList";
 export { SortList } from "./SortList";
+export { RenderCode } from "./RenderCode";
 export * from "./Section";
 export * from "./SelectAnItem";
 export * from "./Skeleton";

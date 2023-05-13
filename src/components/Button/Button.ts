@@ -24,7 +24,6 @@ export const StyledBaseButton = styled.button<IStyledBaseButton>`
   border-radius: 4px;
   position: relative;
   cursor: ${(props) => props.cursor || "pointer"};
-  overflow: hidden;
   -webkit-appearance: button
   -webkit-tap-highlight-color: transparent;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
