@@ -1,22 +1,41 @@
 import React from "react";
 import styled from "styled-components";
-import { StyledCard } from "../../Card";
+import { ChevronsDown, Icon, ChevronsUp } from "react-feather";
 import { Spacer, Stack, Typo } from "../../../ui-blocks";
-import { WidgetHeader } from "../Header";
-import { IWidgetHeaderProps } from "../types";
-import { DirectionImplementation } from "./constants";
+import { SYSTEM_COLORS, USE_ROOT_COLOR } from "../../../theme";
 
-const StyledBox = styled.div`
-  padding: 24px;
-`;
+const DirectionImplementation: Record<
+  "up" | "down" | "side",
+  {
+    color: string;
+    label: string;
+    Icon: Icon;
+  }
+> = {
+  down: {
+    Icon: ChevronsDown,
+    label: "Down",
+    color: SYSTEM_COLORS.danger,
+  },
+  up: {
+    Icon: ChevronsUp,
+    label: "Up",
+    color: SYSTEM_COLORS.success,
+  },
+  side: {
+    Icon: () => null,
+    label: "Side",
+    color: USE_ROOT_COLOR("main-text"),
+  },
+};
 
 const StyledIconRoot = styled.div<{ color: string }>`
   background: ${(props) => props.color}2A;
   color: ${(props) => props.color};
   border: 1px solid ${(props) => props.color};
-  width: 56px;
-  min-width: 56px;
-  border-radius: 56px;
+  width: 40px;
+  min-width: 40px;
+  border-radius: 40px;
   padding: 8px;
   display: flex;
   justify-content: center;
@@ -38,7 +57,8 @@ const StyledDirectionRoot = styled(Stack)<{ color: string }>`
   border-color: ${(props) => props.color};
 `;
 
-export interface IProps extends IWidgetHeaderProps {
+export interface IProps {
+  title: string;
   color: string;
   fullCount: string;
   relativeCount: string;
@@ -50,9 +70,7 @@ export function SummaryWidget({
   color,
   fullCount,
   relativeCount,
-  link,
   direction,
-  setting,
   title,
   icon,
 }: IProps) {
@@ -63,47 +81,42 @@ export function SummaryWidget({
   } = DirectionImplementation[direction];
 
   return (
-    <StyledCard>
-      <StyledBox>
-        <Stack spacing={18}>
-          <StyledIconRoot
-            color={color}
-            aria-label={`${title} Icon`}
-            dangerouslySetInnerHTML={{ __html: icon }}
-          />
-          <div style={{ width: "100%" }}>
-            <WidgetHeader setting={setting} title={title} link={link} />
-            <Spacer size="xs" />
-            <Stack justify="space-between" align="end">
-              <Typo.L weight="bold" aria-label="Total Count">
-                {fullCount}
-              </Typo.L>
-              {relativeCount ? (
-                <StyledDirectionRoot
-                  color={directionColor}
-                  spacing={2}
-                  align="center"
-                  aria-label="Relative Direction"
-                >
-                  <span aria-label={directionLabel}>
-                    <DirectionIcon
-                      size={20}
-                      style={{ color: directionColor, verticalAlign: "sub" }}
-                    />
-                  </span>
-                  <StyledRelativeCount
-                    weight="bold"
-                    aria-label="Relative Count"
-                    directionColor={directionColor}
-                  >
-                    {relativeCount}
-                  </StyledRelativeCount>
-                </StyledDirectionRoot>
-              ) : null}
-            </Stack>
-          </div>
+    <Stack spacing={18} align="center">
+      <StyledIconRoot
+        color={color}
+        aria-label={`${title} Icon`}
+        dangerouslySetInnerHTML={{ __html: icon }}
+      />
+      <div style={{ width: "100%" }}>
+        <Spacer size="xs" />
+        <Stack justify="space-between" align="end">
+          <Typo.L weight="bold" aria-label="Total Count">
+            {fullCount}
+          </Typo.L>
+          {relativeCount ? (
+            <StyledDirectionRoot
+              color={directionColor}
+              spacing={2}
+              align="center"
+              aria-label="Relative Direction"
+            >
+              <span aria-label={directionLabel}>
+                <DirectionIcon
+                  size={20}
+                  style={{ color: directionColor, verticalAlign: "sub" }}
+                />
+              </span>
+              <StyledRelativeCount
+                weight="bold"
+                aria-label="Relative Count"
+                directionColor={directionColor}
+              >
+                {relativeCount}
+              </StyledRelativeCount>
+            </StyledDirectionRoot>
+          ) : null}
         </Stack>
-      </StyledBox>
-    </StyledCard>
+      </div>
+    </Stack>
   );
 }

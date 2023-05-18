@@ -1,7 +1,6 @@
 /* eslint-disable react/function-component-definition */
 import React from "react";
 import { Story } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import { SummaryWidget, IProps } from ".";
 import { AppWrapper } from "../../../AppWrapper";
 
@@ -24,7 +23,6 @@ export default {
   </svg>`,
     direction: "up",
     title: "Test Title",
-    link: "go-some-where",
   },
 };
 
@@ -50,23 +48,4 @@ NoRelative.args = {
 export const Side = Template.bind({});
 Side.args = {
   direction: "side",
-};
-
-export const NoLink = Template.bind({});
-NoLink.args = {
-  link: undefined,
-};
-
-export const NoRight = Template.bind({});
-NoRight.args = {
-  link: undefined,
-  relativeCount: undefined,
-};
-
-export const WithSetting = Template.bind({});
-WithSetting.args = {
-  setting: {
-    setId: action("SetId"),
-    delete: action("Delete"),
-  },
 };

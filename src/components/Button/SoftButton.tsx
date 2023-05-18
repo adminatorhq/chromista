@@ -52,7 +52,9 @@ export function SoftButton({
     >
       <>
         {Icon ? <Icon {...iconProps} /> : null}
-        {label && !justIcon ? label : null}
+        <span style={{ whiteSpace: "nowrap" }}>
+          {label && !justIcon ? label : null}
+        </span>
       </>
     </Stack>
   );

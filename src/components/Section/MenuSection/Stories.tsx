@@ -16,6 +16,16 @@ export default {
         action: "item-1",
       },
       {
+        name: "First Item",
+        action: "first-item",
+        order: 0,
+      },
+      {
+        name: "Last Item",
+        action: "last-item",
+        order: 99,
+      },
+      {
         name: "Item Icon",
         action: "item-icon",
         IconComponent: Save,

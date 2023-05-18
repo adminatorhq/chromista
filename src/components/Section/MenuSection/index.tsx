@@ -5,15 +5,16 @@ import { SHADOW_CSS, StyledCardBody } from "../../Card";
 import { RenderList } from "../../RenderList";
 import { SectionListItem } from "../SectionList";
 
-interface IMenuItem {
+export interface IMenuSectionItem {
   name: string;
+  order?: number;
   action: string | (() => void);
   IconComponent?: Icon;
   disabled?: boolean;
 }
 
 export interface IProps {
-  menuItems: IMenuItem[];
+  menuItems: IMenuSectionItem[];
   currentMenuItem?: string;
 }
 
@@ -22,10 +23,17 @@ const Root = styled(StyledCardBody)`
 `;
 
 export function MenuSection({ menuItems, currentMenuItem }: IProps) {
+  const orderedMenuItems = menuItems.sort((a, b) => {
+    const aOrder = a.order ?? 10;
+    const bOrder = b.order ?? 10;
+
+    return aOrder - bOrder;
+  });
+
   return (
     <Root>
       <RenderList
-        items={menuItems}
+        items={orderedMenuItems}
         notSearchable
         newItemLink=""
         singular=""
