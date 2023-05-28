@@ -14,7 +14,8 @@ import { USE_ROOT_COLOR } from "../../../theme/root";
 
 interface IFormButton extends IStyledBaseButton {
   text: string;
-  icon?: ButtonIconTypes;
+  loadingText: string;
+  icon: ButtonIconTypes | "no-icon";
   isMakingRequest: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   disabled?: boolean;
@@ -24,6 +25,7 @@ interface IFormButton extends IStyledBaseButton {
 export const actionButtonIsMakingRequest = (
   isMakingRequest: boolean,
   text: string,
+  loadingText: string,
   IconCmp: Icon | null
 ) => {
   const iconProps = {
@@ -35,7 +37,7 @@ export const actionButtonIsMakingRequest = (
   return isMakingRequest ? (
     <>
       <Spin as={Loader} {...iconProps} />
-      <span>{text}</span>
+      <span>{loadingText}</span>
     </>
   ) : (
     <>
@@ -62,6 +64,7 @@ export function FormButton({
   disabled,
   isMakingRequest,
   onClick,
+  loadingText,
   isInverse,
   size,
   icon,
@@ -78,9 +81,14 @@ export function FormButton({
     size,
   };
 
-  const IconCmp = icon ? ICON_MAP[icon] : null;
+  const IconCmp = icon === "no-icon" ? null : ICON_MAP[icon];
 
-  const toRender = actionButtonIsMakingRequest(isMakingRequest, text, IconCmp);
+  const toRender = actionButtonIsMakingRequest(
+    isMakingRequest,
+    text,
+    loadingText,
+    IconCmp
+  );
 
   return (
     <Stack justify="end">

@@ -95,6 +95,8 @@ export function SortList<T extends { value: string; label?: string }>({
             setTouched(false);
           }}
           text="Save Order"
+          loadingText="Saving Order"
+          icon="save"
           disabled={!touched}
           isMakingRequest={isMakingRequest}
         />

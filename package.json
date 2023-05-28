@@ -1,6 +1,6 @@
 {
   "name": "@hadmean/chromista",
-  "version": "1.0.98",
+  "version": "1.0.99",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -28,7 +28,7 @@
     "react": ">=16"
   },
   "dependencies": {
-    "@hadmean/protozoa": "^1.0.22",
+    "@hadmean/protozoa": "^1.0.23",
     "@tanstack/react-table": "^8.7.9",
     "@types/prismjs": "^1.26.0",
     "@types/react-datepicker": "^4.4.1",

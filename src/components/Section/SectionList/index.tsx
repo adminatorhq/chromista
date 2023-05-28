@@ -207,9 +207,10 @@ export function SectionListItem({
             }) => (
               <FormButton
                 text={buttonLabel}
+                loadingText={buttonLabel}
                 key={buttonLabel}
                 size="xs"
-                icon={icon}
+                icon={icon || "no-icon"}
                 isMakingRequest={!!isMakingRequest}
                 isInverse={isInverse}
                 onClick={(event) => {

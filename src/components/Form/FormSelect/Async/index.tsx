@@ -58,7 +58,9 @@ export function AsyncFormSelect(props: IProps) {
 
   const [valueLabel, setValueLabel] = useState("");
 
-  const { isLoading, error, data = [] } = useApi<ISelectData[]>(url);
+  const { isLoading, error, data } = useApi<ISelectData[]>(url, {
+    defaultData: [],
+  });
 
   const valueLabelToUse = useAsync(async () => {
     if (valueLabel) {

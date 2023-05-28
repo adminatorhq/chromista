@@ -10,9 +10,11 @@ import {
   Settings,
   Slash,
   X,
+  LogIn,
 } from "react-feather";
 
 export const ICON_MAP = {
+  logIn: LogIn,
   edit: Edit,
   add: Plus,
   save: Save,
