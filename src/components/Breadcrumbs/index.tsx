@@ -43,6 +43,7 @@ const StyledBreadcrumbItemLink = styled.button<{ active: boolean }>`
   font-weight: 400;
   border: none;
   padding: 0;
+  cursor: pointer;
   background-color: transparent;
   color: ${USE_ROOT_COLOR("primary-color")};
 

@@ -94,8 +94,9 @@ export function SortList<T extends { value: string; label?: string }>({
             setIsMakingRequest(false);
             setTouched(false);
           }}
-          text="Save Order"
-          loadingText="Saving Order"
+          text={(isSubmitting) =>
+            isSubmitting ? "Saving Order" : "Save Order"
+          }
           icon="save"
           disabled={!touched}
           isMakingRequest={isMakingRequest}

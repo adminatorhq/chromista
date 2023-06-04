@@ -11,6 +11,7 @@ import {
   Slash,
   X,
   LogIn,
+  Square,
 } from "react-feather";
 
 export const ICON_MAP = {
@@ -22,6 +23,7 @@ export const ICON_MAP = {
   settings: Settings,
   close: X,
   ban: Slash,
+  square: Square,
   check: CheckSquare,
   right: ArrowRight,
   help: HelpCircle,

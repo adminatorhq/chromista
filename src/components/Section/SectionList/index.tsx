@@ -206,9 +206,8 @@ export function SectionListItem({
               icon,
             }) => (
               <FormButton
-                text={buttonLabel}
-                loadingText={buttonLabel}
                 key={buttonLabel}
+                text={() => buttonLabel}
                 size="xs"
                 icon={icon || "no-icon"}
                 isMakingRequest={!!isMakingRequest}

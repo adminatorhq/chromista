@@ -329,14 +329,16 @@ function DemoForm() {
           />
           <Stack justify="flex-end">
             <FormButton
-              text="Makie Progress"
+              text={(isSubmitting) =>
+                isSubmitting ? "Making Progress" : "Make Progress"
+              }
               icon="save"
               isMakingRequest
-              loadingText="Making Progress"
             />
             <FormButton
-              text="Do Something"
-              loadingText="Doing Something"
+              text={(isSubmitting) =>
+                isSubmitting ? "Doing Something" : "Do Something"
+              }
               isMakingRequest={false}
               icon="save"
             />

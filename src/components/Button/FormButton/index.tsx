@@ -13,8 +13,7 @@ import { useThemeColorShade } from "../../../theme/useTheme";
 import { USE_ROOT_COLOR } from "../../../theme/root";
 
 interface IFormButton extends IStyledBaseButton {
-  text: string;
-  loadingText: string;
+  text: (isMakingRequest: boolean) => string;
   icon: ButtonIconTypes | "no-icon";
   isMakingRequest: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -24,8 +23,7 @@ interface IFormButton extends IStyledBaseButton {
 
 export const actionButtonIsMakingRequest = (
   isMakingRequest: boolean,
-  text: string,
-  loadingText: string,
+  text: (isMakingRequest: boolean) => string,
   IconCmp: Icon | null
 ) => {
   const iconProps = {
@@ -37,12 +35,12 @@ export const actionButtonIsMakingRequest = (
   return isMakingRequest ? (
     <>
       <Spin as={Loader} {...iconProps} />
-      <span>{loadingText}</span>
+      <span>{text(true)}</span>
     </>
   ) : (
     <>
       {IconCmp ? <IconCmp {...iconProps} /> : null}
-      <span>{text}</span>
+      <span>{text(false)}</span>
     </>
   );
 };
@@ -64,7 +62,6 @@ export function FormButton({
   disabled,
   isMakingRequest,
   onClick,
-  loadingText,
   isInverse,
   size,
   icon,
@@ -83,12 +80,7 @@ export function FormButton({
 
   const IconCmp = icon === "no-icon" ? null : ICON_MAP[icon];
 
-  const toRender = actionButtonIsMakingRequest(
-    isMakingRequest,
-    text,
-    loadingText,
-    IconCmp
-  );
+  const toRender = actionButtonIsMakingRequest(isMakingRequest, text, IconCmp);
 
   return (
     <Stack justify="end">
