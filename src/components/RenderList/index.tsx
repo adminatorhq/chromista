@@ -5,6 +5,7 @@ import { ListSkeleton } from "../Skeleton/List";
 import { SectionList } from "../Section/SectionList";
 import { FormSearch } from "../Form/FormSearch";
 import { SoftButton } from "../Button/SoftButton";
+import { Spacer } from "../../ui-blocks";
 
 export interface IProps<T> {
   isLoading?: false | number;
@@ -55,7 +56,8 @@ export function RenderList<T extends { name: string }>({
   }
   if (itemsLength === 0) {
     return (
-      <EmptyWrapper text={`No ${singular} To Look At`}>
+      <EmptyWrapper text={`No ${singular} Has Been Added Yet`}>
+        <Spacer size="sm" />
         {newItemLink && (
           <SoftButton
             action={newItemLink}

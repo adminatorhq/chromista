@@ -158,6 +158,7 @@ export interface IProps {
     icon?: ButtonIconTypes;
     onClick: () => void;
     isMakingRequest?: boolean;
+    disabled?: boolean;
   }[];
 }
 
@@ -204,11 +205,13 @@ export function SectionListItem({
               onClick: onClick$1,
               isMakingRequest,
               icon,
+              disabled: disabled$1,
             }) => (
               <FormButton
                 key={buttonLabel}
                 text={() => buttonLabel}
                 size="xs"
+                disabled={disabled$1}
                 icon={icon || "no-icon"}
                 isMakingRequest={!!isMakingRequest}
                 isInverse={isInverse}

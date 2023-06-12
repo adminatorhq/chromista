@@ -6,7 +6,7 @@ import "prismjs/components/prism-javascript";
 import { PrismTokenStyles } from "./styles";
 
 export interface IProps {
-  input: object;
+  input: object | string;
 }
 
 const Root = styled.div`
@@ -66,7 +66,9 @@ export function RenderCode({ input }: IProps) {
         <code
           dangerouslySetInnerHTML={{
             __html: highlight(
-              JSON.stringify(input || {}, null, 2),
+              typeof input === "string"
+                ? input
+                : JSON.stringify(input || {}, null, 2),
               languages.javascript
             ),
           }}

@@ -25,5 +25,17 @@ const Template: Story<IProps> = (args) => {
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {};
+export const JavascriptObject = Template.bind({});
+JavascriptObject.args = {};
+
+export const JavascriptScript = Template.bind({});
+JavascriptScript.args = {
+  input: `
+  /*
+  Example
+  */
+  const foo = () => {
+    return bar;
+  }
+  `,
+};
