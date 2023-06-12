@@ -213,7 +213,7 @@ describe("RenderList", () => {
   it("should render Empty view when empty", () => {
     render(<RenderList items={[]} render={() => <div>foo</div>} />);
 
-    expect(screen.getByText("No Item To Look At")).toBeInTheDocument();
+    expect(screen.getByText("No Item Has Been Added Yet")).toBeInTheDocument();
   });
 
   it("should render Empty view and `add new item` when empty and there is a newItemLink", () => {
@@ -226,6 +226,8 @@ describe("RenderList", () => {
       />
     );
 
-    expect(screen.getByText("No Product To Look At")).toBeInTheDocument();
+    expect(
+      screen.getByText("No Product Has Been Added Yet")
+    ).toBeInTheDocument();
   });
 });
