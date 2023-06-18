@@ -72,18 +72,16 @@ export function SectionBox({
           <StyledCardHeader>
             <StyledCenterRow>
               <Col auto>
-                <Typo.MD weight="bold">
-                  {isLoading ? (
-                    <BaseSkeleton width="150px" height="20px" />
-                  ) : (
-                    title
-                  )}
-                  {description ? (
-                    <Tooltip text={description}>
-                      <HelpCircle size="15" />
-                    </Tooltip>
-                  ) : null}
-                </Typo.MD>
+                {isLoading ? (
+                  <BaseSkeleton width="150px" height="20px" />
+                ) : (
+                  <Typo.MD weight="bold">{title}</Typo.MD>
+                )}
+                {description ? (
+                  <Tooltip text={description}>
+                    <HelpCircle size="15" />
+                  </Tooltip>
+                ) : null}
               </Col>
               {newItemLink ||
               deleteAction ||

@@ -91,21 +91,7 @@ const StyledSROnly = styled.span`
   width: 1px;
 `;
 
-const StyledDropDownToggle = styled.div`
-  position: relative;
-  display: inline-flex;
-  vertical-align: middle;
-  border: 0;
-  padding: 0;
-  background: none;
-`;
-
-const StyledCurrentButton = styled(StyledSoftButton)`
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-`;
-
-const StyledDropDownIcon = styled(StyledSoftButton)`
+const StyledDropDownToggle = styled(StyledSoftButton)`
   display: inline-block;
   margin-left: -1px;
   border-top-left-radius: 0;
@@ -123,6 +109,11 @@ const StyledDropDownIcon = styled(StyledSoftButton)`
     border-bottom: 0;
     border-left: 0.3em solid transparent;
   }
+`;
+
+const StyledCurrentButton = styled(StyledSoftButton)`
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 `;
 
 export function DropDownMenu({
@@ -205,10 +196,8 @@ export function DropDownMenu({
       >
         {currentItem}
       </StyledCurrentButton>
-      <StyledDropDownToggle split as={Dropdown.Toggle}>
-        <StyledDropDownIcon size="sm">
-          <StyledSROnly>Toggle Dropdown</StyledSROnly>
-        </StyledDropDownIcon>
+      <StyledDropDownToggle split as={Dropdown.Toggle} size="sm">
+        <StyledSROnly>Toggle Dropdown</StyledSROnly>
       </StyledDropDownToggle>
       <StyledDropDownMenu>
         {menuItems.map(({ label: label$1, description }, index) => (
