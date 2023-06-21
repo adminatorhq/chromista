@@ -78,7 +78,11 @@ export function SortList<T extends { value: string; label?: string }>({
   if (itemsLength <= 1) {
     return (
       <EmptyWrapper
-        text={`Cant sort ${StringUtils.pluralize("item", itemsLength, true)}`}
+        text={`Cant sort ${StringUtils.pluralize({
+          singular: "item",
+          count: itemsLength,
+          inclusive: true,
+        })}`}
       />
     );
   }

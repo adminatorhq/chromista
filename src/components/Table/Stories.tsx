@@ -24,7 +24,6 @@ export default {
           },
         },
       ],
-      hiddenColumns: [],
     },
     syncPaginatedDataStateOut: action("setPaginatedDataState"),
     columns: TABLE_COLUMNS,
@@ -55,7 +54,6 @@ const Template: Story<IProps<unknown>> = (args) => {
                 },
               },
             ],
-            hiddenColumns: [],
           });
         }}
       >

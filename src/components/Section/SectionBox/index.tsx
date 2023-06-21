@@ -23,7 +23,11 @@ export interface IProps {
     icon?: ButtonIconTypes;
   }[];
   selection?: { options: ISelectData[]; onChange: (value: string) => void };
-  deleteAction?: { action: () => void; isMakingDeleteRequest: boolean };
+  deleteAction?: {
+    action: () => void;
+    isMakingDeleteRequest: boolean;
+    shouldConfirmAlert?: boolean;
+  };
   backLink?: { label?: string; action: string | (() => void) };
   isLoading?: boolean;
   headLess?: boolean;
@@ -121,6 +125,7 @@ export function SectionBox({
                     {deleteAction && !isLoading ? (
                       <StyledDeleteButton
                         onDelete={deleteAction.action}
+                        shouldConfirmAlert={deleteAction.shouldConfirmAlert}
                         isMakingDeleteRequest={
                           deleteAction.isMakingDeleteRequest
                         }

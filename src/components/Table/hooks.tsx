@@ -89,9 +89,5 @@ export function useSyncTableState<T>(
     if (typeof overridePaginatedDataState.pageIndex === "number") {
       table.setPageIndex(overridePaginatedDataState.pageIndex);
     }
-
-    // if (overridePaginatedDataState.hiddenColumns) {
-    //   table.setColumnVisibility(overridePaginatedDataState.hiddenColumns);
-    // }
   }, [JSON.stringify(overridePaginatedDataState)]);
 }

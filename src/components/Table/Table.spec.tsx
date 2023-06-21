@@ -10,7 +10,6 @@ const DEFAULT_TABLE_PROPS: IProps<unknown> = {
     pageSize: 10,
     pageIndex: 1,
     sortBy: [{ id: "name", desc: true }],
-    hiddenColumns: [],
   },
   syncPaginatedDataStateOut: jest.fn(),
   columns: TABLE_COLUMNS,
