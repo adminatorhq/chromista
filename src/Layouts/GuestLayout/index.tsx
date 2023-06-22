@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { GuestFooter, GuestHeader, GuestContainer } from "./_partials";
 import { SHADOW_CSS, StyledCardBody } from "../../components/Card";
@@ -22,6 +21,8 @@ const Root = styled.div`
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   border-width: 0px;
+  width: 100%;
+  max-width: 500px;
 `;
 
 export function GuestLayout({
@@ -32,13 +33,11 @@ export function GuestLayout({
 }: IProps) {
   return (
     <GuestContainer>
-      <Col lg={5}>
-        <Root>
-          <GuestHeader title={title} subTitle={subTitle} {...appDetails} />
-          <StyledCardBody radiusLess>{children}</StyledCardBody>
-          <GuestFooter name={appDetails.name} />
-        </Root>
-      </Col>
+      <Root>
+        <GuestHeader title={title} subTitle={subTitle} {...appDetails} />
+        <StyledCardBody radiusLess>{children}</StyledCardBody>
+        <GuestFooter name={appDetails.name} />
+      </Root>
     </GuestContainer>
   );
 }

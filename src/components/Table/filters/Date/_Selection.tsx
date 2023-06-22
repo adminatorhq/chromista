@@ -4,9 +4,8 @@ import {
   IDateFilterOption,
 } from "@hadmean/protozoa";
 import React from "react";
-import { Col, Row } from "styled-bootstrap-grid";
-import styled from "styled-components";
 import { SimpleSelect } from "../../../Form/FormSelect/Simple";
+import { Stack } from "../../../../ui-blocks";
 
 const getOptionValue = (value: string) => {
   const dateOption = DATE_FILTER_OPTIONS.find(
@@ -48,14 +47,6 @@ interface IProps {
   dateOptions: IDateFilterOption[];
 }
 
-const LeftCol = styled(Col)`
-  padding-right: 0;
-`;
-
-const RightCol = styled(Col)<{ hasLeft: boolean }>`
-  ${(props) => props.hasLeft && `padding-left: 0`};
-`;
-
 export function DateSelection({
   filterValue,
   setFilter,
@@ -66,38 +57,33 @@ export function DateSelection({
   const currentFilterValue = filterValue?.[field] || "";
   const hasCountValue = currentFilterValue?.includes(":");
   return (
-    <Row>
+    <Stack>
       {hasCountValue && (
-        <LeftCol sm={3}>
-          <SimpleSelect
-            options={Array.from(
-              { length: getOptionCountLimit(currentFilterValue) },
-              (_, k) => `${k + 1}`
-            ).map((count) => ({ label: count, value: count }))}
-            fullWidth
-            onChange={(value) => {
-              setFilter({
-                ...filterValue,
-                [field]: setCountValue(value, currentFilterValue),
-              });
-            }}
-            value={getCountValue(currentFilterValue) || "1"}
-          />
-        </LeftCol>
-      )}
-      <RightCol sm={hasCountValue ? 9 : 12} hasLeft={hasCountValue}>
         <SimpleSelect
-          options={dateOptions.map(({ value, label }) => ({ label, value }))}
-          fullWidth
+          options={Array.from(
+            { length: getOptionCountLimit(currentFilterValue) },
+            (_, k) => `${k + 1}`
+          ).map((count) => ({ label: count, value: count }))}
           onChange={(value) => {
             setFilter({
               ...filterValue,
-              [field]: getOptionValue(value),
+              [field]: setCountValue(value, currentFilterValue),
             });
           }}
-          value={getFilterValue(currentFilterValue || defaultValue)}
+          value={getCountValue(currentFilterValue) || "1"}
         />
-      </RightCol>
-    </Row>
+      )}
+      <SimpleSelect
+        options={dateOptions.map(({ value, label }) => ({ label, value }))}
+        fullWidth
+        onChange={(value) => {
+          setFilter({
+            ...filterValue,
+            [field]: getOptionValue(value),
+          });
+        }}
+        value={getFilterValue(currentFilterValue || defaultValue)}
+      />
+    </Stack>
   );
 }

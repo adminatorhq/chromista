@@ -1,5 +1,4 @@
 import React, { useState, ReactNode } from "react";
-import { Row, Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { HelpCircle } from "react-feather";
 import { DeleteButton } from "../../Button/DeleteButton";
@@ -33,11 +32,6 @@ export interface IProps {
   headLess?: boolean;
   sideText?: string;
 }
-
-const StyledCenterRow = styled(Row)`
-  align-items: center;
-  justify-content: space-between;
-`;
 
 const StyledDeleteButton = styled(DeleteButton)`
   margin-left: 0.25rem;
@@ -74,8 +68,8 @@ export function SectionBox({
       <StyledCard>
         {!headLess ? (
           <StyledCardHeader>
-            <StyledCenterRow>
-              <Col auto>
+            <Stack justify="space-between" align="center">
+              <Stack>
                 {isLoading ? (
                   <BaseSkeleton width="150px" height="20px" />
                 ) : (
@@ -86,55 +80,51 @@ export function SectionBox({
                     <HelpCircle size="15" />
                   </Tooltip>
                 ) : null}
-              </Col>
+              </Stack>
               {newItemLink ||
               deleteAction ||
               iconButtons ||
               selection ||
               sideText ? (
-                <Col auto>
-                  <Stack align="center">
-                    {selection ? (
-                      <SimpleSelect
-                        options={selection.options}
-                        onChange={(newSelectionValue: string) => {
-                          setSelectionValue(newSelectionValue);
-                          selection.onChange(newSelectionValue);
-                        }}
-                        value={selectionValue}
-                      />
-                    ) : null}
-                    {sideText ? (
-                      <Typo.SM color="muted" as="span" textStyle="italic">
-                        {sideText}
-                      </Typo.SM>
-                    ) : null}
-                    {iconButtons
-                      ? iconButtons.map(({ action, label, icon }) => (
-                          <SoftButton
-                            key={icon || label}
-                            action={action}
-                            label={label}
-                            icon={icon}
-                          />
-                        ))
-                      : null}
-                    {newItemLink ? (
-                      <SoftButton action={newItemLink} icon="add" />
-                    ) : null}
-                    {deleteAction && !isLoading ? (
-                      <StyledDeleteButton
-                        onDelete={deleteAction.action}
-                        shouldConfirmAlert={deleteAction.shouldConfirmAlert}
-                        isMakingDeleteRequest={
-                          deleteAction.isMakingDeleteRequest
-                        }
-                      />
-                    ) : null}
-                  </Stack>
-                </Col>
+                <Stack align="center" width="auto">
+                  {selection ? (
+                    <SimpleSelect
+                      options={selection.options}
+                      onChange={(newSelectionValue: string) => {
+                        setSelectionValue(newSelectionValue);
+                        selection.onChange(newSelectionValue);
+                      }}
+                      value={selectionValue}
+                    />
+                  ) : null}
+                  {sideText ? (
+                    <Typo.SM color="muted" as="span" textStyle="italic">
+                      {sideText}
+                    </Typo.SM>
+                  ) : null}
+                  {iconButtons
+                    ? iconButtons.map(({ action, label, icon }) => (
+                        <SoftButton
+                          key={icon || label}
+                          action={action}
+                          label={label}
+                          icon={icon}
+                        />
+                      ))
+                    : null}
+                  {newItemLink ? (
+                    <SoftButton action={newItemLink} icon="add" />
+                  ) : null}
+                  {deleteAction && !isLoading ? (
+                    <StyledDeleteButton
+                      onDelete={deleteAction.action}
+                      shouldConfirmAlert={deleteAction.shouldConfirmAlert}
+                      isMakingDeleteRequest={deleteAction.isMakingDeleteRequest}
+                    />
+                  ) : null}
+                </Stack>
               ) : null}
-            </StyledCenterRow>
+            </Stack>
           </StyledCardHeader>
         ) : null}
         {children ? <StyledCardBody>{children}</StyledCardBody> : null}

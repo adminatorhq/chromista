@@ -1,39 +1,49 @@
-import React, { ReactNode } from "react";
-import { Col, Row } from "styled-bootstrap-grid";
-import { Spacer } from "../../../ui-blocks";
+import React, { ReactElement, ReactNode } from "react";
+import styled from "styled-components";
+import { Spacer, Stack } from "../../../ui-blocks";
+import { BREAKPOINTS } from "../../../constants";
 
 interface IProps {
   children: ReactNode;
-  size?: number;
 }
 
-export function SectionRow({ children }: { children: ReactNode }) {
-  return <Row>{children}</Row>;
-}
+export const GridRoot = styled.div`
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 3fr 9fr;
+  @media (max-width: ${BREAKPOINTS.md}) {
+    grid-template-columns: 1fr;
+  }
+`;
 
-export function SectionLeft({ children, size = 3 }: IProps) {
+export type TContentLayout = ((params: IProps) => ReactElement) & {
+  Left: (params: IProps) => ReactElement;
+  Right: (params: IProps) => ReactElement;
+  Center: (params: IProps) => ReactElement;
+};
+
+// eslint-disable-next-line react/function-component-definition
+export const ContentLayout: TContentLayout = ({ children }: IProps) => {
+  return <GridRoot>{children}</GridRoot>;
+};
+
+ContentLayout.Left = function SectionLeft({ children }: IProps) {
   return (
-    <Col sm={12} lg={size}>
+    <div>
       {children}
       <Spacer />
-    </Col>
+    </div>
   );
-}
+};
 
-export function SectionRight({ children, size = 9 }: IProps) {
-  return (
-    <Col sm={12} lg={size}>
-      {children}
-    </Col>
-  );
-}
+ContentLayout.Right = function SectionRight({ children }: IProps) {
+  return <div>{children}</div>;
+};
 
-export function SectionCenter({ children, size = 8 }: IProps) {
+ContentLayout.Center = function SectionCenter({ children }: IProps) {
   return (
-    <SectionRow>
-      <Col sm={12} lg={size} lgOffset={(12 - size) / 2}>
-        {children}
-      </Col>
-    </SectionRow>
+    <Stack justify="center">
+      <div style={{ maxWidth: "900px", width: "100%" }}>{children}</div>
+    </Stack>
   );
-}
+};

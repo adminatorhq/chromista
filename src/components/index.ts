@@ -37,7 +37,6 @@ export { IntermediateCheckBox } from "./IntermediateCheckBox";
 /*
 Button
 Text
-// Divider
 ComponentIsLoading
 Keyvalue details
 Progress bar

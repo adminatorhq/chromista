@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { Container } from "styled-bootstrap-grid";
 import { Stack } from "../../../../ui-blocks";
 import { USE_ROOT_COLOR } from "../../../../theme";
 
@@ -22,11 +21,9 @@ const StyledWrapperRow = styled(Stack)`
 export function GuestContainer({ children }: { children: ReactNode }) {
   return (
     <Root>
-      <Container>
-        <StyledWrapperRow justify="center" align="center">
-          {children}
-        </StyledWrapperRow>
-      </Container>
+      <StyledWrapperRow justify="center" align="center">
+        {children}
+      </StyledWrapperRow>
     </Root>
   );
 }
